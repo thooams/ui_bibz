@@ -1,8 +1,8 @@
 module UiBibz::Ui
   class Grid < Panel
-    include ActionView::Helpers::UrlHelper
-    include WillPaginate::ActionView
+    #include WillPaginate::ActionView
     include ActionView
+    #include Rails.application.routes.url_helpers
 
     def initialize options = nil, html_options = nil
       @options      = options || {}
@@ -16,7 +16,7 @@ module UiBibz::Ui
     end
 
     def pagination args
-      @pagination = paginate @store, args if @options[:pagination]
+      @pagination = will_paginate @store.records, args if @options[:pagination]
     end
 
     # Add :id in url to match with current record
@@ -26,6 +26,9 @@ module UiBibz::Ui
       @actions = context.capture(&block)
     end
 
+    def main_app
+  Rails.application.class.routes.url_helpers
+end
 
   private
 
@@ -50,7 +53,11 @@ module UiBibz::Ui
         ap @pagination
         # @footer     = Component.new @pagination if @options[:pagination]
         ap @store.records
-        @footer     = Component.new will_paginate @store.records if @options[:pagination]
+        @footer     = Component.new will_paginate(@store.records, :params => {
+                                                                        :only_path => true,
+                                                                        :use_route => '/',
+                                                                        :scope => main_app
+                                                                      }) if @options[:pagination]
         ap @footer
       end
     end

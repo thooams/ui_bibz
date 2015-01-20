@@ -23,8 +23,9 @@ Gem::Specification.new do |s|
   s.add_dependency 'rails', '~> 4.2.0'
   # pagination
   s.add_dependency 'will_paginate', '~> 3.0.6'
+  s.add_dependency 'will_paginate-bootstrap'
 
-  # s.add_development_dependency "minitest"
+  s.add_development_dependency "minitest"
   # s.add_development_dependency "haml-rails"
   # s.add_development_dependency "guard-minitest"
   s.add_development_dependency "sqlite3"
