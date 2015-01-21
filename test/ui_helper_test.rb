@@ -1,7 +1,6 @@
 require 'test_helper'
-require 'ui_helper'
 
-include UiBibz::UiHelpers
+include UiBibz::Helpers
 class UiHelperTest < ActionView::TestCase
 
   test 'panel' do
@@ -27,7 +26,7 @@ class UiHelperTest < ActionView::TestCase
   end
 
   test 'grid' do
-    g = grid cls: 'toto' do |pane|
+    g = grid store: [], cls: 'toto' do |pane|
       pane.header 'toto'
       pane.body cls: 'ui' do
         'body'
