@@ -1,4 +1,6 @@
 require 'test_helper'
+require 'active_model'
+require 'minitest/autorun' # for mock
 
 include UiBibz::Helpers
 class UiHelperTest < ActionView::TestCase
@@ -21,12 +23,16 @@ class UiHelperTest < ActionView::TestCase
   end
 
   test 'tab' do
-    t = tab "<a href='#'>toto</a>", { active: true }, {cls: 'tab'}
+    t = tab "<a href='#'>toto</a>", { active: true }, { class: 'tab'}
     puts t
   end
 
   test 'grid' do
-    g = grid store: [], cls: 'toto' do |pane|
+    ap Message
+    collection = Message.new({total_pages: 1, current_page: 1, limit_value: 1})
+
+
+    g = grid store: collection, cls: 'toto' do |pane|
       pane.header 'toto'
       pane.body cls: 'ui' do
         'body'

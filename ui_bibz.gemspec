@@ -26,9 +26,11 @@ Gem::Specification.new do |s|
   s.add_dependency 'will_paginate-bootstrap'
 
   s.add_development_dependency "minitest"
-  # s.add_development_dependency "haml-rails"
   # s.add_development_dependency "guard-minitest"
   s.add_development_dependency "sqlite3"
+  # haml
+  s.add_development_dependency 'haml'
+  s.add_development_dependency 'haml-rails'
 
 
   #s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
