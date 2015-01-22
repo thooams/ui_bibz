@@ -1,0 +1,15 @@
+language: ruby
+cache: bundler
+rvm:
+  - 2.2.0
+jdk:
+  - openjdk6
+branches:
+  only:
+    - master
+install:
+  - "travis_retry bundle install"
+  - "bundle exec appraisal generate"
+  - "travis_retry bundle exec appraisal install"
+gemfile:
+  - gemfiles/rails4.2.gemfile

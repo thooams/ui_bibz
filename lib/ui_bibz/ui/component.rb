@@ -1,3 +1,4 @@
+require 'haml'
 module UiBibz::Ui
   class Component
     include ActionView::Helpers::CaptureHelper
@@ -18,7 +19,8 @@ module UiBibz::Ui
       if !block.nil?
         @html_options, @options = options, content
         context = eval("self", block.binding)
-        context.init_haml_helpers
+        #context.init_haml_helpers
+        # to fix test
         @content = context.capture(&block)
       else
         @html_options, @options, @content = html_options, options, content
