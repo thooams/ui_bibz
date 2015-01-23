@@ -12,26 +12,26 @@ class UiHelperTest < ActionView::TestCase
       pane.body 'Test body', nil, cls: 'body-toto'
       pane.footer 'Test footer'
     end
-    #puts p
+    puts p
   end
 
   test 'nav' do
     n = nav({cls: 'nav-momo'}) do
       "<a href='#'>toto</a>"
     end
-    #puts n
+    puts n
   end
 
   test 'tab' do
     t = tab "<a href='#'>toto</a>", { active: true }, { class: 'tab'}
-    #puts t
+    puts t
   end
 
   test 'complex grid' do
-    2.times{ User.create({name_fr: 'name fr'})}
-    collection = User.paginate(page: 1)
+    create_list(:user, 25)
+    users   = User.paginate(page: 1, per_page: 10)
 
-    g = grid store: collection, pagination: true, cls: 'toto' do |pane|
+    g = grid store: users, pagination: true, cls: 'toto' do |pane|
       pane.header 'Test header'
       pane.body cls: 'ui' do
         'Test body'

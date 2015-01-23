@@ -3,7 +3,7 @@ module UiBibz::Ui
   class Grid < Panel
     include WillPaginate::ActionView
     include ActionView
-    #include Rails.application.routes.url_helpers
+    include Rails.application.routes.url_helpers
 
     def initialize options = nil, html_options = nil
       @options      = options || {}
@@ -27,10 +27,6 @@ module UiBibz::Ui
       @actions = context.capture(&block)
     end
 
-    def main_app
-      Rails.application.class.routes.url_helpers
-    end
-
   private
 
     def editable?
@@ -47,16 +43,16 @@ module UiBibz::Ui
 
     def initialize_pagination
       unless @store.nil?
-        @footer = Component.new(will_paginate(@store.records)) if @options[:pagination]
+        # Add controller to fix error: ArgumentError: arguments passed to url_for can't be handled.
+        @footer = Component.new(will_paginate(@store.records, params: { controller: @store.controller })) if @options[:pagination]
       end
     end
 
     def default_actions record
-      url_helpers = Rails.application.routes.url_helpers
       capture do
-        concat link_to 'Show', eval("url_helpers.#{ @store.model.downcase }_path(#{ record.id })"), role: "menuitem",  tabindex: "-1"
-        concat link_to 'Edit', eval("url_helpers.edit_#{ @store.model.downcase }_path(#{ record.id })"),  role: "menuitem",  tabindex: "-1"
-        concat link_to 'Delete', eval("url_helpers.#{ @store.model.downcase }_path(#{ record.id })"), method: :delete, data: { confirm: 'Are you sure?' }, role: "menuitem",  tabindex: "-1"
+        concat link_to 'Show', { controller: @store.controller, action: 'show', id: record.id }, role: "menuitem",  tabindex: "-1"
+        concat link_to 'Edit', { controller: @store.controller, action: 'edit', id: record.id }, role: "menuitem",  tabindex: "-1"
+        concat link_to 'Delete', { controller: @stor.controller, id: record.id}, method: :delete, data: { confirm: 'Are you sure?' }, role: "menuitem",  tabindex: "-1"
       end
     end
 
