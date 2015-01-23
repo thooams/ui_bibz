@@ -27,5 +27,9 @@ module UiBibz::Ui
       @model ||= @records.new.class.to_s
     end
 
+    def controller
+      model.downcase.pluralize
+    end
+
   end
 end

@@ -1,8 +1,8 @@
 require 'test_helper'
 require 'will_paginate'
 
-include WillPaginate::ActionView
 class StoreTest < ActionView::TestCase
+  include WillPaginate::ActionView
 
   setup do
     create_list(:user, 25)
@@ -25,6 +25,14 @@ class StoreTest < ActionView::TestCase
 
   test 'model' do
     assert_equal @store.model, 'User'
+  end
+
+  test 'records' do
+    assert_equal @store.records.count, 25
+  end
+
+  test 'controller' do
+    assert_equal @store.controller, 'users'
   end
 
 end
