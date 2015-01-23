@@ -1,4 +1,5 @@
 require 'will_paginate'
+require "will_paginate-bootstrap"
 module UiBibz::Ui
   class Grid < Panel
     include WillPaginate::ActionView
@@ -23,7 +24,7 @@ module UiBibz::Ui
     # Add :id in url to match with current record
     def actions &block
       context = eval("self", block.binding)
-      context.init_haml_helpers
+      #context.init_haml_helpers
       @actions = context.capture(&block)
     end
 
@@ -44,7 +45,7 @@ module UiBibz::Ui
     def initialize_pagination
       unless @store.nil?
         # Add controller to fix error: ArgumentError: arguments passed to url_for can't be handled.
-        @footer = Component.new(will_paginate(@store.records, params: { controller: @store.controller })) if @options[:pagination]
+        @footer = Component.new(will_paginate(@store.records, params: { controller: @store.controller },  renderer: BootstrapPagination::Rails)) if @options[:pagination]
       end
     end
 
