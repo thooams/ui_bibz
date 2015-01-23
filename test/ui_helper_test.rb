@@ -28,9 +28,7 @@ class UiHelperTest < ActionView::TestCase
   end
 
   test 'grid' do
-    ap Message
-    collection = Message.new({total_pages: 1, current_page: 1, limit_value: 1})
-
+    collection = User.paginate(page: 1)
 
     g = grid store: collection, cls: 'toto' do |pane|
       pane.header 'toto'
