@@ -54,6 +54,11 @@ GEM
     columnize (0.9.0)
     debugger-linecache (1.2.0)
     erubis (2.7.0)
+    factory_girl (4.5.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (4.5.0)
+      factory_girl (~> 4.5.0)
+      railties (>= 3.0.0)
     globalid (0.3.0)
       activesupport (>= 4.1.0)
     haml (4.1.0.beta.1)
@@ -140,6 +145,7 @@ PLATFORMS
 DEPENDENCIES
   awesome_print
   byebug
+  factory_girl_rails (~> 4.0)
   haml
   haml-rails
   minitest
