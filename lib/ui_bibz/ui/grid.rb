@@ -1,6 +1,7 @@
+require 'will_paginate'
 module UiBibz::Ui
   class Grid < Panel
-    #include WillPaginate::ActionView
+    include WillPaginate::ActionView
     include ActionView
     #include Rails.application.routes.url_helpers
 
@@ -27,8 +28,8 @@ module UiBibz::Ui
     end
 
     def main_app
-  Rails.application.class.routes.url_helpers
-end
+      Rails.application.class.routes.url_helpers
+    end
 
   private
 
@@ -46,19 +47,7 @@ end
 
     def initialize_pagination
       unless @store.nil?
-        options     = { total_pages: @store.total_pages }
-        ap 'pagination before'
-        #@pagination = Kaminari::Helpers::Paginator.new(@store.records, options.reverse_merge(:current_page => @store.current_page, :per_page => @store.limit_value, :remote => false)).to_s
-        ap 'pagination after'
-        ap @pagination
-        # @footer     = Component.new @pagination if @options[:pagination]
-        ap @store.records
-        @footer     = Component.new will_paginate(@store.records, :params => {
-                                                                        :only_path => true,
-                                                                        :use_route => '/',
-                                                                        :scope => main_app
-                                                                      }) if @options[:pagination]
-        ap @footer
+        @footer = Component.new(will_paginate(@store.records)) if @options[:pagination]
       end
     end
 

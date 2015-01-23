@@ -1,39 +1,40 @@
 require 'test_helper'
 require 'active_model'
-require 'minitest/autorun' # for mock
 
 include UiBibz::Helpers
 class UiHelperTest < ActionView::TestCase
 
-  test 'panel' do
+  test 'complex panel' do
     p = panel cls: 'toto' do |pane|
       pane.header cls: 'header-class' do
-        "Text header"
+        "Test header"
       end
-      pane.body 'Text body', nil, cls: 'body-toto'
+      pane.body 'Test body', nil, cls: 'body-toto'
+      pane.footer 'Test footer'
     end
-    puts p
+    #puts p
   end
 
   test 'nav' do
     n = nav({cls: 'nav-momo'}) do
       "<a href='#'>toto</a>"
     end
-    puts n
+    #puts n
   end
 
   test 'tab' do
     t = tab "<a href='#'>toto</a>", { active: true }, { class: 'tab'}
-    puts t
+    #puts t
   end
 
-  test 'grid' do
+  test 'complex grid' do
+    2.times{ User.create({name_fr: 'name fr'})}
     collection = User.paginate(page: 1)
 
-    g = grid store: collection, cls: 'toto' do |pane|
-      pane.header 'toto'
+    g = grid store: collection, pagination: true, cls: 'toto' do |pane|
+      pane.header 'Test header'
       pane.body cls: 'ui' do
-        'body'
+        'Test body'
       end
     end
     puts g
