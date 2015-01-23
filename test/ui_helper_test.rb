@@ -17,7 +17,7 @@ class UiHelperTest < ActionView::TestCase
 
   test 'nav' do
     n = nav({cls: 'nav-momo'}) do
-      "<a href='#'>toto</a>"
+      tab "<a href='#'>toto</a>"
     end
     puts n
   end
@@ -35,6 +35,23 @@ class UiHelperTest < ActionView::TestCase
       pane.header 'Test header'
       pane.body cls: 'ui' do
         'Test body'
+      end
+    end
+    puts g
+  end
+
+  test 'complex grid with custom actions' do
+    create_list(:user, 25)
+    users   = User.paginate(page: 1, per_page: 10)
+
+    g = grid store: users, pagination: true, cls: 'toto' do |pane|
+      pane.header 'Test header'
+      pane.body cls: 'ui' do
+        'Test body'
+      end
+      pane.actions do
+        link_to 'toto', users_path(:id)
+        link_to 'momo', users_path(:id)
       end
     end
     puts g
