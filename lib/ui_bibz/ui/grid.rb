@@ -18,7 +18,7 @@ module UiBibz::Ui
     end
 
     def pagination args
-      @pagination = will_paginate @store.records, args if @options[:pagination]
+      @pagination = will_paginate(@store.records, args) if @options[:pagination]
     end
 
     # Add :id in url to match with current record
@@ -45,7 +45,8 @@ module UiBibz::Ui
     def initialize_pagination
       unless @store.nil?
         # Add controller to fix error: ArgumentError: arguments passed to url_for can't be handled.
-        @footer = Component.new(will_paginate(@store.records, params: { controller: @store.controller },  renderer: BootstrapPagination::Rails)) if @options[:pagination]
+        pagination_html = will_paginate(@store.records, params: { controller: @store.controller },  renderer: BootstrapPagination::Rails)
+        @footer         = Component.new(pagination_html) if @options[:pagination]
       end
     end
 
@@ -100,9 +101,9 @@ module UiBibz::Ui
 
       case column.link
       when :edit
-        link_to content, eval("url_helpers.edit_#{ @store.model.downcase }_path(#{ record.id })")
+        link_to content, { controller: @store.controller, action: 'edit', id: record.id }
       when :show
-        link_to content, eval("url_helpers.#{ @store.model.downcase }_path(#{ record.id })")
+        link_to content, { controller: @store.controller, action: 'show', id: record.id }
       else
         content
       end
