@@ -18,9 +18,7 @@ module UiBibz::Ui
     def initialize content = nil, options = nil, html_options = nil, &block
       if !block.nil?
         @html_options, @options = options, content
-        context = eval("self", block.binding)
-        #context.init_haml_helpers
-        # to fix test
+        context  = eval("self", block.binding)
         @content = context.capture(&block)
       else
         @html_options, @options, @content = html_options, options, content

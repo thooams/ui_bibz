@@ -21,20 +21,15 @@ Gem::Specification.new do |s|
 
   # rails
   s.add_dependency 'rails', '~> 4.2.0'
-  # pagination
   s.add_dependency 'will_paginate', '~> 3.0.6'
   s.add_dependency 'will_paginate-bootstrap'
+  s.add_dependency 'haml'
+  s.add_dependency 'haml-rails'
+  s.add_dependency 'sass-rails', '~> 5.0.1'
 
   s.add_development_dependency "minitest"
-  # s.add_development_dependency "guard-minitest"
   s.add_development_dependency "sqlite3"
-  # haml
-  s.add_development_dependency 'haml'
-  s.add_development_dependency 'haml-rails'
   s.add_development_dependency "factory_girl_rails", "~> 4.0"
   s.add_development_dependency "codeclimate-test-reporter"
 
-
-  #s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
-  #s.test_files = Dir["test/**/*"]
 end

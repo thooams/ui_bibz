@@ -8,13 +8,13 @@ module UiBibz::Ui
 
     def initialize options = nil, html_options = nil
       @options      = options || {}
-      @html_options = html_options || {}
+      @html_options = (html_options || {}).merge({ class: 'grid' })
       initialize_store
       initialize_pagination
     end
 
     def columns items = nil
-      @columns = items.map{ |item| Column.new item } unless items.nil?
+      @columns = items.map{ |item| Column.new item }.sort_by(&:order) unless items.nil?
     end
 
     def pagination args
@@ -24,14 +24,13 @@ module UiBibz::Ui
     # Add :id in url to match with current record
     def actions &block
       context = eval("self", block.binding)
-      #context.init_haml_helpers
       @actions = context.capture(&block)
     end
 
   private
 
-    def editable?
-      @options[:editable]
+    def actionable?
+      @options[:actionable]
     end
 
     def initialize_store
@@ -60,8 +59,12 @@ module UiBibz::Ui
 
     def custom_actions record
       unless @actions.nil?
-        @actions.split("\n").compact.map{ |l| l.gsub('/id"', "/#{ record.id }\"") }.join().html_safe
+        @actions.split("\n").compact.map{ |l| inject_url(l, record) }.join().html_safe
       end
+    end
+
+    def inject_url url, record
+      url.gsub('/id"', "/#{ record.id }\"")
     end
 
     def dropdown_action record
@@ -81,7 +84,7 @@ module UiBibz::Ui
           content_tag(:th, column.name) unless column.hidden?
         end
 
-        ths << content_tag(:th, 'Action') if editable?
+        ths << content_tag(:th, 'Action') if actionable?
         concat content_tag(:tr, ths.join.html_safe)
 
         @store.records.each do |record|
@@ -89,7 +92,7 @@ module UiBibz::Ui
             content_tag(:td, td_content(record, column)) unless column.hidden?
           end
 
-          tds << td_action(record) if editable?
+          tds << td_action(record) if actionable?
           concat content_tag :tr, tds.join.html_safe
         end
       end
@@ -97,16 +100,9 @@ module UiBibz::Ui
 
     def td_content record, column
       content = record[column.data_index.to_sym]
-      content = content.strftime(column.date_format) unless column.date_format.nil?
-
-      case column.link
-      when :edit
-        link_to content, { controller: @store.controller, action: 'edit', id: record.id }
-      when :show
-        link_to content, { controller: @store.controller, action: 'show', id: record.id }
-      else
-        content
-      end
+      content = content.strftime(column.date_format)             unless column.date_format.nil?
+      content = link_to content, inject_url(column.link, record) unless column.link.nil?
+      content
     end
 
     def td_action record
