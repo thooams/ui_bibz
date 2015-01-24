@@ -23,6 +23,7 @@ module UiBibz
     autoload :Grid, "ui_bibz/ui/grid"
     autoload :Dropdown, "ui_bibz/ui/dropdown"
     autoload :DropdownButton, "ui_bibz/ui/dropdown_button"
+    autoload :LinkButton, "ui_bibz/ui/link_button"
   end
 
   module Helpers
