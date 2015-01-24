@@ -1,3 +1,7 @@
+# Code climate
+require "codeclimate-test-reporter"
+CodeClimate::TestReporter.start
+
 # Configure Rails Environment
 ENV["RAILS_ENV"] = "test"
 
@@ -17,5 +21,3 @@ if ActiveSupport::TestCase.respond_to?(:fixture_path=)
   ActiveSupport::TestCase.fixture_path = File.expand_path("../fixtures", __FILE__)
 end
 
-require "codeclimate-test-reporter"
-CodeClimate::TestReporter.start
