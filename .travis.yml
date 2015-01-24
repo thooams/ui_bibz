@@ -10,4 +10,4 @@ gemfile:
   - gemfiles/rails4.2.gemfile
 addons:
   code_climate:
-    repo_token: 95196f8dbe3406321c6e7b406585532102784f0a3d4141a25f53937eedb844b6
+    repo_token: 95196f8dbe3406321c6e7b406585532102784f0a3d4141a25f53937eedb844b6 bundle exec rake
