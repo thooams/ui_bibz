@@ -23,4 +23,8 @@ module UiBibz::Helpers::UiHelper
   def dropdown_button name, options = nil, html_options = nil, &block
     UiBibz::Ui::DropdownButton.new(name, options, html_options).tab(&block).render
   end
+
+  def link_button content, options = nil, html_options = nil, &block
+    UiBibz::Ui::LinkButton.new(content, options, html_options, &block).render
+  end
 end
