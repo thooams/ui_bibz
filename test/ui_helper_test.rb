@@ -1,5 +1,4 @@
 require 'test_helper'
-require 'active_model'
 
 include UiBibz::Helpers
 class UiHelperTest < ActionView::TestCase
@@ -44,6 +43,11 @@ class UiHelperTest < ActionView::TestCase
       pane.header 'Test header'
       pane.body cls: 'ui' do
         'Test body'
+      end
+      pane.columns do |c|
+        c.add({ name: '#', data_index: 'id' })
+        c.add({ name: 'Name fr', data_index: 'name_fr', link: edit_user_path(:id), order: 2 })
+        c.add({ name: 'Name en', data_index: 'name_en', order: 1 })
       end
       pane.actions do
         link_to 'toto', users_path(:id)

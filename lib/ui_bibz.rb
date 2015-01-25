@@ -20,6 +20,7 @@ module UiBibz
     autoload :Tab, "ui_bibz/ui/tab"
     autoload :Store, "ui_bibz/ui/store"
     autoload :Column, "ui_bibz/ui/column"
+    autoload :Columns, "ui_bibz/ui/columns"
     autoload :Grid, "ui_bibz/ui/grid"
     autoload :Dropdown, "ui_bibz/ui/dropdown"
     autoload :DropdownButton, "ui_bibz/ui/dropdown_button"

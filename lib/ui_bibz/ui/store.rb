@@ -20,7 +20,7 @@ module UiBibz::Ui
     end
 
     def columns
-      @columns ||= @records.new.attributes.keys.map{ |record| Column.new({ data_index: record, name: record.humanize }) }
+      @columns ||= Columns.new @records.new.attributes.keys.map{ |record| Column.new({ data_index: record, name: record.humanize }) }
     end
 
     def model
