@@ -3,8 +3,6 @@ require "will_paginate-bootstrap"
 module UiBibz::Ui
   class Grid < Panel
     include WillPaginate::ActionView
-    include ActionView
-    include Rails.application.routes.url_helpers
 
     attr_accessor :columns
 
