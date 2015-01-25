@@ -6,15 +6,18 @@ module UiBibz::Ui
     include ActionView
     include Rails.application.routes.url_helpers
 
+    attr_accessor :columns
+
     def initialize options = nil, html_options = nil
       @options      = options || {}
       @html_options = (html_options || {}).merge({ class: 'grid' })
+      @columns      = Columns.new
       initialize_store
       initialize_pagination
     end
 
-    def columns items = nil
-      @columns = items.map{ |item| Column.new item }.sort_by(&:order) unless items.nil?
+    def columns &block
+      @columns.tap(&block)
     end
 
     def pagination args
@@ -76,7 +79,7 @@ module UiBibz::Ui
 
     def table_html
       content_tag :table, class: 'table table-hover' do
-        columns = @columns.nil? ? @store.columns : @columns
+        columns = @columns.list.empty? ? @store.columns.list : @columns.list
 
         ths = columns.collect do |column|
           content_tag(:th, column.name) unless column.hidden?
