@@ -1,6 +1,5 @@
 module UiBibz::Ui
   class LinkButton < Ui
-    include Rails.application.routes.url_helpers
 
     def initialize content = nil, options = nil, html_options = nil, &block
       @link_button = Component.new content, options, html_options, &block
