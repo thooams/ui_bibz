@@ -53,7 +53,7 @@ class UiHelperTest < ActionView::TestCase
   end
 
   test 'link button' do
-    link_button 'Toto', users_path
+    link_button 'Toto', users_path, type: 'danger'
   end
 
 end

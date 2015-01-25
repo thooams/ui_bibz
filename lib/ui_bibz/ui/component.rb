@@ -41,5 +41,10 @@ module UiBibz::Ui
       [html_options.delete(:class), klass].compact.join(' ')
     end
 
+    def class_and_html_options classes
+      @html_options[:class] = [@html_options[:class], [*classes]].flatten.compact.join(' ')
+      @html_options
+    end
+
   end
 end
