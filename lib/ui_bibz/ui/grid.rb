@@ -53,14 +53,12 @@ module UiBibz::Ui
       capture do
         concat link_to 'Show', { controller: @store.controller, action: 'show', id: record.id }, role: "menuitem",  tabindex: "-1"
         concat link_to 'Edit', { controller: @store.controller, action: 'edit', id: record.id }, role: "menuitem",  tabindex: "-1"
-        concat link_to 'Delete', { controller: @stor.controller, id: record.id}, method: :delete, data: { confirm: 'Are you sure?' }, role: "menuitem",  tabindex: "-1"
+        concat link_to 'Delete', { controller: @stor.controller, id: record.id }, method: :delete, data: { confirm: 'Are you sure?' }, role: "menuitem",  tabindex: "-1"
       end
     end
 
     def custom_actions record
-      unless @actions.nil?
-        @actions.split("\n").compact.map{ |l| inject_url(l, record) }.join().html_safe
-      end
+      @actions.split("\n").compact.map{ |l| inject_url(l, record) }.join().html_safe unless @actions.nil?
     end
 
     def inject_url url, record

@@ -6,16 +6,18 @@ module UiBibz::Ui
     end
 
     def render
-      content_tag :li, content, { role: 'presentation' }.merge(class_and_options)
+      content_tag :li, content, class_and_html_options
     end
 
     def content
       content_tag :a, @tab.render
     end
 
-    def class_and_options
-      @tab.html_options[:class] = [@tab.html_options.fetch(:class), 'active'].compact.join(' ') if @tab.options[:active]
-      @tab.html_options
+    def class_and_html_options
+      html_options = {}
+      html_options = @tab.class_and_html_options('active') if @tab.options[:active]
+      html_options = { role: 'presentation' }.merge(html_options)
+      html_options
     end
 
   end
