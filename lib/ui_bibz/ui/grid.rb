@@ -12,6 +12,7 @@ module UiBibz::Ui
       @columns      = Columns.new
       initialize_store
       initialize_pagination
+      initialize_header
     end
 
     def columns &block
@@ -42,11 +43,17 @@ module UiBibz::Ui
       end
     end
 
+    def initialize_header
+      @header = Component.new "#{ @store.controller.humanize } list"
+    end
+
     def initialize_pagination
       unless @store.nil?
-        # Add controller to fix error: ArgumentError: arguments passed to url_for can't be handled.
-        pagination_html = will_paginate(@store.records, params: { controller: @store.controller },  renderer: BootstrapPagination::Rails)
-        @footer         = Component.new(pagination_html) if @options[:pagination]
+        if @options[:pagination]
+          # Add controller to fix error: ArgumentError: arguments passed to url_for can't be handled.
+          pagination_html = will_paginate(@store.records, params: { controller: @store.controller },  renderer: BootstrapPagination::Rails)
+          @footer         = Component.new(pagination_html)
+        end
       end
     end
 
@@ -54,7 +61,7 @@ module UiBibz::Ui
       capture do
         concat link_to 'Show', { controller: @store.controller, action: 'show', id: record.id }, role: "menuitem",  tabindex: "-1"
         concat link_to 'Edit', { controller: @store.controller, action: 'edit', id: record.id }, role: "menuitem",  tabindex: "-1"
-        concat link_to 'Delete', { controller: @stor.controller, id: record.id }, method: :delete, data: { confirm: 'Are you sure?' }, role: "menuitem",  tabindex: "-1"
+        concat link_to 'Delete', { controller: @store.controller, id: record.id }, method: :delete, data: { confirm: 'Are you sure?' }, role: "menuitem",  tabindex: "-1"
       end
     end
 

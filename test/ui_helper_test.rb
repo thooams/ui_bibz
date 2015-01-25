@@ -49,10 +49,10 @@ class UiHelperTest < ActionView::TestCase
         c.add({ name: 'Name fr', data_index: 'name_fr', link: edit_user_path(:id), order: 2 })
         c.add({ name: 'Name en', data_index: 'name_en', order: 1 })
       end
-      pane.actions do
-        link_to 'toto', users_path(:id)
-        link_to 'momo', users_path(:id)
-      end
+      #pane.actions do
+      #  link_to 'toto', users_path(:id)
+      #  link_to 'momo', users_path(:id)
+      #end
     end
   end
 
