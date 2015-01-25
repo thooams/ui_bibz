@@ -100,7 +100,7 @@ module UiBibz::Ui
     end
 
     def td_content record, column
-      content = record[column.data_index.to_sym]
+      content = record.send(column.data_index)
       content = content.strftime(column.date_format)             unless column.date_format.nil?
       content = link_to content, inject_url(column.link, record) unless column.link.nil?
       content
