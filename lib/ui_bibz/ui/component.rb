@@ -23,11 +23,18 @@ module UiBibz::Ui
     end
 
     def render
-      @content
+      [glyph, @content].compact.join.html_safe
     end
 
     def html_options
       @html_options || {}
+    end
+
+    def glyph
+      glyph_info = options.delete(:glyph)      if options.kind_of?(Hash)
+      glyph_info = html_options.delete(:glyph) if glyph_info.nil?
+
+      [Glyph.new(glyph_info).render, ' '].join unless glyph_info.nil?
     end
 
     def options
@@ -39,8 +46,8 @@ module UiBibz::Ui
     end
 
     def class_and_html_options classes
-      @html_options[:class] = [@html_options[:class], [*classes]].flatten.compact.join(' ')
-      @html_options
+      html_options[:class] = [html_options[:class], [*classes]].flatten.compact.join(' ')
+      html_options
     end
 
   end
