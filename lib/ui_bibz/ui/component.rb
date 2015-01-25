@@ -20,6 +20,7 @@ module UiBibz::Ui
       else
         @html_options, @options, @content = html_options, options, content
       end
+      @html_options ||= {}
     end
 
     def render
@@ -27,13 +28,12 @@ module UiBibz::Ui
     end
 
     def html_options
-      @html_options || {}
+      @html_options
     end
 
     def glyph
       glyph_info = options.delete(:glyph)      if options.kind_of?(Hash)
       glyph_info = html_options.delete(:glyph) if glyph_info.nil?
-
       [Glyph.new(glyph_info).render, ' '].join unless glyph_info.nil?
     end
 
