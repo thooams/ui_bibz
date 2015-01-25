@@ -1,9 +1,6 @@
 require 'haml'
 module UiBibz::Ui
-  class Component
-    include ActionView::Helpers::CaptureHelper
-    include ActionView::Helpers::UrlHelper
-    include Haml::Helpers
+  class Component < Ui
 
     # Creates a component of the given +name+ using options created by the set of +options+.
     #
