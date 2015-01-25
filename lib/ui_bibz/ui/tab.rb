@@ -10,7 +10,8 @@ module UiBibz::Ui
     end
 
     def content
-      content_tag :a, @tab.render
+      selector = @tab.options[:selector] || ''
+      link_to @tab.render, "##{selector}", "aria-controls" => selector, "role" => "tab", "data-toggle" => "tab"
     end
 
     def class_and_html_options

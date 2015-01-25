@@ -21,7 +21,7 @@ class UiHelperTest < ActionView::TestCase
 
   test 'tab' do
     tab "<a href='#'>toto</a>", { active: true }, { class: 'tab'}
-    tab "toto", active: true
+    tab "toto", active: true, selector: 'tab-en'
   end
 
   test 'complex grid' do
