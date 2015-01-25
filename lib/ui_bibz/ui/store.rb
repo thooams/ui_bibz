@@ -28,7 +28,7 @@ module UiBibz::Ui
     end
 
     def controller
-      model.downcase.pluralize
+      model.pluralize.underscore
     end
 
   end
