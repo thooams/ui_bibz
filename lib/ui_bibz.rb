@@ -25,6 +25,7 @@ module UiBibz
     autoload :Dropdown, "ui_bibz/ui/dropdown"
     autoload :DropdownButton, "ui_bibz/ui/dropdown_button"
     autoload :LinkButton, "ui_bibz/ui/link_button"
+    autoload :Glyph, "ui_bibz/ui/glyph"
   end
 
   module Helpers
