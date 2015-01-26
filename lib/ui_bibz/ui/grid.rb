@@ -59,9 +59,15 @@ module UiBibz::Ui
 
     def default_actions record
       capture do
-        concat link_to 'Show', { controller: @store.controller, action: 'show', id: record.id }, role: "menuitem",  tabindex: "-1"
-        concat link_to 'Edit', { controller: @store.controller, action: 'edit', id: record.id }, role: "menuitem",  tabindex: "-1"
-        concat link_to 'Delete', { controller: @store.controller, id: record.id }, method: :delete, data: { confirm: 'Are you sure?' }, role: "menuitem",  tabindex: "-1"
+        glyph = Glyph.new(name: 'eye', type: 'fw').render
+        name  = "#{ glyph } Show".html_safe
+        concat link_to name, { controller: @store.controller, action: 'show', id: record.id }, role: "menuitem",  tabindex: "-1"
+        glyph = Glyph.new(name: 'pencil', type: 'fw').render
+        name  = "#{ glyph } Edit".html_safe
+        concat link_to name, { controller: @store.controller, action: 'edit', id: record.id }, role: "menuitem",  tabindex: "-1"
+        glyph = Glyph.new(name: 'trash', type: 'fw').render
+        name  = "#{ glyph } Delete".html_safe
+        concat link_to name, { controller: @store.controller, id: record.id }, method: :delete, data: { confirm: 'Are you sure?' }, role: "menuitem",  tabindex: "-1"
       end
     end
 
@@ -76,7 +82,7 @@ module UiBibz::Ui
     def dropdown_action record
       # TODO: Fix links without eval
 
-      Dropdown.new 'Action', { position: :right, glyph: 'cog' }, class: 'btn-group-xs' do |d|
+      Dropdown.new 'Action', { position: :right, glyph: { name: 'cog', size: 1, type: 'fw' }}, class: 'btn-group-xs' do |d|
         actions = custom_actions(record) || default_actions(record)
         content_tag :li, actions, role: 'presentation'
       end.render
@@ -90,7 +96,7 @@ module UiBibz::Ui
           content_tag(:th, column.name) unless column.hidden?
         end
 
-        ths << content_tag(:th, 'Action') if actionable?
+        ths << content_tag(:th, '', class: 'action') if actionable?
         concat content_tag(:tr, ths.join.html_safe)
 
         @store.records.each do |record|

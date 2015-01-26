@@ -1,6 +1,19 @@
 .grid
+  .action
+    width: 86px
   .panel-footer
     padding: 10px 10px
     .pagination
       margin: 0
+
+  .table-hover>tbody>tr:hover
+    td:last-child .dropdown
+      display: block
+
+  .table-hover>tbody>tr
+    td:last-child
+      height: 39px
+      .dropdown
+        display: none
+
 
