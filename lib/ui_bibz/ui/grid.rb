@@ -70,7 +70,7 @@ module UiBibz::Ui
     end
 
     def inject_url url, record
-      url.gsub('/id"', "/#{ record.id }\"")
+      url.gsub(/(\/id\/?)/, "/#{ record.id }/")
     end
 
     def dropdown_action record
