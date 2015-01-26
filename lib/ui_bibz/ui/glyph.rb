@@ -13,18 +13,28 @@ module UiBibz::Ui
     #
     def initialize content
       if content.kind_of?(Hash)
-        @name, @size  = content[:name], content[:size]
+        @name, @size, @type = content[:name], content[:size], content[:type]
       else
         @name = content
       end
     end
 
     def render
-      content_tag :i, '', class: "fa fa-#{@name} fa-#{size}x"
+      content_tag :i, '', class: klass
+    end
+
+    def klass
+      cls = ["fa", "fa-#{@name}", "fa-#{size}x"]
+      cls << "fa-#{type}" unless type.nil?
+      cls.join(' ')
     end
 
     def size
       @size ||= 1
+    end
+
+    def type
+      @type
     end
 
   end
