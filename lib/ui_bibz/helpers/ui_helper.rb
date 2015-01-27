@@ -27,4 +27,9 @@ module UiBibz::Helpers::UiHelper
   def link_button content, options = nil, html_options = nil, &block
     UiBibz::Ui::LinkButton.new(content, options, html_options, &block).render
   end
+
+  def glyph content
+    UiBibz::Ui::Glyph.new(content).render
+  end
+
 end
