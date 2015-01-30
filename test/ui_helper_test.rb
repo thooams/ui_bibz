@@ -19,6 +19,13 @@ class UiHelperTest < ActionView::TestCase
     end
   end
 
+  test 'list_group' do
+    list_group do
+      list 'toto'
+      list 'momo', tag: :a, href: '#momo'
+    end
+  end
+
   test 'tab' do
     tab "<a href='#'>toto</a>", { active: true }, { class: 'tab'}
     tab "toto", active: true, selector: 'tab-en'

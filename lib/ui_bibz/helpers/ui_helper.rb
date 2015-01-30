@@ -8,8 +8,16 @@ module UiBibz::Helpers::UiHelper
     UiBibz::Ui::Nav.new(content, options, html_options, &block).render
   end
 
+  def list_group content = nil, options = nil, html_options = nil, &block
+    UiBibz::Ui::ListGroup.new(content, options, html_options, &block).render
+  end
+
   def tab content = nil, options = nil, html_options = nil, &block
     UiBibz::Ui::Tab.new(content, options, html_options, &block).render
+  end
+
+  def list content = nil, options = nil, html_options = nil, &block
+    UiBibz::Ui::List.new(content, options, html_options, &block).render
   end
 
   def grid options = nil, html_options = nil, &block
