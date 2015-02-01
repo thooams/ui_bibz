@@ -24,6 +24,10 @@ module UiBibz::Helpers::UiHelper
     UiBibz::Ui::Grid.new(options, html_options).tap(&block).render
   end
 
+  def breadcrumb content = nil, options = nil, html_options = nil, &block
+    UiBibz::Ui::Breadcrumb.new(content, options, html_options, &block).render
+  end
+
   def dropdown name, options = nil, html_options = nil, &block
     UiBibz::Ui::Dropdown.new(name, options, html_options).tab(&block).render
   end
