@@ -19,6 +19,13 @@ class UiHelperTest < ActionView::TestCase
     end
   end
 
+  test 'breadcrumb' do
+    breadcrumb do
+      "<li><a>Home</a></li>"
+      "<li class='active'>Toto</li>"
+    end
+  end
+
   test 'list_group' do
     list_group do
       list 'toto'
