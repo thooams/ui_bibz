@@ -24,7 +24,7 @@ module UiBibz::Ui
     end
 
     def klass
-      cls = ["fa", "fa-#{@name}", "fa-#{size}x"]
+      cls = ["glyph", "fa", "fa-#{@name}", "fa-#{size}x"]
       cls << "fa-#{type}" unless type.nil?
       cls.join(' ')
     end

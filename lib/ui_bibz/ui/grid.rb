@@ -82,7 +82,7 @@ module UiBibz::Ui
     def dropdown_action record
       # TODO: Fix links without eval
 
-      Dropdown.new 'Action', { position: :right, glyph: { name: 'cog', size: 1, type: 'fw' }}, class: 'btn-group-xs' do |d|
+      Dropdown.new 'Action', { position: :right, glyph: { name: 'ellipsis-v', size: 1, type: 'fw' }}, class: 'btn-group-xs' do |d|
         actions = custom_actions(record) || default_actions(record)
         content_tag :li, actions, role: 'presentation'
       end.render
