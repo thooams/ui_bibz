@@ -11,6 +11,10 @@ module UiBibz::Ui
       @records.total_pages
     end
 
+    def per_page
+      @records.per_page
+    end
+
     def current_page
       @records.current_page
     end

@@ -29,7 +29,23 @@ module UiBibz::Ui
       @actions = context.capture(&block)
     end
 
+    def render
+      content_tag(:div, { class: cls("panel panel-default") }) do
+        form_tag(url_for(controller: @store.controller, action: 'index'), method: :get) do
+          concat(header_html) unless @header.nil?
+          concat(body_html)   unless @body.nil?
+          concat(table_html)  unless @store.nil?
+          concat(footer_html) unless @footer.nil?
+        end
+      end
+    end
+
   private
+
+    # to fix form_for
+    def protect_against_forgery?
+      false
+    end
 
     def actionable?
       @options[:actionable]
@@ -52,8 +68,18 @@ module UiBibz::Ui
         if @options[:pagination]
           # Add controller to fix error: ArgumentError: arguments passed to url_for can't be handled.
           pagination_html = will_paginate(@store.records, params: { controller: @store.controller },  renderer: BootstrapPagination::Rails)
-          @footer         = Component.new(pagination_html)
+          @footer = Component.new do
+            concat pagination_html
+            concat per_page_html
+          end
         end
+      end
+    end
+
+    def per_page_html
+      content_tag :div, class: 'per-page' do
+        concat "Per page: "
+        concat select_tag('per_page', options_for_select([25, 50, 100], @store.per_page), class: 'form-control')
       end
     end
 
