@@ -31,7 +31,7 @@ module UiBibz::Ui
 
     def render
       content_tag(:div, { class: cls("panel panel-default") }) do
-        form_tag(url_for(controller: @store.controller, action: 'index'), method: :get) do
+        search_form_for(@store.records, url: url_for(controller: @store.controller, action: 'index'), method: :get) do
           concat(header_html) unless @header.nil?
           concat(body_html)   unless @body.nil?
           concat(table_html)  unless @store.nil?
@@ -61,7 +61,7 @@ module UiBibz::Ui
 
     def initialize_header
       @header = Component.new do
-        concat "#{ @store.controller.humanize } list"
+        concat content_tag(:div, "#{ @store.controller.humanize } list", class: 'title')
         concat search_field_html
         concat tag :br, class: 'clear'
       end
@@ -83,7 +83,8 @@ module UiBibz::Ui
     def search_field_html
       content_tag :div, class: 'input-group input-group-sm' do
         concat content_tag(:span, Glyph.new(name: 'search', size: 1).render, class: 'input-group-addon')
-        concat tag(:input, type: 'text', name: 'search', class: 'form-control', placeholder: 'Search...')
+        concat tag(:input, type: 'search', value: '', name: 'search', class: 'form-control', placeholder: 'Search...')
+        concat content_tag(:span, Glyph.new(name: 'times-circle', size: 1).render, class: 'clear-search-btn input-group-addon')
       end
     end
 
@@ -130,7 +131,7 @@ module UiBibz::Ui
         columns = @columns.list.empty? ? @store.columns.list : @columns.list
 
         ths = columns.collect do |column|
-          content_tag(:th, column.name) unless column.hidden?
+          content_tag(:th, sort_link(@store.records, column.data_index, column.name)) unless column.hidden?
         end
 
         ths << content_tag(:th, '', class: 'action') if actionable?
