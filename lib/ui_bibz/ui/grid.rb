@@ -60,7 +60,11 @@ module UiBibz::Ui
     end
 
     def initialize_header
-      @header = Component.new "#{ @store.controller.humanize } list"
+      @header = Component.new do
+        concat "#{ @store.controller.humanize } list"
+        concat search_field_html
+        concat tag :br, class: 'clear'
+      end
     end
 
     def initialize_pagination
@@ -73,6 +77,13 @@ module UiBibz::Ui
             concat per_page_html
           end
         end
+      end
+    end
+
+    def search_field_html
+      content_tag :div, class: 'input-group input-group-sm' do
+        concat content_tag(:span, Glyph.new(name: 'search', size: 1).render, class: 'input-group-addon')
+        concat tag(:input, type: 'text', name: 'search', class: 'form-control', placeholder: 'Search...')
       end
     end
 
