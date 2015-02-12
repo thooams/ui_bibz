@@ -24,7 +24,6 @@ module UiBibz::Ui
       content_tag(:div, { class: cls("panel panel-default") }) do
         concat(header_html) unless @header.nil?
         concat(body_html)   unless @body.nil?
-        concat(table_html)  unless @store.nil?
         concat(footer_html) unless @footer.nil?
       end
     end
