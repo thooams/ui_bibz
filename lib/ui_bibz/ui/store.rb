@@ -3,8 +3,9 @@ module UiBibz::Ui
 
     attr_accessor :records
 
-    def initialize records
-      @records = records
+    def initialize store
+      @records = store.records
+      @store   = store
     end
 
     def total_pages
@@ -13,6 +14,14 @@ module UiBibz::Ui
 
     def per_page
       @records.per_page
+    end
+
+    def sort
+      @store.sort
+    end
+
+    def direction
+      @store.direction
     end
 
     def current_page
@@ -28,11 +37,19 @@ module UiBibz::Ui
     end
 
     def model
-      @model ||= @records.new.class.to_s
+      @model ||= @records.new.class
+    end
+
+    def search
+      @store.search
     end
 
     def controller
-      model.pluralize.underscore
+      @store.controller
+    end
+
+    def action
+      @store.action
     end
 
   end

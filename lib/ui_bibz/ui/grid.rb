@@ -30,8 +30,8 @@ module UiBibz::Ui
     end
 
     def render
-      content_tag(:div, { class: cls("panel panel-default") }) do
-        search_form_for(@store.records, url: url_for(controller: @store.controller, action: 'index'), method: :get) do
+      content_tag(:div, { class: cls("panel panel-default") }) do |f|
+        form_tag(url_for(controller: @store.controller, action: @store.action), method: :get) do
           concat(header_html) unless @header.nil?
           concat(body_html)   unless @body.nil?
           concat(table_html)  unless @store.nil?
@@ -41,6 +41,27 @@ module UiBibz::Ui
     end
 
   private
+
+    def sortable column, name = nil
+      name ||= column.titleize
+      title = name
+      title = title + content_tag(:span, '', class: 'caret') if column == sort_column
+      css_class = sort_direction == 'asc' ? 'dropup' : nil
+      direction = column == sort_column && sort_direction == "asc" ? "desc" : "asc"
+      link_to title.html_safe, { sort: column, controller: @store.controller, action: @store.action, search: @store.search, direction: direction }, {:class => css_class}
+    end
+
+    def sort_column_name column
+      column.sort.nil? ? "#{ @store.model.to_s.downcase.pluralize }.#{ column.data_index}" : column.sort
+    end
+
+    def sort_column
+      @store.sort
+    end
+
+    def sort_direction
+      %w[asc desc].include?(@store.direction) ? @store.direction : "asc"
+    end
 
     # to fix form_for
     def protect_against_forgery?
@@ -75,6 +96,7 @@ module UiBibz::Ui
           @footer = Component.new do
             concat pagination_html
             concat per_page_html
+            concat tag(:br, class: 'clear')
           end
         end
       end
@@ -83,7 +105,7 @@ module UiBibz::Ui
     def search_field_html
       content_tag :div, class: 'input-group input-group-sm' do
         concat content_tag(:span, Glyph.new(name: 'search', size: 1).render, class: 'input-group-addon')
-        concat tag(:input, type: 'search', value: '', name: 'search', class: 'form-control', placeholder: 'Search...')
+        concat tag(:input, type: 'search', value: @store.search, name: 'search', class: 'form-control', placeholder: 'Search...')
         concat content_tag(:span, Glyph.new(name: 'times-circle', size: 1).render, class: 'clear-search-btn input-group-addon')
       end
     end
@@ -131,7 +153,7 @@ module UiBibz::Ui
         columns = @columns.list.empty? ? @store.columns.list : @columns.list
 
         ths = columns.collect do |column|
-          content_tag(:th, sort_link(@store.records, column.data_index, column.name)) unless column.hidden?
+          content_tag(:th, sortable(sort_column_name(column), column.name)) unless column.hidden?
         end
 
         ths << content_tag(:th, '', class: 'action') if actionable?
