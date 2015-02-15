@@ -1,7 +1,7 @@
 module UiBibz::Ui
   class Column
 
-    attr_accessor :hidden, :link, :name, :data_index, :date_format
+    attr_accessor :hidden, :link, :name, :data_index, :date_format, :sort
 
     def initialize args
       @args       = args
@@ -9,6 +9,7 @@ module UiBibz::Ui
       @name       = args[:name]
       @order      = args[:order]
       @data_index = args[:data_index]
+      @sort       = args[:sort]
       @hidden     = args[:hidden]
     end
 
