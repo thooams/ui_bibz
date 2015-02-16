@@ -11,6 +11,7 @@ module UiBibz::Ui
       @html_options = (html_options || {}).merge({ class: 'grid' })
       @columns      = Columns.new
       initialize_store
+      initialize_sortable
       initialize_pagination
       initialize_header
     end
@@ -20,7 +21,7 @@ module UiBibz::Ui
     end
 
     def pagination args
-      @pagination = will_paginate(@store.records, args) if @options[:pagination]
+      @pagination = will_paginate(@store.records, args) if paginable?
     end
 
     # Add :id in url to match with current record
@@ -42,13 +43,21 @@ module UiBibz::Ui
 
   private
 
+    def initialize_sortable
+      @sortable = Sortable.new @store, @options
+    end
+
     def sortable column, name = nil
       name ||= column.titleize
       title = name
-      title = title + content_tag(:span, '', class: 'caret') if column == sort_column
       css_class = sort_direction == 'asc' ? 'dropup' : nil
       direction = column == sort_column && sort_direction == "asc" ? "desc" : "asc"
-      link_to title.html_safe, { sort: column, controller: @store.controller, action: @store.action, search: @store.search, direction: direction }, {:class => css_class}
+      if sortable?
+        title = title + content_tag(:span, '', class: 'caret') if column == sort_column
+        link_to title.html_safe, { sort: column, controller: @store.controller, action: @store.action, search: @store.search, direction: direction }, {:class => css_class}
+      else
+        title
+      end
     end
 
     def sort_column_name column
@@ -69,7 +78,19 @@ module UiBibz::Ui
     end
 
     def actionable?
-      @options[:actionable]
+      @options[:actionable] || true
+    end
+
+    def searchable?
+      @options[:searchable] || true
+    end
+
+    def paginable?
+      @options[:pagination] || true
+    end
+
+    def sortable?
+      @options[:sortable] || true
     end
 
     def initialize_store
@@ -90,7 +111,7 @@ module UiBibz::Ui
 
     def initialize_pagination
       unless @store.nil?
-        if @options[:pagination]
+        if paginable?
           # Add controller to fix error: ArgumentError: arguments passed to url_for can't be handled.
           pagination_html = will_paginate(@store.records, params: { controller: @store.controller },  renderer: BootstrapPagination::Rails)
           @footer = Component.new do
@@ -153,7 +174,7 @@ module UiBibz::Ui
         columns = @columns.list.empty? ? @store.columns.list : @columns.list
 
         ths = columns.collect do |column|
-          content_tag(:th, sortable(sort_column_name(column), column.name)) unless column.hidden?
+          content_tag(:th, @sortable.header(column)) unless column.hidden?
         end
 
         ths << content_tag(:th, '', class: 'action') if actionable?
