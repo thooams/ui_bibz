@@ -22,7 +22,7 @@ module UiBibz::Concerns::Models::Searchable
 
         @searchable_attributes.each do |attribute|
           sql << "lower(#{ self.to_s.downcase.pluralize }.#{ attribute }) LIKE :#{ attribute }"
-          sql_attributes = sql_attributes.merge(Hash[attribute, "'%#{ query.downcase }%'"])
+          sql_attributes = sql_attributes.merge(Hash[attribute, "%#{ query.downcase }%"])
         end
 
         where(sql.join(' OR '), sql_attributes)
