@@ -6,9 +6,16 @@ class StoreTest < ActionView::TestCase
 
   setup do
     create_list(:user, 25)
-    users   = User.paginate(page: 1, per_page: 10)
-    @store  = UiBibz::Ui::Store.new users
-    #will_paginate users, params: { controller: 'users'}
+    params = {
+      controller: 'users',
+      action:     'index',
+      sort:       'users.name_fr',
+      direction:  'asc',
+      per_page:   10,
+      page:       1
+    }
+    users  = User.grid_search_pagination(params)
+    @store = UiBibz::Ui::Store.new users
   end
 
   test 'total pages' do
@@ -24,7 +31,7 @@ class StoreTest < ActionView::TestCase
   end
 
   test 'model' do
-    assert_equal @store.model, 'User'
+    assert_equal @store.model, User
   end
 
   test 'records' do

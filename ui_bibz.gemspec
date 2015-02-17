@@ -23,7 +23,6 @@ Gem::Specification.new do |s|
   s.add_dependency 'rails', '~> 4.2.0'
   s.add_dependency 'will_paginate', '~> 3.0.6'
   s.add_dependency 'will_paginate-bootstrap'
-  s.add_dependency 'ransack' #Search
   s.add_dependency 'haml'
   s.add_dependency 'haml-rails'
   s.add_dependency 'sass-rails', '~> 5.0.1'
