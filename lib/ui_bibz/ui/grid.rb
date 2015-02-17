@@ -1,8 +1,5 @@
-require 'will_paginate'
-require "will_paginate-bootstrap"
 module UiBibz::Ui
   class Grid < Panel
-    include WillPaginate::ActionView
 
     attr_accessor :columns
 
@@ -20,9 +17,9 @@ module UiBibz::Ui
       @columns.tap(&block)
     end
 
-    def pagination args
-      @pagination = will_paginate(@store.records, args) if paginable?
-    end
+    #def pagination args
+    #  @pagination = will_paginate(@store.records, args) if paginable?
+    #end
 
     # Add :id in url to match with current record
     def actions &block
@@ -47,50 +44,17 @@ module UiBibz::Ui
       @sortable = Sortable.new @store, @options
     end
 
-    def sortable column, name = nil
-      name ||= column.titleize
-      title = name
-      css_class = sort_direction == 'asc' ? 'dropup' : nil
-      direction = column == sort_column && sort_direction == "asc" ? "desc" : "asc"
-      if sortable?
-        title = title + content_tag(:span, '', class: 'caret') if column == sort_column
-        link_to title.html_safe, { sort: column, controller: @store.controller, action: @store.action, search: @store.search, direction: direction }, {:class => css_class}
-      else
-        title
-      end
-    end
-
-    def sort_column_name column
-      column.sort.nil? ? "#{ @store.model.to_s.downcase.pluralize }.#{ column.data_index}" : column.sort
-    end
-
-    def sort_column
-      @store.sort
-    end
-
-    def sort_direction
-      %w[asc desc].include?(@store.direction) ? @store.direction : "asc"
-    end
-
     # to fix form_for
     def protect_against_forgery?
       false
     end
 
     def actionable?
-      @options[:actionable] || true
+      @options[:actionable].nil? ? true : @options[:actionable]
     end
 
     def searchable?
-      @options[:searchable] || true
-    end
-
-    def paginable?
-      @options[:pagination] || true
-    end
-
-    def sortable?
-      @options[:sortable] || true
+      @options[:searchable].nil? ? true : @options[:searchable]
     end
 
     def initialize_store
@@ -111,13 +75,10 @@ module UiBibz::Ui
 
     def initialize_pagination
       unless @store.nil?
-        if paginable?
-          # Add controller to fix error: ArgumentError: arguments passed to url_for can't be handled.
-          pagination_html = will_paginate(@store.records, params: { controller: @store.controller },  renderer: BootstrapPagination::Rails)
+        pagination = Paginable.new @store, @options
+        if pagination.paginable?
           @footer = Component.new do
-            concat pagination_html
-            concat per_page_html
-            concat tag(:br, class: 'clear')
+            pagination.render
           end
         end
       end
@@ -128,13 +89,6 @@ module UiBibz::Ui
         concat content_tag(:span, Glyph.new(name: 'search', size: 1).render, class: 'input-group-addon')
         concat tag(:input, type: 'search', value: @store.search, name: 'search', class: 'form-control', placeholder: 'Search...')
         concat content_tag(:span, Glyph.new(name: 'times-circle', size: 1).render, class: 'clear-search-btn input-group-addon')
-      end
-    end
-
-    def per_page_html
-      content_tag :div, class: 'per-page' do
-        concat "Per page: "
-        concat select_tag('per_page', options_for_select([25, 50, 100], @store.per_page), class: 'form-control')
       end
     end
 
