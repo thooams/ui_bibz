@@ -10,6 +10,18 @@ module UiBibz
         ActionView::Base.send :include, UiBibz::Helpers::MetaHelper
       end
 
+
+      #initializer 'ui_bibz.include_concerns' do
+      #  #ActiveRecord::Base.send :include, UiBibz::Concerns::Models
+      #  ActionDispatch::Reloader.to_prepare do
+      #    ActionDispatch::Base.send :include, UiBibz::Concerns::Models
+      #    #ActionDispatch::Base.send :include, UiBibz::Concerns::Models
+      #  end
+      #end
+
+      # Autoload from lib directory
+      #config.autoload_paths << File.expand_path('../../', __FILE__)
+
       # # Maybe remove ?
       # initializer "ui_bibz.load_app_instance_data" do |app|
       #   UiBibz.setup do |config|

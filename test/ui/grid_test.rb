@@ -1,5 +1,4 @@
 require 'test_helper'
-include UiBibz::Helpers
 class GridTest < ActionView::TestCase
 
   setup do
@@ -9,6 +8,7 @@ class GridTest < ActionView::TestCase
       action:     'index',
       sort:       'users.name_fr',
       direction:  'asc',
+      search:     'Name fr',
       per_page:   2,
       page:       1
     }
@@ -27,7 +27,8 @@ class GridTest < ActionView::TestCase
   test 'sortable header' do
     options  = { sortable: true }
     actual   = UiBibz::Ui::Sortable.new(@store, options).header(@store.columns.list.first)
-    expected = "<a class=\"dropup\" href=\"/users?direction=asc&amp;sort=users.id\">Id</a>"
+    expected = "<a class=\"dropup\" href=\"/users?direction=asc&amp;search=Name+fr&amp;sort=users.id\">Id</a>"
+
 
     assert_equal expected, actual
 

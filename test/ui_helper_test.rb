@@ -40,7 +40,15 @@ class UiHelperTest < ActionView::TestCase
 
   test 'complex grid' do
     create_list(:user, 25)
-    users   = User.paginate(page: 1, per_page: 10)
+    params = {
+      controller: 'users',
+      action:     'index',
+      sort:       'users.name_fr',
+      direction:  'asc',
+      per_page:   2,
+      page:       1
+    }
+    users  = User.grid_search_pagination(params)
 
     grid store: users, pagination: true, cls: 'toto' do |pane|
       pane.header 'Test header'
@@ -52,7 +60,15 @@ class UiHelperTest < ActionView::TestCase
 
   test 'complex grid with custom actions' do
     create_list(:user, 25)
-    users   = User.paginate(page: 1, per_page: 10)
+    params = {
+      controller: 'users',
+      action:     'index',
+      sort:       'users.name_fr',
+      direction:  'asc',
+      per_page:   10,
+      page:       1
+    }
+    users  = User.grid_search_pagination(params)
 
     grid store: users, pagination: true, cls: 'toto' do |pane|
       pane.header 'Test header'
