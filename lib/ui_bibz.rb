@@ -37,9 +37,12 @@ module UiBibz
     autoload :MetaHelper, "ui_bibz/helpers/meta_helper"
   end
 
-  module Models
-    autoload :Searchable, "ui_bibz/models/concerns/searchable"
+  module Concerns
+    module Models
+      autoload :Searchable, "ui_bibz/concerns/models/searchable"
+    end
   end
+
 end
 
 
