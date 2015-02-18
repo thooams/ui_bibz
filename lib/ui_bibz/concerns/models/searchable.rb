@@ -31,12 +31,8 @@ module UiBibz::Concerns::Models::Searchable
       end
     end
 
-    def self.model
-      self.to_s.downcase.pluralize
-    end
-
     def self.order_sql(params)
-      params[:sort].nil? || params[:direction].nil? ? "#{ model }.id asc" : "#{ params[:sort]} #{ params[:direction] }"
+      params[:sort].nil? || params[:direction].nil? ? "#{ self.table_name }.id asc" : "#{ params[:sort]} #{ params[:direction] }"
     end
 
     def self.search_sort_paginate params
