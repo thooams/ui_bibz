@@ -50,7 +50,7 @@ class UiHelperTest < ActionView::TestCase
     }
     users  = User.grid_search_pagination(params)
 
-    grid store: users, pagination: true, cls: 'toto' do |pane|
+    grid store: users, cls: 'toto' do |pane|
       pane.header 'Test header'
       pane.body cls: 'ui' do
         'Test body'
@@ -70,7 +70,7 @@ class UiHelperTest < ActionView::TestCase
     }
     users  = User.grid_search_pagination(params)
 
-    grid store: users, pagination: true, cls: 'toto' do |pane|
+    grid store: users, cls: 'toto' do |pane|
       pane.header 'Test header'
       pane.body cls: 'ui' do
         'Test body'

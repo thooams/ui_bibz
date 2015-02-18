@@ -61,7 +61,7 @@ module UiBibz::Ui
       if @options[:store].nil?
         raise 'Store is nil!'
       else
-        @store = Store.new @options[:store]
+        @store = Store.new @options.delete :store
       end
     end
 
