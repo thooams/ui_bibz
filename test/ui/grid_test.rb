@@ -2,6 +2,7 @@ require 'test_helper'
 require "ui_bibz/ui/grid/paginable"
 require "ui_bibz/ui/grid/searchable"
 require "ui_bibz/ui/grid/sortable"
+require "ui_bibz/ui/grid/actionable"
 class GridTest < ActionView::TestCase
 
   setup do
@@ -67,6 +68,51 @@ class GridTest < ActionView::TestCase
     options  = { searchable: true }
     actual   = UiBibz::Ui::Searchable.new(@store, options).render
     expected = "<div><div class=\"title\">Users list</div><div class=\"input-group input-group-sm\"><span class=\"input-group-addon\"><i class=\"glyph fa fa-search fa-1x\"></i></span><input type=\"search\" value=\"Name fr\" name=\"search\" class=\"form-control\" placeholder=\"Search...\" /><span class=\"clear-search-btn input-group-addon\"><i class=\"glyph fa fa-times-circle fa-1x\"></i></span></div><br class=\"clear\" /></div>"
+
+    assert_equal expected, actual
+  end
+
+  test 'grid actionable header' do
+    options  = { actionable: true }
+    action   = UiBibz::Ui::Actionable.new(@store, options)
+    actual   = action.header []
+    expected = ["<th class=\"action\"></th>"]
+
+    assert_equal expected, actual
+  end
+
+  test 'grid actionable body' do
+    options  = { actionable: true }
+    action   = UiBibz::Ui::Actionable.new(@store, options)
+    actual   = action.body @store.records.first, []
+    expected = ["<td><div class=\"btn-group-xs dropdown\"><button class=\"btn btn-default dropdown-toggle\" type=\"button\" data-toggle=\"dropdown\" aria-expanded=\"false\"><i class=\"glyph fa fa-ellipsis-v fa-1x fa-fw\"></i>Action<span class=\"caret\"></span></button><ul class=\"dropdown-menu dropdown-menu-right\" role=\"menu\"><li role=\"presentation\"><a role=\"menuitem\" tabindex=\"-1\" href=\"/users/1\"><i class=\"glyph fa fa-eye fa-1x fa-fw\"></i> Show</a><a role=\"menuitem\" tabindex=\"-1\" href=\"/users/1/edit\"><i class=\"glyph fa fa-pencil fa-1x fa-fw\"></i> Edit</a><a data-confirm=\"Are you sure?\" role=\"menuitem\" tabindex=\"-1\" rel=\"nofollow\" data-method=\"delete\" href=\"/users?id=1\"><i class=\"glyph fa fa-trash fa-1x fa-fw\"></i> Delete</a></li></ul></div></td>"]
+
+    assert_equal expected, actual
+  end
+
+  test 'grid actionable inject_url' do
+    options  = { actionable: true }
+    action   = UiBibz::Ui::Actionable.new(@store, options)
+    actual   = action.inject_url 'http://localhost/users/id/test', @store.records.first
+    expected = "http://localhost/users/1/test"
+
+    assert_equal expected, actual
+  end
+
+  test 'grid non actionable header' do
+    options  = { actionable: false }
+    action   = UiBibz::Ui::Actionable.new(@store, options)
+    actual   = action.header []
+    expected = []
+
+    assert_equal expected, actual
+  end
+
+  test 'grid non actionable body' do
+    options  = { actionable: false }
+    action   = UiBibz::Ui::Actionable.new(@store, options)
+    actual   = action.body @store.records.first, []
+    expected = []
 
     assert_equal expected, actual
   end
