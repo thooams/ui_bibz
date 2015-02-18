@@ -1,3 +1,6 @@
+require "ui_bibz/ui/grid/paginable"
+require "ui_bibz/ui/grid/searchable"
+require "ui_bibz/ui/grid/sortable"
 module UiBibz::Ui
   class Grid < Panel
 
@@ -60,26 +63,25 @@ module UiBibz::Ui
     def initialize_store
       if @options[:store].nil?
         raise 'Store is nil!'
+      elsif @options[:store][:records].nil?
+        raise 'Store can be created only with "grid_search_pagination" method!'
       else
         @store = Store.new @options.delete :store
       end
     end
 
     def initialize_header
+      search  = Searchable.new @store, @options
       @header = Component.new do
-        concat content_tag(:div, "#{ @store.controller.humanize } list", class: 'title')
-        concat search_field_html
-        concat tag :br, class: 'clear'
+        search.render
       end
     end
 
     def initialize_pagination
-      unless @store.nil?
-        pagination = Paginable.new @store, @options
-        if pagination.paginable?
-          @footer = Component.new do
-            pagination.render
-          end
+      pagination = Paginable.new @store, @options
+      if pagination.paginable?
+        @footer = Component.new do
+          pagination.render
         end
       end
     end

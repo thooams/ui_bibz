@@ -29,8 +29,6 @@ module UiBibz
     autoload :LinkButton, "ui_bibz/ui/link_button"
     autoload :Glyph, "ui_bibz/ui/glyph"
     autoload :Breadcrumb, "ui_bibz/ui/breadcrumb"
-    autoload :Sortable, "ui_bibz/ui/grid/sortable"
-    autoload :Paginable, "ui_bibz/ui/grid/paginable"
   end
 
   module Helpers
