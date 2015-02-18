@@ -28,6 +28,5 @@ module UiBibz::Ui
       end
     end
 
-
   end
 end
