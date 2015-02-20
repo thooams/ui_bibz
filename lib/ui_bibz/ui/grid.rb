@@ -1,3 +1,7 @@
+require "ui_bibz/ui/grid/components/store"
+require "ui_bibz/ui/grid/components/columns"
+require "ui_bibz/ui/grid/components/column"
+require "ui_bibz/ui/grid/ux/paginable"
 require "ui_bibz/ui/grid/ux/paginable"
 require "ui_bibz/ui/grid/ux/searchable"
 require "ui_bibz/ui/grid/ux/sortable"

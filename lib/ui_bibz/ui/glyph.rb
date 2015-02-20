@@ -9,7 +9,7 @@ module UiBibz::Ui
     #
     #   Glyph.new(name)
     #
-    #   Glyph.new({name: 'add', size: 3})
+    #   Glyph.new({name: 'add', size: 3, type: 'fw'})
     #
     def initialize content
       if content.kind_of?(Hash)
