@@ -40,6 +40,10 @@ module UiBibz::Helpers::UiHelper
     UiBibz::Ui::LinkButton.new(content, options, html_options, &block).render
   end
 
+  def link_action content, options = nil, html_options = nil, &block
+    UiBibz::Ui::LinkAction.new(content, options, html_options, &block).render
+  end
+
   def glyph content
     UiBibz::Ui::Glyph.new(content).render
   end

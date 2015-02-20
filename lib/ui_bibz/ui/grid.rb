@@ -1,7 +1,7 @@
-require "ui_bibz/ui/grid/paginable"
-require "ui_bibz/ui/grid/searchable"
-require "ui_bibz/ui/grid/sortable"
-require "ui_bibz/ui/grid/actionable"
+require "ui_bibz/ui/grid/ux/paginable"
+require "ui_bibz/ui/grid/ux/searchable"
+require "ui_bibz/ui/grid/ux/sortable"
+require "ui_bibz/ui/grid/ux/actionable"
 module UiBibz::Ui
   class Grid < Panel
 
@@ -18,6 +18,15 @@ module UiBibz::Ui
     end
 
     # Add :id in url to match with current record
+    #
+    # ==== Signatures
+    #
+    #   grid.actions do
+    #     = link_action 'Show', users_path(:id), glyph: 'eye'
+    #     = "---" # for divider
+    #     = link_action 'delete', users_path(:id), method: :delete, glyph: 'trash'
+    #   end
+    #
     def actions &block
       context = eval("self", block.binding)
       @actions = context.capture(&block)
@@ -98,6 +107,7 @@ module UiBibz::Ui
       end
     end
 
+    # Maybe create a class for td_content
     def td_content record, col
       content = record.send(col.data_index)
       content = content.strftime(col.date_format)                    unless col.date_format.nil?

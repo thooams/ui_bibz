@@ -2,6 +2,8 @@ require 'haml'
 module UiBibz::Ui
   class Component < Ui
 
+    attr_accessor :content, :html_options
+
     # Creates a component of the given +name+ using options created by the set of +options+.
     #
     # ==== Signatures
@@ -27,10 +29,6 @@ module UiBibz::Ui
       [glyph, @content].compact.join.html_safe
     end
 
-    def html_options
-      @html_options
-    end
-
     def glyph
       glyph_info = options.delete(:glyph)      if options.kind_of?(Hash)
       glyph_info = html_options.delete(:glyph) if glyph_info.nil?
@@ -46,7 +44,12 @@ module UiBibz::Ui
     end
 
     def class_and_html_options classes
-      html_options[:class] = [html_options[:class], [*classes]].flatten.compact.join(' ')
+      html_options[:class] = [html_options[:class], [*classes]].flatten.compact.join(' ') unless classes.nil?
+      html_options
+    end
+
+    def options_in_html_options opts
+      html_options.merge!(opts) unless opts.nil?
       html_options
     end
 
