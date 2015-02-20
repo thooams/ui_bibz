@@ -24,6 +24,7 @@ module UiBibz
     autoload :Column, "ui_bibz/ui/column"
     autoload :Columns, "ui_bibz/ui/columns"
     autoload :Grid, "ui_bibz/ui/grid"
+    autoload :LinkAction, "ui_bibz/ui/grid/components/link_action"
     autoload :Dropdown, "ui_bibz/ui/dropdown"
     autoload :DropdownButton, "ui_bibz/ui/dropdown_button"
     autoload :LinkButton, "ui_bibz/ui/link_button"

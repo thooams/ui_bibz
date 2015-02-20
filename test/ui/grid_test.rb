@@ -1,8 +1,8 @@
 require 'test_helper'
-require "ui_bibz/ui/grid/paginable"
-require "ui_bibz/ui/grid/searchable"
-require "ui_bibz/ui/grid/sortable"
-require "ui_bibz/ui/grid/actionable"
+require "ui_bibz/ui/grid/ux/paginable"
+require "ui_bibz/ui/grid/ux/searchable"
+require "ui_bibz/ui/grid/ux/sortable"
+require "ui_bibz/ui/grid/ux/actionable"
 class GridTest < ActionView::TestCase
 
   setup do
@@ -85,7 +85,7 @@ class GridTest < ActionView::TestCase
     options  = { actionable: true }
     action   = UiBibz::Ui::Actionable.new(@store, options)
     actual   = action.body @store.records.first, []
-    expected = ["<td><div class=\"btn-group-xs dropdown\"><button class=\"btn btn-default dropdown-toggle\" type=\"button\" data-toggle=\"dropdown\" aria-expanded=\"false\"><i class=\"glyph fa fa-ellipsis-v fa-1x fa-fw\"></i>Action<span class=\"caret\"></span></button><ul class=\"dropdown-menu dropdown-menu-right\" role=\"menu\"><li role=\"presentation\"><a role=\"menuitem\" tabindex=\"-1\" href=\"/users/1\"><i class=\"glyph fa fa-eye fa-1x fa-fw\"></i> Show</a><a role=\"menuitem\" tabindex=\"-1\" href=\"/users/1/edit\"><i class=\"glyph fa fa-pencil fa-1x fa-fw\"></i> Edit</a><a data-confirm=\"Are you sure?\" role=\"menuitem\" tabindex=\"-1\" rel=\"nofollow\" data-method=\"delete\" href=\"/users?id=1\"><i class=\"glyph fa fa-trash fa-1x fa-fw\"></i> Delete</a></li></ul></div></td>"]
+    expected = ["<td><div class=\"btn-group-xs dropdown\"><button class=\"btn btn-default dropdown-toggle\" type=\"button\" data-toggle=\"dropdown\" aria-expanded=\"false\"><i class=\"glyph fa fa-ellipsis-v fa-1x fa-fw\"></i>Action<span class=\"caret\"></span></button><ul class=\"dropdown-menu dropdown-menu-right\" role=\"menu\"><li role=\"presentation\"><a data-confirm=\"Are you sure?\" role=\"menuitem\" tabindex=\"-1\" rel=\"nofollow\" data-method=\"delete\" href=\"/users?id=1\"><i class=\"glyph fa fa-trash fa-1x fa-fw\"></i> Delete</a></li></ul></div></td>"]
 
     assert_equal expected, actual
   end

@@ -88,7 +88,17 @@ class UiHelperTest < ActionView::TestCase
   end
 
   test 'link button' do
-    link_button 'Toto', users_path, type: 'danger', glyph: 'add'
+    actual   = link_button 'Toto', users_path, type: 'danger', glyph: 'add'
+    expected = "<a type=\"danger\" class=\"btn\" href=\"/users\"><i class=\"glyph fa fa-add fa-1x\"></i> Toto</a>"
+
+    assert_equal expected, actual
+  end
+
+  test 'link action' do
+    actual   = link_action 'Show', users_path, glyph: 'eye'
+    expected = "<li role=\"presentation\"><a role=\"menuitem\" tabindex=\"-1\" href=\"/users\"><i class=\"glyph fa fa-eye fa-1x fa-fw\"></i> Show</a></li>"
+
+    assert_equal expected, actual
   end
 
 end

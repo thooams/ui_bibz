@@ -30,7 +30,7 @@ module UiBibz::Ui
 
     def dropdown_action record
       Dropdown.new 'Action', { position: :right, glyph: { name: 'ellipsis-v', size: 1, type: 'fw' }}, class: 'btn-group-xs' do |d|
-        content_tag :li, actions_links(record), role: 'presentation'
+        actions_links(record)
       end.render
     end
 
@@ -40,15 +40,10 @@ module UiBibz::Ui
 
     def default_actions record
       capture do
-        concat link_to action_name('eye', 'Show'), { controller: @store.controller, action: 'show', id: record.id }, role: "menuitem",  tabindex: "-1"
-        concat link_to action_name('pencil', 'Edit'), { controller: @store.controller, action: 'edit', id: record.id }, role: "menuitem",  tabindex: "-1"
-        concat link_to action_name('trash', 'Delete'), { controller: @store.controller, id: record.id }, method: :delete, data: { confirm: 'Are you sure?' }, role: "menuitem",  tabindex: "-1"
+        LinkAction.new('Show',   { controller: @store.controller, action: 'show', id: record.id }, glyph: 'eye').render
+        LinkAction.new('Edit',   { controller: @store.controller, action: 'edit', id: record.id }, glyph: 'pencil').render
+        LinkAction.new('Delete', { controller: @store.controller, id: record.id }, method: :delete, glyph: 'trash', data: { confirm: 'Are you sure?' }).render
       end
-    end
-
-    def action_name glyph_name, name
-      glyph = Glyph.new(name: glyph_name, type: 'fw').render
-      "#{ glyph } #{ name }".html_safe
     end
 
     def custom_actions record
