@@ -71,7 +71,7 @@ module UiBibz::Ui
     def store
       @store ||= if @options[:store].nil?
         raise 'Store is nil!'
-      elsif @options[:store][:records].nil?
+      elsif @options[:store].try(:records).nil?
         raise 'Store can be created only with "grid_search_pagination" method!'
       else
         Store.new @options.delete :store
