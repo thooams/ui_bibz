@@ -4,13 +4,22 @@ include UiBibz::Helpers
 class UiHelperTest < ActionView::TestCase
 
   test 'complex panel' do
-    panel cls: 'toto' do |pane|
+    panel class: 'toto' do |pane|
       pane.header cls: 'header-class' do
         "Test header"
       end
       pane.body 'Test body', nil, cls: 'body-toto'
       pane.footer 'Test footer'
     end
+  end
+
+  test 'simple panel' do
+    actual = panel(class: 'tata') do |pane|
+      pane.body 'test'
+    end
+    expected = "<div class=\"tata panel panel-default\"><div class=\"panel-body\" role=\"tabpanel\">test</div></div>"
+
+    assert_equal actual, expected
   end
 
   test 'nav' do
