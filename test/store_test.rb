@@ -1,4 +1,5 @@
 require 'test_helper'
+require "ui_bibz/ui/grid/components/store"
 require 'will_paginate'
 
 class StoreTest < ActionView::TestCase

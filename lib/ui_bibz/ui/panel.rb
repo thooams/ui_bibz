@@ -21,7 +21,7 @@ module UiBibz::Ui
     end
 
     def render
-      content_tag(:div, { class: cls("panel panel-default") }) do
+      content_tag(:div, class: cls("panel panel-default")) do
         concat(header_html) unless @header.nil?
         concat(body_html)   unless @body.nil?
         concat(footer_html) unless @footer.nil?
@@ -31,7 +31,7 @@ module UiBibz::Ui
   protected
 
     def cls klass
-      [@html_options.delete(:class), klass].compact.join(' ')
+      [@html_options.delete(:class), @options.delete(:class), klass].compact.join(' ')
     end
 
   private
