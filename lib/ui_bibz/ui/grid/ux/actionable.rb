@@ -40,9 +40,9 @@ module UiBibz::Ui
 
     def default_actions record
       capture do
-        LinkAction.new('Show',   { controller: @store.controller, action: 'show', id: record.id }, glyph: 'eye').render
-        LinkAction.new('Edit',   { controller: @store.controller, action: 'edit', id: record.id }, glyph: 'pencil').render
-        LinkAction.new('Delete', { controller: @store.controller, id: record.id }, method: :delete, glyph: 'trash', data: { confirm: 'Are you sure?' }).render
+        concat LinkAction.new('Show',   { controller: @store.controller, action: 'show', id: record.id }, glyph: 'eye').render
+        concat LinkAction.new('Edit',   { controller: @store.controller, action: 'edit', id: record.id }, glyph: 'pencil').render
+        concat LinkAction.new('Delete', { controller: @store.controller, id: record.id }, method: :delete, glyph: 'trash', data: { confirm: 'Are you sure?' }).render
       end
     end
 
