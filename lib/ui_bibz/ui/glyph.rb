@@ -13,7 +13,7 @@ module UiBibz::Ui
     #
     def initialize content
       if content.kind_of?(Hash)
-        @name, @size, @type = content[:name], content[:size], content[:type]
+        @name, @size, @type, @class = content[:name], content[:size], content[:type], content[:class]
       else
         @name = content
       end
@@ -24,9 +24,9 @@ module UiBibz::Ui
     end
 
     def klass
-      cls = ["glyph", "fa", "fa-#{@name}", "fa-#{size}x"]
+      cls = [@class, "glyph", "fa", "fa-#{@name}", "fa-#{size}x"]
       cls << "fa-#{type}" unless type.nil?
-      cls.join(' ')
+      cls.compact.join(' ')
     end
 
     def size
