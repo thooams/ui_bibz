@@ -1,17 +1,18 @@
 module UiBibz::Ui
   class Column
 
-    attr_accessor :hidden, :link, :name, :data_index, :date_format, :sort, :format
+    attr_accessor :hidden, :link, :name, :data_index, :date_format, :sort, :format, :date_format
 
     def initialize args
-      @args       = args
-      @link       = args[:link] # show or edit
-      @name       = args[:name]
-      @order      = args[:order]
-      @data_index = args[:data_index]
-      @sort       = args[:sort]
-      @format     = args[:format]
-      @hidden     = args[:hidden]
+      @args        = args
+      @link        = args[:link] # show or edit
+      @name        = args[:name]
+      @order       = args[:order]
+      @data_index  = args[:data_index]
+      @date_format = args[:date_format]
+      @sort        = args[:sort]
+      @format      = args[:format]
+      @hidden      = args[:hidden]
     end
 
     def linkable?
