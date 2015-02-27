@@ -24,6 +24,10 @@ module UiBibz::Ui
       @store.direction
     end
 
+    def searchable_attributes
+      @store.searchable_attributes
+    end
+
     def current_page
       @records.current_page
     end

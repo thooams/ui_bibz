@@ -9,6 +9,7 @@ module UiBibz::Concerns::Models::Searchable
                      direction:  params[:direction],
                      search:     params[:search],
                      sort:       params[:sort],
+                     searchable_attributes: @searchable_attributes,
                      action:     params[:action])
     end
 
