@@ -64,10 +64,18 @@ class GridTest < ActionView::TestCase
     assert_equal expected, actual
   end
 
+  test 'grid non searchable with a title and glyph' do
+    options  = { searchable: false, glyph: 'toto', title: 'Title list' }
+    actual   = UiBibz::Ui::Searchable.new(@store, options).render
+    expected = "<div><div class=\"title\"><i class=\"glyph fa fa-toto fa-1x\"></i>Title list</div><br class=\"clear\" /></div>"
+
+    assert_equal expected, actual
+  end
+
   test 'grid searchable' do
     options  = { searchable: true }
     actual   = UiBibz::Ui::Searchable.new(@store, options).render
-    expected = "<div><div class=\"title\">Users list</div><div class=\"input-group input-group-sm\"><span class=\"input-group-addon\"><i class=\"glyph fa fa-search fa-1x\"></i></span><input type=\"search\" value=\"Name fr\" name=\"search\" class=\"form-control\" placeholder=\"Search...\" /><span class=\"clear-search-btn input-group-addon\"><i class=\"glyph fa fa-times-circle fa-1x\"></i></span></div><br class=\"clear\" /></div>"
+    expected = "<div><div class=\"title\">Users list</div><div class=\"input-group input-group-sm\"><span class=\"input-group-addon\"><i class=\"glyph fa fa-search fa-1x\"></i></span><input type=\"search\" value=\"Name fr\" name=\"search\" class=\"form-control\" placeholder=\"Search by Name fr, Name en...\" /><span class=\"clear-search-btn input-group-addon\"><i class=\"glyph fa fa-times-circle fa-1x\"></i></span></div><br class=\"clear\" /></div>"
 
     assert_equal expected, actual
   end
@@ -85,7 +93,7 @@ class GridTest < ActionView::TestCase
     options  = { actionable: true }
     action   = UiBibz::Ui::Actionable.new(@store, options)
     actual   = action.body @store.records.first, []
-    expected = ["<td><div class=\"btn-group-xs dropdown\"><button class=\"btn btn-default dropdown-toggle\" type=\"button\" data-toggle=\"dropdown\" aria-expanded=\"false\"><i class=\"glyph fa fa-ellipsis-v fa-1x fa-fw\"></i>Action<span class=\"caret\"></span></button><ul class=\"dropdown-menu dropdown-menu-right\" role=\"menu\"><li role=\"presentation\"><a data-confirm=\"Are you sure?\" role=\"menuitem\" tabindex=\"-1\" rel=\"nofollow\" data-method=\"delete\" href=\"/users?id=1\"><i class=\"glyph fa fa-trash fa-1x fa-fw\"></i> Delete</a></li></ul></div></td>"]
+    expected = ["<td><div class=\"btn-group-xs dropdown\"><button class=\"btn btn-default dropdown-toggle\" type=\"button\" data-toggle=\"dropdown\" aria-expanded=\"false\"><i class=\"glyph fa fa-ellipsis-v fa-1x fa-fw\"></i>Action<span class=\"caret\"></span></button><ul class=\"dropdown-menu dropdown-menu-right\" role=\"menu\"><li role=\"presentation\"><a role=\"menuitem\" tabindex=\"-1\" href=\"/users/1\"><i class=\"glyph fa fa-eye fa-1x fa-fw\"></i> Show</a></li><li role=\"presentation\"><a role=\"menuitem\" tabindex=\"-1\" href=\"/users/1/edit\"><i class=\"glyph fa fa-pencil fa-1x fa-fw\"></i> Edit</a></li><li role=\"presentation\"><a data-confirm=\"Are you sure?\" role=\"menuitem\" tabindex=\"-1\" rel=\"nofollow\" data-method=\"delete\" href=\"/users?id=1\"><i class=\"glyph fa fa-trash fa-1x fa-fw\"></i> Delete</a></li></ul></div></td>"]
 
     assert_equal expected, actual
   end
