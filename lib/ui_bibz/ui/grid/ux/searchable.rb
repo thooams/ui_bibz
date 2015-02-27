@@ -8,7 +8,7 @@ module UiBibz::Ui
 
     def render
       content_tag :div do
-        concat content_tag(:div, "#{ @store.controller.humanize } list", class: 'title')
+        concat content_tag(:div, grid_name, class: 'title')
         concat search_field_html if searchable?
         concat tag :br, class: 'clear'
       end
@@ -19,6 +19,18 @@ module UiBibz::Ui
     end
 
   private
+
+    def grid_title
+      @options[:title] || "#{ @store.controller.humanize } list"
+    end
+
+    def grid_name
+      "#{grid_glyph}#{grid_title}".html_safe
+    end
+
+    def grid_glyph
+      Glyph.new(@options[:glyph]).render unless @options[:glyph].nil?
+    end
 
     def search_field_html
       content_tag :div, class: 'input-group input-group-sm' do
