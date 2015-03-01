@@ -31,7 +31,15 @@ module UiBibz::Ui
     def grid_title
       if @options[:title] != false
         title = @options[:title] || "#{ @store.controller.humanize } list"
-        t("ui_bibz.grid.#{ @store.model.to_s.downcase }.title", default: [t("ui_bibz.grid.defaults.title"), title])
+        t("ui_bibz.grid.title.#{ @store.model.to_s.underscore }", default: [:defaults, title])
+      end
+    end
+
+    def translate_title_default title
+      if I18n.t('ui_bibz.grid.title').keys.include?(:defaults)
+        "ui_bibz.grid.title.defaults"
+      else
+        title
       end
     end
 
