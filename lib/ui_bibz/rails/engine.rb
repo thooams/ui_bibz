@@ -10,7 +10,6 @@ module UiBibz
         ActionView::Base.send :include, UiBibz::Helpers::MetaHelper
       end
 
-
       #initializer 'ui_bibz.include_concerns' do
       #  #ActiveRecord::Base.send :include, UiBibz::Concerns::Models
       #  ActionDispatch::Reloader.to_prepare do

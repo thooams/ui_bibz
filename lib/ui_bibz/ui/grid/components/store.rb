@@ -16,6 +16,10 @@ module UiBibz::Ui
       @records.per_page
     end
 
+    def total_entries
+      @records.total_entries
+    end
+
     def sort
       @store.sort
     end

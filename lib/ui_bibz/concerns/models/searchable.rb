@@ -3,8 +3,8 @@ module UiBibz::Concerns::Models::Searchable
 
   included do
 
-    def self.grid_search_pagination params
-      OpenStruct.new(records: search_sort_paginate(params),
+    def self.grid_search_pagination params, session
+      OpenStruct.new(records: search_sort_paginate(params, session),
                      controller: params[:controller],
                      direction:  params[:direction],
                      search:     params[:search],
@@ -36,8 +36,9 @@ module UiBibz::Concerns::Models::Searchable
       params[:sort].nil? || params[:direction].nil? ? "#{ self.table_name }.id asc" : "#{ params[:sort]} #{ params[:direction] }"
     end
 
-    def self.search_sort_paginate params
-      self.search(params[:search]).reorder(order_sql(params)).paginate(:page => params[:page], per_page: params[:per_page])
+    def self.search_sort_paginate params, session
+      session[:per_page] = params[:per_page] unless params[:per_page].nil?
+      self.search(params[:search]).reorder(order_sql(params)).paginate(:page => params[:page], per_page: session[:per_page])
     end
   end
 

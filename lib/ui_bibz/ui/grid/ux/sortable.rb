@@ -8,7 +8,8 @@ module UiBibz::Ui
 
     def header column, name = nil
       @column = column
-      @name   = name || @column.name.titleize
+      name    = name || @column.name.titleize
+      @name   = t("ui_bibz.grid.headers.#{ @store.model.to_s.downcase }.#{ @column.data_index }", default: [t("ui_bibz.grid.headers.defaults.#{ @column.data_index }"), name])
       sortable? ? sortable_link : title
     end
 

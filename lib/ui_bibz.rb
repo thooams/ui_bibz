@@ -1,6 +1,7 @@
 require 'action_view'
 #require 'haml/helpers'
 require 'will_paginate'
+require 'will-paginate-i18n'
 
 module UiBibz
 

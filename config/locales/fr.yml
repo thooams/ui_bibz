@@ -1,0 +1,14 @@
+fr:
+  ui_bibz:
+    grid:
+      pagination:
+        per_page: 'Par page : '
+      searchable:
+        field:
+          placeholder: 'Recherche par %{searchable_attributes}...'
+      actions:
+        defaults:
+          title: 'Actions'
+          show: 'Voir'
+          delete: 'Supprimer'
+          edit: 'Editer'

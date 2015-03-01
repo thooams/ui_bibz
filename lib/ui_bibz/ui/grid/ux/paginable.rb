@@ -29,9 +29,23 @@ module UiBibz::Ui
 
     def per_page_html
       content_tag :div, class: 'per-page' do
-        concat "Per page: "
+        concat results_count_html
+        concat t("ui_bibz.grid.pagination.per_page", default: "Per page: ")
         concat select_tag('per_page', options_for_select([25, 50, 100], @store.per_page), class: 'form-control')
       end
+    end
+
+    def results_count_html
+      #"Displaying #{ from_current_results } - #{  to_current_results } of #{ @store.total_entries } results | "
+      "#{ page_entries_info @store.records } | ".html_safe
+    end
+
+    def from_current_results
+      @store.limit_value * @store.current_page - @store.limit_value + 1
+    end
+
+    def to_current_results
+      @store.limit_value * @store.current_page
     end
 
   end
