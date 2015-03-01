@@ -9,14 +9,34 @@ module UiBibz::Ui
     def header column, name = nil
       @column = column
       name    = name || @column.name.titleize
-      @name   = t("ui_bibz.grid.headers.#{ @store.model.to_s.downcase }.#{ @column.data_index }", default: [t("ui_bibz.grid.headers.defaults.#{ @column.data_index }"), name])
+      @name   = t(translate_headers_by_model, default: [t(translate_default), name])
       sortable? ? sortable_link : title
     end
 
   private
 
+    def translate_default
+      if I18n.t('ui_bibz.grid.headers.defaults').keys.include?(@column.data_index.to_sym)
+        translate_headers_by_defaults
+      else
+        translate_headers_by_active_record
+      end
+    end
+
     def sortable_link
       link_to title.html_safe, url_options, { class: cls }
+    end
+
+    def translate_headers_by_model
+      "ui_bibz.grid.headers.#{ @store.model.to_s.underscore }.#{ @column.data_index }"
+    end
+
+    def translate_headers_by_defaults
+      "ui_bibz.grid.headers.defaults.#{ @column.data_index }"
+    end
+
+    def translate_headers_by_active_record
+      "activerecord.attributes.#{ @store.model.to_s.underscore }.#{ @column.data_index }"
     end
 
     def url_options

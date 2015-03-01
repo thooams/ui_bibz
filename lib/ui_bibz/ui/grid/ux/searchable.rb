@@ -20,6 +20,14 @@ module UiBibz::Ui
 
   private
 
+    def translate_searchable_attributes_by_model attr
+      "ui_bibz.grid.searchable.field.searchable_attributes.#{ @store.model.to_s.downcase }.#{ attr }"
+    end
+
+    def translate_searchable_attributes_by_active_record attr
+      "activerecord.attributes.#{ @store.model.to_s.underscore }.#{ attr }"
+    end
+
     def grid_title
       if @options[:title] != false
         title = @options[:title] || "#{ @store.controller.humanize } list"
@@ -41,7 +49,7 @@ module UiBibz::Ui
 
     def searchable_attributes_sentence
       @store.searchable_attributes.map do |i|
-        I18n.t("ui_bibz.grid.searchable.field.searchable_attributes.#{ @store.model.to_s.downcase }.#{ i }", default: [t("ui_bibz.searchable.field.searchable_attributes.defaults.#{ i }"), i.to_s])
+        I18n.t("ui_bibz.grid.searchable.field.searchable_attributes.#{ @store.model.to_s.downcase }.#{ i }", default: [t(translate_searchable_attributes_by_active_record(i)), i.to_s])
       end.to_sentence(locale: I18n.locale)
     end
 
