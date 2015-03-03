@@ -8,7 +8,7 @@ fr:
           placeholder: 'Recherche par %{searchable_attributes}...'
       actions:
         defaults:
-          title: 'Actions'
-          show: 'Voir'
+          title:  'Actions'
+          show:   'Voir'
           delete: 'Supprimer'
-          edit: 'Editer'
+          edit:   'Editer'

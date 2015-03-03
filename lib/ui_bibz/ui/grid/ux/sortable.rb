@@ -19,6 +19,8 @@ module UiBibz::Ui
     def translate_default
       if i18n_set? translate_headers_by_defaults
         t(translate_headers_by_defaults)
+      elsif i18n_set? translate_headers_by_defaults_active_record
+        t(translate_headers_by_defaults_active_record)
       else
         translate_headers_by_active_record
       end
@@ -34,6 +36,10 @@ module UiBibz::Ui
 
     def translate_headers_by_defaults
       "ui_bibz.grid.headers.defaults.#{ @column.data_index }"
+    end
+
+    def translate_headers_by_defaults_active_record
+      "activerecord.models.attributes.defaults.#{ @column.data_index }"
     end
 
     def translate_headers_by_active_record
