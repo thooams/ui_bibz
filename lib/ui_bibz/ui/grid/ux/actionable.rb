@@ -42,11 +42,15 @@ module UiBibz::Ui
       custom_actions(record) || default_actions(record)
     end
 
+    def defaults_actions_translate name
+      t(name) if i18n_set? name
+    end
+
     def default_actions record
       capture do
-        concat LinkAction.new(t("ui_bibz.grid.actions.#{ @store.model.to_s.downcase }.show", defaut: [t('ui_bibz.grid.actions.defaults.show'), 'Show']),   { controller: @store.controller, action: 'show', id: record.id }, glyph: 'eye').render
-        concat LinkAction.new(t("ui_bibz.grid.actions.#{ @store.model.to_s.downcase }.edit", default: [t('ui_bibz.grid.actions.defaults.edit'), 'Edit']),   { controller: @store.controller, action: 'edit', id: record.id }, glyph: 'pencil').render
-        concat LinkAction.new(t("ui_bibz.grid.actions.#{ @store.model.to_s.downcase }.delete", default: [t('ui_bibz.grid.actions.defaults.delete'), 'Delete']), { controller: @store.controller, id: record.id }, method: :delete, glyph: 'trash', data: { confirm: 'Are you sure?' }).render
+        concat LinkAction.new(t("ui_bibz.grid.actions.#{ @store.model.to_s.downcase }.show", defaut: [defaults_actions_translate('ui_bibz.grid.actions.defaults.show'), 'Show']),   { controller: @store.controller, action: 'show', id: record.id }, glyph: 'eye').render
+        concat LinkAction.new(t("ui_bibz.grid.actions.#{ @store.model.to_s.downcase }.edit", default: [defaults_actions_translate('ui_bibz.grid.actions.defaults.edit'), 'Edit']),   { controller: @store.controller, action: 'edit', id: record.id }, glyph: 'pencil').render
+        concat LinkAction.new(t("ui_bibz.grid.actions.#{ @store.model.to_s.downcase }.delete", default: [defaults_actions_translate('ui_bibz.grid.actions.defaults.delete'), 'Delete']), { controller: @store.controller, id: record.id }, method: :delete, glyph: 'trash', data: { confirm: 'Are you sure?' }).render
       end
     end
 

@@ -9,15 +9,16 @@ module UiBibz::Ui
     def header column, name = nil
       @column = column
       name    = name || @column.name.titleize
-      @name   = t(translate_headers_by_model, default: [t(translate_default), name])
+      @name   = t(translate_headers_by_model, default: [translate_default, name])
       sortable? ? sortable_link : title
     end
 
   private
 
+
     def translate_default
-      if I18n.t('ui_bibz.grid.headers.defaults').keys.include?(@column.data_index.to_sym)
-        translate_headers_by_defaults
+      if i18n_set? translate_headers_by_defaults
+        t(translate_headers_by_defaults)
       else
         translate_headers_by_active_record
       end
@@ -36,7 +37,7 @@ module UiBibz::Ui
     end
 
     def translate_headers_by_active_record
-      "activerecord.attributes.#{ @store.model.to_s.underscore }.#{ @column.data_index }"
+      @store.model.human_attribute_name(@column.data_index)
     end
 
     def url_options
