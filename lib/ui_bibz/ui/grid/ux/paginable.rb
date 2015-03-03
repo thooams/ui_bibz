@@ -36,7 +36,6 @@ module UiBibz::Ui
     end
 
     def results_count_html
-      #"Displaying #{ from_current_results } - #{  to_current_results } of #{ @store.total_entries } results | "
       "#{ page_entries_info @store.records } | ".html_safe
     end
 
