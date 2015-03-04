@@ -39,7 +39,8 @@ module UiBibz::Ui
     end
 
     def dropdown_action_title
-      t("ui_bibz.grid.actions.#{ @store.model.to_s.underscore }.title", default: [defaults_actions_translate("ui_bibz.grid.actions.defaults.title"), 'Actions'])
+      #t("ui_bibz.grid.actions.#{ @store.model.to_s.underscore }.title", default: [defaults_actions_translate("ui_bibz.grid.actions.defaults.title"), 'Actions'])
+      translatize("ui_bibz.grid.actions.#{ @store.model.to_s.underscore }.title", default: ["ui_bibz.grid.actions.defaults.title", 'Actions'])
     end
 
     def actions_links record

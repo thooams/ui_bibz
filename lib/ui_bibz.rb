@@ -30,6 +30,10 @@ module UiBibz
     autoload :Breadcrumb, "ui_bibz/ui/breadcrumb"
   end
 
+  module Utils
+    autoload :Utils, "ui_bibz/utils/utils"
+  end
+
   module Helpers
     autoload :UiHelper,   "ui_bibz/helpers/ui_helper"
     autoload :MetaHelper, "ui_bibz/helpers/meta_helper"
