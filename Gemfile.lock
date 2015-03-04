@@ -6,6 +6,7 @@ PATH
       haml-rails
       rails (~> 4.2.0)
       sass-rails (~> 5.0.1)
+      will-paginate-i18n
       will_paginate (~> 3.0.6)
       will_paginate-bootstrap
 
@@ -152,6 +153,7 @@ GEM
     tilt (1.4.1)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
+    will-paginate-i18n (0.1.15)
     will_paginate (3.0.7)
     will_paginate-bootstrap (1.0.1)
       will_paginate (>= 3.0.3)

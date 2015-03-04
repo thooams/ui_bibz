@@ -2,6 +2,7 @@ module UiBibz::Ui
   class Ui
     include ActionView::Helpers
     include Rails.application.routes.url_helpers
+    include UiBibz::Utils
 
     attr_accessor :output_buffer
 
