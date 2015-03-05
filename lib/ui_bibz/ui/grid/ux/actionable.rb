@@ -29,7 +29,7 @@ module UiBibz::Ui
   private
 
     def dropdown_action record
-      Dropdown.new dropdown_action_title, { position: :right, glyph: actions_glyph }, class: 'btn-group-xs' do |d|
+      Dropdown.new dropdown_action_name, { position: :right, glyph: actions_glyph }, class: 'btn-group-xs' do |d|
         actions_links(record)
       end.render
     end
@@ -38,24 +38,35 @@ module UiBibz::Ui
       { name: 'ellipsis-v', size: 1, type: 'fw' }
     end
 
-    def dropdown_action_title
-      #t("ui_bibz.grid.actions.#{ @store.model.to_s.underscore }.title", default: [defaults_actions_translate("ui_bibz.grid.actions.defaults.title"), 'Actions'])
-      translatize("ui_bibz.grid.actions.#{ @store.model.to_s.underscore }.title", default: ["ui_bibz.grid.actions.defaults.title", 'Actions'])
+    def dropdown_action_name
+      defaults = ["ui_bibz.grid.actions.defaults.title", 'Actions']
+      UiBibz::Utils::Internationalization.new("ui_bibz.grid.actions.#{ @store.model.to_s.underscore }.title", default: defaults).translate
     end
 
     def actions_links record
       custom_actions(record) || default_actions(record)
     end
 
-    def defaults_actions_translate name
-      t(name) if i18n_set? name
+    def dropdown_show_name
+      defaults = ['ui_bibz.grid.actions.defaults.show', 'Show']
+      UiBibz::Utils::Internationalization.new("ui_bibz.grid.actions.#{ @store.model.to_s.underscore }.show", default: defaults).translate
+    end
+
+    def dropdown_edit_name
+      defaults = ['ui_bibz.grid.actions.defaults.edit', 'Edit']
+      UiBibz::Utils::Internationalization.new("ui_bibz.grid.actions.#{ @store.model.to_s.underscore }.edit", default: defaults).translate
+    end
+
+    def dropdown_delete_name
+      defaults = ['ui_bibz.grid.actions.defaults.delete', 'Delete']
+      UiBibz::Utils::Internationalization.new("ui_bibz.grid.actions.#{ @store.model.to_s.underscore }.delete", default: defaults).translate
     end
 
     def default_actions record
       capture do
-        concat LinkAction.new(t("ui_bibz.grid.actions.#{ @store.model.to_s.underscore }.show",   default: [defaults_actions_translate('ui_bibz.grid.actions.defaults.show'), 'Show']),   { controller: @store.controller, action: 'show', id: record.id }, glyph: 'eye').render
-        concat LinkAction.new(t("ui_bibz.grid.actions.#{ @store.model.to_s.underscore }.edit",   default: [defaults_actions_translate('ui_bibz.grid.actions.defaults.edit'), 'Edit']),   { controller: @store.controller, action: 'edit', id: record.id }, glyph: 'pencil').render
-        concat LinkAction.new(t("ui_bibz.grid.actions.#{ @store.model.to_s.underscore }.delete", default: [defaults_actions_translate('ui_bibz.grid.actions.defaults.delete'), 'Delete']), { controller: @store.controller, id: record.id }, method: :delete, glyph: 'trash', data: { confirm: 'Are you sure?' }).render
+        concat LinkAction.new(dropdown_show_name, { controller: @store.controller, action: 'show', id: record.id }, glyph: 'eye').render
+        concat LinkAction.new(dropdown_edit_name, { controller: @store.controller, action: 'edit', id: record.id }, glyph: 'pencil').render
+        concat LinkAction.new(dropdown_delete_name, { controller: @store.controller, id: record.id }, method: :delete, glyph: 'trash', data: { confirm: 'Are you sure?' }).render
       end
     end
 

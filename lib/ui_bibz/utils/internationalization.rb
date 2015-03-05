@@ -1,17 +1,21 @@
 module UiBibz::Utils
   class Internationalization
 
-    def initialize translation, scope: nil, default: []
+    def initialize translation, options = {}
       @translation = translation
-      @scope       = scope
-      @default     = default
+      @options     = options
     end
 
     def translate
-      t(@translation, scope: scope, default: translate_default)
+      I18n.t(@translation, options_with_default)
     end
 
   private
+
+    def options_with_default
+      @options[:default] = translate_default unless @options[:default].nil?
+      @options
+    end
 
     # To know if translation missing
     def i18n_set? key
@@ -19,18 +23,8 @@ module UiBibz::Utils
     end
 
     def translate_default
-      @default.each do |translation|
-        if i18n_set? translation
-          return t(translation)
-          break
-        end
-      end
+      I18n.t([*@options[:default]].select{ |translation| i18n_set? translation }.first, default: [*@options[:default]].last)
     end
 
-  end
-
-  def translate translation, scope: nil, default: []
-    internationalization = Internationalization.new translation, scope: scope, default: default
-    internationalization.translate
   end
 end

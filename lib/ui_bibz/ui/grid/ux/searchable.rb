@@ -27,7 +27,7 @@ module UiBibz::Ui
     def grid_title
       if @options[:title] != false
         title = @options[:title] || "#{ @store.controller.humanize } list"
-        t(model_name, scope: [:ui_bibz, :grid, :title], default: [:defaults, title])
+        UiBibz::Utils::Internationalization.new("ui_bibz.grid.title.#{ model_name }", default: ["ui_bibz.grid.title.defaults", title]).translate
       end
     end
 
@@ -44,12 +44,12 @@ module UiBibz::Ui
     end
 
     def search_placeholder_field
-      t('ui_bibz.grid.searchable.field.placeholder', searchable_attributes: searchable_attributes_sentence)
+      UiBibz::Utils::Internationalization.new('ui_bibz.grid.searchable.field.placeholder', searchable_attributes: searchable_attributes_sentence).translate
     end
 
     def searchable_attributes_sentence
       @store.searchable_attributes.map do |i|
-        I18n.t(i, scope: [:ui_bibz, :grid, :searchable, :field, :searchable_attributes, model_name.to_sym] , default: [translate_searchable_attributes_by_active_record(i), i.to_s])
+        UiBibz::Utils::Internationalization.new("ui_bibz.grid.searchable.field.searchable_attributes.#{ model_name }.#{ i }", default: [translate_searchable_attributes_by_active_record(i), i.to_s]).translate
       end.to_sentence(locale: I18n.locale)
     end
 

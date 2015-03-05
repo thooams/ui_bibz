@@ -7,24 +7,14 @@ module UiBibz::Ui
     end
 
     def header column, name = nil
-      @column = column
-      name    = name || @column.name.titleize
-      @name   = t(translate_headers_by_model, default: [translate_default, name])
+      @column  = column
+      name     = name || @column.name.titleize
+      defaults = [translate_headers_by_defaults, translate_headers_by_defaults_active_record, translate_headers_by_active_record, name]
+      @name    = UiBibz::Utils::Internationalization.new(translate_headers_by_model, default: defaults).translate
       sortable? ? sortable_link : title
     end
 
   private
-
-
-    def translate_default
-      if i18n_set? translate_headers_by_defaults
-        t(translate_headers_by_defaults)
-      elsif i18n_set? translate_headers_by_defaults_active_record
-        t(translate_headers_by_defaults_active_record)
-      else
-        translate_headers_by_active_record
-      end
-    end
 
     def sortable_link
       link_to title.html_safe, url_options, { class: cls }
@@ -39,11 +29,11 @@ module UiBibz::Ui
     end
 
     def translate_headers_by_defaults_active_record
-      "activerecord.models.attributes.defaults.#{ @column.data_index }"
+      "activerecord.attributes.defaults.#{ @column.data_index }"
     end
 
     def translate_headers_by_active_record
-      @store.model.human_attribute_name(@column.data_index)
+      "activerecord.attributes.#{ @store.model.to_s.underscore }.#{ @column.data_index }"
     end
 
     def url_options
