@@ -1,21 +1,21 @@
 module UiBibz::Ui
-  class LinkButton < Ui
+  class Button < Ui
 
     def initialize content = nil, options = nil, html_options = nil, &block
-      @link_button = Component.new content, options, html_options, &block
+      @group_button = Component.new content, options, html_options, &block
     end
 
     def render
-      link_to @link_button.render, @link_button.options, class_and_html_options
+      content_tag :button, @group_button.render, @group_button.options.merge({ type: 'button' }), class_and_html_options
     end
 
     def type
-      custom = @link_button.html_options[:type] || @link_button.options[:type]
+      custom = @group_button.html_options[:type] || @group_button.options[:type]
       custom.nil? ? states[:default] : states[custom]
     end
 
     def class_and_html_options
-      @link_button.class_and_html_options(["btn", type])
+      @group_button.class_and_html_options(["btn", type])
     end
 
     def states

@@ -7,6 +7,7 @@ module UiBibz
 
       initializer "ui_bibz.helpers" do
         ActionView::Base.send :include, UiBibz::Helpers::UiHelper
+        ActionView::Base.send :include, UiBibz::Helpers::UtilsHelper
         ActionView::Base.send :include, UiBibz::Helpers::MetaHelper
       end
 
