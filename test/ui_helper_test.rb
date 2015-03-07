@@ -23,8 +23,14 @@ class UiHelperTest < ActionView::TestCase
   end
 
   test 'nav' do
-    nav({cls: 'nav-momo'}) do
+    nav do
       tab "<a href='#'>toto</a>"
+    end
+  end
+
+  test 'button group' do
+    button_group do
+      button 'toto'
     end
   end
 
@@ -57,7 +63,7 @@ class UiHelperTest < ActionView::TestCase
       per_page:   2,
       page:       1
     }
-    users  = User.grid_search_pagination(params)
+    users  = User.grid_search_pagination(params, session)
 
     grid store: users, cls: 'toto' do |pane|
       pane.header 'Test header'
@@ -77,7 +83,7 @@ class UiHelperTest < ActionView::TestCase
       per_page:   10,
       page:       1
     }
-    users  = User.grid_search_pagination(params)
+    users  = User.grid_search_pagination(params, session)
 
     grid store: users, cls: 'toto' do |pane|
       pane.header 'Test header'
@@ -98,7 +104,7 @@ class UiHelperTest < ActionView::TestCase
   end
 
   test 'link button' do
-    actual   = link_button 'Toto', users_path, type: 'danger', glyph: 'add'
+    actual   = button_link 'Toto', users_path, type: 'danger', glyph: 'add'
     expected = "<a type=\"danger\" class=\"btn\" href=\"/users\"><i class=\"glyph fa fa-add fa-1x\"></i> Toto</a>"
 
     assert_equal expected, actual

@@ -1,3 +1,5 @@
+require 'ui_bibz/ui/grid/components/columns'
+require 'ui_bibz/ui/grid/components/column'
 module UiBibz::Ui
   class Store
 

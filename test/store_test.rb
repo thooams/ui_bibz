@@ -15,7 +15,7 @@ class StoreTest < ActionView::TestCase
       per_page:   10,
       page:       1
     }
-    users  = User.grid_search_pagination(params)
+    users  = User.grid_search_pagination(params, session)
     @store = UiBibz::Ui::Store.new users
   end
 

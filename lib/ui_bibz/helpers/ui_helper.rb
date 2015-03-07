@@ -36,8 +36,16 @@ module UiBibz::Helpers::UiHelper
     UiBibz::Ui::DropdownButton.new(name, options, html_options).tab(&block).render
   end
 
-  def link_button content, options = nil, html_options = nil, &block
-    UiBibz::Ui::LinkButton.new(content, options, html_options, &block).render
+  def button_link content, options = nil, html_options = nil, &block
+    UiBibz::Ui::ButtonLink.new(content, options, html_options, &block).render
+  end
+
+  def button_group content = nil, options = nil, html_options = nil, &block
+    UiBibz::Ui::ButtonGroup.new(content, options, html_options, &block).render
+  end
+
+  def button content, options = nil, html_options = nil, &block
+    UiBibz::Ui::Button.new(content, options, html_options, &block).render
   end
 
   def link_action content, options = nil, html_options = nil, &block
