@@ -29,9 +29,12 @@ class UiHelperTest < ActionView::TestCase
   end
 
   test 'button group' do
-    button_group do
+    actual = button_group do
       button 'toto'
     end
+    expected = "<div class=\"btn-group\"><button class=\"btn btn-default\">toto</button></div>"
+
+    assert_equal actual, expected
   end
 
   test 'breadcrumb' do

@@ -2,20 +2,22 @@ module UiBibz::Ui
   class Button < Ui
 
     def initialize content = nil, options = nil, html_options = nil, &block
-      @group_button = Component.new content, options, html_options, &block
+      @button = Component.new content, options, html_options, &block
     end
 
     def render
-      content_tag :button, @group_button.render, @group_button.options.merge({ type: 'button' }), class_and_html_options
+      content_tag :button, @button.render, class_and_html_options
     end
 
+  private
+
     def type
-      custom = @group_button.html_options[:type] || @group_button.options[:type]
+      custom = @button.html_options[:type] || @button.options[:type]
       custom.nil? ? states[:default] : states[custom]
     end
 
     def class_and_html_options
-      @group_button.class_and_html_options(["btn", type])
+      @button.class_and_html_options(["btn", type])
     end
 
     def states
