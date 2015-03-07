@@ -9,6 +9,8 @@ module UiBibz::Ui
       link_to @button_link.render, @button_link.options, class_and_html_options
     end
 
+  private
+
     def type
       custom = @button_link.html_options[:type] || @button_link.options[:type]
       custom.nil? ? states[:default] : states[custom]

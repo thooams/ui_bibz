@@ -44,7 +44,7 @@ module UiBibz::Helpers::UiHelper
     UiBibz::Ui::ButtonGroup.new(content, options, html_options, &block).render
   end
 
-  def button content, options = nil, html_options = nil, &block
+  def button content = nil, options = nil, html_options = nil, &block
     UiBibz::Ui::Button.new(content, options, html_options, &block).render
   end
 
