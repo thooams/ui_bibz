@@ -40,11 +40,16 @@ module UiBibz::Ui
     end
 
     def cls klass
-      [html_options.delete(:class), klass].compact.join(' ')
+      [html_options.delete(:class), options.delete(:class), klass].compact.join(' ')
     end
 
     def class_and_html_options classes
-      html_options[:class] = [html_options[:class], [*classes]].flatten.compact.join(' ') unless classes.nil?
+      options_class = options[:class] if options.kind_of?(Hash)
+      html_options[:class] = [
+        html_options[:class],
+        options_class,
+        [*classes]
+      ].flatten.compact.join(' ') unless classes.nil?
       html_options
     end
 

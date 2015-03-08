@@ -107,8 +107,8 @@ class UiHelperTest < ActionView::TestCase
   end
 
   test 'link button' do
-    actual   = button_link 'Toto', users_path, type: 'danger', glyph: 'add'
-    expected = "<a type=\"danger\" class=\"btn\" href=\"/users\"><i class=\"glyph fa fa-add fa-1x\"></i> Toto</a>"
+    actual   = button_link 'Toto', users_path, { type: :danger, glyph: 'add'}
+    expected = "<a class=\"btn btn-danger\" href=\"/users\"><i class=\"glyph fa fa-add fa-1x\"></i> Toto</a>"
 
     assert_equal expected, actual
   end
