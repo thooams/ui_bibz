@@ -12,8 +12,8 @@ module UiBibz::Ui
   private
 
     def type
-      custom = @button_link.html_options[:type] || @button_link.options[:type]
-      custom.nil? ? states[:default] : states[custom]
+      custom = @button_link.html_options.delete(:type) || (@button_link.options.delete(:type) if @button_link.options.kind_of?(Hash))
+      custom.nil? ? states[:default] : states[custom.to_sym]
     end
 
     def class_and_html_options
