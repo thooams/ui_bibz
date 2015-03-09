@@ -21,7 +21,7 @@ module UiBibz::Ui
     end
 
     def render
-      content_tag(:div, class: cls("panel panel-default")) do
+      content_tag(:div, class: cls("panel #{ type }")) do
         concat(header_html) unless @header.nil?
         concat(body_html)   unless @body.nil?
         concat(footer_html) unless @footer.nil?
@@ -34,7 +34,24 @@ module UiBibz::Ui
       [@html_options.delete(:class), @options.delete(:class), klass].compact.join(' ')
     end
 
+
   private
+
+    def states
+      if @states.nil?
+        states = {}
+        %w(default success primary info waring danger).each do |state|
+          states = states.merge(Hash[state.to_sym, "panel-#{ state }"])
+        end
+        @states = states
+      end
+      @states
+    end
+
+    def type
+      custom = @html_options.delete(:type) || (@options.delete(:type) if @options.kind_of?(Hash))
+      custom.nil? ? states[:default] : states[custom.to_sym]
+    end
 
     def header_html
       content_tag(:div, @header.render, { class: @header.cls("panel-heading") }.merge(@header.html_options)) unless @header.nil?
