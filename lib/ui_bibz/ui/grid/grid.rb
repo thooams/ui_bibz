@@ -113,7 +113,7 @@ module UiBibz::Ui
 
     # Maybe create a class for td_content
     def td_content record, col
-      content = record.send(col.data_index)
+      content = col.count ? record.send(col.data_index).count : record.send(col.data_index)
       unless content.nil?
         content = content.strftime(col.date_format)                    unless col.date_format.nil?
         content = link_to content, action.inject_url(col.link, record) unless col.link.nil?
