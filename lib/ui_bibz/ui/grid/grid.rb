@@ -39,18 +39,22 @@ module UiBibz::Ui
     def render
       initialize_header
       initialize_footer
+      initialize_body
 
       content_tag(:div, { class: cls("panel panel-default") }) do |f|
         form_tag(url_for(controller: store.controller, action: store.action), method: :get) do
           concat(header_html) unless @header.nil?
-          concat(body_html)   unless @body.nil?
-          concat(table_html)  unless store.nil?
+          concat(body_html)  unless store.nil?
           concat(footer_html) unless @footer.nil?
         end
       end
     end
 
   private
+
+    def body_html
+      content_tag :div, @body.render, { class: @body.cls("panel-body"), role: 'tabpanel' }.merge(@body.html_options)
+    end
 
     def sort
       @sort ||= Sortable.new store, @options
@@ -84,6 +88,10 @@ module UiBibz::Ui
 
     def initialize_footer
       @footer = Component.new(pagination.render) if pagination.paginable?
+    end
+
+    def initialize_body
+      @body = Component.new table_html
     end
 
     def cols
