@@ -17,16 +17,20 @@ module UiBibz::Concerns::Models::Searchable
   private
 
     def self.search query
+      sq =  'documents.*, count(*)'
       unless query.blank?
         sql            = []
         sql_attributes = {}
+
 
         @searchable_attributes.each do |attribute|
           sql << "lower(#{ self.to_s.downcase.pluralize }.#{ attribute }) LIKE :#{ attribute }"
           sql_attributes = sql_attributes.merge(Hash[attribute, "%#{ query.downcase }%"])
         end
 
-        where(sql.join(' OR '), sql_attributes)
+        first_sql =  "SELECT #{ sq } FROM #{ table_name } WHERE #{ sql.join(' OR ') } GROUP BY #{table_name}.id"
+
+        sanitize_sql_array ["SELECT * FROM (#{ first_sql }) countable ORDER BY countable.count", sql_attributes]
       else
         all
       end
@@ -39,7 +43,7 @@ module UiBibz::Concerns::Models::Searchable
     def self.search_sort_paginate params, session
       session[:per_page] = params[:per_page] unless params[:per_page].nil?
       #self.search(params[:search]).reorder(order_sql(params)).paginate(:page => params[:page], per_page: session[:per_page])
-      select(" * FROM (#{ table_name }, count(*) FROM #{table_name} WHERE #{ self.search(params[:search]).to_sql } GROUP BY #{table_name}.id AS countable)").order("countable.count").paginate(:page => params[:page], per_page: session[:per_page])
+      self.paginate_by_sql(self.search(params[:search]), :page => params[:page], per_page: session[:per_page])
       #SELECT * FROM (
       #  SELECT documents.*, count(*)
       #FROM downcasecuments
