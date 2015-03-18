@@ -38,7 +38,17 @@ module UiBibz::Concerns::Models::Searchable
 
     def self.search_sort_paginate params, session
       session[:per_page] = params[:per_page] unless params[:per_page].nil?
-      self.search(params[:search]).reorder(order_sql(params)).paginate(:page => params[:page], per_page: session[:per_page])
+      #self.search(params[:search]).reorder(order_sql(params)).paginate(:page => params[:page], per_page: session[:per_page])
+      select(" * FROM (#{ table_name }, count(*) FROM #{table_name} WHERE #{ self.search(params[:search]).to_sql } GROUP BY #{table_name}.id AS countable)").order("countable.count").paginate(:page => params[:page], per_page: session[:per_page])
+      #SELECT * FROM (
+      #  SELECT documents.*, count(*)
+      #FROM downcasecuments
+      #WHERE (lower(documents.name_fr) ILIKE '%toto%'
+      #               OR lower(documents.name_en) ILIKE '%toto%'
+      #               OR lower(documents.code_fr) ILIKE '%to_sto%'
+      #               OR lower(documents.code_en) ILIKE '%toto%')
+      #group by documents.moduleid) tab1
+      #ORDER BY tab1.count
     end
   end
 
