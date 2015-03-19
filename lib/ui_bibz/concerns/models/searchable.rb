@@ -51,7 +51,7 @@ module UiBibz::Concerns::Models::Searchable
     end
 
     def self.generate_parent_sort_query sql
-      sql.select("#{ table_name }2.*, #{ @params[:sort] } AS parent_name").from("domains domains2").joins("LEFT OUTER JOIN #{ table_name } ON #{ table_name }2.parent_id = #{ table_name }.id")
+      sql.select("#{ table_name }2.*, #{ @params[:sort] } AS parent_name").from("#{ table_name } #{ table_name }2").joins("LEFT OUTER JOIN #{ table_name } ON #{ table_name }2.parent_id = #{ table_name }.id")
     end
 
     def self.get_column_args
