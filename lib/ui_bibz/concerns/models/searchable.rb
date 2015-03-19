@@ -21,24 +21,20 @@ module UiBibz::Concerns::Models::Searchable
   private
 
     def self.search
-
-      sql = all
-
+      sql         = all
       column_args = get_column_args
 
-      if column_args[:joins]
-        sql = joins(column_args[:joins])
-      end
+      # Add joins
+      sql = joins(column_args[:joins]) if column_args[:joins]
 
       # Append special argument for sort countable
-      if column_args[:count]
-        sql = sql.select("#{ table_name }.*, count(#{ column_args[:column] }.*)")
-      end
+      sql = generate_select_count_sort_query sql, column_args if column_args[:count]
+
+      # Manage parent sort in the same model
+      sql = generate_parent_sort_query sql if @params[:parent]
 
       # Main query with argument or not
-      unless @params[:search].blank?
-        sql = search_by_query sql
-      end
+      sql = search_by_query sql unless @params[:search].blank?
 
       # Select Count or Not
       if column_args[:count]
@@ -48,6 +44,14 @@ module UiBibz::Concerns::Models::Searchable
         sql.order(order_sql).paginate(:page => @params[:page], per_page: @session[:per_page])
       end
 
+    end
+
+    def self.generate_select_count_sort_query sql, column_args
+      sql.select("#{ table_name }.*, count(#{ column_args[:column] }.*)")
+    end
+
+    def self.generate_parent_sort_query sql
+      sql.select("#{ table_name }2.*, #{ @params[:sort] } AS parent_name").from("domains domains2").joins("LEFT OUTER JOIN #{ table_name } ON #{ table_name }2.parent_id = #{ table_name }.id")
     end
 
     def self.get_column_args

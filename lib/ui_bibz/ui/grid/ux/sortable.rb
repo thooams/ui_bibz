@@ -45,6 +45,7 @@ module UiBibz::Ui
         direction:  direction
       }
       args = args.merge({ custom_sort: true, column_name: @column.data_index }) if @column.custom_sort
+      args = args.merge({ parent: true }) if @column.parent
       args
     end
 
