@@ -8,6 +8,7 @@ module UiBibz::Ui
     def initialize store
       @records = store.records
       @store   = store
+      @model   = store.model
     end
 
     def total_pages
@@ -43,11 +44,11 @@ module UiBibz::Ui
     end
 
     def columns
-      @columns ||= Columns.new @records.new.attributes.keys.map{ |record| Column.new({ data_index: record, name: record.humanize }) }
+      @columns ||= Columns.new model.new.attributes.keys.map{ |record| Column.new({ data_index: record, name: record.humanize }) }
     end
 
     def model
-      @model ||= @records.new.class
+      @model
     end
 
     def search
