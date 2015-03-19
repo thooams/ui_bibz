@@ -37,13 +37,15 @@ module UiBibz::Ui
     end
 
     def url_options
-      {
+      args =  {
         controller: @store.controller,
         action:     @store.action,
         search:     @store.search,
         sort:       sort_name,
         direction:  direction
       }
+      args = args.merge({ custom_sort: true, column_name: @column.data_index }) if @column.custom_sort
+      args
     end
 
     def sortable?
