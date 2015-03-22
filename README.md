@@ -81,6 +81,7 @@ Les boutons acceptent l'option ```type:``` avec pour arguments :
 
 Les boutons acceptent l'option ```glyph:``` ([doc](#glyph)).
 
+![breadcrumb](doc/button.png)
 ```ruby
 = button 'Button', { type: :danger, glyph: 'star' } , { class: 'my-button' }
 ```
@@ -89,12 +90,14 @@ Les boutons acceptent l'option ```glyph:``` ([doc](#glyph)).
 Le lien bouton accèpte les mêmes paramètres que "button". À ceci près, que le
 lien bouton est un lien ```link_to```.
 
+![breadcrumb](doc/button_link.png)
 ```ruby
-= button_link 'Button', { type: :danger, glyph: 'star'} , { class: 'my-button' }
+= button_link 'Button', "#", { type: :primary, glyph: 'star', class: 'my-button' }
 ```
 
 #### Button Group (Liens groupés)
 
+![breadcrumb](doc/button_group.png)
 ```ruby
 = button_group class: 'exemple' do
   = button 'Button 1'
@@ -139,6 +142,7 @@ Les glyphs acceptent les options:
 * size
 * type
 
+![breadcrumb](doc/glyph.png)
 ```ruby
 = glyph 'star'
 ou
@@ -151,6 +155,8 @@ Une grid est un tableau avec recherche, pagination et trie des colonnes
 intégrées. La grid est entièrement traduisible : ```I18n ```. Elle contient par
 défaut 3 actions : éditer, voir et supprimer. Toutes les colonnes sont
 présentent et affichées par défaut.
+
+![breadcrumb](doc/grid.png)
 
 #### Simple grid
 
