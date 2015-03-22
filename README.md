@@ -86,8 +86,8 @@ Les boutons acceptent l'option ```glyph:``` ([doc](#glyph)).
 ```
 
 #### Button Link (Lien Bouton)
-Le lien boutton accèpte les mêmes paramètres que "button". A ceci près que le
-lien button est un lien ```link_to```.
+Le lien bouton accèpte les mêmes paramètres que "button". À ceci près, que le
+lien bouton est un lien ```link_to```.
 
 ```ruby
 = button_link 'Button', { type: :danger, glyph: 'star'} , { class: 'my-button' }
@@ -148,9 +148,9 @@ ou
 ### Grid
 
 Une grid est un tableau avec recherche, pagination et trie des colonnes
-intégrés. La grid est entièrement traductible : ```I18n ```. Elle contient par
+intégrées. La grid est entièrement traduisible : ```I18n ```. Elle contient par
 défaut 3 actions : éditer, voir et supprimer. Toutes les colonnes sont
-présentent par défaut.
+présentent et affichées par défaut.
 
 #### Simple grid
 
@@ -167,7 +167,7 @@ Exemple :
 @documents = Document.grid_search_pagination(params, session)
 ```
 
-Dans le model, insérer la méthode ```searchable_attributes```. Afin de pouvoir
+Dans le model, insérer la méthode ```searchable_attributes``` afin de pouvoir
 faire une recherche pour les attributs souhaités.
 
 Exemple :
@@ -176,7 +176,7 @@ Exemple :
 searchable_attributes :name_fr, :name_en
 ```
 
-Dans la vue, insérer la méthod ```grid``` qui peut contenir plusieurs arguments :
+Dans la vue, insérer la méthode ```grid``` qui peut contenir plusieurs arguments :
 
 * ```store```  (constante : créé dans le controller)
 * ```paginable``` (booléen : active la pagination)
@@ -190,7 +190,7 @@ Exemple :
 = grid store: @documents
 ```
 
-Les actions par défaut peuvent être modifiées (voir exemple complexe) :
+Les actions par défauts peuvent être modifiées (voir exemple complexe) :
 
 * edit
 * view
@@ -235,7 +235,7 @@ L'ajout de colonnes à travers la méthode ```add``` contient plusieurs argument
 
 #### Complex grid
 
-Si on souhaite voir apparaître des liasions avec d'autres table il faut pour
+Si on souhaite voir apparaître des liasions avec d'autres tables il faut pour
 cela :
 
 Dans le controlleur, insérer la méthode ```grid_search_pagination``` en ajoutant
@@ -248,7 +248,7 @@ Exemple :
 ```
 
 Dans la vue, insérer la méthod ```grid```.
-NB: On peut créer ces propres méthodes comme ```user_name``` dans notre model et
+NB: On peut créer ces propres méthodes comme ```user_name``` dans notre model "Document" et
 l'utiliser dans le data_index.
 
 ```ruby
@@ -261,7 +261,7 @@ l'utiliser dans le data_index.
 
 #### Ultra Complex grid
 
-Si l'on souhaite, par exemple, compté des utilisateurs qui ont un lien non
+Si l'on souhaite, par exemple, compter des utilisateurs qui ont un lien non
 direct avec les documents. Imaginons qu'un utilisateur à des produits et que
 ces produits contiennent plusieurs documents. On souhaite compté le nomble
 d'utilisateurs par document.
@@ -288,7 +288,7 @@ Ici l'argument sortable signifie que l'on souhaite s'occuper de la
 fonctionnalité de trie.
 Il faut :
 
-* définir le nom de la column triéé à travers l'argument ```column:``` (string)
+* définir le nom de la colonne triéé à travers l'argument ```column:``` (string)
 * définir si le traitement se fait sur le comptage avec l'argument ```count:```
   (boolean)
 * définir la jointure avec l'argument ```joins:``` (string, array, hash)
