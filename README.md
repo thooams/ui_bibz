@@ -200,6 +200,7 @@ Elles sont intégrées à l'intérieur d'un bouton [dropdown](#dropdown).
 
 Exemple :
 ```ruby
+# app/views/documents/index.html.haml
 = grid store: @documents do |g|
   - g.actions do
     = link_action 'Show', documents_path(:id), glyph: 'eye'
@@ -219,8 +220,10 @@ L'ajout de colonnes à travers la méthode ```add``` contient plusieurs argument
 * format (format les élement de la colone en utilisant **lambda**)
 * link (ajoute un lien où :id est parsé et remplacé par l'entier correspondant)
 * sort (permet de trier sur des champs )
+* custom_sort (indique que le tableau sera triéé d'une manière personnalisée)
 
 ```ruby
+# app/views/documents/index.html.haml
 = grid store: @documents do |g|
   - g.columns do |c|
     - c.add { name: '#', data_index: 'id' }
@@ -230,9 +233,93 @@ L'ajout de colonnes à travers la méthode ```add``` contient plusieurs argument
     - c.add { name: 'Updated at', data_index: 'updated_at', date_format: '%Y' }
 ```
 
+#### Complex grid
+
+Si on souhaite voir apparaître des liasions avec d'autres table il faut pour
+cela :
+
+Dans le controlleur, insérer la méthode ```grid_search_pagination``` en ajoutant
+un includes juste avant.
+
+Exemple :
+```ruby
+# app/controllers/document_controller.rb
+@documents = Document.includes(:users).grid_search_pagination(params, session)
+```
+
+Dans la vue, insérer la méthod ```grid```.
+NB: On peut créer ces propres méthodes comme ```user_name``` dans notre model et
+l'utiliser dans le data_index.
+
+```ruby
+# app/views/documents/index.html.haml
+= grid store: @documents do |g|
+  - g.columns do |c|
+    - c.add { name: 'Users', data_index: 'user_name', sort: "user.name" }
+```
+
+
+#### Ultra Complex grid
+
+Si l'on souhaite, par exemple, compté des utilisateurs qui ont un lien non
+direct avec les documents. Imaginons qu'un utilisateur à des produits et que
+ces produits contiennent plusieurs documents. On souhaite compté le nomble
+d'utilisateurs par document.
+
+On va pouvoir utiliser des arguments dans la méthode ```grid_search_pagination```
+qui vont permettre des jointures.
+
+Exemple :
+```ruby
+# app/controllers/document_controller.rb
+arguments  = { sortable: {
+  column: 'users',
+  count:  true,
+  joins: "LEFT OUTER JOIN documents_products ON documents_products.document_id = documents.id
+          LEFT OUTER JOIN products ON products.id = documents_products.product_id
+          LEFT OUTER JOIN products_users ON products_users.product_id = products.id
+          LEFT OUTER JOIN users ON users.id = products_users.user_id"
+} }
+
+@documents = Document.includes(:users).grid_search_pagination(params, session,
+arguments)
+```
+Ici l'argument sortable signifie que l'on souhaite s'occuper de la
+fonctionnalité de trie.
+Il faut :
+
+* définir le nom de la column triéé à travers l'argument ```column:``` (string)
+* définir si le traitement se fait sur le comptage avec l'argument ```count:```
+  (boolean)
+* définir la jointure avec l'argument ```joins:``` (string, array, hash)
+
+Dans la vue :
+
+```ruby
+# app/views/documents/index.html.haml
+= grid store: @documents do |g|
+  - g.columns do |c|
+    - c.add({ name: 'Users', data_index: 'users', count: true, custom_sort: true })
+```
+
+#### Grid I18n
+
+La grid est entièrement traduisible avec I18n. L'importance des traductions
+s'execute dans cette ordre pour la colonne "name_fr" par exemple.
+
+1. ui_biz.grid.headers.document.name_fr
+2. ui_biz.grid.headers.defaults.name_fr
+3. activerecord.attributes.document.name_fr
+4. activerecord.attributes.defaults.name_fr
+
+Le placeholder du champ recherche est traduisible avec les attributs activerecord.
+
 ### List
 
 ### Nav
 
 
+# A faire :
+
+* intégrer la recherche avec les liaisons
 
