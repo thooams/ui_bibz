@@ -81,7 +81,7 @@ Les boutons acceptent l'option ```type:``` avec pour arguments :
 
 Les boutons acceptent l'option ```glyph:``` ([doc](#glyph)).
 
-![breadcrumb](doc/button.png)
+![button](doc/button.png)
 ```ruby
 = button 'Button', { type: :danger, glyph: 'star' } , { class: 'my-button' }
 ```
@@ -90,14 +90,14 @@ Les boutons acceptent l'option ```glyph:``` ([doc](#glyph)).
 Le lien bouton accèpte les mêmes paramètres que "button". À ceci près, que le
 lien bouton est un lien ```link_to```.
 
-![breadcrumb](doc/button_link.png)
+![button_link](doc/button_link.png)
 ```ruby
 = button_link 'Button', "#", { type: :primary, glyph: 'star', class: 'my-button' }
 ```
 
 #### Button Group (Liens groupés)
 
-![breadcrumb](doc/button_group.png)
+![button_group](doc/button_group.png)
 ```ruby
 = button_group class: 'exemple' do
   = button 'Button 1'
@@ -142,7 +142,7 @@ Les glyphs acceptent les options:
 * size
 * type
 
-![breadcrumb](doc/glyph.png)
+![glyph](doc/glyph.png)
 ```ruby
 = glyph 'star'
 ou
@@ -156,7 +156,7 @@ intégrées. La grid est entièrement traduisible : ```I18n ```. Elle contient p
 défaut 3 actions : éditer, voir et supprimer. Toutes les colonnes sont
 présentent et affichées par défaut.
 
-![breadcrumb](doc/grid.png)
+![grid](doc/grid.png)
 
 #### Simple grid
 
@@ -322,10 +322,30 @@ Le placeholder du champ recherche est traduisible avec les attributs activerecor
 
 ### List
 
+Par défaut une liste à pour tag <li>. Mais elle peut se transformer en lien <a>
+à travers l'option ```tag:``` et ```href:```.
+
+![list](doc/list.png)
+
+```ruby
+= list_group do
+  = list 'Exemple 1'
+  = list 'Exemple 2', { tag: :a, href: '#exemple2'}, { class: 'active' }
+  = list 'Exemple 3'
+```
+
 ### Nav
 
+![nav](doc/nav.png)
+
+```ruby
+= nav do
+  = tab 'Exemple 1', active: true, selector: 'exemple-1'
+  = tab 'Exemple 2', selector: 'exemple-2'
+```
 
 # A faire :
 
 * intégrer la recherche avec les liaisons
+* intégrer les couleurs et les badges pour les listes
 
