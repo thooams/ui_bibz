@@ -37,17 +37,17 @@ module UiBibz::Ui
     end
 
     def render
-      initialize_header
-      initialize_footer
-      initialize_body
+      Component.new table_html
+    end
 
-      content_tag(:div, { class: cls("panel panel-default") }) do |f|
-        form_tag(url_for(controller: store.controller, action: store.action), method: :get) do
-          concat(header_html) unless @header.nil?
-          concat(body_html)  unless store.nil?
-          concat(footer_html) unless @footer.nil?
-        end
-      end
+    def search_field
+      Searchable.new store, @options
+      Component.new @table.search_field
+    end
+
+    def pagination
+      paginable = Paginable.new store, @options
+      Component.new(paginable.render) if paginable.paginable?
     end
 
   private
@@ -64,14 +64,6 @@ module UiBibz::Ui
       @action ||= Actionable.new store, @options, @actions
     end
 
-    def pagination
-      @pagination ||= Paginable.new store, @options
-    end
-
-    def search
-      @search ||= Searchable.new store, @options
-    end
-
     def store
       @store ||= if @options[:store].nil?
         raise 'Store is nil!'
@@ -80,18 +72,6 @@ module UiBibz::Ui
       else
         Store.new @options.delete :store
       end
-    end
-
-    def initialize_header
-      @header = Component.new search.render
-    end
-
-    def initialize_footer
-      @footer = Component.new(pagination.render) if pagination.paginable?
-    end
-
-    def initialize_body
-      @body = Component.new table_html
     end
 
     def cols
