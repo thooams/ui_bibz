@@ -1,6 +1,6 @@
 module UiBibz::Helpers::UiHelper
 
-  def panel options = nil, html_options = nil, &block
+  def panel content = nil, options = nil, html_options = nil, &block
     UiBibz::Ui::Panel.new(options, html_options).tap(&block).render
   end
 
@@ -20,7 +20,7 @@ module UiBibz::Helpers::UiHelper
     UiBibz::Ui::List.new(content, options, html_options, &block).render
   end
 
-  def grid options = nil, html_options = nil, &block
+  def grid content = nil, options = nil, html_options = nil, &block
     UiBibz::Ui::Grid.new(options, html_options).tap(&block).render
   end
 
@@ -52,7 +52,7 @@ module UiBibz::Helpers::UiHelper
     UiBibz::Ui::LinkAction.new(content, options, html_options, &block).render
   end
 
-  def glyph content
+  def glyph name, options = nil, html_options = nil, &block
     UiBibz::Ui::Glyph.new(content).render
   end
 
