@@ -108,6 +108,12 @@ lien bouton est un lien ```link_to```.
 ### Dropdown (Menu déroulant)
 #### Dropdown (Menu déroulant)
 
+```ruby
+= dropdown('Exemple', { position: :right, glyph: 'star' }, { class: 'btn-group-xs'}) do |d|
+  = link_action 'Exemple 1', "#", { glyph: 'eye' }
+  = link_action 'Exemple 2', "#", { glyph: 'eye' }
+```
+
 Le menu déroulant accepte les options :
 
 * ```glyph:``` ([doc](#glyph))
