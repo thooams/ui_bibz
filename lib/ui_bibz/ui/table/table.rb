@@ -1,19 +1,19 @@
-require "ui_bibz/ui/grid/components/store"
-require "ui_bibz/ui/grid/components/columns"
-require "ui_bibz/ui/grid/components/column"
-require "ui_bibz/ui/grid/ux/paginable"
-require "ui_bibz/ui/grid/ux/paginable"
-require "ui_bibz/ui/grid/ux/searchable"
-require "ui_bibz/ui/grid/ux/sortable"
-require "ui_bibz/ui/grid/ux/actionable"
+require "ui_bibz/ui/table/components/store"
+require "ui_bibz/ui/table/components/columns"
+require "ui_bibz/ui/table/components/column"
+require "ui_bibz/ui/table/ux/paginable"
+require "ui_bibz/ui/table/ux/paginable"
+require "ui_bibz/ui/table/ux/searchable"
+require "ui_bibz/ui/table/ux/sortable"
+require "ui_bibz/ui/table/ux/actionable"
 module UiBibz::Ui
-  class Grid < Panel
+  class Table < Panel
 
     attr_accessor :columns
 
     def initialize options = nil, html_options = nil
       @options      = options || {}
-      @html_options = (html_options || {}).merge({ class: 'grid' })
+      @html_options = (html_options || {}).merge({ class: 'table' })
       @columns      = Columns.new
     end
 
@@ -25,7 +25,7 @@ module UiBibz::Ui
     #
     # ==== Signatures
     #
-    #   grid.actions do
+    #   table.actions do
     #     = link_action 'Show', users_path(:id), glyph: 'eye'
     #     = "---" # for divider
     #     = link_action 'delete', users_path(:id), method: :delete, glyph: 'trash'
@@ -76,7 +76,7 @@ module UiBibz::Ui
       @store ||= if @options[:store].nil?
         raise 'Store is nil!'
       elsif @options[:store].try(:records).nil?
-        raise 'Store can be created only with "grid_search_pagination" method!'
+        raise 'Store can be created only with "table_search_pagination" method!'
       else
         Store.new @options.delete :store
       end

@@ -2,8 +2,8 @@ module UiBibz::Concerns::Models::Searchable
   extend ActiveSupport::Concern
 
   included do
-    # Maybe create a class to put all methods of grid_search_pagination
-    def self.grid_search_pagination params, session, args = {}
+    # Maybe create a class to put all methods of table_search_pagination
+    def self.table_search_pagination params, session, args = {}
       @params     = params
       @session    = session
       @arguments  = args

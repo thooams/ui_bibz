@@ -39,8 +39,8 @@ module UiBibz::Ui
     end
 
     def dropdown_action_name
-      defaults = ["ui_bibz.grid.actions.defaults.title", 'Actions']
-      UiBibz::Utils::Internationalization.new("ui_bibz.grid.actions.#{ @store.model.to_s.underscore }.title", default: defaults).translate
+      defaults = ["ui_bibz.table.actions.defaults.title", 'Actions']
+      UiBibz::Utils::Internationalization.new("ui_bibz.table.actions.#{ @store.model.to_s.underscore }.title", default: defaults).translate
     end
 
     def actions_links record
@@ -48,18 +48,18 @@ module UiBibz::Ui
     end
 
     def dropdown_show_name
-      defaults = ['ui_bibz.grid.actions.defaults.show', 'Show']
-      UiBibz::Utils::Internationalization.new("ui_bibz.grid.actions.#{ @store.model.to_s.underscore }.show", default: defaults).translate
+      defaults = ['ui_bibz.table.actions.defaults.show', 'Show']
+      UiBibz::Utils::Internationalization.new("ui_bibz.table.actions.#{ @store.model.to_s.underscore }.show", default: defaults).translate
     end
 
     def dropdown_edit_name
-      defaults = ['ui_bibz.grid.actions.defaults.edit', 'Edit']
-      UiBibz::Utils::Internationalization.new("ui_bibz.grid.actions.#{ @store.model.to_s.underscore }.edit", default: defaults).translate
+      defaults = ['ui_bibz.table.actions.defaults.edit', 'Edit']
+      UiBibz::Utils::Internationalization.new("ui_bibz.table.actions.#{ @store.model.to_s.underscore }.edit", default: defaults).translate
     end
 
     def dropdown_delete_name
-      defaults = ['ui_bibz.grid.actions.defaults.delete', 'Delete']
-      UiBibz::Utils::Internationalization.new("ui_bibz.grid.actions.#{ @store.model.to_s.underscore }.delete", default: defaults).translate
+      defaults = ['ui_bibz.table.actions.defaults.delete', 'Delete']
+      UiBibz::Utils::Internationalization.new("ui_bibz.table.actions.#{ @store.model.to_s.underscore }.delete", default: defaults).translate
     end
 
     def default_actions record

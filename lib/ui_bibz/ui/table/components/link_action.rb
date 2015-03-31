@@ -1,7 +1,7 @@
 module UiBibz::Ui
   class LinkAction < Ui
 
-    # Creates a link for actions in grid
+    # Creates a link for actions in table
     #
     # ==== Signatures
     #
