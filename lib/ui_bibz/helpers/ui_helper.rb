@@ -24,6 +24,10 @@ module UiBibz::Helpers::UiHelper
     UiBibz::Ui::Table.new(options, html_options).tap(&block).render
   end
 
+  def table_panel options = nil, html_options = nil, &block
+    UiBibz::Ui::Table.new(options, html_options).tap(&block).render
+  end
+
   def breadcrumb content = nil, options = nil, html_options = nil, &block
     UiBibz::Ui::Breadcrumb.new(content, options, html_options, &block).render
   end
