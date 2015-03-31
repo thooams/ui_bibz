@@ -30,7 +30,7 @@ module UiBibz::Ui
     def per_page_html
       content_tag :div, class: 'per-page' do
         concat results_count_html
-        concat UiBibz::Utils::Internationalization.new("ui_bibz.grid.pagination.per_page", default: "Per page: ").translate
+        concat UiBibz::Utils::Internationalization.new("ui_bibz.table.pagination.per_page", default: "Per page: ").translate
         concat select_tag('per_page', options_for_select([25, 50, 100], @store.per_page), class: 'form-control')
       end
     end

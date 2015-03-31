@@ -1,9 +1,9 @@
 require 'test_helper'
-require "ui_bibz/ui/grid/ux/paginable"
-require "ui_bibz/ui/grid/ux/searchable"
-require "ui_bibz/ui/grid/ux/sortable"
-require "ui_bibz/ui/grid/ux/actionable"
-class GridTest < ActionView::TestCase
+require "ui_bibz/ui/table/ux/paginable"
+require "ui_bibz/ui/table/ux/searchable"
+require "ui_bibz/ui/table/ux/sortable"
+require "ui_bibz/ui/table/ux/actionable"
+class TableTest < ActionView::TestCase
 
   setup do
     create_list(:user, 25)
@@ -16,11 +16,11 @@ class GridTest < ActionView::TestCase
       per_page:   2,
       page:       1
     }
-    users  = User.grid_search_pagination(params, session)
+    users  = User.table_search_pagination(params, session)
     @store = UiBibz::Ui::Store.new users
   end
 
-  test 'grid non sortable' do
+  test 'table non sortable' do
     options  = { sortable: false }
     actual   = UiBibz::Ui::Sortable.new(@store, options).header(@store.columns.list.first)
     expected = "Id"
@@ -28,7 +28,7 @@ class GridTest < ActionView::TestCase
     assert_equal expected, actual
   end
 
-  test 'grid sortable' do
+  test 'table sortable' do
     options  = { sortable: true }
     actual   = UiBibz::Ui::Sortable.new(@store, options).header(@store.columns.list.first)
     expected = "<a class=\"dropup\" href=\"/users?direction=asc&amp;search=Name+fr&amp;sort=users.id\">Id</a>"
@@ -36,7 +36,7 @@ class GridTest < ActionView::TestCase
     assert_equal expected, actual
   end
 
-  test 'grid non paginable' do
+  test 'table non paginable' do
     options      = { paginable: false }
     pagination   = UiBibz::Ui::Paginable.new(@store, options)
     actual       = pagination.render if pagination.paginable?
@@ -45,7 +45,7 @@ class GridTest < ActionView::TestCase
     assert_equal expected, actual
   end
 
-  test 'grid paginable' do
+  test 'table paginable' do
     options      = { paginable: true }
     pagination   = UiBibz::Ui::Paginable.new(@store, options)
     actual       = pagination.render if pagination.paginable?
@@ -56,7 +56,7 @@ class GridTest < ActionView::TestCase
     assert_equal expected, actual
   end
 
-  test 'grid non searchable' do
+  test 'table non searchable' do
     options  = { searchable: false }
     actual   = UiBibz::Ui::Searchable.new(@store, options).render
     expected = "<div><div class=\"title\">Users list</div><br class=\"clear\" /></div>"
@@ -64,7 +64,7 @@ class GridTest < ActionView::TestCase
     assert_equal expected, actual
   end
 
-  test 'grid non searchable with a title and glyph' do
+  test 'table non searchable with a title and glyph' do
     options  = { searchable: false, glyph: 'toto', title: 'Title list' }
     actual   = UiBibz::Ui::Searchable.new(@store, options).render
     expected = "<div><div class=\"title\"><i class=\"glyph fa fa-toto fa-1x\"></i>Title list</div><br class=\"clear\" /></div>"
@@ -72,7 +72,7 @@ class GridTest < ActionView::TestCase
     assert_equal expected, actual
   end
 
-  test 'grid searchable' do
+  test 'table searchable' do
     options  = { searchable: true }
     actual   = UiBibz::Ui::Searchable.new(@store, options).render
     expected = "<div><div class=\"title\">Users list</div><div class=\"input-group input-group-sm\"><span class=\"input-group-addon\"><i class=\"glyph fa fa-search fa-1x\"></i></span><input type=\"search\" value=\"Name fr\" name=\"search\" class=\"form-control\" placeholder=\"Search by name_fr and name_en...\" /><span class=\"clear-search-btn input-group-addon\"><i class=\"glyph fa fa-times-circle fa-1x\"></i></span></div><br class=\"clear\" /></div>"
@@ -80,7 +80,7 @@ class GridTest < ActionView::TestCase
     assert_equal expected, actual
   end
 
-  test 'grid actionable header' do
+  test 'table actionable header' do
     options  = { actionable: true }
     action   = UiBibz::Ui::Actionable.new(@store, options)
     actual   = action.header []
@@ -89,7 +89,7 @@ class GridTest < ActionView::TestCase
     assert_equal expected, actual
   end
 
-  test 'grid actionable body' do
+  test 'table actionable body' do
     options  = { actionable: true }
     action   = UiBibz::Ui::Actionable.new(@store, options)
     actual   = action.body @store.records.first, []
@@ -98,7 +98,7 @@ class GridTest < ActionView::TestCase
     assert_equal expected, actual
   end
 
-  test 'grid actionable inject_url' do
+  test 'table actionable inject_url' do
     options  = { actionable: true }
     action   = UiBibz::Ui::Actionable.new(@store, options)
     actual   = action.inject_url 'http://localhost/users/id/test', @store.records.first
@@ -107,7 +107,7 @@ class GridTest < ActionView::TestCase
     assert_equal expected, actual
   end
 
-  test 'grid non actionable header' do
+  test 'table non actionable header' do
     options  = { actionable: false }
     action   = UiBibz::Ui::Actionable.new(@store, options)
     actual   = action.header []
@@ -116,7 +116,7 @@ class GridTest < ActionView::TestCase
     assert_equal expected, actual
   end
 
-  test 'grid non actionable body' do
+  test 'table non actionable body' do
     options  = { actionable: false }
     action   = UiBibz::Ui::Actionable.new(@store, options)
     actual   = action.body @store.records.first, []

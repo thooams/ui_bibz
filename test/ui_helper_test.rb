@@ -56,7 +56,7 @@ class UiHelperTest < ActionView::TestCase
     tab "toto", active: true, selector: 'tab-en'
   end
 
-  test 'complex grid' do
+  test 'complex table' do
     create_list(:user, 25)
     params = {
       controller: 'users',
@@ -66,9 +66,9 @@ class UiHelperTest < ActionView::TestCase
       per_page:   2,
       page:       1
     }
-    users  = User.grid_search_pagination(params, session)
+    users = User.table_search_pagination(params, session)
 
-    grid store: users, cls: 'toto' do |pane|
+    table store: users, cls: 'toto' do |pane|
       pane.header 'Test header'
       pane.body cls: 'ui' do
         'Test body'
@@ -76,7 +76,7 @@ class UiHelperTest < ActionView::TestCase
     end
   end
 
-  test 'complex grid with custom actions' do
+  test 'complex table with custom actions' do
     create_list(:user, 25)
     params = {
       controller: 'users',
@@ -86,9 +86,9 @@ class UiHelperTest < ActionView::TestCase
       per_page:   10,
       page:       1
     }
-    users  = User.grid_search_pagination(params, session)
+    users  = User.table_search_pagination(params, session)
 
-    grid store: users, cls: 'toto' do |pane|
+    table store: users, cls: 'toto' do |pane|
       pane.header 'Test header'
       pane.body cls: 'ui' do
         'Test body'

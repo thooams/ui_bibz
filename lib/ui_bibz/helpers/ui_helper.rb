@@ -5,7 +5,7 @@ module UiBibz::Helpers::UiHelper
   end
 
   def nav content = nil, options = nil, html_options = nil, &block
-    UiBibz::Ui::Nav.new(content, options, html_options, &block).render
+    UiBibz::Ui::Nav.new(content, options, html_options).tap(&block).render
   end
 
   def list_group content = nil, options = nil, html_options = nil, &block
@@ -20,8 +20,8 @@ module UiBibz::Helpers::UiHelper
     UiBibz::Ui::List.new(content, options, html_options, &block).render
   end
 
-  def grid content = nil, options = nil, html_options = nil, &block
-    UiBibz::Ui::Grid.new(options, html_options).tap(&block).render
+  def table options = nil, html_options = nil, &block
+    UiBibz::Ui::Table.new(options, html_options).tap(&block).render
   end
 
   def breadcrumb content = nil, options = nil, html_options = nil, &block
