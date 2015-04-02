@@ -1,5 +1,3 @@
-require 'will_paginate'
-require "will_paginate-bootstrap"
 module UiBibz::Ui
   class Paginable < Ui
     include WillPaginate::ActionView
@@ -11,7 +9,7 @@ module UiBibz::Ui
 
     def render
       content_tag :div do
-        concat pagination_html
+        concat UiBibz::Ui::TablePagination.new({ store: @store }).render
         concat per_page_html
         concat tag(:br, class: 'clear')
       end
@@ -22,10 +20,6 @@ module UiBibz::Ui
     end
 
   private
-
-    def pagination_html
-      will_paginate(@store.records, params: { controller: @store.controller },  renderer: BootstrapPagination::Rails)
-    end
 
     def per_page_html
       content_tag :div, class: 'per-page' do

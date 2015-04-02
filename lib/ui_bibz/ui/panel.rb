@@ -34,9 +34,6 @@ module UiBibz::Ui
       [@html_options.delete(:class), @options.delete(:class), klass].compact.join(' ')
     end
 
-
-  private
-
     def states
       if @states.nil?
         states = {}
