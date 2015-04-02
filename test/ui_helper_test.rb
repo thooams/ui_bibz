@@ -76,29 +76,6 @@ class UiHelperTest < ActionView::TestCase
     end
   end
 
-  test 'table search_field' do
-    create_list(:user, 25)
-    params = {
-      controller: 'users',
-      action:     'index',
-      sort:       'users.name_fr',
-      direction:  'asc',
-      per_page:   2,
-      page:       1
-    }
-    users = User.table_search_pagination(params, session)
-
-    table store: users do |pane|
-      pane.columns do |c|
-        c.add({ name: '#', data_index: 'id' })
-      end
-    end
-    actual   = table.search_field
-    expected = ""
-
-    assert_equal actual, expected
-  end
-
   test 'complex table_panel with custom actions' do
     create_list(:user, 25)
     params = {
@@ -128,8 +105,6 @@ class UiHelperTest < ActionView::TestCase
       #end
     end
   end
-
-  test ''
 
   test 'link button' do
     actual   = button_link 'Toto', users_path, { type: :danger, glyph: 'add'}

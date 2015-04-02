@@ -30,12 +30,12 @@ module UiBibz::Helpers::UiHelper
     UiBibz::Ui::TableSearchField.new(options, html_options).render
   end
 
-  def table_pagination store, options = nil
-    UiBibz::Ui::TablePagination.new(store, options).render
+  def table_pagination options, html_options = nil
+    UiBibz::Ui::TablePagination.new(options, html_options).render
   end
 
   def table_panel options = nil, html_options = nil, &block
-    UiBibz::Ui::Table.new(options, html_options).tap(&block).render
+    UiBibz::Ui::TablePanel.new(options, html_options).tap(&block).render
   end
 
   def breadcrumb content = nil, options = nil, html_options = nil, &block

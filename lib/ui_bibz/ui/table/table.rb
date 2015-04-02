@@ -7,7 +7,7 @@ require "ui_bibz/ui/table/ux/searchable"
 require "ui_bibz/ui/table/ux/sortable"
 require "ui_bibz/ui/table/ux/actionable"
 module UiBibz::Ui
-  class Table < Panel
+  class Table
 
     attr_accessor :columns
 
@@ -40,17 +40,7 @@ module UiBibz::Ui
       Component.new table_html
     end
 
-    def search_field
-      Searchable.new store, @options
-      Component.new @table.search_field
-    end
-
-    def pagination
-      paginable = Paginable.new store, @options
-      Component.new(paginable.render) if paginable.paginable?
-    end
-
-  private
+  protected
 
     def body_html
       content_tag :div, @body.render, { class: @body.cls("panel-body"), role: 'tabpanel' }.merge(@body.html_options)
