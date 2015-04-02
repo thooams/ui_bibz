@@ -20,16 +20,18 @@ module UiBibz::Helpers::UiHelper
     UiBibz::Ui::List.new(content, options, html_options, &block).render
   end
 
+  # Table section -----------------------------------------------------------
+
   def table options = nil, html_options = nil, &block
     UiBibz::Ui::Table.new(options, html_options).tap(&block).render
   end
 
-  def table_search_field store, options = nil
-    UiBibz::Ui::Searchable.new(store, options).render
+  def table_search_field options, html_options = nil
+    UiBibz::Ui::TableSearchField.new(options, html_options).render
   end
 
   def table_pagination store, options = nil
-    UiBibz::Ui::Paginable.new(store, options).render
+    UiBibz::Ui::TablePagination.new(store, options).render
   end
 
   def table_panel options = nil, html_options = nil, &block
