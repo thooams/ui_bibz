@@ -30,6 +30,10 @@ module UiBibz::Helpers::UiHelper
     UiBibz::Ui::TableSearchField.new(options, html_options).render
   end
 
+  def table_pagination_per_page options, html_options = nil
+    UiBibz::Ui::TablePaginationPerPage.new(options, html_options).render
+  end
+
   def table_pagination options, html_options = nil
     UiBibz::Ui::TablePagination.new(options, html_options).render
   end

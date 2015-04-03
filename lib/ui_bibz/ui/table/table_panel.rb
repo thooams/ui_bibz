@@ -13,7 +13,7 @@ module UiBibz::Ui
       initialize_header
       initialize_footer
 
-      content_tag(:div, { class: cls("panel panel-default") }) do |f|
+      content_tag(:div, { class: cls("panel panel-default table-panel") }) do |f|
         form_tag(url_for(controller: @table.store.controller, action: @table.store.action), method: :get) do
           concat(header_html) unless @header.nil?
           concat(@table.render)  unless @table.store.nil?
