@@ -7,7 +7,7 @@ require "ui_bibz/ui/table/ux/searchable"
 require "ui_bibz/ui/table/ux/sortable"
 require "ui_bibz/ui/table/ux/actionable"
 module UiBibz::Ui
-  class Table
+  class Table < Ui
 
     attr_accessor :columns
 
@@ -40,20 +40,6 @@ module UiBibz::Ui
       Component.new table_html
     end
 
-  protected
-
-    def body_html
-      content_tag :div, @body.render, { class: @body.cls("panel-body"), role: 'tabpanel' }.merge(@body.html_options)
-    end
-
-    def sort
-      @sort ||= Sortable.new store, @options
-    end
-
-    def action
-      @action ||= Actionable.new store, @options, @actions
-    end
-
     def store
       @store ||= if @options[:store].nil?
         raise 'Store is nil!'
@@ -64,12 +50,22 @@ module UiBibz::Ui
       end
     end
 
+  protected
+
+    def sort
+      @sort ||= Sortable.new store, @options
+    end
+
+    def action
+      @action ||= Actionable.new store, @options, @actions
+    end
+
     def cols
       @columns.list.empty? ? store.columns.list : @columns.list
     end
 
     def table_html
-      content_tag :table, class: 'table table-hover' do
+      content_tag(:table, class: 'table table-hover') do
 
         ths = cols.collect do |col|
           content_tag(:th, sort.header(col)) unless col.hidden?
