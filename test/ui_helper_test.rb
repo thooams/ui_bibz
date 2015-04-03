@@ -5,7 +5,7 @@ class UiHelperTest < ActionView::TestCase
 
   test 'complex panel' do
     panel class: 'toto' do |pane|
-      pane.header cls: 'header-class' do
+      pane.header class: 'header-class' do
         "Test header"
       end
       pane.body 'Test body', nil, cls: 'body-toto'
@@ -17,6 +17,7 @@ class UiHelperTest < ActionView::TestCase
     actual = panel(class: 'tata') do |pane|
       pane.body 'test'
     end
+    expected = "<div class=\"tata panel panel-default\"><div class=\"panel-body\" role=\"tabpanel\">test</div></div>"
     expected = "<div class=\"tata panel panel-default\"><div class=\"panel-body\" role=\"tabpanel\">test</div></div>"
 
     assert_equal actual, expected

@@ -20,7 +20,7 @@ module UiBibz::Helpers::UiHelper
     UiBibz::Ui::List.new(content, options, html_options, &block).render
   end
 
-  # Table section -----------------------------------------------------------
+  # Table section begin ------------------------------------------------------
 
   def table options = nil, html_options = nil, &block
     UiBibz::Ui::Table.new(options, html_options).tap(&block).render
@@ -42,17 +42,9 @@ module UiBibz::Helpers::UiHelper
     UiBibz::Ui::TablePanel.new(options, html_options).tap(&block).render
   end
 
-  def breadcrumb content = nil, options = nil, html_options = nil, &block
-    UiBibz::Ui::Breadcrumb.new(content, options, html_options, &block).render
-  end
+  # Table section end -------------------------------------------------------
 
-  def dropdown name, options = nil, html_options = nil, &block
-    UiBibz::Ui::Dropdown.new(name, options, html_options).tab(&block).render
-  end
-
-  def dropdown_button name, options = nil, html_options = nil, &block
-    UiBibz::Ui::DropdownButton.new(name, options, html_options).tab(&block).render
-  end
+  # Button section begin ----------------------------------------------------
 
   def button_link content, options = nil, html_options = nil, &block
     UiBibz::Ui::ButtonLink.new(content, options, html_options, &block).render
@@ -64,6 +56,20 @@ module UiBibz::Helpers::UiHelper
 
   def button content = nil, options = nil, html_options = nil, &block
     UiBibz::Ui::Button.new(content, options, html_options, &block).render
+  end
+
+  # Button section end ----------------------------------------------------
+
+  def breadcrumb content = nil, options = nil, html_options = nil, &block
+    UiBibz::Ui::Breadcrumb.new(content, options, html_options, &block).render
+  end
+
+  def dropdown name, options = nil, html_options = nil, &block
+    UiBibz::Ui::Dropdown.new(name, options, html_options).tab(&block).render
+  end
+
+  def dropdown_button name, options = nil, html_options = nil, &block
+    UiBibz::Ui::DropdownButton.new(name, options, html_options).tab(&block).render
   end
 
   def link_action content, options = nil, html_options = nil, &block
