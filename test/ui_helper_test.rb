@@ -68,9 +68,9 @@ class UiHelperTest < ActionView::TestCase
     }
     users = User.table_search_pagination(params, session)
 
-    table_panel store: users, cls: 'toto' do |pane|
+    table_panel({ store: users }, { class: 'toto' }) do |pane|
       pane.header 'Test header'
-      pane.body cls: 'ui' do
+      pane.body class: 'ui' do
         'Test body'
       end
     end
@@ -88,7 +88,7 @@ class UiHelperTest < ActionView::TestCase
     }
     users  = User.table_search_pagination(params, session)
 
-    table_panel store: users, cls: 'toto' do |pane|
+    table_panel({ store: users }, { class: 'toto'}) do |pane|
       pane.header 'Test header'
       pane.body cls: 'ui' do
         'Test body'
@@ -99,10 +99,10 @@ class UiHelperTest < ActionView::TestCase
         c.add({ name: 'Name en', data_index: 'name_en', order: 1 })
         c.add({ name: 'Name en', data_index: 'name_en', format: lambda{ |records, record| "name #{ record.id}"}})
       end
-      #pane.actions do
-      #  link_to 'toto', users_path(:id)
-      #  link_to 'momo', users_path(:id)
-      #end
+      pane.actions do
+        link_to 'toto', users_path(:id)
+        link_to 'momo', users_path(:id)
+      end
     end
   end
 
