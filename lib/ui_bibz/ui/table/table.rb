@@ -37,7 +37,7 @@ module UiBibz::Ui
     end
 
     def render
-      Component.new table_html
+      table_html
     end
 
     def store

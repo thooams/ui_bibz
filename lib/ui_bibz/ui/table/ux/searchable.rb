@@ -9,7 +9,7 @@ module UiBibz::Ui
     def render
       content_tag :div do
         concat content_tag(:div, grid_name, class: 'title')
-        concat TableSearchField.new(store: @store).render if searchable?
+        concat TableSearchField.new(store: @store, wrap_form: false).render if searchable?
         concat tag :br, class: 'clear'
       end
     end

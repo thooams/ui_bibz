@@ -7,7 +7,11 @@ module UiBibz::Ui
     end
 
     def render
-      form_tag(url_for(controller: store.controller, action: store.action), method: :get) do
+      if @search_field.options[:wrap_form] != false
+        form_tag(url_for(controller: store.controller, action: store.action), method: :get) do
+          search_field_html
+        end
+      else
         search_field_html
       end
     end
@@ -33,7 +37,7 @@ module UiBibz::Ui
     end
 
     def div_class
-      %w(input-group input-group-sm)
+      %w(input-group input-group-sm table-search-field)
     end
 
     def search_placeholder_field

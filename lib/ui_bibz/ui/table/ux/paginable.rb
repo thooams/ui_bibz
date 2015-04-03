@@ -9,8 +9,8 @@ module UiBibz::Ui
 
     def render
       content_tag :div do
-        concat UiBibz::Ui::TablePagination.new({ store: @store }).render
-        concat per_page_html
+        concat UiBibz::Ui::TablePagination.new(store: @store).render
+        concat UiBibz::Ui::TablePaginationPerPage.new(store: @store).render
         concat tag(:br, class: 'clear')
       end
     end
@@ -29,26 +29,6 @@ module UiBibz::Ui
       else
         Store.new @search_field.options.delete :store
       end
-    end
-
-    def per_page_html
-      content_tag :div, class: 'per-page' do
-        concat results_count_html
-        concat UiBibz::Utils::Internationalization.new("ui_bibz.table.pagination.per_page", default: "Per page: ").translate
-        concat select_tag('per_page', options_for_select([25, 50, 100], store.per_page), class: 'form-control')
-      end
-    end
-
-    def results_count_html
-      "#{ page_entries_info store.records } | ".html_safe
-    end
-
-    def from_current_results
-      store.limit_value * store.current_page - store.limit_value + 1
-    end
-
-    def to_current_results
-      store.limit_value * store.current_page
     end
 
   end

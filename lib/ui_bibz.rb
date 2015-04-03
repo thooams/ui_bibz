@@ -25,6 +25,7 @@ module UiBibz
     autoload :TablePanel,      "ui_bibz/ui/table/table_panel"
     autoload :TableSearchField, "ui_bibz/ui/table/table_search_field"
     autoload :TablePagination, "ui_bibz/ui/table/table_pagination"
+    autoload :TablePaginationPerPage, "ui_bibz/ui/table/table_pagination_per_page"
     autoload :LinkAction,      "ui_bibz/ui/table/components/link_action"
     autoload :Dropdown,        "ui_bibz/ui/dropdown/dropdown"
     autoload :DropdownButton,  "ui_bibz/ui/dropdown_button/dropdown"
