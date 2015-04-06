@@ -1,7 +1,7 @@
 module UiBibz::Helpers::UiHelper
 
-  def panel content = nil, options = nil, html_options = nil, &block
-    UiBibz::Ui::Panel.new(options, html_options).tap(&block).render
+  def panel content, options = nil, html_options = nil, &block
+    UiBibz::Ui::Panel.new(content, options, html_options, &block).tap(&block).render
   end
 
   def nav content = nil, options = nil, html_options = nil, &block
