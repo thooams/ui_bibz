@@ -4,7 +4,6 @@ class PanelTest < ActionView::TestCase
 
   setup do
     @content = 'Example'
-
   end
 
   test 'simple panel' do
