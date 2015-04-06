@@ -9,32 +9,28 @@ module UiBibz::Ui
     #
     #   Glyph.new(name)
     #
-    #   Glyph.new({name: 'add', size: 3, type: 'fw'})
+    #   Glyph.new('add', { size: 3, type: 'fw' })
     #
-    def initialize content
-      if content.kind_of?(Hash)
-        @name, @size, @type, @class = content[:name], content[:size], content[:type], content[:class]
-      else
-        @name = content
-      end
+    def initialize content, options = nil, html_options = nil, &block
+      super
     end
 
     def render
-      content_tag :i, '', class: klass
+      content_tag :i, '', class_and_html_options(classes)
     end
 
-    def klass
-      cls = [@class, "glyph", "fa", "fa-#{@name}", "fa-#{size}x"]
+    def classes
+      cls = ["glyph", "fa", "fa-#{ @content }", "fa-#{ size }x"]
       cls << "fa-#{type}" unless type.nil?
       cls.compact.join(' ')
     end
 
     def size
-      @size ||= 1
+      @options[:size] ||= 1
     end
 
     def type
-      @type
+      @options[:type]
     end
 
   end
