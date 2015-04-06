@@ -155,6 +155,24 @@ ou
 = glyph { name: 'star', size: 3, type: 'fw' }
 ```
 
+### Panel
+
+Un panel est constitué d'un header, d'un body et d'un footer. Les parties ```header```
+et ```body``` sont facultatives.
+
+Exemple :
+
+```ruby
+= panel 'Example'
+= panel state: :danger do
+  = 'Example'
+= panel(class: 'exemple').tap |p|
+  - p.header 'My header'
+  - p.body class: 'my-body' do
+    = 'My body'
+  - p.footer 'My footer'
+```
+
 ### Grid
 
 Une grid est un tableau avec recherche, pagination et trie des colonnes

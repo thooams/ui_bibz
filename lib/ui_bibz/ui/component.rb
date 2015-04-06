@@ -22,7 +22,8 @@ module UiBibz::Ui
       else
         @html_options, @options, @content = html_options, options, content
       end
-      @html_options ||= {}
+      @html_options = @html_options || {}
+      @options      = @options || {}
     end
 
     def render
@@ -36,17 +37,23 @@ module UiBibz::Ui
     end
 
     def options
-      @options || {}
+      @options
     end
 
     def cls klass
       [html_options.delete(:class), options.delete(:class), klass].compact.join(' ')
     end
 
+    def state
+      sym = options[:state] || :default
+      states[:sym]
+    end
+
     def class_and_html_options classes
       options_class = options[:class] if options.kind_of?(Hash)
       html_options[:class] = [
         html_options[:class],
+        state,
         options_class,
         [*classes]
       ].flatten.compact.join(' ') unless classes.nil?
@@ -56,6 +63,17 @@ module UiBibz::Ui
     def options_in_html_options opts
       html_options.merge!(opts) unless opts.nil?
       html_options
+    end
+
+    def states
+      if @states.nil?
+        states = {}
+        %w(default success primary info waring danger).each do |s|
+          states = states.merge(Hash[s.to_sym, s])
+        end
+        @states = states
+      end
+      @states
     end
 
   end
