@@ -1,4 +1,5 @@
 require 'test_helper'
+require "ui_bibz/ui/table/components/store"
 require "ui_bibz/ui/table/ux/paginable"
 require "ui_bibz/ui/table/ux/searchable"
 require "ui_bibz/ui/table/ux/sortable"
@@ -138,6 +139,40 @@ class TableTest < ActionView::TestCase
     expected = []
 
     assert_equal expected, actual
+  end
+
+  test 'simple table_panel' do
+    actual = UiBibz::Ui::TablePanel.new(store: @users).render
+  end
+
+  test 'complex table_panel' do
+    actual = UiBibz::Ui::TablePanel.new({ store: @users }, { class: 'toto' }).tap do |pane|
+      pane.header 'Test header'
+      pane.body class: 'ui' do
+        'Test body'
+      end
+    end.render
+
+  end
+
+  test 'complex table_panel with custom actions' do
+    actual = UiBibz::Ui::TablePanel.new({ store: @users }, { class: 'toto'}).tap do |pane|
+      pane.header 'Test header'
+      pane.body cls: 'ui' do
+        'Test body'
+      end
+      pane.columns do |c|
+        c.add({ name: '#', data_index: 'id' })
+        c.add({ name: 'Name fr', data_index: 'name_fr', link: edit_user_path(:id), order: 2 })
+        c.add({ name: 'Name en', data_index: 'name_en', order: 1 })
+        c.add({ name: 'Name en', data_index: 'name_en', format: lambda{ |records, record| "name #{ record.id}"}})
+      end
+      pane.actions do
+        link_to 'toto', users_path(:id)
+        link_to 'momo', users_path(:id)
+      end
+    end.render
+
   end
 
 end

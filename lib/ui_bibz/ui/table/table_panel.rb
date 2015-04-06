@@ -3,21 +3,25 @@ module UiBibz::Ui
 
     attr_accessor :columns
 
-    def initialize options = nil, html_options = nil
+    def initialize content = nil, options = nil, html_options = nil
+      options       = content
+      html_options  = options
       super
-      @store  = options[:store]
-      @table  = UiBibz::Ui::Table.new(options, html_options)
+      @store        = @options[:store]
+      table_options = (@options[:table_options] || {}).merge({ store: @store })
+      @table        = UiBibz::Ui::Table.new(table_options, @options[:table_html_options])
     end
 
     def render
       initialize_header
       initialize_footer
 
-      content_tag(:div, { class: cls("panel panel-default table-panel") }) do |f|
-        form_tag(url_for(controller: @table.store.controller, action: @table.store.action), method: :get) do
-          concat(header_html) unless @header.nil?
-          concat(@table.render)  unless @table.store.nil?
-          concat(footer_html) unless @footer.nil?
+      content_tag :div, class_and_html_options(panel_classes) do |f|
+        form_tag(url_for(controller: @store.controller, action: @store.action), method: :get) do
+          concat(header_html)   unless @header.nil?
+          concat(body_html)     unless @body.nil?
+          concat(@table.render) unless @store.nil?
+          concat(footer_html)   unless @footer.nil?
         end
       end
     end
@@ -32,8 +36,8 @@ module UiBibz::Ui
 
   private
 
-    def body_html
-      content_tag :div, @body.render, { class: @body.cls("panel-body"), role: 'tabpanel' }.merge(@body.html_options)
+    def panel_classes
+      %w(panel panel-default table-panel)
     end
 
     def search

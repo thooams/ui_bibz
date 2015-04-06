@@ -3,26 +3,6 @@ require 'test_helper'
 include UiBibz::Helpers
 class UiHelperTest < ActionView::TestCase
 
-  test 'complex panel' do
-    panel class: 'toto' do |pane|
-      pane.header class: 'header-class' do
-        "Test header"
-      end
-      pane.body 'Test body', nil, cls: 'body-toto'
-      pane.footer 'Test footer'
-    end
-  end
-
-  test 'simple panel' do
-    actual = panel(class: 'tata') do |pane|
-      pane.body 'test'
-    end
-    expected = "<div class=\"tata panel panel-default\"><div class=\"panel-body\" role=\"tabpanel\">test</div></div>"
-    expected = "<div class=\"tata panel panel-default\"><div class=\"panel-body\" role=\"tabpanel\">test</div></div>"
-
-    assert_equal actual, expected
-  end
-
   test 'nav' do
     nav do
       tab "<a href='#'>toto</a>"
@@ -57,55 +37,6 @@ class UiHelperTest < ActionView::TestCase
     tab "toto", active: true, selector: 'tab-en'
   end
 
-  test 'complex table_panel' do
-    create_list(:user, 25)
-    params = {
-      controller: 'users',
-      action:     'index',
-      sort:       'users.name_fr',
-      direction:  'asc',
-      per_page:   2,
-      page:       1
-    }
-    users = User.table_search_pagination(params, session)
-
-    table_panel({ store: users }, { class: 'toto' }) do |pane|
-      pane.header 'Test header'
-      pane.body class: 'ui' do
-        'Test body'
-      end
-    end
-  end
-
-  test 'complex table_panel with custom actions' do
-    create_list(:user, 25)
-    params = {
-      controller: 'users',
-      action:     'index',
-      sort:       'users.name_fr',
-      direction:  'asc',
-      per_page:   10,
-      page:       1
-    }
-    users  = User.table_search_pagination(params, session)
-
-    table_panel({ store: users }, { class: 'toto'}) do |pane|
-      pane.header 'Test header'
-      pane.body cls: 'ui' do
-        'Test body'
-      end
-      pane.columns do |c|
-        c.add({ name: '#', data_index: 'id' })
-        c.add({ name: 'Name fr', data_index: 'name_fr', link: edit_user_path(:id), order: 2 })
-        c.add({ name: 'Name en', data_index: 'name_en', order: 1 })
-        c.add({ name: 'Name en', data_index: 'name_en', format: lambda{ |records, record| "name #{ record.id}"}})
-      end
-      pane.actions do
-        link_to 'toto', users_path(:id)
-        link_to 'momo', users_path(:id)
-      end
-    end
-  end
 
   test 'link button' do
     actual   = button_link 'Toto', users_path, { type: :danger, glyph: 'add'}
