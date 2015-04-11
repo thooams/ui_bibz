@@ -1,14 +1,11 @@
 module UiBibz::Helpers::UiHelper
 
-  def panel content, options = nil, html_options = nil, &block
-    if block.nil?
-      UiBibz::Ui::Panel.new(content, options, html_options).render
+  def panel content = nil, options = nil, html_options = nil, &block
+    is_tap = (content[:tap] if content.kind_of?(Hash)) || (options[:tap] unless options.nil?)
+    if is_tap
+      UiBibz::Ui::Panel.new(content, options, html_options).tap(&block).render
     else
-      if block_given?
-        UiBibz::Ui::Panel.new(content, options, html_options, &block).render
-      else
-        UiBibz::Ui::Panel.new(content, options, html_options).tap(&block).render
-      end
+      UiBibz::Ui::Panel.new(content, options, html_options, &block).render
     end
   end
 
@@ -46,8 +43,13 @@ module UiBibz::Helpers::UiHelper
     UiBibz::Ui::TablePagination.new(options, html_options).render
   end
 
-  def table_panel options = nil, html_options = nil, &block
-    UiBibz::Ui::TablePanel.new(options, html_options).tap(&block).render
+  def table_panel content = nil, options = nil, html_options = nil, &block
+    is_tap = (content[:tap] if content.kind_of?(Hash)) || (options[:tap] unless options.nil?)
+    if is_tap
+      UiBibz::Ui::TablePanel.new(content, options, html_options).tap(&block).render
+    else
+      UiBibz::Ui::TablePanel.new(content, options, html_options, &block).render
+    end
   end
 
   # Table section end -------------------------------------------------------
@@ -85,7 +87,7 @@ module UiBibz::Helpers::UiHelper
   end
 
   def glyph name, options = nil, html_options = nil, &block
-    UiBibz::Ui::Glyph.new(content).render
+    UiBibz::Ui::Glyph.new(name, options, html_options, &block).render
   end
 
 end
