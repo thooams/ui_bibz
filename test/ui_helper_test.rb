@@ -26,9 +26,12 @@ class UiHelperTest < ActionView::TestCase
   end
 
   test 'list_group' do
-    list_group do
-      list 'toto'
-      list 'momo', tag: :a, href: '#momo'
+    list_group(type: :link) do |lg|
+      lg.list 'Momo', nil, { href: '#momo' }
+      lg.list(tap: true) do |l|
+        l.header 'My title'
+        l.body   'My body'
+      end
     end
   end
 

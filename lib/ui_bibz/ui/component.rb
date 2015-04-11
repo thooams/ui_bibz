@@ -49,10 +49,11 @@ module UiBibz::Ui
       states[:sym]
     end
 
-    def class_and_html_options classes
+    def class_and_html_options classes = nil
       options_class = options[:class] if options.kind_of?(Hash)
       html_options[:class] = [
         html_options[:class],
+        status,
         state,
         options_class,
         [*classes]
@@ -63,6 +64,10 @@ module UiBibz::Ui
     def options_in_html_options opts
       html_options.merge!(opts) unless opts.nil?
       html_options
+    end
+
+    def status
+      options[:status]
     end
 
     def states
