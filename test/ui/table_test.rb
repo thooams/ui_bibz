@@ -142,11 +142,11 @@ class TableTest < ActionView::TestCase
   end
 
   test 'simple table_panel' do
-    actual = UiBibz::Ui::TablePanel.new(store: @users).render
+    actual = UiBibz::Ui::TablePanel.new(store: @users, tap: true).render
   end
 
   test 'complex table_panel' do
-    actual = UiBibz::Ui::TablePanel.new({ store: @users }, { class: 'toto' }).tap do |pane|
+    actual = UiBibz::Ui::TablePanel.new({ store: @users, tap: true }, { class: 'toto' }).tap do |pane|
       pane.header 'Test header'
       pane.body class: 'ui' do
         'Test body'
@@ -156,7 +156,7 @@ class TableTest < ActionView::TestCase
   end
 
   test 'complex table_panel with custom actions' do
-    actual = UiBibz::Ui::TablePanel.new({ store: @users }, { class: 'toto'}).tap do |pane|
+    actual = UiBibz::Ui::TablePanel.new({ store: @users, tap: true }, { class: 'toto'}).tap do |pane|
       pane.header 'Test header'
       pane.body cls: 'ui' do
         'Test body'

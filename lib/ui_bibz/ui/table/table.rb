@@ -7,14 +7,15 @@ require "ui_bibz/ui/table/ux/searchable"
 require "ui_bibz/ui/table/ux/sortable"
 require "ui_bibz/ui/table/ux/actionable"
 module UiBibz::Ui
-  class Table < Ui
+  class Table < Component
 
     attr_accessor :columns
 
-    def initialize options = nil, html_options = nil
-      @options      = options || {}
-      @html_options = (html_options || {}).merge({ class: 'table' })
-      @columns      = Columns.new
+    def initialize content = nil, options = nil, html_options = nil, &block
+      options       = content
+      html_options  = options
+      super
+      @columns = Columns.new
     end
 
     def columns &block
@@ -64,8 +65,12 @@ module UiBibz::Ui
       @columns.list.empty? ? store.columns.list : @columns.list
     end
 
+    def table_classes
+      %w(table table-hover)
+    end
+
     def table_html
-      content_tag(:table, class: 'table table-hover') do
+      content_tag(:table, class_and_html_options(table_classes)) do
 
         ths = cols.collect do |col|
           content_tag(:th, sort.header(col)) unless col.hidden?

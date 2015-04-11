@@ -1,16 +1,27 @@
+require "ui_bibz/ui/List/components/list"
 module UiBibz::Ui
-  class ListGroup < Ui
+  class ListGroup < Component
 
     def initialize content = nil, options = nil, html_options = nil, &block
-      @list_group = Component.new content, options, html_options, &block
+      super
+      @lists = []
     end
 
     def render
-      content_tag tag, @list_group.render, { class: @list_group.cls("list-group") }
+      content_tag type, @lists.join().html_safe, class_and_html_options("list-group")
     end
 
-    def tag
-      @list_group.options[:tag] || :ul
+    def type
+      @options[:type] == :link ? :div : :ul
+    end
+
+    def list content = nil, options = nil, html_options = nil, &block
+      is_tap = (content[:tap] if content.kind_of?(Hash)) || (options[:tap] unless options.nil?)
+      if is_tap
+        @lists << List.new(content, options, html_options).tap(&block).render
+      else
+        @lists << List.new(content, options, html_options, &block).render
+      end
     end
 
   end

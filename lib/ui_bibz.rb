@@ -18,7 +18,6 @@ module UiBibz
     autoload :Ui,              "ui_bibz/ui/ui"
     autoload :Nav,             "ui_bibz/ui/nav/nav"
     autoload :ListGroup,       "ui_bibz/ui/list/list_group"
-    autoload :List,            "ui_bibz/ui/list/list"
     autoload :Panel,           "ui_bibz/ui/panel"
     autoload :Tab,             "ui_bibz/ui/nav/tab"
     autoload :Table,           "ui_bibz/ui/table/table"
