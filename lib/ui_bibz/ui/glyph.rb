@@ -1,7 +1,5 @@
 module UiBibz::Ui
-  class Glyph < Ui
-
-    attr_accessor :name
+  class Glyph < Component
 
     # Create a glyph
     #
@@ -13,6 +11,10 @@ module UiBibz::Ui
     #
     def initialize content, options = nil, html_options = nil, &block
       super
+      if @content.kind_of?(Hash)
+        @options = @content
+        @content = @options.delete(:name)
+      end
     end
 
     def render
@@ -21,7 +23,7 @@ module UiBibz::Ui
 
     def classes
       cls = ["glyph", "fa", "fa-#{ @content }", "fa-#{ size }x"]
-      cls << "fa-#{type}" unless type.nil?
+      cls << "fa-#{ type }" unless type.nil?
       cls.compact.join(' ')
     end
 
