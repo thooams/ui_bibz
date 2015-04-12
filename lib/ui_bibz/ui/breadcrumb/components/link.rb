@@ -6,7 +6,7 @@ module UiBibz::Ui
     end
 
     def render
-      content_tag :li, link, class_and_html_options
+      content_tag :li, [glyph, link].compact.join(' ').html_safe, class_and_html_options
     end
 
     def link
