@@ -17,10 +17,6 @@ module UiBibz::Helpers::UiHelper
     UiBibz::Ui::ListGroup.new(content, options, html_options).tap(&block).render
   end
 
-  def tab content = nil, options = nil, html_options = nil, &block
-    UiBibz::Ui::Tab.new(content, options, html_options, &block).render
-  end
-
   # Table section begin ------------------------------------------------------
 
   def table options = nil, html_options = nil, &block

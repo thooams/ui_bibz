@@ -11,10 +11,6 @@ module UiBibz::Ui
       content_tag type, @lists.join().html_safe, class_and_html_options("list-group")
     end
 
-    def type
-      @options[:type] == :link ? :div : :ul
-    end
-
     def list content = nil, options = {} , html_options = nil, &block
       is_tap  = (content[:tap] if content.kind_of?(Hash)) || (options[:tap] unless options.nil?)
       options = options.merge({ type: :link }) if @options[:type] == :link
@@ -24,6 +20,12 @@ module UiBibz::Ui
       else
         @lists << List.new(content, options, html_options, &block).render
       end
+    end
+
+  private
+
+    def type
+      @options[:type] == :link ? :div : :ul
     end
 
   end

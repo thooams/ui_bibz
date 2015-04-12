@@ -44,10 +44,6 @@ module UiBibz::Ui
       @options
     end
 
-    def cls klass
-      [html_options.delete(:class), options.delete(:class), klass].compact.join(' ')
-    end
-
     def state
       sym = options.delete(:state) if options[:state]
       sym = sym || :default

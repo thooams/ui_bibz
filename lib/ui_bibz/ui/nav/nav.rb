@@ -1,16 +1,25 @@
+require 'ui_bibz/ui/nav/components/tab'
 module UiBibz::Ui
-  class Nav < Ui
+  class Nav < Component
 
     def initialize content = nil, options = nil, html_options = nil, &block
-      @nav = Component.new content, options, html_options, &block
+      super
+      @links = []
     end
 
     def render
-      content_tag :ul, @nav.render, { class: @nav.cls("nav #{ type }") }
+      content_tag :ul, @links.join().html_safe, class_and_html_options(["nav", "nav-#{ type }"])
     end
 
+    def link content = nil, options = nil, html_options = nil, &block
+      @links << Link.new(content, options, html_options, &block).render
+    end
+
+  private
+
+    # tabs or pills
     def type
-      @nav.options[:type] || 'nav-tabs'
+      @options[:type] || 'tabs'
     end
 
   end
