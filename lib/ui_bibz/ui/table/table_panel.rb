@@ -4,10 +4,8 @@ module UiBibz::Ui
     attr_accessor :columns
 
     def initialize content = nil, options = nil, html_options = nil, &block
-      options       = content
-      html_options  = options
       super
-      @store        = @options[:store]
+      @store        = @options.delete(:store) if @options[:store]
       table_options = (@options[:table_options] || {}).merge({ store: @store })
       @table        = UiBibz::Ui::Table.new(table_options, @options[:table_html_options])
     end

@@ -20,7 +20,11 @@ module UiBibz::Ui
         context  = eval("self", block.binding)
         @content = context.capture(&block)
       else
-        @html_options, @options, @content = html_options, options, content
+        if content.kind_of?(Hash)
+          @html_options, @options = options, content
+        else
+          @html_options, @options, @content = html_options, options, content
+        end
       end
       @html_options = @html_options || {}
       @options      = @options || {}
@@ -45,7 +49,8 @@ module UiBibz::Ui
     end
 
     def state
-      sym = options[:state] || :default
+      sym = options.delete(:state) if options[:state]
+      sym = sym || :default
       states[:sym]
     end
 
