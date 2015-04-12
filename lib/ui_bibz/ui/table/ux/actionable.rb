@@ -35,7 +35,7 @@ module UiBibz::Ui
     end
 
     def actions_glyph
-      { name: 'ellipsis-v', size: 1, type: 'fw' }
+      { name: 'ellipsis-v', type: 'fw' }
     end
 
     def dropdown_action_name

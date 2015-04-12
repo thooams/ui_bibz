@@ -20,13 +20,29 @@ module UiBibz::Ui
     end
 
     def classes
-      cls = ["glyph", "fa", "fa-#{ content }", "fa-#{ size }x"]
-      cls << "fa-#{ type }" unless type.nil?
+      cls = ["glyph", "fa", "fa-#{ content }"]
+      cls << "fa-#{ size }x"         unless size.nil?
+      cls << "fa-rotate-#{ rotate }" unless rotate.nil?
+      cls << "fa-flip-#{ flip }"     unless flip.nil?
+      cls << "fa-stack-#{ stack }x"  unless stack.nil?
+      cls << "fa-#{ type }"          unless type.nil?
       cls.compact.join(' ')
     end
 
     def size
-      @options[:size] ||= 1
+      @options[:size]
+    end
+
+    def stack
+      @options[:stack]
+    end
+
+    def rotate
+      @options[:rotate]
+    end
+
+    def flip
+      @options[:flip]
     end
 
     def type
