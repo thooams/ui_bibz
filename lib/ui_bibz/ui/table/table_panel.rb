@@ -18,7 +18,7 @@ module UiBibz::Ui
         form_tag(url_for(controller: @store.controller, action: @store.action), method: :get) do
           concat(header_html)   unless @header.nil?
           concat(body_html)     unless @body.nil?
-          concat(@table.render) unless @store.nil?
+          concat(table_html)    unless @store.nil?
           concat(footer_html)   unless @footer.nil?
         end
       end
@@ -33,6 +33,10 @@ module UiBibz::Ui
     end
 
   private
+
+    def table_html
+      content_tag :div, @table.render, class: 'panel-table'
+    end
 
     def panel_classes
       %w(panel panel-default table-panel)
