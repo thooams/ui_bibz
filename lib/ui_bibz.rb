@@ -32,7 +32,7 @@ module UiBibz
     autoload :ButtonGroup,     "ui_bibz/ui/button/button_group"
     autoload :ButtonLink,      "ui_bibz/ui/button/button_link"
     autoload :Glyph,           "ui_bibz/ui/glyph"
-    autoload :Breadcrumb,      "ui_bibz/ui/breadcrumb"
+    autoload :Breadcrumb,      "ui_bibz/ui/breadcrumb/breadcrumb"
   end
 
   module Helpers

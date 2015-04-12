@@ -10,10 +10,13 @@ class UiHelperTest < ActionView::TestCase
   end
 
   test 'breadcrumb' do
-    breadcrumb do
-      "<li><a>Home</a></li>"
-      "<li class='active'>Toto</li>"
+    actual = breadcrumb do |b|
+      b.link 'Home', url: '#home'
+      b.link 'Toto', { url: '#toto', status: :active }
     end
+    expected = "<ol class=\"breadcrumb\"><li><a href=\"#home\">Home</a></li><li class=\"active\"><a href=\"#toto\">Toto</a></li></ol>"
+
+    assert_equal actual, expected
   end
 
   test 'tab' do
