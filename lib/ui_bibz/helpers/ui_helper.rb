@@ -52,7 +52,7 @@ module UiBibz::Helpers::UiHelper
 
   # Button section begin ----------------------------------------------------
 
-  def button_link content, options = nil, html_options = nil, &block
+  def button_link content = nil, options = nil, html_options = nil, &block
     UiBibz::Ui::ButtonLink.new(content, options, html_options, &block).render
   end
 
