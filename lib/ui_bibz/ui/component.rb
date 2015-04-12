@@ -56,13 +56,14 @@ module UiBibz::Ui
 
     def class_and_html_options classes = nil
       options_class = options[:class] if options.kind_of?(Hash)
-      html_options[:class] = [
+      cls = [
         html_options[:class],
         status,
         state,
-        options_class,
-        [*classes]
-      ].flatten.compact.join(' ') unless classes.nil?
+        options_class
+      ]
+      cls << classes unless classes.nil?
+      html_options[:class] = cls.compact.join(' ') unless cls.compact.empty?
       html_options
     end
 
