@@ -6,12 +6,6 @@ module UiBibz::Ui
     end
 
     def render
-      if @tap
-        @html_options = @options
-        @options      = @content || {}
-        @content      = nil
-      end
-
       content_tag tag, class_and_html_options('list-group-item') do
         concat @content    if @content
         concat header_html if @body
@@ -33,11 +27,11 @@ module UiBibz::Ui
   private
 
     def header_html
-      content_tag :h4, @header.render, class_and_html_options('list-group-item-heading')
+      content_tag :h4, @header.render, @header.class_and_html_options('list-group-item-heading')
     end
 
     def body_html
-      content_tag :p, @body.render, class_and_html_options('list-group-item-text')
+      content_tag :p, @body.render, @body.class_and_html_options('list-group-item-text')
     end
 
     def badge_html
@@ -45,12 +39,17 @@ module UiBibz::Ui
     end
 
     def tag
-      @options[:type] == :link ? :a : :li
+      is_link_type? ? :a : :li
+    end
+
+    def is_link_type?
+      @options[:type] == :link || @html_options[:type] == :link
     end
 
     def state
-      sym = @options[:state] || :default
-      "list-group-item-#{ states[sym] }"
+      unless @options[:state].nil?
+        "list-group-item-#{ states[@options[:state]] }"
+      end
     end
 
   end

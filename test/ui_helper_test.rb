@@ -25,21 +25,10 @@ class UiHelperTest < ActionView::TestCase
     end
   end
 
-  test 'list_group' do
-    list_group(type: :link) do |lg|
-      lg.list 'Momo', nil, { href: '#momo' }
-      lg.list(tap: true) do |l|
-        l.header 'My title'
-        l.body   'My body'
-      end
-    end
-  end
-
   test 'tab' do
     tab "<a href='#'>toto</a>", { active: true }, { class: 'tab'}
     tab "toto", active: true, selector: 'tab-en'
   end
-
 
   test 'link button' do
     actual   = button_link 'Toto', users_path, { type: :danger, glyph: 'add'}

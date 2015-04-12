@@ -152,7 +152,6 @@ class TableTest < ActionView::TestCase
         'Test body'
       end
     end.render
-
   end
 
   test 'complex table_panel with custom actions' do
@@ -162,17 +161,16 @@ class TableTest < ActionView::TestCase
         'Test body'
       end
       pane.columns do |c|
-        c.add({ name: '#', data_index: 'id' })
-        c.add({ name: 'Name fr', data_index: 'name_fr', link: edit_user_path(:id), order: 2 })
-        c.add({ name: 'Name en', data_index: 'name_en', order: 1 })
-        c.add({ name: 'Name en', data_index: 'name_en', format: lambda{ |records, record| "name #{ record.id}"}})
+        c.column({ name: '#', data_index: 'id' })
+        c.column({ name: 'Name fr', data_index: 'name_fr', link: edit_user_path(:id), order: 2 })
+        c.column({ name: 'Name en', data_index: 'name_en', order: 1 })
+        c.column({ name: 'Name en', data_index: 'name_en', format: lambda{ |records, record| "name #{ record.id}"}})
       end
       pane.actions do
         link_to 'toto', users_path(:id)
         link_to 'momo', users_path(:id)
       end
     end.render
-
   end
 
 end

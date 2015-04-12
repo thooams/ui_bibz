@@ -6,7 +6,7 @@ module UiBibz::Ui
       @columns = columns unless columns.nil?
     end
 
-    def add hash
+    def column hash
       @columns << Column.new(hash)
     end
 
