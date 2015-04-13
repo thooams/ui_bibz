@@ -23,6 +23,7 @@ module UiBibz
     autoload :Dropdown,                "ui_bibz/ui/dropdown/dropdown"
     autoload :DropdownButton,          "ui_bibz/ui/dropdown_button/dropdown"
     autoload :Glyph,                   "ui_bibz/ui/glyph"
+    autoload :Label,                   "ui_bibz/ui/label"
     autoload :ListGroup,               "ui_bibz/ui/list/list_group"
     autoload :Nav,                     "ui_bibz/ui/nav/nav"
     autoload :Panel,                   "ui_bibz/ui/panel"
