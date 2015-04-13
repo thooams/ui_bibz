@@ -1,5 +1,5 @@
 module UiBibz::Ui
-  class Link < Component
+  class BreadcrumbLink < Component
 
     def initialize content = nil, options = nil, html_options = nil, &block
       super
