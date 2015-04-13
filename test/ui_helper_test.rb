@@ -20,4 +20,11 @@ class UiHelperTest < ActionView::TestCase
     assert_equal expected, actual
   end
 
+  test 'alert' do
+    actual = alert 'toto'
+    expected = "<div class=\"alert-info alert\" role=\"alert\">toto</div>"
+
+    assert_equal expected, actual
+  end
+
 end

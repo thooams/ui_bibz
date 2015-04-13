@@ -8,7 +8,7 @@ class NavTest < ActionView::TestCase
       n.link 'Profile', url: "#profile", selector: 'profile'
       n.link 'Messages', url: "#messages", selector: 'messages'
     end.render
-    expected = "<ul class=\"nav nav-tabs\"><li aria-controls=\"home\" role=\"tab\" data-toggle=\"tab\" role=\"presentation\"><a aria-controls=\"home\" role=\"tab\" data-toggle=\"tab\" href=\"#Home\">Home</a></li><li aria-controls=\"profile\" role=\"tab\" data-toggle=\"tab\" role=\"presentation\"><a aria-controls=\"profile\" role=\"tab\" data-toggle=\"tab\" href=\"#profile\">Profile</a></li><li aria-controls=\"messages\" role=\"tab\" data-toggle=\"tab\" role=\"presentation\"><a aria-controls=\"messages\" role=\"tab\" data-toggle=\"tab\" href=\"#messages\">Messages</a></li></ul>"
+    expected = "<ul class=\"nav nav-tabs\"><li class=\"active\" role=\"presentation\"><a aria-controls=\"home\" role=\"tab\" data-toggle=\"tab\" href=\"#Home\">Home</a></li><li role=\"presentation\"><a aria-controls=\"profile\" role=\"tab\" data-toggle=\"tab\" href=\"#profile\">Profile</a></li><li role=\"presentation\"><a aria-controls=\"messages\" role=\"tab\" data-toggle=\"tab\" href=\"#messages\">Messages</a></li></ul>"
 
     assert_equal expected, actual
   end
@@ -19,7 +19,7 @@ class NavTest < ActionView::TestCase
       n.link 'Profile', url: "#profile", selector: 'profile', badge: 16
       n.link 'Messages', url: "#messages", selector: 'messages', status: :disabled
     end.render
-    expected = "<ul class=\"nav nav-pills nav-justified\"><li role=\"presentation\"><a href=\"#Home\">Home</a></li><li role=\"presentation\"><a href=\"#profile\">Profile</a><span class=\"badge\">16</span></li><li role=\"presentation\"><a href=\"#messages\">Messages</a></li></ul>"
+    expected = "<ul class=\"nav nav-pills nav-justified\"><li class=\"active\" role=\"presentation\"><a href=\"#Home\">Home</a></li><li role=\"presentation\"><a href=\"#profile\">Profile<span class=\"badge\">16</span></a></li><li class=\"disabled\" role=\"presentation\"><a href=\"#messages\">Messages</a></li></ul>"
 
     assert_equal expected, actual
   end

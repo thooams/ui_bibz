@@ -31,6 +31,10 @@ module UiBibz::Ui
     end
 
     def render
+      glyph_and_content_html
+    end
+
+    def glyph_and_content_html
       [glyph, @content].compact.join.html_safe
     end
 

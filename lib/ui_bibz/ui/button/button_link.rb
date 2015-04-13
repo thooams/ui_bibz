@@ -6,7 +6,7 @@ module UiBibz::Ui
     end
 
     def render
-      link_to [glyph, @content].compact.join.html_safe, @options[:url], class_and_html_options("btn")
+      link_to glyph_and_content_html, @options[:url], class_and_html_options("btn")
     end
 
   private

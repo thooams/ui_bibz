@@ -6,7 +6,7 @@ module UiBibz::Ui
     end
 
     def render
-      content_tag :button, [glyph, @content].compact.join.html_safe, class_and_html_options('btn')
+      content_tag :button, glyph_and_content_html, class_and_html_options('btn')
     end
 
   private
