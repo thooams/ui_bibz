@@ -10,7 +10,7 @@ class PanelTest < ActionView::TestCase
     actual   = UiBibz::Ui::Panel.new(@content).render
     expected = "<div class=\"panel-default panel\"><div class=\"panel-body\">#{ @content }</div></div>"
 
-    assert_equal actual, expected
+    assert_equal expected, actual
   end
 
   test 'simple panel with block' do
@@ -19,7 +19,7 @@ class PanelTest < ActionView::TestCase
     end.render
     expected = "<div class=\"panel-default panel\"><div class=\"panel-body\">#{ @content }</div></div>"
 
-    assert_equal actual, expected
+    assert_equal expected, actual
   end
 
   test 'simple panel with tap' do
@@ -28,7 +28,7 @@ class PanelTest < ActionView::TestCase
     end.render
     expected = "<div class=\"panel-default panel\"><div class=\"panel-body\">#{ @content }</div></div>"
 
-    assert_equal actual, expected
+    assert_equal expected, actual
   end
 
   test 'complex panel with tap' do
@@ -46,7 +46,7 @@ class PanelTest < ActionView::TestCase
 <div class=\"body-example panel-body\">#{ @content }</div>\
 <div class=\"panel-footer\">footer</div></div>"
 
-    assert_equal actual, expected
+    assert_equal expected, actual
   end
 
 end
