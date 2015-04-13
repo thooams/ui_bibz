@@ -3,12 +3,6 @@ require 'test_helper'
 include UiBibz::Helpers
 class UiHelperTest < ActionView::TestCase
 
-  test 'nav' do
-    nav do
-      tab "<a href='#'>toto</a>"
-    end
-  end
-
   test 'breadcrumb' do
     actual = breadcrumb do |b|
       b.link 'Home', url: '#home', glyph: 'home'
@@ -16,12 +10,7 @@ class UiHelperTest < ActionView::TestCase
     end
     expected = "<ol class=\"breadcrumb\"><li><i class=\"glyph fa fa-home\"></i>  <a href=\"#home\">Home</a></li><li class=\"active\"><a href=\"#toto\">Toto</a></li></ol>"
 
-    assert_equal actual, expected
-  end
-
-  test 'tab' do
-    tab "<a href='#'>toto</a>", { active: true }, { class: 'tab'}
-    tab "toto", active: true, selector: 'tab-en'
+    assert_equal expected, actual
   end
 
   test 'link action' do

@@ -59,7 +59,8 @@ module UiBibz::Ui
         options_class
       ]
       cls << classes unless classes.nil?
-      html_options[:class] = cls.compact.join(' ') unless cls.compact.empty?
+      cls = cls.flatten.compact
+      html_options[:class] = cls.join(' ') unless cls.empty?
       html_options
     end
 

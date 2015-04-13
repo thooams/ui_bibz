@@ -7,7 +7,7 @@ class ButtonTest < ActionView::TestCase
     actual   = UiBibz::Ui::Button.new('toto', state: :success).render
     expected = "<button class=\"btn-success btn\">toto</button>"
 
-    assert_equal actual, expected
+    assert_equal expected, actual
   end
 
   test 'button group' do
@@ -16,7 +16,7 @@ class ButtonTest < ActionView::TestCase
     end.render
     expected = "<div class=\"btn-group\"><button class=\"btn-default btn\">toto</button></div>"
 
-    assert_equal actual, expected
+    assert_equal expected, actual
   end
 
   test 'link button' do

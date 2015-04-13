@@ -1,4 +1,4 @@
-require "ui_bibz/ui/List/components/list"
+require "ui_bibz/ui/list/components/list"
 module UiBibz::Ui
   class ListGroup < Component
 
