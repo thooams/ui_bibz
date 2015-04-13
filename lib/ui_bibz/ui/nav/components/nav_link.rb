@@ -6,24 +6,25 @@ module UiBibz::Ui
     end
 
     def render
-      content_tag :li, class_and_html_options.merge({ role: 'presentation' }) do
-        concat content_htm
-        concat badge_html if @options[:badge]
-      end
+      content_tag :li, content_htm, class_and_html_options.merge({ role: 'presentation' })
     end
 
   private
 
     # content_htm and not content_html for haml bug
     def content_htm
-      link_to @content, @options[:url], html_options
+      link_to @options[:url], link_html_options do
+        concat @content
+        concat badge_html if @options[:badge]
+      end
     end
 
-    def html_options
+    def link_html_options
+      lho = @options[:link_html_options] || {}
       if @options[:nav_type] == :tabs
-        html_options = { "aria-controls" => @options[:selector], "role" => "tab", "data-toggle" => "tab" }
+        lho.merge({ "aria-controls" => @options[:selector], "role" => "tab", "data-toggle" => "tab" })
       else
-        html_options = {}
+        lho
       end
     end
 
