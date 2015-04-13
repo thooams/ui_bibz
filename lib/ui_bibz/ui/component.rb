@@ -50,6 +50,10 @@ module UiBibz::Ui
       states[:sym]
     end
 
+    def badge_html
+      content_tag :span, @options[:badge], class: 'badge'
+    end
+
     def class_and_html_options classes = nil
       options_class = options[:class] if options.kind_of?(Hash)
       cls = [

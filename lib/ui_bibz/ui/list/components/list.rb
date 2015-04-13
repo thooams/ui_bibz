@@ -34,10 +34,6 @@ module UiBibz::Ui
       content_tag :p, @body.render, @body.class_and_html_options('list-group-item-text')
     end
 
-    def badge_html
-      content_tag :span, @options[:badge], class: 'badge'
-    end
-
     def tag
       is_link_type? ? :a : :li
     end

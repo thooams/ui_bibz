@@ -1,4 +1,4 @@
-require 'ui_bibz/ui/breadcrumb/components/link'
+require 'ui_bibz/ui/breadcrumb/components/breadcrumb_link'
 module UiBibz::Ui
   class Breadcrumb < Component
 
@@ -12,7 +12,7 @@ module UiBibz::Ui
     end
 
     def link content = nil, options = nil, html_options = nil, &block
-      @links << Link.new(content, options, html_options, &block).render
+      @links << BreadcrumbLink.new(content, options, html_options, &block).render
     end
 
   end
