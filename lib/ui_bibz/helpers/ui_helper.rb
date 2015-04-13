@@ -9,6 +9,10 @@ module UiBibz::Helpers::UiHelper
     end
   end
 
+  def notify content = nil, options = nil, html_options = nil, &block
+    UiBibz::Ui::Alert.new(content, options, html_options, &block).render
+  end
+
   def nav content = nil, options = nil, html_options = nil, &block
     UiBibz::Ui::Nav.new(content, options, html_options).tap(&block).render
   end
