@@ -7,7 +7,7 @@ module UiBibz::Ui
 
     def render
       content_tag tag, class_and_html_options('list-group-item') do
-        concat @content    if @content
+        concat glyph_and_content_html if @content
         concat header_html if @body
         concat body_html   if @body
         concat badge_html  if @options[:badge]
@@ -16,12 +16,10 @@ module UiBibz::Ui
 
     def header content = nil, options = nil, html_options = nil, &block
       @header = Component.new content, options, html_options, &block
-      @tap    = true
     end
 
     def body content = nil, options = nil, html_options = nil, &block
       @body = Component.new content, options, html_options, &block
-      @tap  = true
     end
 
   private
