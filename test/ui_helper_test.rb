@@ -13,13 +13,6 @@ class UiHelperTest < ActionView::TestCase
     assert_equal expected, actual
   end
 
-  test 'link action' do
-    actual   = link_action 'Show', users_path, glyph: 'eye'
-    expected = "<li role=\"presentation\"><a role=\"menuitem\" tabindex=\"-1\" href=\"/users\"><i class=\"glyph fa fa-eye fa-fw\"></i> Show</a></li>"
-
-    assert_equal expected, actual
-  end
-
   test 'alert' do
     actual = notify 'toto'
     expected = "<div class=\"alert-info alert\" role=\"alert\">toto</div>"

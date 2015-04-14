@@ -2,8 +2,7 @@ module UiBibz::Ui
   class Columns
 
     def initialize columns = nil
-      @columns = []
-      @columns = columns unless columns.nil?
+      @columns = columns || []
     end
 
     def column hash

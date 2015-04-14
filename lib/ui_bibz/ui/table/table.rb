@@ -1,6 +1,7 @@
 require "ui_bibz/ui/table/components/store"
 require "ui_bibz/ui/table/components/columns"
 require "ui_bibz/ui/table/components/column"
+require "ui_bibz/ui/table/components/actions"
 require "ui_bibz/ui/table/ux/paginable"
 require "ui_bibz/ui/table/ux/paginable"
 require "ui_bibz/ui/table/ux/searchable"
@@ -14,25 +15,15 @@ module UiBibz::Ui
     def initialize content = nil, options = nil, html_options = nil, &block
       super
       @columns = Columns.new
+      @actions = Actions.new store
     end
 
     def columns &block
       @columns.tap(&block)
     end
 
-    # Add :id in url to match with current record
-    #
-    # ==== Signatures
-    #
-    #   table.actions do
-    #     = link_action 'Show', users_path(:id), glyph: 'eye'
-    #     = "---" # for divider
-    #     = link_action 'delete', users_path(:id), method: :delete, glyph: 'trash'
-    #   end
-    #
     def actions &block
-      context = eval("self", block.binding)
-      @actions = context.capture(&block)
+      @actions.tap(&block)
     end
 
     def render

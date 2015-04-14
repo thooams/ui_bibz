@@ -32,7 +32,6 @@ module UiBibz
     autoload :TableSearchField,        "ui_bibz/ui/table/table_search_field"
     autoload :TablePagination,         "ui_bibz/ui/table/table_pagination"
     autoload :TablePaginationPerPage,  "ui_bibz/ui/table/table_pagination_per_page"
-    autoload :LinkAction,              "ui_bibz/ui/table/components/link_action"
     autoload :Ui,                      "ui_bibz/ui/ui"
   end
 
