@@ -82,10 +82,6 @@ module UiBibz::Helpers::UiHelper
     UiBibz::Ui::DropdownButton.new(name, options, html_options).tab(&block).render
   end
 
-  def link_action content, options = nil, html_options = nil, &block
-    UiBibz::Ui::LinkAction.new(content, options, html_options, &block).render
-  end
-
   def glyph name, options = nil, html_options = nil, &block
     UiBibz::Ui::Glyph.new(name, options, html_options, &block).render
   end

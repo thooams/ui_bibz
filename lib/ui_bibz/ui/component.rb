@@ -35,13 +35,16 @@ module UiBibz::Ui
     end
 
     def glyph_and_content_html
-      [glyph, @content].compact.join.html_safe
+      [glyph_with_space, @content].compact.join.html_safe
     end
 
     def glyph
-      glyph_info = options.delete(:glyph)      if options.kind_of?(Hash)
-      glyph_info = html_options.delete(:glyph) if glyph_info.nil?
-      [Glyph.new(glyph_info).render, ' '].join unless glyph_info.nil?
+      glyph_info = options[:glyph] if options.kind_of?(Hash)
+      Glyph.new(glyph_info).render unless glyph_info.nil?
+    end
+
+    def glyph_with_space
+      "#{ glyph } " unless glyph.nil?
     end
 
     def options
