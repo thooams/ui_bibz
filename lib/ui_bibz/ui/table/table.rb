@@ -12,8 +12,6 @@ module UiBibz::Ui
     attr_accessor :columns
 
     def initialize content = nil, options = nil, html_options = nil, &block
-      options       = content
-      html_options  = options
       super
       @columns = Columns.new
     end
