@@ -8,7 +8,7 @@ module UiBibz::Ui
 
     def render
       content_tag :div do
-        concat content_tag(:div, grid_name, class: 'title')
+        concat content_tag(:div, table_name, class: 'title')
         concat TableSearchField.new(store: @store, wrap_form: false).render if searchable?
         concat tag :br, class: 'clear'
       end
@@ -24,10 +24,10 @@ module UiBibz::Ui
       @store.model.human_attribute_name(attr)
     end
 
-    def grid_title
+    def table_title
       if @options[:title] != false
         title = @options[:title] || "#{ @store.controller.humanize } list"
-        UiBibz::Utils::Internationalization.new("ui_bibz.grid.title.#{ model_name }", default: ["ui_bibz.grid.title.defaults", title]).translate
+        UiBibz::Utils::Internationalization.new("ui_bibz.table.title.#{ model_name }", default: ["ui_bibz.table.title.defaults", title]).translate
       end
     end
 
@@ -35,11 +35,11 @@ module UiBibz::Ui
       @store.model.to_s.underscore
     end
 
-    def grid_name
-      "#{grid_glyph}#{grid_title}".html_safe
+    def table_name
+      "#{table_glyph}#{table_title}".html_safe
     end
 
-    def grid_glyph
+    def table_glyph
       Glyph.new(@options[:glyph]).render unless @options[:glyph].nil?
     end
 

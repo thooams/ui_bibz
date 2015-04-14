@@ -1,5 +1,7 @@
 module UiBibz::Ui
-  class LinkAction < Ui
+  class LinkAction < Component
+
+    DIVIDER = '---'
 
     # Creates a link for actions in table
     #
@@ -13,34 +15,24 @@ module UiBibz::Ui
     #   end
     #
     def initialize content = nil, options = nil, html_options = nil, &block
-      @link_action = Component.new content, options, html_options, &block
+      super
     end
 
     def render
-      html_options = class_and_options_in_html_options
-      if @link_action.content == '---'
-        content_tag :li, '', role: 'presentation', class: 'divider'
-      else
-        content_tag :li, role: 'presentation' do
-          link_to @link_action.render, @link_action.options, html_options
-        end
+      @content == DIVIDER ? divider_html : link_html
+    end
+
+  private
+
+    def divider_html
+      content_tag :li, '', class_and_html_options('divider').merge({ role: 'presentation' })
+    end
+
+    def link_html
+      content_tag :li, role: 'presentation' do
+        link_to glyph_and_content_html, @options, class_and_html_options
       end
     end
 
-    def class_and_options_in_html_options
-      @link_action.options_in_html_options({ role: "menuitem", tabindex: "-1", glyph: glyph_info })
-    end
-
-    def glyph_info
-      glyph_info = @link_action.html_options[:glyph]
-      unless glyph_info.nil?
-        if glyph_info.kind_of?(String)
-          infos = { name: glyph_info, type: 'fw' }
-        else
-          infos = glyph_info.merge({ type: 'fw' }) if glyph_info[:type].nil?
-        end
-        @link_action.html_options[:glyph] = infos
-      end
-    end
   end
 end

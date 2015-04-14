@@ -14,7 +14,7 @@ module UiBibz::Ui
     # content_htm and not content_html for haml bug
     def content_htm
       link_to @options[:url], link_html_options do
-        concat @content
+        concat glyph_and_content_html
         concat badge_html if @options[:badge]
       end
     end
