@@ -166,9 +166,9 @@ class TableTest < ActionView::TestCase
         c.column({ name: 'Name en', data_index: 'name_en', order: 1 })
         c.column({ name: 'Name en', data_index: 'name_en', format: lambda{ |records, record| "name #{ record.id}"}})
       end
-      pane.actions do
-        link_to 'toto', users_path(:id)
-        link_to 'momo', users_path(:id)
+      pane.actions do |a|
+        a.action 'toto', url: users_path(:id), glyph: 'eye'
+        a.action 'momo', url: users_path(:id), glyph: 'home'
       end
     end.render
   end

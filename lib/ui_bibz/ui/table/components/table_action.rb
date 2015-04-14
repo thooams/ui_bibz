@@ -1,5 +1,5 @@
 module UiBibz::Ui
-  class LinkAction < Component
+  class TableAction < Component
 
     DIVIDER = '---'
 
@@ -30,7 +30,7 @@ module UiBibz::Ui
 
     def link_html
       content_tag :li, role: 'presentation' do
-        link_to glyph_and_content_html, @options, class_and_html_options
+        link_to glyph_and_content_html, @options[:url], class_and_html_options
       end
     end
 

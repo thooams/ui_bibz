@@ -44,34 +44,7 @@ module UiBibz::Ui
     end
 
     def actions_links record
-      custom_actions(record) || default_actions(record)
-    end
-
-    def dropdown_show_name
-      defaults = ['ui_bibz.table.actions.defaults.show', 'Show']
-      UiBibz::Utils::Internationalization.new("ui_bibz.table.actions.#{ @store.model.to_s.underscore }.show", default: defaults).translate
-    end
-
-    def dropdown_edit_name
-      defaults = ['ui_bibz.table.actions.defaults.edit', 'Edit']
-      UiBibz::Utils::Internationalization.new("ui_bibz.table.actions.#{ @store.model.to_s.underscore }.edit", default: defaults).translate
-    end
-
-    def dropdown_delete_name
-      defaults = ['ui_bibz.table.actions.defaults.delete', 'Delete']
-      UiBibz::Utils::Internationalization.new("ui_bibz.table.actions.#{ @store.model.to_s.underscore }.delete", default: defaults).translate
-    end
-
-    def default_actions record
-      capture do
-        concat LinkAction.new(dropdown_show_name, { controller: @store.controller, action: 'show', id: record.id }, glyph: 'eye').render
-        concat LinkAction.new(dropdown_edit_name, { controller: @store.controller, action: 'edit', id: record.id }, glyph: 'pencil').render
-        concat LinkAction.new(dropdown_delete_name, { controller: @store.controller, id: record.id }, method: :delete, glyph: 'trash', data: { confirm: 'Are you sure?' }).render
-      end
-    end
-
-    def custom_actions record
-      @actions.split("\n").compact.map{ |l| inject_url(l, record) }.join().html_safe unless @actions.nil?
+      @actions.list.compact.map{ |l| inject_url(l, record) }.join().html_safe unless @action.nil?
     end
 
     def td_action record
