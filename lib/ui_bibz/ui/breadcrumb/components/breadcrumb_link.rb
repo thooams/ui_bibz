@@ -12,7 +12,11 @@ module UiBibz::Ui
   private
 
     def link_html
-      link_to glyph_and_content_html, @options[:url], @options[:link_html_options]
+      if @options[:url]
+        link_to glyph_and_content_html, @options[:url], @options[:link_html_options]
+      else
+        glyph_and_content_html
+      end
     end
 
   end

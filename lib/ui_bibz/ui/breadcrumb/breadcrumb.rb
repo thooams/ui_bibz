@@ -8,7 +8,7 @@ module UiBibz::Ui
     end
 
     def render
-      content_tag :ol, @links.join('').html_safe, class_and_html_options("breadcrumb")
+      content_tag :ol, @links.join.html_safe, class_and_html_options("breadcrumb")
     end
 
     def link content = nil, options = nil, html_options = nil, &block

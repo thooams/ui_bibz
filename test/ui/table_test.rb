@@ -109,7 +109,7 @@ class TableTest < ActionView::TestCase
     options  = { actionable: true }
     action   = UiBibz::Ui::Actionable.new(@store, options)
     actual   = action.body @store.records.first, []
-    expected = ["<td><div class=\"btn-group-xs dropdown\"><button class=\"btn btn-default dropdown-toggle\" type=\"button\" data-toggle=\"dropdown\" aria-expanded=\"false\"><i class=\"glyph fa fa-ellipsis-v fa-fw\"></i>Actions<span class=\"caret\"></span></button><ul class=\"dropdown-menu dropdown-menu-right\" role=\"menu\"><li role=\"presentation\"><a role=\"menuitem\" tabindex=\"-1\" href=\"/users/1\"><i class=\"glyph fa fa-eye fa-fw\"></i> Show</a></li><li role=\"presentation\"><a role=\"menuitem\" tabindex=\"-1\" href=\"/users/1/edit\"><i class=\"glyph fa fa-pencil fa-fw\"></i> Edit</a></li><li role=\"presentation\"><a data-confirm=\"Are you sure?\" role=\"menuitem\" tabindex=\"-1\" rel=\"nofollow\" data-method=\"delete\" href=\"/users?id=1\"><i class=\"glyph fa fa-trash fa-fw\"></i> Delete</a></li></ul></div></td>"]
+    expected = ["<td><div class=\"btn-group-xs dropdown\"><button class=\"btn btn-default dropdown-toggle\" type=\"button\" data-toggle=\"dropdown\" aria-expanded=\"false\"><i class=\"glyph fa fa-ellipsis-v fa-fw\"></i> Actions<span class=\"caret\"></span></button><ul class=\"dropdown-menu dropdown-menu-right\" role=\"menu\"></ul></div></td>"]
 
     assert_equal expected, actual
   end
@@ -168,6 +168,7 @@ class TableTest < ActionView::TestCase
       end
       pane.actions do |a|
         a.action 'toto', url: users_path(:id), glyph: 'eye'
+        a.action '---'
         a.action 'momo', url: users_path(:id), glyph: 'home'
       end
     end.render

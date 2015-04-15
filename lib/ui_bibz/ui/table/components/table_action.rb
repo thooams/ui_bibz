@@ -8,19 +8,13 @@ module UiBibz::Ui
     end
 
     def render
-      @content == DIVIDER ? divider_html : link_html
+      @content == DIVIDER ? DIVIDER : link_html
     end
 
   private
 
-    def divider_html
-      content_tag :li, '', class_and_html_options('divider').merge({ role: 'presentation' })
-    end
-
     def link_html
-      content_tag :li, role: 'presentation' do
-        link_to glyph_and_content_html, @options[:url], class_and_html_options
-      end
+      link_to glyph_and_content_html, @options[:url], class_and_html_options
     end
 
   end
