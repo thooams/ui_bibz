@@ -6,13 +6,13 @@ module UiBibz::Ui
     end
 
     def render
-      content_tag :li, glyph_and_content_html, class_and_html_options
+      content_tag :li, link_html, class_and_html_options
     end
 
   private
 
-    def link
-      link_to @content, @options[:url], @options[:link_html_options]
+    def link_html
+      link_to glyph_and_content_html, @options[:url], @options[:link_html_options]
     end
 
   end
