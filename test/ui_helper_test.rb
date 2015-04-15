@@ -8,7 +8,7 @@ class UiHelperTest < ActionView::TestCase
       b.link 'Home', url: '#home', glyph: 'home'
       b.link 'Toto', { url: '#toto', status: :active }
     end
-    expected = "<ol class=\"breadcrumb\"><li><i class=\"glyph fa fa-home\"></i> <a href=\"#home\">Home</a></li><li class=\"active\"><a href=\"#toto\">Toto</a></li></ol>"
+    expected = "<ol class=\"breadcrumb\"><li><a href=\"#home\"><i class=\"glyph fa fa-home\"></i> Home</a></li><li class=\"active\"><a href=\"#toto\">Toto</a></li></ol>"
 
     assert_equal expected, actual
   end
@@ -21,8 +21,8 @@ class UiHelperTest < ActionView::TestCase
   end
 
   test 'label' do
-    actual   = label 'toto'
-    expected = "<span class=\"label-default label\">toto</span>"
+    actual   = label 'toto', state: :success, glyph: 'pencil'
+    expected = "<span class=\"label-success label\"><i class=\"glyph fa fa-pencil\"></i> toto</span>"
 
     assert_equal expected, actual
   end

@@ -3,17 +3,6 @@ module UiBibz::Ui
 
     DIVIDER = '---'
 
-    # Creates a link for actions in table
-    #
-    # ==== Signatures
-    #
-    #   LinkAction.new(name, url, html_options = {})
-    #   eq. LinkAction.new('Show', user_path, glyph: 'eye')
-    #
-    #   LinkAction.new(url, html_options = {}) do
-    #     # content
-    #   end
-    #
     def initialize content = nil, options = nil, html_options = nil, &block
       super
     end
