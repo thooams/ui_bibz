@@ -22,7 +22,7 @@ module UiBibz::Ui
   private
 
     def button_content
-      [glyph_with_space, @content, caret].compact.join.html_safe
+      [glyph_with_space, @content, ' ', caret].compact.join.html_safe
     end
 
     def button_html

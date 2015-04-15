@@ -69,7 +69,7 @@ module UiBibz::Helpers::UiHelper
   end
 
   def button_dropdown name, options = nil, html_options = nil, &block
-    UiBibz::Ui::ButtonDropdown.new(name, options, html_options).tab(&block).render
+    UiBibz::Ui::ButtonDropdown.new(name, options, html_options).tap(&block).render
   end
 
   # Button section end ----------------------------------------------------
@@ -82,8 +82,8 @@ module UiBibz::Helpers::UiHelper
     UiBibz::Ui::Dropdown.new(name, options, html_options).tap(&block).render
   end
 
-  def glyph name, options = nil, html_options = nil, &block
-    UiBibz::Ui::Glyph.new(name, options, html_options, &block).render
+  def glyph content, options = nil, html_options = nil, &block
+    UiBibz::Ui::Glyph.new(content, options, html_options, &block).render
   end
 
 end
