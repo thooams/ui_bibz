@@ -29,8 +29,12 @@ module UiBibz::Ui
   private
 
     def dropdown_action record
-      Dropdown.new dropdown_action_name, { position: :right, glyph: actions_glyph }, class: 'btn-group-xs' do
-        actions_links(record)
+      UiBibz::Ui::Dropdown.new(dropdown_action_name, { position: :right, glyph: actions_glyph }, class: 'btn-group-xs').tap do |d|
+        unless @actions.nil?
+          actions_links(record).each do |l|
+            d.list l.html_safe
+          end
+        end
       end.render
     end
 
@@ -44,7 +48,7 @@ module UiBibz::Ui
     end
 
     def actions_links record
-      @actions.list.compact.map{ |l| inject_url(l, record) }.join().html_safe unless @actions.nil?
+      @actions.list.compact.map{ |l| inject_url(l, record) }
     end
 
     def td_action record

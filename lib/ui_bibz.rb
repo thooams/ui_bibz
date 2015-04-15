@@ -21,7 +21,7 @@ module UiBibz
     autoload :ButtonLink,              "ui_bibz/ui/button/button_link"
     autoload :Component,               "ui_bibz/ui/component"
     autoload :Dropdown,                "ui_bibz/ui/dropdown/dropdown"
-    autoload :DropdownButton,          "ui_bibz/ui/dropdown_button/dropdown"
+    #autoload :DropdownButton,          "ui_bibz/ui/dropdown_button/dropdown"
     autoload :Glyph,                   "ui_bibz/ui/glyph"
     autoload :Label,                   "ui_bibz/ui/label"
     autoload :ListGroup,               "ui_bibz/ui/list/list_group"

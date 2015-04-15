@@ -68,6 +68,10 @@ module UiBibz::Helpers::UiHelper
     UiBibz::Ui::Button.new(content, options, html_options, &block).render
   end
 
+  def button_dropdown name, options = nil, html_options = nil, &block
+    UiBibz::Ui::ButtonDropdown.new(name, options, html_options).tab(&block).render
+  end
+
   # Button section end ----------------------------------------------------
 
   def breadcrumb content = nil, options = nil, html_options = nil, &block
@@ -75,11 +79,7 @@ module UiBibz::Helpers::UiHelper
   end
 
   def dropdown name, options = nil, html_options = nil, &block
-    UiBibz::Ui::Dropdown.new(name, options, html_options).tab(&block).render
-  end
-
-  def dropdown_button name, options = nil, html_options = nil, &block
-    UiBibz::Ui::DropdownButton.new(name, options, html_options).tab(&block).render
+    UiBibz::Ui::Dropdown.new(name, options, html_options).tap(&block).render
   end
 
   def glyph name, options = nil, html_options = nil, &block

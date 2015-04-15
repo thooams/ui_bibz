@@ -1,45 +1,53 @@
+require 'ui_bibz/ui/dropdown/components/dropdown_list'
 module UiBibz::Ui
-  class Dropdown < Ui
+  class Dropdown < Component
 
-    def initialize name, options = nil, html_options  = nil, &block
-      @name         = name
-      @options      = options || {}
-      @html_options = html_options || {}
-      @block        = block
+    def initialize content, options = nil, html_options  = nil, &block
+      super
+      @lists = []
+      @state = @options.delete(:state)
     end
 
     def render
-      button = [glyph, @name, caret].compact.join.html_safe
-      content_tag :div, class: cls('dropdown') do
-        concat content_tag :button, button, class: 'btn btn-default dropdown-toggle', type: 'button', "data-toggle" => 'dropdown', "aria-expanded" => false
-        concat content_tag(:ul, @block.call, class: "dropdown-menu dropdown-menu-#{ position }", "role" => 'menu')
+      content_tag :div, class_and_html_options(type) do
+        concat button_html
+        concat ul_html
       end
+    end
+
+    def list content = nil, options = nil, html_options = nil, &block
+      @lists << DropdownList.new(content, options, html_options, &block).render
     end
 
   private
 
-    def glyph
-      Glyph.new(@options[:glyph]).render unless @options[:glyph].nil?
+    def button_content
+      [glyph_with_space, @content, caret].compact.join.html_safe
     end
 
-    def html_options
-      @html_options || {}
+    def button_html
+      content_tag :button, button_content, class: "btn #{ button_state } dropdown-toggle", type: 'button', "data-toggle" => 'dropdown', "aria-expanded" => false
+    end
+
+    def ul_html
+      content_tag :ul, @lists.join.html_safe, class: "dropdown-menu dropdown-menu-#{ position }", role: 'menu'
     end
 
     def caret
       content_tag :span, '', class: 'caret'
     end
 
-    def separator
-      content_tag :li, '', class: 'divider', role: 'presentation'
-    end
-
     def position
-      (@options[:position] || 'left').to_s
+      @options[:position] || 'left'
     end
 
-    def cls klass
-      [html_options.delete(:class), klass].compact.join(' ')
+    def type
+      @options[:type] || 'dropdown'
+    end
+
+    def button_state
+      sym = @state || :default
+      "btn-#{  states[sym] }"
     end
 
   end

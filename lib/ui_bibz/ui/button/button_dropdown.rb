@@ -1,8 +1,8 @@
 module UiBibz::Ui
-  class DropdownButton < Dropdown
+  class ButtonDropdown < Component
 
     def initialize name, options = nil, html_options = nil, &block
-      @name, @options, @html_options, @block = name, options, html_options, block
+      super
     end
 
     def render
