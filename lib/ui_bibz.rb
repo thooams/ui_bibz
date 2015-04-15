@@ -20,6 +20,7 @@ module UiBibz
     autoload :ButtonDropdown,          "ui_bibz/ui/button/button_dropdown"
     autoload :ButtonGroup,             "ui_bibz/ui/button/button_group"
     autoload :ButtonLink,              "ui_bibz/ui/button/button_link"
+    autoload :ButtonSplitDropdown,     "ui_bibz/ui/button/button_split_dropdown"
     autoload :Component,               "ui_bibz/ui/component"
     autoload :Dropdown,                "ui_bibz/ui/dropdown/dropdown"
     autoload :Glyph,                   "ui_bibz/ui/glyph"

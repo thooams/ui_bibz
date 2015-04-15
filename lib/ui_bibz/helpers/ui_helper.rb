@@ -72,6 +72,10 @@ module UiBibz::Helpers::UiHelper
     UiBibz::Ui::ButtonDropdown.new(name, options, html_options).tap(&block).render
   end
 
+  def button_split_dropdown name, options = nil, html_options = nil, &block
+    UiBibz::Ui::ButtonSplitDropdown.new(name, options, html_options).tap(&block).render
+  end
+
   # Button section end ----------------------------------------------------
 
   def breadcrumb content = nil, options = nil, html_options = nil, &block

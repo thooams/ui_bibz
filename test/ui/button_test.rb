@@ -39,4 +39,18 @@ class ButtonTest < ActionView::TestCase
     assert_equal expected, actual
   end
 
+  test 'button split dropdown' do
+      actual = UiBibz::Ui::ButtonSplitDropdown.new("Dropdown", type: :dropup, state: :primary).tap do |d|
+      d.list 'toto'
+      d.list 'header', type: :header
+      d.list 'momo'
+      d.list '---'
+      d.list 'lolo'
+    end.render
+    expected = "<div class=\"btn-group dropup\" role=\"group\"><button class=\"btn btn-primary\">Dropdown</button><button class=\"btn btn-primary dropdown-toggle\" type=\"button\" data-toggle=\"dropdown\" aria-expanded=\"false\"><span class=\"caret\"></span><span class=\"sr-only\">Toggle Dropdown</span></button><ul class=\"dropdown-menu dropdown-menu-left\" role=\"menu\"><li role=\"presentation\">toto</li><li class=\"dropdown-header\" role=\"presentation\">header</li><li role=\"presentation\">momo</li><li class=\"divider\" role=\"presentation\"></li><li role=\"presentation\">lolo</li></ul></div>"
+
+    assert_equal expected, actual
+  end
+
+
 end
