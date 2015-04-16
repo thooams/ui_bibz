@@ -21,7 +21,7 @@ class UiHelperTest < ActionView::TestCase
   end
 
   test 'label' do
-    actual   = label 'toto', state: :success, glyph: 'pencil'
+    actual   = lab 'toto', state: :success, glyph: 'pencil'
     expected = "<span class=\"label-success label\"><i class=\"glyph fa fa-pencil\"></i> toto</span>"
 
     assert_equal expected, actual
