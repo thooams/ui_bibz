@@ -95,5 +95,9 @@ module UiBibz::Ui
       @states
     end
 
+    def add_classes *classes
+      classes.compact.join(' ')
+    end
+
   end
 end

@@ -16,5 +16,10 @@ module UiBibz::Ui
       "btn-#{  states[sym] }"
     end
 
+    # :lg, :sm or :xs
+    def size
+      "btn-#{ @options[:size] }" if @options[:size]
+    end
+
   end
 end
