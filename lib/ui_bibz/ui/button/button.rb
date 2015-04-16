@@ -6,7 +6,7 @@ module UiBibz::Ui
     end
 
     def render
-      content_tag :button, glyph_and_content_html, class_and_html_options('btn')
+      content_tag :button, glyph_and_content_html, class_and_html_options(['btn', size])
     end
 
   private
@@ -14,6 +14,11 @@ module UiBibz::Ui
     def state
       sym = @options[:state] || :default
       "btn-#{  states[sym] }"
+    end
+
+    # :lg, :sm or :xs
+    def size
+      "btn-#{ @options[:size] }" if @options[:size]
     end
 
   end

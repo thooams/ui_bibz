@@ -26,7 +26,7 @@ module UiBibz::Ui
     end
 
     def button_html
-      content_tag :button, button_content, class: "btn #{ button_state } dropdown-toggle", type: 'button', "data-toggle" => 'dropdown', "aria-expanded" => false
+      content_tag :button, button_content, class: add_classes("btn", button_state, size, "dropdown-toggle"), type: 'button', "data-toggle" => 'dropdown', "aria-expanded" => false
     end
 
     def ul_html
@@ -48,6 +48,11 @@ module UiBibz::Ui
     def button_state
       sym = @state || :default
       "btn-#{  states[sym] }"
+    end
+
+    # :lg, :sm or :xs
+    def size
+      "btn-#{ @options[:size] }" if @options[:size]
     end
 
   end
