@@ -1,6 +1,16 @@
 module UiBibz::Ui
   class Button < Component
 
+    # Create a button
+    #
+    # ==== Signatures
+    #
+    #   UiBibz::Ui::Button.new 'test', type: :primary, size: :xs
+    #
+    #   UiBibz::Ui::Button.new(type: :primary) do
+    #     test
+    #   end
+    #
     def initialize content = nil, options = nil, html_options = nil, &block
       super
     end

@@ -2,6 +2,15 @@ require 'ui_bibz/ui/dropdown/components/dropdown_list'
 module UiBibz::Ui
   class Dropdown < Component
 
+    # Create a dropdown
+    #
+    # ==== Signatures
+    #
+    #   UiBibz::Ui::Dropdown.new(name, state: :success).tap do |d|
+    #     d.list link_to('test', '#')
+    #     d.list link_to('test2', '#')
+    #   end
+    #
     def initialize content, options = nil, html_options  = nil, &block
       super
       @lists = []

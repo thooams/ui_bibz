@@ -5,11 +5,11 @@ module UiBibz::Ui
     #
     # ==== Signatures
     #
-    #   Glyph.new(name)
+    #   UiBibz::Ui::Glyph.new(name)
     #
-    #   Glyph.new('add', { size: 3, type: 'fw' })
+    #   UiBibz::Ui::Glyph.new('add', { size: 3, type: 'fw' })
     #
-    #   Glyph.new({ name: 'add', size: 3, type: 'fw' })
+    #   UiBibz::Ui::Glyph.new({ name: 'add', size: 3, type: 'fw' })
     #
     def initialize content, options = nil, html_options = nil, &block
       super

@@ -5,9 +5,9 @@ module UiBibz::Ui
     #
     # ==== Signatures
     #
-    #   Alert.new(content, type: :success)
+    #   UiBibz::Ui::Alert.new(content, type: :success)
     #
-    #   Alert.new() do
+    #   UiBibz::Ui::Alert.new() do
     #     #content
     #   end
     #

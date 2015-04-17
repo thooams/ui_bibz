@@ -37,6 +37,7 @@ module UiBibz::Ui
     end
 
     def is_link_type?
+      @html_options[:href] = @options[:url] if @options[:url]
       @options[:type] == :link || @html_options[:type] == :link
     end
 

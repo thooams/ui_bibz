@@ -5,9 +5,9 @@ module UiBibz::Ui
     #
     # ==== Signatures
     #
-    #   Label.new(content, type: :success)
+    #   UiBibz::Ui::Label.new(content, type: :success)
     #
-    #   Label.new() do
+    #   UiBibz::Ui::Label.new() do
     #     #content
     #   end
     #
