@@ -1,7 +1,7 @@
 module UiBibz::Ui
   class Row < Component
 
-    # Create an alert
+    # Create a row
     #
     # ==== Signatures
     #
