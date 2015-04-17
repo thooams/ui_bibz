@@ -14,7 +14,7 @@ class ButtonTest < ActionView::TestCase
     actual = UiBibz::Ui::ButtonGroup.new position: :vertical do
       UiBibz::Ui::Button.new('toto').render
     end.render
-    expected = "<div class=\"btn-group btn-group-vertical\" role=\"role\"><button class=\"btn-default btn\">toto</button></div>"
+    expected = "<div class=\"btn-group btn-group-vertical\" role=\"group\"><button class=\"btn-default btn\">toto</button></div>"
 
     assert_equal expected, actual
   end

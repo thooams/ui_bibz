@@ -33,8 +33,13 @@ module UiBibz::Helpers::UiHelper
 
   # Table section begin ------------------------------------------------------
 
-  def table options = nil, html_options = nil, &block
-    UiBibz::Ui::Table.new(options, html_options).tap(&block).render
+  def table content = nil, options = nil, html_options = nil, &block
+    is_tap = (content[:tap] if content.kind_of?(Hash)) || (options[:tap] unless options.nil?)
+    if is_tap
+      UiBibz::Ui::Table.new(content, options, html_options).tap(&block).render
+    else
+      UiBibz::Ui::Table.new(content, options, html_options, &block).render
+    end
   end
 
   def table_search_field options, html_options = nil
