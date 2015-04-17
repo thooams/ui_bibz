@@ -54,12 +54,12 @@ module UiBibz::Ui
       @columns.list.empty? ? store.columns.list : @columns.list
     end
 
-    def table_classes
-      %w(table table-hover)
+    def type
+      "table-#{ @options[:type] }"
     end
 
     def table_html
-      content_tag(:table, class_and_html_options(table_classes)) do
+      content_tag(:table, class_and_html_options(["table", type])) do
 
         ths = cols.collect do |col|
           content_tag(:th, sort.header(col)) unless col.hidden?

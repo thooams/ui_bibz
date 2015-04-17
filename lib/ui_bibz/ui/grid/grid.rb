@@ -35,7 +35,7 @@ module UiBibz::Ui
 
     def render
       define_col_nums
-      UiBibz::Ui::Row.new do
+      UiBibz::Ui::Row.new(class: 'grid') do
         # top
         concat top_view    unless @views[:top].nil?
         # left
@@ -49,28 +49,28 @@ module UiBibz::Ui
       end.render
     end
 
-    def view_by_num c, num
-      UiBibz::Ui::Col.new(c.content, c.options.merge({ num: num }), c.html_options).render
+    def view_by_num c, num, item_class
+      UiBibz::Ui::Col.new(c.content, c.options.merge({ num: num }), c.class_and_html_options(['col', item_class])).render
     end
 
     def top_view
-      view_by_num @views[:top][:component], COL_NUM
+      view_by_num @views[:top][:component], COL_NUM, 'grid-top'
     end
 
     def bottom_view
-      view_by_num @views[:bottom][:component], COL_NUM
+      view_by_num @views[:bottom][:component], COL_NUM, 'grid-bottom'
     end
 
     def left_view
-      view_by_num @views[:left][:component], @left_val
+      view_by_num @views[:left][:component], @left_val, 'grid-left'
     end
 
     def center_view
-      view_by_num @views[:center][:component], COL_NUM-@left_val-@right_val
+      view_by_num @views[:center][:component], COL_NUM-@left_val-@right_val, 'grid-center'
     end
 
     def right_view
-      view_by_num @views[:right][:component], @right_val
+      view_by_num @views[:right][:component], @right_val, 'grid-right'
     end
 
     def define_col_nums

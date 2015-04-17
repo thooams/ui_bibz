@@ -38,7 +38,7 @@ class GridTest < ActionView::TestCase
       g.view 'right', position: :right
       g.view 'bottom', position: :bottom
     end.render
-    expected = "<div class=\"row\"><div class=\"col-md-1\">left</div><div class=\"col-md-10\">center</div><div class=\"col-md-1\">right</div><div class=\"col-md-12\">bottom</div></div>"
+    expected = "<div class=\"grid row\"><div class=\"col grid-left col-md-1\">left</div><div class=\"col grid-center col-md-10\">center</div><div class=\"col grid-right col-md-1\">right</div><div class=\"col grid-bottom col-md-12\">bottom</div></div>"
 
     assert_equal expected, actual
   end

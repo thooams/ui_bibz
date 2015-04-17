@@ -15,13 +15,13 @@ module UiBibz::Ui
     end
 
     def render
-      content_tag :div, @content, class_and_html_options(["btn-group", size, position]).merge({ role: 'role' })
+      content_tag :div, @content, class_and_html_options(["btn-#{ type }", size, position]).merge({ role: type })
     end
 
   private
 
     def type
-      @options[:type] || :button
+      @options[:type] || :group
     end
 
     def size
