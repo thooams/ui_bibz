@@ -29,4 +29,18 @@ class GridTest < ActionView::TestCase
     assert_equal expected, actual
   end
 
+  test 'grid' do
+    actual = UiBibz::Ui::Grid.new().tap do |g|
+      g.view position: :left do
+        'left'
+      end
+      g.view 'center', position: :center
+      g.view 'right', position: :right
+      g.view 'bottom', position: :bottom
+    end.render
+    expected = "<div class=\"row\"><div class=\"col-md-1\">left</div><div class=\"col-md-10\">center</div><div class=\"col-md-1\">right</div><div class=\"col-md-12\">bottom</div></div>"
+
+    assert_equal expected, actual
+  end
+
 end

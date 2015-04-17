@@ -27,6 +27,10 @@ module UiBibz::Helpers::UiHelper
     UiBibz::Ui::ListGroup.new(content, options, html_options).tap(&block).render
   end
 
+  def grid options = nil, html_options = nil, &block
+    UiBibz::Ui::Grid.new(options, html_options).tap(&block).render
+  end
+
   # Table section begin ------------------------------------------------------
 
   def table options = nil, html_options = nil, &block
