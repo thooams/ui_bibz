@@ -8,9 +8,9 @@ module UiBibz::Ui
     #
     # ==== Signatures
     #
-    #   Component.new(content, options = {}, html_options = {})
+    #   UiBibz::Ui::Component.new(content, options = {}, html_options = {})
     #
-    #   Component.new(options = {}, html_options = {}) do
+    #   UiBibz::Ui::Component.new(options = {}, html_options = {}) do
     #     # content
     #   end
     #

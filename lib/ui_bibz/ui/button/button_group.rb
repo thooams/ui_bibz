@@ -1,6 +1,15 @@
 module UiBibz::Ui
   class ButtonGroup < Component
 
+    # Create a button group
+    #
+    # ==== Signatures
+    #
+    #   UiBibz::Ui::ButtonGroup.new(position: :vertical, size: :xs) do
+    #     UiBibz::Ui.Button.new('test').render
+    #     UiBibz::Ui.Button.new('test2').render
+    #   end
+    #
     def initialize content = nil, options = nil, html_options = nil, &block
       super
     end

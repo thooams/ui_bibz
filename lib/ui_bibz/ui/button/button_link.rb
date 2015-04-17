@@ -1,6 +1,16 @@
 module UiBibz::Ui
   class ButtonLink < Component
 
+    # Create a button link
+    #
+    # ==== Signatures
+    #
+    #   UiBibz::Ui::ButtonLink.new 'test', type: :primary, url: '#'
+    #
+    #   UiBibz::Ui::ButtonLink.new(type: :primary, url: '#') do
+    #     test
+    #   end
+    #
     def initialize content = nil, options = nil, html_options = nil, &block
       super
     end

@@ -1,6 +1,24 @@
 module UiBibz::Ui
   class Panel < Component
 
+    # Create a panel
+    #
+    # ==== Signatures
+    #
+    #   UiBibz::Ui::Panel('test')
+    #
+    #   UiBibz::Ui::Panel(state: :primary) do |d|
+    #     'test'
+    #   end
+    #
+    #   UiBibz::Ui::Panel.new().tap do |p|
+    #     p.header 'header', class: 'header-test'
+    #     p.body do
+    #       'body'
+    #     end
+    #     p.footer 'footer'
+    #   end
+    #
     def initialize content = nil, options = nil, html_options = nil, &block
       super
     end

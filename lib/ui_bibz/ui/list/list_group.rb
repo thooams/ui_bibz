@@ -2,6 +2,28 @@ require "ui_bibz/ui/list/components/list"
 module UiBibz::Ui
   class ListGroup < Component
 
+    # Create a list group
+    #
+    # ==== Signatures
+    #
+    #   UiBibz::Ui::ListGroup.new().tap do |d|
+    #     d.list 'Test', state: :success
+    #     d.list 'Test2', state: :primary
+    #   end
+    #
+    #   UiBibz::Ui::ListGroup.new(type: :link).tap do |d|
+    #     d.list 'Test', state: :success, url: '#test'
+    #     d.list(state: :primary) do
+    #       'Test 2'
+    #     end
+    #     d.list(tap: true, status: :active) do |l|
+    #       l.header 'My title', nil, class: 'my-title'
+    #       l.body do
+    #         'My content'
+    #       end
+    #     end
+    #   end
+    #
     def initialize content = nil, options = nil, html_options = nil, &block
       super
       @lists = []
