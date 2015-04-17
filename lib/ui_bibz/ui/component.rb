@@ -51,6 +51,14 @@ module UiBibz::Ui
       @options
     end
 
+    def html_options
+      @html_options
+    end
+
+    def content
+      @content
+    end
+
     def state
       sym = options.delete(:state) if options[:state]
       sym = sym || :default
