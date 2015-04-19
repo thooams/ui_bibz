@@ -26,6 +26,7 @@ module UiBibz
     autoload :Dropdown,                "ui_bibz/ui/dropdown/dropdown"
     autoload :Glyph,                   "ui_bibz/ui/glyph"
     autoload :Grid,                    "ui_bibz/ui/grid/grid"
+    autoload :Jumbotron,               "ui_bibz/ui/jumbotron"
     autoload :Label,                   "ui_bibz/ui/label"
     autoload :ListGroup,               "ui_bibz/ui/list/list_group"
     autoload :Nav,                     "ui_bibz/ui/nav/nav"
