@@ -27,4 +27,18 @@ class UiHelperTest < ActionView::TestCase
     assert_equal expected, actual
   end
 
+  test 'jumbotron with full_width' do
+    actual   = jumbotron 'toto', full_width: true
+    expected = "<div class=\"jumbotron\"><div class=\"container\">toto</div></div>"
+
+    assert_equal expected, actual
+  end
+
+  test 'jumbotron' do
+    actual   = jumbotron 'toto'
+    expected = "<div class=\"jumbotron\">toto</div>"
+
+    assert_equal expected, actual
+  end
+
 end

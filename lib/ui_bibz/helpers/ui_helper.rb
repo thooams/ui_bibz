@@ -19,6 +19,10 @@ module UiBibz::Helpers::UiHelper
     UiBibz::Ui::Label.new(content, options, html_options, &block).render
   end
 
+  def jumbotron content = nil, options = nil, html_options = nil, &block
+    UiBibz::Ui::Jumbotron.new(content, options, html_options, &block).render
+  end
+
   def nav content = nil, options = nil, html_options = nil, &block
     UiBibz::Ui::Nav.new(content, options, html_options).tap(&block).render
   end
