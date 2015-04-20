@@ -1,0 +1,119 @@
+= grid do |g|
+  - g.view num: 5, position: :left do
+    = 'left'
+  - g.view position: :right do
+    = 'right'
+  - g.view({ position: :top}, { class: 'success'}) do
+    = 'top'
+  - g.view position: :center do
+    = 'center'
+  - g.view position: :bottom do
+    = 'bottom'
+
+
+= notify 'toto', glyph: 'eye', close: true
+
+= lab 'momo', glyph: 'pencil', state: :success
+%br
+%br
+
+= button_group position: :vertical, size: :xs do
+  = button 'toto', status: :active
+  = button 'momo'
+  = button 'lolo'
+
+= button_group do
+  = button 'toto', status: :active
+  = button 'momo'
+  = button 'lolo'
+  = button_dropdown 'Button Dropdown' do |bd|
+    - bd.list 'header', type: :header
+    - bd.list link_to 'momo', '#'
+    - bd.list '---'
+    - bd.list link_to 'lolo', '#'
+
+%br
+%br
+
+= dropdown 'Dropdown', state: :success do |d|
+  - d.list do
+    = link_to 'toto', "#"
+  - d.list 'header', type: :header
+  - d.list link_to 'momo', '#'
+  - d.list '---'
+  - d.list link_to 'lolo', '#'
+
+
+%br
+%br
+
+= button_split_dropdown 'Dropdown', state: :primary do |d|
+  - d.list do
+    = link_to 'toto', "#"
+  - d.list 'header', type: :header
+  - d.list link_to 'momo', '#'
+  - d.list '---'
+  - d.list link_to 'lolo', '#'
+
+
+%br
+%br
+
+= nav position: :justified do |n|
+  - n.link 'toto', { url: '#toto', status: :active, glyph: 'eye' }
+  - n.link 'momo', { url: '#mono' }
+
+%br
+= nav type: :pills do |n|
+  - n.link 'toto', url: '#toto', status: :active, glyph: 'eye'
+  - n.link 'momo', url: '#mono', badge: 30
+
+%br
+= breadcrumb do |b|
+  - b.link 'toto', url: '#toto', glyph: 'home'
+  - b.link 'momo', url: '#momo'
+  - b.link 'nono', status: :active
+
+= list_group type: :link do |lg|
+  - lg.list 'Momo', { state: :success, glyph: 'home' }, { href: '#Momo' }
+  - lg.list({ tap: true, status: :active }, { href: '#Toto' }) do |l|
+    - l.header 'My title'
+    - l.body 'My title'
+
+= list_group do |lg|
+  - lg.list 'Momo', glyph: 'home'
+  - lg.list 'Toto'
+
+= panel(state: :danger, tap: true, class: 'toto') do |p|
+  - p.header 'toto', glyph: 'eye'
+  - p.body 'toto'
+  - p.footer 'toto'
+
+= panel 'toto', state: :danger, glyph: 'home', class: 'toto'
+
+= panel class: 'uei' do
+  = "danger"
+
+= table_panel({ store: @users, tap: true, glyph: 'home', state: :danger }) do |g|
+  - g.columns do |cls|
+    - cls.column name: '#', data_index: 'id'
+    - cls.column name: 'Username', data_index: 'username', link: edit_user_path(:id)
+    - cls.column name: 'Name', data_index: 'name'
+    - cls.column name: 'Email', data_index: 'email'
+    - cls.column name: 'Role', data_index: 'role_name', sort: 'roles.name'
+  - g.actions do |acs|
+    - acs.action 'Toto', url: edit_user_path(:id), glyph: 'pencil'
+    - acs.action "---"
+    - acs.action 'momo', url: user_path(:id), glyph: 'eye'
+
+= table_search_field store: @users
+%br
+= table store: @users, tap: true do |g|
+  - g.columns do |cls|
+    - cls.column name: '#', data_index: 'id'
+    - cls.column name: 'Username', data_index: 'username', link: edit_user_path(:id)
+    - cls.column name: 'Name', data_index: 'name'
+    - cls.column name: 'Email', data_index: 'email'
+    - cls.column name: 'Role', data_index: 'role_name', sort: 'roles.name'
+= table_pagination store: @users
+= table_pagination_per_page store: @users
