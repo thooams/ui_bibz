@@ -6,16 +6,24 @@
 
 This project rocks and uses MIT-LICENSE.
 
-
 # UiBibz
 > Ui Bibz est un framework d'interface permettant de construire une interface
-> très rapidement à l'aide de Ruby on Rails et de Boostrap.
-> Ui Bibz est compatible HAML et SASS. Le framework requière **Ruby 2** et **Rails 4**.
-
+> très rapidement et simplement à l'aide de Ruby on Rails et de Boostrap 3.
+> Le framework requiert **Ruby 2** et **Rails 4**.
 
 Tous les composants de Ui Bibz comportent des *options* et des *html_options*.
-Les composants sont basées sur la logique et le comportement de [link_to](http://api.rubyonrails.org/classes/ActionView/Helpers/UrlHelper.html#method-i-link_to) présent dans Ruby on Rails
-et acceptent les blocks.
+Ces éléments sont basées sur l'élément ```Component```.
+Un composant accepte un contenu par variable ou par block. ex :
+
+```ruby
+Component.new content, options, html_options, &block
+
+Component.new 'Exemple', { state: :success }, { class: 'exemple' }
+ou
+Component.new { state: :success }, { class: 'exemple' } do
+  'Exemple'
+end
+```
 
 Ui Bibz charge la librairie [boostrap](http://getbootstrap.com/) et
 [awesomefont](http://fontawesome.io/).
@@ -26,7 +34,7 @@ Ui Bibz charge la librairie [boostrap](http://getbootstrap.com/) et
 Ajouter la gem dans Rails :
 
 ```ruby
-gem "ui_bibz", github: 'thooams/ui_bibz', tag: 'v0.5.0'
+gem "ui_bibz", github: 'thooams/ui_bibz', tag: 'v0.9.0'
 ```
 
 Lancer la command suivante :
@@ -57,61 +65,130 @@ Exemple :
 
 ## Utilisation
 
+### Alert
+
+L'élément ```notify``` acceptent en option les arguments :
+
+* [state](#state) []
+* [glyph](#glyph)
+
+![alert](doc/alert.png)
+```ruby
+= notify 'toto', state: :info, glyph: 'eye'
+```
+
 ### Breadcrumb (fil d'ariane)
+
+L'élément ```breadcrumb``` acceptent en option les arguments :
+
+* [status](#status)
+* [glyph](#glyph)
+* url
 
 ![breadcrumb](doc/breadcrumb.png)
 ```ruby
-= breadcrumb class: 'exemple' do
-  = content_tag :li, content_tag(:a, "Home")
-  = content_tag :li, content_tag(:a, "Library")
-  = content_tag :li, content_tag(:a, "Data", class: 'active')
-
+= breadcrumb do |b|
+  - b.link 'toto', url: '#toto', glyph: 'home'
+  - b.link 'momo', url: '#momo'
+  - b.link 'nono', status: :active
 ```
 
 ### Buttons (Boutons)
 #### Button
-Les boutons acceptent l'option ```type:``` avec pour arguments :
+L'élément ```button``` acceptent en option les arguments :
 
-* :default
-* :sucess,
-* :primary
-* :info
-* :warning
-* :danger
-
-Les boutons acceptent l'option ```glyph:``` ([doc](#glyph)).
+* [state](#state)
+* [status](#status)
+* [glyph](#glyph)
+* [size](#size)
 
 ![button](doc/button.png)
 ```ruby
-= button 'Button', { type: :danger, glyph: 'star' } , { class: 'my-button' }
+= button 'Button', { state: :danger, size: :xs, glyph: 'star' } , { class: 'my-button' }
 ```
 
-#### Button Link (Lien Bouton)
-Le lien bouton accèpte les mêmes paramètres que "button". À ceci près, que le
-lien bouton est un lien ```link_to```.
+#### Button Dropdown
+L'élément ```button_dropdown``` accepte pour options les mêmes arguments que l'élément
+[dropdown](#dropdown).
 
-![button_link](doc/button_link.png)
+![button_link](doc/button_dropdown.png)
 ```ruby
-= button_link 'Button', "#", { type: :primary, glyph: 'star', class: 'my-button' }
+= button_dropdown 'Button Dropdown' do |bd|
+  - bd.list link_to 'toto', '#'
+  - bd.list 'header', type: :header
+  - bd.list link_to 'momo', '#'
+  - bd.list '---'
+  - bd.list link_to 'lolo', '#'
 ```
 
-#### Button Group (Liens groupés)
+#### Button group
+L'élément ```button_group``` accepte pour options les arguments :
+
+* position [:vertical, :horizontal]
+* [size](#size)
+
+L'élément ```list```accepte pour options les arguments :
+
+* [status](#status)
+* [state](#state)
 
 ![button_group](doc/button_group.png)
 ```ruby
-= button_group class: 'exemple' do
-  = button 'Button 1'
-  = button 'Button 2'
-  = button 'Button 3'
+= button_group position: :vertical, size: :xs do
+  = button 'toto', status: :active
+  = button 'momo'
+  = button 'lolo'
+
+= button_group do
+  = button 'toto', status: :active
+  = button 'momo'
+  = button 'lolo'
+  = button_dropdown 'Button Dropdown' do |bd|
+    - bd.list 'header', type: :header
+    - bd.list link_to 'momo', '#'
+    - bd.list '---'
+    - bd.list link_to 'lolo', '#'
+```
+
+#### Button Link (Lien Bouton)
+L'élément ```button_link```accepte pour options les arguments :
+
+![button_link](doc/button_link.png)
+```ruby
+= button_link 'Button', { url: '#button', state: :primary, glyph: 'star' }, { class: 'my-button' }
+```
+
+#### Button Split Dropdown
+L'élément ```button_split_dropdown```accepte pour options les mêmes arguments
+que l'élément [dropdown](#dropdown).
+
+
+![button_group](doc/button_split_dropdown.png)
+```ruby
+= button_split_dropdown 'Dropdown', state: :primary do |d|
+  - d.list do
+    = link_to 'toto', "#"
+  - d.list 'header', type: :header
+  - d.list link_to 'momo', '#'
+  - d.list '---'
+  - d.list link_to 'lolo', '#'
 ```
 
 ### Dropdown (Menu déroulant)
-#### Dropdown (Menu déroulant)
+L'élément ```dropdown```accepte pour options les arguments :
+
+* [state](#state)
+* [status](#status)
+
 
 ```ruby
-= dropdown('Exemple', { position: :right, glyph: 'star' }, { class: 'btn-group-xs'}) do |d|
-  = link_action 'Exemple 1', "#", { glyph: 'eye' }
-  = link_action 'Exemple 2', "#", { glyph: 'eye' }
+= dropdown 'Dropdown', state: :success do |d|
+  - d.list do
+    = link_to 'toto', "#"
+  - d.list 'header', type: :header
+  - d.list link_to 'momo', '#'
+  - d.list '---'
+  - d.list link_to 'lolo', '#'
 ```
 
 Le menu déroulant accepte les options :
