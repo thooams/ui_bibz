@@ -8,11 +8,10 @@ This project rocks and uses MIT-LICENSE.
 
 # UiBibz
 > Ui Bibz est un framework d'interface permettant de construire une interface
-> très rapidement et simplement à l'aide de Ruby on Rails et de Boostrap 3.
-> Le framework requiert **Ruby 2** et **Rails 4**.
+> très rapidement et simplement à l'aide de Ruby on Rails 4 et de Boostrap 3.
 
 Tous les composants de Ui Bibz comportent des *options* et des *html_options*.
-Ces éléments sont basées sur l'élément ```Component```.
+Ces éléments sont basés sur l'élément ```Component```.
 Un composant accepte un contenu par variable ou par block.
 ex :
 
@@ -23,24 +22,23 @@ L'élément ```component``` acceptent en option les arguments :
 * [glyph](#glypharguments)
 
 ```ruby
-Component.new content, options, html_options, &block
+Component.new content = nil, options = nil, html_options = nil, &block
 ```
 
 Ex :
 ```ruby
 Component.new 'Exemple', { state: :success }, { class: 'exemple' }
-ou
+# ou
 Component.new { state: :success }, { class: 'exemple' } do
   'Exemple'
 end
 ```
 
-
 Ui Bibz charge la librairie [boostrap](http://getbootstrap.com/) et
 [awesomefont](http://fontawesome.io/).
 
 **NB** : J'utilise [HAML](http://haml.info/) pour présenter les exemples de chaque élément.
-Vous pouvez bien entendu utiliser le format ERB dans votre application Rails.
+Vous pouvez bien entendu utiliser l'interpréteur ERB dans votre application Rails.
 
 ## Installation
 
@@ -63,16 +61,13 @@ Placer la ligne suivante dans ```/app/views/layouts/application.rb```
 
 Exemple :
 ```ruby
-<!DOCTYPE html>
-<html>
-<head>
-  ...
-  <%= ui_bibz_meta_links %>
-  ...
-</head>
-<body>
-</body>
-</html>
+!!!
+%html
+  %head
+    ...
+    = ui_bibz_meta_links
+    ...
+  %body
 ```
 
 
@@ -91,7 +86,6 @@ L'élément ```notify``` acceptent en option les arguments :
 ```
 
 ### Breadcrumb (fil d'ariane)
-
 L'élément ```breadcrumb``` acceptent en option les arguments :
 
 * [status](#statusarguments)
@@ -196,7 +190,7 @@ L'élément ```dropdown```accepte pour options les arguments :
 * [status](#statusarguments)
 * position (:left, :right)
 
-L'élément ```list``` accepte pour options les arguments :
+L'élément ```list``` est un [component](#component) qui accepte pour options les arguments :
 
 * type (:header)
 * [glyph](#glypharguments)
