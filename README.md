@@ -13,11 +13,21 @@ This project rocks and uses MIT-LICENSE.
 
 Tous les composants de Ui Bibz comportent des *options* et des *html_options*.
 Ces éléments sont basées sur l'élément ```Component```.
-Un composant accepte un contenu par variable ou par block. ex :
+Un composant accepte un contenu par variable ou par block.
+ex :
+
+### Component
+L'élément ```component``` acceptent en option les arguments :
+
+* [state](#statearguments)
+* [glyph](#glypharguments)
 
 ```ruby
 Component.new content, options, html_options, &block
+```
 
+Ex :
+```ruby
 Component.new 'Exemple', { state: :success }, { class: 'exemple' }
 ou
 Component.new { state: :success }, { class: 'exemple' } do
@@ -25,9 +35,12 @@ Component.new { state: :success }, { class: 'exemple' } do
 end
 ```
 
+
 Ui Bibz charge la librairie [boostrap](http://getbootstrap.com/) et
 [awesomefont](http://fontawesome.io/).
 
+**NB** : J'utilise [HAML](http://haml.info/) pour présenter les exemples de chaque élément.
+Vous pouvez bien entendu utiliser le format ERB dans votre application Rails.
 
 ## Installation
 
@@ -69,8 +82,8 @@ Exemple :
 
 L'élément ```notify``` acceptent en option les arguments :
 
-* [state](#state) []
-* [glyph](#glyph)
+* [state](#statearguments)
+* [glyph](#glypharguments)
 
 ![alert](doc/alert.png)
 ```ruby
@@ -81,9 +94,11 @@ L'élément ```notify``` acceptent en option les arguments :
 
 L'élément ```breadcrumb``` acceptent en option les arguments :
 
-* [status](#status)
-* [glyph](#glyph)
+* [status](#statusarguments)
+* [glyph](#glypharguments)
 * url
+
+L'élément ```link``` est un [component](#component).
 
 ![breadcrumb](doc/breadcrumb.png)
 ```ruby
@@ -97,10 +112,10 @@ L'élément ```breadcrumb``` acceptent en option les arguments :
 #### Button
 L'élément ```button``` acceptent en option les arguments :
 
-* [state](#state)
-* [status](#status)
-* [glyph](#glyph)
-* [size](#size)
+* [state](#statearguments)
+* [status](#statusarguments)
+* [glyph](#glypharguments)
+* [size](#sizearguments)
 
 ![button](doc/button.png)
 ```ruby
@@ -124,13 +139,13 @@ L'élément ```button_dropdown``` accepte pour options les mêmes arguments que 
 #### Button group
 L'élément ```button_group``` accepte pour options les arguments :
 
-* position [:vertical, :horizontal]
-* [size](#size)
+* position (:vertical, :horizontal)
+* [size](#sizearguments)
 
 L'élément ```list```accepte pour options les arguments :
 
-* [status](#status)
-* [state](#state)
+* [status](#statusarguments)
+* [state](#statearguments)
 
 ![button_group](doc/button_group.png)
 ```ruby
@@ -177,9 +192,14 @@ que l'élément [dropdown](#dropdown).
 ### Dropdown (Menu déroulant)
 L'élément ```dropdown```accepte pour options les arguments :
 
-* [state](#state)
-* [status](#status)
+* [state](#statearguments)
+* [status](#statusarguments)
+* position (:left, :right)
 
+L'élément ```list``` accepte pour options les arguments :
+
+* type (:header)
+* [glyph](#glypharguments)
 
 ```ruby
 = dropdown 'Dropdown', state: :success do |d|
@@ -191,69 +211,106 @@ L'élément ```dropdown```accepte pour options les arguments :
   - d.list link_to 'lolo', '#'
 ```
 
-Le menu déroulant accepte les options :
-
-* ```glyph:``` ([doc](#glyph))
-* ```type:``` avec pour arguments :
-  * :default
-  * :sucess,
-  * :primary
-  * :info
-  * :warning
-  * :danger
-* ```position:```
-  * left
-  * right
-
-L'ajout d'un séparateur dans le menu s'effectue avec 3 tirets : '---'
-
-```ruby
-= dropdown 'Action', glyph: { name: 'star', type: 'fw' }, position: 'left', type: :default,  class: 'exemple' do
-  = content_tag :li, content_tag(:a, 'Menu 1')
-  = content_tag :li, content_tag(:a, 'Menu 2')
-  = '---'
-  = content_tag :li, content_tag(:a, 'Menu 3')
+Pour ajouter une ligne séparatrice, il suffit d'insérer 3 "-" à la suite
+ex :
+```
+...
+d.list '--'
+...
 ```
 
-#### Dropdown Button
+### Arguments
+
+#### Status arguments
+* :active
+* :disable
+
+#### Size arguments
+* :xs
+* :sm
+* :lg
+
+#### State arguments
+* :default
+* :primary
+* :info
+* :success
+* :warning
+* :danger
+
+#### Glyph arguments
+* name
+* size
+* type
 
 ### Glyph
 Les glyphs utilisés proviennent de [Font Awesome](http://fontawesome.io/).
-Les glyphs acceptent les options:
+L'élément ```glyph``` acceptent pour options les arguments :
 
-* name
 * size
 * type
 
 ![glyph](doc/glyph.png)
 ```ruby
-= glyph 'star'
+= glyph 'star', { size: 3, type: 'fw' }, class: 'star-exemple'
 ou
 = glyph { name: 'star', size: 3, type: 'fw' }
 ```
 
 ### Panel
+L'élément ```panel``` acceptent pour options les arguments :
 
-Un panel est constitué d'un header, d'un body et d'un footer. Les parties ```header```
-et ```body``` sont facultatives.
+* [state](#state)
+* tap (true) : permet de créer un header, body et footer
 
+Les éléments ```header```, ```body```,```footer``` sont des éléments [component](#component).
 Exemple :
 
+![panel](doc/panel.png)
 ```ruby
-= panel 'Example'
+= panel 'danger'
+ou
 = panel state: :danger do
-  = 'Example'
-= panel(class: 'exemple').tap |p|
-  - p.header 'My header'
+  = 'toto'
+ou
+= panel({ tap: true, state: :danger }, { class: 'exemple' }) |p|
+  - p.header 'toto', glyph: 'eye'
   - p.body class: 'my-body' do
-    = 'My body'
-  - p.footer 'My footer'
+    = 'toto'
+  - p.footer 'toto'
 ```
 
-### Grid
+### Table
 
-Une grid est un tableau avec recherche, pagination et trie des colonnes
-intégrées. La grid est entièrement traduisible : ```I18n ```. Elle contient par
+L'élément ```table``` est un tableau composé d'une recherche, une pagination et un trie de colonnes intégré.
+Le tableau est compatible [I18n](http://guides.rubyonrails.org/i18n.html).
+Le tableau contient pour chaque ligne un bouton dropdown action avec par défaut
+ces 3 actions : voir, éditer, supprimer. Toute les colonnes sont présentent et
+affichées par défaut.
+
+#### Table
+La table doit contenir un store. Ce store est créé dans le controlleur.
+La méthode ```grid_search_pagination``` contient 3 arguments :
+
+* params
+* session
+* args
+
+Exemple :
+```ruby
+# app/controllers/document_controller.rb
+@documents = Document.table_search_pagination(params, session)
+```
+
+Dans le model, insérer la méthode ```searchable_attributes``` afin de pouvoir
+faire une recherche sur les attributs souhaités.
+
+Exemple :
+```ruby
+# app/models/document.rb
+searchable_attributes :name_fr, :name_en
+```
+
 défaut 3 actions : éditer, voir et supprimer. Toutes les colonnes sont
 présentent et affichées par défaut.
 
@@ -261,7 +318,7 @@ présentent et affichées par défaut.
 
 #### Simple grid
 
-Dans le controlleur, insérer la méthode ```grid_search_pagination```.
+Dans le **controlleur**, insérer la méthode ```grid_search_pagination```.
 La méthode ```grid_search_pagination``` contient 3 arguments :
 
 * params
@@ -274,7 +331,7 @@ Exemple :
 @documents = Document.grid_search_pagination(params, session)
 ```
 
-Dans le model, insérer la méthode ```searchable_attributes``` afin de pouvoir
+Dans le **model**, insérer la méthode ```searchable_attributes``` afin de pouvoir
 faire une recherche pour les attributs souhaités.
 
 Exemple :
@@ -283,11 +340,12 @@ Exemple :
 searchable_attributes :name_fr, :name_en
 ```
 
-Dans la vue, insérer la méthode ```grid``` qui peut contenir plusieurs arguments :
 
-* ```store```  (constante : créé dans le controller)
-* ```paginable``` (booléen : active la pagination)
-* ```sortable```  (booléen : active le trie par colonne)
+Dans la **vue**, insérer la méthode ```table``` qui peut contenir plusieurs arguments :
+
+* store (ex: @documents)
+* paginable (true)
+* sortable (true)
 
 Une grid comporte des **colonnes** et des **actions**.
 
