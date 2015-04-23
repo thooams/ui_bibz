@@ -3,34 +3,64 @@ module UiBibz::Ui
 
     # Create a panel
     #
+    # ==== Attributes
+    #
+    # * +content+ - Content of element
+    # * +options+ - Options of element
+    # * +html_options+ - Html Options of element
+    #
+    # ==== Options
+    #
+    # You can add HTML attributes using the +html_options+.
+    # You can pass arguments in options attribute:
+    # * +state+ - State of élement with symbol value:
+    #   (+:default+, +:primary+, +:info+, +:warning+, +:danger+)
+    #
     # ==== Signatures
     #
-    #   UiBibz::Ui::Panel('test')
+    #   UiBibz::Ui::Alert.new(content, options = nil, html_options = nil)
+    #
+    #   UiBibz::Ui::Alert.new(options = nil, html_options = nil) do
+    #     content
+    #   end
+    #
+    #   UiBibz::Ui::Alert.new(options = nil, html_options = nil).tap do |p|
+    #     p.header content = nil, options = nil, html_options = nil, &block
+    #     p.body content = nil, options = nil, html_options = nil, &block
+    #     p.footer content = nil, options = nil, html_options = nil, &block
+    #   end
+    #
+    # ==== Examples
+    #
+    #   UiBibz::Ui::Panel('test').render
     #
     #   UiBibz::Ui::Panel(state: :primary) do |d|
     #     'test'
-    #   end
+    #   end.render
     #
     #   UiBibz::Ui::Panel.new().tap do |p|
-    #     p.header 'header', class: 'header-test'
+    #     p.header 'header', glyph: 'eye', class: 'header-test'
     #     p.body do
     #       'body'
     #     end
     #     p.footer 'footer'
-    #   end
+    #   end.render
     #
     def initialize content = nil, options = nil, html_options = nil, &block
       super
     end
 
+    # Header is a component element
     def header content = nil, options = nil, html_options = nil, &block
       @header = Component.new content, options, html_options, &block
     end
 
+    # Body is a component element
     def body content = nil, options = nil, html_options = nil, &block
       @body = Component.new content, options, html_options, &block
     end
 
+    # Footer is a component element
     def footer content = nil, options = nil, html_options = nil, &block
       @footer = Component.new content, options, html_options, &block
     end

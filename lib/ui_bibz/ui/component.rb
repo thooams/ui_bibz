@@ -1,19 +1,45 @@
 require 'haml'
 module UiBibz::Ui
+
+  # Creates a component of the given +name+ using options created by the set of +options+.
+  #
+  # ==== Attributes
+  #
+  # * +content+ -   Content of element
+  # * +options+ - Options of element
+  # * +html_options+ - Html Options of element
+  #
+  # ==== Options
+  #
+  # You can add HTML attributes using the +html_options+.
+  # You can pass arguments in options attribute:
+  # * +state+ - State of élement with symbol value:
+  #   (+:default+, +:primary+, +:info+, +:warning+, +:danger+)
+  # * +glyph+ - Add glyph with name or hash options
+  #   * +name+ - String
+  #   * +size+ - Integer
+  #   * +type+ - Symbol
+  #
+  # ==== Signatures
+  #
+  #   UiBibz::Ui::Component.new(content, options = nil, html_options = nil)
+  #
+  #   UiBibz::Ui::Component.new(options = nil, html_options = nil) do
+  #     content
+  #   end
+  #
+  # ==== Examples
+  #
+  #   UiBibz::Ui::Component.new(content, { type: :success, glyph: 'eye' },{ class: 'test' })
+  #   # or
+  #   UiBibz::Ui::Component.new({glyph: { name: 'eye', size: 3}, { class: 'test' }) do
+  #     content
+  #   end
+  #
   class Component < Ui
 
     attr_accessor :content, :html_options, :options
 
-    # Creates a component of the given +name+ using options created by the set of +options+.
-    #
-    # ==== Signatures
-    #
-    #   UiBibz::Ui::Component.new(content, options = {}, html_options = {})
-    #
-    #   UiBibz::Ui::Component.new(options = {}, html_options = {}) do
-    #     # content
-    #   end
-    #
     def initialize content = nil, options = nil, html_options = nil, &block
       if !block.nil?
         @html_options, @options = options, content
