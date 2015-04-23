@@ -40,6 +40,9 @@ Ui Bibz charge la librairie [boostrap](http://getbootstrap.com/) et
 **NB** : J'utilise [HAML](http://haml.info/) pour présenter les exemples de chaque élément.
 Vous pouvez bien entendu utiliser l'interpréteur ERB dans votre application Rails.
 
+
+[TOC]
+
 ## Installation
 
 Ajouter la gem dans Rails :
