@@ -1,3 +1,4 @@
+
 require 'action_view'
 #require 'haml/helpers'
 require 'will_paginate'
