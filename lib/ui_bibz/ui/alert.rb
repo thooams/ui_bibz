@@ -2,6 +2,8 @@ module UiBibz::Ui
 
   # Create an alert
   #
+  # See Ui#Component
+  #
   # ==== Attributes
   #
   # * +content+ -   Content of element
@@ -19,7 +21,7 @@ module UiBibz::Ui
   # ==== Examples
   #
   #   UiBibz::Ui::Alert.new(content, type: :success).render
-  #
+  #   # or
   #   UiBibz::Ui::Alert.new() do
   #     content
   #   end.render
