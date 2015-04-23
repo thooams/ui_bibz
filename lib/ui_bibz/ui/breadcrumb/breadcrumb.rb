@@ -4,11 +4,32 @@ module UiBibz::Ui
 
     # Create a breadcrumb
     #
+    # ==== Attributes
+    #
+    # * +content+ - Content of element
+    # * +options+ - Options of element
+    # * +html_options+ - Html Options of element
+    #
     # ==== Signatures
     #
     #   UiBibz::Ui::Breadcrumb.new().tap do |b|
+    #     b.link content = nil, options = nil, html_options = nil, &block
+    #     b.link content = nil, options = nil, html_options = nil, &block
+    #     b.link content = nil, options = nil, html_options = nil, &block
+    #     ...
+    #   end
+    #
+    #   UiBibz::Ui::Alert.new(options = nil, html_options = nil) do
+    #     content
+    #   end
+    #
+    # ==== Examples
+    #
+    #   UiBibz::Ui::Breadcrumb.new().tap do |b|
     #     b.link 'Home', url: '#home'
-    #     b.link 'Level 1', url: '#level-1'
+    #     b.link url: '#level-1' do
+    #       'Level 1'
+    #     end
     #     b.link 'Level 2', status: :active
     #   end
     #

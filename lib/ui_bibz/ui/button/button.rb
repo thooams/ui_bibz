@@ -3,7 +3,34 @@ module UiBibz::Ui
 
     # Create a button
     #
+    # ==== Attributes
+    #
+    # * +content+ - Content of element
+    # * +options+ - Options of element
+    # * +html_options+ - Html Options of element
+    #
+    # ==== Options
+    #
+    # You can add HTML attributes using the +html_options+.
+    # You can pass arguments in options attribute:
+    # * +state+ - State of élement with symbol value:
+    #   (+:default+, +:primary+, +:info+, +:warning+, +:danger+)
+    # * +size+
+    #   (+:xs+, +:sm+, +:lg+)
+    # * +glyph+ - Add glyph with name or hash options
+    #   * +name+ - String
+    #   * +size+ - Integer
+    #   * +type+ - Symbol
+    #
     # ==== Signatures
+    #
+    #   UiBibz::Ui::Button.new(content, options = nil, html_options = nil)
+    #
+    #   UiBibz::Ui::Button.new(options = nil, html_options = nil) do
+    #     content
+    #   end
+    #
+    # ==== Examples
     #
     #   UiBibz::Ui::Button.new 'test', type: :primary, size: :xs
     #

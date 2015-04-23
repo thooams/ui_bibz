@@ -3,13 +3,38 @@ module UiBibz::Ui
 
     # Create an alert
     #
+    # ==== Attributes
+    #
+    # * +content+ - Content of element
+    # * +options+ - Options of element
+    # * +html_options+ - Html Options of element
+    #
+    # ==== Options
+    #
+    # You can add HTML attributes using the +html_options+.
+    # You can pass arguments in options attribute:
+    # * +state+ - State of élement with symbol value:
+    #   (+:default+, +:primary+, +:info+, +:warning+, +:danger+)
+    # * +glyph+ - Add glyph with name or hash options
+    #   * +name+ - String
+    #   * +size+ - Integer
+    #   * +type+ - Symbol
+    #
     # ==== Signatures
     #
-    #   UiBibz::Ui::Label.new(content, type: :success)
+    #   UiBibz::Ui::Label.new(content, options = nil, html_options = nil)
+    #
+    #   UiBibz::Ui::Label.new(options = nil, html_options = nil) do
+    #     content
+    #   end
+    #
+    # ==== Examples
+    #
+    #   UiBibz::Ui::Label.new(content, type: :success).render
     #
     #   UiBibz::Ui::Label.new() do
     #     #content
-    #   end
+    #   end.render
     #
     def initialize content = nil, options = nil, html_options = nil, &block
       super
