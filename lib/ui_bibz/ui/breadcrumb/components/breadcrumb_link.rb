@@ -2,6 +2,8 @@ module UiBibz::Ui
 
   # Create a BreadcrumbLink
   #
+  # This element is an extend of UiBibz::Ui::Component.
+  #
   # ==== Attributes
   #
   # * +content+ - Content of element
@@ -34,7 +36,7 @@ module UiBibz::Ui
   #
   #   UiBibz::Ui::BreadcrumbLink.new({glyph: { name: 'eye', size: 3}, { class: 'test' }) do
   #     'Home'
-  #   end.render
+  #   end
   #
   class BreadcrumbLink < Component
 

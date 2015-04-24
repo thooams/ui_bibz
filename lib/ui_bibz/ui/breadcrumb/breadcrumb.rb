@@ -4,6 +4,9 @@ module UiBibz::Ui
 
     # Create a breadcrumb
     #
+    # This element is an extend of UiBibz::Ui::Component.
+    # You can use tap method to add link items.
+    #
     # ==== Attributes
     #
     # * +content+ - Content of element
@@ -42,6 +45,7 @@ module UiBibz::Ui
       content_tag :ol, @links.join.html_safe, class_and_html_options("breadcrumb")
     end
 
+    # See UiBibz::Ui::BreadcrumbLink
     def link content = nil, options = nil, html_options = nil, &block
       @links << BreadcrumbLink.new(content, options, html_options, &block).render
     end

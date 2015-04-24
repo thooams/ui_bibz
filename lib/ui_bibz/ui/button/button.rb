@@ -3,6 +3,8 @@ module UiBibz::Ui
 
     # Create a button
     #
+    # This element is an extend of UiBibz::Ui::Component.
+    #
     # ==== Attributes
     #
     # * +content+ - Content of element
