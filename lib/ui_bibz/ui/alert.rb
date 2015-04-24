@@ -2,6 +2,8 @@ module UiBibz::Ui
 
   # Create an alert
   #
+  # This element is an extend of UiBibz::Ui::Component.
+  #
   # ==== Attributes
   #
   # * +content+ - Content of element

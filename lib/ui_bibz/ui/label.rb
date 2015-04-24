@@ -1,7 +1,9 @@
 module UiBibz::Ui
   class Label < Component
 
-    # Create an alert
+    # Create a label
+    #
+    # This element is an extend of UiBibz::Ui::Component.
     #
     # ==== Attributes
     #

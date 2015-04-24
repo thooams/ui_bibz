@@ -3,6 +3,9 @@ module UiBibz::Ui
 
     # Create a panel
     #
+    # This element is an extend of UiBibz::Ui::Component.
+    # You can use tap method to add header, body or footer element.
+    #
     # ==== Attributes
     #
     # * +content+ - Content of element
@@ -18,13 +21,13 @@ module UiBibz::Ui
     #
     # ==== Signatures
     #
-    #   UiBibz::Ui::Alert.new(content, options = nil, html_options = nil)
+    #   UiBibz::Ui::Panel.new(content, options = nil, html_options = nil)
     #
-    #   UiBibz::Ui::Alert.new(options = nil, html_options = nil) do
+    #   UiBibz::Ui::Panel.new(options = nil, html_options = nil) do
     #     content
     #   end
     #
-    #   UiBibz::Ui::Alert.new(options = nil, html_options = nil).tap do |p|
+    #   UiBibz::Ui::Panel.new(options = nil, html_options = nil).tap do |p|
     #     p.header content = nil, options = nil, html_options = nil, &block
     #     p.body content = nil, options = nil, html_options = nil, &block
     #     p.footer content = nil, options = nil, html_options = nil, &block

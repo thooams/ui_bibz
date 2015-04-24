@@ -3,6 +3,8 @@ module UiBibz::Ui
 
     # Create a button dropdown
     #
+    # This element is an extend of UiBibz::Ui::Dropdown.
+    #
     # ==== Attributes
     #
     # * +content+ - Content of element
