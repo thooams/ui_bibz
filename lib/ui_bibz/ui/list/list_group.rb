@@ -4,7 +4,30 @@ module UiBibz::Ui
 
     # Create a list group
     #
+    # This element is an extend of UiBibz::Ui::Component.
+    #
+    # ==== Attributes
+    #
+    # * +content+ - Content of element
+    # * +options+ - Options of element
+    # * +html_options+ - Html Options of element
+    #
+    # ==== Options
+    #
+    # You can add HTML attributes using the +html_options+.
+    # You can pass arguments in options attribute:
+    # * +type+ - Type of list
+    #   (+:link+, +:list+)
+    #
     # ==== Signatures
+    #
+    #   UiBibz::Ui::ListGroup.new().tap |lg|
+    #     ...
+    #     lg.list content = nil, options = nil, html_options = nil, &block
+    #     ...
+    #   end
+    #
+    # ==== Examples
     #
     #   UiBibz::Ui::ListGroup.new().tap do |d|
     #     d.list 'Test', state: :success

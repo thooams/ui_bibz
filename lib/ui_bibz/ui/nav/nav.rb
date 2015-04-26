@@ -4,7 +4,32 @@ module UiBibz::Ui
 
     # Create a nav
     #
+    # This element is an extend of UiBibz::Ui::Component.
+    #
+    # ==== Attributes
+    #
+    # * +content+ - Content of element
+    # * +options+ - Options of element
+    # * +html_options+ - Html Options of element
+    #
+    # ==== Options
+    #
+    # You can add HTML attributes using the +html_options+.
+    # You can pass arguments in options attribute:
+    # * +type+ - Symbol
+    #   (+:pills+, +:tab+)
+    #
     # ==== Signatures
+    #
+    #   UiBibz::Ui::Button.new(content, options = nil, html_options = nil)
+    #
+    #   UiBibz::Ui::Button.new(options = nil, html_options = nil).tap do |d|
+    #     ...
+    #     d. content = nil, options = nil, html_options = nil, block
+    #     ...
+    #   end
+    #
+    # ==== Examples
     #
     #   UiBibz::Ui::Nav.new(type: :pills).tap do |d|
     #     d.link 'Test', url: '#test'
