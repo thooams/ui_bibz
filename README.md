@@ -1,4 +1,4 @@
-![Ui Bibz logo](doc/ui-bibz-logo-without-border.gif)
+![Ui Bibz logo](doc/images/ui-bibz-logo-without-border.gif)
 
 [![Build Status](https://travis-ci.org/thooams/Ui-Bibz.svg)](https://travis-ci.org/thooams/Ui-Bibz)
 [![Code Climate](https://codeclimate.com/github/thooams/Ui-Bibz/badges/gpa.svg)](https://codeclimate.com/github/thooams/Ui-Bibz)
@@ -41,8 +41,6 @@ Ui Bibz charge la librairie [boostrap](http://getbootstrap.com/) et
 Vous pouvez bien entendu utiliser l'interpréteur ERB dans votre application Rails.
 
 
-[TOC]
-
 ## Installation
 
 Ajouter la gem dans Rails :
@@ -83,7 +81,7 @@ L'élément ```notify``` acceptent en option les arguments :
 * [state](#statearguments)
 * [glyph](#glypharguments)
 
-![alert](doc/alert.png)
+![alert](doc/images/alert.png)
 ```ruby
 = notify 'toto', state: :info, glyph: 'eye'
 ```
@@ -97,7 +95,7 @@ L'élément ```breadcrumb``` acceptent en option les arguments :
 
 L'élément ```link``` est un [component](#component).
 
-![breadcrumb](doc/breadcrumb.png)
+![breadcrumb](doc/images/breadcrumb.png)
 ```ruby
 = breadcrumb do |b|
   - b.link 'toto', url: '#toto', glyph: 'home'
@@ -114,7 +112,7 @@ L'élément ```button``` acceptent en option les arguments :
 * [glyph](#glypharguments)
 * [size](#sizearguments)
 
-![button](doc/button.png)
+![button](doc/images/button.png)
 ```ruby
 = button 'Button', { state: :danger, size: :xs, glyph: 'star' } , { class: 'my-button' }
 ```
@@ -123,7 +121,7 @@ L'élément ```button``` acceptent en option les arguments :
 L'élément ```button_dropdown``` accepte pour options les mêmes arguments que l'élément
 [dropdown](#dropdown).
 
-![button_link](doc/button_dropdown.png)
+![button_link](doc/images/button_dropdown.png)
 ```ruby
 = button_dropdown 'Button Dropdown' do |bd|
   - bd.list link_to 'toto', '#'
@@ -144,7 +142,7 @@ L'élément ```list```accepte pour options les arguments :
 * [status](#statusarguments)
 * [state](#statearguments)
 
-![button_group](doc/button_group.png)
+![button_group](doc/images/button_group.png)
 ```ruby
 = button_group position: :vertical, size: :xs do
   = button 'toto', status: :active
@@ -165,7 +163,7 @@ L'élément ```list```accepte pour options les arguments :
 #### Button Link (Lien Bouton)
 L'élément ```button_link```accepte pour options les arguments :
 
-![button_link](doc/button_link.png)
+![button_link](doc/images/button_link.png)
 ```ruby
 = button_link 'Button', { url: '#button', state: :primary, glyph: 'star' }, { class: 'my-button' }
 ```
@@ -175,7 +173,7 @@ L'élément ```button_split_dropdown```accepte pour options les mêmes arguments
 que l'élément [dropdown](#dropdown).
 
 
-![button_group](doc/button_split_dropdown.png)
+![button_group](doc/images/button_split_dropdown.png)
 ```ruby
 = button_split_dropdown 'Dropdown', state: :primary do |d|
   - d.list do
@@ -247,7 +245,7 @@ L'élément ```glyph``` acceptent pour options les arguments :
 * size
 * type
 
-![glyph](doc/glyph.png)
+![glyph](doc/images/glyph.png)
 ```ruby
 = glyph 'star', { size: 3, type: 'fw' }, class: 'star-exemple'
 ou
@@ -263,7 +261,7 @@ L'élément ```panel``` acceptent pour options les arguments :
 Les éléments ```header```, ```body```,```footer``` sont des éléments [component](#component).
 Exemple :
 
-![panel](doc/panel.png)
+![panel](doc/images/panel.png)
 ```ruby
 = panel 'danger'
 ou
@@ -311,7 +309,7 @@ searchable_attributes :name_fr, :name_en
 défaut 3 actions : éditer, voir et supprimer. Toutes les colonnes sont
 présentent et affichées par défaut.
 
-![grid](doc/grid.png)
+![grid](doc/images/grid.png)
 
 #### Simple grid
 
@@ -481,7 +479,7 @@ Le placeholder du champ recherche est traduisible avec les attributs activerecor
 Par défaut une liste à pour tag <li>. Mais elle peut se transformer en lien <a>
 à travers l'option ```tag:``` et ```href:```.
 
-![list](doc/list.png)
+![list](doc/images/list.png)
 
 ```ruby
 = list_group do
@@ -492,7 +490,7 @@ Par défaut une liste à pour tag <li>. Mais elle peut se transformer en lien <a
 
 ### Nav
 
-![nav](doc/nav.png)
+![nav](doc/images/nav.png)
 
 ```ruby
 = nav do
