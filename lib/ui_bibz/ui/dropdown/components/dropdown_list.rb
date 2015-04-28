@@ -33,13 +33,13 @@ module UiBibz::Ui
   #
   # ==== Examples
   #
-  #   UiBibz::Ui::DropdownList.new('Home', { glyph: 'home', status: :active },{ class: 'test' })
+  #   UiBibz::Ui::DropdownList.new('Home', { glyph: 'home', status: :active },{ class: 'test' }).render
   #
   #   UiBibz::Ui::DropdownList.new({glyph: { name: 'eye', size: 3}, { class: 'test' }) do
   #     'Home'
-  #   end
+  #   end.render
   #
-  #   UiBibz::UiBibz::DropdownList.new('---') # To add a separator
+  #   UiBibz::UiBibz::DropdownList.new('---').render # To add a separator
   #
   class DropdownList < Component
 

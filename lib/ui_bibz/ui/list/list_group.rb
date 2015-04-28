@@ -32,7 +32,7 @@ module UiBibz::Ui
     #   UiBibz::Ui::ListGroup.new().tap do |d|
     #     d.list 'Test', state: :success
     #     d.list 'Test2', state: :primary
-    #   end
+    #   end.render
     #
     #   UiBibz::Ui::ListGroup.new(type: :link).tap do |d|
     #     d.list 'Test', state: :success, url: '#test'
@@ -45,7 +45,7 @@ module UiBibz::Ui
     #         'My content'
     #       end
     #     end
-    #   end
+    #   end.render
     #
     def initialize content = nil, options = nil, html_options = nil, &block
       super

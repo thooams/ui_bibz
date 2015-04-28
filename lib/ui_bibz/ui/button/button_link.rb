@@ -34,11 +34,11 @@ module UiBibz::Ui
   #
   # ==== Examples
   #
-  #   UiBibz::Ui::ButtonLink.new 'test', type: :primary, url: '#'
+  #   UiBibz::Ui::ButtonLink.new('test', type: :primary, url: '#')
   #
   #   UiBibz::Ui::ButtonLink.new(type: :primary, url: '#') do
   #     test
-  #   end
+  #   end.render
   #
   class ButtonLink < Component
 

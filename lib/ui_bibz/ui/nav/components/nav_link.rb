@@ -1,4 +1,40 @@
 module UiBibz::Ui
+
+  # Create a NavLink
+  #
+  # This element is an extend of UiBibz::Ui::Component.
+  #
+  # ==== Attributes
+  #
+  # * +content+ - Content of element
+  # * +options+ - Options of element
+  # * +html_options+ - Html Options of element
+  #
+  # ==== Options
+  #
+  # You can add HTML attributes using the +html_options+.
+  # You can pass arguments in options attribute:
+  # * +status+ - State of élement with symbol value:
+  #   (+:active+)
+  # * +url+ - String
+  # * +badge+ - String
+  #
+  # ==== Signatures
+  #
+  #   UiBibz::Ui::NavLink.new(content, options = nil, html_options = nil)
+  #
+  #   UiBibz::Ui::NavLink.new(options = nil, html_options = nil) do
+  #     content
+  #   end
+  #
+  # ==== Examples
+  #
+  #   UiBibz::Ui::NavLink.new(content, { badge: 15, url: '/', status: :active },{ class: 'test' }).render
+  #
+  #   UiBibz::Ui::NavLink.new({glyph: { name: 'eye', size: 3 }, { class: 'test' }) do
+  #     'Home'
+  #   end.render
+  #
   class NavLink < Component
 
     def initialize content = nil, options = nil, html_options = nil, &block

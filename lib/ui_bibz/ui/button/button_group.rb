@@ -32,7 +32,7 @@ module UiBibz::Ui
   #   UiBibz::Ui::ButtonGroup.new(position: :vertical, size: :xs) do
   #     UiBibz::Ui.Button.new('test').render
   #     UiBibz::Ui.Button.new('test2').render
-  #   end
+  #   end.render
   #
   class ButtonGroup < Component
 
