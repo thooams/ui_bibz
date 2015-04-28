@@ -34,7 +34,7 @@ module UiBibz::Ui
     #       'Level 1'
     #     end
     #     b.link 'Level 2', status: :active
-    #   end
+    #   end.render
     #
     def initialize content = nil, options = nil, html_options = nil, &block
       super

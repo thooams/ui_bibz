@@ -40,18 +40,18 @@ module UiBibz::Ui
   #
   # ==== Examples
   #
-  #   UiBibz::Ui::List.new 'Test', state: :success, url: '#test'
+  #   UiBibz::Ui::List.new('Test', state: :success, url: '#test').render
   #
   #   UiBibz::Ui::List.new(state: :primary) do
   #       'Test 2'
-  #     end
+  #   end.render
   #
   #   UiBibz::Ui::List.new(tap: true, status: :active) do |l|
   #     l.header 'My title', nil, class: 'my-title'
   #     l.body do
   #       'My content'
   #     end
-  #   end
+  #   end.render
   #
   class List < Component
 

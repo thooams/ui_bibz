@@ -8,6 +8,58 @@ require "ui_bibz/ui/table/ux/searchable"
 require "ui_bibz/ui/table/ux/sortable"
 require "ui_bibz/ui/table/ux/actionable"
 module UiBibz::Ui
+
+  # Create a Table
+  #
+  # This element is an extend of UiBibz::Ui::Component.
+  #
+  # ==== Attributes
+  #
+  # * +content+ - Content of element
+  # * +options+ - Options of element
+  # * +html_options+ - Html Options of element
+  #
+  # ==== Options
+  #
+  # You can add HTML attributes using the +html_options+.
+  # You can pass arguments in options attribute:
+  # * +store+ - Store generate by '+table_search_pagination+' method
+  # * +url+ - String
+  # * tap - Boolean
+  # * columns - Add column
+  # * actions - Add action by row
+  #
+  # ==== Signatures
+  #
+  #   UiBibz::Ui::Table.new(store: @store)
+  #
+  #   UiBibz::Ui::Table.new(store: @store, tap: true) do |t|
+  #     t.columns do |c|
+  #       c.column name: '#', data_index: '#'
+  #     end
+  #     t.action do |a|
+  #       a.action '', url: url, glyph: ''
+  #     end
+  #   end
+  #
+  # ==== Examples
+  #
+  #   UiBibz::Ui::Table.new(store: @users).render
+  #
+  #   UiBibz::Ui::Table.new(store: @users, tap: true) do |t|
+  #     t.columns do |c|
+  #       c.column name: '#', data_index: 'id'
+  #       c.column name: 'Name fr', data_index: 'name_fr', link: edit_user_path(:id), order: 2
+  #       c.column name: 'Name en', data_index: 'name_en', order: 1
+  #       c.column name: 'Name en', data_index: 'name_en', format: lambda{ |records, record| "name #{ record.id}"}
+  #     end
+  #     t.action do |a|
+  #       a.action 'toto', url: users_path(:id), glyph: 'eye'
+  #       a.action '---'
+  #       a.action 'momo', url: users_path(:id), glyph: 'home'
+  #     end
+  #   end.render
+  #
   class Table < Component
 
     attr_accessor :columns

@@ -32,11 +32,11 @@ module UiBibz::Ui
   #
   # ==== Examples
   #
-  #   UiBibz::Ui::BreadcrumbLink.new('Home', { glyph: 'home', status: :active },{ class: 'test' })
+  #   UiBibz::Ui::BreadcrumbLink.new('Home', { glyph: 'home', status: :active },{ class: 'test' }).render
   #
   #   UiBibz::Ui::BreadcrumbLink.new({glyph: { name: 'eye', size: 3}, { class: 'test' }) do
   #     'Home'
-  #   end
+  #   end.render
   #
   class BreadcrumbLink < Component
 

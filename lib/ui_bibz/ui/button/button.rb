@@ -34,11 +34,11 @@ module UiBibz::Ui
     #
     # ==== Examples
     #
-    #   UiBibz::Ui::Button.new 'test', type: :primary, size: :xs
+    #   UiBibz::Ui::Button.new('test', type: :primary, size: :xs).render
     #
     #   UiBibz::Ui::Button.new(type: :primary) do
     #     test
-    #   end
+    #   end.render
     #
     def initialize content = nil, options = nil, html_options = nil, &block
       super

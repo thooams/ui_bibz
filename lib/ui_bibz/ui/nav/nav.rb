@@ -34,7 +34,7 @@ module UiBibz::Ui
     #   UiBibz::Ui::Nav.new(type: :pills).tap do |d|
     #     d.link 'Test', url: '#test'
     #     d.list 'Test2', url: '#test2', status: :active
-    #   end
+    #   end.render
     #
     def initialize content = nil, options = nil, html_options = nil, &block
       super
