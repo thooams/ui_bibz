@@ -18,8 +18,8 @@ ex :
 ### Component
 L'élément ```component``` acceptent en option les arguments :
 
-* [state](#statearguments)
-* [glyph](#glypharguments)
+* [state](#state-arguments)
+* [glyph](#glyph-arguments)
 
 ```ruby
 Component.new content = nil, options = nil, html_options = nil, &block
@@ -78,8 +78,8 @@ Exemple :
 
 L'élément ```notify``` acceptent en option les arguments :
 
-* [state](#statearguments)
-* [glyph](#glypharguments)
+* [state](#state-arguments)
+* [glyph](#glyph-arguments)
 
 ![alert](doc/images/alert.png)
 ```ruby
@@ -89,8 +89,8 @@ L'élément ```notify``` acceptent en option les arguments :
 ### Breadcrumb (fil d'ariane)
 L'élément ```breadcrumb``` acceptent en option les arguments :
 
-* [status](#statusarguments)
-* [glyph](#glypharguments)
+* [status](#status-arguments)
+* [glyph](#glyph-arguments)
 * url
 
 L'élément ```link``` est un [component](#component).
@@ -107,10 +107,10 @@ L'élément ```link``` est un [component](#component).
 #### Button
 L'élément ```button``` acceptent en option les arguments :
 
-* [state](#statearguments)
-* [status](#statusarguments)
-* [glyph](#glypharguments)
-* [size](#sizearguments)
+* [state](#state-arguments)
+* [status](#status-arguments)
+* [glyph](#glyph-arguments)
+* [size](#size-arguments)
 
 ![button](doc/images/button.png)
 ```ruby
@@ -135,12 +135,12 @@ L'élément ```button_dropdown``` accepte pour options les mêmes arguments que 
 L'élément ```button_group``` accepte pour options les arguments :
 
 * position (:vertical, :horizontal)
-* [size](#sizearguments)
+* [size](#size-arguments)
 
 L'élément ```list```accepte pour options les arguments :
 
-* [status](#statusarguments)
-* [state](#statearguments)
+* [status](#status-arguments)
+* [state](#state-arguments)
 
 ![button_group](doc/images/button_group.png)
 ```ruby
@@ -187,14 +187,14 @@ que l'élément [dropdown](#dropdown).
 ### Dropdown (Menu déroulant)
 L'élément ```dropdown```accepte pour options les arguments :
 
-* [state](#statearguments)
-* [status](#statusarguments)
+* [state](#state-arguments)
+* [status](#status-arguments)
 * position (:left, :right)
 
 L'élément ```list``` est un [component](#component) qui accepte pour options les arguments :
 
 * type (:header)
-* [glyph](#glypharguments)
+* [glyph](#glyph-arguments)
 
 ```ruby
 = dropdown 'Dropdown', state: :success do |d|
