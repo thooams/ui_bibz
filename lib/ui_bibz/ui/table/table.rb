@@ -46,7 +46,7 @@ module UiBibz::Ui
   #
   #   UiBibz::Ui::Table.new(store: @users).render
   #
-  #   UiBibz::Ui::Table.new(store: @users, tap: true) do |t|
+  #   UiBibz::Ui::Table.new(store: @users).tap do |t|
   #     t.columns do |c|
   #       c.column name: '#', data_index: 'id'
   #       c.column name: 'Name fr', data_index: 'name_fr', link: edit_user_path(:id), order: 2

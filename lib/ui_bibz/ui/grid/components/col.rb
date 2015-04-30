@@ -1,19 +1,43 @@
 module UiBibz::Ui
+
+  # Create a col
+  #
+  # This element is an extend of UiBibz::Ui::Component.
+  #
+  # ==== Attributes
+  #
+  # * +content+ - Content of element
+  # * +options+ - Options of element
+  # * +html_options+ - Html Options of element
+  #
+  # ==== Options
+  #
+  # You can add HTML attributes using the +html_options+.
+  # You can pass arguments in options attribute:
+  # * +num+ - Integer | 0..12
+  # * +offset+ - Integer
+  # * +size+ - Integer
+  #
+  # ==== Signatures
+  #
+  #   UiBibz::Ui::Row.new(content, options = {}, html_options = {}).render
+  #
+  #   UiBibz::Ui::Row.new(options = {}, html_options = {}) do
+  #     content
+  #   end.render
+  #
+  # ==== Examples
+  #
+  #   UiBibz::Ui::Row.new({num: 2, offset: 1, size: 3}, class: 'test') do
+  #     #content
+  #   end
+  #
+  #   UiBibz::Ui::Row.new([{num: 2, offset: 1, size: 3}, { num: 3}], class: 'test') do
+  #     #content
+  #   end
+  #
   class Col < Component
 
-    # Create a col
-    #
-    # ==== Signatures
-    #
-    #
-    #   UiBibz::Ui::Row.new({num: 2, offset: 1, size: 3}, class: 'test') do
-    #     #content
-    #   end
-    #
-    #   UiBibz::Ui::Row.new([{num: 2, offset: 1, size: 3}, { num: 3}], class: 'test') do
-    #     #content
-    #   end
-    #
     def initialize content = nil, options = nil, html_options = nil, &block
       super
       @cols = []
