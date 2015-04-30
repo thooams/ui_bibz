@@ -1,5 +1,5 @@
 module UiBibz::Ui
-  #
+
   # Create a button link
   #
   # This element is an extend of UiBibz::Ui::Component.
