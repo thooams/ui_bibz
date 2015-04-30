@@ -1,54 +1,55 @@
 module UiBibz::Ui
+
+  # Create a panel
+  #
+  # This element is an extend of UiBibz::Ui::Component.
+  # You can use tap method to add header, body or footer element.
+  #
+  # ==== Attributes
+  #
+  # * +content+ - Content of element
+  # * +options+ - Options of element
+  # * +html_options+ - Html Options of element
+  #
+  # ==== Options
+  #
+  # You can add HTML attributes using the +html_options+.
+  # You can pass arguments in options attribute:
+  # * +state+ - State of élement with symbol value:
+  #   (+:default+, +:primary+, +:info+, +:warning+, +:danger+)
+  #
+  # ==== Signatures
+  #
+  #   UiBibz::Ui::Panel.new(content, options = nil, html_options = nil)
+  #
+  #   UiBibz::Ui::Panel.new(options = nil, html_options = nil) do
+  #     content
+  #   end
+  #
+  #   UiBibz::Ui::Panel.new(options = nil, html_options = nil).tap do |p|
+  #     p.header content = nil, options = nil, html_options = nil, &block
+  #     p.body content = nil, options = nil, html_options = nil, &block
+  #     p.footer content = nil, options = nil, html_options = nil, &block
+  #   end
+  #
+  # ==== Examples
+  #
+  #   UiBibz::Ui::Panel('test').render
+  #
+  #   UiBibz::Ui::Panel(state: :primary) do |d|
+  #     'test'
+  #   end.render
+  #
+  #   UiBibz::Ui::Panel.new().tap do |p|
+  #     p.header 'header', glyph: 'eye', class: 'header-test'
+  #     p.body do
+  #       'body'
+  #     end
+  #     p.footer 'footer'
+  #   end.render
+  #
   class Panel < Component
 
-    # Create a panel
-    #
-    # This element is an extend of UiBibz::Ui::Component.
-    # You can use tap method to add header, body or footer element.
-    #
-    # ==== Attributes
-    #
-    # * +content+ - Content of element
-    # * +options+ - Options of element
-    # * +html_options+ - Html Options of element
-    #
-    # ==== Options
-    #
-    # You can add HTML attributes using the +html_options+.
-    # You can pass arguments in options attribute:
-    # * +state+ - State of élement with symbol value:
-    #   (+:default+, +:primary+, +:info+, +:warning+, +:danger+)
-    #
-    # ==== Signatures
-    #
-    #   UiBibz::Ui::Panel.new(content, options = nil, html_options = nil)
-    #
-    #   UiBibz::Ui::Panel.new(options = nil, html_options = nil) do
-    #     content
-    #   end
-    #
-    #   UiBibz::Ui::Panel.new(options = nil, html_options = nil).tap do |p|
-    #     p.header content = nil, options = nil, html_options = nil, &block
-    #     p.body content = nil, options = nil, html_options = nil, &block
-    #     p.footer content = nil, options = nil, html_options = nil, &block
-    #   end
-    #
-    # ==== Examples
-    #
-    #   UiBibz::Ui::Panel('test').render
-    #
-    #   UiBibz::Ui::Panel(state: :primary) do |d|
-    #     'test'
-    #   end.render
-    #
-    #   UiBibz::Ui::Panel.new().tap do |p|
-    #     p.header 'header', glyph: 'eye', class: 'header-test'
-    #     p.body do
-    #       'body'
-    #     end
-    #     p.footer 'footer'
-    #   end.render
-    #
     def initialize content = nil, options = nil, html_options = nil, &block
       super
     end

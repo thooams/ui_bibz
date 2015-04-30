@@ -1,52 +1,53 @@
 require "ui_bibz/ui/list/components/list"
 module UiBibz::Ui
+
+  # Create a list group
+  #
+  # This element is an extend of UiBibz::Ui::Component.
+  #
+  # ==== Attributes
+  #
+  # * +content+ - Content of element
+  # * +options+ - Options of element
+  # * +html_options+ - Html Options of element
+  #
+  # ==== Options
+  #
+  # You can add HTML attributes using the +html_options+.
+  # You can pass arguments in options attribute:
+  # * +type+ - Type of list (default: :list)
+  #   (+:link+, +:list+)
+  #
+  # ==== Signatures
+  #
+  #   UiBibz::Ui::ListGroup.new().tap |lg|
+  #     ...
+  #     lg.list content = nil, options = nil, html_options = nil, &block
+  #     ...
+  #   end
+  #
+  # ==== Examples
+  #
+  #   UiBibz::Ui::ListGroup.new().tap do |d|
+  #     d.list 'Test', state: :success
+  #     d.list 'Test2', state: :primary
+  #   end.render
+  #
+  #   UiBibz::Ui::ListGroup.new(type: :link).tap do |d|
+  #     d.list 'Test', state: :success, url: '#test'
+  #     d.list(state: :primary) do
+  #       'Test 2'
+  #     end
+  #     d.list(tap: true, status: :active) do |l|
+  #       l.header 'My title', nil, class: 'my-title'
+  #       l.body do
+  #         'My content'
+  #       end
+  #     end
+  #   end.render
+  #
   class ListGroup < Component
 
-    # Create a list group
-    #
-    # This element is an extend of UiBibz::Ui::Component.
-    #
-    # ==== Attributes
-    #
-    # * +content+ - Content of element
-    # * +options+ - Options of element
-    # * +html_options+ - Html Options of element
-    #
-    # ==== Options
-    #
-    # You can add HTML attributes using the +html_options+.
-    # You can pass arguments in options attribute:
-    # * +type+ - Type of list (default: :list)
-    #   (+:link+, +:list+)
-    #
-    # ==== Signatures
-    #
-    #   UiBibz::Ui::ListGroup.new().tap |lg|
-    #     ...
-    #     lg.list content = nil, options = nil, html_options = nil, &block
-    #     ...
-    #   end
-    #
-    # ==== Examples
-    #
-    #   UiBibz::Ui::ListGroup.new().tap do |d|
-    #     d.list 'Test', state: :success
-    #     d.list 'Test2', state: :primary
-    #   end.render
-    #
-    #   UiBibz::Ui::ListGroup.new(type: :link).tap do |d|
-    #     d.list 'Test', state: :success, url: '#test'
-    #     d.list(state: :primary) do
-    #       'Test 2'
-    #     end
-    #     d.list(tap: true, status: :active) do |l|
-    #       l.header 'My title', nil, class: 'my-title'
-    #       l.body do
-    #         'My content'
-    #       end
-    #     end
-    #   end.render
-    #
     def initialize content = nil, options = nil, html_options = nil, &block
       super
       @lists = []

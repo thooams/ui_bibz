@@ -1,7 +1,7 @@
 module UiBibz::Helpers::MetaHelper
 
-  # Returns html script tags to include boostrap [js,css], jquery [js],
-  # font-awesome [css]
+  # Returns html script tags to include boostrap 3.3.1 [js,css], jquery 2.1.1 [js],
+  # font-awesome 4.2.0 [css]
   #
   #   ui_bibz_meta_links
   #   # => <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" media="screen" rel="stylesheet" />
