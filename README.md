@@ -284,12 +284,13 @@ ces 3 actions : voir, éditer, supprimer. Toute les colonnes sont présentent et
 affichées par défaut.
 
 #### Table
-La table doit contenir un store. Ce store est créé dans le controlleur.
-La méthode ```grid_search_pagination``` contient 3 arguments :
+La table doit contenir un store. Ce store est créé dans le controlleur avec la
+méthode ```table_search_pagination```.
+La méthode ```table_search_pagination``` contient 3 arguments :
 
 * params
 * session
-* args
+* args (optionel)
 
 Exemple :
 ```ruby
@@ -306,15 +307,15 @@ Exemple :
 searchable_attributes :name_fr, :name_en
 ```
 
-défaut 3 actions : éditer, voir et supprimer. Toutes les colonnes sont
-présentent et affichées par défaut.
+Par défaut, toutes les colonnes sont présentent et affichées et chaque ligne
+contient 3 actions : éditer, voir et supprimer.
 
-![grid](doc/images/grid.png)
+![table](doc/images/table.png)
 
-#### Simple grid
+#### Simple table
 
-Dans le **controlleur**, insérer la méthode ```grid_search_pagination```.
-La méthode ```grid_search_pagination``` contient 3 arguments :
+Dans le **controlleur**, insérer la méthode ```table_search_pagination```.
+La méthode ```table_search_pagination``` contient 3 arguments :
 
 * params
 * session
@@ -323,7 +324,7 @@ La méthode ```grid_search_pagination``` contient 3 arguments :
 Exemple :
 ```ruby
 # app/controllers/document_controller.rb
-@documents = Document.grid_search_pagination(params, session)
+@documents = Document.table_search_pagination(params, session)
 ```
 
 Dans le **model**, insérer la méthode ```searchable_attributes``` afin de pouvoir
@@ -342,12 +343,12 @@ Dans la **vue**, insérer la méthode ```table``` qui peut contenir plusieurs ar
 * paginable (true)
 * sortable (true)
 
-Une grid comporte des **colonnes** et des **actions**.
+Une table comporte des **colonnes** et des **actions**.
 
 Exemple :
 ```ruby
 # app/views/documents/index.html.haml
-= grid store: @documents
+= table store: @documents
 ```
 
 Les actions par défauts peuvent être modifiées (voir exemple complexe) :
@@ -361,7 +362,7 @@ Elles sont intégrées à l'intérieur d'un bouton [dropdown](#dropdown).
 Exemple :
 ```ruby
 # app/views/documents/index.html.haml
-= grid store: @documents do |g|
+= table store: @documents do |g|
   - g.actions do
     = link_action 'Show', documents_path(:id), glyph: 'eye'
     = link_action 'Edit', edit_document_path(:id), glyph: 'pencil'
@@ -384,7 +385,7 @@ L'ajout de colonnes à travers la méthode ```add``` contient plusieurs argument
 
 ```ruby
 # app/views/documents/index.html.haml
-= grid store: @documents do |g|
+= table store: @documents do |g|
   - g.columns do |c|
     - c.add { name: '#', data_index: 'id' }
     - c.add { name: 'Name fr', data_index: 'name_fr', link: edit_document_path(:id)}
@@ -393,40 +394,40 @@ L'ajout de colonnes à travers la méthode ```add``` contient plusieurs argument
     - c.add { name: 'Updated at', data_index: 'updated_at', date_format: '%Y' }
 ```
 
-#### Complex grid
+#### Complex table
 
 Si on souhaite voir apparaître des liasions avec d'autres tables il faut pour
 cela :
 
-Dans le controlleur, insérer la méthode ```grid_search_pagination``` en ajoutant
+Dans le controlleur, insérer la méthode ```table_search_pagination``` en ajoutant
 un includes juste avant.
 
 Exemple :
 ```ruby
 # app/controllers/document_controller.rb
-@documents = Document.includes(:users).grid_search_pagination(params, session)
+@documents = Document.includes(:users).table_search_pagination(params, session)
 ```
 
-Dans la vue, insérer la méthod ```grid```.
+Dans la vue, insérer la méthod ```table```.
 NB: On peut créer ces propres méthodes comme ```user_name``` dans notre model "Document" et
 l'utiliser dans le data_index.
 
 ```ruby
 # app/views/documents/index.html.haml
-= grid store: @documents do |g|
+= table store: @documents do |g|
   - g.columns do |c|
     - c.add { name: 'Users', data_index: 'user_name', sort: "user.name" }
 ```
 
 
-#### Ultra Complex grid
+#### Ultra Complex table
 
 Si l'on souhaite, par exemple, compter des utilisateurs qui ont un lien non
 direct avec les documents. Imaginons qu'un utilisateur à des produits et que
 ces produits contiennent plusieurs documents. On souhaite compté le nomble
 d'utilisateurs par document.
 
-On va pouvoir utiliser des arguments dans la méthode ```grid_search_pagination```
+On va pouvoir utiliser des arguments dans la méthode ```table_search_pagination```
 qui vont permettre des jointures.
 
 Exemple :
@@ -441,7 +442,7 @@ arguments  = { sortable: {
           LEFT OUTER JOIN users ON users.id = products_users.user_id"
 } }
 
-@documents = Document.includes(:users).grid_search_pagination(params, session,
+@documents = Document.includes(:users).table_search_pagination(params, session,
 arguments)
 ```
 Ici l'argument sortable signifie que l'on souhaite s'occuper de la
@@ -457,18 +458,18 @@ Dans la vue :
 
 ```ruby
 # app/views/documents/index.html.haml
-= grid store: @documents do |g|
+= table store: @documents do |g|
   - g.columns do |c|
     - c.add({ name: 'Users', data_index: 'users', count: true, custom_sort: true })
 ```
 
-#### Grid I18n
+#### table I18n
 
-La grid est entièrement traduisible avec I18n. L'importance des traductions
+La table est entièrement traduisible avec I18n. L'importance des traductions
 s'execute dans cette ordre pour la colonne "name_fr" par exemple.
 
-1. ui_biz.grid.headers.document.name_fr
-2. ui_biz.grid.headers.defaults.name_fr
+1. ui_biz.table.headers.document.name_fr
+2. ui_biz.table.headers.defaults.name_fr
 3. activerecord.attributes.document.name_fr
 4. activerecord.attributes.defaults.name_fr
 
