@@ -1,26 +1,52 @@
 module UiBibz::Ui
+
+  # Create a Grid
+  #
+  # This element is an extend of UiBibz::Ui::Component.
+  #
+  # ==== Attributes
+  #
+  # * +content+ - Content of element
+  # * +options+ - Options of element
+  # * +html_options+ - Html Options of element
+  #
+  # ==== Options
+  #
+  # You can add HTML attributes using the +html_options+.
+  # You can pass arguments in options attribute:
+  #
+  # ==== Signatures
+  #
+  #   UiBibz::Ui::Grid.new().tap do |g|
+  #     ...
+  #     g.view content = nil, options = nil, html_options = nil, &block
+  #     ...
+  #   end
+  #
+  # ==== Exemples
+  #
+  #  UiBibz::Ui::Grid.new().tap do |g|
+  #    g.view num: 5, position: :left do
+  #      'left'
+  #    end
+  #    g.view position: :right do
+  #      'right'
+  #    end
+  #    g.view({ position: :top}, { class: 'success'}) do
+  #      'top'
+  #    end
+  #    g.view position: :center do
+  #      'center'
+  #    end
+  #    g.view position: :bottom do
+  #      'bottom'
+  #    end
+  #  end.render
+  #
   class Grid < Component
 
     COL_NUM = 12
 
-    # Create a row
-    #
-    # ==== Signatures
-    #
-    #   UiBibz::Ui::Grid.new().tap |g|
-    #     g.view({ position: :top, cols: {size: :lg, num: 1} ) do
-    #       'test'
-    #     end
-    #     g.view({ position: :top, cols: {size: :lg, num: 1}, { num: 3 }) do
-    #       'test'
-    #     end
-    #     g.view position: :right, width: 120
-    #     g.view position: :bottom, width: 150
-    #     g.view position: :left,  width: 170
-    #     g.view position: :center, width: 300
-    #   end
-    #
-    #
     def initialize content = nil, options = nil, html_options = nil, &block
       super
       @views = {}

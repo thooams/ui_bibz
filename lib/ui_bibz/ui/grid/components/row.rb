@@ -5,9 +5,9 @@ module UiBibz::Ui
     #
     # ==== Signatures
     #
-    #   UiBibz::Ui::Row.new(content)
+    #   UiBibz::Ui::Row.new(content, options = {}, html_options = {})
     #
-    #   UiBibz::Ui::Row.new() do
+    #   UiBibz::Ui::Row.new(options = {}, html_options = {}) do
     #     #content
     #   end
     #

@@ -16,7 +16,7 @@ module UiBibz::Ui
     #
     # You can add HTML attributes using the +html_options+.
     # You can pass arguments in options attribute:
-    # * +type+ - Type of list
+    # * +type+ - Type of list (default: :list)
     #   (+:link+, +:list+)
     #
     # ==== Signatures
