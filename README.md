@@ -7,12 +7,13 @@
 This project rocks and uses MIT-LICENSE.
 
 # UiBibz
-> Ui Bibz est un framework d'interface permettant de construire une interface
-> très rapidement et simplement à l'aide de Ruby on Rails 4 et de Boostrap 3.
+> Ui Bibz est un [framework d'interface](http://fr.wikipedia.org/wiki/Framework_d%27interface)
+> permettant de construire une interface très rapidement et simplement
+> à l'aide de Ruby on Rails 4 et de Boostrap 3.
 
-Tous les composants de Ui Bibz comportent des *options* et des *html_options*.
+Tous les composants du framework Ui Bibz comportent des *options* et des *html_options*.
 Ces éléments sont basés sur l'élément ```Component```.
-Un composant accepte un contenu par variable ou par block.
+Un ```component``` accepte un contenu par variable ou par block.
 ex :
 
 ### Component
@@ -310,6 +311,26 @@ searchable_attributes :name_fr, :name_en
 Par défaut, toutes les colonnes sont présentent et affichées et chaque ligne
 contient 3 actions : éditer, voir et supprimer.
 
+
+Un champ recherche est disponible dans la vue :
+
+```ruby
+= table_search_field store: @documents
+```
+
+Une pagination est disponible dans la vue :
+
+```ruby
+= table_pagination store: @documents
+```
+
+Un champs select par page est disponible dans la vue :
+
+```ruby
+= table_pagination_per_page store: @documents
+```
+
+
 ![table](doc/images/table.png)
 
 #### Simple table
@@ -378,8 +399,8 @@ L'ajout de colonnes à travers la méthode ```add``` contient plusieurs argument
 * data_index (le nom de l'attribut)
 * count (utilise la méthode count sur l'élément)
 * date_format (formate l'affichage de la date en utilisant la méthode ```strftime``` ex: '%Y/%M/%D')
-* format (format les élement de la colone en utilisant **lambda**)
-* link (ajoute un lien où :id est parsé et remplacé par l'entier correspondant)
+* format (formate les élements de la colone en utilisant **lambda**)
+* link (ajoute un lien où l'expression ```:id``` est parsé et remplacé par l'entier correspondant)
 * sort (permet de trier sur des champs )
 * custom_sort (indique que le tableau sera triéé d'une manière personnalisée)
 
@@ -423,12 +444,13 @@ l'utiliser dans le data_index.
 #### Ultra Complex table
 
 Si l'on souhaite, par exemple, compter des utilisateurs qui ont un lien non
-direct avec les documents. Imaginons qu'un utilisateur à des produits et que
-ces produits contiennent plusieurs documents. On souhaite compté le nomble
+direct avec les documents.
+Imaginons par exemple qu'un utilisateur à des produits et que
+ces produits contiennent plusieurs documents. On souhaite compter le nombre
 d'utilisateurs par document.
 
-On va pouvoir utiliser des arguments dans la méthode ```table_search_pagination```
-qui vont permettre des jointures.
+On peut ajouter des arguments dans la méthode ```table_search_pagination```
+qui vont permettre de faire des jointures.
 
 Exemple :
 ```ruby
@@ -445,7 +467,7 @@ arguments  = { sortable: {
 @documents = Document.includes(:users).table_search_pagination(params, session,
 arguments)
 ```
-Ici l'argument sortable signifie que l'on souhaite s'occuper de la
+Ici l'argument sortable signifie que l'on souhaite s'interresse à la
 fonctionnalité de trie.
 Il faut :
 
@@ -465,15 +487,29 @@ Dans la vue :
 
 #### table I18n
 
-La table est entièrement traduisible avec I18n. L'importance des traductions
-s'execute dans cette ordre pour la colonne "name_fr" par exemple.
+La table est utilisable avec I18n. Les traductions
+s'executent par ordre d'importance dans cet ordre précis pour la colonne "name_fr" par exemple.
 
 1. ui_biz.table.headers.document.name_fr
 2. ui_biz.table.headers.defaults.name_fr
 3. activerecord.attributes.document.name_fr
 4. activerecord.attributes.defaults.name_fr
 
-Le placeholder du champ recherche est traduisible avec les attributs activerecord.
+Le placeholder du champ recherche est utilisable et traduisible avec les attributs activerecord dans le fichier locale.
+
+Exemple :
+
+```ruby
+# config/locales/fr.yml
+...
+activerecord:
+  models:
+      user: 'Utilisateur'
+  attributes:
+    defaults:
+      name_fr: 'Nom fr'
+...
+```
 
 ### List
 
@@ -499,8 +535,16 @@ Par défaut une liste à pour tag <li>. Mais elle peut se transformer en lien <a
   = tab 'Exemple 2', selector: 'exemple-2'
 ```
 
+# Plus de détails
+
+Pour plus d'informations, vous pouvez accéder à la documentation rdoc en
+générant cette dernière :
+
+```
+rake rdoc
+```
+
 # A faire :
 
 * intégrer la recherche avec les liaisons
-* intégrer les couleurs et les badges pour les listes
 
