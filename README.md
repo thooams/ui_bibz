@@ -265,10 +265,10 @@ Exemple :
 ![panel](doc/images/panel.png)
 ```ruby
 = panel 'danger'
-ou
+# ou
 = panel state: :danger do
   = 'toto'
-ou
+# ou
 = panel({ tap: true, state: :danger }, { class: 'exemple' }) |p|
   - p.header 'toto', glyph: 'eye'
   - p.body class: 'my-body' do
@@ -511,6 +511,27 @@ activerecord:
 ...
 ```
 
+### Table Panel
+
+Le composant ```table_panel``` est un tableau dans un panel.
+
+```ruby
+= table_panel store: @users
+#ou
+= table_panel({ store: @users, tap: true, glyph: 'home', state: :danger }) do |g|
+  - g.columns do |cls|
+    - cls.column name: '#', data_index: 'id'
+    - cls.column name: 'Username', data_index: 'username', link: edit_user_path(:id)
+    - cls.column name: 'Name', data_index: 'name'
+    - cls.column name: 'Email', data_index: 'email'
+    - cls.column name: 'Role', data_index: 'role_name', sort: 'roles.name'
+  - g.actions do |acs|
+    - acs.action 'Toto', url: edit_user_path(:id), glyph: 'pencil'
+    - acs.action "---"
+    - acs.action 'momo', url: user_path(:id), glyph: 'eye'
+
+```
+
 ### List
 
 Par défaut une liste à pour tag <li>. Mais elle peut se transformer en lien <a>
@@ -519,10 +540,15 @@ Par défaut une liste à pour tag <li>. Mais elle peut se transformer en lien <a
 ![list](doc/images/list.png)
 
 ```ruby
-= list_group do
-  = list 'Exemple 1'
-  = list 'Exemple 2', { tag: :a, href: '#exemple2'}, { class: 'active' }
-  = list 'Exemple 3'
+= list_group type: :link do |lg|
+  - lg.list 'Momo', { state: :success, glyph: 'home' }, { href: '#Momo' }
+  - lg.list({ tap: true, status: :active }, { href: '#Toto' }) do |l|
+    - l.header 'My title'
+    - l.body 'My title'
+# ou
+= list_group do |lg|
+  - lg.list 'Momo', glyph: 'home'
+  - lg.list 'Toto'
 ```
 
 ### Nav
@@ -530,10 +556,51 @@ Par défaut une liste à pour tag <li>. Mais elle peut se transformer en lien <a
 ![nav](doc/images/nav.png)
 
 ```ruby
-= nav do
-  = tab 'Exemple 1', active: true, selector: 'exemple-1'
-  = tab 'Exemple 2', selector: 'exemple-2'
+= list_group type: :link do |lg|
+  - lg.list 'Momo', { state: :success, glyph: 'home' }, { href: '#Momo' }
+  - lg.list({ tap: true, status: :active }, { href: '#Toto' }) do |l|
+    - l.header 'My title'
+    - l.body 'My title'
+# ou
+= list_group do |lg|
+  - lg.list 'Momo', glyph: 'home'
+  - lg.list 'Toto'
 ```
+
+### Grid
+
+```ruby
+= grid do |g|
+  - g.view num: 3, position: :left do
+    = list_group(type: :link) do |lg|
+      - lg.list 'Link 1', { url: '#link1' }
+      - lg.list 'Link 2', { url: '#link1', status: :active }
+      - lg.list 'Link 1', { url: '#link1' }
+      - lg.list 'Link 3', { url: '#link1' }
+      - lg.list 'Link 4', { url: '#link1' }
+  - g.view({ position: :top}) do
+    = button_group(type: :toolbar) do
+      = button 'option 1'
+      = button 'option 2'
+      = button 'option 3'
+  - g.view position: :center do
+    = table store: @users, type: :bordered
+  - g.view position: :bottom do
+    = 'bottom'
+
+= grid do |g|
+  - g.view num: 5, position: :left do
+    = 'left'
+  - g.view position: :right do
+    = 'right'
+  - g.view({ position: :top}, { class: 'success'}) do
+    = 'top'
+  - g.view position: :center do
+    = 'center'
+  - g.view position: :bottom do
+    = 'bottom'
+```
+
 
 # Plus de détails
 
