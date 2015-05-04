@@ -515,6 +515,8 @@ activerecord:
 
 Le composant ```table_panel``` est un tableau dans un panel.
 
+![table](doc/images/table_panel.png)
+
 ```ruby
 = table_panel store: @users
 #ou
