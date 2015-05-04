@@ -312,6 +312,7 @@ Par défaut, toutes les colonnes sont présentent et affichées et chaque ligne
 contient 3 actions : éditer, voir et supprimer.
 
 
+![table_search_field](doc/images/table_search_field.png)
 Un champ recherche est disponible dans la vue :
 
 ```ruby
@@ -326,6 +327,7 @@ Une pagination est disponible dans la vue :
 
 Un champs select par page est disponible dans la vue :
 
+![table_search_field](doc/images/table_pagination_per_page.png)
 ```ruby
 = table_pagination_per_page store: @documents
 ```
