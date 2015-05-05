@@ -313,6 +313,7 @@ contient 3 actions : éditer, voir et supprimer.
 
 
 ![table_search_field](doc/images/table_search_field.png)
+
 Un champ recherche est disponible dans la vue :
 
 ```ruby
@@ -538,8 +539,8 @@ Le composant ```table_panel``` est un tableau dans un panel.
 
 ### List
 
-Par défaut une liste à pour tag <li>. Mais elle peut se transformer en lien <a>
-à travers l'option ```tag:``` et ```href:```.
+Par défaut une liste à pour tag ```<li>```. Mais elle peut se transformer en lien ```<a>```
+à travers l'option ```type:```. Par défaut le tag ```<li>``` est présent.
 
 ![list](doc/images/list.png)
 
@@ -571,7 +572,30 @@ Par défaut une liste à pour tag <li>. Mais elle peut se transformer en lien <a
   - lg.list 'Toto'
 ```
 
+### Row
+
+Le composant row génére une div.
+
+### Col
+
 ### Grid
+
+Une grid est un composant qui est composé de 5 vues :
+
+* top
+* right
+* bottom
+* left
+* center
+
+La vue **center** est obligatoire.
+Une vue à pour arguments :
+
+* position (:top, :left, :bottom, :right, :center)
+* num (1..12)
+
+L'argument ```position``` détermine la position de la vue et l'argument ```num``` determine
+le nombre de colonnes occupées par la vue.
 
 ```ruby
 = grid do |g|
@@ -617,5 +641,4 @@ rake rdoc
 
 # A faire :
 
-* intégrer la recherche avec les liaisons
-
+...
