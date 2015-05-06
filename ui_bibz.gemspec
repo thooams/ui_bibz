@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.version     = UiBibz::VERSION
   s.authors     = ["Thooams"]
   s.email       = ["thooams@gmail.com"]
-  s.homepage    = "https://github.com/thooams/ui-bibz"
+  s.homepage    = "http://thooams.github.io/Ui-Bibz/"
   s.summary     = "A Rails plugin with Boostrap framework..."
   s.description = "A Rails plugin with Boostrap framework..."
   s.license     = "MIT"
