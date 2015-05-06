@@ -212,7 +212,7 @@ que l'élément [dropdown](#dropdown).
   - d.list link_to 'lolo', '#'
 ```
 
-### Dropdown (Menu déroulant)
+### Dropdown
 
 L'élément ```dropdown```accepte pour options les arguments :
 
@@ -317,9 +317,8 @@ Exemple :
 searchable_attributes :name_fr, :name_en
 ```
 
-![table_search_field](doc/images/table_search_field.png)
-
 Un champ recherche est disponible dans la vue :
+![table_search_field](doc/images/table_search_field.png)
 
 ```ruby
 = table_search_field store: @documents
@@ -334,11 +333,12 @@ Une pagination est disponible dans la vue :
 Un champs select par page est disponible dans la vue :
 
 ![table_search_field](doc/images/table_pagination_per_page.png)
+
 ```ruby
 = table_pagination_per_page store: @documents
 ```
 
-#### Simple table
+#### Simple Example table
 
 Dans le **controlleur**, insérer la méthode ```table_search_pagination```.
 La méthode ```table_search_pagination``` contient 3 arguments :
@@ -419,7 +419,7 @@ L'ajout de colonnes à travers la méthode ```add``` contient plusieurs argument
     - c.add { name: 'Updated at', data_index: 'updated_at', date_format: '%Y' }
 ```
 
-#### Complex table
+#### Complex Example table
 
 Si on souhaite voir apparaître des liasions avec d'autres tables il faut pour
 cela :
@@ -445,7 +445,7 @@ l'utiliser dans le data_index.
 ```
 
 
-#### Ultra Complex table
+#### Ultra Complex Example table
 
 Si l'on souhaite, par exemple, dénombrer des utilisateurs qui ont un lien non
 direct avec les documents.
@@ -554,7 +554,7 @@ Par défaut une liste à pour tag ```<li>```. Mais elle peut se transformer en l
     - l.body 'My title'
 # ou
 = list_group do |lg|
-  - lg.list 'Momo', glyph: 'home'
+  - lg.list 'Momo', glyph: 'home', badge: 2
   - lg.list 'Toto'
 ```
 
@@ -573,9 +573,11 @@ L'élement link est un [component](#component).
 
 ```ruby
 = nav(type: :pills, position: :justified, tap: true) do |d|
-  d.link 'Test', url: '#test'
+  d.link 'Test', url: '#test', badge: 6
   d.link 'Test2', url: '#test2', status: :active
 ```
+
+### Label
 
 ### Row
 
@@ -597,10 +599,10 @@ col.
 
 
 ```ruby
-= col({num: 2, offset: 1, size: 3}, class: 'test') do
+= col({num: 2, offset: 1, size: :lg}, class: 'test') do
   = content
 # ou
-= col([{num: 2, offset: 1, size: 3}, { num: 3}], class: 'test') do
+= col([{num: 2, offset: 1, size: :xs}, { num: 3}], class: 'test') do
   = content
 ```
 
@@ -618,7 +620,7 @@ La vue **center** est obligatoire.
 Une vue à pour arguments :
 
 * position (:top, :left, :bottom, :right, :center)
-* num (1..12)
+* num (1..12) 12 étant le nombre limite de colonnes utilisable dans boostrap.
 
 L'argument ```position``` détermine la position de la vue et l'argument ```num``` determine
 le nombre de colonnes occupées par la vue.
@@ -688,6 +690,23 @@ générant cette dernière :
 rake rdoc
 ```
 
+# Conflits
+
+Certaines méthodes dans le helper peuvent être en conflit avec d'autres
+librairies. Le cas échéant, vous pouvez utiliser directement la librairie UiBibz
+comme ci-dessous.
+
+Exemple :
+
+```ruby
+UiBibz::Ui::Alert.new 'Exemple', { state: :success }, { class: 'exemple' }
+# au lieu de
+alert 'Exemple', { state: :success }, { class: 'exemple' }
+```
+
 # A faire :
 
+* progress bar
+* media
 ...
+
