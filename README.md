@@ -67,7 +67,7 @@ dans ```options``` et ```html_options```.
 Ajouter la gem dans Rails :
 
 ```ruby
-gem "ui_bibz"
+gem "ui_bibz", '~> 0.9.0'
 ```
 
 Lancer la command suivante :
