@@ -20,19 +20,19 @@ module UiBibz::Ui
   #
   # ==== Signatures
   #
-  #   UiBibz::Ui::Row.new(content, options = {}, html_options = {}).render
+  #   UiBibz::Ui::Col.new(content, options = {}, html_options = {}).render
   #
-  #   UiBibz::Ui::Row.new(options = {}, html_options = {}) do
+  #   UiBibz::Ui::Col.new(options = {}, html_options = {}) do
   #     content
   #   end.render
   #
   # ==== Examples
   #
-  #   UiBibz::Ui::Row.new({num: 2, offset: 1, size: 3}, class: 'test') do
+  #   UiBibz::Ui::Col.new({num: 2, offset: 1, size: 3}, class: 'test') do
   #     #content
   #   end
   #
-  #   UiBibz::Ui::Row.new([{num: 2, offset: 1, size: 3}, { num: 3}], class: 'test') do
+  #   UiBibz::Ui::Col.new([{num: 2, offset: 1, size: 3}, { num: 3}], class: 'test') do
   #     #content
   #   end
   #

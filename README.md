@@ -17,10 +17,11 @@ Un ```component``` accepte un contenu par variable ou par block.
 ex :
 
 ### Component
-L'élément ```component``` acceptent en option les arguments :
+L'élément ```component``` accepte en option les arguments :
 
 * [state](#state-arguments)
 * [glyph](#glyph-arguments)
+* [status](#status-arguments)
 
 ```ruby
 Component.new content = nil, options = nil, html_options = nil, &block
@@ -77,7 +78,7 @@ Exemple :
 
 ### Alert
 
-L'élément ```notify``` acceptent en option les arguments :
+L'élément ```notify``` accepte en option les arguments :
 
 * [state](#state-arguments)
 * [glyph](#glyph-arguments)
@@ -88,7 +89,8 @@ L'élément ```notify``` acceptent en option les arguments :
 ```
 
 ### Breadcrumb (fil d'ariane)
-L'élément ```breadcrumb``` acceptent en option les arguments :
+
+L'élément ```breadcrumb``` accepte en option les arguments :
 
 * [status](#status-arguments)
 * [glyph](#glyph-arguments)
@@ -105,8 +107,10 @@ L'élément ```link``` est un [component](#component).
 ```
 
 ### Buttons (Boutons)
+
 #### Button
-L'élément ```button``` acceptent en option les arguments :
+
+L'élément ```button``` accepte en option les arguments :
 
 * [state](#state-arguments)
 * [status](#status-arguments)
@@ -119,6 +123,7 @@ L'élément ```button``` acceptent en option les arguments :
 ```
 
 #### Button Dropdown
+
 L'élément ```button_dropdown``` accepte pour options les mêmes arguments que l'élément
 [dropdown](#dropdown).
 
@@ -133,6 +138,7 @@ L'élément ```button_dropdown``` accepte pour options les mêmes arguments que 
 ```
 
 #### Button group
+
 L'élément ```button_group``` accepte pour options les arguments :
 
 * position (:vertical, :horizontal)
@@ -162,6 +168,7 @@ L'élément ```list```accepte pour options les arguments :
 ```
 
 #### Button Link (Lien Bouton)
+
 L'élément ```button_link```accepte pour options les arguments :
 
 ![button_link](doc/images/button_link.png)
@@ -170,6 +177,7 @@ L'élément ```button_link```accepte pour options les arguments :
 ```
 
 #### Button Split Dropdown
+
 L'élément ```button_split_dropdown```accepte pour options les mêmes arguments
 que l'élément [dropdown](#dropdown).
 
@@ -186,6 +194,7 @@ que l'élément [dropdown](#dropdown).
 ```
 
 ### Dropdown (Menu déroulant)
+
 L'élément ```dropdown```accepte pour options les arguments :
 
 * [state](#state-arguments)
@@ -239,9 +248,14 @@ d.list '--'
 * size
 * type
 
+#### Status arguments
+* :active
+* :disable
+
 ### Glyph
+
 Les glyphs utilisés proviennent de [Font Awesome](http://fontawesome.io/).
-L'élément ```glyph``` acceptent pour options les arguments :
+L'élément ```glyph``` accepte pour options les arguments :
 
 * size
 * type
@@ -254,7 +268,8 @@ ou
 ```
 
 ### Panel
-L'élément ```panel``` acceptent pour options les arguments :
+
+L'élément ```panel``` accepte pour options les arguments :
 
 * [state](#state)
 * tap (true) : permet de créer un header, body et footer
@@ -284,7 +299,6 @@ Le tableau contient pour chaque ligne un bouton dropdown action avec par défaut
 ces 3 actions : voir, éditer, supprimer. Toute les colonnes sont présentent et
 affichées par défaut.
 
-#### Table
 La table doit contenir un store. Ce store est créé dans le controlleur avec la
 méthode ```table_search_pagination```.
 La méthode ```table_search_pagination``` contient 3 arguments :
@@ -308,10 +322,6 @@ Exemple :
 searchable_attributes :name_fr, :name_en
 ```
 
-Par défaut, toutes les colonnes sont présentent et affichées et chaque ligne
-contient 3 actions : éditer, voir et supprimer.
-
-
 ![table_search_field](doc/images/table_search_field.png)
 
 Un champ recherche est disponible dans la vue :
@@ -332,7 +342,6 @@ Un champs select par page est disponible dans la vue :
 ```ruby
 = table_pagination_per_page store: @documents
 ```
-
 
 ![table](doc/images/table.png)
 
@@ -360,12 +369,11 @@ Exemple :
 searchable_attributes :name_fr, :name_en
 ```
 
-
 Dans la **vue**, insérer la méthode ```table``` qui peut contenir plusieurs arguments :
 
 * store (ex: @documents)
-* paginable (true)
-* sortable (true)
+* paginable (true, false)
+* sortable (true, false)
 
 Une table comporte des **colonnes** et des **actions**.
 
@@ -424,7 +432,7 @@ Si on souhaite voir apparaître des liasions avec d'autres tables il faut pour
 cela :
 
 Dans le controlleur, insérer la méthode ```table_search_pagination``` en ajoutant
-un includes juste avant.
+un ```includes``` juste avant.
 
 Exemple :
 ```ruby
@@ -446,7 +454,7 @@ l'utiliser dans le data_index.
 
 #### Ultra Complex table
 
-Si l'on souhaite, par exemple, compter des utilisateurs qui ont un lien non
+Si l'on souhaite, par exemple, dénombrer des utilisateurs qui ont un lien non
 direct avec les documents.
 Imaginons par exemple qu'un utilisateur à des produits et que
 ces produits contiennent plusieurs documents. On souhaite compter le nombre
@@ -470,9 +478,10 @@ arguments  = { sortable: {
 @documents = Document.includes(:users).table_search_pagination(params, session,
 arguments)
 ```
-Ici l'argument sortable signifie que l'on souhaite s'interresse à la
+
+Ici l'argument sortable signifie que l'on souhaite s'interresser à la
 fonctionnalité de trie.
-Il faut :
+Pour celà il faut :
 
 * définir le nom de la colonne triéé à travers l'argument ```column:``` (string)
 * définir si le traitement se fait sur le comptage avec l'argument ```count:```
@@ -558,25 +567,49 @@ Par défaut une liste à pour tag ```<li>```. Mais elle peut se transformer en l
 
 ### Nav
 
+Par défaut la navigation comporte des onglets "tab".
+L'élément ```nav``` accepte en option les arguments :
+
+* type (:pills, :tabs)
+* position (:justified, :stacked)
+* tap (true)
+
+L'élement link est un [component](#component).
+
 ![nav](doc/images/nav.png)
 
 ```ruby
-= list_group type: :link do |lg|
-  - lg.list 'Momo', { state: :success, glyph: 'home' }, { href: '#Momo' }
-  - lg.list({ tap: true, status: :active }, { href: '#Toto' }) do |l|
-    - l.header 'My title'
-    - l.body 'My title'
-# ou
-= list_group do |lg|
-  - lg.list 'Momo', glyph: 'home'
-  - lg.list 'Toto'
+= nav(type: :pills, position: :justified, tap: true) do |d|
+  d.link 'Test', url: '#test'
+  d.link 'Test2', url: '#test2', status: :active
 ```
 
 ### Row
 
-Le composant row génére une div.
+Le composant row génére une div avec la class row.
 
 ### Col
+
+L'élément ```col``` est un [composant](#composant) qui accèpte en arguments :
+
+* num
+* offset
+* size
+ou
+
+* []
+
+Ces paramètres génèrent les classes qui seront inséré dans la div avec la classe
+col.
+
+
+```ruby
+= col({num: 2, offset: 1, size: 3}, class: 'test') do
+  = content
+# ou
+= col([{num: 2, offset: 1, size: 3}, { num: 3}], class: 'test') do
+  = content
+```
 
 ### Grid
 
