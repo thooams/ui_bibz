@@ -11,21 +11,36 @@ This project rocks and uses MIT-LICENSE.
 > permettant de construire une interface très rapidement et simplement
 > à l'aide de Ruby on Rails 4 et de Boostrap 3.
 
+Ui Bibz charge la librairie [boostrap](http://getbootstrap.com/) et
+[awesomefont](http://fontawesome.io/).
+
+**NB** : [HAML](http://haml.info/) est utilisé pour présenter les exemples de chaque élément.
+Vous pouvez bien entendu utiliser l'interpréteur ERB dans votre application Rails.
+
 Tous les composants du framework Ui Bibz comportent des *options* et des *html_options*.
 Ces éléments sont basés sur l'élément ```Component```.
 Un ```component``` accepte un contenu par variable ou par block.
 ex :
 
 ### Component
+
+
+L'élément ```component``` accepte dans content et block :
+
+* le contenu
+
 L'élément ```component``` accepte en option les arguments :
 
-* [state](#state-arguments)
+* [state](#state-values)
 * [glyph](#glyph-arguments)
-* [status](#status-arguments)
+* [status](#status-values)
 
-```ruby
-Component.new content = nil, options = nil, html_options = nil, &block
-```
+
+L'élément ```component``` accepte en html_option les arguments :
+
+* class
+* data
+* ...
 
 Ex :
 ```ruby
@@ -36,11 +51,11 @@ Component.new { state: :success }, { class: 'exemple' } do
 end
 ```
 
-Ui Bibz charge la librairie [boostrap](http://getbootstrap.com/) et
-[awesomefont](http://fontawesome.io/).
+Signature :
 
-**NB** : J'utilise [HAML](http://haml.info/) pour présenter les exemples de chaque élément.
-Vous pouvez bien entendu utiliser l'interpréteur ERB dans votre application Rails.
+```ruby
+Component.new content = nil, options = nil, html_options = nil, &block
+```
 
 
 ## Installation
@@ -78,27 +93,29 @@ Exemple :
 
 ### Alert
 
+![alert](doc/images/alert.png)
+
 L'élément ```notify``` accepte en option les arguments :
 
-* [state](#state-arguments)
+* [state](#state-values)
 * [glyph](#glyph-arguments)
 
-![alert](doc/images/alert.png)
 ```ruby
 = notify 'toto', state: :info, glyph: 'eye'
 ```
 
 ### Breadcrumb (fil d'ariane)
 
+![breadcrumb](doc/images/breadcrumb.png)
+
 L'élément ```breadcrumb``` accepte en option les arguments :
 
-* [status](#status-arguments)
+* [status](#status-values)
 * [glyph](#glyph-arguments)
 * url
 
 L'élément ```link``` est un [component](#component).
 
-![breadcrumb](doc/images/breadcrumb.png)
 ```ruby
 = breadcrumb do |b|
   - b.link 'toto', url: '#toto', glyph: 'home'
@@ -110,14 +127,15 @@ L'élément ```link``` est un [component](#component).
 
 #### Button
 
+![button](doc/images/button.png)
+
 L'élément ```button``` accepte en option les arguments :
 
-* [state](#state-arguments)
-* [status](#status-arguments)
+* [state](#state-values)
+* [status](#status-values)
 * [glyph](#glyph-arguments)
-* [size](#size-arguments)
+* [size](#size-values)
 
-![button](doc/images/button.png)
 ```ruby
 = button 'Button', { state: :danger, size: :xs, glyph: 'star' } , { class: 'my-button' }
 ```
@@ -139,17 +157,18 @@ L'élément ```button_dropdown``` accepte pour options les mêmes arguments que 
 
 #### Button group
 
+![button_group](doc/images/button_group.png)
+
 L'élément ```button_group``` accepte pour options les arguments :
 
 * position (:vertical, :horizontal)
-* [size](#size-arguments)
+* [size](#size-values)
 
 L'élément ```list```accepte pour options les arguments :
 
-* [status](#status-arguments)
-* [state](#state-arguments)
+* [status](#status-values)
+* [state](#state-values)
 
-![button_group](doc/images/button_group.png)
 ```ruby
 = button_group position: :vertical, size: :xs do
   = button 'toto', status: :active
@@ -197,8 +216,8 @@ que l'élément [dropdown](#dropdown).
 
 L'élément ```dropdown```accepte pour options les arguments :
 
-* [state](#state-arguments)
-* [status](#status-arguments)
+* [state](#state-values)
+* [status](#status-values)
 * position (:left, :right)
 
 L'élément ```list``` est un [component](#component) qui accepte pour options les arguments :
@@ -224,35 +243,9 @@ d.list '--'
 ...
 ```
 
-### Arguments
-
-#### Status arguments
-* :active
-* :disable
-
-#### Size arguments
-* :xs
-* :sm
-* :lg
-
-#### State arguments
-* :default
-* :primary
-* :info
-* :success
-* :warning
-* :danger
-
-#### Glyph arguments
-* name
-* size
-* type
-
-#### Status arguments
-* :active
-* :disable
-
 ### Glyph
+
+![glyph](doc/images/glyph.png)
 
 Les glyphs utilisés proviennent de [Font Awesome](http://fontawesome.io/).
 L'élément ```glyph``` accepte pour options les arguments :
@@ -260,7 +253,6 @@ L'élément ```glyph``` accepte pour options les arguments :
 * size
 * type
 
-![glyph](doc/images/glyph.png)
 ```ruby
 = glyph 'star', { size: 3, type: 'fw' }, class: 'star-exemple'
 ou
@@ -268,6 +260,8 @@ ou
 ```
 
 ### Panel
+
+![panel](doc/images/panel.png)
 
 L'élément ```panel``` accepte pour options les arguments :
 
@@ -277,7 +271,6 @@ L'élément ```panel``` accepte pour options les arguments :
 Les éléments ```header```, ```body```,```footer``` sont des éléments [component](#component).
 Exemple :
 
-![panel](doc/images/panel.png)
 ```ruby
 = panel 'danger'
 # ou
@@ -292,6 +285,8 @@ Exemple :
 ```
 
 ### Table
+
+![table](doc/images/table.png)
 
 L'élément ```table``` est un tableau composé d'une recherche, une pagination et un trie de colonnes intégré.
 Le tableau est compatible [I18n](http://guides.rubyonrails.org/i18n.html).
@@ -342,8 +337,6 @@ Un champs select par page est disponible dans la vue :
 ```ruby
 = table_pagination_per_page store: @documents
 ```
-
-![table](doc/images/table.png)
 
 #### Simple table
 
@@ -525,9 +518,9 @@ activerecord:
 
 ### Table Panel
 
-Le composant ```table_panel``` est un tableau dans un panel.
-
 ![table_panel](doc/images/table_panel.png)
+
+Le composant ```table_panel``` est un tableau dans un panel.
 
 ```ruby
 = table_panel store: @users
@@ -548,10 +541,10 @@ Le composant ```table_panel``` est un tableau dans un panel.
 
 ### List
 
+![list](doc/images/list.png)
+
 Par défaut une liste à pour tag ```<li>```. Mais elle peut se transformer en lien ```<a>```
 à travers l'option ```type:```. Par défaut le tag ```<li>``` est présent.
-
-![list](doc/images/list.png)
 
 ```ruby
 = list_group type: :link do |lg|
@@ -567,6 +560,8 @@ Par défaut une liste à pour tag ```<li>```. Mais elle peut se transformer en l
 
 ### Nav
 
+![nav](doc/images/nav.png)
+
 Par défaut la navigation comporte des onglets "tab".
 L'élément ```nav``` accepte en option les arguments :
 
@@ -575,8 +570,6 @@ L'élément ```nav``` accepte en option les arguments :
 * tap (true)
 
 L'élement link est un [component](#component).
-
-![nav](doc/images/nav.png)
 
 ```ruby
 = nav(type: :pills, position: :justified, tap: true) do |d|
@@ -662,6 +655,29 @@ le nombre de colonnes occupées par la vue.
     = 'bottom'
 ```
 
+### Arguments and Values
+
+#### Status values
+* :active
+* :disable
+
+#### Size values
+* :xs
+* :sm
+* :lg
+
+#### State values
+* :default
+* :primary
+* :info
+* :success
+* :warning
+* :danger
+
+#### Glyph arguments
+* name
+* size
+* type
 
 # Plus de détails
 
