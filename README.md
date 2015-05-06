@@ -34,6 +34,7 @@ L'élément ```component``` accepte en option les arguments :
 * [state](#state-values)
 * [glyph](#glyph-arguments)
 * [status](#status-values)
+* class
 
 
 L'élément ```component``` accepte en html_option les arguments :
@@ -56,6 +57,9 @@ Signature :
 ```ruby
 Component.new content = nil, options = nil, html_options = nil, &block
 ```
+
+**NB** : Pour des raisons de simplicité d'écriture, l'argument ```class``` est présent
+dans ```options``` et ```html_options```.
 
 
 ## Installation
@@ -583,6 +587,12 @@ L'élement link est un [component](#component).
 
 Le composant row génére une div avec la class row.
 
+ ```ruby
+= row class: 'toto' do
+  = content
+# => <div class='row toto'>content</div>
+```
+
 ### Col
 
 L'élément ```col``` est un [composant](#composant) qui accèpte en arguments :
@@ -590,20 +600,26 @@ L'élément ```col``` est un [composant](#composant) qui accèpte en arguments :
 * num
 * offset
 * size
+
 ou
 
-* []
+* un tableau de hashes avec les arguments ```num```, ```offset``` et ```size``` à l'intérieur.
 
-Ces paramètres génèrent les classes qui seront inséré dans la div avec la classe
+Ces paramètres génèrent les classes qui seront insérées dans la div avec la classe
 col.
 
 
 ```ruby
-= col({num: 2, offset: 1, size: :lg}, class: 'test') do
+= col({num: 2, size: :lg}, class: 'test') do
   = content
+
+# => <div class='col-lg-2 test'>content</div>
+
 # ou
-= col([{num: 2, offset: 1, size: :xs}, { num: 3}], class: 'test') do
+= col([{ offset: 1, size: :xs}, { num: 3}], class: 'test') do
   = content
+
+# => <div class='col-xs-offset-1 col-md-3 test'>content</div>
 ```
 
 ### Grid
