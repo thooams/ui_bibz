@@ -715,9 +715,9 @@ comme ci-dessous.
 Exemple :
 
 ```ruby
-UiBibz::Ui::Alert.new 'Exemple', { state: :success }, { class: 'exemple' }
+UiBibz::Ui::Panel.new 'Exemple', { state: :success }, { class: 'exemple' }
 # au lieu de
-alert 'Exemple', { state: :success }, { class: 'exemple' }
+panel 'Exemple', { state: :success }, { class: 'exemple' }
 ```
 
 # A faire :
