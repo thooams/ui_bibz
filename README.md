@@ -67,7 +67,7 @@ dans ```options``` et ```html_options```.
 Ajouter la gem dans Rails :
 
 ```ruby
-gem "ui_bibz", github: 'thooams/ui_bibz', tag: 'v0.9.0'
+gem "ui_bibz"
 ```
 
 Lancer la command suivante :
@@ -715,7 +715,7 @@ comme ci-dessous.
 Exemple :
 
 ```ruby
-UiBibz::Ui::Panel.new 'Exemple', { state: :success }, { class: 'exemple' }
+UiBibz::Ui::Panel.new('Exemple', { state: :success }, { class: 'exemple'}).render
 # au lieu de
 panel 'Exemple', { state: :success }, { class: 'exemple' }
 ```
