@@ -32,6 +32,7 @@ module UiBibz
     autoload :ListGroup,               "ui_bibz/ui/list/list_group"
     autoload :Nav,                     "ui_bibz/ui/nav/nav"
     autoload :Panel,                   "ui_bibz/ui/panel"
+    autoload :ProgressBar,             "ui_bibz/ui/progress_bar/progress_bar"
     autoload :Row,                     "ui_bibz/ui/grid/components/row"
     autoload :Tab,                     "ui_bibz/ui/nav/tab"
     autoload :Table,                   "ui_bibz/ui/table/table"
