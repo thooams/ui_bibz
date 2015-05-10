@@ -1,8 +1,7 @@
 module UiBibz::Helpers::UiHelper
 
   def panel content = nil, options = nil, html_options = nil, &block
-    is_tap = (content[:tap] if content.kind_of?(Hash)) || (options[:tap] unless options.nil?)
-    if is_tap
+    if is_tap(content, options)
       UiBibz::Ui::Panel.new(content, options, html_options).tap(&block).render
     else
       UiBibz::Ui::Panel.new(content, options, html_options, &block).render
@@ -38,8 +37,7 @@ module UiBibz::Helpers::UiHelper
   # Table section begin ------------------------------------------------------
 
   def table content = nil, options = nil, html_options = nil, &block
-    is_tap = (content[:tap] if content.kind_of?(Hash)) || (options[:tap] unless options.nil?)
-    if is_tap
+    if is_tap(content, options)
       UiBibz::Ui::Table.new(content, options, html_options).tap(&block).render
     else
       UiBibz::Ui::Table.new(content, options, html_options, &block).render
@@ -59,8 +57,7 @@ module UiBibz::Helpers::UiHelper
   end
 
   def table_panel content = nil, options = nil, html_options = nil, &block
-    is_tap = (content[:tap] if content.kind_of?(Hash)) || (options[:tap] unless options.nil?)
-    if is_tap
+    if is_tap(content, options)
       UiBibz::Ui::TablePanel.new(content, options, html_options).tap(&block).render
     else
       UiBibz::Ui::TablePanel.new(content, options, html_options, &block).render
@@ -103,6 +100,20 @@ module UiBibz::Helpers::UiHelper
 
   def glyph content, options = nil, html_options = nil, &block
     UiBibz::Ui::Glyph.new(content, options, html_options, &block).render
+  end
+
+  def progress_bar percentage = nil, options = nil, html_options = nil, &block
+    if is_tap(percentage, options)
+      UiBibz::Ui::ProgressBar.new(percentage, options, html_options).tap(&block).render
+    else
+      UiBibz::Ui::ProgressBar.new(percentage, options, html_options, &block).render
+    end
+  end
+
+private
+
+  def is_tap content, options
+    (content[:tap] if content.kind_of?(Hash)) || (options[:tap] unless options.nil?)
   end
 
 end
