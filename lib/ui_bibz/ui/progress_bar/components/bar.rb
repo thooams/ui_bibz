@@ -35,7 +35,7 @@ module UiBibz::Ui
   #
   #   UiBibz::Ui::Bar.new(10)
   #   # or
-  #   UiBibz::Ui::Bar.new(10, { state: :success, sr_only: false, label: 'Loading...' },{ class: 'test' }).render
+  #   UiBibz::Ui::Bar.new(10, { state: :success, sr_only: true, label: 'Loading...' },{ class: 'test' }).render
   #   # or
   #   UiBibz::Ui::Bar.new({ state: :primary }) do
   #     40

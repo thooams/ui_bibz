@@ -67,7 +67,7 @@ dans ```options``` et ```html_options```.
 Ajouter la gem dans Rails :
 
 ```ruby
-gem "ui_bibz", '~> 0.9.0'
+gem "ui_bibz", '~> 1.0.0'
 ```
 
 Lancer la command suivante :
@@ -720,9 +720,16 @@ UiBibz::Ui::Panel.new('Exemple', { state: :success }, { class: 'exemple'}).rende
 panel 'Exemple', { state: :success }, { class: 'exemple' }
 ```
 
-# A faire :
+# Roadmap :
 
-* progress bar
-* media
+Pour la V2.
+
+* créer des stores pour les listes, breadcrumb
+* créer une meilleure documentation
+* créer d'autres extensions, plugins et une guideline
+* donner le choix de la dépendence boostrap et awesomefont en CDN ou en local
+* mise à jour vers bootstrap 4
+* créer Ui-Bibz Core à partir de cette librairie est l'insérer dans un nouveau
+  framework Ui-Bibz utilisant simple_form pour les champs formulaires.
 ...
 
