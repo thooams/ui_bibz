@@ -18,7 +18,6 @@ module UiBibz::Ui
   # * +state+ - State of élement with symbol value:
   #   (+:default+, +:primary+, +:info+, +:warning+, +:danger+)
   # * label - String (default: "percentage%")
-  # * percentage - Integer
   # * tap - Boolean (true: To add several bars)
   # * percentage_min - Integer (default: 0)
   # * percentage_max - Integer (default: 100)
@@ -33,6 +32,13 @@ module UiBibz::Ui
   #
   #   UiBibz::Ui::ProgressBar.new(options = nil, html_options = nil) do
   #     percentage
+  #   end
+  #
+  #   UiBibz::Ui::ProgressBar.new(tap: true).tap do |pb|
+  #     pb.bar percentage, options = nil, html_options = nil
+  #     pb.bar options = nil, html_options = nil do
+  #       percentage
+  #     end
   #   end
   #
   # ==== Examples

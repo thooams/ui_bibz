@@ -41,4 +41,22 @@ class UiHelperTest < ActionView::TestCase
     assert_equal expected, actual
   end
 
+  test 'progress bar' do
+    actual   = progress_bar 30
+    expected = "<div class=\"progress\"><div class=\"progress-bar\" role=\"progressbar\" aria-valuenow=\"30\" aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"width: 30%\">30%</div></div>"
+
+    assert_equal expected, actual
+  end
+
+  test 'progress bar with several bars' do
+    actual   = progress_bar(tap: true) do |pb|
+      pb.bar 20, type: :animated
+      pb.bar 30, state: :success
+      pb.bar 10, type: :striped
+    end
+    expected = "<div class=\"progress\"><div class=\"progress-bar progress-bar-striped active\" role=\"progressbar\" aria-valuenow=\"20\" aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"width: 20%\">20%</div><div class=\"progress-bar-success progress-bar\" role=\"progressbar\" aria-valuenow=\"30\" aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"width: 30%\">30%</div><div class=\"progress-bar progress-bar-striped\" role=\"progressbar\" aria-valuenow=\"10\" aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"width: 10%\">10%</div></div>"
+
+    assert_equal expected, actual
+  end
+
 end
