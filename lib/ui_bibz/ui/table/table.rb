@@ -107,7 +107,7 @@ module UiBibz::Ui
     end
 
     def type
-      "table-#{ @options[:type] }"
+      "table-#{ @options[:type] }" unless @options[:type].nil?
     end
 
     def table_html

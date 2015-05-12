@@ -1,18 +1,10 @@
-
 require 'action_view'
-#require 'haml/helpers'
 require 'will_paginate'
 require 'will-paginate-i18n'
 
 module UiBibz
 
   mattr_accessor :app_root
-
-  # Yield self on setup for nice config blocks
-  # Maybe remove ?
-  def self.setup
-    yield self
-  end
 
   module Ui
     autoload :Alert,                   "ui_bibz/ui/alert"
@@ -56,6 +48,5 @@ module UiBibz
   end
 
 end
-
 
 require "ui_bibz/rails/engine"

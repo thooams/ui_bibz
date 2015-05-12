@@ -48,7 +48,7 @@ module UiBibz::Ui
   #   UiBibz::Ui::ProgressBar.new(10, { state: :success, sr_only: false, label: 'Loading...' },{ class: 'test' }).render
   #   # or
   #   UiBibz::Ui::ProgressBar.new(tap: true).tap |pb|
-  #     pb.bar 10, { state: :success, sr_only: false, label: 'Loading...' },{ class: 'test' })
+  #     pb.bar 10, { state: :success, sr_only: false, label: 'Loading...' },{ class: 'test' }
   #     pb.bar { state: :primary } do
   #       20
   #     end
