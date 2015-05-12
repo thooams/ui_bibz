@@ -29,7 +29,7 @@ module UiBibz::Ui
   private
 
     def dropdown_action record
-      UiBibz::Ui::Dropdown.new(dropdown_action_name, { position: :right, glyph: actions_glyph }, class: 'btn-group-xs').tap do |d|
+      UiBibz::Ui::Dropdown.new(dropdown_action_name, { position: :right, glyph: actions_glyph }, class: 'btn-group-xs dropdown-action').tap do |d|
         unless @actions.nil?
           actions_links(record).each do |l|
             d.list l.html_safe

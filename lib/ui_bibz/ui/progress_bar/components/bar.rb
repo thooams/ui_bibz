@@ -48,10 +48,20 @@ module UiBibz::Ui
     end
 
     def render
-      content_tag :div, progressbar_inner_html, class_and_html_options(['progress-bar', type]).merge(role: 'progressbar', "aria-valuenow" => percentage, "aria-valuemin" => percentage_min, "aria-valuemax" => percentage_max, style: "width: #{ percentage }%")
+      content_tag :div, progressbar_inner_html, class_and_html_options(['progress-bar', type]).merge(bar_html_options)
     end
 
   private
+
+    def bar_html_options
+      {
+        "role"          => 'progressbar',
+        "aria-valuenow" => percentage,
+        "aria-valuemin" => percentage_min,
+        "aria-valuemax" => percentage_max,
+        "style"         => "width: #{ percentage }%"
+      }
+    end
 
     def progressbar_inner_html
       sr_only ? content_tag(:span, label, class: 'sr-only') : label

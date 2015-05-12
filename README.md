@@ -92,6 +92,20 @@ Exemple :
   %body
 ```
 
+Placer la ligne suivante dans ```/app/assets/stylesheets/applications.css
+```ruby
+...
+*= require ui_bibz
+...
+```
+
+Placer la ligne suivante dans ```/app/assets/javascripts/applications.js
+```ruby
+...
+//= require ui_bibz
+...
+```
+
 
 ## Utilisation
 
@@ -245,6 +259,34 @@ ex :
 ...
 d.list '--'
 ...
+```
+
+### Progress Bar
+
+![glyph](doc/images/progress_bar.png)
+
+L'élément ```progress_bar```accepte pour options les arguments :
+
+* [state](#state-values)
+* type (:animated, :striped)
+* label - String (default: "percentage%")
+* tap - Boolean (true: To add several bars)
+* percentage_min - Integer (default: 0)
+* percentage_max - Integer (default: 100)
+* sr_only - Boolean to show label (default: false)
+
+
+```ruby
+= progress_bar 30
+# or
+= progress_bar state: :info, sr_only: true, type: :animated do
+  = 70
+# or
+= progress_bar(tap: true) do |pb|
+  - pb.bar 10, { state: :success, label: 'Loading...' },{ class: 'test' }
+  - pb.bar 30, state: :warning
+  - pb.bar(type: :striped) do
+    = 10
 ```
 
 ### Glyph
