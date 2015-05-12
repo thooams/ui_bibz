@@ -92,14 +92,14 @@ Exemple :
   %body
 ```
 
-Placer la ligne suivante dans ```/app/assets/stylesheets/applications.css
+Placer la ligne suivante dans ```/app/assets/stylesheets/applications.css```
 ```ruby
 ...
 *= require ui_bibz
 ...
 ```
 
-Placer la ligne suivante dans ```/app/assets/javascripts/applications.js
+Placer la ligne suivante dans ```/app/assets/javascripts/applications.js```
 ```ruby
 ...
 //= require ui_bibz
