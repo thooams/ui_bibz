@@ -6,21 +6,20 @@
 
 This project rocks and uses MIT-LICENSE.
 
-# UiBibz
+# Ui Bibz
 > Ui Bibz est un [framework d'interface](http://fr.wikipedia.org/wiki/Framework_d%27interface)
 > permettant de construire une interface très rapidement et simplement
 > à l'aide de Ruby on Rails 4 et de Boostrap 3.
 
 Ui Bibz charge la librairie [boostrap](http://getbootstrap.com/) et
-[awesomefont](http://fontawesome.io/).
+[awesomefont](http://fontawesome.io/) en [CDN](https://fr.wikipedia.org/wiki/Content_delivery_network).
 
 **NB** : [HAML](http://haml.info/) est utilisé pour présenter les exemples de chaque élément.
-Vous pouvez bien entendu utiliser l'interpréteur ERB dans votre application Rails.
+Vous pouvez bien entendu utiliser l'interpréteur [ERB](https://en.wikipedia.org/wiki/ERuby) dans votre application Rails.
 
-Tous les composants du framework Ui Bibz comportent des *options* et des *html_options*.
+Tous les composants du framework Ui Bibz comportent l'agument *options* et l'argument *html_options*.
 Ces éléments sont basés sur l'élément ```Component```.
 Un ```component``` accepte un contenu par variable ou par block.
-ex :
 
 ### Component
 
@@ -29,7 +28,7 @@ L'élément ```component``` accepte dans content et block :
 
 * le contenu
 
-L'élément ```component``` accepte en option les arguments :
+L'élément ```component``` à pour ```options``` un Hash acceptant les clefs :
 
 * [state](#state-values)
 * [glyph](#glyph-arguments)
@@ -37,17 +36,18 @@ L'élément ```component``` accepte en option les arguments :
 * class
 
 
-L'élément ```component``` accepte en html_option les arguments :
+L'élément ```component``` à pour ```html_options``` un Hash acceptant les clefs :
 
 * class
 * data
 * ...
 
-Ex :
+Exemple :
+
 ```ruby
-Component.new 'Exemple', { state: :success }, { class: 'exemple' }
+Component.new 'Exemple', { state: :success, glyph: { name: 'pencil', size: 3} }, { class: 'exemple' }
 # ou
-Component.new { state: :success }, { class: 'exemple' } do
+Component.new { state: :success, glyph: 'eye' }, { class: 'exemple' } do
   'Exemple'
 end
 ```
@@ -113,7 +113,7 @@ Placer la ligne suivante dans ```/app/assets/javascripts/applications.js```
 
 ![alert](doc/images/alert.png)
 
-L'élément ```notify``` accepte en option les arguments :
+L'élément ```notify``` à pour ```options``` un Hash acceptant les clefs :
 
 * [state](#state-values)
 * [glyph](#glyph-arguments)
@@ -126,7 +126,7 @@ L'élément ```notify``` accepte en option les arguments :
 
 ![breadcrumb](doc/images/breadcrumb.png)
 
-L'élément ```breadcrumb``` accepte en option les arguments :
+L'élément ```breadcrumb``` à pour ```options``` un Hash acceptant les clefs :
 
 * [status](#status-values)
 * [glyph](#glyph-arguments)
@@ -147,7 +147,7 @@ L'élément ```link``` est un [component](#component).
 
 ![button](doc/images/button.png)
 
-L'élément ```button``` accepte en option les arguments :
+L'élément ```button``` à pour ```options``` un Hash acceptant les clefs :
 
 * [state](#state-values)
 * [status](#status-values)
@@ -160,7 +160,7 @@ L'élément ```button``` accepte en option les arguments :
 
 #### Button Dropdown
 
-L'élément ```button_dropdown``` accepte pour options les mêmes arguments que l'élément
+L'élément ```button_dropdown``` accepte pour options les mêmes clefs que l'élément
 [dropdown](#dropdown).
 
 ![button_link](doc/images/button_dropdown.png)
@@ -177,12 +177,12 @@ L'élément ```button_dropdown``` accepte pour options les mêmes arguments que 
 
 ![button_group](doc/images/button_group.png)
 
-L'élément ```button_group``` accepte pour options les arguments :
+L'élément ```button_group``` à pour ```options``` un Hash acceptant les clefs :
 
 * position (:vertical, :horizontal)
 * [size](#size-values)
 
-L'élément ```list```accepte pour options les arguments :
+L'élément ```list``` à pour ```options``` un Hash acceptant les clefs :
 
 * [status](#status-values)
 * [state](#state-values)
@@ -206,20 +206,21 @@ L'élément ```list```accepte pour options les arguments :
 
 #### Button Link (Lien Bouton)
 
-L'élément ```button_link```accepte pour options les arguments :
-
 ![button_link](doc/images/button_link.png)
+
+L'élément ```button_link``` à pour ```options``` un Hash acceptant les clefs :
+
 ```ruby
 = button_link 'Button', { url: '#button', state: :primary, glyph: 'star' }, { class: 'my-button' }
 ```
 
 #### Button Split Dropdown
 
-L'élément ```button_split_dropdown```accepte pour options les mêmes arguments
+![button_group](doc/images/button_split_dropdown.png)
+
+L'élément ```button_split_dropdown```accepte pour options les mêmes clefs
 que l'élément [dropdown](#dropdown).
 
-
-![button_group](doc/images/button_split_dropdown.png)
 ```ruby
 = button_split_dropdown 'Dropdown', state: :primary do |d|
   - d.list do
@@ -232,13 +233,13 @@ que l'élément [dropdown](#dropdown).
 
 ### Dropdown
 
-L'élément ```dropdown```accepte pour options les arguments :
+L'élément ```dropdown``` à pour ```options``` un Hash acceptant les clefs :
 
 * [state](#state-values)
 * [status](#status-values)
 * position (:left, :right)
 
-L'élément ```list``` est un [component](#component) qui accepte pour options les arguments :
+L'élément ```list``` est un [component](#component) qui accepte pour options les clefs :
 
 * type (:header)
 * [glyph](#glyph-arguments)
@@ -254,7 +255,9 @@ L'élément ```list``` est un [component](#component) qui accepte pour options l
 ```
 
 Pour ajouter une ligne séparatrice, il suffit d'insérer 3 "-" à la suite
-ex :
+
+Exemple :
+
 ```
 ...
 d.list '--'
@@ -265,7 +268,7 @@ d.list '--'
 
 ![glyph](doc/images/progress_bar.png)
 
-L'élément ```progress_bar```accepte pour options les arguments :
+L'élément ```progress_bar``` à pour ```options``` un Hash acceptant les clefs :
 
 * [state](#state-values)
 * type (:animated, :striped)
@@ -274,7 +277,6 @@ L'élément ```progress_bar```accepte pour options les arguments :
 * percentage_min - Integer (default: 0)
 * percentage_max - Integer (default: 100)
 * sr_only - Boolean to show label (default: false)
-
 
 ```ruby
 = progress_bar 30
@@ -294,7 +296,8 @@ L'élément ```progress_bar```accepte pour options les arguments :
 ![glyph](doc/images/glyph.png)
 
 Les glyphs utilisés proviennent de [Font Awesome](http://fontawesome.io/).
-L'élément ```glyph``` accepte pour options les arguments :
+L'élément ```glyph``` peut contenir un hash pour ```content```
+L'élément ```glyph``` à pour ```options``` un Hash acceptant les clefs :
 
 * size
 * type
@@ -309,12 +312,13 @@ ou
 
 ![panel](doc/images/panel.png)
 
-L'élément ```panel``` accepte pour options les arguments :
+L'élément ```panel``` à pour ```options``` un Hash acceptant les clefs :
 
 * [state](#state)
 * tap (true) : permet de créer un header, body et footer
 
 Les éléments ```header```, ```body```,```footer``` sont des éléments [component](#component).
+
 Exemple :
 
 ```ruby
@@ -334,14 +338,15 @@ Exemple :
 
 ![table](doc/images/table.png)
 
-L'élément ```table``` est un tableau composé d'une recherche, une pagination et un trie de colonnes intégré.
+L'élément ```table``` est un tableau composé d'une recherche, une pagination et un trie de colonnes intégrées.
 Le tableau est compatible [I18n](http://guides.rubyonrails.org/i18n.html).
-Le tableau contient pour chaque ligne un bouton dropdown action avec par défaut
-ces 3 actions : voir, éditer, supprimer. Toute les colonnes sont présentent et
+Le tableau contient pour chaque ligne un bouton dropdown 'action' avec par défaut
+ces 3 actions : voir, éditer, supprimer. Toutes les colonnes sont présentes et
 affichées par défaut.
 
-La table doit contenir un store. Ce store est créé dans le controlleur avec la
+La table doit contenir un store. Ce store doit-être créé dans le controlleur avec la
 méthode ```table_search_pagination```.
+
 La méthode ```table_search_pagination``` contient 3 arguments :
 
 * params
@@ -349,6 +354,7 @@ La méthode ```table_search_pagination``` contient 3 arguments :
 * args (optionel)
 
 Exemple :
+
 ```ruby
 # app/controllers/document_controller.rb
 @documents = Document.table_search_pagination(params, session)
@@ -358,12 +364,14 @@ Dans le model, insérer la méthode ```searchable_attributes``` afin de pouvoir
 faire une recherche sur les attributs souhaités.
 
 Exemple :
+
 ```ruby
 # app/models/document.rb
 searchable_attributes :name_fr, :name_en
 ```
 
 Un champ recherche est disponible dans la vue :
+
 ![table_search_field](doc/images/table_search_field.png)
 
 ```ruby
@@ -394,13 +402,14 @@ La méthode ```table_search_pagination``` contient 3 arguments :
 * args
 
 Exemple :
+
 ```ruby
 # app/controllers/document_controller.rb
 @documents = Document.table_search_pagination(params, session)
 ```
 
 Dans le **model**, insérer la méthode ```searchable_attributes``` afin de pouvoir
-faire une recherche pour les attributs souhaités.
+faire une recherche sur les attributs souhaités.
 
 Exemple :
 ```ruby
@@ -422,7 +431,7 @@ Exemple :
 = table store: @documents
 ```
 
-Les actions par défauts peuvent être modifiées (voir exemple complexe) :
+Les actions par défauts peuvent être modifiées ([voir exemple complexe](#Complex-Example-table)) :
 
 * edit
 * view
@@ -467,7 +476,7 @@ L'ajout de colonnes à travers la méthode ```add``` contient plusieurs argument
 
 #### Complex Example table
 
-Si on souhaite voir apparaître des liasions avec d'autres tables il faut pour
+Si on souhaite voir apparaître certaines liasions avec d'autres tables il faut pour
 cela :
 
 Dans le controlleur, insérer la méthode ```table_search_pagination``` en ajoutant
@@ -481,7 +490,7 @@ Exemple :
 
 Dans la vue, insérer la méthod ```table```.
 NB: On peut créer ces propres méthodes comme ```user_name``` dans notre model "Document" et
-l'utiliser dans le data_index.
+l'appeler comme valeur pour la clef ```data_index```.
 
 ```ruby
 # app/views/documents/index.html.haml
@@ -514,12 +523,12 @@ arguments  = { sortable: {
           LEFT OUTER JOIN users ON users.id = products_users.user_id"
 } }
 
-@documents = Document.includes(:users).table_search_pagination(params, session,
-arguments)
+@documents = Document.includes(:users).table_search_pagination(params, session, arguments)
 ```
 
 Ici l'argument sortable signifie que l'on souhaite s'interresser à la
 fonctionnalité de trie.
+
 Pour celà il faut :
 
 * définir le nom de la colonne triéé à travers l'argument ```column:``` (string)
@@ -566,7 +575,7 @@ activerecord:
 
 ![table_panel](doc/images/table_panel.png)
 
-Le composant ```table_panel``` est un tableau dans un panel.
+Le composant ```table_panel``` est un [tableau](#table) dans un [panel](#panel).
 
 ```ruby
 = table_panel store: @users
@@ -589,8 +598,9 @@ Le composant ```table_panel``` est un tableau dans un panel.
 
 ![list](doc/images/list.png)
 
-Par défaut une liste à pour tag ```<li>```. Mais elle peut se transformer en lien ```<a>```
-à travers l'option ```type:```. Par défaut le tag ```<li>``` est présent.
+Par défaut une liste à pour tag ```<li>```.
+Mais elle peut se transformer en lien ```<a>``` à travers l'option ```type:```.
+Par défaut le tag ```<li>``` est présent.
 
 ```ruby
 = list_group type: :link do |lg|
@@ -624,6 +634,8 @@ L'élement link est un [component](#component).
 ```
 
 ### Label
+
+
 
 ### Row
 
