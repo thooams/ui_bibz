@@ -633,9 +633,23 @@ L'élement link est un [component](#component).
   d.link 'Test2', url: '#test2', status: :active
 ```
 
-### Label
+### Etiquette
+
+![list](doc/images/etiquette.png)
 
 
+NB : Les méthodes ```Tag, label``` sont déjà utilisés par Rails.
+L'élément ```etiquette``` à pour ```options``` un Hash acceptant les clefs :
+
+* [state](#state-values)
+
+Exemple :
+
+```ruby
+= etiquette 'label'
+= etiquette 'label 2', state: :success
+= etiquette 'label 2', state: :danger
+```
 
 ### Row
 

@@ -31,7 +31,7 @@ module UiBibz::Ui
   #
   # ==== Examples
   #
-  #   UiBibz::Ui::Label.new(content, type: :success).render
+  #   UiBibz::Ui::Label.new(content, state: :success).render
   #
   #   UiBibz::Ui::Label.new() do
   #     #content
