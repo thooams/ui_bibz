@@ -642,6 +642,7 @@ NB : Les méthodes ```Tag, label``` sont déjà utilisées par Rails.
 L'élément ```etiquette``` à pour ```options``` un Hash acceptant les clefs :
 
 * [state](#state-values)
+* [glyph](#glyph-values)
 
 Exemple :
 
