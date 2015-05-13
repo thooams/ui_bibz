@@ -638,7 +638,7 @@ L'élement link est un [component](#component).
 ![list](doc/images/etiquette.png)
 
 
-NB : Les méthodes ```Tag, label``` sont déjà utilisés par Rails.
+NB : Les méthodes ```Tag, label``` sont déjà utilisées par Rails.
 L'élément ```etiquette``` à pour ```options``` un Hash acceptant les clefs :
 
 * [state](#state-values)
