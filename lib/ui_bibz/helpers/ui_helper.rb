@@ -13,8 +13,8 @@ module UiBibz::Helpers::UiHelper
     UiBibz::Ui::Alert.new(content, options, html_options, &block).render
   end
 
-  # Use "lab" instead of "label" : due to "actionview (4.2.0) lib/action_view/helpers/form_helper.rb" conflict
-  def lab content = nil, options = nil, html_options = nil, &block
+  # Use "etiquette" instead of "label" : due to "actionview (4.2.0) lib/action_view/helpers/form_helper.rb" conflict
+  def etiquette content = nil, options = nil, html_options = nil, &block
     UiBibz::Ui::Label.new(content, options, html_options, &block).render
   end
 
