@@ -798,7 +798,7 @@ Pour la V2.
 * créer d'autres extensions, plugins et une guideline
 * donner le choix de la dépendence boostrap et awesomefont en CDN ou en local
 * mise à jour vers bootstrap 4
-* créer Ui-Bibz Core à partir de cette librairie est l'insérer dans un nouveau
-  framework Ui-Bibz utilisant simple_form pour les champs formulaires.
+* créer Ui-Bibz Core à partir de cette librairie ( pour l'insérer dans un nouveau
+  framework Ui-Bibz utilisant simple_form pour les champs formulaires ).
 ...
 
