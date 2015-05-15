@@ -10,8 +10,8 @@ Gem::Specification.new do |s|
   s.authors     = ["Thooams"]
   s.email       = ["thooams@gmail.com"]
   s.homepage    = "http://thooams.github.io/Ui-Bibz/"
-  s.summary     = "A Rails plugin with Boostrap framework..."
-  s.description = "A Rails plugin with Boostrap framework..."
+  s.summary     = "A Rails Bootstrap framework..."
+  s.description = "A Rails Boostrap framework..."
   s.license     = "MIT"
 
   s.files         = `git ls-files`.split("\n")
