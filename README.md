@@ -3,6 +3,7 @@
 [![Build Status](https://travis-ci.org/thooams/Ui-Bibz.svg)](https://travis-ci.org/thooams/Ui-Bibz)
 [![Code Climate](https://codeclimate.com/github/thooams/Ui-Bibz/badges/gpa.svg)](https://codeclimate.com/github/thooams/Ui-Bibz)
 [![Test Coverage](https://codeclimate.com/github/thooams/Ui-Bibz/badges/coverage.svg)](https://codeclimate.com/github/thooams/Ui-Bibz)
+[![Join the chat at https://gitter.im/thooams/Ui-Bibz](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/thooams/Ui-Bibz?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 This project rocks and uses MIT-LICENSE.
 
