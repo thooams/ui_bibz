@@ -8,6 +8,8 @@
 This project rocks and uses MIT-LICENSE.
 
 # Ui Bibz
+
+[![Join the chat at https://gitter.im/thooams/Ui-Bibz](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/thooams/Ui-Bibz?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 > Ui Bibz est un [framework d'interface](http://fr.wikipedia.org/wiki/Framework_d%27interface)
 > permettant de construire une interface très rapidement et simplement
 > à l'aide de Ruby on Rails 4 et de Boostrap 3.
