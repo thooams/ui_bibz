@@ -3,7 +3,7 @@ include UiBibz::Helpers
 class NavTest < ActionView::TestCase
 
   test 'Nav with tab' do
-    actual = UiBibz::Ui::Nav.new().tap do |n|
+    actual = UiBibz::Ui::Core::Nav.new().tap do |n|
       n.link 'Home', status: :active, url: "#Home", selector: 'home'
       n.link 'Profile', url: "#profile", selector: 'profile'
       n.link 'Messages', url: "#messages", selector: 'messages'
@@ -14,7 +14,7 @@ class NavTest < ActionView::TestCase
   end
 
   test 'Nav with pills' do
-    actual = UiBibz::Ui::Nav.new(type: :pills, position: :justified).tap do |n|
+    actual = UiBibz::Ui::Core::Nav.new(type: :pills, position: :justified).tap do |n|
       n.link 'Home', status: :active, url: "#Home", selector: 'home'
       n.link 'Profile', url: "#profile", selector: 'profile', badge: 16
       n.link 'Messages', url: "#messages", selector: 'messages', status: :disabled

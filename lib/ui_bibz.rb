@@ -7,32 +7,41 @@ module UiBibz
   mattr_accessor :app_root
 
   module Ui
-    autoload :Alert,                   "ui_bibz/ui/alert"
+    # Base
     autoload :Base,                    "ui_bibz/ui/base"
-    autoload :Breadcrumb,              "ui_bibz/ui/breadcrumb/breadcrumb"
-    autoload :Button,                  "ui_bibz/ui/button/button"
-    autoload :ButtonDropdown,          "ui_bibz/ui/button/button_dropdown"
-    autoload :ButtonGroup,             "ui_bibz/ui/button/button_group"
-    autoload :ButtonLink,              "ui_bibz/ui/button/button_link"
-    autoload :ButtonSplitDropdown,     "ui_bibz/ui/button/button_split_dropdown"
-    autoload :Col,                     "ui_bibz/ui/grid/components/col"
-    autoload :Component,               "ui_bibz/ui/component"
-    autoload :Dropdown,                "ui_bibz/ui/dropdown/dropdown"
-    autoload :Glyph,                   "ui_bibz/ui/glyph"
-    autoload :Grid,                    "ui_bibz/ui/grid/grid"
-    autoload :Jumbotron,               "ui_bibz/ui/jumbotron"
-    autoload :Label,                   "ui_bibz/ui/label"
-    autoload :ListGroup,               "ui_bibz/ui/list/list_group"
-    autoload :Nav,                     "ui_bibz/ui/nav/nav"
-    autoload :Panel,                   "ui_bibz/ui/panel"
-    autoload :ProgressBar,             "ui_bibz/ui/progress_bar/progress_bar"
-    autoload :Row,                     "ui_bibz/ui/grid/components/row"
-    autoload :Tab,                     "ui_bibz/ui/nav/tab"
-    autoload :Table,                   "ui_bibz/ui/table/table"
-    autoload :TablePanel,              "ui_bibz/ui/table/table_panel"
-    autoload :TableSearchField,        "ui_bibz/ui/table/table_search_field"
-    autoload :TablePagination,         "ui_bibz/ui/table/table_pagination"
-    autoload :TablePaginationPerPage,  "ui_bibz/ui/table/table_pagination_per_page"
+
+    # Core
+    module Core
+      autoload :Alert,                   "ui_bibz/ui/core/alert"
+      autoload :Breadcrumb,              "ui_bibz/ui/core/breadcrumb/breadcrumb"
+      autoload :Button,                  "ui_bibz/ui/core/button/button"
+      autoload :ButtonDropdown,          "ui_bibz/ui/core/button/button_dropdown"
+      autoload :ButtonGroup,             "ui_bibz/ui/core/button/button_group"
+      autoload :ButtonLink,              "ui_bibz/ui/core/button/button_link"
+      autoload :ButtonSplitDropdown,     "ui_bibz/ui/core/button/button_split_dropdown"
+      autoload :Col,                     "ui_bibz/ui/core/col"
+      autoload :Component,               "ui_bibz/ui/core/component"
+      autoload :Dropdown,                "ui_bibz/ui/core/dropdown/dropdown"
+      autoload :Glyph,                   "ui_bibz/ui/core/glyph"
+      autoload :Jumbotron,               "ui_bibz/ui/core/jumbotron"
+      autoload :Label,                   "ui_bibz/ui/core/label"
+      autoload :ListGroup,               "ui_bibz/ui/core/list/list_group"
+      autoload :Nav,                     "ui_bibz/ui/core/nav/nav"
+      autoload :Panel,                   "ui_bibz/ui/core/panel"
+      autoload :ProgressBar,             "ui_bibz/ui/core/progress_bar/progress_bar"
+      autoload :Row,                     "ui_bibz/ui/core/row"
+      autoload :Tab,                     "ui_bibz/ui/core/nav/tab"
+    end
+
+    # Ux
+    module Ux
+      autoload :Grid,                    "ui_bibz/ui/ux/grid"
+      autoload :Table,                   "ui_bibz/ui/ux/table/table"
+      autoload :TablePanel,              "ui_bibz/ui/ux/table/table_panel"
+      autoload :TableSearchField,        "ui_bibz/ui/ux/table/table_search_field"
+      autoload :TablePagination,         "ui_bibz/ui/ux/table/table_pagination"
+      autoload :TablePaginationPerPage,  "ui_bibz/ui/ux/table/table_pagination_per_page"
+    end
   end
 
   module Helpers

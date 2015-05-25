@@ -7,14 +7,14 @@ class PanelTest < ActionView::TestCase
   end
 
   test 'simple panel' do
-    actual   = UiBibz::Ui::Panel.new(@content).render
+    actual   = UiBibz::Ui::Core::Panel.new(@content).render
     expected = "<div class=\"panel-default panel\"><div class=\"panel-body\">#{ @content }</div></div>"
 
     assert_equal expected, actual
   end
 
   test 'simple panel with block' do
-    actual = UiBibz::Ui::Panel.new do
+    actual = UiBibz::Ui::Core::Panel.new do
       @content
     end.render
     expected = "<div class=\"panel-default panel\"><div class=\"panel-body\">#{ @content }</div></div>"
@@ -23,7 +23,7 @@ class PanelTest < ActionView::TestCase
   end
 
   test 'simple panel with tap' do
-    actual = UiBibz::Ui::Panel.new().tap do |p|
+    actual = UiBibz::Ui::Core::Panel.new().tap do |p|
       p.body @content
     end.render
     expected = "<div class=\"panel-default panel\"><div class=\"panel-body\">#{ @content }</div></div>"
@@ -32,7 +32,7 @@ class PanelTest < ActionView::TestCase
   end
 
   test 'complex panel with tap' do
-    actual = UiBibz::Ui::Panel.new({state: :danger}, { class: 'example'}).tap do |p|
+    actual = UiBibz::Ui::Core::Panel.new({state: :danger}, { class: 'example'}).tap do |p|
       p.header 'header', class: 'header-example'
       p.body class: 'body-example' do
         @content
