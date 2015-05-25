@@ -1,5 +1,5 @@
 module UiBibz::Ui
-  class Paginable < Ui
+  class Paginable < Base
     include WillPaginate::ActionView
 
     def initialize store, options

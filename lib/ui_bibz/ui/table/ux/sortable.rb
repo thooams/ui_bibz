@@ -1,5 +1,5 @@
 module UiBibz::Ui
-  class Sortable < Ui
+  class Sortable < Base
 
     def initialize store, options
       @store   = store

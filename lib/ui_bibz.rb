@@ -8,6 +8,7 @@ module UiBibz
 
   module Ui
     autoload :Alert,                   "ui_bibz/ui/alert"
+    autoload :Base,                    "ui_bibz/ui/base"
     autoload :Breadcrumb,              "ui_bibz/ui/breadcrumb/breadcrumb"
     autoload :Button,                  "ui_bibz/ui/button/button"
     autoload :ButtonDropdown,          "ui_bibz/ui/button/button_dropdown"
@@ -32,7 +33,6 @@ module UiBibz
     autoload :TableSearchField,        "ui_bibz/ui/table/table_search_field"
     autoload :TablePagination,         "ui_bibz/ui/table/table_pagination"
     autoload :TablePaginationPerPage,  "ui_bibz/ui/table/table_pagination_per_page"
-    autoload :Ui,                      "ui_bibz/ui/ui"
   end
 
   module Helpers

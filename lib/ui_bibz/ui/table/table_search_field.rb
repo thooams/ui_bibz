@@ -1,6 +1,6 @@
 require "ui_bibz/ui/table/components/store"
 module UiBibz::Ui
-  class TableSearchField < Ui
+  class TableSearchField < Base
 
     def initialize options = nil, html_options = nil
       @search_field = Component.new nil, options, html_options

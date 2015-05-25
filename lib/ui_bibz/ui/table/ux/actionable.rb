@@ -1,5 +1,5 @@
 module UiBibz::Ui
-  class Actionable < Ui
+  class Actionable < Base
 
     def initialize store, options, actions = nil
       @store   = store
