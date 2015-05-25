@@ -1,4 +1,4 @@
-module UiBibz::Helpers::UiHelper
+module UiBibz::Helpers::UiCoreHelper
 
   def panel content = nil, options = nil, html_options = nil, &block
     if is_tap(content, options)
@@ -33,38 +33,6 @@ module UiBibz::Helpers::UiHelper
   def grid options = nil, html_options = nil, &block
     UiBibz::Ui::Core::Grid.new(options, html_options).tap(&block).render
   end
-
-  # Table section begin ------------------------------------------------------
-
-  def table content = nil, options = nil, html_options = nil, &block
-    if is_tap(content, options)
-      UiBibz::Ui::Ux::Table.new(content, options, html_options).tap(&block).render
-    else
-      UiBibz::Ui::Ux::Table.new(content, options, html_options, &block).render
-    end
-  end
-
-  def table_search_field options, html_options = nil
-    UiBibz::Ui::Ux::TableSearchField.new(options, html_options).render
-  end
-
-  def table_pagination_per_page options, html_options = nil
-    UiBibz::Ui::Ux::TablePaginationPerPage.new(options, html_options).render
-  end
-
-  def table_pagination options, html_options = nil
-    UiBibz::Ui::Ux::TablePagination.new(options, html_options).render
-  end
-
-  def table_panel content = nil, options = nil, html_options = nil, &block
-    if is_tap(content, options)
-      UiBibz::Ui::Ux::TablePanel.new(content, options, html_options).tap(&block).render
-    else
-      UiBibz::Ui::Ux::TablePanel.new(content, options, html_options, &block).render
-    end
-  end
-
-  # Table section end -------------------------------------------------------
 
   # Button section begin ----------------------------------------------------
 
