@@ -18,7 +18,7 @@ Ui Bibz charge la librairie [boostrap](http://getbootstrap.com/) et
 **NB** : [HAML](http://haml.info/) est utilisé pour présenter les exemples de chaque élément.
 Vous pouvez bien entendu utiliser l'interpréteur [ERB](https://en.wikipedia.org/wiki/ERuby) dans votre application Rails.
 
-Tous les composants du framework Ui Bibz comportent l'agument *options* et l'argument *html_options*.
+Tous les composants du framework Ui Bibz comportent l'argument *options* et l'argument *html_options*.
 Ces éléments sont basés sur l'élément ```Component```.
 Un ```component``` accepte un contenu par variable ou par block.
 
