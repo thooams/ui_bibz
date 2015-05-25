@@ -1,6 +1,6 @@
 require "ui_bibz/ui/table/components/store"
 module UiBibz::Ui
-  class TablePaginationPerPage < Ui
+  class TablePaginationPerPage < Base
     include WillPaginate::ActionView
 
     def initialize options = nil, html_options = nil

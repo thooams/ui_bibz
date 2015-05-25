@@ -36,7 +36,7 @@ module UiBibz::Ui
   #     content
   #   end
   #
-  class Component < Ui
+  class Component < Base
 
     attr_accessor :content, :html_options, :options
 

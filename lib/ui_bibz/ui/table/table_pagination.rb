@@ -2,7 +2,7 @@ require 'will_paginate'
 require "will_paginate-bootstrap"
 require "ui_bibz/ui/table/components/store"
 module UiBibz::Ui
-  class TablePagination < Ui
+  class TablePagination < Base
     include WillPaginate::ActionView
 
     def initialize options = nil, html_options = nil

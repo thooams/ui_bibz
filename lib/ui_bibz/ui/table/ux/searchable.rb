@@ -1,5 +1,5 @@
 module UiBibz::Ui
-  class Searchable < Ui
+  class Searchable < Base
 
     def initialize store, options
       @store   = store
