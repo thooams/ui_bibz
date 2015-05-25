@@ -1,6 +1,6 @@
 require 'test_helper'
 
-include UiBibz::Helpers
+include UiBibz::Helpers::UiCoreHelper
 class UiHelperTest < ActionView::TestCase
 
   test 'breadcrumb' do
