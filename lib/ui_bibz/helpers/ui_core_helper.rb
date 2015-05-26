@@ -26,6 +26,10 @@ module UiBibz::Helpers::UiCoreHelper
     UiBibz::Ui::Core::Nav.new(content, options, html_options).tap(&block).render
   end
 
+  def navbar content = nil, options = nil, html_options = nil, &block
+    UiBibz::Ui::Core::Navbar.new(content, options, html_options).tap(&block).render
+  end
+
   def list_group content = nil, options = nil, html_options = nil, &block
     UiBibz::Ui::Core::ListGroup.new(content, options, html_options).tap(&block).render
   end
