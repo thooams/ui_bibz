@@ -48,8 +48,20 @@ class UiHelperTest < ActionView::TestCase
     assert_equal expected, actual
   end
 
+  test 'navbar' do
+    actual = navbar(title: 'toto') do |nb|
+      nb.item nav(class: 'navbar-nav') do |n|
+        n.list 'Toto'
+        n.list 'Tata'
+      end
+    end
+    expected = ""
+
+    assert_equal expected, actual
+  end
+
   test 'progress bar with several bars' do
-    actual   = progress_bar(tap: true) do |pb|
+    actual = progress_bar(tap: true) do |pb|
       pb.bar 20, type: :animated
       pb.bar 30, state: :success
       pb.bar 10, type: :striped
