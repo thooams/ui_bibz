@@ -49,11 +49,14 @@ class UiHelperTest < ActionView::TestCase
   end
 
   test 'navbar' do
+    nave = nav(class: 'navbar-nav', type: 'navbar') do |n|
+      n.link 'Toto', url: '#'
+      n.link 'Tata', url: '#'
+    end
+
     actual = navbar(title: 'toto') do |nb|
-      nb.item nav(class: 'navbar-nav') do |n|
-        n.list 'Toto'
-        n.list 'Tata'
-      end
+      nb.item nave
+      nb.item 'toto'
     end
     expected = ""
 

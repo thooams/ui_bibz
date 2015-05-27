@@ -20,11 +20,11 @@ module UiBibz::Ui::Core
   #
   # ==== Signatures
   #
-  #   UiBibz::Ui::Core::Button.new(content, options = nil, html_options = nil)
+  #   UiBibz::Ui::Core::Nav.new(content, options = nil, html_options = nil)
   #
-  #   UiBibz::Ui::Core::Button.new(options = nil, html_options = nil).tap do |d|
+  #   UiBibz::Ui::Core::Nav.new(options = nil, html_options = nil).tap do |d|
   #     ...
-  #     d. content = nil, options = nil, html_options = nil, block
+  #     d.link content = nil, options = nil, html_options = nil, block
   #     ...
   #   end
   #

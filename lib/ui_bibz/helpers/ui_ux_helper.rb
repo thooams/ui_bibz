@@ -1,7 +1,10 @@
 module UiBibz::Helpers::UiUxHelper
 
-  # Table section begin ------------------------------------------------------
+  def grid options = nil, html_options = nil, &block
+    UiBibz::Ui::Ux::Grid.new(options, html_options).tap(&block).render
+  end
 
+  # Table section begin ------------------------------------------------------
   def table content = nil, options = nil, html_options = nil, &block
     if is_tap(content, options)
       UiBibz::Ui::Ux::Table.new(content, options, html_options).tap(&block).render
@@ -29,7 +32,6 @@ module UiBibz::Helpers::UiUxHelper
       UiBibz::Ui::Ux::TablePanel.new(content, options, html_options, &block).render
     end
   end
-
   # Table section end -------------------------------------------------------
 
 private
