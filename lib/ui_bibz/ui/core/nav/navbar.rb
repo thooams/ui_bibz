@@ -1,7 +1,45 @@
+require 'ui_bibz/ui/core/nav/components/navbar_nav'
 module UiBibz::Ui::Core
 
   # Create a Navbar
   #
+  #  This element is an extend of UiBibz::Ui::Core::Component.
+  #
+  # ==== Attributes
+  #
+  # * +content+ - Content of element
+  # * +options+ - Options of element
+  # * +html_options+ - Html Options of element
+  #
+  # ==== Options
+  #
+  # You can add HTML attributes using the +html_options+.
+  # You can pass arguments in options attribute:
+  # * +type+ - Symbol (default: :default)
+  #   (+:inverse+, +:default+)
+  # * +glyph+
+  # * +position+ - Symbol
+  #   (+:top+, +:bottom+)
+  # * +title+ - String
+  #
+  # ==== Signatures
+  #
+  #
+  #   UiBibz::Ui::Core::Navbar.new(options = nil, html_options = nil).tap do |nb|
+  #     ...
+  #     nb.nav(options = nil, html_options = nil) do
+  #       link content options = nil, html_options = nil, &block
+  #       link content options = nil, html_options = nil, &block
+  #     end
+  #     ...
+  #   end
+  #
+  # ==== Examples
+  #
+  #   UiBibz::Ui::Core::Nav.new(type: :pills).tap do |d|
+  #     d.link 'Test', url: '#test'
+  #     d.link 'Test2', url: '#test2', status: :active
+  #   end.render
   #
   class Navbar < Component
 
@@ -11,7 +49,7 @@ module UiBibz::Ui::Core
     end
 
     def render
-      content_tag :nav, class_and_html_options('navbar navbar-default') do
+      content_tag :nav, class_and_html_options(['navbar', type, position]) do
         content_tag :div, class: 'container-fluid' do
           concat header_html
           concat body_html
@@ -21,7 +59,7 @@ module UiBibz::Ui::Core
 
     def nav content = nil, options = nil, html_options = nil, &block
       options = options || {}
-      @items << UiBibz::Ui::Core::Nav.new(content, options.merge({ type: 'navbar', class: 'navbar-nav' }), html_options).tap(&block).render
+      @items << UiBibz::Ui::Core::NavbarNav.new(content, options, html_options).tap(&block).render
     end
 
     def form content = nil, options = nil, html_options = nil, &block
@@ -56,6 +94,14 @@ module UiBibz::Ui::Core
         concat content_tag :span, '', class: 'icon-bar'
         concat content_tag :span, '', class: 'icon-bar'
       end
+    end
+
+    def position
+      "navbar-fixed-#{ @options[:position] }" unless @options[:position].nil?
+    end
+
+    def type
+      "navbar-#{ @options[:type] || 'default' }"
     end
 
   end
