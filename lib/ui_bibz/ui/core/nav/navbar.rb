@@ -27,18 +27,20 @@ module UiBibz::Ui::Core
   #
   #   UiBibz::Ui::Core::Navbar.new(options = nil, html_options = nil).tap do |nb|
   #     ...
-  #     nb.nav(options = nil, html_options = nil) do
-  #       link content options = nil, html_options = nil, &block
-  #       link content options = nil, html_options = nil, &block
+  #     nb.nav(options = nil, html_options = nil) do |n|
+  #       n.link content options = nil, html_options = nil, &block
+  #       n.link content options = nil, html_options = nil, &block
   #     end
   #     ...
   #   end
   #
   # ==== Examples
   #
-  #   UiBibz::Ui::Core::Nav.new(type: :pills).tap do |d|
-  #     d.link 'Test', url: '#test'
-  #     d.link 'Test2', url: '#test2', status: :active
+  #   UiBibz::Ui::Core::Navbar.new().tap do |nb|
+  #     nb.nav(position: :right) do |n|
+  #       n.link 'Link 1', "#"
+  #       n.link 'Link 2', "#"
+  #     end
   #   end.render
   #
   class Navbar < Component
