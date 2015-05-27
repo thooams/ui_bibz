@@ -27,7 +27,7 @@ module UiBibz
       autoload :Label,                   "ui_bibz/ui/core/label"
       autoload :ListGroup,               "ui_bibz/ui/core/list/list_group"
       autoload :Nav,                     "ui_bibz/ui/core/nav/nav"
-      autoload :Navbar,                  "ui_bibz/ui/core/navbar"
+      autoload :Navbar,                  "ui_bibz/ui/core/nav/navbar"
       autoload :Panel,                   "ui_bibz/ui/core/panel"
       autoload :ProgressBar,             "ui_bibz/ui/core/progress_bar/progress_bar"
       autoload :Row,                     "ui_bibz/ui/core/row"

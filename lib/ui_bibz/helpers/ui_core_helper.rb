@@ -34,12 +34,8 @@ module UiBibz::Helpers::UiCoreHelper
     UiBibz::Ui::Core::ListGroup.new(content, options, html_options).tap(&block).render
   end
 
-  def grid options = nil, html_options = nil, &block
-    UiBibz::Ui::Core::Grid.new(options, html_options).tap(&block).render
-  end
 
   # Button section begin ----------------------------------------------------
-
   def button_link content = nil, options = nil, html_options = nil, &block
     UiBibz::Ui::Core::ButtonLink.new(content, options, html_options, &block).render
   end
@@ -59,7 +55,6 @@ module UiBibz::Helpers::UiCoreHelper
   def button_split_dropdown name, options = nil, html_options = nil, &block
     UiBibz::Ui::Core::ButtonSplitDropdown.new(name, options, html_options).tap(&block).render
   end
-
   # Button section end ----------------------------------------------------
 
   def breadcrumb content = nil, options = nil, html_options = nil, &block
