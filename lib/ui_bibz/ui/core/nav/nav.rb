@@ -1,4 +1,5 @@
 require 'ui_bibz/ui/core/nav/components/nav_link'
+require 'ui_bibz/ui/core/nav/components/nav_dropdown'
 module UiBibz::Ui::Core
 
   # Create a nav
@@ -22,32 +23,41 @@ module UiBibz::Ui::Core
   #
   #   UiBibz::Ui::Core::Nav.new(content, options = nil, html_options = nil)
   #
-  #   UiBibz::Ui::Core::Nav.new(options = nil, html_options = nil).tap do |d|
+  #   UiBibz::Ui::Core::Nav.new(options = nil, html_options = nil).tap do |n|
   #     ...
-  #     d.link content = nil, options = nil, html_options = nil, block
+  #     n.link content = nil, options = nil, html_options = nil, block
+  #     n.link content = nil, options = nil, html_options = nil, block
+  #     n.dropdown content = nil, options = nil, html_options = nil, block
   #     ...
   #   end
   #
   # ==== Examples
   #
-  #   UiBibz::Ui::Core::Nav.new(type: :pills).tap do |d|
-  #     d.link 'Test', url: '#test'
-  #     d.link 'Test2', url: '#test2', status: :active
+  #   UiBibz::Ui::Core::Nav.new(type: :pills).tap do |n|
+  #     n.link 'Test', url: '#test'
+  #     n.link 'Test2', url: '#test2', status: :active
+  #     n.dropdown('Action') do |d|
+  #       d.list content = nil, options = nil, html_options = nil, &block
+  #     end
   #   end.render
   #
   class Nav < Component
 
     def initialize content = nil, options = nil, html_options = nil, &block
       super
-      @links = []
+      @items = []
     end
 
     def render
-      content_tag :ul, @links.join().html_safe, class_and_html_options(["nav", type, position])
+      content_tag :ul, @items.join.html_safe, class_and_html_options(["nav", type, position])
     end
 
     def link content = nil, options = {}, html_options = nil, &block
-      @links << NavLink.new(content, options.merge({ nav_type: type }), html_options, &block).render
+      @items << NavLink.new(content, options.merge({ nav_type: type }), html_options, &block).render
+    end
+
+    def dropdown content = nil, options = {}, html_options = nil, &block
+      @items << NavDropdown.new(content, options, html_options).tap(&block).render
     end
 
   private

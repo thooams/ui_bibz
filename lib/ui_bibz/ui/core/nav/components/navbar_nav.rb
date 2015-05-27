@@ -48,5 +48,9 @@ module UiBibz::Ui::Core
       'navbar-nav'
     end
 
+    def position
+      "navbar-#{ @options[:position] }" unless @options[:position].nil?
+    end
+
   end
 end
