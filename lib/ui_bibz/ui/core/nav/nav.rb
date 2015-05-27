@@ -43,7 +43,7 @@ module UiBibz::Ui::Core
     end
 
     def render
-      content_tag :ul, @links.join().html_safe, class_and_html_options(["nav", "nav-#{ type }", position])
+      content_tag :ul, @links.join().html_safe, class_and_html_options(["nav", type, position])
     end
 
     def link content = nil, options = {}, html_options = nil, &block
@@ -54,7 +54,7 @@ module UiBibz::Ui::Core
 
     # tabs or pills
     def type
-      @options[:type] || :tabs
+     "nav-#{ @options[:type] || :tabs }"
     end
 
     def position
