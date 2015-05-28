@@ -11,7 +11,7 @@ module UiBibz::Ui::Ux
       content_tag :div do
         concat UiBibz::Ui::Ux::TablePagination.new(store: @store).render
         concat UiBibz::Ui::Ux::TablePaginationPerPage.new(store: @store).render
-        concat tag(:br, class: 'clear')
+        concat tag(:br, class: 'ui-bibz-clear')
       end
     end
 

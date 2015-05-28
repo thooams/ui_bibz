@@ -121,7 +121,7 @@ module UiBibz::Ui::Core
     def states
       if @states.nil?
         states = {}
-        %w(default success primary info waring danger).each do |s|
+        %w(default success primary info warning danger).each do |s|
           states = states.merge(Hash[s.to_sym, s])
         end
         @states = states

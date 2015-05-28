@@ -10,7 +10,7 @@ module UiBibz::Ui::Ux
       content_tag :div do
         concat content_tag(:div, table_name, class: 'title')
         concat TableSearchField.new(store: @store, wrap_form: false).render if searchable?
-        concat tag :br, class: 'clear'
+        concat tag :br, class: 'ui-bibz-clear'
       end
     end
 

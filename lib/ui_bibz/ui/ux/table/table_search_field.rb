@@ -8,7 +8,7 @@ module UiBibz::Ui::Ux
 
     def render
       if @search_field.options[:wrap_form] != false
-        form_tag(url_for(controller: store.controller, action: store.action), method: :get) do
+        form_tag(url_for(controller: store.controller, action: store.action), method: :get, class: 'form-table-search-field') do
           search_field_html
         end
       else
