@@ -3,6 +3,7 @@
 [![Build Status](https://travis-ci.org/thooams/Ui-Bibz.svg)](https://travis-ci.org/thooams/Ui-Bibz)
 [![Code Climate](https://codeclimate.com/github/thooams/Ui-Bibz/badges/gpa.svg)](https://codeclimate.com/github/thooams/Ui-Bibz)
 [![Test Coverage](https://codeclimate.com/github/thooams/Ui-Bibz/badges/coverage.svg)](https://codeclimate.com/github/thooams/Ui-Bibz)
+[![Join the chat at https://gitter.im/thooams/Ui-Bibz](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/thooams/Ui-Bibz?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 This project rocks and uses MIT-LICENSE.
 
@@ -17,7 +18,7 @@ Ui Bibz charge la librairie [boostrap](http://getbootstrap.com/) et
 **NB** : [HAML](http://haml.info/) est utilisé pour présenter les exemples de chaque élément.
 Vous pouvez bien entendu utiliser l'interpréteur [ERB](https://en.wikipedia.org/wiki/ERuby) dans votre application Rails.
 
-Tous les composants du framework Ui Bibz comportent l'agument *options* et l'argument *html_options*.
+Tous les composants du framework Ui Bibz comportent l'argument *options* et l'argument *html_options*.
 Ces éléments sont basés sur l'élément ```Component```.
 Un ```component``` accepte un contenu par variable ou par block.
 
@@ -467,11 +468,11 @@ L'ajout de colonnes à travers la méthode ```add``` contient plusieurs argument
 # app/views/documents/index.html.haml
 = table store: @documents do |g|
   - g.columns do |c|
-    - c.add { name: '#', data_index: 'id' }
-    - c.add { name: 'Name fr', data_index: 'name_fr', link: edit_document_path(:id)}
-    - c.add { data_index: 'name_en' }
-    - c.add { name: 'Hotline', data_index: 'hotline_access', format: lambda{ |records, record| glyph(record.icon) }}
-    - c.add { name: 'Updated at', data_index: 'updated_at', date_format: '%Y' }
+    - c.column name: '#', data_index: 'id'
+    - c.column name: 'Name fr', data_index: 'name_fr', link: edit_document_path(:id)
+    - c.column data_index: 'name_en'
+    - c.column name: 'Hotline', data_index: 'hotline_access', format: lambda{ |records, record| glyph(record.icon) }
+    - c.column name: 'Updated at', data_index: 'updated_at', date_format: '%Y'
 ```
 
 #### Complex Example table
@@ -495,8 +496,8 @@ l'appeler comme valeur pour la clef ```data_index```.
 ```ruby
 # app/views/documents/index.html.haml
 = table store: @documents do |g|
-  - g.columns do |c|
-    - c.add { name: 'Users', data_index: 'user_name', sort: "user.name" }
+  - g.columns do |cls|
+    - cls.column  name: 'Users', data_index: 'user_name', sort: "user.name"
 ```
 
 
@@ -541,8 +542,8 @@ Dans la vue :
 ```ruby
 # app/views/documents/index.html.haml
 = table store: @documents do |g|
-  - g.columns do |c|
-    - c.add({ name: 'Users', data_index: 'users', count: true, custom_sort: true })
+  - g.columns do |cls|
+    - cls.column  name: 'Users', data_index: 'users', count: true, custom_sort: true
 ```
 
 #### table I18n
