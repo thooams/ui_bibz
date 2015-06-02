@@ -10,6 +10,18 @@ PATH
       will_paginate (~> 3.0.6)
       will_paginate-bootstrap
 
+PATH
+  remote: ~/Apps/ui-bibz-rdoc
+  specs:
+    ui-bibz-rdoc (0.0.3)
+      bundler
+      coderay
+      coffee-script
+      haml
+      json
+      rake
+      sass
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -57,10 +69,16 @@ GEM
       slop (~> 3.6)
     codeclimate-test-reporter (0.4.6)
       simplecov (>= 0.7.1, < 1.0.0)
+    coderay (1.1.0)
+    coffee-script (2.4.1)
+      coffee-script-source
+      execjs
+    coffee-script-source (1.9.1.1)
     columnize (0.9.0)
     debugger-linecache (1.2.0)
     docile (1.1.5)
     erubis (2.7.0)
+    execjs (2.5.2)
     factory_girl (4.5.0)
       activesupport (>= 3.0.0)
     factory_girl_rails (4.5.0)
@@ -168,4 +186,5 @@ DEPENDENCIES
   factory_girl_rails (~> 4.0)
   minitest
   sqlite3
+  ui-bibz-rdoc!
   ui_bibz!
