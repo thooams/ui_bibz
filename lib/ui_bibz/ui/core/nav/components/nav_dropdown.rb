@@ -27,6 +27,7 @@ module UiBibz::Ui::Core
   # ==== Signatures
   #
   #   UiBibz::Ui::Core::Dropdown.new(options = nil, html_options = nil).tap do |d|
+  #     ...
   #     d.list content = nil, options = nil, html_options = nil, &block
   #     d.list content = nil, options = nil, html_options = nil, &block
   #     d.list content = nil, options = nil, html_options = nil, &block
