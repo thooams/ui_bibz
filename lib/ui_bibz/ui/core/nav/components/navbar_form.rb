@@ -19,14 +19,14 @@ module UiBibz::Ui::Core
   #
   # ==== Signatures
   #
-  #   UiBibz::Ui::Core::NavbarText.new(options = nil, html_options = nil) do |f|
+  #   UiBibz::Ui::Core::NavbarForm.new(options = nil, html_options = nil) do |f|
   #     f.text_field :field
   #     f.submit 'Submit'
   #   end
   #
   # ==== Examples
   #
-  #   UiBibz::Ui::Core::NavbarText.new(position: :right) do |f|
+  #   UiBibz::Ui::Core::NavbarForm.new(position: :right) do |f|
   #     f.text_field :field
   #     f.submit 'Submit'
   #   end.render
