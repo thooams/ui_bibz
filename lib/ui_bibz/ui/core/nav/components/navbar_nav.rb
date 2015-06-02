@@ -23,7 +23,7 @@ module UiBibz::Ui::Core
   #
   #   UiBibz::Ui::Core::NavbarNav.new(content, options = nil, html_options = nil)
   #
-  #   UiBibz::Ui::Core::Nav.new(options = nil, html_options = nil).tap do |n|
+  #   UiBibz::Ui::Core::NavbarNav.new(options = nil, html_options = nil).tap do |n|
   #     ...
   #     n.link content = nil, options = nil, html_options = nil, block
   #     ...
