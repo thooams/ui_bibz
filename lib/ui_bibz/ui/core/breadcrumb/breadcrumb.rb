@@ -35,6 +35,10 @@ module UiBibz::Ui::Core
   #     b.link 'Level 2', status: :active
   #   end.render
   #
+  # <%= breadcrumb do |b| %>
+  #   <%- d.link 'Home', url: '#home' %>
+  # <%= end %>
+  #
   class Breadcrumb < Component
 
     def initialize content = nil, options = nil, html_options = nil, &block

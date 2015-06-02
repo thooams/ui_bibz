@@ -13,3 +13,4 @@ gemspec
 # To use a debugger
 gem 'byebug',        group: [:development, :test]
 gem 'awesome_print', group: [:development, :test]
+gem 'ui-bibz-rdoc', path: '~/Apps/ui-bibz-rdoc'
