@@ -32,10 +32,14 @@ module UiBibz::Ui::Core
   # ==== Examples
   #
   #   UiBibz::Ui::Core::Alert.new(content, { type: :success, glyph: 'eye' },{ class: 'test' }).render
-  #   # or
+  #
   #   UiBibz::Ui::Core::Alert.new({glyph: { name: 'eye', size: 3}, { class: 'test' }) do
   #     content
   #   end.render
+  #
+  # ==== Helper
+  #
+  #   notify(content, options, html_options, &block)
   #
   class Alert < Component
 
