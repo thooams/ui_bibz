@@ -101,7 +101,10 @@ GEM
       nokogiri (~> 1.6.0)
       ruby_parser (~> 3.5)
     i18n (0.7.0)
+    inversion (0.17.3)
+      loggability (~> 0.11)
     json (1.8.2)
+    loggability (0.11.0)
     loofah (2.0.1)
       nokogiri (>= 1.5.9)
     mail (2.6.3)
@@ -140,6 +143,12 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     rake (10.4.2)
+    rdoc (4.2.0)
+    rdoc-generator-fivefish (0.1.0)
+      inversion (~> 0.12)
+      loggability (~> 0.6)
+      rdoc (~> 4.0)
+      yajl-ruby (~> 1.1)
     ruby_parser (3.6.5)
       sexp_processor (~> 4.1)
     sass (3.4.13)
@@ -175,6 +184,7 @@ GEM
     will_paginate (3.0.7)
     will_paginate-bootstrap (1.0.1)
       will_paginate (>= 3.0.3)
+    yajl-ruby (1.2.1)
 
 PLATFORMS
   ruby
@@ -185,6 +195,7 @@ DEPENDENCIES
   codeclimate-test-reporter
   factory_girl_rails (~> 4.0)
   minitest
+  rdoc-generator-fivefish
   sqlite3
   ui-bibz-rdoc!
   ui_bibz!

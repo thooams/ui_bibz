@@ -1,7 +1,10 @@
 require 'ui_bibz/ui/core/breadcrumb/components/breadcrumb_link'
 module UiBibz::Ui::Core
 
-  # Create a breadcrumb
+  # Breadcrumb
+  #
+  # Indicate the current page's location within a navigational hierarchy.
+  # Separators are automatically added in CSS through +:before+ and +content+.
   #
   # This element is an extend of UiBibz::Ui::Core::Component.
   # You can use tap method to add link items.
@@ -11,6 +14,10 @@ module UiBibz::Ui::Core
   # * +content+ - Content of element
   # * +options+ - Options of element
   # * +html_options+ - Html Options of element
+  #
+  # ==== Components
+  #
+  # +link+ is UiBibz::Ui::Core::BreadcrumbLink component
   #
   # ==== Signatures
   #
@@ -35,9 +42,15 @@ module UiBibz::Ui::Core
   #     b.link 'Level 2', status: :active
   #   end.render
   #
-  # <%= breadcrumb do |b| %>
-  #   <%- d.link 'Home', url: '#home' %>
-  # <%= end %>
+  # ==== Helper Examples
+  #
+  #   breadcrumb do |b|
+  #     b.link 'Home', url: '#home'
+  #     b.link url: '#level-1' do
+  #       'Level 1'
+  #     end
+  #     b.link 'Level 2', status: :active
+  #   end
   #
   class Breadcrumb < Component
 
