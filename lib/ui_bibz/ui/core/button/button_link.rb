@@ -40,6 +40,14 @@ module UiBibz::Ui::Core
   #     test
   #   end.render
   #
+  # ==== Helper
+  #
+  #   button_link(content, options = {}, html_options = {})
+  #
+  #   button_link(options = {}, html_options = {}) do
+  #     content
+  #   end
+  #
   class ButtonLink < Component
 
     def initialize content = nil, options = nil, html_options = nil, &block

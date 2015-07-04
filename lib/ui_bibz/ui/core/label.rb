@@ -37,6 +37,14 @@ module UiBibz::Ui::Core
   #     #content
   #   end.render
   #
+  # ==== Helper
+  #
+  #   etiquette(content, options = {}, html_options = {})
+  #
+  #   etiquette(options = {}, html_options = {}) do
+  #     content
+  #   end
+  #
   class Label < Component
 
     def initialize content = nil, options = nil, html_options = nil, &block

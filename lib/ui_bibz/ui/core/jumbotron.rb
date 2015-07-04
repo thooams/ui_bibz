@@ -32,6 +32,14 @@ module UiBibz::Ui::Core
   #     #content
   #   end.render
   #
+  # ==== Helper
+  #
+  #   jumbotron(content, options = {} , html_options = {})
+  #
+  #   jumbotron(options = {}, html_options = {}) do
+  #     content
+  #   end
+  #
   class Jumbotron < Component
 
     def initialize content = nil, options = nil, html_options = nil, &block

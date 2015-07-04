@@ -39,6 +39,13 @@ module UiBibz::Ui::Core
   #     test
   #   end.render
   #
+  # ==== Helper
+  #
+  #  button(content, options = {}, html_options = {})
+  #
+  #  button(options = {}, html_options = {}) do
+  #    content
+  #  end
   class Button < Component
 
     def initialize content = nil, options = nil, html_options = nil, &block

@@ -18,6 +18,14 @@ module UiBibz::Ui::Core
   #     #content
   #   end
   #
+  # ==== Helper
+  #
+  #  row(content, options = {}, html_options = {})
+  #
+  #  row(options = {}, html_options = {}) do
+  #    content
+  #  end
+  #
   class Row < Component
 
     def initialize content = nil, options = nil, html_options = nil, &block

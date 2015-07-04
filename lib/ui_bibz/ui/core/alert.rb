@@ -39,7 +39,11 @@ module UiBibz::Ui::Core
   #
   # ==== Helper
   #
-  #   notify(content, options, html_options, &block)
+  #   notify(content, options = {}, html_options = {})
+  #
+  #   notify(options = {}, html_options = {}) do
+  #     content
+  #   end
   #
   class Alert < Component
 

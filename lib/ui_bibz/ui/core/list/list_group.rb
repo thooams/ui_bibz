@@ -46,6 +46,28 @@ module UiBibz::Ui::Core
   #     end
   #   end.render
   #
+  # ==== Helper
+  #
+  #   list_group( options = { tap: true }, html_options = {}) do |l|
+  #     l.list(content, options = {}, html_options = {})
+  #     l.list(options = {}, html_options = {}) do
+  #       content
+  #     end
+  #     l.list(options = { tap: true }, html_options = {}) do |li|
+  #       li.header(content, options = {}, html_options = {})
+  #       # or
+  #       li.header(options = {}, html_options = {}) do
+  #         content
+  #       end
+  #
+  #       li.body(content, options = {}, html_options = {})
+  #       # or
+  #       li.body(options = {}, html_options = {}) do
+  #         content
+  #       end
+  #     end
+  #   end
+  #
   class ListGroup < Component
 
     def initialize content = nil, options = nil, html_options = nil, &block

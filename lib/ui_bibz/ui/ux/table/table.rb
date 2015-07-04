@@ -60,6 +60,21 @@ module UiBibz::Ui::Ux
   #     end
   #   end.render
   #
+  # ==== Helper
+  #
+  #   table(options = {}, html_options = {})
+  #
+  #   table(options = { tap: true }, html_options = {}) do |t|
+  #     t.columns do |cls|
+  #       cls.column(options = {}, html_options = {})
+  #     end
+  #     t.actions do |acs|
+  #       acs.action(content, options = {}, html_options = {})
+  #       acs.action(options = {}, html_options = {}) do
+  #         content
+  #       end
+  #     end
+  #   end
   class Table < UiBibz::Ui::Core::Component
 
     attr_accessor :columns

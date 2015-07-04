@@ -41,6 +41,21 @@ module UiBibz::Ui::Core
   #     end
   #   end.render
   #
+  # ==== Helper
+  #
+  #   nav(options = { tap: true }, html_options = {}) do |n|
+  #     n.link(content, options = {}, html_options = {})
+  #     n.link(options = {}, html_options = {}) do
+  #       content
+  #     end
+  #     n.dropdown(name, options = {}, html_options = {}) do |d|
+  #       d.list(content, options = {}, html_options = {})
+  #       d.list(options = {}, html_options = {}) do
+  #         content
+  #       end
+  #     end
+  #   end
+  #
   class Nav < Component
 
     def initialize content = nil, options = nil, html_options = nil, &block

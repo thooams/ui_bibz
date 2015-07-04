@@ -54,6 +54,17 @@ module UiBibz::Ui::Core
   #     end
   #   end.render
   #
+  # ==== Helper
+  #
+  #   progress_bar(integer, options = {}, html_options = {})
+  #
+  #   progress_bar(options = { tap: true }, html_options = {}) do |pb|
+  #     pb.bar(integer, options = {}, html_options = {})
+  #     pb.bar(options = {}, html_options = {}) do
+  #       integer
+  #     end
+  #   end
+  #
   class ProgressBar < Component
 
     def initialize content = nil, options = nil, html_options = nil, &block
