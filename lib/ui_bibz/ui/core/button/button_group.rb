@@ -34,6 +34,14 @@ module UiBibz::Ui::Core
   #     UiBibz::Ui::Core.Button.new('test2').render
   #   end.render
   #
+  # ==== Helper
+  #
+  #   button_group(content, options = {}, html_options = {})
+  #
+  #   button_group(options = {}, html_options = {}) do
+  #     content
+  #   end
+  #
   class ButtonGroup < Component
 
     def initialize content = nil, options = nil, html_options = nil, &block

@@ -36,8 +36,19 @@ module UiBibz::Ui::Core
   #
   #   UiBibz::Ui::Core::ButtonSplitDropdown.new(name, state: :success).tap do |d|
   #     d.list link_to('test', '#')
+  #     d.list('---')
+  #     d.list('Header 1', { type: :header })
   #     d.list link_to('test2', '#')
   #   end.render
+  #
+  # ==== Helper
+  #
+  #   button_split_dropdown(name, options = {}, html_options = {}) do |b|
+  #     d.list(content, options = {}, html_options = {})
+  #     d.list(options = {}, html_options = {}) do
+  #       content
+  #     end
+  #   end
   #
   class ButtonSplitDropdown < Dropdown
 

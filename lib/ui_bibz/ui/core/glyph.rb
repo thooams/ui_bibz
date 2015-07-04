@@ -43,7 +43,15 @@ module UiBibz::Ui::Core
   #
   #   UiBibz::Ui::Core::Glyph.new({ name: 'eye', size: 3, type: 'fw' }).render
   #
+  # ==== Helper
   #
+  #   glyph(options = {})
+  #
+  #   glyph(name, options = {}, html_options = {})
+  #
+  #   glyph(options = {}, html_options = {}) do
+  #     name
+  #   end
   class Glyph < Component
 
     def initialize content, options = nil, html_options = nil, &block

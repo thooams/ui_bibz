@@ -43,6 +43,17 @@ module UiBibz::Ui::Core
   #     end
   #   end.render
   #
+  # ==== Helper
+  #
+  #   navbar(options = { tap: true }, html_options = {}) do |nb|
+  #     nb.nav(options = { tap: true }, html_options = {}) do |n|
+  #       n.link(content, options = {}, html_options = {})
+  #       n.link(options = {}, html_options = {}) do
+  #         content
+  #       end
+  #     end
+  #   end
+  #
   class Navbar < Component
 
     def initialize content = nil, options = nil, html_options = nil, &block

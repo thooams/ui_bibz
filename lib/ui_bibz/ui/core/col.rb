@@ -36,6 +36,12 @@ module UiBibz::Ui::Core
   #     #content
   #   end
   #
+  # ==== Helper
+  #
+  #   col(options = {}, html_options = {}) do
+  #    # content
+  #   end
+  #
   class Col < Component
 
     def initialize content = nil, options = nil, html_options = nil, &block

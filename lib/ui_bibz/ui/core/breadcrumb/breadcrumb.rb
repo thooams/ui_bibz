@@ -42,14 +42,13 @@ module UiBibz::Ui::Core
   #     b.link 'Level 2', status: :active
   #   end.render
   #
-  # ==== Helper Examples
+  # ==== Helper
   #
   #   breadcrumb do |b|
-  #     b.link 'Home', url: '#home'
-  #     b.link url: '#level-1' do
-  #       'Level 1'
+  #     b.link(content, options = {}, html_options = {})
+  #     b.link(options = {}, html_options = {}) do
+  #       content
   #     end
-  #     b.link 'Level 2', status: :active
   #   end
   #
   class Breadcrumb < Component

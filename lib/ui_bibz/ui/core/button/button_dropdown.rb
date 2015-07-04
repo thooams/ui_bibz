@@ -36,8 +36,19 @@ module UiBibz::Ui::Core
   #
   #   UiBibz::Ui::Core::ButtonDropdown.new(name, state: :success).tap do |d|
   #     d.list link_to('test', '#')
+  #     d.list('---')
+  #     d.list('Header 1', { type: :header })
   #     d.list link_to('test2', '#')
   #   end.render
+  #
+  # ==== Helper
+  #
+  #   button_dropdown(name, options = { tap: true }, html_options = {}) do |d|
+  #     d.list(content, options = {}, html_options = {})
+  #     d.list(options = {}, html_options = {}) do
+  #       content
+  #     end
+  #   end
   #
   class ButtonDropdown < Dropdown
 

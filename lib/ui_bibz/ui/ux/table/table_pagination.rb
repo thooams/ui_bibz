@@ -2,6 +2,9 @@ require 'will_paginate'
 require "will_paginate-bootstrap"
 require "ui_bibz/ui/ux/table/components/store"
 module UiBibz::Ui::Ux
+
+  # Create a pagination for table
+  #
   class TablePagination < UiBibz::Ui::Base
     include WillPaginate::ActionView
 

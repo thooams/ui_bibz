@@ -48,6 +48,34 @@ module UiBibz::Ui::Core
   #     p.footer 'footer'
   #   end.render
   #
+  # ==== Helper
+  #
+  #   panel(content, options = {}, html_options = {})
+  #
+  #   panel(options = {}, html_options = {}) do
+  #     content
+  #   end
+  #
+  #   panel(options = { tap: true }, html_options = {}) do |p|
+  #     p.header(content, options = {}, html_options = {})
+  #     # or
+  #     p.header(options = {}, html_options = {}) do
+  #       content
+  #     end
+  #
+  #     p.body(content, options = {}, html_options = {})
+  #     # or
+  #     p.body(options = {}, html_options = {}) do
+  #       content
+  #     end
+  #
+  #     p.footer(content, options = {}, html_options = {})
+  #     # or
+  #     p.footer(options = {}, html_options = {}) do
+  #       content
+  #     end
+  #   end
+  #
   class Panel < Component
 
     def initialize content = nil, options = nil, html_options = nil, &block

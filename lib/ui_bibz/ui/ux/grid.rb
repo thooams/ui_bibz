@@ -43,6 +43,15 @@ module UiBibz::Ui::Ux
   #    end
   #  end.render
   #
+  # ==== Helper
+  #
+  #   grid(options = { tap: true }, html_options = {}) do |g|
+  #     g.view(content, options = {}, html_options = {})
+  #     g.view(options = {}, html_options = {}) do
+  #       content
+  #     end
+  #   end
+  #
   class Grid < UiBibz::Ui::Core::Component
 
     COL_NUM = 12
