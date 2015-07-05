@@ -48,10 +48,10 @@ module UiBibz::Ui::Ux
   #
   #   UiBibz::Ui::Ux::Table.new(store: @users).tap do |t|
   #     t.columns do |c|
-  #       c.column name: '#', data_index: 'id'
-  #       c.column name: 'Name fr', data_index: 'name_fr', link: edit_user_path(:id), order: 2
-  #       c.column name: 'Name en', data_index: 'name_en', order: 1
-  #       c.column name: 'Name en', data_index: 'name_en', format: lambda{ |records, record| "name #{ record.id}"}
+  #       c.column '#', { data_index: 'id' }
+  #       c.column 'Name fr', { data_index: 'name_fr', link: edit_user_path(:id), order: 2 }
+  #       c.column 'Name en', { data_index: 'name_en', order: 1 }
+  #       c.column 'Name en', { data_index: 'name_en', format: lambda{ |records, record| "name #{ record.id}"} }
   #     end
   #     t.actions do |a|
   #       a.action 'toto', url: users_path(:id), glyph: 'eye'
@@ -66,7 +66,10 @@ module UiBibz::Ui::Ux
   #
   #   table(options = { tap: true }, html_options = {}) do |t|
   #     t.columns do |cls|
-  #       cls.column(options = {}, html_options = {})
+  #       cls.column(name, options = {}, html_options = {})
+  #       cls.column(options = {}, html_options = {}) do
+  #         name
+  #       end
   #     end
   #     t.actions do |acs|
   #       acs.action(content, options = {}, html_options = {})

@@ -26,7 +26,7 @@ module UiBibz::Ui::Ux
   #
   #   UiBibz::Ui::Ux::TablePanel.new(store: @store, tap: true) do |t|
   #     t.columns do |c|
-  #       c.column name: '#', data_index: '#'
+  #       c.column '#', { data_index: '#' }
   #     end
   #     t.actions do |a|
   #       a.action '', url: url, glyph: ''
@@ -40,10 +40,10 @@ module UiBibz::Ui::Ux
   #   UiBibz::Ui::Ux::TablePanel.new(store: @users).tap do |t|
   #     t.header 'My Table panel'
   #     t.columns do |c|
-  #       c.column name: '#', data_index: 'id'
-  #       c.column name: 'Name fr', data_index: 'name_fr', link: edit_user_path(:id), order: 2
-  #       c.column name: 'Name en', data_index: 'name_en', order: 1
-  #       c.column name: 'Name en', data_index: 'name_en', format: lambda{ |records, record| "name #{ record.id}"}
+  #       c.column '#', { data_index: 'id' }, { class: 'column-id' }
+  #       c.column 'Name fr', { data_index: 'name_fr', link: edit_user_path(:id), order: 2 }
+  #       c.column 'Name en', { data_index: 'name_en', order: 1 }
+  #       c.column 'Name en', { data_index: 'name_en', format: lambda{ |records, record| "name #{ record.id}"} }
   #     end
   #     t.actions do |a|
   #       a.action 'toto', url: users_path(:id), glyph: 'eye'
@@ -71,6 +71,9 @@ module UiBibz::Ui::Ux
   #
   #     t.columns do |cls|
   #       cls.column(name, options = {}, html_options = {})
+  #       cls.column(options = {}, html_options = {}) do
+  #         name
+  #       end
   #     end
   #     t.actions do |acs|
   #       acs.action(name, options = {}, html_options = {})

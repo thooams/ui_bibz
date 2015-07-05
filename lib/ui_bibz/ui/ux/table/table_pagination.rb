@@ -5,6 +5,25 @@ module UiBibz::Ui::Ux
 
   # Create a pagination for table
   #
+  # ==== Attributes
+  #
+  # * +options+ - Options of element
+  # * +html_options+ - Html Options of element
+  #
+  # ==== Options
+  #
+  # You can add HTML attributes using the +html_options+.
+  # You can pass arguments in options attribute:
+  # * +store+ - Store generate by '+table_search_pagination+' method
+  #
+  # ==== Signatures
+  #
+  #   UiBibz::Ui::Ux::TablePagination.new(store: @store)
+  #
+  # ==== Helper
+  #
+  #    table_pagination(options = {})
+  #
   class TablePagination < UiBibz::Ui::Base
     include WillPaginate::ActionView
 
