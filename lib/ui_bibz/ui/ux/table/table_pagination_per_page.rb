@@ -1,5 +1,27 @@
 require "ui_bibz/ui/ux/table/components/store"
 module UiBibz::Ui::Ux
+
+  # Create a select pagination per page
+  #
+  # ==== Attributes
+  #
+  # * +options+ - Options of element
+  # * +html_options+ - Html Options of element
+  #
+  # ==== Options
+  #
+  # You can add HTML attributes using the +html_options+.
+  # You can pass arguments in options attribute:
+  # * +store+ - Store generate by '+table_search_pagination+' method
+  #
+  # ==== Signatures
+  #
+  #   UiBibz::Ui::Ux::TablePaginationPerPage.new(store: @store)
+  #
+  # ==== Helper
+  #
+  #    table_pagination_per_page(options = {})
+  #
   class TablePaginationPerPage < UiBibz::Ui::Base
     include WillPaginate::ActionView
 
