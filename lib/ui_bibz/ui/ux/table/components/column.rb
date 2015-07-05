@@ -5,7 +5,7 @@ module UiBibz::Ui::Ux
 
     def initialize args
       @args        = args
-      @link        = args[:link] # show or edit
+      @link        = args[:link] # for show or edit action
       @name        = args[:name]
       @order       = args[:order]
       @data_index  = args[:data_index]
