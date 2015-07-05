@@ -106,9 +106,15 @@ Placer la ligne suivante dans ```/app/assets/javascripts/applications.js```
 ...
 ```
 
-
 ## Utilisation
 
+### Last rdoc
+
+* [Last rdoc](/rdoc-v1.1.0)
+
+### Older rdoc
+
+* [Last rdoc](/rdoc-v1.1.0)
 
 ### Alert
 
