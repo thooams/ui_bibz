@@ -1,4 +1,90 @@
 module UiBibz::Ui::Ux
+
+  # Create a TablePanel
+  #
+  # This element is an extend of UiBibz::Ui::Ux::Panel.
+  #
+  # ==== Attributes
+  #
+  # * +content+ - Content of element
+  # * +options+ - Options of element
+  # * +html_options+ - Html Options of element
+  #
+  # ==== Options
+  #
+  # You can add HTML attributes using the +html_options+.
+  # You can pass arguments in options attribute:
+  # * +store+ - Store generate by '+table_search_pagination+' method
+  # * +url+ - String
+  # * tap - Boolean
+  # * columns - Add column
+  # * actions - Add action by row
+  #
+  # ==== Signatures
+  #
+  #   UiBibz::Ui::Ux::TablePanel.new(store: @store)
+  #
+  #   UiBibz::Ui::Ux::TablePanel.new(store: @store, tap: true) do |t|
+  #     t.columns do |c|
+  #       c.column name: '#', data_index: '#'
+  #     end
+  #     t.actions do |a|
+  #       a.action '', url: url, glyph: ''
+  #     end
+  #   end
+  #
+  # ==== Examples
+  #
+  #   UiBibz::Ui::Ux::TablePanel.new(store: @users, pagination).render
+  #
+  #   UiBibz::Ui::Ux::TablePanel.new(store: @users).tap do |t|
+  #     t.header 'My Table panel'
+  #     t.columns do |c|
+  #       c.column name: '#', data_index: 'id'
+  #       c.column name: 'Name fr', data_index: 'name_fr', link: edit_user_path(:id), order: 2
+  #       c.column name: 'Name en', data_index: 'name_en', order: 1
+  #       c.column name: 'Name en', data_index: 'name_en', format: lambda{ |records, record| "name #{ record.id}"}
+  #     end
+  #     t.actions do |a|
+  #       a.action 'toto', url: users_path(:id), glyph: 'eye'
+  #       a.action '---'
+  #       a.action 'momo', url: users_path(:id), glyph: 'home'
+  #     end
+  #   end.render
+  #
+  # ==== Helper
+  #
+  #   table_panel(options = {}, html_options = {})
+  #
+  #   table_panel(options = { tap: true }, html_options = {}) do |t|
+  #     t.header(content, options = {}, html_options = {})
+  #     # or
+  #     t.header(options = {}, html_options = {}) do
+  #       content
+  #     end
+  #
+  #     t.body(content, options = {}, html_options = {})
+  #     # or
+  #     t.body(options = {}, html_options = {}) do
+  #       content
+  #     end
+  #
+  #     t.columns do |cls|
+  #       cls.column(name, options = {}, html_options = {})
+  #     end
+  #     t.actions do |acs|
+  #       acs.action(name, options = {}, html_options = {})
+  #       acs.action(options = {}, html_options = {}) do
+  #         content
+  #       end
+  #     end
+  #
+  #     t.footer(content, options = {}, html_options = {})
+  #     # or
+  #     t.footer(options = {}, html_options = {}) do
+  #       content
+  #     end
+  #   end
   class TablePanel < UiBibz::Ui::Core::Panel
 
     attr_accessor :columns

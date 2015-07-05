@@ -37,7 +37,7 @@ module UiBibz::Ui::Ux
   #     t.columns do |c|
   #       c.column name: '#', data_index: '#'
   #     end
-  #     t.action do |a|
+  #     t.actions do |a|
   #       a.action '', url: url, glyph: ''
   #     end
   #   end
@@ -53,7 +53,7 @@ module UiBibz::Ui::Ux
   #       c.column name: 'Name en', data_index: 'name_en', order: 1
   #       c.column name: 'Name en', data_index: 'name_en', format: lambda{ |records, record| "name #{ record.id}"}
   #     end
-  #     t.action do |a|
+  #     t.actions do |a|
   #       a.action 'toto', url: users_path(:id), glyph: 'eye'
   #       a.action '---'
   #       a.action 'momo', url: users_path(:id), glyph: 'home'

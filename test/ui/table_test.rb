@@ -24,7 +24,7 @@ class TableTest < ActionView::TestCase
 
   test 'table search field' do
     actual   = UiBibz::Ui::Ux::TableSearchField.new({ store: @users}).render
-    expected = "<form action=\"/users\" accept-charset=\"UTF-8\" method=\"get\"><input name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" /><div class=\"input-group input-group-sm table-search-field\"><span class=\"input-group-addon\"><i class=\"glyph fa fa-search\"></i></span><input type=\"search\" value=\"Name fr\" name=\"search\" class=\"form-control\" placeholder=\"Search by name_fr and name_en...\" /><span class=\"clear-search-btn input-group-addon\"><i class=\"glyph fa fa-times-circle\"></i></span></div></form>"
+    expected = "<form class=\"form-table-search-field\" action=\"/users\" accept-charset=\"UTF-8\" method=\"get\"><input name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" /><div class=\"input-group input-group-sm table-search-field\"><span class=\"input-group-addon\"><i class=\"glyph fa fa-search\"></i></span><input type=\"search\" value=\"Name fr\" name=\"search\" class=\"form-control\" placeholder=\"Search by name_fr and name_en...\" /><span class=\"clear-search-btn input-group-addon\"><i class=\"glyph fa fa-times-circle\"></i></span></div></form>"
 
     assert_equal expected, actual
   end
@@ -67,7 +67,7 @@ class TableTest < ActionView::TestCase
     actual       = pagination.render if pagination.paginable?
     expected     = "<div><ul class=\"pagination pagination\"><li class=\"prev disabled\"><span>&#8592; Previous</span></li> <li class=\"active\"><span>1</span></li> <li><a rel=\"next\" href=\"/users?page=2\">2</a></li> <li><a href=\"/users?page=3\">3</a></li> <li><a href=\"/users?page=4\">4</a></li> <li><a href=\"/users?page=5\">5</a></li> <li><a href=\"/users?page=6\">6</a></li> <li><a href=\"/users?page=7\">7</a></li> <li><a href=\"/users?page=8\">8</a></li> <li><a href=\"/users?page=9\">9</a></li> <li class=\"disabled\"><span>&hellip;</span></li> <li><a href=\"/users?page=12\">12</a></li> <li><a href=\"/users?page=13\">13</a></li> <li class=\"next\"><a rel=\"next\" href=\"/users?page=2\">Next &#8594;</a></li></ul><form action=\"/users\" accept-charset=\"UTF-8\" method=\"get\"><input name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" /><div class=\"table-pagination-per-page\">Displaying User <b>1&nbsp;-&nbsp;2</b> of <b>25</b> in total | Per page: <select name=\"per_page\" id=\"per_page\" class=\"form-control\"><option value=\"25\">25</option>
 <option value=\"50\">50</option>
-<option value=\"100\">100</option></select></div></form><br class=\"clear\" /></div>"
+<option value=\"100\">100</option></select></div></form><br class=\"ui-bibz-clear\" /></div>"
 
     assert_equal expected, actual
   end
@@ -75,7 +75,7 @@ class TableTest < ActionView::TestCase
   test 'table non searchable' do
     options  = { searchable: false }
     actual   = UiBibz::Ui::Ux::Searchable.new(@store, options).render
-    expected = "<div><div class=\"title\">Users list</div><br class=\"clear\" /></div>"
+    expected = "<div><div class=\"title\">Users list</div><br class=\"ui-bibz-clear\" /></div>"
 
     assert_equal expected, actual
   end
@@ -83,7 +83,7 @@ class TableTest < ActionView::TestCase
   test 'table non searchable with a title and glyph' do
     options  = { searchable: false, glyph: 'toto', title: 'Title list' }
     actual   = UiBibz::Ui::Ux::Searchable.new(@store, options).render
-    expected = "<div><div class=\"title\"><i class=\"glyph fa fa-toto\"></i>Title list</div><br class=\"clear\" /></div>"
+    expected = "<div><div class=\"title\"><i class=\"glyph fa fa-toto\"></i>Title list</div><br class=\"ui-bibz-clear\" /></div>"
 
     assert_equal expected, actual
   end
@@ -91,7 +91,7 @@ class TableTest < ActionView::TestCase
   test 'table searchable' do
     options  = { searchable: true }
     actual   = UiBibz::Ui::Ux::Searchable.new(@store, options).render
-    expected = "<div><div class=\"title\">Users list</div><div class=\"input-group input-group-sm table-search-field\"><span class=\"input-group-addon\"><i class=\"glyph fa fa-search\"></i></span><input type=\"search\" value=\"Name fr\" name=\"search\" class=\"form-control\" placeholder=\"Search by name_fr and name_en...\" /><span class=\"clear-search-btn input-group-addon\"><i class=\"glyph fa fa-times-circle\"></i></span></div><br class=\"clear\" /></div>"
+    expected = "<div><div class=\"title\">Users list</div><div class=\"input-group input-group-sm table-search-field\"><span class=\"input-group-addon\"><i class=\"glyph fa fa-search\"></i></span><input type=\"search\" value=\"Name fr\" name=\"search\" class=\"form-control\" placeholder=\"Search by name_fr and name_en...\" /><span class=\"clear-search-btn input-group-addon\"><i class=\"glyph fa fa-times-circle\"></i></span></div><br class=\"ui-bibz-clear\" /></div>"
 
     assert_equal expected, actual
   end
