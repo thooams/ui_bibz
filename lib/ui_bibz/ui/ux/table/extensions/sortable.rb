@@ -8,7 +8,7 @@ module UiBibz::Ui::Ux
 
     def header column, name = nil
       @column  = column
-      name     = name || @column.name.titleize
+      name     = name || @column.name.try('titleize')
       defaults = [translate_headers_by_defaults, translate_headers_by_defaults_active_record, translate_headers_by_active_record, name]
       @name    = UiBibz::Utils::Internationalization.new(translate_headers_by_model, default: defaults).translate
       sortable? ? sortable_link : title

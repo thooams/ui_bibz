@@ -1,21 +1,21 @@
 module UiBibz::Ui::Ux
-  class Column
+  class Column < UiBibz::Ui::Core::Component
 
     attr_accessor :hidden, :link, :name, :data_index, :date_format, :sort, :format, :date_format, :count, :custom_sort, :parent
 
-    def initialize args
-      @args        = args
-      @link        = args[:link] # for show or edit action
-      @name        = args[:name]
-      @order       = args[:order]
-      @data_index  = args[:data_index]
-      @date_format = args[:date_format]
-      @sort        = args[:sort]
-      @custom_sort = args[:custom_sort]
-      @parent      = args[:parent]
-      @count       = args[:count]
-      @format      = args[:format]
-      @hidden      = args[:hidden]
+    def initialize content = nil, options = nil, html_options = nil, &block
+      super
+      @name        = @content
+      @link        = @options[:link] # for show or edit action
+      @order       = @options[:order]
+      @data_index  = @options[:data_index]
+      @date_format = @options[:date_format]
+      @sort        = @options[:sort]
+      @custom_sort = @options[:custom_sort]
+      @parent      = @options[:parent]
+      @count       = @options[:count]
+      @format      = @options[:format]
+      @hidden      = @options[:hidden]
     end
 
     def linkable?
