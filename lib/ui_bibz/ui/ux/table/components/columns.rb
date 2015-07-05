@@ -5,8 +5,8 @@ module UiBibz::Ui::Ux
       @columns = columns || []
     end
 
-    def column hash
-      @columns << Column.new(hash)
+    def column name = nil, options = nil, html_options = nil, &block
+      @columns << Column.new(name, options, html_options, &block)
     end
 
     def list

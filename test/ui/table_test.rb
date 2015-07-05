@@ -30,7 +30,7 @@ class TableTest < ActionView::TestCase
   end
 
   test 'table pagination' do
-    actual = UiBibz::Ui::Ux::TablePagination.new({ store: @users}).render
+    actual = UiBibz::Ui::Ux::TablePagination.new({ store: @users }).render
     expected = "<ul class=\"pagination pagination\"><li class=\"prev disabled\"><span>&#8592; Previous</span></li> <li class=\"active\"><span>1</span></li> <li><a rel=\"next\" href=\"/users?page=2\">2</a></li> <li><a href=\"/users?page=3\">3</a></li> <li><a href=\"/users?page=4\">4</a></li> <li><a href=\"/users?page=5\">5</a></li> <li><a href=\"/users?page=6\">6</a></li> <li><a href=\"/users?page=7\">7</a></li> <li><a href=\"/users?page=8\">8</a></li> <li><a href=\"/users?page=9\">9</a></li> <li class=\"disabled\"><span>&hellip;</span></li> <li><a href=\"/users?page=12\">12</a></li> <li><a href=\"/users?page=13\">13</a></li> <li class=\"next\"><a rel=\"next\" href=\"/users?page=2\">Next &#8594;</a></li></ul>"
 
     assert_equal expected, actual
@@ -161,10 +161,10 @@ class TableTest < ActionView::TestCase
         'Test body'
       end
       pane.columns do |c|
-        c.column({ name: '#', data_index: 'id' })
-        c.column({ name: 'Name fr', data_index: 'name_fr', link: edit_user_path(:id), order: 2 })
-        c.column({ name: 'Name en', data_index: 'name_en', order: 1 })
-        c.column({ name: 'Name en', data_index: 'name_en', format: lambda{ |records, record| "name #{ record.id}"}})
+        c.column('#', { data_index: 'id' })
+        c.column('Name fr', { data_index: 'name_fr', link: edit_user_path(:id), order: 2 })
+        c.column('Name en', { data_index: 'name_en', order: 1 })
+        c.column('Name en', { data_index: 'name_en', format: lambda{ |records, record| "name #{ record.id}"}})
       end
       pane.actions do |a|
         a.action 'toto', url: users_path(:id), glyph: 'eye'
