@@ -109,23 +109,16 @@ Placer la ligne suivante dans ```/app/assets/javascripts/applications.js```
 
 ## Utilisation
 
+
 ### Alert
 
 ![alert](doc/images/alert.png)
-
-L'élément ```notify``` à pour ```options``` un Hash acceptant les clefs :
-
-* [state](#state-values)
-* [glyph](#glyph-arguments)
-
-```ruby
-= notify 'toto', state: :info, glyph: 'eye'
-```
+[alert](/rdoc/UiBibz/Ui/Core/Alert.html)
 
 ### Breadcrumb (fil d'ariane)
 
 ![breadcrumb](doc/images/breadcrumb.png)
-
+[]
 L'élément ```breadcrumb``` à pour ```options``` un Hash acceptant les clefs :
 
 * [status](#status-values)
