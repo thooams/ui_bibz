@@ -912,7 +912,7 @@ UiBibz::Ui::Core::Panel.new('Exemple', { state: :success }, { class: 'exemple'})
 panel 'Exemple', { state: :success }, { class: 'exemple' }
 ```
 
-# Roadmap :
+# Roadmap
 
 Pour la V2.
 
