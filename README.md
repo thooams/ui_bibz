@@ -23,7 +23,6 @@ Un ```component``` accepte un contenu par variable ou par block.
 
 ### Component
 
-
 L'élément ```component``` accepte dans content et block :
 
 * le contenu
@@ -108,23 +107,23 @@ Placer la ligne suivante dans ```/app/assets/javascripts/applications.js```
 
 ## Utilisation
 
-### Last rdoc
-
-* [Last rdoc](/rdoc-v1.1.0)
-
-### Older rdoc
-
-* [Last rdoc](/rdoc-v1.1.0)
-
 ### Alert
 
 ![alert](doc/images/alert.png)
-[alert](/rdoc/UiBibz/Ui/Core/Alert.html)
+
+L'élément ```notify``` à pour ```options``` un Hash acceptant les clefs :
+
+* [state](#state-values)
+* [glyph](#glyph-arguments)
+
+```ruby
+= notify 'toto', state: :info, glyph: 'eye'
+```
 
 ### Breadcrumb (fil d'ariane)
 
 ![breadcrumb](doc/images/breadcrumb.png)
-[]
+
 L'élément ```breadcrumb``` à pour ```options``` un Hash acceptant les clefs :
 
 * [status](#status-values)
