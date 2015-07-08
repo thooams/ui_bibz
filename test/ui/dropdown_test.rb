@@ -3,7 +3,7 @@ include UiBibz::Helpers
 class DropdownTest < ActionView::TestCase
 
   test 'Dropdown' do
-    actual = UiBibz::Ui::Dropdown.new("Dropdown", type: :dropup, state: :success).tap do |d|
+    actual = UiBibz::Ui::Core::Dropdown.new("Dropdown", type: :dropup, state: :success).tap do |d|
       d.list 'toto'
       d.list 'header', type: :header
       d.list 'momo'

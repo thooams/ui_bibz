@@ -3,7 +3,7 @@ include UiBibz::Helpers
 class ListGroupTest < ActionView::TestCase
 
   test 'list_group with link' do
-    actual = UiBibz::Ui::ListGroup.new(type: :link).tap do |lg|
+    actual = UiBibz::Ui::Core::ListGroup.new(type: :link).tap do |lg|
       lg.list 'Momo', { state: :success, url: '#momo' }
       lg.list({ tap: true, active: true, url: '#toto' }) do |l|
         l.header 'My title'
@@ -16,7 +16,7 @@ class ListGroupTest < ActionView::TestCase
   end
 
   test 'list_group' do
-    actual = UiBibz::Ui::ListGroup.new().tap do |lg|
+    actual = UiBibz::Ui::Core::ListGroup.new().tap do |lg|
       lg.list 'Lulu'
       lg.list 'Toto'
     end.render

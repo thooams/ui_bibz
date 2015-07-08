@@ -1,9 +1,9 @@
 require 'test_helper'
-require "ui_bibz/ui/table/components/store"
-require "ui_bibz/ui/table/ux/paginable"
-require "ui_bibz/ui/table/ux/searchable"
-require "ui_bibz/ui/table/ux/sortable"
-require "ui_bibz/ui/table/ux/actionable"
+require "ui_bibz/ui/ux/table/components/store"
+require "ui_bibz/ui/ux/table/extensions/paginable"
+require "ui_bibz/ui/ux/table/extensions/searchable"
+require "ui_bibz/ui/ux/table/extensions/sortable"
+require "ui_bibz/ui/ux/table/extensions/actionable"
 include UiBibz::Helpers
 class TableTest < ActionView::TestCase
 
@@ -19,18 +19,18 @@ class TableTest < ActionView::TestCase
       page:       1
     }
     @users  = User.table_search_pagination(params, session)
-    @store = UiBibz::Ui::Store.new @users
+    @store = UiBibz::Ui::Ux::Store.new @users
   end
 
   test 'table search field' do
-    actual   = UiBibz::Ui::TableSearchField.new({ store: @users}).render
-    expected = "<form action=\"/users\" accept-charset=\"UTF-8\" method=\"get\"><input name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" /><div class=\"input-group input-group-sm table-search-field\"><span class=\"input-group-addon\"><i class=\"glyph fa fa-search\"></i></span><input type=\"search\" value=\"Name fr\" name=\"search\" class=\"form-control\" placeholder=\"Search by name_fr and name_en...\" /><span class=\"clear-search-btn input-group-addon\"><i class=\"glyph fa fa-times-circle\"></i></span></div></form>"
+    actual   = UiBibz::Ui::Ux::TableSearchField.new({ store: @users}).render
+    expected = "<form class=\"form-table-search-field\" action=\"/users\" accept-charset=\"UTF-8\" method=\"get\"><input name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" /><div class=\"input-group input-group-sm table-search-field\"><span class=\"input-group-addon\"><i class=\"glyph fa fa-search\"></i></span><input type=\"search\" value=\"Name fr\" name=\"search\" class=\"form-control\" placeholder=\"Search by name_fr and name_en...\" /><span class=\"clear-search-btn input-group-addon\"><i class=\"glyph fa fa-times-circle\"></i></span></div></form>"
 
     assert_equal expected, actual
   end
 
   test 'table pagination' do
-    actual = UiBibz::Ui::TablePagination.new({ store: @users}).render
+    actual = UiBibz::Ui::Ux::TablePagination.new({ store: @users }).render
     expected = "<ul class=\"pagination pagination\"><li class=\"prev disabled\"><span>&#8592; Previous</span></li> <li class=\"active\"><span>1</span></li> <li><a rel=\"next\" href=\"/users?page=2\">2</a></li> <li><a href=\"/users?page=3\">3</a></li> <li><a href=\"/users?page=4\">4</a></li> <li><a href=\"/users?page=5\">5</a></li> <li><a href=\"/users?page=6\">6</a></li> <li><a href=\"/users?page=7\">7</a></li> <li><a href=\"/users?page=8\">8</a></li> <li><a href=\"/users?page=9\">9</a></li> <li class=\"disabled\"><span>&hellip;</span></li> <li><a href=\"/users?page=12\">12</a></li> <li><a href=\"/users?page=13\">13</a></li> <li class=\"next\"><a rel=\"next\" href=\"/users?page=2\">Next &#8594;</a></li></ul>"
 
     assert_equal expected, actual
@@ -38,7 +38,7 @@ class TableTest < ActionView::TestCase
 
   test 'table non sortable' do
     options  = { sortable: false }
-    actual   = UiBibz::Ui::Sortable.new(@store, options).header(@store.columns.list.first)
+    actual   = UiBibz::Ui::Ux::Sortable.new(@store, options).header(@store.columns.list.first)
     expected = "Id"
 
     assert_equal expected, actual
@@ -46,7 +46,7 @@ class TableTest < ActionView::TestCase
 
   test 'table sortable' do
     options  = { sortable: true }
-    actual   = UiBibz::Ui::Sortable.new(@store, options).header(@store.columns.list.first)
+    actual   = UiBibz::Ui::Ux::Sortable.new(@store, options).header(@store.columns.list.first)
     expected = "<a class=\"dropup\" href=\"/users?direction=asc&amp;search=Name+fr&amp;sort=users.id\">Id</a>"
 
     assert_equal expected, actual
@@ -54,7 +54,7 @@ class TableTest < ActionView::TestCase
 
   test 'table non paginable' do
     options      = { paginable: false }
-    pagination   = UiBibz::Ui::Paginable.new(@store, options)
+    pagination   = UiBibz::Ui::Ux::Paginable.new(@store, options)
     actual       = pagination.render if pagination.paginable?
     expected     = nil
 
@@ -63,42 +63,42 @@ class TableTest < ActionView::TestCase
 
   test 'table paginable' do
     options      = { paginable: true }
-    pagination   = UiBibz::Ui::Paginable.new(@store, options)
+    pagination   = UiBibz::Ui::Ux::Paginable.new(@store, options)
     actual       = pagination.render if pagination.paginable?
     expected     = "<div><ul class=\"pagination pagination\"><li class=\"prev disabled\"><span>&#8592; Previous</span></li> <li class=\"active\"><span>1</span></li> <li><a rel=\"next\" href=\"/users?page=2\">2</a></li> <li><a href=\"/users?page=3\">3</a></li> <li><a href=\"/users?page=4\">4</a></li> <li><a href=\"/users?page=5\">5</a></li> <li><a href=\"/users?page=6\">6</a></li> <li><a href=\"/users?page=7\">7</a></li> <li><a href=\"/users?page=8\">8</a></li> <li><a href=\"/users?page=9\">9</a></li> <li class=\"disabled\"><span>&hellip;</span></li> <li><a href=\"/users?page=12\">12</a></li> <li><a href=\"/users?page=13\">13</a></li> <li class=\"next\"><a rel=\"next\" href=\"/users?page=2\">Next &#8594;</a></li></ul><form action=\"/users\" accept-charset=\"UTF-8\" method=\"get\"><input name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" /><div class=\"table-pagination-per-page\">Displaying User <b>1&nbsp;-&nbsp;2</b> of <b>25</b> in total | Per page: <select name=\"per_page\" id=\"per_page\" class=\"form-control\"><option value=\"25\">25</option>
 <option value=\"50\">50</option>
-<option value=\"100\">100</option></select></div></form><br class=\"clear\" /></div>"
+<option value=\"100\">100</option></select></div></form><br class=\"ui-bibz-clear\" /></div>"
 
     assert_equal expected, actual
   end
 
   test 'table non searchable' do
     options  = { searchable: false }
-    actual   = UiBibz::Ui::Searchable.new(@store, options).render
-    expected = "<div><div class=\"title\">Users list</div><br class=\"clear\" /></div>"
+    actual   = UiBibz::Ui::Ux::Searchable.new(@store, options).render
+    expected = "<div><div class=\"title\">Users list</div><br class=\"ui-bibz-clear\" /></div>"
 
     assert_equal expected, actual
   end
 
   test 'table non searchable with a title and glyph' do
     options  = { searchable: false, glyph: 'toto', title: 'Title list' }
-    actual   = UiBibz::Ui::Searchable.new(@store, options).render
-    expected = "<div><div class=\"title\"><i class=\"glyph fa fa-toto\"></i>Title list</div><br class=\"clear\" /></div>"
+    actual   = UiBibz::Ui::Ux::Searchable.new(@store, options).render
+    expected = "<div><div class=\"title\"><i class=\"glyph fa fa-toto\"></i>Title list</div><br class=\"ui-bibz-clear\" /></div>"
 
     assert_equal expected, actual
   end
 
   test 'table searchable' do
     options  = { searchable: true }
-    actual   = UiBibz::Ui::Searchable.new(@store, options).render
-    expected = "<div><div class=\"title\">Users list</div><div class=\"input-group input-group-sm table-search-field\"><span class=\"input-group-addon\"><i class=\"glyph fa fa-search\"></i></span><input type=\"search\" value=\"Name fr\" name=\"search\" class=\"form-control\" placeholder=\"Search by name_fr and name_en...\" /><span class=\"clear-search-btn input-group-addon\"><i class=\"glyph fa fa-times-circle\"></i></span></div><br class=\"clear\" /></div>"
+    actual   = UiBibz::Ui::Ux::Searchable.new(@store, options).render
+    expected = "<div><div class=\"title\">Users list</div><div class=\"input-group input-group-sm table-search-field\"><span class=\"input-group-addon\"><i class=\"glyph fa fa-search\"></i></span><input type=\"search\" value=\"Name fr\" name=\"search\" class=\"form-control\" placeholder=\"Search by name_fr and name_en...\" /><span class=\"clear-search-btn input-group-addon\"><i class=\"glyph fa fa-times-circle\"></i></span></div><br class=\"ui-bibz-clear\" /></div>"
 
     assert_equal expected, actual
   end
 
   test 'table actionable header' do
     options  = { actionable: true }
-    action   = UiBibz::Ui::Actionable.new(@store, options)
+    action   = UiBibz::Ui::Ux::Actionable.new(@store, options)
     actual   = action.header []
     expected = ["<th class=\"action\"></th>"]
 
@@ -107,7 +107,7 @@ class TableTest < ActionView::TestCase
 
   test 'table actionable body' do
     options  = { actionable: true }
-    action   = UiBibz::Ui::Actionable.new(@store, options)
+    action   = UiBibz::Ui::Ux::Actionable.new(@store, options)
     actual   = action.body @store.records.first, []
     expected = ["<td><div class=\"btn-group-xs dropdown-action dropdown\"><button class=\"btn btn-default dropdown-toggle\" type=\"button\" data-toggle=\"dropdown\" aria-expanded=\"false\"><i class=\"glyph fa fa-ellipsis-v fa-fw\"></i> Actions <span class=\"caret\"></span></button><ul class=\"dropdown-menu dropdown-menu-right\" role=\"menu\"></ul></div></td>"]
 
@@ -116,7 +116,7 @@ class TableTest < ActionView::TestCase
 
   test 'table actionable inject_url' do
     options  = { actionable: true }
-    action   = UiBibz::Ui::Actionable.new(@store, options)
+    action   = UiBibz::Ui::Ux::Actionable.new(@store, options)
     actual   = action.inject_url 'http://localhost/users/id/test', @store.records.first
     expected = "http://localhost/users/1/test"
 
@@ -125,7 +125,7 @@ class TableTest < ActionView::TestCase
 
   test 'table non actionable header' do
     options  = { actionable: false }
-    action   = UiBibz::Ui::Actionable.new(@store, options)
+    action   = UiBibz::Ui::Ux::Actionable.new(@store, options)
     actual   = action.header []
     expected = []
 
@@ -134,7 +134,7 @@ class TableTest < ActionView::TestCase
 
   test 'table non actionable body' do
     options  = { actionable: false }
-    action   = UiBibz::Ui::Actionable.new(@store, options)
+    action   = UiBibz::Ui::Ux::Actionable.new(@store, options)
     actual   = action.body @store.records.first, []
     expected = []
 
@@ -142,11 +142,11 @@ class TableTest < ActionView::TestCase
   end
 
   test 'simple table_panel' do
-    actual = UiBibz::Ui::TablePanel.new(store: @users, tap: true).render
+    actual = UiBibz::Ui::Ux::TablePanel.new(store: @users, tap: true).render
   end
 
   test 'complex table_panel' do
-    actual = UiBibz::Ui::TablePanel.new({ store: @users, tap: true }, { class: 'toto' }).tap do |pane|
+    actual = UiBibz::Ui::Ux::TablePanel.new({ store: @users, tap: true }, { class: 'toto' }).tap do |pane|
       pane.header 'Test header'
       pane.body class: 'ui' do
         'Test body'
@@ -155,16 +155,16 @@ class TableTest < ActionView::TestCase
   end
 
   test 'complex table_panel with custom actions' do
-    actual = UiBibz::Ui::TablePanel.new({ store: @users, tap: true }, { class: 'toto'}).tap do |pane|
+    actual = UiBibz::Ui::Ux::TablePanel.new({ store: @users, tap: true }, { class: 'toto'}).tap do |pane|
       pane.header 'Test header'
       pane.body cls: 'ui' do
         'Test body'
       end
       pane.columns do |c|
-        c.column({ name: '#', data_index: 'id' })
-        c.column({ name: 'Name fr', data_index: 'name_fr', link: edit_user_path(:id), order: 2 })
-        c.column({ name: 'Name en', data_index: 'name_en', order: 1 })
-        c.column({ name: 'Name en', data_index: 'name_en', format: lambda{ |records, record| "name #{ record.id}"}})
+        c.column('#', { data_index: 'id' })
+        c.column('Name fr', { data_index: 'name_fr', link: edit_user_path(:id), order: 2 })
+        c.column('Name en', { data_index: 'name_en', order: 1 })
+        c.column('Name en', { data_index: 'name_en', format: lambda{ |records, record| "name #{ record.id}"}})
       end
       pane.actions do |a|
         a.action 'toto', url: users_path(:id), glyph: 'eye'

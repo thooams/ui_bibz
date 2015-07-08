@@ -4,15 +4,15 @@ include UiBibz::Helpers
 class ButtonTest < ActionView::TestCase
 
   test "button" do
-    actual   = UiBibz::Ui::Button.new('toto', state: :success).render
+    actual   = UiBibz::Ui::Core::Button.new('toto', state: :success).render
     expected = "<button class=\"btn-success btn\">toto</button>"
 
     assert_equal expected, actual
   end
 
   test 'button group' do
-    actual = UiBibz::Ui::ButtonGroup.new position: :vertical do
-      UiBibz::Ui::Button.new('toto').render
+    actual = UiBibz::Ui::Core::ButtonGroup.new position: :vertical do
+      UiBibz::Ui::Core::Button.new('toto').render
     end.render
     expected = "<div class=\"btn-group btn-group-vertical\" role=\"group\"><button class=\"btn-default btn\">toto</button></div>"
 
@@ -20,14 +20,14 @@ class ButtonTest < ActionView::TestCase
   end
 
   test 'link button' do
-    actual   = UiBibz::Ui::ButtonLink.new('Toto', { url: users_path, state: :danger, glyph: 'add'}).render
+    actual   = UiBibz::Ui::Core::ButtonLink.new('Toto', { url: users_path, state: :danger, glyph: 'add'}).render
     expected = "<a class=\"btn-danger btn\" href=\"/users\"><i class=\"glyph fa fa-add\"></i> Toto</a>"
 
     assert_equal expected, actual
   end
 
   test 'button dropdown' do
-      actual = UiBibz::Ui::ButtonDropdown.new("Dropdown", type: :dropup, state: :success).tap do |d|
+      actual = UiBibz::Ui::Core::ButtonDropdown.new("Dropdown", type: :dropup, state: :success).tap do |d|
       d.list 'toto'
       d.list 'header', type: :header
       d.list 'momo'
@@ -40,7 +40,7 @@ class ButtonTest < ActionView::TestCase
   end
 
   test 'button split dropdown' do
-      actual = UiBibz::Ui::ButtonSplitDropdown.new("Dropdown", type: :dropup, state: :primary).tap do |d|
+      actual = UiBibz::Ui::Core::ButtonSplitDropdown.new("Dropdown", type: :dropup, state: :primary).tap do |d|
       d.list 'toto'
       d.list 'header', type: :header
       d.list 'momo'

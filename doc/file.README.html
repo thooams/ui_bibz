@@ -1,0 +1,1022 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>
+  File: README
+  
+    &mdash; Documentation by YARD 0.8.7.6
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '';
+  framesUrl = "frames.html#!file.README.html";
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index</a> &raquo; 
+    <span class="title">File: README</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><div id='filecontents'><p><img src="images/ui-bibz-logo-without-border.gif" alt="Ui Bibz logo"></p>
+
+<p><a href="https://travis-ci.org/thooams/Ui-Bibz"><img src="https://travis-ci.org/thooams/Ui-Bibz.svg" alt="Build Status"></a>
+<a href="https://codeclimate.com/github/thooams/Ui-Bibz"><img src="https://codeclimate.com/github/thooams/Ui-Bibz/badges/gpa.svg" alt="Code Climate"></a>
+<a href="https://codeclimate.com/github/thooams/Ui-Bibz"><img src="https://codeclimate.com/github/thooams/Ui-Bibz/badges/coverage.svg" alt="Test Coverage"></a></p>
+
+<p>This project rocks and uses MIT-LICENSE.</p>
+
+<h1>Ui Bibz</h1>
+
+<blockquote>
+<p>Ui Bibz est un <a href="http://fr.wikipedia.org/wiki/Framework_d%27interface">framework d&#39;interface</a>
+permettant de construire une interface très rapidement et simplement
+à l&#39;aide de <a href="http://rubyonrails.org/">Ruby on Rails 4</a> et de <a href="http://getbootstrap.com/">Boostrap 3</a>.</p>
+</blockquote>
+
+<p>Ui Bibz charge la librairie <a href="http://getbootstrap.com/">boostrap</a> et
+<a href="http://fontawesome.io/">awesomefont</a> en <a href="https://fr.wikipedia.org/wiki/Content_delivery_network">CDN</a>.</p>
+
+<p>Tous les composants du framework Ui Bibz comportent l&#39;agument <em>options</em> et l&#39;argument <em>html_options</em>.
+Ces éléments sont basés sur l&#39;élément <code>Component</code>.
+Un <code>component</code> accepte un contenu par variable ou par block.</p>
+
+<h3>Component</h3>
+
+<p>L&#39;élément <code>component</code> accepte dans content et block :</p>
+
+<ul>
+<li>le contenu</li>
+</ul>
+
+<p>L&#39;élément <code>component</code> à pour <code>options</code> un Hash acceptant les clefs :</p>
+
+<ul>
+<li><a href="#state-values">state</a></li>
+<li><a href="#glyph-arguments">glyph</a></li>
+<li><a href="#status-values">status</a></li>
+<li>class</li>
+</ul>
+
+<p>L&#39;élément <code>component</code> à pour <code>html_options</code> un Hash acceptant les clefs :</p>
+
+<ul>
+<li>class</li>
+<li>data</li>
+<li>...</li>
+</ul>
+
+<p>Exemple :</p>
+
+<pre class="code ruby"><code class="ruby">Component.new 'Exemple', { state: :success, glyph: { name: 'pencil', size: 3} }, { class: 'exemple' }
+
+Component.new { state: :success, glyph: 'eye' }, { class: 'exemple' } do
+  'Exemple'
+end
+</code></pre>
+
+<p>Signature :</p>
+
+<pre class="code ruby"><code class="ruby"><span class='const'>Component</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='id identifier rubyid_content'>content</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_html_options'>html_options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span>
+</code></pre>
+
+<p><strong>NB</strong> : Pour des raisons de simplicité d&#39;écriture, l&#39;argument <code>class</code> est présent
+dans <code>options</code> et <code>html_options</code>.</p>
+
+<h2>Installation</h2>
+
+<p>Ajouter la gem dans Rails :</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_gem'>gem</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ui_bibz</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>~&gt; 1.0.0</span><span class='tstring_end'>'</span></span>
+</code></pre>
+
+<p>Lancer la command suivante :</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_bundle'>bundle</span> <span class='id identifier rubyid_install'>install</span>
+</code></pre>
+
+<p>Placer la ligne suivante dans <code>/app/views/layouts/application.rb</code></p>
+
+<pre class="code ruby"><code class="ruby"> = ui_bibz_meta_links
+</code></pre>
+
+<p>Exemple (<a href="http://haml.info/">haml</a>):</p>
+
+<pre class="code ruby"><code class="ruby">!!!
+%html
+  %head
+    ...
+    = ui_bibz_meta_links
+    ...
+  %body
+</code></pre>
+
+<p>Placer la ligne suivante dans <code>/app/assets/stylesheets/applications.css</code></p>
+
+<pre class="code ruby"><code class="ruby">...
+*= require ui_bibz
+...
+</code></pre>
+
+<p>Placer la ligne suivante dans <code>/app/assets/javascripts/applications.js</code></p>
+
+<pre class="code ruby"><code class="ruby">...
+//= require ui_bibz
+...
+</code></pre>
+
+<h2>Utilisation</h2>
+
+<h3>Alert</h3>
+
+<p><img src="images/alert.png" alt="alert"></p>
+
+<p>L&#39;élément <code>notify</code> à pour <code>options</code> un Hash acceptant les clefs :</p>
+
+<ul>
+<li><a href="#state-values">state</a></li>
+<li><a href="#glyph-arguments">glyph</a></li>
+</ul>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_notify'>notify</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Alert</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='label'>state:</span> <span class='symbol'>:info</span><span class='comma'>,</span> <span class='label'>glyph:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>eye</span><span class='tstring_end'>'</span></span>
+</code></pre>
+
+<p>Voir la <a href="UiBibz/Ui/Core/Alert.html">doc</a></p>
+
+<h3>Breadcrumb (fil d&#39;ariane)</h3>
+
+<p><img src="images/breadcrumb.png" alt="breadcrumb"></p>
+
+<p>L&#39;élément <code>breadcrumb</code> à pour enfant l&#39;élément <code>link</code> qui accepte pour option un Hash avec les clefs :</p>
+
+<ul>
+<li><a href="#status-values">status</a></li>
+<li><a href="#glyph-arguments">glyph</a></li>
+<li>url</li>
+</ul>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_breadcrumb'>breadcrumb</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_b'>b</span><span class='op'>|</span>
+  <span class='id identifier rubyid_b'>b</span><span class='period'>.</span><span class='id identifier rubyid_link'>link</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Exemple 1</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='label'>url:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>#exemple-1</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='label'>glyph:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>home</span><span class='tstring_end'>'</span></span>
+  <span class='id identifier rubyid_b'>b</span><span class='period'>.</span><span class='id identifier rubyid_link'>link</span><span class='lparen'>(</span><span class='lbrace'>{</span> <span class='label'>url:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>#exemple-2</span><span class='tstring_end'>'</span></span> <span class='rbrace'>}</span><span class='comma'>,</span> <span class='lbrace'>{</span> <span class='label'>class:</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>link</span><span class='tstring_end'>'</span></span> <span class='rbrace'>}</span><span class='rparen'>)</span> <span class='kw'>do</span>
+    <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Exemple 2</span><span class='tstring_end'>'</span></span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_b'>b</span><span class='period'>.</span><span class='id identifier rubyid_link'>link</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Exemple 3</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='label'>status:</span> <span class='symbol'>:active</span>
+<span class='kw'>end</span>
+</code></pre>
+
+<p>Voir la <a href="UiBibz/Ui/Core/Breadcrumb.html">doc</a></p>
+
+<h3>Buttons (Boutons)</h3>
+
+<h4>Button</h4>
+
+<p><img src="images/button.png" alt="button"></p>
+
+<p>L&#39;élément <code>button</code> à pour <code>options</code> un Hash acceptant les clefs :</p>
+
+<ul>
+<li><a href="#state-values">state</a></li>
+<li><a href="#status-values">status</a></li>
+<li><a href="#glyph-arguments">glyph</a></li>
+<li><a href="#size-values">size</a></li>
+</ul>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_button'>button</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Button</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='lbrace'>{</span> <span class='label'>state:</span> <span class='symbol'>:danger</span><span class='comma'>,</span> <span class='label'>size:</span> <span class='symbol'>:xs</span><span class='comma'>,</span> <span class='label'>glyph:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>star</span><span class='tstring_end'>'</span></span> <span class='rbrace'>}</span> <span class='comma'>,</span> <span class='lbrace'>{</span> <span class='label'>class:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>my-button</span><span class='tstring_end'>'</span></span> <span class='rbrace'>}</span>
+</code></pre>
+
+<p>Voir la <a href="UiBibz/Ui/Core/Button.html">doc</a></p>
+
+<h4>Button Dropdown</h4>
+
+<p>L&#39;élément <code>button_dropdown</code> accepte pour options les mêmes clefs que l&#39;élément
+<a href="#dropdown">dropdown</a>.</p>
+
+<p><img src="images/button_dropdown.png" alt="button_link"></p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_button_dropdown'>button_dropdown</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Button Dropdown</span><span class='tstring_end'>'</span></span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_bd'>bd</span><span class='op'>|</span>
+  <span class='id identifier rubyid_bd'>bd</span><span class='period'>.</span><span class='id identifier rubyid_list'>list</span> <span class='id identifier rubyid_link_to'>link_to</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Link 1</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>#</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_bd'>bd</span><span class='period'>.</span><span class='id identifier rubyid_list'>list</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Header 1</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='label'>type:</span> <span class='symbol'>:header</span>
+  <span class='id identifier rubyid_bd'>bd</span><span class='period'>.</span><span class='id identifier rubyid_list'>list</span> <span class='id identifier rubyid_link_to'>link_to</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Link 2</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>#</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_bd'>bd</span><span class='period'>.</span><span class='id identifier rubyid_list'>list</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>---</span><span class='tstring_end'>'</span></span>
+  <span class='id identifier rubyid_bd'>bd</span><span class='period'>.</span><span class='id identifier rubyid_list'>list</span> <span class='id identifier rubyid_link_to'>link_to</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Link 3</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>#</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
+<span class='kw'>end</span>
+</code></pre>
+
+<p>Voir la <a href="UiBibz/Ui/Core/ButtonLink.html">doc</a></p>
+
+<h4>Button group</h4>
+
+<p><img src="images/button_group.png" alt="button_group"></p>
+
+<p>L&#39;élément <code>button_group</code> à pour <code>options</code> un Hash acceptant les clefs :</p>
+
+<ul>
+<li>position (:vertical, :horizontal)</li>
+<li><a href="#size-values">size</a></li>
+</ul>
+
+<p>L&#39;élément <code>list</code> à pour <code>options</code> un Hash acceptant les clefs :</p>
+
+<ul>
+<li><a href="#status-values">status</a></li>
+<li><a href="#state-values">state</a></li>
+</ul>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_button_group'>button_group</span><span class='lparen'>(</span><span class='lbrace'>{</span> <span class='label'>position:</span> <span class='symbol'>:vertical</span><span class='comma'>,</span> <span class='label'>size:</span> <span class='symbol'>:xs</span> <span class='rbrace'>}</span><span class='rparen'>)</span> <span class='kw'>do</span>
+  <span class='id identifier rubyid_button'>button</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Button 1</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='label'>status:</span> <span class='symbol'>:active</span>
+  <span class='id identifier rubyid_button'>button</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Button 2</span><span class='tstring_end'>'</span></span>
+  <span class='id identifier rubyid_button'>button</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Button 3</span><span class='tstring_end'>'</span></span>
+<span class='kw'>end</span>
+
+<span class='id identifier rubyid_button_group'>button_group</span> <span class='kw'>do</span>
+  <span class='id identifier rubyid_button'>button</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Button 1</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='label'>status:</span> <span class='symbol'>:active</span>
+  <span class='id identifier rubyid_button'>button</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Button 2</span><span class='tstring_end'>'</span></span>
+  <span class='id identifier rubyid_button'>button</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Button 3</span><span class='tstring_end'>'</span></span>
+  <span class='id identifier rubyid_button_dropdown'>button_dropdown</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Button Dropdown</span><span class='tstring_end'>'</span></span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_bd'>bd</span><span class='op'>|</span>
+    <span class='id identifier rubyid_bd'>bd</span><span class='period'>.</span><span class='id identifier rubyid_list'>list</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>header</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='label'>type:</span> <span class='symbol'>:header</span>
+    <span class='id identifier rubyid_bd'>bd</span><span class='period'>.</span><span class='id identifier rubyid_list'>list</span> <span class='id identifier rubyid_link_to'>link_to</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Link 1</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>#</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_bd'>bd</span><span class='period'>.</span><span class='id identifier rubyid_list'>list</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>---</span><span class='tstring_end'>'</span></span>
+    <span class='id identifier rubyid_bd'>bd</span><span class='period'>.</span><span class='id identifier rubyid_list'>list</span> <span class='id identifier rubyid_link_to'>link_to</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Link 2</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>#</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span>
+</code></pre>
+
+<p>Voir la <a href="UiBibz/Ui/Core/ButtonGroup.html">doc</a></p>
+
+<h4>Button Link (Lien Bouton)</h4>
+
+<p><img src="images/button_link.png" alt="button_link"></p>
+
+<p>L&#39;élément <code>button_link</code> à pour <code>options</code> un Hash acceptant les clefs :</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_button_link'>button_link</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Button</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='lbrace'>{</span> <span class='label'>url:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>#button</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='label'>state:</span> <span class='symbol'>:primary</span><span class='comma'>,</span> <span class='label'>glyph:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>star</span><span class='tstring_end'>'</span></span> <span class='rbrace'>}</span><span class='comma'>,</span> <span class='lbrace'>{</span> <span class='label'>class:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>my-button</span><span class='tstring_end'>'</span></span> <span class='rbrace'>}</span>
+</code></pre>
+
+<p>Voir la <a href="UiBibz/Ui/Core/ButtonLink.html">doc</a></p>
+
+<h4>Button Split Dropdown</h4>
+
+<p><img src="images/button_split_dropdown.png" alt="button_group"></p>
+
+<p>L&#39;élément <code>button_split_dropdown</code>accepte pour options les mêmes clefs
+que l&#39;élément <a href="#dropdown">dropdown</a>.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_button_split_dropdown'>button_split_dropdown</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Dropdown</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='label'>state:</span> <span class='symbol'>:primary</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_d'>d</span><span class='op'>|</span>
+  <span class='id identifier rubyid_d'>d</span><span class='period'>.</span><span class='id identifier rubyid_list'>list</span> <span class='kw'>do</span>
+    <span class='id identifier rubyid_link_to'>link_to</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Link 1</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>#</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_d'>d</span><span class='period'>.</span><span class='id identifier rubyid_list'>list</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Header 1</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='label'>type:</span> <span class='symbol'>:header</span>
+  <span class='id identifier rubyid_d'>d</span><span class='period'>.</span><span class='id identifier rubyid_list'>list</span> <span class='id identifier rubyid_link_to'>link_to</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Link 2</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>#</span><span class='tstring_end'>'</span></span>
+  <span class='id identifier rubyid_d'>d</span><span class='period'>.</span><span class='id identifier rubyid_list'>list</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>---</span><span class='tstring_end'>'</span></span>
+  <span class='id identifier rubyid_d'>d</span><span class='period'>.</span><span class='id identifier rubyid_list'>list</span> <span class='id identifier rubyid_link_to'>link_to</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Link 3</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>#</span><span class='tstring_end'>'</span></span>
+<span class='kw'>end</span>
+</code></pre>
+
+<p>Voir la <a href="UiBibz/Ui/Core/ButtonSplitDropdown.html">doc</a></p>
+
+<h3>Dropdown</h3>
+
+<p>L&#39;élément <code>dropdown</code> à pour <code>options</code> un Hash acceptant les clefs :</p>
+
+<ul>
+<li><a href="#state-values">state</a></li>
+<li><a href="#status-values">status</a></li>
+<li>position (:left, :right)</li>
+</ul>
+
+<p>L&#39;élément <code>list</code> est un <a href="#component">component</a> qui accepte pour options les clefs :</p>
+
+<ul>
+<li>type (:header)</li>
+<li><a href="#glyph-arguments">glyph</a></li>
+</ul>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_dropdown'>dropdown</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Dropdown</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='label'>state:</span> <span class='symbol'>:success</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_d'>d</span><span class='op'>|</span>
+  <span class='id identifier rubyid_d'>d</span><span class='period'>.</span><span class='id identifier rubyid_list'>list</span> <span class='kw'>do</span>
+    <span class='id identifier rubyid_link_to'>link_to</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Link 1</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>#</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_d'>d</span><span class='period'>.</span><span class='id identifier rubyid_list'>list</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Header 1</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='label'>type:</span> <span class='symbol'>:header</span>
+  <span class='id identifier rubyid_d'>d</span><span class='period'>.</span><span class='id identifier rubyid_list'>list</span> <span class='id identifier rubyid_link_to'>link_to</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Link 2</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>#</span><span class='tstring_end'>'</span></span>
+  <span class='id identifier rubyid_d'>d</span><span class='period'>.</span><span class='id identifier rubyid_list'>list</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>---</span><span class='tstring_end'>'</span></span>
+  <span class='id identifier rubyid_d'>d</span><span class='period'>.</span><span class='id identifier rubyid_list'>list</span> <span class='id identifier rubyid_link_to'>link_to</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Link 3</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>#</span><span class='tstring_end'>'</span></span>
+<span class='kw'>end</span>
+</code></pre>
+
+<p>Pour ajouter une ligne séparatrice, il suffit d&#39;insérer 3 &quot;-&quot; à la suite</p>
+
+<p>Exemple :</p>
+
+<pre class="code ruby"><code class="ruby">...
+d.list '--'
+...
+</code></pre>
+
+<p>Voir la <a href="UiBibz/Ui/Core/Dropdown.html">doc</a></p>
+
+<h3>Progress Bar</h3>
+
+<p><img src="images/progress_bar.png" alt="glyph"></p>
+
+<p>L&#39;élément <code>progress_bar</code> à pour <code>options</code> un Hash acceptant les clefs :</p>
+
+<ul>
+<li><a href="#state-values">state</a></li>
+<li>type (:animated, :striped)</li>
+<li>label - String (default: &quot;percentage%&quot;)</li>
+<li>tap - Boolean (true: To add several bars)</li>
+<li>percentage_min - Integer (default: 0)</li>
+<li>percentage_max - Integer (default: 100)</li>
+<li>sr_only - Boolean to show label (default: false)</li>
+</ul>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_progress_bar'>progress_bar</span> <span class='int'>30</span>
+
+<span class='id identifier rubyid_progress_bar'>progress_bar</span> <span class='label'>state:</span> <span class='symbol'>:info</span><span class='comma'>,</span> <span class='label'>sr_only:</span> <span class='kw'>true</span><span class='comma'>,</span> <span class='label'>type:</span> <span class='symbol'>:animated</span> <span class='kw'>do</span>
+  <span class='int'>70</span>
+<span class='kw'>end</span>
+
+<span class='id identifier rubyid_progress_bar'>progress_bar</span><span class='lparen'>(</span><span class='label'>tap:</span> <span class='kw'>true</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_pb'>pb</span><span class='op'>|</span>
+  <span class='id identifier rubyid_pb'>pb</span><span class='period'>.</span><span class='id identifier rubyid_bar'>bar</span> <span class='int'>10</span><span class='comma'>,</span> <span class='lbrace'>{</span> <span class='label'>state:</span> <span class='symbol'>:success</span><span class='comma'>,</span> <span class='label'>label:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Loading...</span><span class='tstring_end'>'</span></span> <span class='rbrace'>}</span><span class='comma'>,</span><span class='lbrace'>{</span> <span class='label'>class:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>test</span><span class='tstring_end'>'</span></span> <span class='rbrace'>}</span>
+  <span class='id identifier rubyid_pb'>pb</span><span class='period'>.</span><span class='id identifier rubyid_bar'>bar</span> <span class='int'>30</span><span class='comma'>,</span> <span class='label'>state:</span> <span class='symbol'>:warning</span>
+  <span class='id identifier rubyid_pb'>pb</span><span class='period'>.</span><span class='id identifier rubyid_bar'>bar</span><span class='lparen'>(</span><span class='label'>type:</span> <span class='symbol'>:striped</span><span class='rparen'>)</span> <span class='kw'>do</span>
+    <span class='int'>10</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span>
+</code></pre>
+
+<p>Voir la <a href="UiBibz/Ui/Core/ProgressBar.html">doc</a></p>
+
+<h3>Glyph</h3>
+
+<p><img src="images/glyph.png" alt="glyph"></p>
+
+<p>Les glyphs utilisés proviennent de <a href="http://fontawesome.io/">Font Awesome</a>.
+L&#39;élément <code>glyph</code> peut contenir un hash pour <code>content</code>
+L&#39;élément <code>glyph</code> à pour <code>options</code> un Hash acceptant les clefs :</p>
+
+<ul>
+<li>size</li>
+<li>type</li>
+</ul>
+
+<pre class="code ruby"><code class="ruby">glyph 'star', { size: 3, type: 'fw' }, class: 'star-exemple'
+
+glyph { name: 'star', size: 3, type: 'fw' }
+</code></pre>
+
+<p>Voir la <a href="UiBibz/Ui/Core/Glyph.html">doc</a></p>
+
+<h3>Panel</h3>
+
+<p><img src="images/panel.png" alt="panel"></p>
+
+<p>L&#39;élément <code>panel</code> à pour <code>options</code> un Hash acceptant les clefs :</p>
+
+<ul>
+<li><a href="#state">state</a></li>
+<li>tap (true) : permet de créer un header, body et footer</li>
+</ul>
+
+<p>Les éléments <code>header</code>, <code>body</code>,<code>footer</code> sont des éléments <a href="#component">component</a>.</p>
+
+<p>Exemple :</p>
+
+<pre class="code ruby"><code class="ruby">panel 'danger'
+
+panel(state: :danger) do
+  'Content'
+end
+
+panel({ tap: true, state: :danger }, { class: 'exemple' }) |p|
+  p.header 'Header', glyph: 'eye'
+  p.body(class: 'my-body') do
+   'Content body'
+  end
+  p.footer 'Footer'
+end
+</code></pre>
+
+<p>Voir la <a href="UiBibz/Ui/Core/Panel.html">doc</a></p>
+
+<h3>Table</h3>
+
+<p><img src="images/table.png" alt="table"></p>
+
+<p>L&#39;élément <code>table</code> est un tableau composé d&#39;une recherche, une pagination et un trie de colonnes intégrées.
+Le tableau est compatible <a href="http://guides.rubyonrails.org/i18n.html">I18n</a>.
+Le tableau contient pour chaque ligne un bouton dropdown &#39;action&#39; avec par défaut
+ces 3 actions : voir, éditer, supprimer. Toutes les colonnes sont présentes et
+affichées par défaut.</p>
+
+<p>La table doit contenir un store. Ce store doit-être créé dans le <em>controlleur</em> avec la
+méthode <code>table_search_pagination</code>.</p>
+
+<p>La méthode <code>table_search_pagination</code> contient 3 arguments :</p>
+
+<ul>
+<li>params</li>
+<li>session</li>
+<li>args (optionel)</li>
+</ul>
+
+<p>Exemple :</p>
+
+<pre class="code ruby"><code class="ruby"><span class='comment'># app/controllers/document_controller.rb
+</span><span class='ivar'>@documents</span> <span class='op'>=</span> <span class='const'>Document</span><span class='period'>.</span><span class='id identifier rubyid_table_search_pagination'>table_search_pagination</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='comma'>,</span> <span class='id identifier rubyid_session'>session</span><span class='rparen'>)</span>
+</code></pre>
+
+<p>Dans le <em>model</em>, insérer la méthode <code>searchable_attributes</code> afin de pouvoir
+faire une recherche sur les attributs souhaités.</p>
+
+<p>Exemple :</p>
+
+<pre class="code ruby"><code class="ruby"><span class='comment'># app/models/document.rb
+</span><span class='id identifier rubyid_searchable_attributes'>searchable_attributes</span> <span class='symbol'>:name_fr</span><span class='comma'>,</span> <span class='symbol'>:name_en</span>
+</code></pre>
+
+<p>Un champ recherche est disponible dans la vue :</p>
+
+<p><img src="images/table_search_field.png" alt="table_search_field"></p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_table_search_field'>table_search_field</span> <span class='label'>store:</span> <span class='ivar'>@documents</span>
+</code></pre>
+
+<p>Une pagination est disponible dans la vue :</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_table_pagination'>table_pagination</span> <span class='label'>store:</span> <span class='ivar'>@documents</span>
+</code></pre>
+
+<p>Un champs select par page est disponible dans la vue :</p>
+
+<p><img src="images/table_pagination_per_page.png" alt="table_search_field"></p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_table_pagination_per_page'>table_pagination_per_page</span> <span class='label'>store:</span> <span class='ivar'>@documents</span>
+</code></pre>
+
+<h4>Simple Example table</h4>
+
+<p>Dans le <strong>controlleur</strong>, insérer la méthode <code>table_search_pagination</code>.
+La méthode <code>table_search_pagination</code> contient 3 arguments :</p>
+
+<ul>
+<li>params</li>
+<li>session</li>
+<li>args</li>
+</ul>
+
+<p>Exemple :</p>
+
+<pre class="code ruby"><code class="ruby"><span class='comment'># app/controllers/document_controller.rb
+</span><span class='ivar'>@documents</span> <span class='op'>=</span> <span class='const'>Document</span><span class='period'>.</span><span class='id identifier rubyid_table_search_pagination'>table_search_pagination</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='comma'>,</span> <span class='id identifier rubyid_session'>session</span><span class='rparen'>)</span>
+</code></pre>
+
+<p>Dans le <strong>model</strong>, insérer la méthode <code>searchable_attributes</code> afin de pouvoir
+faire une recherche sur les attributs souhaités.</p>
+
+<p>Exemple :</p>
+
+<pre class="code ruby"><code class="ruby"><span class='comment'># app/models/document.rb
+</span><span class='id identifier rubyid_searchable_attributes'>searchable_attributes</span> <span class='symbol'>:name_fr</span><span class='comma'>,</span> <span class='symbol'>:name_en</span>
+</code></pre>
+
+<p>Dans la <strong>vue</strong>, insérer la méthode <code>table</code> qui peut contenir plusieurs arguments :</p>
+
+<ul>
+<li>store (ex: @documents)</li>
+<li>paginable (true, false)</li>
+<li>sortable (true, false)</li>
+</ul>
+
+<p>Une table comporte des <strong>colonnes</strong> et des <strong>actions</strong>.</p>
+
+<p>Exemple :</p>
+
+<pre class="code ruby"><code class="ruby"><span class='comment'># app/views/documents/index.html.haml
+</span><span class='id identifier rubyid_table'>table</span> <span class='label'>store:</span> <span class='ivar'>@documents</span>
+</code></pre>
+
+<p>Les actions par défauts peuvent être modifiées (<a href="#Complex-Example-table">voir exemple complexe</a>) :</p>
+
+<ul>
+<li>edit</li>
+<li>view</li>
+<li>delete</li>
+</ul>
+
+<p>Elles sont intégrées à l&#39;intérieur d&#39;un bouton <a href="#dropdown">dropdown</a>.</p>
+
+<p>Exemple :</p>
+
+<pre class="code ruby"><code class="ruby"><span class='comment'># app/views/documents/index.html.haml
+</span><span class='id identifier rubyid_table'>table</span> <span class='label'>store:</span> <span class='ivar'>@documents</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_g'>g</span><span class='op'>|</span>
+  <span class='id identifier rubyid_g'>g</span><span class='period'>.</span><span class='id identifier rubyid_actions'>actions</span> <span class='kw'>do</span>
+    <span class='id identifier rubyid_link_action'>link_action</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Show</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='id identifier rubyid_documents_path'>documents_path</span><span class='lparen'>(</span><span class='symbol'>:id</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='label'>glyph:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>eye</span><span class='tstring_end'>'</span></span>
+    <span class='id identifier rubyid_link_action'>link_action</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Edit</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='id identifier rubyid_edit_document_path'>edit_document_path</span><span class='lparen'>(</span><span class='symbol'>:id</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='label'>glyph:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pencil</span><span class='tstring_end'>'</span></span>
+    <span class='id identifier rubyid_link_action'>link_action</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Delete</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='id identifier rubyid_documents_path'>documents_path</span><span class='lparen'>(</span><span class='symbol'>:id</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='label'>method:</span> <span class='symbol'>:delete</span><span class='comma'>,</span> <span class='label'>glyph:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>trash</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='label'>data:</span> <span class='lbrace'>{</span> <span class='label'>confirm:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Are you sure?</span><span class='tstring_end'>'</span></span> <span class='rbrace'>}</span>
+    <span class='id identifier rubyid_link_action'>link_action</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>---</span><span class='tstring_end'>&quot;</span></span>
+    <span class='id identifier rubyid_link_action'>link_action</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Duplicate</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='id identifier rubyid_duplicate_document_path'>duplicate_document_path</span><span class='lparen'>(</span><span class='symbol'>:id</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='label'>glyph:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>files-o</span><span class='tstring_end'>'</span></span>
+    <span class='id identifier rubyid_link_action'>link_action</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Alert</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='id identifier rubyid_alert_document_path'>alert_document_path</span><span class='lparen'>(</span><span class='symbol'>:id</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='label'>glyph:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>bell</span><span class='tstring_end'>'</span></span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span>
+</code></pre>
+
+<p>L&#39;ajout de colonnes à travers la méthode <code>column</code> contient plusieurs arguments et cette méthode est basée sur le component :</p>
+
+<ul>
+<li>Content (ex: name)</li>
+<li>options (hash)
+
+<ul>
+<li>data_index (le nom de l&#39;attribut)</li>
+<li>count (utilise la méthode count sur l&#39;élément)</li>
+<li>date_format (formate l&#39;affichage de la date en utilisant la méthode <code>strftime</code> ex: &#39;%Y/%M/%D&#39;)</li>
+<li>format (formate les élements de la colone en utilisant <strong>lambda</strong>)</li>
+<li>link (ajoute un lien où l&#39;expression <code>:id</code> est parsé et remplacé par l&#39;entier correspondant)</li>
+<li>sort (permet de trier sur des champs )</li>
+<li>custom_sort (indique que le tableau sera triéé d&#39;une manière personnalisée)</li>
+</ul></li>
+<li>html_options (hash)</li>
+</ul>
+
+<pre class="code ruby"><code class="ruby"><span class='comment'># app/views/documents/index.html.haml
+</span><span class='id identifier rubyid_table'>table</span> <span class='label'>store:</span> <span class='ivar'>@documents</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_g'>g</span><span class='op'>|</span>
+  <span class='id identifier rubyid_g'>g</span><span class='period'>.</span><span class='id identifier rubyid_columns'>columns</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_c'>c</span><span class='op'>|</span>
+    <span class='id identifier rubyid_c'>c</span><span class='period'>.</span><span class='id identifier rubyid_column'>column</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>#</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='lbrace'>{</span> <span class='label'>data_index:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>id</span><span class='tstring_end'>'</span></span> <span class='rbrace'>}</span>
+    <span class='id identifier rubyid_c'>c</span><span class='period'>.</span><span class='id identifier rubyid_column'>column</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Name fr</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='lbrace'>{</span> <span class='label'>data_index:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>name_fr</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='label'>link:</span> <span class='id identifier rubyid_edit_document_path'>edit_document_path</span><span class='lparen'>(</span><span class='symbol'>:id</span><span class='rparen'>)</span><span class='rbrace'>}</span>
+    <span class='id identifier rubyid_c'>c</span><span class='period'>.</span><span class='id identifier rubyid_column'>column</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Name en</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='lbrace'>{</span> <span class='label'>data_index:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>name_en</span><span class='tstring_end'>'</span></span> <span class='rbrace'>}</span>
+    <span class='id identifier rubyid_c'>c</span><span class='period'>.</span><span class='id identifier rubyid_column'>column</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Hotline</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='lbrace'>{</span> <span class='label'>data_index:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>hotline_access</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='label'>format:</span> <span class='id identifier rubyid_lambda'>lambda</span><span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_records'>records</span><span class='comma'>,</span> <span class='id identifier rubyid_record'>record</span><span class='op'>|</span> <span class='id identifier rubyid_glyph'>glyph</span><span class='lparen'>(</span><span class='id identifier rubyid_record'>record</span><span class='period'>.</span><span class='id identifier rubyid_icon'>icon</span><span class='rparen'>)</span> <span class='rbrace'>}</span><span class='rbrace'>}</span>
+    <span class='id identifier rubyid_c'>c</span><span class='period'>.</span><span class='id identifier rubyid_column'>column</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Updated at</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='lbrace'>{</span> <span class='label'>data_index:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>updated_at</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='label'>date_format:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>%Y</span><span class='tstring_end'>'</span></span> <span class='rbrace'>}</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span>
+</code></pre>
+
+<h4>Complex Example table</h4>
+
+<p>Si on souhaite voir apparaître certaines liasions avec d&#39;autres tables il faut pour
+cela :</p>
+
+<p>Dans le controlleur, insérer la méthode <code>table_search_pagination</code> en ajoutant
+un <code>includes</code> juste avant.</p>
+
+<p>Exemple :</p>
+
+<pre class="code ruby"><code class="ruby"><span class='comment'># app/controllers/document_controller.rb
+</span><span class='ivar'>@documents</span> <span class='op'>=</span> <span class='const'>Document</span><span class='period'>.</span><span class='id identifier rubyid_includes'>includes</span><span class='lparen'>(</span><span class='symbol'>:users</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_table_search_pagination'>table_search_pagination</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='comma'>,</span> <span class='id identifier rubyid_session'>session</span><span class='rparen'>)</span>
+</code></pre>
+
+<p>Dans la vue, insérer la méthod <code>table</code>.
+NB: On peut créer ses propres méthodes comme <code>user_name</code> dans notre <em>model</em> &quot;Document&quot; et
+l&#39;appeler comme valeur pour la clef <code>data_index</code>.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='comment'># app/views/documents/index.html.haml
+</span><span class='id identifier rubyid_table'>table</span> <span class='label'>store:</span> <span class='ivar'>@documents</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_g'>g</span><span class='op'>|</span>
+  <span class='id identifier rubyid_g'>g</span><span class='period'>.</span><span class='id identifier rubyid_columns'>columns</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_c'>c</span><span class='op'>|</span>
+    <span class='id identifier rubyid_c'>c</span><span class='period'>.</span><span class='id identifier rubyid_column'>column</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Users</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='lbrace'>{</span> <span class='label'>data_index:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>user_name</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='label'>sort:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>user.name</span><span class='tstring_end'>&quot;</span></span> <span class='rbrace'>}</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span>
+</code></pre>
+
+<h4>Ultra Complex Example table</h4>
+
+<p>Si l&#39;on souhaite, par exemple, dénombrer des utilisateurs qui ont un lien non
+direct avec les documents.
+Imaginons par exemple, un utilisateur à des produits et que
+ces produits contiennent plusieurs documents. On souhaite compter le nombre
+d&#39;utilisateurs par documents.</p>
+
+<p>On peut ajouter des arguments dans la méthode <code>table_search_pagination</code>
+qui vont permettre de faire des jointures.</p>
+
+<p>Exemple :</p>
+
+<pre class="code ruby"><code class="ruby"><span class='comment'># app/controllers/document_controller.rb
+</span><span class='id identifier rubyid_arguments'>arguments</span>  <span class='op'>=</span> <span class='lbrace'>{</span> <span class='label'>sortable:</span> <span class='lbrace'>{</span>
+  <span class='label'>column:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>users</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+  <span class='label'>count:</span>  <span class='kw'>true</span><span class='comma'>,</span>
+  <span class='label'>joins:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>LEFT OUTER JOIN documents_products ON documents_products.document_id = documents.id
+          LEFT OUTER JOIN products ON products.id = documents_products.product_id
+          LEFT OUTER JOIN products_users ON products_users.product_id = products.id
+          LEFT OUTER JOIN users ON users.id = products_users.user_id</span><span class='tstring_end'>&quot;</span></span>
+<span class='rbrace'>}</span> <span class='rbrace'>}</span>
+
+<span class='ivar'>@documents</span> <span class='op'>=</span> <span class='const'>Document</span><span class='period'>.</span><span class='id identifier rubyid_includes'>includes</span><span class='lparen'>(</span><span class='symbol'>:users</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_table_search_pagination'>table_search_pagination</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='comma'>,</span> <span class='id identifier rubyid_session'>session</span><span class='comma'>,</span> <span class='id identifier rubyid_arguments'>arguments</span><span class='rparen'>)</span>
+</code></pre>
+
+<p>Ici l&#39;argument sortable signifie que l&#39;on souhaite s&#39;interresser à la
+fonctionnalité de trie.</p>
+
+<p>Pour celà il faut :</p>
+
+<ul>
+<li>définir le nom de la colonne triéé à travers l&#39;argument <code>column:</code> (string)</li>
+<li>définir si le traitement se fait sur le comptage avec l&#39;argument <code>count:</code>
+(boolean)</li>
+<li>définir la jointure avec l&#39;argument <code>joins:</code> (string, array, hash)</li>
+</ul>
+
+<p>Dans la vue :</p>
+
+<pre class="code ruby"><code class="ruby"><span class='comment'># app/views/documents/index.html.haml
+</span><span class='id identifier rubyid_table'>table</span> <span class='label'>store:</span> <span class='ivar'>@documents</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_g'>g</span><span class='op'>|</span>
+  <span class='id identifier rubyid_g'>g</span><span class='period'>.</span><span class='id identifier rubyid_columns'>columns</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_c'>c</span><span class='op'>|</span>
+    <span class='id identifier rubyid_c'>c</span><span class='period'>.</span><span class='id identifier rubyid_column'>column</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Users</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='lbrace'>{</span> <span class='label'>data_index:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>users</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='label'>count:</span> <span class='kw'>true</span><span class='comma'>,</span> <span class='label'>custom_sort:</span> <span class='kw'>true</span> <span class='rbrace'>}</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span>
+</code></pre>
+
+<h4>table I18n</h4>
+
+<p>La table est utilisable avec I18n. Les traductions
+s&#39;executent par ordre d&#39;importance dans cet ordre précis pour la colonne &quot;name_fr&quot; par exemple.</p>
+
+<ol>
+<li>ui_biz.table.headers.document.name_fr</li>
+<li>ui_biz.table.headers.defaults.name_fr</li>
+<li>activerecord.attributes.document.name_fr</li>
+<li>activerecord.attributes.defaults.name_fr</li>
+</ol>
+
+<p>Le placeholder du champ recherche est utilisable et traduisible avec les attributs activerecord dans le fichier locale.</p>
+
+<p>Exemple :</p>
+
+<pre class="code ruby"><code class="ruby"># config/locales/fr.yml
+...
+activerecord:
+  models:
+      user: 'Utilisateur'
+  attributes:
+    defaults:
+      name_fr: 'Nom fr'
+...
+</code></pre>
+
+<p>Voir la <a href="UiBibz/Ui/Ux/Table.html">doc</a></p>
+
+<h3>Table Panel</h3>
+
+<p><img src="images/table_panel.png" alt="table_panel"></p>
+
+<p>Le composant <code>table_panel</code> est un <a href="#table">tableau</a> dans un <a href="#panel">panel</a>.</p>
+
+<pre class="code ruby"><code class="ruby">table_panel store: @users
+
+table_panel({ store: @users, tap: true, glyph: 'home', state: :danger }) do |g|
+  g.columns do |cls|
+    cls.column '#', { data_index: 'id' }
+    cls.column 'Username', { data_index: 'username', link: edit_user_path(:id) }
+    cls.column 'Name', { data_index: 'name' }
+    cls.column({ data_index: 'email' }) do
+      'Email'
+    end
+    cls.column 'Role', { data_index: 'role_name', sort: 'roles.name' }
+  end
+  g.actions do |acs|
+    acs.action 'Action 1', { url: edit_user_path(:id), glyph: 'pencil' }
+    acs.action &quot;---&quot;
+    acs.action { url: user_path(:id), glyph: 'eye' } do
+      'Action 2'
+    end
+  end
+end
+</code></pre>
+
+<p>Voir la <a href="UiBibz/Ui/Ux/TablePanel.html">doc</a></p>
+
+<h3>List</h3>
+
+<p><img src="images/list.png" alt="list"></p>
+
+<p>Par défaut une liste à pour tag <code>&lt;li&gt;</code>.
+Mais elle peut se transformer en lien <code>&lt;a&gt;</code> à travers l&#39;option <code>type:</code>.
+Par défaut le tag <code>&lt;li&gt;</code> est présent.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_list_group'>list_group</span> <span class='label'>type:</span> <span class='symbol'>:link</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_lg'>lg</span><span class='op'>|</span>
+  <span class='id identifier rubyid_lg'>lg</span><span class='period'>.</span><span class='id identifier rubyid_list'>list</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Momo</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='lbrace'>{</span> <span class='label'>state:</span> <span class='symbol'>:success</span><span class='comma'>,</span> <span class='label'>glyph:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>home</span><span class='tstring_end'>'</span></span> <span class='rbrace'>}</span><span class='comma'>,</span> <span class='lbrace'>{</span> <span class='label'>href:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>#Momo</span><span class='tstring_end'>'</span></span> <span class='rbrace'>}</span>
+  <span class='id identifier rubyid_lg'>lg</span><span class='period'>.</span><span class='id identifier rubyid_list'>list</span><span class='lparen'>(</span><span class='lbrace'>{</span> <span class='label'>tap:</span> <span class='kw'>true</span><span class='comma'>,</span> <span class='label'>status:</span> <span class='symbol'>:active</span> <span class='rbrace'>}</span><span class='comma'>,</span> <span class='lbrace'>{</span> <span class='label'>href:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>#Toto</span><span class='tstring_end'>'</span></span> <span class='rbrace'>}</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_l'>l</span><span class='op'>|</span>
+    <span class='id identifier rubyid_l'>l</span><span class='period'>.</span><span class='id identifier rubyid_header'>header</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>My title</span><span class='tstring_end'>'</span></span>
+    <span class='id identifier rubyid_l'>l</span><span class='period'>.</span><span class='id identifier rubyid_body'>body</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>My title</span><span class='tstring_end'>'</span></span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span>
+
+<span class='id identifier rubyid_list_group'>list_group</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_lg'>lg</span><span class='op'>|</span>
+  <span class='id identifier rubyid_lg'>lg</span><span class='period'>.</span><span class='id identifier rubyid_list'>list</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Momo</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='label'>glyph:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>home</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='label'>badge:</span> <span class='int'>2</span>
+  <span class='id identifier rubyid_lg'>lg</span><span class='period'>.</span><span class='id identifier rubyid_list'>list</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Toto</span><span class='tstring_end'>'</span></span>
+<span class='kw'>end</span>
+</code></pre>
+
+<p>Voir la <a href="UiBibz/Ui/Core/List.html">doc</a></p>
+
+<h3>Nav</h3>
+
+<p><img src="images/nav.png" alt="nav"></p>
+
+<p>Par défaut la navigation comporte des onglets &quot;tab&quot;.
+L&#39;élément <code>nav</code> accepte en option les arguments :</p>
+
+<ul>
+<li>type (:pills, :tabs)</li>
+<li>position (:justified, :stacked)</li>
+<li>tap (true)</li>
+</ul>
+
+<p>L&#39;élement link est un <a href="#component">component</a>.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_nav'>nav</span><span class='lparen'>(</span><span class='label'>type:</span> <span class='symbol'>:pills</span><span class='comma'>,</span> <span class='label'>position:</span> <span class='symbol'>:justified</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_d'>d</span><span class='op'>|</span>
+  <span class='id identifier rubyid_d'>d</span><span class='period'>.</span><span class='id identifier rubyid_link'>link</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Link 1</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='label'>url:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>#test</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='label'>badge:</span> <span class='int'>6</span>
+  <span class='id identifier rubyid_d'>d</span><span class='period'>.</span><span class='id identifier rubyid_link'>link</span><span class='lparen'>(</span><span class='label'>url:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>#test2</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='label'>status:</span> <span class='symbol'>:active</span><span class='rparen'>)</span> <span class='kw'>do</span>
+    <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Link 2</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span>
+</code></pre>
+
+<p>Voir la <a href="UiBibz/Ui/Core/Nav.html">doc</a></p>
+
+<p>### Navbar</p>
+
+<p><img src="images/navbar.png" alt="navbar"></p>
+
+<p>Par défaut la navigation comporte des onglets &quot;tab&quot;.
+L&#39;élément <code>navbar</code> accepte en option les arguments :</p>
+
+<ul>
+<li>type (:default, :inverse)</li>
+<li><a href="#glyph-values">glyph</a></li>
+<li>position (:top, :bottom)</li>
+<li>title (string)</li>
+</ul>
+
+<p>L&#39;élement link est un <a href="#component">component</a>.
+L&#39;élement nav est un <a href="#component">component</a>.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_navbar'>navbar</span><span class='lparen'>(</span><span class='label'>type:</span> <span class='symbol'>:inverse</span><span class='comma'>,</span> <span class='label'>position:</span> <span class='symbol'>:top</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_nb'>nb</span><span class='op'>|</span>
+  <span class='id identifier rubyid_nb'>nb</span><span class='period'>.</span><span class='id identifier rubyid_nav'>nav</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_n'>n</span><span class='op'>|</span>
+    <span class='id identifier rubyid_n'>n</span><span class='period'>.</span><span class='id identifier rubyid_link'>link</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Link 1</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='label'>url:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>#link-1</span><span class='tstring_end'>'</span></span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_nb'>nb</span><span class='period'>.</span><span class='id identifier rubyid_nav'>nav</span><span class='lparen'>(</span><span class='label'>position:</span> <span class='symbol'>:right</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_n'>n</span><span class='op'>|</span>
+    <span class='id identifier rubyid_n'>n</span><span class='period'>.</span><span class='id identifier rubyid_link'>link</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Link 2</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='label'>url:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>#test</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='label'>badge:</span> <span class='int'>6</span>
+    <span class='id identifier rubyid_n'>n</span><span class='period'>.</span><span class='id identifier rubyid_link'>link</span><span class='lparen'>(</span><span class='label'>url:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>#link-2</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='label'>status:</span> <span class='symbol'>:active</span><span class='rparen'>)</span> <span class='kw'>do</span>
+      <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Link 3</span><span class='tstring_end'>&quot;</span></span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span>
+</code></pre>
+
+<p>Voir la <a href="UiBibz/Ui/Core/Navbar.html">doc</a></p>
+
+<h3>Etiquette</h3>
+
+<p><img src="images/etiquette.png" alt="list"></p>
+
+<p>NB : Les méthodes <code>Tag, label</code> sont déjà utilisées par Rails.
+L&#39;élément <code>etiquette</code> à pour <code>options</code> un Hash acceptant les clefs :</p>
+
+<ul>
+<li><a href="#state-values">state</a></li>
+<li><a href="#glyph-values">glyph</a></li>
+</ul>
+
+<p>Exemple :</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_etiquette'>etiquette</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>label</span><span class='tstring_end'>'</span></span>
+<span class='id identifier rubyid_etiquette'>etiquette</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>label 2</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='label'>state:</span> <span class='symbol'>:success</span>
+<span class='id identifier rubyid_etiquette'>etiquette</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>label 2</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='label'>state:</span> <span class='symbol'>:danger</span>
+</code></pre>
+
+<p>Voir la <a href="UiBibz/Ui/Core/Etiquette.html">doc</a></p>
+
+<h3>Row</h3>
+
+<p>Le composant row génére une div avec la class row.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_row'>row</span> <span class='label'>class:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>toto</span><span class='tstring_end'>'</span></span> <span class='kw'>do</span>
+  <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>content</span><span class='tstring_end'>'</span></span>
+<span class='kw'>end</span>
+<span class='comment'># =&gt; &lt;div class='row toto'&gt;content&lt;/div&gt;
+</span></code></pre>
+
+<p>Voir la <a href="UiBibz/Ui/Core/Content.html">doc</a></p>
+
+<h3>Col</h3>
+
+<p>L&#39;élément <code>col</code> est un <a href="#composant">composant</a> qui accèpte en arguments :</p>
+
+<ul>
+<li>num</li>
+<li>offset</li>
+<li>size</li>
+</ul>
+
+<p>ou</p>
+
+<ul>
+<li>un tableau de hashes avec les arguments <code>num</code>, <code>offset</code> et <code>size</code> à l&#39;intérieur.</li>
+</ul>
+
+<p>Ces paramètres génèrent les classes qui seront insérées dans la div avec la classe
+col.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_col'>col</span><span class='lparen'>(</span><span class='lbrace'>{</span><span class='label'>num:</span> <span class='int'>2</span><span class='comma'>,</span> <span class='label'>size:</span> <span class='symbol'>:lg</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='label'>class:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>test</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span> <span class='kw'>do</span>
+  <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>content</span><span class='tstring_end'>'</span></span>
+<span class='kw'>end</span>
+<span class='comment'># =&gt; &lt;div class='col-lg-2 test'&gt;content&lt;/div&gt;
+</span>
+
+<span class='id identifier rubyid_col'>col</span><span class='lparen'>(</span><span class='lbracket'>[</span><span class='lbrace'>{</span> <span class='label'>offset:</span> <span class='int'>1</span><span class='comma'>,</span> <span class='label'>size:</span> <span class='symbol'>:xs</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='lbrace'>{</span> <span class='label'>num:</span> <span class='int'>3</span><span class='rbrace'>}</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='label'>class:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>test</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span> <span class='kw'>do</span>
+  <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>content</span><span class='tstring_end'>'</span></span>
+<span class='kw'>end</span>
+<span class='comment'># =&gt; &lt;div class='col-xs-offset-1 col-md-3 test'&gt;content&lt;/div&gt;
+</span></code></pre>
+
+<p>Voir la <a href="UiBibz/Ui/Core/Col.html">doc</a></p>
+
+<h3>Grid</h3>
+
+<p>Une grid est un composant qui est composé de 5 vues :</p>
+
+<ul>
+<li>top</li>
+<li>right</li>
+<li>bottom</li>
+<li>left</li>
+<li>center</li>
+</ul>
+
+<p>La vue <strong>center</strong> est obligatoire.
+Une vue à pour arguments :</p>
+
+<ul>
+<li>position (:top, :left, :bottom, :right, :center)</li>
+<li>num (1..12) 12 étant le nombre limite de colonnes utilisable dans boostrap.</li>
+</ul>
+
+<p>L&#39;argument <code>position</code> détermine la position de la vue et l&#39;argument <code>num</code> determine
+le nombre de colonnes occupées par la vue.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_grid'>grid</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_g'>g</span><span class='op'>|</span>
+  <span class='id identifier rubyid_g'>g</span><span class='period'>.</span><span class='id identifier rubyid_view'>view</span> <span class='label'>num:</span> <span class='int'>3</span><span class='comma'>,</span> <span class='label'>position:</span> <span class='symbol'>:left</span> <span class='kw'>do</span>
+    <span class='id identifier rubyid_list_group'>list_group</span><span class='lparen'>(</span><span class='label'>type:</span> <span class='symbol'>:link</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_lg'>lg</span><span class='op'>|</span>
+      <span class='id identifier rubyid_lg'>lg</span><span class='period'>.</span><span class='id identifier rubyid_list'>list</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Link 1</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='lbrace'>{</span> <span class='label'>url:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>#link1</span><span class='tstring_end'>'</span></span> <span class='rbrace'>}</span>
+      <span class='id identifier rubyid_lg'>lg</span><span class='period'>.</span><span class='id identifier rubyid_list'>list</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Link 2</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='lbrace'>{</span> <span class='label'>url:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>#link1</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='label'>status:</span> <span class='symbol'>:active</span> <span class='rbrace'>}</span>
+      <span class='id identifier rubyid_lg'>lg</span><span class='period'>.</span><span class='id identifier rubyid_list'>list</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Link 1</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='lbrace'>{</span> <span class='label'>url:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>#link1</span><span class='tstring_end'>'</span></span> <span class='rbrace'>}</span>
+      <span class='id identifier rubyid_lg'>lg</span><span class='period'>.</span><span class='id identifier rubyid_list'>list</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Link 3</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='lbrace'>{</span> <span class='label'>url:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>#link1</span><span class='tstring_end'>'</span></span> <span class='rbrace'>}</span>
+      <span class='id identifier rubyid_lg'>lg</span><span class='period'>.</span><span class='id identifier rubyid_list'>list</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Link 4</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='lbrace'>{</span> <span class='label'>url:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>#link1</span><span class='tstring_end'>'</span></span> <span class='rbrace'>}</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_g'>g</span><span class='period'>.</span><span class='id identifier rubyid_view'>view</span><span class='lparen'>(</span><span class='lbrace'>{</span> <span class='label'>position:</span> <span class='symbol'>:top</span><span class='rbrace'>}</span><span class='rparen'>)</span> <span class='kw'>do</span>
+    <span class='id identifier rubyid_button_group'>button_group</span><span class='lparen'>(</span><span class='label'>type:</span> <span class='symbol'>:toolbar</span><span class='rparen'>)</span> <span class='kw'>do</span>
+      <span class='id identifier rubyid_button'>button</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>option 1</span><span class='tstring_end'>'</span></span>
+      <span class='id identifier rubyid_button'>button</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>option 2</span><span class='tstring_end'>'</span></span>
+      <span class='id identifier rubyid_button'>button</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>option 3</span><span class='tstring_end'>'</span></span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_g'>g</span><span class='period'>.</span><span class='id identifier rubyid_view'>view</span> <span class='label'>position:</span> <span class='symbol'>:center</span> <span class='kw'>do</span>
+    <span class='id identifier rubyid_table'>table</span> <span class='label'>store:</span> <span class='ivar'>@users</span><span class='comma'>,</span> <span class='label'>type:</span> <span class='symbol'>:bordered</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_g'>g</span><span class='period'>.</span><span class='id identifier rubyid_view'>view</span> <span class='label'>position:</span> <span class='symbol'>:bottom</span> <span class='kw'>do</span>
+    <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>bottom</span><span class='tstring_end'>'</span></span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span>
+
+<span class='id identifier rubyid_grid'>grid</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_g'>g</span><span class='op'>|</span>
+  <span class='id identifier rubyid_g'>g</span><span class='period'>.</span><span class='id identifier rubyid_view'>view</span> <span class='label'>num:</span> <span class='int'>5</span><span class='comma'>,</span> <span class='label'>position:</span> <span class='symbol'>:left</span> <span class='kw'>do</span>
+    <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>left</span><span class='tstring_end'>'</span></span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_g'>g</span><span class='period'>.</span><span class='id identifier rubyid_view'>view</span> <span class='label'>position:</span> <span class='symbol'>:right</span> <span class='kw'>do</span>
+    <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>right</span><span class='tstring_end'>'</span></span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_g'>g</span><span class='period'>.</span><span class='id identifier rubyid_view'>view</span><span class='lparen'>(</span><span class='lbrace'>{</span> <span class='label'>position:</span> <span class='symbol'>:top</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='lbrace'>{</span> <span class='label'>class:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>success</span><span class='tstring_end'>'</span></span><span class='rbrace'>}</span><span class='rparen'>)</span> <span class='kw'>do</span>
+    <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>top</span><span class='tstring_end'>'</span></span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_g'>g</span><span class='period'>.</span><span class='id identifier rubyid_view'>view</span> <span class='label'>position:</span> <span class='symbol'>:center</span> <span class='kw'>do</span>
+    <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>center</span><span class='tstring_end'>'</span></span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_g'>g</span><span class='period'>.</span><span class='id identifier rubyid_view'>view</span> <span class='label'>position:</span> <span class='symbol'>:bottom</span> <span class='kw'>do</span>
+    <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>bottom</span><span class='tstring_end'>'</span></span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span>
+</code></pre>
+
+<p>Voir la <a href="UiBibz/Ui/Ux/Grid.html">doc</a></p>
+
+<h3>Arguments and Values</h3>
+
+<h4>Status values</h4>
+
+<ul>
+<li>:active</li>
+<li>:disable</li>
+</ul>
+
+<h4>Size values</h4>
+
+<ul>
+<li>:xs</li>
+<li>:sm</li>
+<li>:lg</li>
+</ul>
+
+<h4>State values</h4>
+
+<ul>
+<li>:default</li>
+<li>:primary</li>
+<li>:info</li>
+<li>:success</li>
+<li>:warning</li>
+<li>:danger</li>
+</ul>
+
+<h4>Glyph arguments</h4>
+
+<ul>
+<li>name</li>
+<li>size</li>
+<li>type</li>
+</ul>
+
+<h1>Plus de détails</h1>
+
+<p>Pour plus d&#39;informations, vous pouvez accéder à la documentation rdoc en
+générant cette dernière :</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_rake'>rake</span> <span class='id identifier rubyid_rdoc'>rdoc</span>
+</code></pre>
+
+<h1>Conflits</h1>
+
+<p>Certaines méthodes dans le helper peuvent être en conflit avec d&#39;autres
+librairies. Le cas échéant, vous pouvez utiliser directement la librairie UiBibz
+comme ci-dessous.</p>
+
+<p>Exemple :</p>
+
+<pre class="code ruby"><code class="ruby"><span class='const'>UiBibz</span><span class='op'>::</span><span class='const'>Ui</span><span class='op'>::</span><span class='const'>Core</span><span class='op'>::</span><span class='const'>Panel</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Exemple</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='lbrace'>{</span> <span class='label'>state:</span> <span class='symbol'>:success</span> <span class='rbrace'>}</span><span class='comma'>,</span> <span class='lbrace'>{</span> <span class='label'>class:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>exemple</span><span class='tstring_end'>'</span></span><span class='rbrace'>}</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_render'>render</span>
+<span class='comment'># au lieu de
+</span><span class='id identifier rubyid_panel'>panel</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Exemple</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='lbrace'>{</span> <span class='label'>state:</span> <span class='symbol'>:success</span> <span class='rbrace'>}</span><span class='comma'>,</span> <span class='lbrace'>{</span> <span class='label'>class:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>exemple</span><span class='tstring_end'>'</span></span> <span class='rbrace'>}</span>
+</code></pre>
+
+<h1>Roadmap</h1>
+
+<p>Pour la V2.</p>
+
+<ul>
+<li>créer des stores pour les listes, breadcrumb</li>
+<li>créer d&#39;autres extensions, plugins et une guideline</li>
+<li>donner le choix de la dépendence boostrap et awesomefont en CDN ou en local</li>
+<li>mise à jour vers bootstrap 4
+...</li>
+</ul>
+</div></div>
+
+    <div id="footer">
+  Generated on Wed Jul  8 15:00:15 2015 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.7.6 (ruby-1.9.3).
+</div>
+
+  </body>
+</html>
