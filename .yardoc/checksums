@@ -43,7 +43,7 @@ lib/ui_bibz/ui/core/progress_bar/progress_bar.rb 84b9522d1bacefae5cc87340840343d
 lib/ui_bibz/ui/ux/table/extensions/searchable.rb 658fccff12bd7020a2f7a19fa2d1ea3188260f08
 lib/ui_bibz/ui/core/nav/components/navbar_text.rb 8ece3200b77fcb50555abd957736991edb8fd032
 lib/ui_bibz/ui/core/nav/components/navbar_form.rb 02233a56c110d34af0d217f11218a4bb84d6a387
-lib/ui_bibz/ui/core/nav/components/nav_dropdown.rb 79a0c598beeb86adc75d789e5def885e209c29fe
+lib/ui_bibz/ui/core/nav/components/nav_dropdown.rb ac615842c4c54447b38485af5ccbc6c2526b2220
 lib/ui_bibz/ui/ux/table/components/table_action.rb 2bf2979f0650d0d92ed5db957053ce71626dd477
 lib/ui_bibz/ui/core/progress_bar/components/bar.rb bfb257a0342fab4e146f4b3d2580d11515187103
 lib/ui_bibz/ui/core/button/button_split_dropdown.rb cf5be519676124e8acf842bcf58f8fb706ec24a6

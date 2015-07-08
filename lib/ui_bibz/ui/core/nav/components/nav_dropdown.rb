@@ -26,7 +26,7 @@ module UiBibz::Ui::Core
   #
   # ==== Signatures
   #
-  #   UiBibz::Ui::Core::Dropdown.new(options = nil, html_options = nil).tap do |d|
+  #   UiBibz::Ui::Core::NavDropdown.new(options = nil, html_options = nil).tap do |d|
   #     ...
   #     d.list content = nil, options = nil, html_options = nil, &block
   #     d.list content = nil, options = nil, html_options = nil, &block
@@ -36,7 +36,7 @@ module UiBibz::Ui::Core
   #
   # ==== Examples
   #
-  #   UiBibz::Ui::Core::Dropdown.new(name, state: :success).tap do |d|
+  #   UiBibz::Ui::Core::NavDropdown.new(name, state: :success).tap do |d|
   #     d.list link_to('test', '#')
   #     d.list link_to('test2', '#')
   #   end.render
