@@ -1,0 +1,361 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: UiBibz::Ui::Core::Label
+  
+    &mdash; Documentation by YARD 0.8.7.6
+  
+</title>
+
+  <link rel="stylesheet" href="../../../css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="../../../css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../../../';
+  framesUrl = "../../../frames.html#!UiBibz/Ui/Core/Label.html";
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../../../_index.html">Index (L)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../../../UiBibz.html" title="UiBibz (module)">UiBibz</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../../Ui.html" title="UiBibz::Ui (module)">Ui</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Core.html" title="UiBibz::Ui::Core (module)">Core</a></span></span>
+     &raquo; 
+    <span class="title">Label</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../../../class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="../../../method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="../../../file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Class: UiBibz::Ui::Core::Label
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName"><span class='object_link'><a href="Component.html" title="UiBibz::Ui::Core::Component (class)">Component</a></span></span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next"><span class='object_link'><a href="../Base.html" title="UiBibz::Ui::Base (class)">Base</a></span></li>
+          
+            <li class="next"><span class='object_link'><a href="Component.html" title="UiBibz::Ui::Core::Component (class)">Component</a></span></li>
+          
+            <li class="next">UiBibz::Ui::Core::Label</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">lib/ui_bibz/ui/core/label.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>Create a label</p>
+
+<p>This element is an extend of UiBibz::Ui::Core::Component.</p>
+
+<h4>Attributes</h4>
+<ul><li>
+<p><tt>content</tt> - Content of element</p>
+</li><li>
+<p><tt>options</tt> - Options of element</p>
+</li><li>
+<p><tt>html_options</tt> - Html Options of element</p>
+</li></ul>
+
+<h4>Options</h4>
+
+<p>You can add HTML attributes using the <tt>html_options</tt>. You can pass
+arguments in options attribute:</p>
+<ul><li>
+<p><tt>state</tt> - State of élement with symbol value: (<tt>:default</tt>,
+<tt>:primary</tt>, <tt>:info</tt>, <tt>:warning</tt>, <tt>:danger</tt>)</p>
+</li><li>
+<p><tt>glyph</tt> - Add glyph with name or hash options</p>
+<ul><li>
+<p><tt>name</tt> - String</p>
+</li><li>
+<p><tt>size</tt> - Integer</p>
+</li><li>
+<p><tt>type</tt> - Symbol</p>
+</li></ul>
+</li></ul>
+
+<h4>Signatures</h4>
+
+<pre class="code ruby"><code class="ruby"><span class='const'>UiBibz</span><span class='op'>::</span><span class='const'>Ui</span><span class='op'>::</span><span class='const'>Core</span><span class='op'>::</span><span class='const'>Label</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_content'>content</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_html_options'>html_options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+
+<span class='const'>UiBibz</span><span class='op'>::</span><span class='const'>Ui</span><span class='op'>::</span><span class='const'>Core</span><span class='op'>::</span><span class='const'>Label</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_html_options'>html_options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span> <span class='kw'>do</span>
+  <span class='id identifier rubyid_content'>content</span>
+<span class='kw'>end</span></code></pre>
+
+<h4>Examples</h4>
+
+<pre class="code ruby"><code class="ruby"><span class='const'>UiBibz</span><span class='op'>::</span><span class='const'>Ui</span><span class='op'>::</span><span class='const'>Core</span><span class='op'>::</span><span class='const'>Label</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_content'>content</span><span class='comma'>,</span> <span class='label'>state:</span> <span class='symbol'>:success</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_render'>render</span>
+
+<span class='const'>UiBibz</span><span class='op'>::</span><span class='const'>Ui</span><span class='op'>::</span><span class='const'>Core</span><span class='op'>::</span><span class='const'>Label</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='rparen'>)</span> <span class='kw'>do</span>
+  <span class='comment'>#content
+</span><span class='kw'>end</span><span class='period'>.</span><span class='id identifier rubyid_render'>render</span></code></pre>
+
+<h4>Helper</h4>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_etiquette'>etiquette</span><span class='lparen'>(</span><span class='id identifier rubyid_content'>content</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='id identifier rubyid_html_options'>html_options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+
+<span class='id identifier rubyid_etiquette'>etiquette</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='id identifier rubyid_html_options'>html_options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span> <span class='kw'>do</span>
+  <span class='id identifier rubyid_content'>content</span>
+<span class='kw'>end</span></code></pre>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+
+
+
+
+
+  <h2>Instance Attribute Summary</h2>
+  
+  <h3 class="inherited">Attributes inherited from <span class='object_link'><a href="Component.html" title="UiBibz::Ui::Core::Component (class)">Component</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Component.html#content-instance_method" title="UiBibz::Ui::Core::Component#content (method)">#content</a></span>, <span class='object_link'><a href="Component.html#html_options-instance_method" title="UiBibz::Ui::Core::Component#html_options (method)">#html_options</a></span>, <span class='object_link'><a href="Component.html#options-instance_method" title="UiBibz::Ui::Core::Component#options (method)">#options</a></span></p>
+
+  
+  
+  <h3 class="inherited">Attributes inherited from <span class='object_link'><a href="../Base.html" title="UiBibz::Ui::Base (class)">Base</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../Base.html#output_buffer-instance_method" title="UiBibz::Ui::Base#output_buffer (method)">#output_buffer</a></span></p>
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">- (Label) <strong>initialize</strong>(content = nil, options = nil, html_options = nil, &amp;block) </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>A new instance of Label.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#render-instance_method" title="#render (instance method)">- (Object) <strong>render</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods inherited from <span class='object_link'><a href="Component.html" title="UiBibz::Ui::Core::Component (class)">Component</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Component.html#add_classes-instance_method" title="UiBibz::Ui::Core::Component#add_classes (method)">#add_classes</a></span>, <span class='object_link'><a href="Component.html#badge_html-instance_method" title="UiBibz::Ui::Core::Component#badge_html (method)">#badge_html</a></span>, <span class='object_link'><a href="Component.html#class_and_html_options-instance_method" title="UiBibz::Ui::Core::Component#class_and_html_options (method)">#class_and_html_options</a></span>, <span class='object_link'><a href="Component.html#glyph-instance_method" title="UiBibz::Ui::Core::Component#glyph (method)">#glyph</a></span>, <span class='object_link'><a href="Component.html#glyph_and_content_html-instance_method" title="UiBibz::Ui::Core::Component#glyph_and_content_html (method)">#glyph_and_content_html</a></span>, <span class='object_link'><a href="Component.html#glyph_with_space-instance_method" title="UiBibz::Ui::Core::Component#glyph_with_space (method)">#glyph_with_space</a></span>, <span class='object_link'><a href="Component.html#options_in_html_options-instance_method" title="UiBibz::Ui::Core::Component#options_in_html_options (method)">#options_in_html_options</a></span>, <span class='object_link'><a href="Component.html#states-instance_method" title="UiBibz::Ui::Core::Component#states (method)">#states</a></span>, <span class='object_link'><a href="Component.html#status-instance_method" title="UiBibz::Ui::Core::Component#status (method)">#status</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods inherited from <span class='object_link'><a href="../Base.html" title="UiBibz::Ui::Base (class)">Base</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../Base.html#i18n_set%3F-instance_method" title="UiBibz::Ui::Base#i18n_set? (method)">#i18n_set?</a></span></p>
+
+  <div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <h3 class="signature first" id="initialize-instance_method">
+  
+    - (<tt><span class='object_link'><a href="" title="UiBibz::Ui::Core::Label (class)">Label</a></span></tt>) <strong>initialize</strong>(content = nil, options = nil, html_options = nil, &amp;block) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns a new instance of Label</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+50
+51
+52</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ui_bibz/ui/core/label.rb', line 50</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span> <span class='id identifier rubyid_content'>content</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_html_options'>html_options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span>
+  <span class='kw'>super</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="render-instance_method">
+  
+    - (<tt>Object</tt>) <strong>render</strong> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+54
+55
+56</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ui_bibz/ui/core/label.rb', line 54</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_render'>render</span>
+  <span class='id identifier rubyid_content_tag'>content_tag</span> <span class='symbol'>:span</span><span class='comma'>,</span> <span class='id identifier rubyid_glyph_and_content_html'>glyph_and_content_html</span><span class='comma'>,</span> <span class='id identifier rubyid_class_and_html_options'>class_and_html_options</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>label</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+    <div id="footer">
+  Generated on Wed Jul  8 15:00:16 2015 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.7.6 (ruby-1.9.3).
+</div>
+
+  </body>
+</html>

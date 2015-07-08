@@ -1,6 +1,6 @@
 require 'test_helper'
 
-include UiBibz::Helpers
+include UiBibz::Helpers::UiCoreHelper
 class UiHelperTest < ActionView::TestCase
 
   test 'breadcrumb' do
@@ -48,8 +48,24 @@ class UiHelperTest < ActionView::TestCase
     assert_equal expected, actual
   end
 
+  test 'navbar' do
+    actual = navbar(title: 'My title', position: :bottom, type: :inverse, glyph: 'pencil') do |nb|
+      nb.nav do |n|
+        n.link 'Toto', url: '#'
+        n.link 'Tata', url: '#'
+      end
+      nb.nav(position: :right) do |n|
+        n.link 'lala', url: '#'
+        n.link 'lolo', url: '#'
+      end
+    end
+    expected = "<nav class=\"navbar navbar-inverse navbar-fixed-bottom\"><div class=\"container-fluid\"><div class=\"navbar-header\"><button class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#navbar-collapse-57604740876218660627112051613797907862\"><span class=\"sr-only\">Toggle navigation</span><span class=\"icon-bar\"></span><span class=\"icon-bar\"></span><span class=\"icon-bar\"></span></button><a class=\"navbar-brand\" href=\"#\"><i class=\"glyph fa fa-pencil\"></i> My title</a></div><div class=\"collapse navbar-collapse\" id=\"navbar-collapse-57604740876218660627112051613797907862\"><ul class=\"nav navbar-nav\"><li role=\"presentation\"><a href=\"#\">Toto</a></li><li role=\"presentation\"><a href=\"#\">Tata</a></li></ul><ul class=\"nav navbar-nav nav-right\"><li role=\"presentation\"><a href=\"#\">lala</a></li><li role=\"presentation\"><a href=\"#\">lolo</a></li></ul></div></div></nav>"
+
+    refute_equal expected, actual
+  end
+
   test 'progress bar with several bars' do
-    actual   = progress_bar(tap: true) do |pb|
+    actual = progress_bar(tap: true) do |pb|
       pb.bar 20, type: :animated
       pb.bar 30, state: :success
       pb.bar 10, type: :striped

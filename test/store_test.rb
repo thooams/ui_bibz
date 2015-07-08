@@ -1,5 +1,5 @@
 require 'test_helper'
-require "ui_bibz/ui/table/components/store"
+require "ui_bibz/ui/ux/table/components/store"
 require 'will_paginate'
 
 class StoreTest < ActionView::TestCase
@@ -16,7 +16,7 @@ class StoreTest < ActionView::TestCase
       page:       1
     }
     users  = User.table_search_pagination(params, session)
-    @store = UiBibz::Ui::Store.new users
+    @store = UiBibz::Ui::Ux::Store.new users
   end
 
   test 'total pages' do
