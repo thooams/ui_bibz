@@ -1,4 +1,4 @@
-![Ui Bibz logo](../doc/images/ui-bibz-logo-without-border.gif)
+![Ui Bibz logo](images/ui-bibz-logo-without-border.gif)
 
 [![Build Status](https://travis-ci.org/thooams/Ui-Bibz.svg)](https://travis-ci.org/thooams/Ui-Bibz)
 [![Code Climate](https://codeclimate.com/github/thooams/Ui-Bibz/badges/gpa.svg)](https://codeclimate.com/github/thooams/Ui-Bibz)
@@ -109,7 +109,7 @@ Placer la ligne suivante dans ```/app/assets/javascripts/applications.js```
 
 ### Alert
 
-![alert](../doc/images/alert.png)
+![alert](images/alert.png)
 
 L'élément ```notify``` à pour ```options``` un Hash acceptant les clefs :
 
@@ -120,11 +120,11 @@ L'élément ```notify``` à pour ```options``` un Hash acceptant les clefs :
 notify 'Alert', state: :info, glyph: 'eye'
 ```
 
-Voir la [doc](../doc/UiBibz/Ui/Core/Alert.html)
+Voir la [doc](UiBibz/Ui/Core/Alert.html)
 
 ### Breadcrumb (fil d'ariane)
 
-![breadcrumb](../doc/images/breadcrumb.png)
+![breadcrumb](images/breadcrumb.png)
 
 L'élément ```breadcrumb``` à pour enfant l'élément ```link``` qui accepte pour option un Hash avec les clefs :
 
@@ -142,13 +142,13 @@ breadcrumb do |b|
 end
 ```
 
-Voir la [doc](../doc/UiBibz/Ui/Core/Breadcrumb.html)
+Voir la [doc](UiBibz/Ui/Core/Breadcrumb.html)
 
 ### Buttons (Boutons)
 
 #### Button
 
-![button](../doc/images/button.png)
+![button](images/button.png)
 
 L'élément ```button``` à pour ```options``` un Hash acceptant les clefs :
 
@@ -161,14 +161,14 @@ L'élément ```button``` à pour ```options``` un Hash acceptant les clefs :
 button 'Button', { state: :danger, size: :xs, glyph: 'star' } , { class: 'my-button' }
 ```
 
-Voir la [doc](../doc/UiBibz/Ui/Core/Button.html)
+Voir la [doc](UiBibz/Ui/Core/Button.html)
 
 #### Button Dropdown
 
 L'élément ```button_dropdown``` accepte pour options les mêmes clefs que l'élément
 [dropdown](#dropdown).
 
-![button_link](../doc/images/button_dropdown.png)
+![button_link](images/button_dropdown.png)
 
 ```
 button_dropdown 'Button Dropdown' do |bd|
@@ -180,11 +180,11 @@ button_dropdown 'Button Dropdown' do |bd|
 end
 ```
 
-Voir la [doc](../doc/UiBibz/Ui/Core/ButtonLink.html)
+Voir la [doc](UiBibz/Ui/Core/ButtonLink.html)
 
 #### Button group
 
-![button_group](../doc/images/button_group.png)
+![button_group](images/button_group.png)
 
 L'élément ```button_group``` à pour ```options``` un Hash acceptant les clefs :
 
@@ -216,11 +216,11 @@ button_group do
 end
 ```
 
-Voir la [doc](../doc/UiBibz/Ui/Core/ButtonGroup.html)
+Voir la [doc](UiBibz/Ui/Core/ButtonGroup.html)
 
 #### Button Link (Lien Bouton)
 
-![button_link](../doc/images/button_link.png)
+![button_link](images/button_link.png)
 
 L'élément ```button_link``` à pour ```options``` un Hash acceptant les clefs :
 
@@ -228,11 +228,11 @@ L'élément ```button_link``` à pour ```options``` un Hash acceptant les clefs 
 button_link 'Button', { url: '#button', state: :primary, glyph: 'star' }, { class: 'my-button' }
 ```
 
-Voir la [doc](../doc/UiBibz/Ui/Core/ButtonLink.html)
+Voir la [doc](UiBibz/Ui/Core/ButtonLink.html)
 
 #### Button Split Dropdown
 
-![button_group](../doc/images/button_split_dropdown.png)
+![button_group](images/button_split_dropdown.png)
 
 L'élément ```button_split_dropdown```accepte pour options les mêmes clefs
 que l'élément [dropdown](#dropdown).
@@ -249,7 +249,7 @@ button_split_dropdown 'Dropdown', state: :primary do |d|
 end
 ```
 
-Voir la [doc](../doc/UiBibz/Ui/Core/ButtonSplitDropdown.html)
+Voir la [doc](UiBibz/Ui/Core/ButtonSplitDropdown.html)
 
 ### Dropdown
 
@@ -286,11 +286,11 @@ d.list '--'
 ...
 ```
 
-Voir la [doc](../doc/UiBibz/Ui/Core/Dropdown.html)
+Voir la [doc](UiBibz/Ui/Core/Dropdown.html)
 
 ### Progress Bar
 
-![glyph](../doc/images/progress_bar.png)
+![glyph](images/progress_bar.png)
 
 L'élément ```progress_bar``` à pour ```options``` un Hash acceptant les clefs :
 
@@ -318,11 +318,11 @@ progress_bar(tap: true) do |pb|
 end
 ```
 
-Voir la [doc](../doc/UiBibz/Ui/Core/ProgressBar.html)
+Voir la [doc](UiBibz/Ui/Core/ProgressBar.html)
 
 ### Glyph
 
-![glyph](../doc/images/glyph.png)
+![glyph](images/glyph.png)
 
 Les glyphs utilisés proviennent de [Font Awesome](http://fontawesome.io/).
 L'élément ```glyph``` peut contenir un hash pour ```content```
@@ -337,11 +337,11 @@ glyph 'star', { size: 3, type: 'fw' }, class: 'star-exemple'
 glyph { name: 'star', size: 3, type: 'fw' }
 ```
 
-Voir la [doc](../doc/UiBibz/Ui/Core/Glyph.html)
+Voir la [doc](UiBibz/Ui/Core/Glyph.html)
 
 ### Panel
 
-![panel](../doc/images/panel.png)
+![panel](images/panel.png)
 
 L'élément ```panel``` à pour ```options``` un Hash acceptant les clefs :
 
@@ -368,11 +368,11 @@ panel({ tap: true, state: :danger }, { class: 'exemple' }) |p|
 end
 ```
 
-Voir la [doc](../doc/UiBibz/Ui/Core/Panel.html)
+Voir la [doc](UiBibz/Ui/Core/Panel.html)
 
 ### Table
 
-![table](../doc/images/table.png)
+![table](images/table.png)
 
 L'élément ```table``` est un tableau composé d'une recherche, une pagination et un trie de colonnes intégrées.
 Le tableau est compatible [I18n](http://guides.rubyonrails.org/i18n.html).
@@ -408,7 +408,7 @@ searchable_attributes :name_fr, :name_en
 
 Un champ recherche est disponible dans la vue :
 
-![table_search_field](../doc/images/table_search_field.png)
+![table_search_field](images/table_search_field.png)
 
 ```
 table_search_field store: @documents
@@ -422,7 +422,7 @@ table_pagination store: @documents
 
 Un champs select par page est disponible dans la vue :
 
-![table_search_field](../doc/images/table_pagination_per_page.png)
+![table_search_field](images/table_pagination_per_page.png)
 
 ```
 table_pagination_per_page store: @documents
@@ -620,11 +620,11 @@ activerecord:
 ...
 ```
 
-Voir la [doc](../doc/UiBibz/Ui/Ux/Table.html)
+Voir la [doc](UiBibz/Ui/Ux/Table.html)
 
 ### Table Panel
 
-![table_panel](../doc/images/table_panel.png)
+![table_panel](images/table_panel.png)
 
 Le composant ```table_panel``` est un [tableau](#table) dans un [panel](#panel).
 
@@ -651,11 +651,11 @@ table_panel({ store: @users, tap: true, glyph: 'home', state: :danger }) do |g|
 end
 ```
 
-Voir la [doc](../doc/UiBibz/Ui/Ux/TablePanel.html)
+Voir la [doc](UiBibz/Ui/Ux/TablePanel.html)
 
 ### List
 
-![list](../doc/images/list.png)
+![list](images/list.png)
 
 Par défaut une liste à pour tag ```<li>```.
 Mais elle peut se transformer en lien ```<a>``` à travers l'option ```type:```.
@@ -676,11 +676,11 @@ list_group do |lg|
 end
 ```
 
-Voir la [doc](../doc/UiBibz/Ui/Core/List.html)
+Voir la [doc](UiBibz/Ui/Core/List.html)
 
 ### Nav
 
-![nav](../doc/images/nav.png)
+![nav](images/nav.png)
 
 Par défaut la navigation comporte des onglets "tab".
 L'élément ```nav``` accepte en option les arguments :
@@ -700,11 +700,11 @@ nav(type: :pills, position: :justified) do |d|
 end
 ```
 
-Voir la [doc](../doc/UiBibz/Ui/Core/Nav.html)
+Voir la [doc](UiBibz/Ui/Core/Nav.html)
 
  ### Navbar
 
-![navbar](../doc/images/navbar.png)
+![navbar](images/navbar.png)
 
 Par défaut la navigation comporte des onglets "tab".
 L'élément ```navbar``` accepte en option les arguments :
@@ -731,12 +731,12 @@ navbar(type: :inverse, position: :top) do |nb|
 end
 ```
 
-Voir la [doc](../doc/UiBibz/Ui/Core/Navbar.html)
+Voir la [doc](UiBibz/Ui/Core/Navbar.html)
 
 
 ### Etiquette
 
-![list](../doc/images/etiquette.png)
+![list](images/etiquette.png)
 
 
 NB : Les méthodes ```Tag, label``` sont déjà utilisées par Rails.
@@ -753,7 +753,7 @@ etiquette 'label 2', state: :success
 etiquette 'label 2', state: :danger
 ```
 
-Voir la [doc](../doc/UiBibz/Ui/Core/Etiquette.html)
+Voir la [doc](UiBibz/Ui/Core/Etiquette.html)
 
 ### Row
 
@@ -766,7 +766,7 @@ end
 # => <div class='row toto'>content</div>
 ```
 
-Voir la [doc](../doc/UiBibz/Ui/Core/Content.html)
+Voir la [doc](UiBibz/Ui/Core/Content.html)
 
 ### Col
 
@@ -797,7 +797,7 @@ end
 # => <div class='col-xs-offset-1 col-md-3 test'>content</div>
 ```
 
-Voir la [doc](../doc/UiBibz/Ui/Core/Col.html)
+Voir la [doc](UiBibz/Ui/Core/Col.html)
 
 ### Grid
 
@@ -863,7 +863,7 @@ grid do |g|
 end
 ```
 
-Voir la [doc](../doc/UiBibz/Ui/Ux/Grid.html)
+Voir la [doc](UiBibz/Ui/Ux/Grid.html)
 
 ### Arguments and Values
 
