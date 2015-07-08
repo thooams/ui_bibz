@@ -9,7 +9,7 @@ This project rocks and uses MIT-LICENSE.
 # Ui Bibz
 > Ui Bibz est un [framework d'interface](http://fr.wikipedia.org/wiki/Framework_d%27interface)
 > permettant de construire une interface très rapidement et simplement
-> à l'aide de Ruby on Rails 4 et de Boostrap 3.
+> à l'aide de [Ruby on Rails 4](http://rubyonrails.org/) et de [Boostrap 3](http://getbootstrap.com/).
 
 Ui Bibz charge la librairie [boostrap](http://getbootstrap.com/) et
 [awesomefont](http://fontawesome.io/) en [CDN](https://fr.wikipedia.org/wiki/Content_delivery_network).
@@ -40,9 +40,9 @@ L'élément ```component``` à pour ```html_options``` un Hash acceptant les cle
 
 Exemple :
 
-```ruby
+```
 Component.new 'Exemple', { state: :success, glyph: { name: 'pencil', size: 3} }, { class: 'exemple' }
-# ou
+
 Component.new { state: :success, glyph: 'eye' }, { class: 'exemple' } do
   'Exemple'
 end
@@ -50,7 +50,7 @@ end
 
 Signature :
 
-```ruby
+```
 Component.new content = nil, options = nil, html_options = nil, &block
 ```
 
@@ -62,23 +62,24 @@ dans ```options``` et ```html_options```.
 
 Ajouter la gem dans Rails :
 
-```ruby
+```
 gem "ui_bibz", '~> 1.0.0'
 ```
 
 Lancer la command suivante :
 
-```console
+```
 bundle install
 ```
 
 Placer la ligne suivante dans ```/app/views/layouts/application.rb```
-```ruby
+
+```
  = ui_bibz_meta_links
 ```
 
-Exemple :
-```ruby
+Exemple ([haml](http://haml.info/)):
+```
 !!!
 %html
   %head
@@ -89,14 +90,16 @@ Exemple :
 ```
 
 Placer la ligne suivante dans ```/app/assets/stylesheets/applications.css```
-```ruby
+
+```
 ...
 *= require ui_bibz
 ...
 ```
 
 Placer la ligne suivante dans ```/app/assets/javascripts/applications.js```
-```ruby
+
+```
 ...
 //= require ui_bibz
 ...
@@ -133,7 +136,7 @@ L'élément ```breadcrumb``` à pour enfant l'élément ```link``` qui accepte p
 breadcrumb do |b|
   b.link 'Exemple 1', url: '#exemple-1', glyph: 'home'
   b.link({ url: '#exemple-2' }, { class:'link' }) do
-    Exemple 2
+    'Exemple 2'
   end
   b.link 'Exemple 3', status: :active
 end
@@ -377,7 +380,7 @@ Le tableau contient pour chaque ligne un bouton dropdown 'action' avec par défa
 ces 3 actions : voir, éditer, supprimer. Toutes les colonnes sont présentes et
 affichées par défaut.
 
-La table doit contenir un store. Ce store doit-être créé dans le controlleur avec la
+La table doit contenir un store. Ce store doit-être créé dans le *controlleur* avec la
 méthode ```table_search_pagination```.
 
 La méthode ```table_search_pagination``` contient 3 arguments :
@@ -393,7 +396,7 @@ Exemple :
 @documents = Document.table_search_pagination(params, session)
 ```
 
-Dans le model, insérer la méthode ```searchable_attributes``` afin de pouvoir
+Dans le *model*, insérer la méthode ```searchable_attributes``` afin de pouvoir
 faire une recherche sur les attributs souhaités.
 
 Exemple :
@@ -490,16 +493,18 @@ table store: @documents do |g|
 end
 ```
 
-L'ajout de colonnes à travers la méthode ```add``` contient plusieurs arguments :
+L'ajout de colonnes à travers la méthode ```column``` contient plusieurs arguments et cette méthode est basée sur le component :
 
-* name (nom de la colonne)
-* data_index (le nom de l'attribut)
-* count (utilise la méthode count sur l'élément)
-* date_format (formate l'affichage de la date en utilisant la méthode ```strftime``` ex: '%Y/%M/%D')
-* format (formate les élements de la colone en utilisant **lambda**)
-* link (ajoute un lien où l'expression ```:id``` est parsé et remplacé par l'entier correspondant)
-* sort (permet de trier sur des champs )
-* custom_sort (indique que le tableau sera triéé d'une manière personnalisée)
+* Content (ex: name)
+* options (hash)
+  * data_index (le nom de l'attribut)
+  * count (utilise la méthode count sur l'élément)
+  * date_format (formate l'affichage de la date en utilisant la méthode ```strftime``` ex: '%Y/%M/%D')
+  * format (formate les élements de la colone en utilisant **lambda**)
+  * link (ajoute un lien où l'expression ```:id``` est parsé et remplacé par l'entier correspondant)
+  * sort (permet de trier sur des champs )
+  * custom_sort (indique que le tableau sera triéé d'une manière personnalisée)
+* html_options (hash)
 
 ```
 # app/views/documents/index.html.haml
@@ -529,7 +534,7 @@ Exemple :
 ```
 
 Dans la vue, insérer la méthod ```table```.
-NB: On peut créer ces propres méthodes comme ```user_name``` dans notre model "Document" et
+NB: On peut créer ses propres méthodes comme ```user_name``` dans notre *model* "Document" et
 l'appeler comme valeur pour la clef ```data_index```.
 
 ```
@@ -546,9 +551,9 @@ end
 
 Si l'on souhaite, par exemple, dénombrer des utilisateurs qui ont un lien non
 direct avec les documents.
-Imaginons par exemple qu'un utilisateur à des produits et que
+Imaginons par exemple, un utilisateur à des produits et que
 ces produits contiennent plusieurs documents. On souhaite compter le nombre
-d'utilisateurs par document.
+d'utilisateurs par documents.
 
 On peut ajouter des arguments dans la méthode ```table_search_pagination```
 qui vont permettre de faire des jointures.
@@ -623,22 +628,30 @@ Voir la [doc](../doc/UiBibz/Ui/Ux/Table.html)
 
 Le composant ```table_panel``` est un [tableau](#table) dans un [panel](#panel).
 
-```ruby
-= table_panel store: @users
-#ou
-= table_panel({ store: @users, tap: true, glyph: 'home', state: :danger }) do |g|
-  - g.columns do |cls|
-    - cls.column name: '#', data_index: 'id'
-    - cls.column name: 'Username', data_index: 'username', link: edit_user_path(:id)
-    - cls.column name: 'Name', data_index: 'name'
-    - cls.column name: 'Email', data_index: 'email'
-    - cls.column name: 'Role', data_index: 'role_name', sort: 'roles.name'
-  - g.actions do |acs|
-    - acs.action 'Toto', url: edit_user_path(:id), glyph: 'pencil'
-    - acs.action "---"
-    - acs.action 'momo', url: user_path(:id), glyph: 'eye'
-
 ```
+table_panel store: @users
+
+table_panel({ store: @users, tap: true, glyph: 'home', state: :danger }) do |g|
+  g.columns do |cls|
+    cls.column '#', { data_index: 'id' }
+    cls.column 'Username', { data_index: 'username', link: edit_user_path(:id) }
+    cls.column 'Name', { data_index: 'name' }
+    cls.column({ data_index: 'email' }) do
+      'Email'
+    end
+    cls.column 'Role', { data_index: 'role_name', sort: 'roles.name' }
+  end
+  g.actions do |acs|
+    acs.action 'Action 1', { url: edit_user_path(:id), glyph: 'pencil' }
+    acs.action "---"
+    acs.action { url: user_path(:id), glyph: 'eye' } do
+      'Action 2'
+    end
+  end
+end
+```
+
+Voir la [doc](../doc/UiBibz/Ui/Ux/TablePanel.html)
 
 ### List
 
@@ -648,17 +661,22 @@ Par défaut une liste à pour tag ```<li>```.
 Mais elle peut se transformer en lien ```<a>``` à travers l'option ```type:```.
 Par défaut le tag ```<li>``` est présent.
 
-```ruby
-= list_group type: :link do |lg|
-  - lg.list 'Momo', { state: :success, glyph: 'home' }, { href: '#Momo' }
-  - lg.list({ tap: true, status: :active }, { href: '#Toto' }) do |l|
-    - l.header 'My title'
-    - l.body 'My title'
-# ou
-= list_group do |lg|
-  - lg.list 'Momo', glyph: 'home', badge: 2
-  - lg.list 'Toto'
 ```
+list_group type: :link do |lg|
+  lg.list 'Momo', { state: :success, glyph: 'home' }, { href: '#Momo' }
+  lg.list({ tap: true, status: :active }, { href: '#Toto' }) do |l|
+    l.header 'My title'
+    l.body 'My title'
+  end
+end
+
+list_group do |lg|
+  lg.list 'Momo', glyph: 'home', badge: 2
+  lg.list 'Toto'
+end
+```
+
+Voir la [doc](../doc/UiBibz/Ui/Core/List.html)
 
 ### Nav
 
@@ -673,11 +691,48 @@ L'élément ```nav``` accepte en option les arguments :
 
 L'élement link est un [component](#component).
 
-```ruby
-= nav(type: :pills, position: :justified, tap: true) do |d|
-  d.link 'Test', url: '#test', badge: 6
-  d.link 'Test2', url: '#test2', status: :active
 ```
+nav(type: :pills, position: :justified) do |d|
+  d.link 'Link 1', url: '#test', badge: 6
+  d.link(url: '#test2', status: :active) do
+    "Link 2"
+  end
+end
+```
+
+Voir la [doc](../doc/UiBibz/Ui/Core/Nav.html)
+
+ ### Navbar
+
+![navbar](../doc/images/navbar.png)
+
+Par défaut la navigation comporte des onglets "tab".
+L'élément ```navbar``` accepte en option les arguments :
+
+* type (:default, :inverse)
+* [glyph](#glyph-values)
+* position (:top, :bottom)
+* title (string)
+
+L'élement link est un [component](#component).
+L'élement nav est un [component](#component).
+
+```
+navbar(type: :inverse, position: :top) do |nb|
+  nb.nav do |n|
+    n.link 'Link 1', url: '#link-1'
+  end
+  nb.nav(position: :right) do |n|
+    n.link 'Link 2', url: '#test', badge: 6
+    n.link(url: '#link-2', status: :active) do
+      "Link 3"
+    end
+  end
+end
+```
+
+Voir la [doc](../doc/UiBibz/Ui/Core/Navbar.html)
+
 
 ### Etiquette
 
@@ -692,21 +747,26 @@ L'élément ```etiquette``` à pour ```options``` un Hash acceptant les clefs :
 
 Exemple :
 
-```ruby
-= etiquette 'label'
-= etiquette 'label 2', state: :success
-= etiquette 'label 2', state: :danger
 ```
+etiquette 'label'
+etiquette 'label 2', state: :success
+etiquette 'label 2', state: :danger
+```
+
+Voir la [doc](../doc/UiBibz/Ui/Core/Etiquette.html)
 
 ### Row
 
 Le composant row génére une div avec la class row.
 
- ```ruby
-= row class: 'toto' do
-  = content
+ ```
+row class: 'toto' do
+  'content'
+end
 # => <div class='row toto'>content</div>
 ```
+
+Voir la [doc](../doc/UiBibz/Ui/Core/Content.html)
 
 ### Col
 
@@ -724,18 +784,20 @@ Ces paramètres génèrent les classes qui seront insérées dans la div avec la
 col.
 
 
-```ruby
-= col({num: 2, size: :lg}, class: 'test') do
-  = content
-
+```
+col({num: 2, size: :lg}, class: 'test') do
+  'content'
+end
 # => <div class='col-lg-2 test'>content</div>
 
-# ou
-= col([{ offset: 1, size: :xs}, { num: 3}], class: 'test') do
-  = content
 
+col([{ offset: 1, size: :xs}, { num: 3}], class: 'test') do
+  'content'
+end
 # => <div class='col-xs-offset-1 col-md-3 test'>content</div>
 ```
+
+Voir la [doc](../doc/UiBibz/Ui/Core/Col.html)
 
 ### Grid
 
@@ -756,37 +818,52 @@ Une vue à pour arguments :
 L'argument ```position``` détermine la position de la vue et l'argument ```num``` determine
 le nombre de colonnes occupées par la vue.
 
-```ruby
-= grid do |g|
-  - g.view num: 3, position: :left do
-    = list_group(type: :link) do |lg|
-      - lg.list 'Link 1', { url: '#link1' }
-      - lg.list 'Link 2', { url: '#link1', status: :active }
-      - lg.list 'Link 1', { url: '#link1' }
-      - lg.list 'Link 3', { url: '#link1' }
-      - lg.list 'Link 4', { url: '#link1' }
-  - g.view({ position: :top}) do
-    = button_group(type: :toolbar) do
-      = button 'option 1'
-      = button 'option 2'
-      = button 'option 3'
-  - g.view position: :center do
-    = table store: @users, type: :bordered
-  - g.view position: :bottom do
-    = 'bottom'
-
-= grid do |g|
-  - g.view num: 5, position: :left do
-    = 'left'
-  - g.view position: :right do
-    = 'right'
-  - g.view({ position: :top}, { class: 'success'}) do
-    = 'top'
-  - g.view position: :center do
-    = 'center'
-  - g.view position: :bottom do
-    = 'bottom'
 ```
+grid do |g|
+  g.view num: 3, position: :left do
+    list_group(type: :link) do |lg|
+      lg.list 'Link 1', { url: '#link1' }
+      lg.list 'Link 2', { url: '#link1', status: :active }
+      lg.list 'Link 1', { url: '#link1' }
+      lg.list 'Link 3', { url: '#link1' }
+      lg.list 'Link 4', { url: '#link1' }
+    end
+  end
+  g.view({ position: :top}) do
+    button_group(type: :toolbar) do
+      button 'option 1'
+      button 'option 2'
+      button 'option 3'
+    end
+  end
+  g.view position: :center do
+    table store: @users, type: :bordered
+  end
+  g.view position: :bottom do
+    'bottom'
+  end
+end
+
+grid do |g|
+  g.view num: 5, position: :left do
+    'left'
+  end
+  g.view position: :right do
+    'right'
+  end
+  g.view({ position: :top}, { class: 'success'}) do
+    'top'
+  end
+  g.view position: :center do
+    'center'
+  end
+  g.view position: :bottom do
+    'bottom'
+  end
+end
+```
+
+Voir la [doc](../doc/UiBibz/Ui/Ux/Grid.html)
 
 ### Arguments and Values
 
@@ -830,7 +907,7 @@ comme ci-dessous.
 Exemple :
 
 ```ruby
-UiBibz::Ui::Panel.new('Exemple', { state: :success }, { class: 'exemple'}).render
+UiBibz::Ui::Core::Panel.new('Exemple', { state: :success }, { class: 'exemple'}).render
 # au lieu de
 panel 'Exemple', { state: :success }, { class: 'exemple' }
 ```
@@ -840,11 +917,8 @@ panel 'Exemple', { state: :success }, { class: 'exemple' }
 Pour la V2.
 
 * créer des stores pour les listes, breadcrumb
-* créer une meilleure documentation
 * créer d'autres extensions, plugins et une guideline
 * donner le choix de la dépendence boostrap et awesomefont en CDN ou en local
 * mise à jour vers bootstrap 4
-* créer Ui-Bibz Core à partir de cette librairie ( pour l'insérer dans un nouveau
-  framework Ui-Bibz utilisant simple_form pour les champs formulaires ).
 ...
 
