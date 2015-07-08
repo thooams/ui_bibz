@@ -1,4 +1,4 @@
-![Ui Bibz logo](/doc/images/ui-bibz-logo-without-border.gif)
+![Ui Bibz logo](../doc/images/ui-bibz-logo-without-border.gif)
 
 [![Build Status](https://travis-ci.org/thooams/Ui-Bibz.svg)](https://travis-ci.org/thooams/Ui-Bibz)
 [![Code Climate](https://codeclimate.com/github/thooams/Ui-Bibz/badges/gpa.svg)](https://codeclimate.com/github/thooams/Ui-Bibz)
@@ -13,9 +13,6 @@ This project rocks and uses MIT-LICENSE.
 
 Ui Bibz charge la librairie [boostrap](http://getbootstrap.com/) et
 [awesomefont](http://fontawesome.io/) en [CDN](https://fr.wikipedia.org/wiki/Content_delivery_network).
-
-**NB** : [HAML](http://haml.info/) est utilisé pour présenter les exemples de chaque élément.
-Vous pouvez bien entendu utiliser l'interpréteur [ERB](https://en.wikipedia.org/wiki/ERuby) dans votre application Rails.
 
 Tous les composants du framework Ui Bibz comportent l'agument *options* et l'argument *html_options*.
 Ces éléments sont basés sur l'élément ```Component```.
@@ -109,41 +106,46 @@ Placer la ligne suivante dans ```/app/assets/javascripts/applications.js```
 
 ### Alert
 
-![alert](doc/images/alert.png)
+![alert](../doc/images/alert.png)
 
 L'élément ```notify``` à pour ```options``` un Hash acceptant les clefs :
 
 * [state](#state-values)
 * [glyph](#glyph-arguments)
 
-```ruby
-= notify 'toto', state: :info, glyph: 'eye'
 ```
+notify 'Alert', state: :info, glyph: 'eye'
+```
+
+Voir la [doc](../doc/UiBibz/Ui/Core/Alert.html)
 
 ### Breadcrumb (fil d'ariane)
 
-![breadcrumb](doc/images/breadcrumb.png)
+![breadcrumb](../doc/images/breadcrumb.png)
 
-L'élément ```breadcrumb``` à pour ```options``` un Hash acceptant les clefs :
+L'élément ```breadcrumb``` à pour enfant l'élément ```link``` qui accepte pour option un Hash avec les clefs :
 
 * [status](#status-values)
 * [glyph](#glyph-arguments)
 * url
 
-L'élément ```link``` est un [component](#component).
-
-```ruby
-= breadcrumb do |b|
-  - b.link 'toto', url: '#toto', glyph: 'home'
-  - b.link 'momo', url: '#momo'
-  - b.link 'nono', status: :active
 ```
+breadcrumb do |b|
+  b.link 'Exemple 1', url: '#exemple-1', glyph: 'home'
+  b.link({ url: '#exemple-2' }, { class:'link' }) do
+    Exemple 2
+  end
+  b.link 'Exemple 3', status: :active
+end
+```
+
+Voir la [doc](../doc/UiBibz/Ui/Core/Breadcrumb.html)
 
 ### Buttons (Boutons)
 
 #### Button
 
-![button](doc/images/button.png)
+![button](../doc/images/button.png)
 
 L'élément ```button``` à pour ```options``` un Hash acceptant les clefs :
 
@@ -152,28 +154,34 @@ L'élément ```button``` à pour ```options``` un Hash acceptant les clefs :
 * [glyph](#glyph-arguments)
 * [size](#size-values)
 
-```ruby
-= button 'Button', { state: :danger, size: :xs, glyph: 'star' } , { class: 'my-button' }
 ```
+button 'Button', { state: :danger, size: :xs, glyph: 'star' } , { class: 'my-button' }
+```
+
+Voir la [doc](../doc/UiBibz/Ui/Core/Button.html)
 
 #### Button Dropdown
 
 L'élément ```button_dropdown``` accepte pour options les mêmes clefs que l'élément
 [dropdown](#dropdown).
 
-![button_link](doc/images/button_dropdown.png)
-```ruby
-= button_dropdown 'Button Dropdown' do |bd|
-  - bd.list link_to 'toto', '#'
-  - bd.list 'header', type: :header
-  - bd.list link_to 'momo', '#'
-  - bd.list '---'
-  - bd.list link_to 'lolo', '#'
+![button_link](../doc/images/button_dropdown.png)
+
 ```
+button_dropdown 'Button Dropdown' do |bd|
+  bd.list link_to('Link 1', '#')
+  bd.list 'Header 1', type: :header
+  bd.list link_to('Link 2', '#')
+  bd.list '---'
+  bd.list link_to('Link 3', '#')
+end
+```
+
+Voir la [doc](../doc/UiBibz/Ui/Core/ButtonLink.html)
 
 #### Button group
 
-![button_group](doc/images/button_group.png)
+![button_group](../doc/images/button_group.png)
 
 L'élément ```button_group``` à pour ```options``` un Hash acceptant les clefs :
 
@@ -186,48 +194,59 @@ L'élément ```list``` à pour ```options``` un Hash acceptant les clefs :
 * [state](#state-values)
 
 ```ruby
-= button_group position: :vertical, size: :xs do
-  = button 'toto', status: :active
-  = button 'momo'
-  = button 'lolo'
+button_group({ position: :vertical, size: :xs }) do
+  button 'Button 1', status: :active
+  button 'Button 2'
+  button 'Button 3'
+end
 
-= button_group do
-  = button 'toto', status: :active
-  = button 'momo'
-  = button 'lolo'
-  = button_dropdown 'Button Dropdown' do |bd|
-    - bd.list 'header', type: :header
-    - bd.list link_to 'momo', '#'
-    - bd.list '---'
-    - bd.list link_to 'lolo', '#'
+button_group do
+  button 'Button 1', status: :active
+  button 'Button 2'
+  button 'Button 3'
+  button_dropdown 'Button Dropdown' do |bd|
+    bd.list 'header', type: :header
+    bd.list link_to('Link 1', '#')
+    bd.list '---'
+    bd.list link_to('Link 2', '#')
+  end
+end
 ```
+
+Voir la [doc](../doc/UiBibz/Ui/Core/ButtonGroup.html)
 
 #### Button Link (Lien Bouton)
 
-![button_link](doc/images/button_link.png)
+![button_link](../doc/images/button_link.png)
 
 L'élément ```button_link``` à pour ```options``` un Hash acceptant les clefs :
 
 ```ruby
-= button_link 'Button', { url: '#button', state: :primary, glyph: 'star' }, { class: 'my-button' }
+button_link 'Button', { url: '#button', state: :primary, glyph: 'star' }, { class: 'my-button' }
 ```
+
+Voir la [doc](../doc/UiBibz/Ui/Core/ButtonLink.html)
 
 #### Button Split Dropdown
 
-![button_group](doc/images/button_split_dropdown.png)
+![button_group](../doc/images/button_split_dropdown.png)
 
 L'élément ```button_split_dropdown```accepte pour options les mêmes clefs
 que l'élément [dropdown](#dropdown).
 
 ```ruby
-= button_split_dropdown 'Dropdown', state: :primary do |d|
-  - d.list do
-    = link_to 'toto', "#"
-  - d.list 'header', type: :header
-  - d.list link_to 'momo', '#'
-  - d.list '---'
-  - d.list link_to 'lolo', '#'
+button_split_dropdown 'Dropdown', state: :primary do |d|
+  d.list do
+    link_to 'Link 1', "#"
+  end
+  d.list 'Header 1', type: :header
+  d.list link_to 'Link 2', '#'
+  d.list '---'
+  d.list link_to 'Link 3', '#'
+end
 ```
+
+Voir la [doc](../doc/UiBibz/Ui/Core/ButtonSplitDropdown.html)
 
 ### Dropdown
 
@@ -243,13 +262,15 @@ L'élément ```list``` est un [component](#component) qui accepte pour options l
 * [glyph](#glyph-arguments)
 
 ```ruby
-= dropdown 'Dropdown', state: :success do |d|
-  - d.list do
-    = link_to 'toto', "#"
-  - d.list 'header', type: :header
-  - d.list link_to 'momo', '#'
-  - d.list '---'
-  - d.list link_to 'lolo', '#'
+dropdown 'Dropdown', state: :success do |d|
+  d.list do
+    link_to 'Link 1', "#"
+  end
+  d.list 'Header 1', type: :header
+  d.list link_to 'Link 2', '#'
+  d.list '---'
+  d.list link_to 'Link 3', '#'
+end
 ```
 
 Pour ajouter une ligne séparatrice, il suffit d'insérer 3 "-" à la suite
@@ -262,9 +283,11 @@ d.list '--'
 ...
 ```
 
+Voir la [doc](../doc/UiBibz/Ui/Core/Dropdown.html)
+
 ### Progress Bar
 
-![glyph](doc/images/progress_bar.png)
+![glyph](../doc/images/progress_bar.png)
 
 L'élément ```progress_bar``` à pour ```options``` un Hash acceptant les clefs :
 
@@ -277,21 +300,26 @@ L'élément ```progress_bar``` à pour ```options``` un Hash acceptant les clefs
 * sr_only - Boolean to show label (default: false)
 
 ```ruby
-= progress_bar 30
-# or
-= progress_bar state: :info, sr_only: true, type: :animated do
-  = 70
-# or
-= progress_bar(tap: true) do |pb|
-  - pb.bar 10, { state: :success, label: 'Loading...' },{ class: 'test' }
-  - pb.bar 30, state: :warning
-  - pb.bar(type: :striped) do
-    = 10
+progress_bar 30
+
+progress_bar state: :info, sr_only: true, type: :animated do
+  70
+end
+
+progress_bar(tap: true) do |pb|
+  pb.bar 10, { state: :success, label: 'Loading...' },{ class: 'test' }
+  pb.bar 30, state: :warning
+  pb.bar(type: :striped) do
+    10
+  end
+end
 ```
+
+Voir la [doc](../doc/UiBibz/Ui/Core/ProgressBar.html)
 
 ### Glyph
 
-![glyph](doc/images/glyph.png)
+![glyph](../doc/images/glyph.png)
 
 Les glyphs utilisés proviennent de [Font Awesome](http://fontawesome.io/).
 L'élément ```glyph``` peut contenir un hash pour ```content```
@@ -301,14 +329,16 @@ L'élément ```glyph``` à pour ```options``` un Hash acceptant les clefs :
 * type
 
 ```ruby
-= glyph 'star', { size: 3, type: 'fw' }, class: 'star-exemple'
-ou
-= glyph { name: 'star', size: 3, type: 'fw' }
+glyph 'star', { size: 3, type: 'fw' }, class: 'star-exemple'
+
+glyph { name: 'star', size: 3, type: 'fw' }
 ```
+
+Voir la [doc](../doc/UiBibz/Ui/Core/Glyph.html)
 
 ### Panel
 
-![panel](doc/images/panel.png)
+![panel](../doc/images/panel.png)
 
 L'élément ```panel``` à pour ```options``` un Hash acceptant les clefs :
 
@@ -320,21 +350,26 @@ Les éléments ```header```, ```body```,```footer``` sont des éléments [compon
 Exemple :
 
 ```ruby
-= panel 'danger'
-# ou
-= panel state: :danger do
-  = 'toto'
-# ou
-= panel({ tap: true, state: :danger }, { class: 'exemple' }) |p|
-  - p.header 'toto', glyph: 'eye'
-  - p.body class: 'my-body' do
-    = 'toto'
-  - p.footer 'toto'
+panel 'danger'
+
+panel(state: :danger) do
+  'Content'
+end
+
+panel({ tap: true, state: :danger }, { class: 'exemple' }) |p|
+  p.header 'Header', glyph: 'eye'
+  p.body(class: 'my-body') do
+   'Content body'
+  end
+  p.footer 'Footer'
+end
 ```
+
+Voir la [doc](../doc/UiBibz/Ui/Core/Panel.html)
 
 ### Table
 
-![table](doc/images/table.png)
+![table](../doc/images/table.png)
 
 L'élément ```table``` est un tableau composé d'une recherche, une pagination et un trie de colonnes intégrées.
 Le tableau est compatible [I18n](http://guides.rubyonrails.org/i18n.html).
@@ -353,7 +388,7 @@ La méthode ```table_search_pagination``` contient 3 arguments :
 
 Exemple :
 
-```ruby
+```
 # app/controllers/document_controller.rb
 @documents = Document.table_search_pagination(params, session)
 ```
@@ -363,31 +398,31 @@ faire une recherche sur les attributs souhaités.
 
 Exemple :
 
-```ruby
+```
 # app/models/document.rb
 searchable_attributes :name_fr, :name_en
 ```
 
 Un champ recherche est disponible dans la vue :
 
-![table_search_field](doc/images/table_search_field.png)
+![table_search_field](../doc/images/table_search_field.png)
 
-```ruby
-= table_search_field store: @documents
+```
+table_search_field store: @documents
 ```
 
 Une pagination est disponible dans la vue :
 
-```ruby
-= table_pagination store: @documents
+```
+table_pagination store: @documents
 ```
 
 Un champs select par page est disponible dans la vue :
 
-![table_search_field](doc/images/table_pagination_per_page.png)
+![table_search_field](../doc/images/table_pagination_per_page.png)
 
-```ruby
-= table_pagination_per_page store: @documents
+```
+table_pagination_per_page store: @documents
 ```
 
 #### Simple Example table
@@ -401,7 +436,7 @@ La méthode ```table_search_pagination``` contient 3 arguments :
 
 Exemple :
 
-```ruby
+```
 # app/controllers/document_controller.rb
 @documents = Document.table_search_pagination(params, session)
 ```
@@ -410,7 +445,8 @@ Dans le **model**, insérer la méthode ```searchable_attributes``` afin de pouv
 faire une recherche sur les attributs souhaités.
 
 Exemple :
-```ruby
+
+```
 # app/models/document.rb
 searchable_attributes :name_fr, :name_en
 ```
@@ -424,9 +460,10 @@ Dans la **vue**, insérer la méthode ```table``` qui peut contenir plusieurs ar
 Une table comporte des **colonnes** et des **actions**.
 
 Exemple :
-```ruby
+
+```
 # app/views/documents/index.html.haml
-= table store: @documents
+table store: @documents
 ```
 
 Les actions par défauts peuvent être modifiées ([voir exemple complexe](#Complex-Example-table)) :
@@ -438,16 +475,19 @@ Les actions par défauts peuvent être modifiées ([voir exemple complexe](#Comp
 Elles sont intégrées à l'intérieur d'un bouton [dropdown](#dropdown).
 
 Exemple :
-```ruby
+
+```
 # app/views/documents/index.html.haml
-= table store: @documents do |g|
-  - g.actions do
-    = link_action 'Show', documents_path(:id), glyph: 'eye'
-    = link_action 'Edit', edit_document_path(:id), glyph: 'pencil'
-    = link_action 'Delete', documents_path(:id), method: :delete, glyph: 'trash', data: { confirm: 'Are you sure?' }
-    = link_action "---"
-    = link_action 'Duplicate', duplicate_document_path(:id), glyph: 'files-o'
-    = link_action 'Alert', alert_document_path(:id), glyph: 'bell'
+table store: @documents do |g|
+  g.actions do
+    link_action 'Show', documents_path(:id), glyph: 'eye'
+    link_action 'Edit', edit_document_path(:id), glyph: 'pencil'
+    link_action 'Delete', documents_path(:id), method: :delete, glyph: 'trash', data: { confirm: 'Are you sure?' }
+    link_action "---"
+    link_action 'Duplicate', duplicate_document_path(:id), glyph: 'files-o'
+    link_action 'Alert', alert_document_path(:id), glyph: 'bell'
+  end
+end
 ```
 
 L'ajout de colonnes à travers la méthode ```add``` contient plusieurs arguments :
@@ -461,15 +501,17 @@ L'ajout de colonnes à travers la méthode ```add``` contient plusieurs argument
 * sort (permet de trier sur des champs )
 * custom_sort (indique que le tableau sera triéé d'une manière personnalisée)
 
-```ruby
+```
 # app/views/documents/index.html.haml
-= table store: @documents do |g|
-  - g.columns do |c|
-    - c.add { name: '#', data_index: 'id' }
-    - c.add { name: 'Name fr', data_index: 'name_fr', link: edit_document_path(:id)}
-    - c.add { data_index: 'name_en' }
-    - c.add { name: 'Hotline', data_index: 'hotline_access', format: lambda{ |records, record| glyph(record.icon) }}
-    - c.add { name: 'Updated at', data_index: 'updated_at', date_format: '%Y' }
+table store: @documents do |g|
+  g.columns do |c|
+    c.column '#', { data_index: 'id' }
+    c.column 'Name fr', { data_index: 'name_fr', link: edit_document_path(:id)}
+    c.column 'Name en', { data_index: 'name_en' }
+    c.column 'Hotline', { data_index: 'hotline_access', format: lambda{ |records, record| glyph(record.icon) }}
+    c.column 'Updated at', { data_index: 'updated_at', date_format: '%Y' }
+  end
+end
 ```
 
 #### Complex Example table
@@ -490,11 +532,13 @@ Dans la vue, insérer la méthod ```table```.
 NB: On peut créer ces propres méthodes comme ```user_name``` dans notre model "Document" et
 l'appeler comme valeur pour la clef ```data_index```.
 
-```ruby
+```
 # app/views/documents/index.html.haml
-= table store: @documents do |g|
-  - g.columns do |c|
-    - c.add { name: 'Users', data_index: 'user_name', sort: "user.name" }
+table store: @documents do |g|
+  g.columns do |c|
+    c.column 'Users', { data_index: 'user_name', sort: "user.name" }
+  end
+end
 ```
 
 
@@ -510,7 +554,7 @@ On peut ajouter des arguments dans la méthode ```table_search_pagination```
 qui vont permettre de faire des jointures.
 
 Exemple :
-```ruby
+```
 # app/controllers/document_controller.rb
 arguments  = { sortable: {
   column: 'users',
@@ -536,11 +580,13 @@ Pour celà il faut :
 
 Dans la vue :
 
-```ruby
+```
 # app/views/documents/index.html.haml
-= table store: @documents do |g|
-  - g.columns do |c|
-    - c.add({ name: 'Users', data_index: 'users', count: true, custom_sort: true })
+table store: @documents do |g|
+  g.columns do |c|
+    c.column 'Users', { data_index: 'users', count: true, custom_sort: true }
+  end
+end
 ```
 
 #### table I18n
@@ -557,7 +603,7 @@ Le placeholder du champ recherche est utilisable et traduisible avec les attribu
 
 Exemple :
 
-```ruby
+```
 # config/locales/fr.yml
 ...
 activerecord:
@@ -569,9 +615,11 @@ activerecord:
 ...
 ```
 
+Voir la [doc](../doc/UiBibz/Ui/Ux/Table.html)
+
 ### Table Panel
 
-![table_panel](doc/images/table_panel.png)
+![table_panel](../doc/images/table_panel.png)
 
 Le composant ```table_panel``` est un [tableau](#table) dans un [panel](#panel).
 
@@ -594,7 +642,7 @@ Le composant ```table_panel``` est un [tableau](#table) dans un [panel](#panel).
 
 ### List
 
-![list](doc/images/list.png)
+![list](../doc/images/list.png)
 
 Par défaut une liste à pour tag ```<li>```.
 Mais elle peut se transformer en lien ```<a>``` à travers l'option ```type:```.
@@ -614,7 +662,7 @@ Par défaut le tag ```<li>``` est présent.
 
 ### Nav
 
-![nav](doc/images/nav.png)
+![nav](../doc/images/nav.png)
 
 Par défaut la navigation comporte des onglets "tab".
 L'élément ```nav``` accepte en option les arguments :
@@ -633,7 +681,7 @@ L'élement link est un [component](#component).
 
 ### Etiquette
 
-![list](doc/images/etiquette.png)
+![list](../doc/images/etiquette.png)
 
 
 NB : Les méthodes ```Tag, label``` sont déjà utilisées par Rails.

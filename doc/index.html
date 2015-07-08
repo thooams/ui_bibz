@@ -1,0 +1,905 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>
+  File: README
+  
+    &mdash; Documentation by YARD 0.8.7.6
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '';
+  framesUrl = "frames.html#!file.README.html";
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index</a> &raquo; 
+    <span class="title">File: README</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><div id='filecontents'><p><img src="../doc/images/ui-bibz-logo-without-border.gif" alt="Ui Bibz logo"></p>
+
+<p><a href="https://travis-ci.org/thooams/Ui-Bibz"><img src="https://travis-ci.org/thooams/Ui-Bibz.svg" alt="Build Status"></a>
+<a href="https://codeclimate.com/github/thooams/Ui-Bibz"><img src="https://codeclimate.com/github/thooams/Ui-Bibz/badges/gpa.svg" alt="Code Climate"></a>
+<a href="https://codeclimate.com/github/thooams/Ui-Bibz"><img src="https://codeclimate.com/github/thooams/Ui-Bibz/badges/coverage.svg" alt="Test Coverage"></a></p>
+
+<p>This project rocks and uses MIT-LICENSE.</p>
+
+<h1>Ui Bibz</h1>
+
+<blockquote>
+<p>Ui Bibz est un <a href="http://fr.wikipedia.org/wiki/Framework_d%27interface">framework d&#39;interface</a>
+permettant de construire une interface très rapidement et simplement
+à l&#39;aide de Ruby on Rails 4 et de Boostrap 3.</p>
+</blockquote>
+
+<p>Ui Bibz charge la librairie <a href="http://getbootstrap.com/">boostrap</a> et
+<a href="http://fontawesome.io/">awesomefont</a> en <a href="https://fr.wikipedia.org/wiki/Content_delivery_network">CDN</a>.</p>
+
+<p>Tous les composants du framework Ui Bibz comportent l&#39;agument <em>options</em> et l&#39;argument <em>html_options</em>.
+Ces éléments sont basés sur l&#39;élément <code>Component</code>.
+Un <code>component</code> accepte un contenu par variable ou par block.</p>
+
+<h3>Component</h3>
+
+<p>L&#39;élément <code>component</code> accepte dans content et block :</p>
+
+<ul>
+<li>le contenu</li>
+</ul>
+
+<p>L&#39;élément <code>component</code> à pour <code>options</code> un Hash acceptant les clefs :</p>
+
+<ul>
+<li><a href="#state-values">state</a></li>
+<li><a href="#glyph-arguments">glyph</a></li>
+<li><a href="#status-values">status</a></li>
+<li>class</li>
+</ul>
+
+<p>L&#39;élément <code>component</code> à pour <code>html_options</code> un Hash acceptant les clefs :</p>
+
+<ul>
+<li>class</li>
+<li>data</li>
+<li>...</li>
+</ul>
+
+<p>Exemple :</p>
+
+<pre class="code ruby"><code class="ruby">Component.new 'Exemple', { state: :success, glyph: { name: 'pencil', size: 3} }, { class: 'exemple' }
+# ou
+Component.new { state: :success, glyph: 'eye' }, { class: 'exemple' } do
+  'Exemple'
+end
+</code></pre>
+
+<p>Signature :</p>
+
+<pre class="code ruby"><code class="ruby"><span class='const'>Component</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='id identifier rubyid_content'>content</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_html_options'>html_options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span>
+</code></pre>
+
+<p><strong>NB</strong> : Pour des raisons de simplicité d&#39;écriture, l&#39;argument <code>class</code> est présent
+dans <code>options</code> et <code>html_options</code>.</p>
+
+<h2>Installation</h2>
+
+<p>Ajouter la gem dans Rails :</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_gem'>gem</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ui_bibz</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>~&gt; 1.0.0</span><span class='tstring_end'>'</span></span>
+</code></pre>
+
+<p>Lancer la command suivante :</p>
+
+<pre class="code console"><code class="console">bundle install
+</code></pre>
+
+<p>Placer la ligne suivante dans <code>/app/views/layouts/application.rb</code></p>
+
+<pre class="code ruby"><code class="ruby"> = ui_bibz_meta_links
+</code></pre>
+
+<p>Exemple :</p>
+
+<pre class="code ruby"><code class="ruby">!!!
+%html
+  %head
+    ...
+    = ui_bibz_meta_links
+    ...
+  %body
+</code></pre>
+
+<p>Placer la ligne suivante dans <code>/app/assets/stylesheets/applications.css</code></p>
+
+<pre class="code ruby"><code class="ruby">...
+*= require ui_bibz
+...
+</code></pre>
+
+<p>Placer la ligne suivante dans <code>/app/assets/javascripts/applications.js</code></p>
+
+<pre class="code ruby"><code class="ruby">...
+//= require ui_bibz
+...
+</code></pre>
+
+<h2>Utilisation</h2>
+
+<h3>Alert</h3>
+
+<p><img src="../doc/images/alert.png" alt="alert"></p>
+
+<p>L&#39;élément <code>notify</code> à pour <code>options</code> un Hash acceptant les clefs :</p>
+
+<ul>
+<li><a href="#state-values">state</a></li>
+<li><a href="#glyph-arguments">glyph</a></li>
+</ul>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_notify'>notify</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>toto</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='label'>state:</span> <span class='symbol'>:info</span><span class='comma'>,</span> <span class='label'>glyph:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>eye</span><span class='tstring_end'>'</span></span>
+</code></pre>
+
+<p>Voir la <a href="../doc/UiBibz/Ui/Core/Alert.html">doc</a></p>
+
+<h3>Breadcrumb (fil d&#39;ariane)</h3>
+
+<p><img src="../doc/images/breadcrumb.png" alt="breadcrumb"></p>
+
+<p>L&#39;élément <code>breadcrumb</code> à pour <code>options</code> un Hash acceptant les clefs :</p>
+
+<ul>
+<li><a href="#status-values">status</a></li>
+<li><a href="#glyph-arguments">glyph</a></li>
+<li>url</li>
+</ul>
+
+<p>L&#39;élément <code>link</code> est un <a href="#component">component</a>.</p>
+
+<pre class="code ruby"><code class="ruby">breadcrumb do |b|
+  b.link 'toto', url: '#toto', glyph: 'home'
+  b.link 'momo', url: '#momo'
+  b.link 'nono', status: :active
+</code></pre>
+
+<p>Voir la <a href="../doc/UiBibz/Ui/Core/Breadcrumb.html">doc</a></p>
+
+<h3>Buttons (Boutons)</h3>
+
+<h4>Button</h4>
+
+<p><img src="../doc/images/button.png" alt="button"></p>
+
+<p>L&#39;élément <code>button</code> à pour <code>options</code> un Hash acceptant les clefs :</p>
+
+<ul>
+<li><a href="#state-values">state</a></li>
+<li><a href="#status-values">status</a></li>
+<li><a href="#glyph-arguments">glyph</a></li>
+<li><a href="#size-values">size</a></li>
+</ul>
+
+<pre class="code ruby"><code class="ruby">= button 'Button', { state: :danger, size: :xs, glyph: 'star' } , { class: 'my-button' }
+</code></pre>
+
+<h4>Button Dropdown</h4>
+
+<p>L&#39;élément <code>button_dropdown</code> accepte pour options les mêmes clefs que l&#39;élément
+<a href="#dropdown">dropdown</a>.</p>
+
+<p><img src="../doc/images/button_dropdown.png" alt="button_link"></p>
+
+<pre class="code ruby"><code class="ruby">= button_dropdown 'Button Dropdown' do |bd|
+  - bd.list link_to 'toto', '#'
+  - bd.list 'header', type: :header
+  - bd.list link_to 'momo', '#'
+  - bd.list '---'
+  - bd.list link_to 'lolo', '#'
+</code></pre>
+
+<h4>Button group</h4>
+
+<p><img src="../doc/images/button_group.png" alt="button_group"></p>
+
+<p>L&#39;élément <code>button_group</code> à pour <code>options</code> un Hash acceptant les clefs :</p>
+
+<ul>
+<li>position (:vertical, :horizontal)</li>
+<li><a href="#size-values">size</a></li>
+</ul>
+
+<p>L&#39;élément <code>list</code> à pour <code>options</code> un Hash acceptant les clefs :</p>
+
+<ul>
+<li><a href="#status-values">status</a></li>
+<li><a href="#state-values">state</a></li>
+</ul>
+
+<pre class="code ruby"><code class="ruby">= button_group position: :vertical, size: :xs do
+  = button 'toto', status: :active
+  = button 'momo'
+  = button 'lolo'
+
+= button_group do
+  = button 'toto', status: :active
+  = button 'momo'
+  = button 'lolo'
+  = button_dropdown 'Button Dropdown' do |bd|
+    - bd.list 'header', type: :header
+    - bd.list link_to 'momo', '#'
+    - bd.list '---'
+    - bd.list link_to 'lolo', '#'
+</code></pre>
+
+<h4>Button Link (Lien Bouton)</h4>
+
+<p><img src="../doc/images/button_link.png" alt="button_link"></p>
+
+<p>L&#39;élément <code>button_link</code> à pour <code>options</code> un Hash acceptant les clefs :</p>
+
+<pre class="code ruby"><code class="ruby">= button_link 'Button', { url: '#button', state: :primary, glyph: 'star' }, { class: 'my-button' }
+</code></pre>
+
+<h4>Button Split Dropdown</h4>
+
+<p><img src="../doc/images/button_split_dropdown.png" alt="button_group"></p>
+
+<p>L&#39;élément <code>button_split_dropdown</code>accepte pour options les mêmes clefs
+que l&#39;élément <a href="#dropdown">dropdown</a>.</p>
+
+<pre class="code ruby"><code class="ruby">= button_split_dropdown 'Dropdown', state: :primary do |d|
+  - d.list do
+    = link_to 'toto', &quot;#&quot;
+  - d.list 'header', type: :header
+  - d.list link_to 'momo', '#'
+  - d.list '---'
+  - d.list link_to 'lolo', '#'
+</code></pre>
+
+<h3>Dropdown</h3>
+
+<p>L&#39;élément <code>dropdown</code> à pour <code>options</code> un Hash acceptant les clefs :</p>
+
+<ul>
+<li><a href="#state-values">state</a></li>
+<li><a href="#status-values">status</a></li>
+<li>position (:left, :right)</li>
+</ul>
+
+<p>L&#39;élément <code>list</code> est un <a href="#component">component</a> qui accepte pour options les clefs :</p>
+
+<ul>
+<li>type (:header)</li>
+<li><a href="#glyph-arguments">glyph</a></li>
+</ul>
+
+<pre class="code ruby"><code class="ruby">= dropdown 'Dropdown', state: :success do |d|
+  - d.list do
+    = link_to 'toto', &quot;#&quot;
+  - d.list 'header', type: :header
+  - d.list link_to 'momo', '#'
+  - d.list '---'
+  - d.list link_to 'lolo', '#'
+</code></pre>
+
+<p>Pour ajouter une ligne séparatrice, il suffit d&#39;insérer 3 &quot;-&quot; à la suite</p>
+
+<p>Exemple :</p>
+
+<pre class="code ruby"><code class="ruby">...
+d.list '--'
+...
+</code></pre>
+
+<h3>Progress Bar</h3>
+
+<p><img src="../doc/images/progress_bar.png" alt="glyph"></p>
+
+<p>L&#39;élément <code>progress_bar</code> à pour <code>options</code> un Hash acceptant les clefs :</p>
+
+<ul>
+<li><a href="#state-values">state</a></li>
+<li>type (:animated, :striped)</li>
+<li>label - String (default: &quot;percentage%&quot;)</li>
+<li>tap - Boolean (true: To add several bars)</li>
+<li>percentage_min - Integer (default: 0)</li>
+<li>percentage_max - Integer (default: 100)</li>
+<li>sr_only - Boolean to show label (default: false)</li>
+</ul>
+
+<pre class="code ruby"><code class="ruby">= progress_bar 30
+# or
+= progress_bar state: :info, sr_only: true, type: :animated do
+  = 70
+# or
+= progress_bar(tap: true) do |pb|
+  - pb.bar 10, { state: :success, label: 'Loading...' },{ class: 'test' }
+  - pb.bar 30, state: :warning
+  - pb.bar(type: :striped) do
+    = 10
+</code></pre>
+
+<h3>Glyph</h3>
+
+<p><img src="../doc/images/glyph.png" alt="glyph"></p>
+
+<p>Les glyphs utilisés proviennent de <a href="http://fontawesome.io/">Font Awesome</a>.
+L&#39;élément <code>glyph</code> peut contenir un hash pour <code>content</code>
+L&#39;élément <code>glyph</code> à pour <code>options</code> un Hash acceptant les clefs :</p>
+
+<ul>
+<li>size</li>
+<li>type</li>
+</ul>
+
+<pre class="code ruby"><code class="ruby">= glyph 'star', { size: 3, type: 'fw' }, class: 'star-exemple'
+ou
+= glyph { name: 'star', size: 3, type: 'fw' }
+</code></pre>
+
+<h3>Panel</h3>
+
+<p><img src="../doc/images/panel.png" alt="panel"></p>
+
+<p>L&#39;élément <code>panel</code> à pour <code>options</code> un Hash acceptant les clefs :</p>
+
+<ul>
+<li><a href="#state">state</a></li>
+<li>tap (true) : permet de créer un header, body et footer</li>
+</ul>
+
+<p>Les éléments <code>header</code>, <code>body</code>,<code>footer</code> sont des éléments <a href="#component">component</a>.</p>
+
+<p>Exemple :</p>
+
+<pre class="code ruby"><code class="ruby">= panel 'danger'
+# ou
+= panel state: :danger do
+  = 'toto'
+# ou
+= panel({ tap: true, state: :danger }, { class: 'exemple' }) |p|
+  - p.header 'toto', glyph: 'eye'
+  - p.body class: 'my-body' do
+    = 'toto'
+  - p.footer 'toto'
+</code></pre>
+
+<h3>Table</h3>
+
+<p><img src="../doc/images/table.png" alt="table"></p>
+
+<p>L&#39;élément <code>table</code> est un tableau composé d&#39;une recherche, une pagination et un trie de colonnes intégrées.
+Le tableau est compatible <a href="http://guides.rubyonrails.org/i18n.html">I18n</a>.
+Le tableau contient pour chaque ligne un bouton dropdown &#39;action&#39; avec par défaut
+ces 3 actions : voir, éditer, supprimer. Toutes les colonnes sont présentes et
+affichées par défaut.</p>
+
+<p>La table doit contenir un store. Ce store doit-être créé dans le controlleur avec la
+méthode <code>table_search_pagination</code>.</p>
+
+<p>La méthode <code>table_search_pagination</code> contient 3 arguments :</p>
+
+<ul>
+<li>params</li>
+<li>session</li>
+<li>args (optionel)</li>
+</ul>
+
+<p>Exemple :</p>
+
+<pre class="code ruby"><code class="ruby"><span class='comment'># app/controllers/document_controller.rb
+</span><span class='ivar'>@documents</span> <span class='op'>=</span> <span class='const'>Document</span><span class='period'>.</span><span class='id identifier rubyid_table_search_pagination'>table_search_pagination</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='comma'>,</span> <span class='id identifier rubyid_session'>session</span><span class='rparen'>)</span>
+</code></pre>
+
+<p>Dans le model, insérer la méthode <code>searchable_attributes</code> afin de pouvoir
+faire une recherche sur les attributs souhaités.</p>
+
+<p>Exemple :</p>
+
+<pre class="code ruby"><code class="ruby"><span class='comment'># app/models/document.rb
+</span><span class='id identifier rubyid_searchable_attributes'>searchable_attributes</span> <span class='symbol'>:name_fr</span><span class='comma'>,</span> <span class='symbol'>:name_en</span>
+</code></pre>
+
+<p>Un champ recherche est disponible dans la vue :</p>
+
+<p><img src="../doc/images/table_search_field.png" alt="table_search_field"></p>
+
+<pre class="code ruby"><code class="ruby">= table_search_field store: @documents
+</code></pre>
+
+<p>Une pagination est disponible dans la vue :</p>
+
+<pre class="code ruby"><code class="ruby">= table_pagination store: @documents
+</code></pre>
+
+<p>Un champs select par page est disponible dans la vue :</p>
+
+<p><img src="../doc/images/table_pagination_per_page.png" alt="table_search_field"></p>
+
+<pre class="code ruby"><code class="ruby">= table_pagination_per_page store: @documents
+</code></pre>
+
+<h4>Simple Example table</h4>
+
+<p>Dans le <strong>controlleur</strong>, insérer la méthode <code>table_search_pagination</code>.
+La méthode <code>table_search_pagination</code> contient 3 arguments :</p>
+
+<ul>
+<li>params</li>
+<li>session</li>
+<li>args</li>
+</ul>
+
+<p>Exemple :</p>
+
+<pre class="code ruby"><code class="ruby"><span class='comment'># app/controllers/document_controller.rb
+</span><span class='ivar'>@documents</span> <span class='op'>=</span> <span class='const'>Document</span><span class='period'>.</span><span class='id identifier rubyid_table_search_pagination'>table_search_pagination</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='comma'>,</span> <span class='id identifier rubyid_session'>session</span><span class='rparen'>)</span>
+</code></pre>
+
+<p>Dans le <strong>model</strong>, insérer la méthode <code>searchable_attributes</code> afin de pouvoir
+faire une recherche sur les attributs souhaités.</p>
+
+<p>Exemple :</p>
+
+<pre class="code ruby"><code class="ruby"><span class='comment'># app/models/document.rb
+</span><span class='id identifier rubyid_searchable_attributes'>searchable_attributes</span> <span class='symbol'>:name_fr</span><span class='comma'>,</span> <span class='symbol'>:name_en</span>
+</code></pre>
+
+<p>Dans la <strong>vue</strong>, insérer la méthode <code>table</code> qui peut contenir plusieurs arguments :</p>
+
+<ul>
+<li>store (ex: @documents)</li>
+<li>paginable (true, false)</li>
+<li>sortable (true, false)</li>
+</ul>
+
+<p>Une table comporte des <strong>colonnes</strong> et des <strong>actions</strong>.</p>
+
+<p>Exemple :</p>
+
+<pre class="code ruby"><code class="ruby"># app/views/documents/index.html.haml
+= table store: @documents
+</code></pre>
+
+<p>Les actions par défauts peuvent être modifiées (<a href="#Complex-Example-table">voir exemple complexe</a>) :</p>
+
+<ul>
+<li>edit</li>
+<li>view</li>
+<li>delete</li>
+</ul>
+
+<p>Elles sont intégrées à l&#39;intérieur d&#39;un bouton <a href="#dropdown">dropdown</a>.</p>
+
+<p>Exemple :</p>
+
+<pre class="code ruby"><code class="ruby"># app/views/documents/index.html.haml
+= table store: @documents do |g|
+  - g.actions do
+    = link_action 'Show', documents_path(:id), glyph: 'eye'
+    = link_action 'Edit', edit_document_path(:id), glyph: 'pencil'
+    = link_action 'Delete', documents_path(:id), method: :delete, glyph: 'trash', data: { confirm: 'Are you sure?' }
+    = link_action &quot;---&quot;
+    = link_action 'Duplicate', duplicate_document_path(:id), glyph: 'files-o'
+    = link_action 'Alert', alert_document_path(:id), glyph: 'bell'
+</code></pre>
+
+<p>L&#39;ajout de colonnes à travers la méthode <code>add</code> contient plusieurs arguments :</p>
+
+<ul>
+<li>name (nom de la colonne)</li>
+<li>data_index (le nom de l&#39;attribut)</li>
+<li>count (utilise la méthode count sur l&#39;élément)</li>
+<li>date_format (formate l&#39;affichage de la date en utilisant la méthode <code>strftime</code> ex: &#39;%Y/%M/%D&#39;)</li>
+<li>format (formate les élements de la colone en utilisant <strong>lambda</strong>)</li>
+<li>link (ajoute un lien où l&#39;expression <code>:id</code> est parsé et remplacé par l&#39;entier correspondant)</li>
+<li>sort (permet de trier sur des champs )</li>
+<li>custom_sort (indique que le tableau sera triéé d&#39;une manière personnalisée)</li>
+</ul>
+
+<pre class="code ruby"><code class="ruby"># app/views/documents/index.html.haml
+= table store: @documents do |g|
+  - g.columns do |c|
+    - c.add { name: '#', data_index: 'id' }
+    - c.add { name: 'Name fr', data_index: 'name_fr', link: edit_document_path(:id)}
+    - c.add { data_index: 'name_en' }
+    - c.add { name: 'Hotline', data_index: 'hotline_access', format: lambda{ |records, record| glyph(record.icon) }}
+    - c.add { name: 'Updated at', data_index: 'updated_at', date_format: '%Y' }
+</code></pre>
+
+<h4>Complex Example table</h4>
+
+<p>Si on souhaite voir apparaître certaines liasions avec d&#39;autres tables il faut pour
+cela :</p>
+
+<p>Dans le controlleur, insérer la méthode <code>table_search_pagination</code> en ajoutant
+un <code>includes</code> juste avant.</p>
+
+<p>Exemple :</p>
+
+<pre class="code ruby"><code class="ruby"><span class='comment'># app/controllers/document_controller.rb
+</span><span class='ivar'>@documents</span> <span class='op'>=</span> <span class='const'>Document</span><span class='period'>.</span><span class='id identifier rubyid_includes'>includes</span><span class='lparen'>(</span><span class='symbol'>:users</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_table_search_pagination'>table_search_pagination</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='comma'>,</span> <span class='id identifier rubyid_session'>session</span><span class='rparen'>)</span>
+</code></pre>
+
+<p>Dans la vue, insérer la méthod <code>table</code>.
+NB: On peut créer ces propres méthodes comme <code>user_name</code> dans notre model &quot;Document&quot; et
+l&#39;appeler comme valeur pour la clef <code>data_index</code>.</p>
+
+<pre class="code ruby"><code class="ruby"># app/views/documents/index.html.haml
+= table store: @documents do |g|
+  - g.columns do |c|
+    - c.add { name: 'Users', data_index: 'user_name', sort: &quot;user.name&quot; }
+</code></pre>
+
+<h4>Ultra Complex Example table</h4>
+
+<p>Si l&#39;on souhaite, par exemple, dénombrer des utilisateurs qui ont un lien non
+direct avec les documents.
+Imaginons par exemple qu&#39;un utilisateur à des produits et que
+ces produits contiennent plusieurs documents. On souhaite compter le nombre
+d&#39;utilisateurs par document.</p>
+
+<p>On peut ajouter des arguments dans la méthode <code>table_search_pagination</code>
+qui vont permettre de faire des jointures.</p>
+
+<p>Exemple :</p>
+
+<pre class="code ruby"><code class="ruby"><span class='comment'># app/controllers/document_controller.rb
+</span><span class='id identifier rubyid_arguments'>arguments</span>  <span class='op'>=</span> <span class='lbrace'>{</span> <span class='label'>sortable:</span> <span class='lbrace'>{</span>
+  <span class='label'>column:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>users</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+  <span class='label'>count:</span>  <span class='kw'>true</span><span class='comma'>,</span>
+  <span class='label'>joins:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>LEFT OUTER JOIN documents_products ON documents_products.document_id = documents.id
+          LEFT OUTER JOIN products ON products.id = documents_products.product_id
+          LEFT OUTER JOIN products_users ON products_users.product_id = products.id
+          LEFT OUTER JOIN users ON users.id = products_users.user_id</span><span class='tstring_end'>&quot;</span></span>
+<span class='rbrace'>}</span> <span class='rbrace'>}</span>
+
+<span class='ivar'>@documents</span> <span class='op'>=</span> <span class='const'>Document</span><span class='period'>.</span><span class='id identifier rubyid_includes'>includes</span><span class='lparen'>(</span><span class='symbol'>:users</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_table_search_pagination'>table_search_pagination</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='comma'>,</span> <span class='id identifier rubyid_session'>session</span><span class='comma'>,</span> <span class='id identifier rubyid_arguments'>arguments</span><span class='rparen'>)</span>
+</code></pre>
+
+<p>Ici l&#39;argument sortable signifie que l&#39;on souhaite s&#39;interresser à la
+fonctionnalité de trie.</p>
+
+<p>Pour celà il faut :</p>
+
+<ul>
+<li>définir le nom de la colonne triéé à travers l&#39;argument <code>column:</code> (string)</li>
+<li>définir si le traitement se fait sur le comptage avec l&#39;argument <code>count:</code>
+(boolean)</li>
+<li>définir la jointure avec l&#39;argument <code>joins:</code> (string, array, hash)</li>
+</ul>
+
+<p>Dans la vue :</p>
+
+<pre class="code ruby"><code class="ruby"># app/views/documents/index.html.haml
+= table store: @documents do |g|
+  - g.columns do |c|
+    - c.add({ name: 'Users', data_index: 'users', count: true, custom_sort: true })
+</code></pre>
+
+<h4>table I18n</h4>
+
+<p>La table est utilisable avec I18n. Les traductions
+s&#39;executent par ordre d&#39;importance dans cet ordre précis pour la colonne &quot;name_fr&quot; par exemple.</p>
+
+<ol>
+<li>ui_biz.table.headers.document.name_fr</li>
+<li>ui_biz.table.headers.defaults.name_fr</li>
+<li>activerecord.attributes.document.name_fr</li>
+<li>activerecord.attributes.defaults.name_fr</li>
+</ol>
+
+<p>Le placeholder du champ recherche est utilisable et traduisible avec les attributs activerecord dans le fichier locale.</p>
+
+<p>Exemple :</p>
+
+<pre class="code ruby"><code class="ruby"># config/locales/fr.yml
+...
+activerecord:
+  models:
+      user: 'Utilisateur'
+  attributes:
+    defaults:
+      name_fr: 'Nom fr'
+...
+</code></pre>
+
+<h3>Table Panel</h3>
+
+<p><img src="../doc/images/table_panel.png" alt="table_panel"></p>
+
+<p>Le composant <code>table_panel</code> est un <a href="#table">tableau</a> dans un <a href="#panel">panel</a>.</p>
+
+<pre class="code ruby"><code class="ruby">= table_panel store: @users
+#ou
+= table_panel({ store: @users, tap: true, glyph: 'home', state: :danger }) do |g|
+  - g.columns do |cls|
+    - cls.column name: '#', data_index: 'id'
+    - cls.column name: 'Username', data_index: 'username', link: edit_user_path(:id)
+    - cls.column name: 'Name', data_index: 'name'
+    - cls.column name: 'Email', data_index: 'email'
+    - cls.column name: 'Role', data_index: 'role_name', sort: 'roles.name'
+  - g.actions do |acs|
+    - acs.action 'Toto', url: edit_user_path(:id), glyph: 'pencil'
+    - acs.action &quot;---&quot;
+    - acs.action 'momo', url: user_path(:id), glyph: 'eye'
+
+</code></pre>
+
+<h3>List</h3>
+
+<p><img src="../doc/images/list.png" alt="list"></p>
+
+<p>Par défaut une liste à pour tag <code>&lt;li&gt;</code>.
+Mais elle peut se transformer en lien <code>&lt;a&gt;</code> à travers l&#39;option <code>type:</code>.
+Par défaut le tag <code>&lt;li&gt;</code> est présent.</p>
+
+<pre class="code ruby"><code class="ruby">= list_group type: :link do |lg|
+  - lg.list 'Momo', { state: :success, glyph: 'home' }, { href: '#Momo' }
+  - lg.list({ tap: true, status: :active }, { href: '#Toto' }) do |l|
+    - l.header 'My title'
+    - l.body 'My title'
+# ou
+= list_group do |lg|
+  - lg.list 'Momo', glyph: 'home', badge: 2
+  - lg.list 'Toto'
+</code></pre>
+
+<h3>Nav</h3>
+
+<p><img src="../doc/images/nav.png" alt="nav"></p>
+
+<p>Par défaut la navigation comporte des onglets &quot;tab&quot;.
+L&#39;élément <code>nav</code> accepte en option les arguments :</p>
+
+<ul>
+<li>type (:pills, :tabs)</li>
+<li>position (:justified, :stacked)</li>
+<li>tap (true)</li>
+</ul>
+
+<p>L&#39;élement link est un <a href="#component">component</a>.</p>
+
+<pre class="code ruby"><code class="ruby">= nav(type: :pills, position: :justified, tap: true) do |d|
+  d.link 'Test', url: '#test', badge: 6
+  d.link 'Test2', url: '#test2', status: :active
+</code></pre>
+
+<h3>Etiquette</h3>
+
+<p><img src="../doc/images/etiquette.png" alt="list"></p>
+
+<p>NB : Les méthodes <code>Tag, label</code> sont déjà utilisées par Rails.
+L&#39;élément <code>etiquette</code> à pour <code>options</code> un Hash acceptant les clefs :</p>
+
+<ul>
+<li><a href="#state-values">state</a></li>
+<li><a href="#glyph-values">glyph</a></li>
+</ul>
+
+<p>Exemple :</p>
+
+<pre class="code ruby"><code class="ruby">= etiquette 'label'
+= etiquette 'label 2', state: :success
+= etiquette 'label 2', state: :danger
+</code></pre>
+
+<h3>Row</h3>
+
+<p>Le composant row génére une div avec la class row.</p>
+
+<pre class="code ruby"><code class="ruby">= row class: 'toto' do
+  = content
+# =&gt; &lt;div class='row toto'&gt;content&lt;/div&gt;
+</code></pre>
+
+<h3>Col</h3>
+
+<p>L&#39;élément <code>col</code> est un <a href="#composant">composant</a> qui accèpte en arguments :</p>
+
+<ul>
+<li>num</li>
+<li>offset</li>
+<li>size</li>
+</ul>
+
+<p>ou</p>
+
+<ul>
+<li>un tableau de hashes avec les arguments <code>num</code>, <code>offset</code> et <code>size</code> à l&#39;intérieur.</li>
+</ul>
+
+<p>Ces paramètres génèrent les classes qui seront insérées dans la div avec la classe
+col.</p>
+
+<pre class="code ruby"><code class="ruby">= col({num: 2, size: :lg}, class: 'test') do
+  = content
+
+# =&gt; &lt;div class='col-lg-2 test'&gt;content&lt;/div&gt;
+
+# ou
+= col([{ offset: 1, size: :xs}, { num: 3}], class: 'test') do
+  = content
+
+# =&gt; &lt;div class='col-xs-offset-1 col-md-3 test'&gt;content&lt;/div&gt;
+</code></pre>
+
+<h3>Grid</h3>
+
+<p>Une grid est un composant qui est composé de 5 vues :</p>
+
+<ul>
+<li>top</li>
+<li>right</li>
+<li>bottom</li>
+<li>left</li>
+<li>center</li>
+</ul>
+
+<p>La vue <strong>center</strong> est obligatoire.
+Une vue à pour arguments :</p>
+
+<ul>
+<li>position (:top, :left, :bottom, :right, :center)</li>
+<li>num (1..12) 12 étant le nombre limite de colonnes utilisable dans boostrap.</li>
+</ul>
+
+<p>L&#39;argument <code>position</code> détermine la position de la vue et l&#39;argument <code>num</code> determine
+le nombre de colonnes occupées par la vue.</p>
+
+<pre class="code ruby"><code class="ruby">= grid do |g|
+  - g.view num: 3, position: :left do
+    = list_group(type: :link) do |lg|
+      - lg.list 'Link 1', { url: '#link1' }
+      - lg.list 'Link 2', { url: '#link1', status: :active }
+      - lg.list 'Link 1', { url: '#link1' }
+      - lg.list 'Link 3', { url: '#link1' }
+      - lg.list 'Link 4', { url: '#link1' }
+  - g.view({ position: :top}) do
+    = button_group(type: :toolbar) do
+      = button 'option 1'
+      = button 'option 2'
+      = button 'option 3'
+  - g.view position: :center do
+    = table store: @users, type: :bordered
+  - g.view position: :bottom do
+    = 'bottom'
+
+= grid do |g|
+  - g.view num: 5, position: :left do
+    = 'left'
+  - g.view position: :right do
+    = 'right'
+  - g.view({ position: :top}, { class: 'success'}) do
+    = 'top'
+  - g.view position: :center do
+    = 'center'
+  - g.view position: :bottom do
+    = 'bottom'
+</code></pre>
+
+<h3>Arguments and Values</h3>
+
+<h4>Status values</h4>
+
+<ul>
+<li>:active</li>
+<li>:disable</li>
+</ul>
+
+<h4>Size values</h4>
+
+<ul>
+<li>:xs</li>
+<li>:sm</li>
+<li>:lg</li>
+</ul>
+
+<h4>State values</h4>
+
+<ul>
+<li>:default</li>
+<li>:primary</li>
+<li>:info</li>
+<li>:success</li>
+<li>:warning</li>
+<li>:danger</li>
+</ul>
+
+<h4>Glyph arguments</h4>
+
+<ul>
+<li>name</li>
+<li>size</li>
+<li>type</li>
+</ul>
+
+<h1>Plus de détails</h1>
+
+<p>Pour plus d&#39;informations, vous pouvez accéder à la documentation rdoc en
+générant cette dernière :</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_rake'>rake</span> <span class='id identifier rubyid_rdoc'>rdoc</span>
+</code></pre>
+
+<h1>Conflits</h1>
+
+<p>Certaines méthodes dans le helper peuvent être en conflit avec d&#39;autres
+librairies. Le cas échéant, vous pouvez utiliser directement la librairie UiBibz
+comme ci-dessous.</p>
+
+<p>Exemple :</p>
+
+<pre class="code ruby"><code class="ruby"><span class='const'>UiBibz</span><span class='op'>::</span><span class='const'>Ui</span><span class='op'>::</span><span class='const'>Panel</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Exemple</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='lbrace'>{</span> <span class='label'>state:</span> <span class='symbol'>:success</span> <span class='rbrace'>}</span><span class='comma'>,</span> <span class='lbrace'>{</span> <span class='label'>class:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>exemple</span><span class='tstring_end'>'</span></span><span class='rbrace'>}</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_render'>render</span>
+<span class='comment'># au lieu de
+</span><span class='id identifier rubyid_panel'>panel</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Exemple</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='lbrace'>{</span> <span class='label'>state:</span> <span class='symbol'>:success</span> <span class='rbrace'>}</span><span class='comma'>,</span> <span class='lbrace'>{</span> <span class='label'>class:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>exemple</span><span class='tstring_end'>'</span></span> <span class='rbrace'>}</span>
+</code></pre>
+
+<h1>Roadmap :</h1>
+
+<p>Pour la V2.</p>
+
+<ul>
+<li>créer des stores pour les listes, breadcrumb</li>
+<li>créer une meilleure documentation</li>
+<li>créer d&#39;autres extensions, plugins et une guideline</li>
+<li>donner le choix de la dépendence boostrap et awesomefont en CDN ou en local</li>
+<li>mise à jour vers bootstrap 4</li>
+<li>créer Ui-Bibz Core à partir de cette librairie ( pour l&#39;insérer dans un nouveau
+framework Ui-Bibz utilisant simple_form pour les champs formulaires ).
+...</li>
+</ul>
+</div></div>
+
+    <div id="footer">
+  Generated on Wed Jul  8 13:07:53 2015 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.7.6 (ruby-1.9.3).
+</div>
+
+  </body>
+</html>
