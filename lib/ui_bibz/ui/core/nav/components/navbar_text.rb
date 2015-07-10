@@ -41,5 +41,9 @@ module UiBibz::Ui::Core
       content_tag :ul, @content, class_and_html_options(["navbar-text", position])
     end
 
+    def position
+      "navbar-#{ @options[:position] }" unless @options[:position].nil?
+    end
+
   end
 end
