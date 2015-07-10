@@ -1,4 +1,6 @@
 require 'ui_bibz/ui/core/nav/components/navbar_nav'
+require 'ui_bibz/ui/core/nav/components/navbar_text'
+require 'ui_bibz/ui/core/nav/components/navbar_form'
 module UiBibz::Ui::Core
 
   # Create a Navbar
@@ -76,11 +78,11 @@ module UiBibz::Ui::Core
     end
 
     def form content = nil, options = nil, html_options = nil, &block
-     # @items << UiBibz::Ui::Core::Form.new(content, options, html_options).tap(&block)
+      @items << UiBibz::Ui::Core::NavbarForm.new(content, options, html_options, &block).render
     end
 
     def text content = nil, options = nil, html_options = nil, &block
-     # @items << UiBibz::Ui::Core::Text.new(content, options, html_options).tap(&block)
+      @items << UiBibz::Ui::Core::NavbarText.new(content, options, html_options, &block).render
     end
 
   private
