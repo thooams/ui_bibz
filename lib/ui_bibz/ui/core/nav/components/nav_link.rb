@@ -41,6 +41,7 @@ module UiBibz::Ui::Core
       super
     end
 
+    # Render html tag
     def render
       content_tag :li, content_htm, class_and_html_options.merge({ role: 'presentation' })
     end

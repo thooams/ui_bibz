@@ -51,6 +51,7 @@ module UiBibz::Ui::Core
       end
     end
 
+    # Render html tag
     def render
       @form
     end

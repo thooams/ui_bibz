@@ -1,4 +1,5 @@
 require 'ui_bibz/ui/core/dropdown/components/dropdown_list'
+require 'ui_bibz/ui/core/dropdown/components/dropdown_link'
 module UiBibz::Ui::Core
 
   # Create a dropdown
@@ -37,10 +38,10 @@ module UiBibz::Ui::Core
   # ==== Examples
   #
   #   UiBibz::Ui::Core::Dropdown.new(name, state: :success).tap do |d|
-  #     d.list link_to('test', '#')
+  #     d.link 'test', '#'
   #     d.list('---')
   #     d.list('Header 1', { type: :header })
-  #     d.list link_to('test2', '#')
+  #     d.list 'test2', '#'
   #   end.render
   #
   # ==== Helper
@@ -50,16 +51,21 @@ module UiBibz::Ui::Core
   #     d.list(options = {}, html_options = {}) do
   #       content
   #     end
+  #     d.link(content, options = {}, html_options = {})
+  #     d.link(options = {}, html_options = {}) do
+  #       content
+  #     end
   #   end
   #
   class Dropdown < Component
 
     def initialize content, options = nil, html_options  = nil, &block
       super
-      @lists = []
+      @items = []
       @state = @options.delete(:state)
     end
 
+    # Render html tag
     def render
       content_tag :div, class_and_html_options(type) do
         concat button_html
@@ -69,7 +75,12 @@ module UiBibz::Ui::Core
 
     # See UiBibz::Ui::Core::DropdownList
     def list content = nil, options = nil, html_options = nil, &block
-      @lists << DropdownList.new(content, options, html_options, &block).render
+      @items << DropdownList.new(content, options, html_options, &block).render
+    end
+
+    # See UiBibz::Ui::Core::DropdownLink
+    def link content = nil, options = nil, html_options = nil, &block
+      @items << DropdownLink.new(content, options, html_options, &block).render
     end
 
   protected
@@ -83,7 +94,7 @@ module UiBibz::Ui::Core
     end
 
     def ul_html
-      content_tag :ul, @lists.join.html_safe, class: "dropdown-menu dropdown-menu-#{ position }", role: 'menu'
+      content_tag :ul, @items.join.html_safe, class: "dropdown-menu dropdown-menu-#{ position }", role: 'menu'
     end
 
     def caret
