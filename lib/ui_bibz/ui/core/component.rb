@@ -115,7 +115,7 @@ module UiBibz::Ui::Core
     end
 
     def status
-      options[:status]
+      options[:status] unless options[:status].nil?
     end
 
     def states
