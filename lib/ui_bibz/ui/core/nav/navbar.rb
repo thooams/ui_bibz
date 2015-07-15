@@ -43,6 +43,11 @@ module UiBibz::Ui::Core
   #       n.link 'Link 1', "#"
   #       n.link 'Link 2', "#"
   #     end
+  #     nb.form(url: 'search/', type: :form_tag) do
+  #       text_field_tag 'search', nil, { class: 'form-control', placeholder: 'Search' }
+  #       button 'Submit', type: :submit
+  #     end
+  #     nb.text 'My text'
   #   end.render
   #
   # ==== Helper
