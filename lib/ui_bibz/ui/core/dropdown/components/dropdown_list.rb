@@ -45,10 +45,12 @@ module UiBibz::Ui::Core
 
     DIVIDER = '---'
 
+    # See UiBibz::Ui::Core::Component.initialize
     def initialize content = nil, options = nil, html_options = nil, &block
       super
     end
 
+    # Render html tag
     def render
       @content == DIVIDER ? divider_html : link_html
     end

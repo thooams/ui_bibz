@@ -201,6 +201,28 @@ end.render</code></pre>
         <li class="public ">
   <span class="summary_signature">
     
+      <a href="#position-instance_method" title="#position (instance method)">- (Object) <strong>position</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
       <a href="#render-instance_method" title="#render (instance method)">- (Object) <strong>render</strong> </a>
     
 
@@ -298,7 +320,37 @@ end.render</code></pre>
 
     
       <div class="method_details first">
-  <h3 class="signature first" id="render-instance_method">
+  <h3 class="signature first" id="position-instance_method">
+  
+    - (<tt>Object</tt>) <strong>position</strong> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+44
+45
+46</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ui_bibz/ui/core/nav/components/navbar_text.rb', line 44</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_position'>position</span>
+  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>navbar-</span><span class='embexpr_beg'>#{</span> <span class='ivar'>@options</span><span class='lbracket'>[</span><span class='symbol'>:position</span><span class='rbracket'>]</span> <span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>unless</span> <span class='ivar'>@options</span><span class='lbracket'>[</span><span class='symbol'>:position</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="render-instance_method">
   
     - (<tt>Object</tt>) <strong>render</strong> 
   
@@ -332,7 +384,7 @@ end.render</code></pre>
 </div>
 
     <div id="footer">
-  Generated on Wed Jul  8 22:52:12 2015 by
+  Generated on Thu Jul 16 12:55:20 2015 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7.6 (ruby-1.9.3).
 </div>

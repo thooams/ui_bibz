@@ -7,6 +7,7 @@ module UiBibz::Ui::Ux
       @options = options
     end
 
+    # Render html tag
     def render
       content_tag :div do
         concat UiBibz::Ui::Ux::TablePagination.new(store: @store).render

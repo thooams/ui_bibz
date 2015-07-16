@@ -210,7 +210,7 @@ end</code></pre>
 
   
     <span class="summary_desc"><div class='inline'>
-<p>A new instance of NavDropdown.</p>
+<p>See UiBibz::Ui::Core::Component.initialize.</p>
 </div></span>
   
 </li>
@@ -233,7 +233,9 @@ end</code></pre>
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Render html tag.</p>
+</div></span>
   
 </li>
 
@@ -251,7 +253,7 @@ end</code></pre>
   
   
   <h3 class="inherited">Methods inherited from <span class='object_link'><a href="Dropdown.html" title="UiBibz::Ui::Core::Dropdown (class)">Dropdown</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="Dropdown.html#button_content-instance_method" title="UiBibz::Ui::Core::Dropdown#button_content (method)">#button_content</a></span>, <span class='object_link'><a href="Dropdown.html#button_html-instance_method" title="UiBibz::Ui::Core::Dropdown#button_html (method)">#button_html</a></span>, <span class='object_link'><a href="Dropdown.html#button_state-instance_method" title="UiBibz::Ui::Core::Dropdown#button_state (method)">#button_state</a></span>, <span class='object_link'><a href="Dropdown.html#caret-instance_method" title="UiBibz::Ui::Core::Dropdown#caret (method)">#caret</a></span>, <span class='object_link'><a href="Dropdown.html#list-instance_method" title="UiBibz::Ui::Core::Dropdown#list (method)">#list</a></span>, <span class='object_link'><a href="Dropdown.html#position-instance_method" title="UiBibz::Ui::Core::Dropdown#position (method)">#position</a></span>, <span class='object_link'><a href="Dropdown.html#size-instance_method" title="UiBibz::Ui::Core::Dropdown#size (method)">#size</a></span>, <span class='object_link'><a href="Dropdown.html#type-instance_method" title="UiBibz::Ui::Core::Dropdown#type (method)">#type</a></span>, <span class='object_link'><a href="Dropdown.html#ul_html-instance_method" title="UiBibz::Ui::Core::Dropdown#ul_html (method)">#ul_html</a></span></p>
+  <p class="inherited"><span class='object_link'><a href="Dropdown.html#button_content-instance_method" title="UiBibz::Ui::Core::Dropdown#button_content (method)">#button_content</a></span>, <span class='object_link'><a href="Dropdown.html#button_html-instance_method" title="UiBibz::Ui::Core::Dropdown#button_html (method)">#button_html</a></span>, <span class='object_link'><a href="Dropdown.html#button_state-instance_method" title="UiBibz::Ui::Core::Dropdown#button_state (method)">#button_state</a></span>, <span class='object_link'><a href="Dropdown.html#caret-instance_method" title="UiBibz::Ui::Core::Dropdown#caret (method)">#caret</a></span>, <span class='object_link'><a href="Dropdown.html#link-instance_method" title="UiBibz::Ui::Core::Dropdown#link (method)">#link</a></span>, <span class='object_link'><a href="Dropdown.html#list-instance_method" title="UiBibz::Ui::Core::Dropdown#list (method)">#list</a></span>, <span class='object_link'><a href="Dropdown.html#position-instance_method" title="UiBibz::Ui::Core::Dropdown#position (method)">#position</a></span>, <span class='object_link'><a href="Dropdown.html#size-instance_method" title="UiBibz::Ui::Core::Dropdown#size (method)">#size</a></span>, <span class='object_link'><a href="Dropdown.html#type-instance_method" title="UiBibz::Ui::Core::Dropdown#type (method)">#type</a></span>, <span class='object_link'><a href="Dropdown.html#ul_html-instance_method" title="UiBibz::Ui::Core::Dropdown#ul_html (method)">#ul_html</a></span></p>
 
   
   
@@ -290,7 +292,7 @@ end</code></pre>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Returns a new instance of NavDropdown</p>
+<p>See UiBibz::Ui::Core::Component.initialize</p>
 
 
   </div>
@@ -304,12 +306,12 @@ end</code></pre>
       <pre class="lines">
 
 
-46
 47
-48</pre>
+48
+49</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ui_bibz/ui/core/nav/components/nav_dropdown.rb', line 46</span>
+      <pre class="code"><span class="info file"># File 'lib/ui_bibz/ui/core/nav/components/nav_dropdown.rb', line 47</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span> <span class='id identifier rubyid_content'>content</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_html_options'>html_options</span>  <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span>
   <span class='kw'>super</span>
@@ -335,21 +337,32 @@ end</code></pre>
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Render html tag</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-50
-51
 52
 53
 54
-55</pre>
+55
+56
+57</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ui_bibz/ui/core/nav/components/nav_dropdown.rb', line 50</span>
+      <pre class="code"><span class="info file"># File 'lib/ui_bibz/ui/core/nav/components/nav_dropdown.rb', line 52</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_render'>render</span>
   <span class='id identifier rubyid_content_tag'>content_tag</span> <span class='symbol'>:li</span><span class='comma'>,</span> <span class='id identifier rubyid_class_and_html_options'>class_and_html_options</span><span class='lparen'>(</span><span class='id identifier rubyid_type'>type</span><span class='rparen'>)</span> <span class='kw'>do</span>
@@ -367,7 +380,7 @@ end</code></pre>
 </div>
 
     <div id="footer">
-  Generated on Wed Jul  8 22:52:12 2015 by
+  Generated on Thu Jul 16 12:55:20 2015 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7.6 (ruby-1.9.3).
 </div>

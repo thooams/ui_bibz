@@ -44,11 +44,13 @@ module UiBibz::Ui::Core
   #
   class Col < Component
 
+    # See UiBibz::Ui::Core::Component.initialize
     def initialize content = nil, options = nil, html_options = nil, &block
       super
       @cols = []
     end
 
+    # Render html tag
     def render
       content_tag :div, @content, class_and_html_options(col_classes)
     end

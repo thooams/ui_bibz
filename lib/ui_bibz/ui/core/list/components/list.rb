@@ -55,10 +55,12 @@ module UiBibz::Ui::Core
   #
   class List < Component
 
+    # See UiBibz::Ui::Core::Component.initialize
     def initialize content = nil, options = nil, html_options = nil, &block
       super
     end
 
+    # Render html tag
     def render
       content_tag tag, class_and_html_options('list-group-item') do
         concat glyph_and_content_html if @content
@@ -68,10 +70,12 @@ module UiBibz::Ui::Core
       end
     end
 
+    # Add header which is a component
     def header content = nil, options = nil, html_options = nil, &block
       @header = Component.new content, options, html_options, &block
     end
 
+    # Add body which is a component
     def body content = nil, options = nil, html_options = nil, &block
       @body = Component.new content, options, html_options, &block
     end

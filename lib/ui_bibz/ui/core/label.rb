@@ -3,6 +3,7 @@ module UiBibz::Ui::Core
   # Create a label
   #
   # This element is an extend of UiBibz::Ui::Core::Component.
+  # The helper use 'etiquette' method to avoid conflict with Rails.
   #
   # ==== Attributes
   #
@@ -47,10 +48,12 @@ module UiBibz::Ui::Core
   #
   class Label < Component
 
+    # See UiBibz::Ui::Core::Component.initialize
     def initialize content = nil, options = nil, html_options = nil, &block
       super
     end
 
+    # Render html tag
     def render
       content_tag :span, glyph_and_content_html, class_and_html_options('label')
     end

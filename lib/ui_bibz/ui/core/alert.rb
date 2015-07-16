@@ -47,10 +47,12 @@ module UiBibz::Ui::Core
   #
   class Alert < Component
 
+    # See UiBibz::Ui::Core::Component.initialize
     def initialize content = nil, options = nil, html_options = nil, &block
       super
     end
 
+    # Render html tag
     def render
       content_tag :div, class_and_html_options('alert').merge({ role: 'alert'}) do
         concat glyph_and_content_html

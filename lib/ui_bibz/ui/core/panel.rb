@@ -78,25 +78,27 @@ module UiBibz::Ui::Core
   #
   class Panel < Component
 
+    # See UiBibz::Ui::Core::Component.initialize
     def initialize content = nil, options = nil, html_options = nil, &block
       super
     end
 
-    # Header is a component element
+    # Add Header which is a component
     def header content = nil, options = nil, html_options = nil, &block
       @header = Component.new content, options, html_options, &block
     end
 
-    # Body is a component element
+    # Add Body which is a component
     def body content = nil, options = nil, html_options = nil, &block
       @body = Component.new content, options, html_options, &block
     end
 
-    # Footer is a component element
+    # Add Footer which is a component
     def footer content = nil, options = nil, html_options = nil, &block
       @footer = Component.new content, options, html_options, &block
     end
 
+    # Render html tag
     def render
       content_tag :div, class_and_html_options("panel") do
         concat(header_html) unless @header.nil?
@@ -105,12 +107,12 @@ module UiBibz::Ui::Core
       end
     end
 
+  protected
+
     def state
       sym = @options[:state] || :default
       "panel-#{ states[sym] }"
     end
-
-  protected
 
     def header_html
       content_tag :div, @header.render, @header.class_and_html_options("panel-heading")

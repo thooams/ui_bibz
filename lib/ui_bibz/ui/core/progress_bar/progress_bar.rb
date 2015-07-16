@@ -67,15 +67,19 @@ module UiBibz::Ui::Core
   #
   class ProgressBar < Component
 
+    # See UiBibz::Ui::Core::Component.initialize
     def initialize content = nil, options = nil, html_options = nil, &block
       super
       @bars = []
     end
 
+    # Render html tag
     def render
       content_tag :div, content, class: 'progress'
     end
 
+    # Add progressbar bar items
+    # See UiBibz::Ui::Core::Bar
     def bar content = nil, options = nil, html_options = nil, &block
       @bars << Bar.new(content, options, html_options, &block).render
     end

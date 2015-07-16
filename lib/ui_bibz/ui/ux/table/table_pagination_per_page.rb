@@ -25,10 +25,13 @@ module UiBibz::Ui::Ux
   class TablePaginationPerPage < UiBibz::Ui::Base
     include WillPaginate::ActionView
 
+    # Initialize per_page_field with component item
+    # per_page_field require WillPaginate gem
     def initialize options = nil, html_options = nil
       @per_page_field = UiBibz::Ui::Core::Component.new nil, options, html_options
     end
 
+    # Render html tag
     def render
       if @per_page_field.options[:wrap_form] != false
         form_tag(url_for(controller: store.controller, action: store.action), method: :get) do

@@ -7,10 +7,12 @@ module UiBibz::Ui::Ux
       @actions = []
     end
 
+    # Add action in table
     def action content = nil, options = nil, html_options = nil, &block
       @actions << TableAction.new(content, options, html_options, &block).render
     end
 
+    # Get all actions
     def list
       @actions.empty? ? defaults_actions : @actions
     end

@@ -40,6 +40,11 @@ module UiBibz::Ui::Core
 
     attr_accessor :content, :html_options, :options
 
+    # Use link_to system in rails
+    # * Content can be send by content variable or by block
+    #   if a block is sent, variable 'content' does not exit.
+    # * Options of component is defined in hash options
+    # * Html options is defined in hash html_options
     def initialize content = nil, options = nil, html_options = nil, &block
       if !block.nil?
         @html_options, @options = options, content
@@ -56,45 +61,40 @@ module UiBibz::Ui::Core
       @options      = @options || {}
     end
 
+    # Render html tag
     def render
       glyph_and_content_html
     end
 
+    # Render glyph and content html
     def glyph_and_content_html
       [glyph_with_space, @content].compact.join.html_safe
     end
 
+    # Render glyph with space html
+    def glyph_with_space
+      "#{ glyph } " unless glyph.nil?
+    end
+
+    # Render glyph html
     def glyph
       glyph_info = options[:glyph] if options.kind_of?(Hash)
       Glyph.new(glyph_info).render unless glyph_info.nil?
     end
 
-    def glyph_with_space
-      "#{ glyph } " unless glyph.nil?
+    # Render badge html tag
+    def badge_html
+      content_tag :span, @options[:badge], class: 'badge'
     end
 
-    def options
-      @options
-    end
-
-    def html_options
-      @html_options
-    end
-
-    def content
-      @content
-    end
-
+    # Set :default state symbol
     def state
       sym = options.delete(:state) if options[:state]
       sym = sym || :default
       states[:sym]
     end
 
-    def badge_html
-      content_tag :span, @options[:badge], class: 'badge'
-    end
-
+    # Add classes in html_options
     def class_and_html_options classes = nil
       options_class = options[:class] if options.kind_of?(Hash)
       cls = [
@@ -109,10 +109,12 @@ module UiBibz::Ui::Core
       html_options
     end
 
-    def options_in_html_options opts
-      html_options.merge!(opts) unless opts.nil?
-      html_options
+    # Add classes in html_options
+    def add_classes *classes
+      classes.compact.join(' ')
     end
+
+  private
 
     def status
       options[:status] unless options[:status].nil?
@@ -127,10 +129,6 @@ module UiBibz::Ui::Core
         @states = states
       end
       @states
-    end
-
-    def add_classes *classes
-      classes.compact.join(' ')
     end
 
   end
