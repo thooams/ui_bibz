@@ -58,19 +58,25 @@ module UiBibz::Ui::Core
   #
   class Nav < Component
 
+    # See UiBibz::Ui::Core::Component.initialize
     def initialize content = nil, options = nil, html_options = nil, &block
       super
       @items = []
     end
 
+    # Render html tag
     def render
       content_tag :ul, @items.join.html_safe, class_and_html_options(["nav", type, position])
     end
 
+    # Add nav link items
+    # See UiBibz::Ui::Core::NavLink
     def link content = nil, options = {}, html_options = nil, &block
       @items << NavLink.new(content, options.merge({ nav_type: type }), html_options, &block).render
     end
 
+    # Add nav dropdown items
+    # See UiBibz::Ui::Core::NavDropdown
     def dropdown content = nil, options = {}, html_options = nil, &block
       @items << NavDropdown.new(content, options, html_options).tap(&block).render
     end

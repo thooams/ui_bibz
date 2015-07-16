@@ -61,6 +61,7 @@ module UiBibz::Ui::Ux
       @views = {}
     end
 
+    # Add grid view items
     def view content = nil, options = nil, html_options = nil, &block
       o      = content.kind_of?(Hash) ? content : options
       c      = UiBibz::Ui::Core::Component.new content, options, html_options, &block
@@ -68,6 +69,7 @@ module UiBibz::Ui::Ux
       @views = @views.merge(h)
     end
 
+    # Render html tag
     def render
       define_col_nums
       UiBibz::Ui::Core::Row.new(class: 'grid') do
@@ -83,6 +85,8 @@ module UiBibz::Ui::Ux
         concat bottom_view unless @views[:bottom].nil?
       end.render
     end
+
+  private
 
     def view_by_num c, num, item_class
       UiBibz::Ui::Core::Col.new(c.content, c.options.merge({ num: num }), c.class_and_html_options(['col', item_class])).render

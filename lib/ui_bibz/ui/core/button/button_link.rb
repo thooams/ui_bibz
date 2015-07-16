@@ -50,10 +50,12 @@ module UiBibz::Ui::Core
   #
   class ButtonLink < Component
 
+    # See UiBibz::Ui::Core::Component.initialize
     def initialize content = nil, options = nil, html_options = nil, &block
       super
     end
 
+    # Render html tag
     def render
       link_to glyph_and_content_html, @options[:url], class_and_html_options("btn")
     end

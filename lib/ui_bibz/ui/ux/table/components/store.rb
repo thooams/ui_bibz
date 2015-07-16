@@ -5,6 +5,7 @@ module UiBibz::Ui::Ux
 
     attr_accessor :records
 
+    # Store Use WillPaginate store methods
     def initialize store
       @records = store.records
       @store   = store

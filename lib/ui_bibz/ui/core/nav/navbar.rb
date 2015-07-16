@@ -63,11 +63,13 @@ module UiBibz::Ui::Core
   #
   class Navbar < Component
 
+    # See UiBibz::Ui::Core::Component.initialize
     def initialize content = nil, options = nil, html_options = nil, &block
       super
       @items = []
     end
 
+    # Render html tag
     def render
       content_tag :nav, class_and_html_options(['navbar', type, position]) do
         content_tag :div, class: 'container-fluid' do
@@ -77,15 +79,21 @@ module UiBibz::Ui::Core
       end
     end
 
+    # Add navbar nav items
+    # See UiBibz::Ui::Core::NavbarNav
     def nav content = nil, options = nil, html_options = nil, &block
       options = options || {}
       @items << UiBibz::Ui::Core::NavbarNav.new(content, options, html_options).tap(&block).render
     end
 
+    # Add navbar form items
+    # See UiBibz::Ui::Core::NavbarForm
     def form content = nil, options = nil, html_options = nil, &block
       @items << UiBibz::Ui::Core::NavbarForm.new(content, options, html_options, &block).render
     end
 
+    # Add navbar text items
+    # See UiBibz::Ui::Core::NavbarText
     def text content = nil, options = nil, html_options = nil, &block
       @items << UiBibz::Ui::Core::NavbarText.new(content, options, html_options, &block).render
     end

@@ -92,6 +92,7 @@ module UiBibz::Ui::Ux
 
     attr_accessor :columns
 
+    # See UiBibz::Ui::Core::Component.initialize
     def initialize content = nil, options = nil, html_options = nil, &block
       super
       @store        = @options.delete(:store) if @options[:store]
@@ -99,6 +100,7 @@ module UiBibz::Ui::Ux
       @table        = UiBibz::Ui::Ux::Table.new(table_options, @options[:table_html_options])
     end
 
+    # Render html tag
     def render
       initialize_header
       initialize_footer
@@ -113,10 +115,12 @@ module UiBibz::Ui::Ux
       end
     end
 
+    # Add table columns item
     def columns &block
       @table.columns &block
     end
 
+    # Add table actions item
     def actions &block
       @table.actions &block
     end

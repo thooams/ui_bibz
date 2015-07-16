@@ -40,13 +40,13 @@ module UiBibz::Ui::Core
   class NavbarForm < Component
     include Haml::Helpers
 
+    # See UiBibz::Ui::Core::Component.initialize
     def initialize content, options = nil, html_options = nil, &block
       super
       init_haml_helpers
       if type == :form_for
         @form = form_for(content, &block)
       else
-        ap block
         @form = form_tag(url, class_and_html_options(['navbar-form', position]), &block)
       end
     end

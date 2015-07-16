@@ -52,10 +52,12 @@ module UiBibz::Ui::Core
   #
   class ButtonDropdown < Dropdown
 
+    # See UiBibz::Ui::Core::Component.initialize
     def initialize name, options = nil, html_options = nil, &block
       super
     end
 
+    # Render html tag
     def render
       content_tag :div, class_and_html_options(['btn-group', type]).merge({ role: 'group' }) do
         concat button_html

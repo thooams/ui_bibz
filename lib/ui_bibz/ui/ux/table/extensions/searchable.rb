@@ -6,6 +6,7 @@ module UiBibz::Ui::Ux
       @options = options
     end
 
+    # Render html tag
     def render
       content_tag :div do
         concat content_tag(:div, table_name, class: 'title')

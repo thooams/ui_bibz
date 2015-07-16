@@ -73,11 +73,13 @@ module UiBibz::Ui::Core
       end
     end
 
+    # Add dropdown list
     # See UiBibz::Ui::Core::DropdownList
     def list content = nil, options = nil, html_options = nil, &block
       @items << DropdownList.new(content, options, html_options, &block).render
     end
 
+    # Add dropdown link in list
     # See UiBibz::Ui::Core::DropdownLink
     def link content = nil, options = nil, html_options = nil, &block
       @items << DropdownLink.new(content, options, html_options, &block).render

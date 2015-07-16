@@ -53,15 +53,18 @@ module UiBibz::Ui::Core
   #
   class Breadcrumb < Component
 
+    # See UiBibz::Ui::Core::Component.initialize
     def initialize content = nil, options = nil, html_options = nil, &block
       super
       @links = []
     end
 
+    # Render html tag
     def render
       content_tag :ol, @links.join.html_safe, class_and_html_options("breadcrumb")
     end
 
+    # Add breadcrumb link items
     # See UiBibz::Ui::Core::BreadcrumbLink
     def link content = nil, options = nil, html_options = nil, &block
       @links << BreadcrumbLink.new(content, options, html_options, &block).render

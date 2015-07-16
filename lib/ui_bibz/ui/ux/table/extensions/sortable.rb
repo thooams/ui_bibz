@@ -6,6 +6,7 @@ module UiBibz::Ui::Ux
       @options = options
     end
 
+    # header use i18n
     def header column, name = nil
       @column  = column
       name     = name || @column.name.try('titleize')
