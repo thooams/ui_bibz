@@ -98,13 +98,21 @@ module UiBibz::Ui::Core
       @items << UiBibz::Ui::Core::NavbarText.new(content, options, html_options, &block).render
     end
 
+    def brand content = nil, options = nil, html_options = nil, &block
+      @brand = UiBibz::Ui::Core::Component.new(content, options, html_options, &block)
+    end
+
   private
 
     def header_html
       content_tag :div, class: 'navbar-header' do
         concat navbar_toggle_button_html
-        concat link_to [glyph_with_space, @options[:title]].compact.join.html_safe, '#', class: 'navbar-brand'
+        concat link_to title.content, title.options[:url], title.class_and_html_options('navbar-brand')
       end
+    end
+
+    def title
+      @title ||= @options[:title] ? brand(@options[:title], url: '/') : @brand
     end
 
     def body_html
