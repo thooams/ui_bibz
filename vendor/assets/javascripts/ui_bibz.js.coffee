@@ -1,3 +1,6 @@
+#= require moment
+#= require bootstrap-datetimepicker.min
+
 # For turbolink
 $(document).on 'ready page:load', ->
 
@@ -21,4 +24,7 @@ $(document).on 'ready page:load', ->
 
   $('.table-panel input[type=search]').each ->
     $(this).parent().addClass('has-value') if $(this).val() != ''
+
+  #$('.datapicker').data("DateTimePicker").FUNCTION()
+  $('.datepicker').datetimepicker()
 

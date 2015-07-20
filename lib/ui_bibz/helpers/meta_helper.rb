@@ -24,4 +24,11 @@ module UiBibz::Helpers::MetaHelper
     end
   end
 
+  def ui_bibz_meta_links_ext
+    capture do
+      #concat javascript_include_tag '/vendor/assets/javascripts/moment.js'
+      #concat javascript_include_tag 'boostrap-datetimepicker.js'
+    end
+  end
+
 end
