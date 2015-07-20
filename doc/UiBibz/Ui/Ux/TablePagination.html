@@ -180,7 +180,8 @@ method</p>
 
   
     <span class="summary_desc"><div class='inline'>
-<p>A new instance of TablePagination.</p>
+<p>Initialize pagination with component item pagination require WillPaginate
+gem.</p>
 </div></span>
   
 </li>
@@ -203,7 +204,9 @@ method</p>
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Render html tag with boostrap pagination theme.</p>
+</div></span>
   
 </li>
 
@@ -239,7 +242,8 @@ method</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Returns a new instance of TablePagination</p>
+<p>Initialize pagination with component item pagination require WillPaginate
+gem</p>
 
 
   </div>
@@ -253,12 +257,12 @@ method</p>
       <pre class="lines">
 
 
-30
-31
-32</pre>
+32
+33
+34</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ui_bibz/ui/ux/table/table_pagination.rb', line 30</span>
+      <pre class="code"><span class="info file"># File 'lib/ui_bibz/ui/ux/table/table_pagination.rb', line 32</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_html_options'>html_options</span> <span class='op'>=</span> <span class='kw'>nil</span>
   <span class='ivar'>@pagination</span> <span class='op'>=</span> <span class='const'>UiBibz</span><span class='op'>::</span><span class='const'>Ui</span><span class='op'>::</span><span class='const'>Core</span><span class='op'>::</span><span class='const'>Component</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='comma'>,</span> <span class='id identifier rubyid_html_options'>html_options</span>
@@ -284,18 +288,29 @@ method</p>
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Render html tag with boostrap pagination theme</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-34
-35
-36</pre>
+37
+38
+39</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ui_bibz/ui/ux/table/table_pagination.rb', line 34</span>
+      <pre class="code"><span class="info file"># File 'lib/ui_bibz/ui/ux/table/table_pagination.rb', line 37</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_render'>render</span>
   <span class='id identifier rubyid_will_paginate'>will_paginate</span><span class='lparen'>(</span><span class='id identifier rubyid_store'>store</span><span class='period'>.</span><span class='id identifier rubyid_records'>records</span><span class='comma'>,</span> <span class='label'>params:</span> <span class='lbrace'>{</span> <span class='label'>controller:</span> <span class='id identifier rubyid_store'>store</span><span class='period'>.</span><span class='id identifier rubyid_controller'>controller</span> <span class='rbrace'>}</span><span class='comma'>,</span>  <span class='label'>renderer:</span> <span class='const'>BootstrapPagination</span><span class='op'>::</span><span class='const'>Rails</span><span class='rparen'>)</span>
@@ -310,7 +325,7 @@ method</p>
 </div>
 
     <div id="footer">
-  Generated on Thu Jul 16 12:55:19 2015 by
+  Generated on Thu Jul 16 14:09:03 2015 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7.6 (ruby-1.9.3).
 </div>

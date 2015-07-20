@@ -141,7 +141,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>A new instance of TableSearchField.</p>
+<p>Initialize search_field with component item.</p>
 </div></span>
   
 </li>
@@ -164,7 +164,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Render html tag.</p>
+</div></span>
   
 </li>
 
@@ -199,7 +201,7 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Returns a new instance of TableSearchField</p>
+<p>Initialize search_field with component item</p>
 
 
   </div>
@@ -213,12 +215,12 @@
       <pre class="lines">
 
 
-5
 6
-7</pre>
+7
+8</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ui_bibz/ui/ux/table/table_search_field.rb', line 5</span>
+      <pre class="code"><span class="info file"># File 'lib/ui_bibz/ui/ux/table/table_search_field.rb', line 6</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_html_options'>html_options</span> <span class='op'>=</span> <span class='kw'>nil</span>
   <span class='ivar'>@search_field</span> <span class='op'>=</span> <span class='const'>UiBibz</span><span class='op'>::</span><span class='const'>Ui</span><span class='op'>::</span><span class='const'>Core</span><span class='op'>::</span><span class='const'>Component</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='comma'>,</span> <span class='id identifier rubyid_html_options'>html_options</span>
@@ -244,24 +246,35 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Render html tag</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-9
-10
 11
 12
 13
 14
 15
 16
-17</pre>
+17
+18
+19</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ui_bibz/ui/ux/table/table_search_field.rb', line 9</span>
+      <pre class="code"><span class="info file"># File 'lib/ui_bibz/ui/ux/table/table_search_field.rb', line 11</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_render'>render</span>
   <span class='kw'>if</span> <span class='ivar'>@search_field</span><span class='period'>.</span><span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:wrap_form</span><span class='rbracket'>]</span> <span class='op'>!=</span> <span class='kw'>false</span>
@@ -282,7 +295,7 @@
 </div>
 
     <div id="footer">
-  Generated on Thu Jul 16 12:55:19 2015 by
+  Generated on Thu Jul 16 14:09:04 2015 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7.6 (ruby-1.9.3).
 </div>

@@ -198,7 +198,7 @@ end.render</code></pre>
 
   
     <span class="summary_desc"><div class='inline'>
-<p>A new instance of NavLink.</p>
+<p>See UiBibz::Ui::Core::Component.initialize.</p>
 </div></span>
   
 </li>
@@ -241,7 +241,7 @@ end.render</code></pre>
   
   
   <h3 class="inherited">Methods inherited from <span class='object_link'><a href="Component.html" title="UiBibz::Ui::Core::Component (class)">Component</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="Component.html#add_classes-instance_method" title="UiBibz::Ui::Core::Component#add_classes (method)">#add_classes</a></span>, <span class='object_link'><a href="Component.html#badge_html-instance_method" title="UiBibz::Ui::Core::Component#badge_html (method)">#badge_html</a></span>, <span class='object_link'><a href="Component.html#class_and_html_options-instance_method" title="UiBibz::Ui::Core::Component#class_and_html_options (method)">#class_and_html_options</a></span>, <span class='object_link'><a href="Component.html#glyph-instance_method" title="UiBibz::Ui::Core::Component#glyph (method)">#glyph</a></span>, <span class='object_link'><a href="Component.html#glyph_and_content_html-instance_method" title="UiBibz::Ui::Core::Component#glyph_and_content_html (method)">#glyph_and_content_html</a></span>, <span class='object_link'><a href="Component.html#glyph_with_space-instance_method" title="UiBibz::Ui::Core::Component#glyph_with_space (method)">#glyph_with_space</a></span>, <span class='object_link'><a href="Component.html#options_in_html_options-instance_method" title="UiBibz::Ui::Core::Component#options_in_html_options (method)">#options_in_html_options</a></span>, <span class='object_link'><a href="Component.html#state-instance_method" title="UiBibz::Ui::Core::Component#state (method)">#state</a></span>, <span class='object_link'><a href="Component.html#states-instance_method" title="UiBibz::Ui::Core::Component#states (method)">#states</a></span>, <span class='object_link'><a href="Component.html#status-instance_method" title="UiBibz::Ui::Core::Component#status (method)">#status</a></span></p>
+  <p class="inherited"><span class='object_link'><a href="Component.html#add_classes-instance_method" title="UiBibz::Ui::Core::Component#add_classes (method)">#add_classes</a></span>, <span class='object_link'><a href="Component.html#badge_html-instance_method" title="UiBibz::Ui::Core::Component#badge_html (method)">#badge_html</a></span>, <span class='object_link'><a href="Component.html#class_and_html_options-instance_method" title="UiBibz::Ui::Core::Component#class_and_html_options (method)">#class_and_html_options</a></span>, <span class='object_link'><a href="Component.html#glyph-instance_method" title="UiBibz::Ui::Core::Component#glyph (method)">#glyph</a></span>, <span class='object_link'><a href="Component.html#glyph_and_content_html-instance_method" title="UiBibz::Ui::Core::Component#glyph_and_content_html (method)">#glyph_and_content_html</a></span>, <span class='object_link'><a href="Component.html#glyph_with_space-instance_method" title="UiBibz::Ui::Core::Component#glyph_with_space (method)">#glyph_with_space</a></span>, <span class='object_link'><a href="Component.html#state-instance_method" title="UiBibz::Ui::Core::Component#state (method)">#state</a></span></p>
 
   
   
@@ -269,7 +269,7 @@ end.render</code></pre>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Returns a new instance of NavLink</p>
+<p>See UiBibz::Ui::Core::Component.initialize</p>
 
 
   </div>
@@ -283,12 +283,12 @@ end.render</code></pre>
       <pre class="lines">
 
 
-40
 41
-42</pre>
+42
+43</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ui_bibz/ui/core/nav/components/nav_link.rb', line 40</span>
+      <pre class="code"><span class="info file"># File 'lib/ui_bibz/ui/core/nav/components/nav_link.rb', line 41</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span> <span class='id identifier rubyid_content'>content</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_html_options'>html_options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span>
   <span class='kw'>super</span>
@@ -331,12 +331,12 @@ end.render</code></pre>
       <pre class="lines">
 
 
-45
 46
-47</pre>
+47
+48</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ui_bibz/ui/core/nav/components/nav_link.rb', line 45</span>
+      <pre class="code"><span class="info file"># File 'lib/ui_bibz/ui/core/nav/components/nav_link.rb', line 46</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_render'>render</span>
   <span class='id identifier rubyid_content_tag'>content_tag</span> <span class='symbol'>:li</span><span class='comma'>,</span> <span class='id identifier rubyid_content_htm'>content_htm</span><span class='comma'>,</span> <span class='id identifier rubyid_class_and_html_options'>class_and_html_options</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='lbrace'>{</span> <span class='label'>role:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>presentation</span><span class='tstring_end'>'</span></span> <span class='rbrace'>}</span><span class='rparen'>)</span>
@@ -351,7 +351,7 @@ end.render</code></pre>
 </div>
 
     <div id="footer">
-  Generated on Thu Jul 16 12:55:20 2015 by
+  Generated on Thu Jul 16 14:09:04 2015 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7.6 (ruby-1.9.3).
 </div>

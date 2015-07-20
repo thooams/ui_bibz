@@ -26,19 +26,19 @@ module UiBibz::Ui::Core
   # ==== Signatures
   #
   #   UiBibz::Ui::Core::ButtonDropdown.new(options = nil, html_options = nil).tap do |d|
+  #     ...
   #     d.list content = nil, options = nil, html_options = nil, &block
-  #     d.list content = nil, options = nil, html_options = nil, &block
-  #     d.list content = nil, options = nil, html_options = nil, &block
+  #     d.link content = nil, options = nil, html_options = nil, &block
   #     ...
   #   end
   #
   # ==== Examples
   #
   #   UiBibz::Ui::Core::ButtonDropdown.new(name, state: :success).tap do |d|
-  #     d.list link_to('test', '#')
+  #     d.link 'test', { url: '#Test1' }
   #     d.list('---')
   #     d.list('Header 1', { type: :header })
-  #     d.list link_to('test2', '#')
+  #     d.link 'test2', { url: '#Test2' }
   #   end.render
   #
   # ==== Helper
