@@ -12,7 +12,7 @@ module UiBibz::Helpers::MetaHelper
   def ui_bibz_meta_links
     capture do
       # Latest compiled and minified CSS
-      concat stylesheet_link_tag "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"
+      concat stylesheet_link_tag "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css", title: 'Default'
       # font awesome icons
       concat stylesheet_link_tag "https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"
       # Optional theme

@@ -38,10 +38,10 @@ module UiBibz::Ui::Core
   # ==== Examples
   #
   #   UiBibz::Ui::Core::Dropdown.new(name, state: :success).tap do |d|
-  #     d.link 'test', '#'
-  #     d.list('---')
-  #     d.list('Header 1', { type: :header })
-  #     d.list 'test2', '#'
+  #     d.link 'test', { url: '#' }
+  #     d.list '---'
+  #     d.list 'Header 1', { type: :header }
+  #     d.link 'test2', { url: '#' }
   #   end.render
   #
   # ==== Helper
