@@ -276,7 +276,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>A new instance of Store.</p>
+<p>Store Use WillPaginate store methods.</p>
 </div></span>
   
 </li>
@@ -476,7 +476,7 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Returns a new instance of Store</p>
+<p>Store Use WillPaginate store methods</p>
 
 
   </div>
@@ -490,14 +490,14 @@
       <pre class="lines">
 
 
-8
 9
 10
 11
-12</pre>
+12
+13</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ui_bibz/ui/ux/table/components/store.rb', line 8</span>
+      <pre class="code"><span class="info file"># File 'lib/ui_bibz/ui/ux/table/components/store.rb', line 9</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span> <span class='id identifier rubyid_store'>store</span>
   <span class='ivar'>@records</span> <span class='op'>=</span> <span class='id identifier rubyid_store'>store</span><span class='period'>.</span><span class='id identifier rubyid_records'>records</span>
@@ -579,12 +579,12 @@
       <pre class="lines">
 
 
-62
 63
-64</pre>
+64
+65</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ui_bibz/ui/ux/table/components/store.rb', line 62</span>
+      <pre class="code"><span class="info file"># File 'lib/ui_bibz/ui/ux/table/components/store.rb', line 63</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_action'>action</span>
   <span class='ivar'>@store</span><span class='period'>.</span><span class='id identifier rubyid_action'>action</span>
@@ -609,12 +609,12 @@
       <pre class="lines">
 
 
-46
 47
-48</pre>
+48
+49</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ui_bibz/ui/ux/table/components/store.rb', line 46</span>
+      <pre class="code"><span class="info file"># File 'lib/ui_bibz/ui/ux/table/components/store.rb', line 47</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_columns'>columns</span>
   <span class='ivar'>@columns</span> <span class='op'>||=</span> <span class='const'>Columns</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='id identifier rubyid_model'>model</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='period'>.</span><span class='id identifier rubyid_attributes'>attributes</span><span class='period'>.</span><span class='id identifier rubyid_keys'>keys</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span><span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_record'>record</span><span class='op'>|</span> <span class='const'>Column</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_record'>record</span><span class='period'>.</span><span class='id identifier rubyid_humanize'>humanize</span><span class='comma'>,</span> <span class='lbrace'>{</span> <span class='label'>data_index:</span> <span class='id identifier rubyid_record'>record</span> <span class='rbrace'>}</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
@@ -639,12 +639,12 @@
       <pre class="lines">
 
 
-58
 59
-60</pre>
+60
+61</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ui_bibz/ui/ux/table/components/store.rb', line 58</span>
+      <pre class="code"><span class="info file"># File 'lib/ui_bibz/ui/ux/table/components/store.rb', line 59</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_controller'>controller</span>
   <span class='ivar'>@store</span><span class='period'>.</span><span class='id identifier rubyid_controller'>controller</span>
@@ -669,12 +669,12 @@
       <pre class="lines">
 
 
-38
 39
-40</pre>
+40
+41</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ui_bibz/ui/ux/table/components/store.rb', line 38</span>
+      <pre class="code"><span class="info file"># File 'lib/ui_bibz/ui/ux/table/components/store.rb', line 39</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_current_page'>current_page</span>
   <span class='ivar'>@records</span><span class='period'>.</span><span class='id identifier rubyid_current_page'>current_page</span>
@@ -699,12 +699,12 @@
       <pre class="lines">
 
 
-30
 31
-32</pre>
+32
+33</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ui_bibz/ui/ux/table/components/store.rb', line 30</span>
+      <pre class="code"><span class="info file"># File 'lib/ui_bibz/ui/ux/table/components/store.rb', line 31</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_direction'>direction</span>
   <span class='ivar'>@store</span><span class='period'>.</span><span class='id identifier rubyid_direction'>direction</span>
@@ -729,12 +729,12 @@
       <pre class="lines">
 
 
-42
 43
-44</pre>
+44
+45</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ui_bibz/ui/ux/table/components/store.rb', line 42</span>
+      <pre class="code"><span class="info file"># File 'lib/ui_bibz/ui/ux/table/components/store.rb', line 43</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_limit_value'>limit_value</span>
   <span class='ivar'>@records</span><span class='period'>.</span><span class='id identifier rubyid_limit_value'>limit_value</span>
@@ -759,12 +759,12 @@
       <pre class="lines">
 
 
-50
 51
-52</pre>
+52
+53</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ui_bibz/ui/ux/table/components/store.rb', line 50</span>
+      <pre class="code"><span class="info file"># File 'lib/ui_bibz/ui/ux/table/components/store.rb', line 51</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_model'>model</span>
   <span class='ivar'>@model</span>
@@ -789,12 +789,12 @@
       <pre class="lines">
 
 
-18
 19
-20</pre>
+20
+21</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ui_bibz/ui/ux/table/components/store.rb', line 18</span>
+      <pre class="code"><span class="info file"># File 'lib/ui_bibz/ui/ux/table/components/store.rb', line 19</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_per_page'>per_page</span>
   <span class='ivar'>@records</span><span class='period'>.</span><span class='id identifier rubyid_per_page'>per_page</span>
@@ -819,12 +819,12 @@
       <pre class="lines">
 
 
-54
 55
-56</pre>
+56
+57</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ui_bibz/ui/ux/table/components/store.rb', line 54</span>
+      <pre class="code"><span class="info file"># File 'lib/ui_bibz/ui/ux/table/components/store.rb', line 55</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_search'>search</span>
   <span class='ivar'>@store</span><span class='period'>.</span><span class='id identifier rubyid_search'>search</span>
@@ -849,12 +849,12 @@
       <pre class="lines">
 
 
-34
 35
-36</pre>
+36
+37</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ui_bibz/ui/ux/table/components/store.rb', line 34</span>
+      <pre class="code"><span class="info file"># File 'lib/ui_bibz/ui/ux/table/components/store.rb', line 35</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_searchable_attributes'>searchable_attributes</span>
   <span class='ivar'>@store</span><span class='period'>.</span><span class='id identifier rubyid_searchable_attributes'>searchable_attributes</span>
@@ -879,12 +879,12 @@
       <pre class="lines">
 
 
-26
 27
-28</pre>
+28
+29</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ui_bibz/ui/ux/table/components/store.rb', line 26</span>
+      <pre class="code"><span class="info file"># File 'lib/ui_bibz/ui/ux/table/components/store.rb', line 27</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_sort'>sort</span>
   <span class='ivar'>@store</span><span class='period'>.</span><span class='id identifier rubyid_sort'>sort</span>
@@ -909,12 +909,12 @@
       <pre class="lines">
 
 
-22
 23
-24</pre>
+24
+25</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ui_bibz/ui/ux/table/components/store.rb', line 22</span>
+      <pre class="code"><span class="info file"># File 'lib/ui_bibz/ui/ux/table/components/store.rb', line 23</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_total_entries'>total_entries</span>
   <span class='ivar'>@records</span><span class='period'>.</span><span class='id identifier rubyid_total_entries'>total_entries</span>
@@ -939,12 +939,12 @@
       <pre class="lines">
 
 
-14
 15
-16</pre>
+16
+17</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ui_bibz/ui/ux/table/components/store.rb', line 14</span>
+      <pre class="code"><span class="info file"># File 'lib/ui_bibz/ui/ux/table/components/store.rb', line 15</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_total_pages'>total_pages</span>
   <span class='ivar'>@records</span><span class='period'>.</span><span class='id identifier rubyid_total_pages'>total_pages</span>
@@ -959,7 +959,7 @@
 </div>
 
     <div id="footer">
-  Generated on Thu Jul 16 12:55:19 2015 by
+  Generated on Thu Jul 16 14:09:03 2015 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7.6 (ruby-1.9.3).
 </div>

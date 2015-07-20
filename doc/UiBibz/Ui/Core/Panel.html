@@ -240,7 +240,7 @@ arguments in options attribute:</p>
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Body is a component element.</p>
+<p>Add Body which is a component.</p>
 </div></span>
   
 </li>
@@ -286,7 +286,7 @@ arguments in options attribute:</p>
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Footer is a component element.</p>
+<p>Add Footer which is a component.</p>
 </div></span>
   
 </li>
@@ -332,7 +332,7 @@ arguments in options attribute:</p>
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Header is a component element.</p>
+<p>Add Header which is a component.</p>
 </div></span>
   
 </li>
@@ -380,7 +380,7 @@ arguments in options attribute:</p>
 
   
     <span class="summary_desc"><div class='inline'>
-<p>A new instance of Panel.</p>
+<p>See UiBibz::Ui::Core::Component.initialize.</p>
 </div></span>
   
 </li>
@@ -403,12 +403,14 @@ arguments in options attribute:</p>
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Render html tag.</p>
+</div></span>
   
 </li>
 
       
-        <li class="public ">
+        <li class="protected ">
   <span class="summary_signature">
     
       <a href="#state-instance_method" title="#state (instance method)">- (Object) <strong>state</strong> </a>
@@ -419,7 +421,7 @@ arguments in options attribute:</p>
   
   
   
-  
+  <span class="note title protected">protected</span>
   
   
   
@@ -443,7 +445,7 @@ arguments in options attribute:</p>
   
   
   <h3 class="inherited">Methods inherited from <span class='object_link'><a href="Component.html" title="UiBibz::Ui::Core::Component (class)">Component</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="Component.html#add_classes-instance_method" title="UiBibz::Ui::Core::Component#add_classes (method)">#add_classes</a></span>, <span class='object_link'><a href="Component.html#badge_html-instance_method" title="UiBibz::Ui::Core::Component#badge_html (method)">#badge_html</a></span>, <span class='object_link'><a href="Component.html#class_and_html_options-instance_method" title="UiBibz::Ui::Core::Component#class_and_html_options (method)">#class_and_html_options</a></span>, <span class='object_link'><a href="Component.html#glyph-instance_method" title="UiBibz::Ui::Core::Component#glyph (method)">#glyph</a></span>, <span class='object_link'><a href="Component.html#glyph_and_content_html-instance_method" title="UiBibz::Ui::Core::Component#glyph_and_content_html (method)">#glyph_and_content_html</a></span>, <span class='object_link'><a href="Component.html#glyph_with_space-instance_method" title="UiBibz::Ui::Core::Component#glyph_with_space (method)">#glyph_with_space</a></span>, <span class='object_link'><a href="Component.html#options_in_html_options-instance_method" title="UiBibz::Ui::Core::Component#options_in_html_options (method)">#options_in_html_options</a></span>, <span class='object_link'><a href="Component.html#states-instance_method" title="UiBibz::Ui::Core::Component#states (method)">#states</a></span>, <span class='object_link'><a href="Component.html#status-instance_method" title="UiBibz::Ui::Core::Component#status (method)">#status</a></span></p>
+  <p class="inherited"><span class='object_link'><a href="Component.html#add_classes-instance_method" title="UiBibz::Ui::Core::Component#add_classes (method)">#add_classes</a></span>, <span class='object_link'><a href="Component.html#badge_html-instance_method" title="UiBibz::Ui::Core::Component#badge_html (method)">#badge_html</a></span>, <span class='object_link'><a href="Component.html#class_and_html_options-instance_method" title="UiBibz::Ui::Core::Component#class_and_html_options (method)">#class_and_html_options</a></span>, <span class='object_link'><a href="Component.html#glyph-instance_method" title="UiBibz::Ui::Core::Component#glyph (method)">#glyph</a></span>, <span class='object_link'><a href="Component.html#glyph_and_content_html-instance_method" title="UiBibz::Ui::Core::Component#glyph_and_content_html (method)">#glyph_and_content_html</a></span>, <span class='object_link'><a href="Component.html#glyph_with_space-instance_method" title="UiBibz::Ui::Core::Component#glyph_with_space (method)">#glyph_with_space</a></span></p>
 
   
   
@@ -471,7 +473,7 @@ arguments in options attribute:</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Returns a new instance of Panel</p>
+<p>See UiBibz::Ui::Core::Component.initialize</p>
 
 
   </div>
@@ -485,12 +487,12 @@ arguments in options attribute:</p>
       <pre class="lines">
 
 
-81
 82
-83</pre>
+83
+84</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ui_bibz/ui/core/panel.rb', line 81</span>
+      <pre class="code"><span class="info file"># File 'lib/ui_bibz/ui/core/panel.rb', line 82</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span> <span class='id identifier rubyid_content'>content</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_html_options'>html_options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span>
   <span class='kw'>super</span>
@@ -519,7 +521,7 @@ arguments in options attribute:</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Body is a component element</p>
+<p>Add Body which is a component</p>
 
 
   </div>
@@ -533,12 +535,12 @@ arguments in options attribute:</p>
       <pre class="lines">
 
 
-91
 92
-93</pre>
+93
+94</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ui_bibz/ui/core/panel.rb', line 91</span>
+      <pre class="code"><span class="info file"># File 'lib/ui_bibz/ui/core/panel.rb', line 92</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_body'>body</span> <span class='id identifier rubyid_content'>content</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_html_options'>html_options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span>
   <span class='ivar'>@body</span> <span class='op'>=</span> <span class='const'>Component</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='id identifier rubyid_content'>content</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='comma'>,</span> <span class='id identifier rubyid_html_options'>html_options</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span>
@@ -563,13 +565,13 @@ arguments in options attribute:</p>
       <pre class="lines">
 
 
-119
-120
 121
-122</pre>
+122
+123
+124</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ui_bibz/ui/core/panel.rb', line 119</span>
+      <pre class="code"><span class="info file"># File 'lib/ui_bibz/ui/core/panel.rb', line 121</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_body_html'>body_html</span>
   <span class='ivar'>@body</span> <span class='op'>=</span> <span class='const'>Component</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='ivar'>@content</span> <span class='kw'>unless</span> <span class='ivar'>@content</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
@@ -592,7 +594,7 @@ arguments in options attribute:</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Footer is a component element</p>
+<p>Add Footer which is a component</p>
 
 
   </div>
@@ -606,12 +608,12 @@ arguments in options attribute:</p>
       <pre class="lines">
 
 
-96
 97
-98</pre>
+98
+99</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ui_bibz/ui/core/panel.rb', line 96</span>
+      <pre class="code"><span class="info file"># File 'lib/ui_bibz/ui/core/panel.rb', line 97</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_footer'>footer</span> <span class='id identifier rubyid_content'>content</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_html_options'>html_options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span>
   <span class='ivar'>@footer</span> <span class='op'>=</span> <span class='const'>Component</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='id identifier rubyid_content'>content</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='comma'>,</span> <span class='id identifier rubyid_html_options'>html_options</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span>
@@ -636,12 +638,12 @@ arguments in options attribute:</p>
       <pre class="lines">
 
 
-124
-125
-126</pre>
+126
+127
+128</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ui_bibz/ui/core/panel.rb', line 124</span>
+      <pre class="code"><span class="info file"># File 'lib/ui_bibz/ui/core/panel.rb', line 126</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_footer_html'>footer_html</span>
   <span class='id identifier rubyid_content_tag'>content_tag</span> <span class='symbol'>:div</span><span class='comma'>,</span> <span class='ivar'>@footer</span><span class='period'>.</span><span class='id identifier rubyid_render'>render</span><span class='comma'>,</span> <span class='ivar'>@footer</span><span class='period'>.</span><span class='id identifier rubyid_class_and_html_options'>class_and_html_options</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>panel-footer</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
@@ -663,7 +665,7 @@ arguments in options attribute:</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Header is a component element</p>
+<p>Add Header which is a component</p>
 
 
   </div>
@@ -677,12 +679,12 @@ arguments in options attribute:</p>
       <pre class="lines">
 
 
-86
 87
-88</pre>
+88
+89</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ui_bibz/ui/core/panel.rb', line 86</span>
+      <pre class="code"><span class="info file"># File 'lib/ui_bibz/ui/core/panel.rb', line 87</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_header'>header</span> <span class='id identifier rubyid_content'>content</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_html_options'>html_options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span>
   <span class='ivar'>@header</span> <span class='op'>=</span> <span class='const'>Component</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='id identifier rubyid_content'>content</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='comma'>,</span> <span class='id identifier rubyid_html_options'>html_options</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span>
@@ -707,12 +709,12 @@ arguments in options attribute:</p>
       <pre class="lines">
 
 
-115
-116
-117</pre>
+117
+118
+119</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ui_bibz/ui/core/panel.rb', line 115</span>
+      <pre class="code"><span class="info file"># File 'lib/ui_bibz/ui/core/panel.rb', line 117</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_header_html'>header_html</span>
   <span class='id identifier rubyid_content_tag'>content_tag</span> <span class='symbol'>:div</span><span class='comma'>,</span> <span class='ivar'>@header</span><span class='period'>.</span><span class='id identifier rubyid_render'>render</span><span class='comma'>,</span> <span class='ivar'>@header</span><span class='period'>.</span><span class='id identifier rubyid_class_and_html_options'>class_and_html_options</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>panel-heading</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
@@ -731,22 +733,33 @@ arguments in options attribute:</p>
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Render html tag</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-100
-101
 102
 103
 104
 105
-106</pre>
+106
+107
+108</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ui_bibz/ui/core/panel.rb', line 100</span>
+      <pre class="code"><span class="info file"># File 'lib/ui_bibz/ui/core/panel.rb', line 102</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_render'>render</span>
   <span class='id identifier rubyid_content_tag'>content_tag</span> <span class='symbol'>:div</span><span class='comma'>,</span> <span class='id identifier rubyid_class_and_html_options'>class_and_html_options</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>panel</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='kw'>do</span>
@@ -763,7 +776,7 @@ arguments in options attribute:</p>
       <div class="method_details ">
   <h3 class="signature " id="state-instance_method">
   
-    - (<tt>Object</tt>) <strong>state</strong> 
+    - (<tt>Object</tt>) <strong>state</strong>  <span class="extras">(protected)</span>
   
 
   
@@ -775,13 +788,13 @@ arguments in options attribute:</p>
       <pre class="lines">
 
 
-108
-109
-110
-111</pre>
+112
+113
+114
+115</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ui_bibz/ui/core/panel.rb', line 108</span>
+      <pre class="code"><span class="info file"># File 'lib/ui_bibz/ui/core/panel.rb', line 112</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_state'>state</span>
   <span class='id identifier rubyid_sym'>sym</span> <span class='op'>=</span> <span class='ivar'>@options</span><span class='lbracket'>[</span><span class='symbol'>:state</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='symbol'>:default</span>
@@ -797,7 +810,7 @@ arguments in options attribute:</p>
 </div>
 
     <div id="footer">
-  Generated on Thu Jul 16 12:55:18 2015 by
+  Generated on Thu Jul 16 14:09:02 2015 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7.6 (ruby-1.9.3).
 </div>

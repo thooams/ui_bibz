@@ -17,6 +17,8 @@ module UiBibz::Ui::Core
   # You can pass arguments in options attribute:
   #
   #   http://api.rubyonrails.org/classes/ActionView/Helpers/FormHelper.html#method-i-form_for
+  #   # and
+  #   http://api.rubyonrails.org/classes/ActionView/Helpers/FormTagHelper.html#method-i-form_tag
   #
   # ==== Signatures
   #

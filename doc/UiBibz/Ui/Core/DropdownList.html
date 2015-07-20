@@ -220,7 +220,7 @@ UiBibz::Ui::CoreBibz::DropdownList.new('---').render # To add a separator</code>
 
   
     <span class="summary_desc"><div class='inline'>
-<p>A new instance of DropdownList.</p>
+<p>See UiBibz::Ui::Core::Component.initialize.</p>
 </div></span>
   
 </li>
@@ -243,7 +243,9 @@ UiBibz::Ui::CoreBibz::DropdownList.new('---').render # To add a separator</code>
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Render html tag.</p>
+</div></span>
   
 </li>
 
@@ -261,7 +263,7 @@ UiBibz::Ui::CoreBibz::DropdownList.new('---').render # To add a separator</code>
   
   
   <h3 class="inherited">Methods inherited from <span class='object_link'><a href="Component.html" title="UiBibz::Ui::Core::Component (class)">Component</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="Component.html#add_classes-instance_method" title="UiBibz::Ui::Core::Component#add_classes (method)">#add_classes</a></span>, <span class='object_link'><a href="Component.html#badge_html-instance_method" title="UiBibz::Ui::Core::Component#badge_html (method)">#badge_html</a></span>, <span class='object_link'><a href="Component.html#class_and_html_options-instance_method" title="UiBibz::Ui::Core::Component#class_and_html_options (method)">#class_and_html_options</a></span>, <span class='object_link'><a href="Component.html#glyph-instance_method" title="UiBibz::Ui::Core::Component#glyph (method)">#glyph</a></span>, <span class='object_link'><a href="Component.html#glyph_and_content_html-instance_method" title="UiBibz::Ui::Core::Component#glyph_and_content_html (method)">#glyph_and_content_html</a></span>, <span class='object_link'><a href="Component.html#glyph_with_space-instance_method" title="UiBibz::Ui::Core::Component#glyph_with_space (method)">#glyph_with_space</a></span>, <span class='object_link'><a href="Component.html#options_in_html_options-instance_method" title="UiBibz::Ui::Core::Component#options_in_html_options (method)">#options_in_html_options</a></span>, <span class='object_link'><a href="Component.html#state-instance_method" title="UiBibz::Ui::Core::Component#state (method)">#state</a></span>, <span class='object_link'><a href="Component.html#states-instance_method" title="UiBibz::Ui::Core::Component#states (method)">#states</a></span>, <span class='object_link'><a href="Component.html#status-instance_method" title="UiBibz::Ui::Core::Component#status (method)">#status</a></span></p>
+  <p class="inherited"><span class='object_link'><a href="Component.html#add_classes-instance_method" title="UiBibz::Ui::Core::Component#add_classes (method)">#add_classes</a></span>, <span class='object_link'><a href="Component.html#badge_html-instance_method" title="UiBibz::Ui::Core::Component#badge_html (method)">#badge_html</a></span>, <span class='object_link'><a href="Component.html#class_and_html_options-instance_method" title="UiBibz::Ui::Core::Component#class_and_html_options (method)">#class_and_html_options</a></span>, <span class='object_link'><a href="Component.html#glyph-instance_method" title="UiBibz::Ui::Core::Component#glyph (method)">#glyph</a></span>, <span class='object_link'><a href="Component.html#glyph_and_content_html-instance_method" title="UiBibz::Ui::Core::Component#glyph_and_content_html (method)">#glyph_and_content_html</a></span>, <span class='object_link'><a href="Component.html#glyph_with_space-instance_method" title="UiBibz::Ui::Core::Component#glyph_with_space (method)">#glyph_with_space</a></span>, <span class='object_link'><a href="Component.html#state-instance_method" title="UiBibz::Ui::Core::Component#state (method)">#state</a></span></p>
 
   
   
@@ -289,7 +291,7 @@ UiBibz::Ui::CoreBibz::DropdownList.new('---').render # To add a separator</code>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Returns a new instance of DropdownList</p>
+<p>See UiBibz::Ui::Core::Component.initialize</p>
 
 
   </div>
@@ -303,12 +305,12 @@ UiBibz::Ui::CoreBibz::DropdownList.new('---').render # To add a separator</code>
       <pre class="lines">
 
 
-48
 49
-50</pre>
+50
+51</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ui_bibz/ui/core/dropdown/components/dropdown_list.rb', line 48</span>
+      <pre class="code"><span class="info file"># File 'lib/ui_bibz/ui/core/dropdown/components/dropdown_list.rb', line 49</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span> <span class='id identifier rubyid_content'>content</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_html_options'>html_options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span>
   <span class='kw'>super</span>
@@ -334,18 +336,29 @@ UiBibz::Ui::CoreBibz::DropdownList.new('---').render # To add a separator</code>
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Render html tag</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-52
-53
-54</pre>
+54
+55
+56</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ui_bibz/ui/core/dropdown/components/dropdown_list.rb', line 52</span>
+      <pre class="code"><span class="info file"># File 'lib/ui_bibz/ui/core/dropdown/components/dropdown_list.rb', line 54</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_render'>render</span>
   <span class='ivar'>@content</span> <span class='op'>==</span> <span class='const'>DIVIDER</span> <span class='op'>?</span> <span class='id identifier rubyid_divider_html'>divider_html</span> <span class='op'>:</span> <span class='id identifier rubyid_link_html'>link_html</span>
@@ -360,7 +373,7 @@ UiBibz::Ui::CoreBibz::DropdownList.new('---').render # To add a separator</code>
 </div>
 
     <div id="footer">
-  Generated on Thu Jul 16 12:55:20 2015 by
+  Generated on Thu Jul 16 14:09:05 2015 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7.6 (ruby-1.9.3).
 </div>
