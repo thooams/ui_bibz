@@ -1,4 +1,5 @@
 #= require bootstrap-datepicker.min
+#= require bootstrap-select.min
 
 # For turbolink
 $(document).on 'ready page:load', ->
@@ -24,5 +25,6 @@ $(document).on 'ready page:load', ->
   $('.table-panel input[type=search]').each ->
     $(this).parent().addClass('has-value') if $(this).val() != ''
 
- $('.datepicker').datepicker()
+ #$('.datepicker').datepicker()
+ $('.selectpicker').selectpicker()
 
