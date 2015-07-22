@@ -17,6 +17,8 @@ module UiBibz::Ui::Core
   # * +name+ - String
   # * +size+ - Integer
   # * +type+ - Symbol
+  # * +state+ - Symbol
+  #   (+:default+, +:primary+, +:info+, +:warning+, +:danger+)
   #
   # ==== Signatures
   #
@@ -98,6 +100,10 @@ module UiBibz::Ui::Core
 
     def content
       @options[:name] || @content
+    end
+
+    def state
+      "glyph-#{ @options[:state] }" unless @options[:state].nil?
     end
 
   end
