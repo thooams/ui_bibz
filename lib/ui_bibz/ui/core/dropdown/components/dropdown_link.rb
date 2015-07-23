@@ -21,6 +21,7 @@ module UiBibz::Ui::Core
   #   * +name+ - String
   #   * +size+ - Integer
   #   * +type+ - Symbol
+  # * +link_html_options+ - Hash
   #
   # ==== Signatures
   #
@@ -32,7 +33,7 @@ module UiBibz::Ui::Core
   #
   # ==== Examples
   #
-  #   UiBibz::Ui::Core::DropdownLink.new('Home', { glyph: 'home', status: :active, url: '#home' },{ class: 'test' }).render
+  #   UiBibz::Ui::Core::DropdownLink.new('Home', { glyph: 'home', status: :active, url: '#home', link_html_options: { class: 'link1' }},{ class: 'test' }).render
   #
   #   UiBibz::Ui::Core::DropdownLink.new({ glyph: { name: 'eye', size: 3 }, url: '#home' }, { class: 'test' }) do
   #     'Home'
@@ -47,8 +48,8 @@ module UiBibz::Ui::Core
 
     # Render html tag
     def render
-      content_tag :li, { role: 'presentation' } do
-        link_to glyph_and_content_html, @options[:url], @html_options
+      content_tag :li, @html_options.merge({ role: 'presentation' }) do
+        link_to glyph_and_content_html, @options[:url], @options[:link_html_options]
       end
     end
 
