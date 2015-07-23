@@ -18,6 +18,7 @@ module UiBibz::Ui::Core
   #   (+:active+)
   # * +url+ - String
   # * +badge+ - String
+  # * +link_html_options+ - Hash
   #
   # ==== Signatures
   #
@@ -29,7 +30,7 @@ module UiBibz::Ui::Core
   #
   # ==== Examples
   #
-  #   UiBibz::Ui::Core::NavLink.new(content, { badge: 15, url: '/', status: :active },{ class: 'test' }).render
+  #   UiBibz::Ui::Core::NavLink.new(content, { badge: 15, url: '/', status: :active, link_html_options: { class: 'link1' }},{ class: 'test' }).render
   #
   #   UiBibz::Ui::Core::NavLink.new({glyph: { name: 'eye', size: 3 }, { class: 'test' }) do
   #     'Home'
