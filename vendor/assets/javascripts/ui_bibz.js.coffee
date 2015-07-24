@@ -25,6 +25,5 @@ $(document).on 'ready page:load', ->
   $('.table-panel input[type=search]').each ->
     $(this).parent().addClass('has-value') if $(this).val() != ''
 
- #$('.datepicker').datepicker()
- $('.selectpicker').selectpicker()
+  $('.selectpicker').selectpicker()
 

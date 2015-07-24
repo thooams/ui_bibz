@@ -48,7 +48,13 @@ module UiBibz::Ui::Ux
     end
 
     def actions_links record
-      @actions.list.compact.map{ |l| inject_url(l, record) }
+      @actions.list.compact.map do |l|
+        if @actions.format_action.nil?
+          inject_url(l, record)
+        else
+          @actions.format_action.call(record)
+        end
+      end
     end
 
     def td_action record
