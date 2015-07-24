@@ -12,9 +12,17 @@ module UiBibz::Ui::Ux
       @actions << TableAction.new(content, options, html_options, &block).render
     end
 
+    def format &block
+      @format_action = block
+    end
+
     # Get all actions
     def list
       @actions.empty? ? defaults_actions : @actions
+    end
+
+    def format_action
+      @format_action
     end
 
   private
