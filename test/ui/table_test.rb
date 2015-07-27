@@ -161,10 +161,10 @@ class TableTest < ActionView::TestCase
         'Test body'
       end
       pane.columns do |c|
-        c.column('#', { data_index: 'id' })
-        c.column('Name fr', { data_index: 'name_fr', link: edit_user_path(:id), order: 2 })
-        c.column('Name en', { data_index: 'name_en', order: 1 })
-        c.column('Name en', { data_index: 'name_en', format: lambda{ |records, record| "name #{ record.id}"}})
+        c.column(:id, { name: '#' })
+        c.column(:name_fr, { name: 'Name fr', link: edit_user_path(:id), order: 2 })
+        c.column(:name_en, { name: 'Name en', order: 1 })
+        c.column(:name_en, { name: 'Name en', format: lambda{ |records, record| "name #{ record.id}"}})
       end
       pane.actions do |a|
         a.action 'toto', url: users_path(:id), glyph: 'eye'
