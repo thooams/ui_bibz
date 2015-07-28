@@ -39,17 +39,18 @@ module UiBibz::Ui::Core
   #     submit_tag 'Submit'
   #   end.render
   #
-  class NavbarForm < Component
+  class NavbarForm < UiBibz::Ui::Base
     include Haml::Helpers
+    include ActionView::Helpers#::FormHelper
 
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize content, options = nil, html_options = nil, &block
-      super
+    def initialize model_or_url, options = {}, &block
       init_haml_helpers
+      @options = options
       if type == :form_for
-        @form = form_for(content, &block)
+        @form = form_for(model_or_url, options, &block)
       else
-        @form = form_tag(url, class_and_html_options(['navbar-form', position]), &block)
+        @form = form_tag(model_or_url, class: "navbar-form #{ position }", &block)
       end
     end
 
