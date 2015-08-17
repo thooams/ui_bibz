@@ -35,7 +35,7 @@ module UiBibz::Ui::Ux
   #
   #   UiBibz::Ui::Ux::Table.new(store: @store, tap: true) do |t|
   #     t.columns do |c|
-  #       c.column name: '#', data_index: '#'
+  #       c.column :id, name: '#'
   #     end
   #     t.actions do |a|
   #       a.action '', url: url, glyph: ''
@@ -48,10 +48,10 @@ module UiBibz::Ui::Ux
   #
   #   UiBibz::Ui::Ux::Table.new(store: @users).tap do |t|
   #     t.columns do |c|
-  #       c.column '#', { data_index: 'id' }
-  #       c.column 'Name fr', { data_index: 'name_fr', link: edit_user_path(:id), order: 2 }
-  #       c.column 'Name en', { data_index: 'name_en', order: 1 }
-  #       c.column 'Name en', { data_index: 'name_en', format: lambda{ |records, record| "name #{ record.id}"} }
+  #       c.column :id, { name: '#' }
+  #       c.column :name_fr', { link: edit_user_path(:id), order: 2 }
+  #       c.column :name_en'
+  #       c.column :status_id, { name: 'Status', format: lambda{ |records, record| "Test #{ record.id}"} }
   #     end
   #     t.actions do |a|
   #       a.action 'toto', url: users_path(:id), glyph: 'eye'
