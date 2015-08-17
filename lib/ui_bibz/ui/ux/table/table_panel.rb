@@ -40,10 +40,10 @@ module UiBibz::Ui::Ux
   #   UiBibz::Ui::Ux::TablePanel.new(store: @users).tap do |t|
   #     t.header 'My Table panel'
   #     t.columns do |c|
-  #       c.column '#', { data_index: 'id' }, { class: 'column-id' }
-  #       c.column 'Name fr', { data_index: 'name_fr', link: edit_user_path(:id), order: 2 }
-  #       c.column 'Name en', { data_index: 'name_en', order: 1 }
-  #       c.column 'Name en', { data_index: 'name_en', format: lambda{ |records, record| "name #{ record.id}"} }
+  #       c.column :id, { name: '# }, { class: 'column-id' }
+  #       c.column :name_fr, { name: 'Name FR', link: edit_user_path(:id), order: 2 }
+  #       c.column :name_en
+  #       c.column :status_id, { name: 'Status', format: lambda{ |records, record| "Test #{ record.id}"} }
   #     end
   #     t.actions do |a|
   #       a.action 'toto', url: users_path(:id), glyph: 'eye'

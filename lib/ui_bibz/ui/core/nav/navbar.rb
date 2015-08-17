@@ -88,8 +88,8 @@ module UiBibz::Ui::Core
 
     # Add navbar form items
     # See UiBibz::Ui::Core::NavbarForm
-    def form content = nil, options = nil, html_options = nil, &block
-      @items << UiBibz::Ui::Core::NavbarForm.new(content, options, html_options, &block).render
+    def form model_or_url, options = {}, &block
+      @items << UiBibz::Ui::Core::NavbarForm.new(model_or_url, options, &block).render
     end
 
     # Add navbar text items
@@ -107,12 +107,16 @@ module UiBibz::Ui::Core
     def header_html
       content_tag :div, class: 'navbar-header' do
         concat navbar_toggle_button_html
-        concat link_to title.content, title.options[:url], title.class_and_html_options('navbar-brand')
+        concat link_to title.content, title.options[:url], title.class_and_html_options('navbar-brand') unless title.nil?
       end
     end
 
     def title
-      @title ||= @options[:title] ? brand(@options[:title], url: '/') : @brand
+      @title ||= if @brand.nil?
+         brand(@options[:title], url: '/') unless @options[:title].nil?
+      else
+        @brand
+      end
     end
 
     def body_html

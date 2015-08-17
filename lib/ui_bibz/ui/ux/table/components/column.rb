@@ -5,10 +5,10 @@ module UiBibz::Ui::Ux
 
     def initialize content = nil, options = nil, html_options = nil, &block
       super
-      @name        = @content
+      @data_index  = @content
+      @name        = @options[:name]
       @link        = @options[:link] # for show or edit action
       @order       = @options[:order]
-      @data_index  = @options[:data_index]
       @date_format = @options[:date_format]
       @sort        = @options[:sort]
       @custom_sort = @options[:custom_sort]
