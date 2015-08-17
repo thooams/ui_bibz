@@ -1,5 +1,6 @@
 #= require bootstrap-datepicker.min
 #= require bootstrap-select.min
+#= require bootstrap-switch.min
 
 # For turbolink
 $(document).on 'ready page:load', ->
@@ -26,4 +27,6 @@ $(document).on 'ready page:load', ->
     $(this).parent().addClass('has-value') if $(this).val() != ''
 
   $('.selectpicker').selectpicker()
+
+  $('.switch').bootstrapSwitch()
 
