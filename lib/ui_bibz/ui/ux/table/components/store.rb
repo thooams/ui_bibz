@@ -45,7 +45,7 @@ module UiBibz::Ui::Ux
     end
 
     def columns
-      @columns ||= Columns.new model.new.attributes.keys.map{ |record| Column.new(record.humanize, { data_index: record }) }
+      @columns ||= Columns.new model.new.attributes.keys.map{ |record| Column.new(record, { name: record.humanize }) }
     end
 
     def model
