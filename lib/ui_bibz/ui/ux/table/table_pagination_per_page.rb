@@ -58,7 +58,7 @@ module UiBibz::Ui::Ux
       content_tag :div, class: 'table-pagination-per-page' do
         concat results_count_html
         concat UiBibz::Utils::Internationalization.new("ui_bibz.table.pagination.per_page", default: "Per page: ").translate
-        concat select_tag('per_page', options_for_select([25, 50, 100], store.per_page), class: 'form-control')
+        concat select_tag('per_page', options_for_select([5, 10, 25, 50, 100, 200, 500], store.per_page), class: 'form-control')
       end
     end
 

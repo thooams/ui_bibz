@@ -101,7 +101,7 @@ application ces 3 lignes:
 
 ```
 # For awesome-font
-Rails.application.config.assets.precompile += %w(*.svg *.eot *.woff *.woff2 *.ttf *.gif *.png *.ico)
+Rails.application.config.assets.paths << Rails.root.join("app", "assets", "fonts")
 # For Ui bibz css
 Rails.application.config.assets.precompile += %w(bootstrap.min.css bootstrap-theme.min.css font-awesome.min.css)
 # For Ui bibz js
