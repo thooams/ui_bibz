@@ -65,9 +65,13 @@ class TableTest < ActionView::TestCase
     options      = { paginable: true }
     pagination   = UiBibz::Ui::Ux::Paginable.new(@store, options)
     actual       = pagination.render if pagination.paginable?
-    expected     = "<div><ul class=\"pagination pagination\"><li class=\"prev disabled\"><span>&#8592; Previous</span></li> <li class=\"active\"><span>1</span></li> <li><a rel=\"next\" href=\"/users?page=2\">2</a></li> <li><a href=\"/users?page=3\">3</a></li> <li><a href=\"/users?page=4\">4</a></li> <li><a href=\"/users?page=5\">5</a></li> <li><a href=\"/users?page=6\">6</a></li> <li><a href=\"/users?page=7\">7</a></li> <li><a href=\"/users?page=8\">8</a></li> <li><a href=\"/users?page=9\">9</a></li> <li class=\"disabled\"><span>&hellip;</span></li> <li><a href=\"/users?page=12\">12</a></li> <li><a href=\"/users?page=13\">13</a></li> <li class=\"next\"><a rel=\"next\" href=\"/users?page=2\">Next &#8594;</a></li></ul><form action=\"/users\" accept-charset=\"UTF-8\" method=\"get\"><input name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" /><div class=\"table-pagination-per-page\">Displaying User <b>1&nbsp;-&nbsp;2</b> of <b>25</b> in total | Per page: <select name=\"per_page\" id=\"per_page\" class=\"form-control\"><option value=\"25\">25</option>
+    expected     = "<div><ul class=\"pagination pagination\"><li class=\"prev disabled\"><span>&#8592; Previous</span></li> <li class=\"active\"><span>1</span></li> <li><a rel=\"next\" href=\"/users?page=2\">2</a></li> <li><a href=\"/users?page=3\">3</a></li> <li><a href=\"/users?page=4\">4</a></li> <li><a href=\"/users?page=5\">5</a></li> <li><a href=\"/users?page=6\">6</a></li> <li><a href=\"/users?page=7\">7</a></li> <li><a href=\"/users?page=8\">8</a></li> <li><a href=\"/users?page=9\">9</a></li> <li class=\"disabled\"><span>&hellip;</span></li> <li><a href=\"/users?page=12\">12</a></li> <li><a href=\"/users?page=13\">13</a></li> <li class=\"next\"><a rel=\"next\" href=\"/users?page=2\">Next &#8594;</a></li></ul><form action=\"/users\" accept-charset=\"UTF-8\" method=\"get\"><input name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" /><div class=\"table-pagination-per-page\">Displaying User <b>1&nbsp;-&nbsp;2</b> of <b>25</b> in total | Per page: <select name=\"per_page\" id=\"per_page\" class=\"form-control\"><option value=\"5\">5</option>
+<option value=\"10\">10</option>
+<option value=\"25\">25</option>
 <option value=\"50\">50</option>
-<option value=\"100\">100</option></select></div></form><br class=\"ui-bibz-clear\" /></div>"
+<option value=\"100\">100</option>
+<option value=\"200\">200</option>
+<option value=\"500\">500</option></select></div></form><br class=\"ui-bibz-clear\" /></div>"
 
     assert_equal expected, actual
   end
@@ -172,6 +176,24 @@ class TableTest < ActionView::TestCase
         a.action 'momo', url: users_path(:id), glyph: 'home'
       end
     end.render
+  end
+
+  test 'format action' do
+    actual = UiBibz::Ui::Ux::TablePanel.new(store: @users, tap: true).tap do |pane|
+      pane.columns do |cls|
+        cls.column :id, name: '#'
+      end
+      pane.actions do |acs|
+        acs.action 'Action statique', url: '#'
+        acs.format do |record|
+          acs.action "Action dynamique #{record.id}", url: '#'
+        end
+      end
+    end
+    #ap actual
+    ap actual.actions_list
+    ap actual.actions_list.list
+    #ap actual.render
   end
 
 end

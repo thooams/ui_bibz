@@ -99,6 +99,11 @@ module UiBibz::Ui::Ux
       @actions.tap(&block)
     end
 
+    # for test
+    def actions_list
+      @actions
+    end
+
     # Render html tag
     def render
       table_html
