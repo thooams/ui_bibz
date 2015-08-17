@@ -49,7 +49,7 @@ module UiBibz::Ui::Ux
   #   UiBibz::Ui::Ux::Table.new(store: @users).tap do |t|
   #     t.columns do |c|
   #       c.column :id, { name: '#' }
-  #       c.column :name_fr', { name: 'Name fr', link: edit_user_path(:id), order: 2 }
+  #       c.column :name_fr', { link: edit_user_path(:id), order: 2 }
   #       c.column :name_en'
   #       c.column :status_id, { name: 'Status', format: lambda{ |records, record| "Test #{ record.id}"} }
   #     end
