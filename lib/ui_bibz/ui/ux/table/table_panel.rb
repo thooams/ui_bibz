@@ -125,6 +125,11 @@ module UiBibz::Ui::Ux
       @table.actions &block
     end
 
+    # for test
+    def actions_list
+      @table.actions_list
+    end
+
   private
 
     def table_html
