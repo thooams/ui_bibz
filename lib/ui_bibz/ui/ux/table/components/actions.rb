@@ -3,13 +3,22 @@ module UiBibz::Ui::Ux
   class Actions
 
     def initialize store
-      @store   = store
-      @actions = []
+      @store        = store
+      @actions      = []
+      @action_order = -1
     end
 
     # Add action in table
     def action content = nil, options = nil, html_options = nil, &block
-      @actions << TableAction.new(content, options, html_options, &block).render
+      @actions[indent] = TableAction.new(content, options, html_options, &block).render
+    end
+
+    def indent
+      @action_order += 1
+    end
+
+    def record
+
     end
 
     def format &block

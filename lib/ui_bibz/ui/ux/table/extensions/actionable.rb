@@ -31,6 +31,7 @@ module UiBibz::Ui::Ux
     def dropdown_action record
       UiBibz::Ui::Core::Dropdown.new(dropdown_action_name, { position: :right, glyph: actions_glyph }, class: 'btn-group-xs dropdown-action').tap do |d|
         unless @actions.nil?
+          @actions.format_action.call(record) unless @actions.format_action.nil?
           actions_links(record).each do |l|
             d.list l.html_safe
           end
@@ -48,13 +49,7 @@ module UiBibz::Ui::Ux
     end
 
     def actions_links record
-      @actions.list.compact.map do |l|
-        if @actions.format_action.nil?
-          inject_url(l, record)
-        else
-          @actions.format_action.call(record)
-        end
-      end
+      @actions.list.compact.map{ |l| inject_url(l, record) }
     end
 
     def td_action record
