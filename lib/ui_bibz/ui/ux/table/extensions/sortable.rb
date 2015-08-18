@@ -21,8 +21,8 @@ module UiBibz::Ui::Ux
     end
 
     def header_name name
-     name = name || @column.name.try('titleize')
-     name || @column.data_index.to_s.try('titleize')
+      name = name || @column.name.try('titleize')
+      name || @column.data_index.to_s.try('titleize')
     end
 
     def translate_headers_by_model

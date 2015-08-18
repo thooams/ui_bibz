@@ -7,14 +7,14 @@ module UiBibz::Concerns::Models::Searchable
       @params     = params
       @session    = session
       @arguments  = args
-      OpenStruct.new(records: search_sort_paginate,
-                     model:      self,
-                     controller: params[:controller],
-                     direction:  params[:direction],
-                     search:     params[:search],
-                     sort:       params[:sort],
+      OpenStruct.new(controller:            params[:controller],
+                     direction:             params[:direction],
+                     search:                params[:search],
+                     sort:                  params[:sort],
+                     action:                params[:action],
+                     records:               search_sort_paginate,
                      searchable_attributes: @searchable_attributes,
-                     action:     params[:action])
+                     model:                 self)
     end
 
 
