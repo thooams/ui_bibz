@@ -107,10 +107,10 @@ module UiBibz::Ui::Ux
 
       content_tag :div, class_and_html_options(panel_classes) do |f|
         form_tag(url_for(controller: @store.controller, action: @store.action), method: :get) do
-          concat(header_html)   unless @header.nil?
-          concat(body_html)     unless @body.nil?
-          concat(table_html)    unless @store.nil?
-          concat(footer_html)   unless @footer.nil?
+          concat(header_html) unless @header.nil?
+          concat(body_html)   unless @body.nil?
+          concat(table_html)  unless @store.nil?
+          concat(footer_html) unless @footer.nil?
         end
       end
     end

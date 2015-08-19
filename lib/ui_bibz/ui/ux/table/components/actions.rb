@@ -10,15 +10,11 @@ module UiBibz::Ui::Ux
 
     # Add action in table
     def action content = nil, options = nil, html_options = nil, &block
-      @actions[indent] = TableAction.new(content, options, html_options, &block).render
+      @actions << TableAction.new(content, options, html_options, &block).render
     end
 
-    def indent
-      @action_order += 1
-    end
-
-    def record
-
+    def reset
+      @actions = []
     end
 
     def format &block

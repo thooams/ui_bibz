@@ -35,6 +35,7 @@ module UiBibz::Ui::Ux
           actions_links(record).each do |l|
             d.list l.to_s.html_safe
           end
+          @actions.reset
         end
       end.render
     end
