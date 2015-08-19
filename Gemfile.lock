@@ -86,6 +86,8 @@ GEM
     mime-types (2.6.1)
     mini_portile (0.6.2)
     minitest (5.7.0)
+    minitest-line (0.6.3)
+      minitest (~> 5.0)
     minitest-reporters (1.0.20)
       ansi
       builder
@@ -165,6 +167,7 @@ DEPENDENCIES
   color_pound_spec_reporter
   factory_girl_rails (~> 4.0)
   minitest
+  minitest-line
   minitest-reporters
   rdoc
   sqlite3
