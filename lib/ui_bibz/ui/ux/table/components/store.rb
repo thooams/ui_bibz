@@ -3,7 +3,7 @@ require 'ui_bibz/ui/ux/table/components/column'
 module UiBibz::Ui::Ux
   class Store
 
-    attr_accessor :records, :table_id
+    attr_accessor :records
 
     # Store Use WillPaginate store methods
     def initialize store
@@ -24,8 +24,8 @@ module UiBibz::Ui::Ux
       @records.total_entries
     end
 
-    def table_id
-      @store.table_id
+    def id
+      @store.id
     end
 
     def sort
