@@ -637,6 +637,22 @@ table store: @documents do |t|
 end
 ```
 
+#### Plus d'une table sur une page html
+
+Si vous avez plus d'une table sur votre page html et que vous souhaitez faire
+des recherches, paginer... Vous devez identifier chaque store pour que l'action
+effectuée (recherche, pagination,...) ne soit affectée que sur la table désirée.
+
+Pour cela il faut que vous donniez un identifiant unique à vos stores.
+
+ex:
+
+```
+# app/controllers/document_controller.rb
+@documents = Document.includes(:users).table_search_pagination(params, session, { store_id: 'store-1'})
+```
+
+
 #### table I18n
 
 La table est utilisable avec I18n. Les traductions

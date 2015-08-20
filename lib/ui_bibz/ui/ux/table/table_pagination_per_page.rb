@@ -59,7 +59,7 @@ module UiBibz::Ui::Ux
         concat results_count_html
         concat UiBibz::Utils::Internationalization.new("ui_bibz.table.pagination.per_page", default: "Per page: ").translate
         concat select_tag('per_page', options_for_select([5, 10, 20, 30, 50, 100, 200, 500], store.per_page), class: 'form-control')
-        concat tag(:input, type: 'hidden', value: store.table_id) unless store.table_id.nil?
+        concat tag(:input, type: 'hidden', name: 'store_id', value: store.id) unless store.id.nil? # If there is more 1 table in html page
       end
     end
 

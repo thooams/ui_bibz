@@ -4,24 +4,24 @@ module UiBibz::Concerns::Models::Searchable
   included do
     # Maybe create a class to put all methods of table_search_pagination
     def self.table_search_pagination params, session, args = {}
-      @params     = params.clone
-      @session    = session
-      @arguments  = args
+      @params           = params.clone
+      @session          = session
+      @arguments        = args
 
-      initialize_params_if_table_id_exist
-      OpenStruct.new(parameters)
+      initialize_params unless @arguments[:store_id].nil?
+      OpenStruct.new(generate_parameters)
     end
 
   private
 
-    def self.parameters
+    def self.generate_parameters
       {
         controller:            @params[:controller],
         direction:             @params[:direction],
         search:                @params[:search],
         sort:                  @params[:sort],
         action:                @params[:action],
-        table_id:              @arguments[:table_id],
+        id:                    @arguments[:store_id],
         records:               search_sort_paginate,
         searchable_attributes: @searchable_attributes,
         model:                 self
@@ -29,13 +29,11 @@ module UiBibz::Concerns::Models::Searchable
     end
 
     # If there is more one table in html page
-    def self.initialize_params_if_table_id_exist
-      if @arguments[:table_id]
-        unless self.is_good_table_id?
-          @params[:search]   = nil
-          @params[:per_page] = nil
-          @params[:page]     = nil
-        end
+    def self.initialize_params
+      unless self.is_good_store_id?
+        @params[:search]   = nil
+        @params[:per_page] = nil
+        @params[:page]     = nil
       end
     end
 
@@ -103,8 +101,8 @@ module UiBibz::Concerns::Models::Searchable
     end
 
     # If there's several table in the same page
-    def self.is_good_table_id?
-      @arguments[:table_id] == @params[:table_id]
+    def self.is_good_store_id?
+      @arguments[:store_id] == @params[:store_id]
     end
   end
 
