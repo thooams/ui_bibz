@@ -529,11 +529,11 @@ L'ajout de colonnes à travers la méthode ```column``` contient plusieurs argum
 # app/views/documents/index.html.haml
 table store: @documents do |g|
   g.columns do |c|
-    c.column '#', { data_index: 'id' }
-    c.column 'Name fr', { data_index: 'name_fr', link: edit_document_path(:id)}
-    c.column 'Name en', { data_index: 'name_en' }
-    c.column 'Hotline', { data_index: 'hotline_access', format: lambda{ |records, record| glyph(record.icon) }}
-    c.column 'Updated at', { data_index: 'updated_at', date_format: '%Y' }
+    c.column :id, { name: '#' }
+    c.column :name_fr, { name: 'Name fr', link: edit_document_path(:id) }
+    c.column :name_en
+    c.column :hotline_access, { name: 'Hotline', format: lambda{ |records, record| glyph(record.icon) } }
+    c.column :update_at, { date_format: '%Y' }
   end
 end
 ```
@@ -560,7 +560,7 @@ l'appeler comme valeur pour la clef ```data_index```.
 # app/views/documents/index.html.haml
 table store: @documents do |g|
   g.columns do |c|
-    c.column 'Users', { data_index: 'user_name', sort: "user.name" }
+    c.column :user_name, { name: 'User', sort: "user.name" }
   end
 end
 ```
@@ -608,7 +608,31 @@ Dans la vue :
 # app/views/documents/index.html.haml
 table store: @documents do |g|
   g.columns do |c|
-    c.column 'Users', { data_index: 'users', count: true, custom_sort: true }
+    c.column :users, { name: 'Users count', count: true, custom_sort: true }
+  end
+end
+```
+
+#### table actions
+
+Les actions d'une table peuvent être formatées avec le 'record' passé en paramètre.
+
+```
+# app/views/documents/index.html.haml
+table store: @documents do |t|
+  t.columns do |cls|
+    cls.column :id, { name: '#' }
+    cls.column :name_en
+  end
+  t.actions do |acs|
+    acs.format do |record|
+      if record.active?
+        acs.action 'Active', { url: active_document_path(record.id) }
+      else
+        acs.action 'Disabled', { url: disabled_document_path(record.id) }
+      end
+      acs.action 'Show', { url: document_path(record.id) }
+    end
   end
 end
 ```
@@ -652,13 +676,13 @@ table_panel store: @users
 
 table_panel({ store: @users, tap: true, glyph: 'home', state: :danger }) do |g|
   g.columns do |cls|
-    cls.column '#', { data_index: 'id' }
-    cls.column 'Username', { data_index: 'username', link: edit_user_path(:id) }
-    cls.column 'Name', { data_index: 'name' }
-    cls.column({ data_index: 'email' }) do
+    cls.column :id, { name: '#' }
+    cls.column :username, { name: 'Username', link: edit_user_path(:id) }
+    cls.column :name
+    cls.column(:email) do
       'Email'
     end
-    cls.column 'Role', { data_index: 'role_name', sort: 'roles.name' }
+    cls.column :role_name, { name: 'Role', sort: 'roles.name' }
   end
   g.actions do |acs|
     acs.action 'Action 1', { url: edit_user_path(:id), glyph: 'pencil' }
