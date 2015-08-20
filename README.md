@@ -15,7 +15,7 @@ This project rocks and uses MIT-LICENSE.
 > à l'aide de [Ruby on Rails 4](http://rubyonrails.org/) et de [Boostrap 3](http://getbootstrap.com/).
 
 Ui Bibz charge la librairie [boostrap](http://getbootstrap.com/) et
-[awesomefont](http://fontawesome.io/) en [CDN](https://fr.wikipedia.org/wiki/Content_delivery_network).
+[awesomefont](http://fontawesome.io/).
 
 Tous les composants du framework Ui Bibz comportent l'agument *options* et l'argument *html_options*.
 Ces éléments sont basés sur l'élément ```Component```.
@@ -93,17 +93,19 @@ Exemple ([haml](http://haml.info/)):
 ```
 
 Ui Bibz chargera les librairies en CDN directement dans votre application.
-Si vous préférez charger les librairies en locales, utiliser plutôt la méthode
+Si vous préférez charger les librairies en locales, utilisez plutôt la méthode
 ```ui_bibz_local_meta_links```.
 
 et insérez dans le fichier ```/config/initializers/assets.rb``` de votre
-application ces 3 lignes:
+application ces 3-4 lignes:
 
 ```
 # For awesome-font
 Rails.application.config.assets.paths << Rails.root.join("app", "assets", "fonts")
 # For Ui bibz css
 Rails.application.config.assets.precompile += %w(bootstrap.min.css bootstrap-theme.min.css font-awesome.min.css)
+# For boostrap-theme (optionel)
+Rails.application.config.assets.precompile += %w(bootstrap-theme.min.css)
 # For Ui bibz js
 Rails.application.config.assets.precompile += %w(jquery-2.1.4.min.js bootstrap.min.js)
 ```
