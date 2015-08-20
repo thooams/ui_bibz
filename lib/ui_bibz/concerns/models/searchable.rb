@@ -34,7 +34,7 @@ module UiBibz::Concerns::Models::Searchable
         unless self.is_good_table_id?
           @params[:search]   = nil
           @params[:per_page] = nil
-          @params[:page] = nil
+          @params[:page]     = nil
         end
       end
     end
