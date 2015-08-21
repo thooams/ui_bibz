@@ -25,9 +25,10 @@ module UiBibz::Ui::Ux
   # You can pass arguments in options attribute:
   # * +store+ - Store generate by '+table_search_pagination+' method
   # * +url+ - String
-  # * tap - Boolean
-  # * columns - Add column
-  # * actions - Add action by row
+  # * +tap+ - Boolean
+  # * +actionable+ - Boolean
+  # * +sortable+ - Boolean
+  # * +searchable+ - Boolean
   #
   # ==== Signatures
   #

@@ -380,7 +380,7 @@ panel(state: :danger) do
   'Content'
 end
 
-panel({ tap: true, state: :danger }, { class: 'exemple' }) |p|
+panel({ tap: true, state: :danger, table_options: { actionable: true } }, { class: 'exemple' }) |p|
   p.header 'Header', glyph: 'eye'
   p.body(class: 'my-body') do
    'Content body'
@@ -637,6 +637,14 @@ table store: @documents do |t|
     end
   end
 end
+```
+
+Les actions ainsi que la colonne action peuvent être désactivées en passant l'agument ```actionable:
+false```.
+
+```
+# app/views/documents/index.html.haml
+table store: @documents, actionable: false
 ```
 
 #### Plus d'une table sur une page html

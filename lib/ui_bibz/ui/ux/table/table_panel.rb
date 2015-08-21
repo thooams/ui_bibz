@@ -16,9 +16,11 @@ module UiBibz::Ui::Ux
   # You can pass arguments in options attribute:
   # * +store+ - Store generate by '+table_search_pagination+' method
   # * +url+ - String
-  # * tap - Boolean
-  # * columns - Add column
-  # * actions - Add action by row
+  # * +tap+ - Boolean
+  # * +table_options+ - Hash
+  #   * +actionable+ - Boolean
+  #   * +sortable+ - Boolean
+  #   * +searchable+ - Boolean
   #
   # ==== Signatures
   #
@@ -35,7 +37,7 @@ module UiBibz::Ui::Ux
   #
   # ==== Examples
   #
-  #   UiBibz::Ui::Ux::TablePanel.new(store: @users, pagination).render
+  #   UiBibz::Ui::Ux::TablePanel.new(store: @users, table_options: { actionable: false }).render
   #
   #   UiBibz::Ui::Ux::TablePanel.new(store: @users).tap do |t|
   #     t.header 'My Table panel'
