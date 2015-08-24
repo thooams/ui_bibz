@@ -34,7 +34,7 @@ module UiBibz::Ui::Ux
     # Render html tag
     def render
       if @per_page_field.options[:wrap_form] != false
-        form_tag(url_for(controller: store.controller, action: store.action), method: :get) do
+        form_tag(url_for(url_parameters), method: :get) do
           per_page_html
         end
       else
@@ -52,6 +52,10 @@ module UiBibz::Ui::Ux
       else
         Store.new @per_page_field.options.delete :store
       end
+    end
+
+    def url_parameters
+      { controller: store.controller, action: store.action, id: store.param_id }
     end
 
     def per_page_html

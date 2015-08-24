@@ -44,6 +44,7 @@ module UiBibz::Ui::Ux
     def url_options
       args =  {
         controller: @store.controller,
+        id:         @store.param_id,
         action:     @store.action,
         search:     @store.search,
         sort:       sort_name,
