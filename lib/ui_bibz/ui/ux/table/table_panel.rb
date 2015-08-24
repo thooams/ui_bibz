@@ -108,7 +108,7 @@ module UiBibz::Ui::Ux
       initialize_footer
 
       content_tag :div, class_and_html_options(panel_classes) do |f|
-        form_tag(url_for(controller: @store.controller, action: @store.action), method: :get) do
+        form_tag(url_for(url_parameters), method: :get) do
           concat(header_html) unless @header.nil?
           concat(body_html)   unless @body.nil?
           concat(table_html)  unless @store.nil?
@@ -133,6 +133,10 @@ module UiBibz::Ui::Ux
     end
 
   private
+
+    def url_parameters
+      { controller: @store.controller, action: @store.action, id: @store.param_id }
+    end
 
     def table_html
       content_tag :div, @table.render, class: 'panel-table'

@@ -68,5 +68,9 @@ module UiBibz::Ui::Ux
       @store.action
     end
 
+    def param_id
+      @store.param_id
+    end
+
   end
 end
