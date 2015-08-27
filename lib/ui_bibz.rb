@@ -31,6 +31,7 @@ module UiBibz
       autoload :Panel,                   "ui_bibz/ui/core/panel"
       autoload :ProgressBar,             "ui_bibz/ui/core/progress_bar/progress_bar"
       autoload :Row,                     "ui_bibz/ui/core/row"
+      autoload :Stars,                   "ui_bibz/ui/core/stars"
       autoload :Tab,                     "ui_bibz/ui/core/nav/tab"
     end
 
