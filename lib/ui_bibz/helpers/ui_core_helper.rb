@@ -13,6 +13,10 @@ module UiBibz::Helpers::UiCoreHelper
     UiBibz::Ui::Core::Alert.new(content, options, html_options, &block).render
   end
 
+  def stars content = nil, options = nil, html_options = nil, &block
+    UiBibz::Ui::Core::Stars.new(content, options, html_options, &block).render
+  end
+
   # Use "etiquette" instead of "label" : due to "actionview (4.2.0) lib/action_view/helpers/form_helper.rb" conflict
   def etiquette content = nil, options = nil, html_options = nil, &block
     UiBibz::Ui::Core::Label.new(content, options, html_options, &block).render
