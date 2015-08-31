@@ -144,19 +144,19 @@ arguments in options attribute:</p>
 <h4>Signatures</h4>
 
 <pre class="code ruby"><code class="ruby">UiBibz::Ui::Core::ButtonDropdown.new(options = nil, html_options = nil).tap do |d|
+  ...
   d.list content = nil, options = nil, html_options = nil, &amp;block
-  d.list content = nil, options = nil, html_options = nil, &amp;block
-  d.list content = nil, options = nil, html_options = nil, &amp;block
+  d.link content = nil, options = nil, html_options = nil, &amp;block
   ...
 end</code></pre>
 
 <h4>Examples</h4>
 
 <pre class="code ruby"><code class="ruby"><span class='const'>UiBibz</span><span class='op'>::</span><span class='const'>Ui</span><span class='op'>::</span><span class='const'>Core</span><span class='op'>::</span><span class='const'>ButtonDropdown</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='label'>state:</span> <span class='symbol'>:success</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_tap'>tap</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_d'>d</span><span class='op'>|</span>
-  <span class='id identifier rubyid_d'>d</span><span class='period'>.</span><span class='id identifier rubyid_list'>list</span> <span class='id identifier rubyid_link_to'>link_to</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>test</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>#</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_d'>d</span><span class='period'>.</span><span class='id identifier rubyid_link'>link</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>test</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='lbrace'>{</span> <span class='label'>url:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>#Test1</span><span class='tstring_end'>'</span></span> <span class='rbrace'>}</span>
   <span class='id identifier rubyid_d'>d</span><span class='period'>.</span><span class='id identifier rubyid_list'>list</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>---</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
   <span class='id identifier rubyid_d'>d</span><span class='period'>.</span><span class='id identifier rubyid_list'>list</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Header 1</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='lbrace'>{</span> <span class='label'>type:</span> <span class='symbol'>:header</span> <span class='rbrace'>}</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_d'>d</span><span class='period'>.</span><span class='id identifier rubyid_list'>list</span> <span class='id identifier rubyid_link_to'>link_to</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>test2</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>#</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_d'>d</span><span class='period'>.</span><span class='id identifier rubyid_link'>link</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>test2</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='lbrace'>{</span> <span class='label'>url:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>#Test2</span><span class='tstring_end'>'</span></span> <span class='rbrace'>}</span>
 <span class='kw'>end</span><span class='period'>.</span><span class='id identifier rubyid_render'>render</span></code></pre>
 
 <h4>Helper</h4>
@@ -262,7 +262,7 @@ end</code></pre>
   
   
   <h3 class="inherited">Methods inherited from <span class='object_link'><a href="Dropdown.html" title="UiBibz::Ui::Core::Dropdown (class)">Dropdown</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="Dropdown.html#button_content-instance_method" title="UiBibz::Ui::Core::Dropdown#button_content (method)">#button_content</a></span>, <span class='object_link'><a href="Dropdown.html#button_html-instance_method" title="UiBibz::Ui::Core::Dropdown#button_html (method)">#button_html</a></span>, <span class='object_link'><a href="Dropdown.html#button_state-instance_method" title="UiBibz::Ui::Core::Dropdown#button_state (method)">#button_state</a></span>, <span class='object_link'><a href="Dropdown.html#caret-instance_method" title="UiBibz::Ui::Core::Dropdown#caret (method)">#caret</a></span>, <span class='object_link'><a href="Dropdown.html#link-instance_method" title="UiBibz::Ui::Core::Dropdown#link (method)">#link</a></span>, <span class='object_link'><a href="Dropdown.html#list-instance_method" title="UiBibz::Ui::Core::Dropdown#list (method)">#list</a></span>, <span class='object_link'><a href="Dropdown.html#position-instance_method" title="UiBibz::Ui::Core::Dropdown#position (method)">#position</a></span>, <span class='object_link'><a href="Dropdown.html#size-instance_method" title="UiBibz::Ui::Core::Dropdown#size (method)">#size</a></span>, <span class='object_link'><a href="Dropdown.html#type-instance_method" title="UiBibz::Ui::Core::Dropdown#type (method)">#type</a></span>, <span class='object_link'><a href="Dropdown.html#ul_html-instance_method" title="UiBibz::Ui::Core::Dropdown#ul_html (method)">#ul_html</a></span></p>
+  <p class="inherited"><span class='object_link'><a href="Dropdown.html#link-instance_method" title="UiBibz::Ui::Core::Dropdown#link (method)">#link</a></span>, <span class='object_link'><a href="Dropdown.html#list-instance_method" title="UiBibz::Ui::Core::Dropdown#list (method)">#list</a></span></p>
 
   
   
@@ -389,7 +389,7 @@ end</code></pre>
 </div>
 
     <div id="footer">
-  Generated on Thu Jul 16 14:09:04 2015 by
+  Generated on Mon Aug 31 13:55:02 2015 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7.6 (ruby-1.9.3).
 </div>

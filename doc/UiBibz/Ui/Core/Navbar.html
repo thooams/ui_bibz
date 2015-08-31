@@ -204,7 +204,29 @@ end</code></pre>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#form-instance_method" title="#form (instance method)">- (Object) <strong>form</strong>(content = nil, options = nil, html_options = nil, &amp;block) </a>
+      <a href="#brand-instance_method" title="#brand (instance method)">- (Object) <strong>brand</strong>(content = nil, options = nil, html_options = nil, &amp;block) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#form-instance_method" title="#form (instance method)">- (Object) <strong>form</strong>(model_or_url, options = {}, &amp;block) </a>
     
 
     
@@ -403,9 +425,39 @@ end</code></pre>
 
     
       <div class="method_details first">
-  <h3 class="signature first" id="form-instance_method">
+  <h3 class="signature first" id="brand-instance_method">
   
-    - (<tt>Object</tt>) <strong>form</strong>(content = nil, options = nil, html_options = nil, &amp;block) 
+    - (<tt>Object</tt>) <strong>brand</strong>(content = nil, options = nil, html_options = nil, &amp;block) 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+101
+102
+103</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ui_bibz/ui/core/nav/navbar.rb', line 101</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_brand'>brand</span> <span class='id identifier rubyid_content'>content</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_html_options'>html_options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span>
+  <span class='ivar'>@brand</span> <span class='op'>=</span> <span class='const'>UiBibz</span><span class='op'>::</span><span class='const'>Ui</span><span class='op'>::</span><span class='const'>Core</span><span class='op'>::</span><span class='const'>Component</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_content'>content</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='comma'>,</span> <span class='id identifier rubyid_html_options'>html_options</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="form-instance_method">
+  
+    - (<tt>Object</tt>) <strong>form</strong>(model_or_url, options = {}, &amp;block) 
   
 
   
@@ -435,8 +487,8 @@ end</code></pre>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ui_bibz/ui/core/nav/navbar.rb', line 91</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_form'>form</span> <span class='id identifier rubyid_content'>content</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_html_options'>html_options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span>
-  <span class='ivar'>@items</span> <span class='op'>&lt;&lt;</span> <span class='const'>UiBibz</span><span class='op'>::</span><span class='const'>Ui</span><span class='op'>::</span><span class='const'>Core</span><span class='op'>::</span><span class='const'>NavbarForm</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_content'>content</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='comma'>,</span> <span class='id identifier rubyid_html_options'>html_options</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_render'>render</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_form'>form</span> <span class='id identifier rubyid_model_or_url'>model_or_url</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span>
+  <span class='ivar'>@items</span> <span class='op'>&lt;&lt;</span> <span class='const'>UiBibz</span><span class='op'>::</span><span class='const'>Ui</span><span class='op'>::</span><span class='const'>Core</span><span class='op'>::</span><span class='const'>NavbarForm</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_model_or_url'>model_or_url</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_render'>render</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -583,7 +635,7 @@ end</code></pre>
 </div>
 
     <div id="footer">
-  Generated on Thu Jul 16 14:09:03 2015 by
+  Generated on Mon Aug 31 13:55:01 2015 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7.6 (ruby-1.9.3).
 </div>

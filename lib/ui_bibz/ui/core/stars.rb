@@ -62,13 +62,16 @@ module UiBibz::Ui::Core
 
     def stars_notation
       stars = []
-      opts  = { state: @options[:state] } unless @options[:state].nil?
       number.to_i.times do |star|
         star = star + 1
         name = star_name(star)
-        stars << UiBibz::Ui::Core::Glyph.new(name, opts).render
+        stars << UiBibz::Ui::Core::Glyph.new(name, glyph_opts).render
       end
       stars
+    end
+
+    def glyph_opts
+      { state: @options[:state] } unless @options[:state].nil?
     end
 
     def star_name star

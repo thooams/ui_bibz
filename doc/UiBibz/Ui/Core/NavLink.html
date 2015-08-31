@@ -129,6 +129,8 @@ arguments in options attribute:</p>
 <p><tt>url</tt> - String</p>
 </li><li>
 <p><tt>badge</tt> - String</p>
+</li><li>
+<p><tt>link_html_options</tt> - Hash</p>
 </li></ul>
 
 <h4>Signatures</h4>
@@ -141,7 +143,7 @@ arguments in options attribute:</p>
 
 <h4>Examples</h4>
 
-<pre class="code ruby"><code class="ruby">UiBibz::Ui::Core::NavLink.new(content, { badge: 15, url: '/', status: :active },{ class: 'test' }).render
+<pre class="code ruby"><code class="ruby">UiBibz::Ui::Core::NavLink.new(content, { badge: 15, url: '/', status: :active, link_html_options: { class: 'link1' }},{ class: 'test' }).render
 
 UiBibz::Ui::Core::NavLink.new({glyph: { name: 'eye', size: 3 }, { class: 'test' }) do
   'Home'
@@ -283,12 +285,12 @@ end.render</code></pre>
       <pre class="lines">
 
 
-41
 42
-43</pre>
+43
+44</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ui_bibz/ui/core/nav/components/nav_link.rb', line 41</span>
+      <pre class="code"><span class="info file"># File 'lib/ui_bibz/ui/core/nav/components/nav_link.rb', line 42</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span> <span class='id identifier rubyid_content'>content</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_html_options'>html_options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span>
   <span class='kw'>super</span>
@@ -331,12 +333,12 @@ end.render</code></pre>
       <pre class="lines">
 
 
-46
 47
-48</pre>
+48
+49</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ui_bibz/ui/core/nav/components/nav_link.rb', line 46</span>
+      <pre class="code"><span class="info file"># File 'lib/ui_bibz/ui/core/nav/components/nav_link.rb', line 47</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_render'>render</span>
   <span class='id identifier rubyid_content_tag'>content_tag</span> <span class='symbol'>:li</span><span class='comma'>,</span> <span class='id identifier rubyid_content_htm'>content_htm</span><span class='comma'>,</span> <span class='id identifier rubyid_class_and_html_options'>class_and_html_options</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='lbrace'>{</span> <span class='label'>role:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>presentation</span><span class='tstring_end'>'</span></span> <span class='rbrace'>}</span><span class='rparen'>)</span>
@@ -351,7 +353,7 @@ end.render</code></pre>
 </div>
 
     <div id="footer">
-  Generated on Thu Jul 16 14:09:04 2015 by
+  Generated on Mon Aug 31 13:55:02 2015 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7.6 (ruby-1.9.3).
 </div>
