@@ -93,13 +93,12 @@ Exemple ([haml](http://haml.info/)):
 ```
 
 Ui Bibz chargera les librairies en CDN directement dans votre application.
-Si vous préférez charger les librairies en locales, utilisez plutôt la méthode
-```ui_bibz_local_meta_links```.
-
+Si vous préférez charger les librairies en locales, utilisez plutôt la méthode ```ui_bibz_local_meta_links```
 et insérez dans le fichier ```/config/initializers/assets.rb``` de votre
 application ces 3-4 lignes:
 
 ```
+
 # For awesome-font
 Rails.application.config.assets.paths << Rails.root.join("app", "assets", "fonts")
 # For Ui bibz css
@@ -108,6 +107,7 @@ Rails.application.config.assets.precompile += %w(bootstrap.min.css bootstrap-the
 Rails.application.config.assets.precompile += %w(bootstrap-theme.min.css)
 # For Ui bibz js
 Rails.application.config.assets.precompile += %w(jquery-2.1.4.min.js bootstrap.min.js)
+
 ```
 
 Placer la ligne suivante dans ```/app/assets/stylesheets/applications.css```
