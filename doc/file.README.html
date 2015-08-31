@@ -158,162 +158,150 @@ dans <code>options</code> et <code>html_options</code>.</p>
 </code></pre>
 
 <p>Ui Bibz chargera les librairies en CDN directement dans votre application.
-Si vous préférez charger les librairies en locales, utilisez plutôt la méthode</p>
-
-<pre class="code ui_bibz_local_meta_links```."><code class="ui_bibz_local_meta_links```.">
-et insérez dans le fichier ```/config/initializers/assets.rb``` de votre
-application ces 3-4 lignes:
-
-</code></pre>
-
-<h1>For awesome-font</h1>
-
-<p>Rails.application.config.assets.paths &lt;&lt; Rails.root.join(&quot;app&quot;, &quot;assets&quot;, &quot;fonts&quot;)</p>
-
-<h1>For Ui bibz css</h1>
-
-<p>Rails.application.config.assets.precompile += %w(bootstrap.min.css bootstrap-theme.min.css font-awesome.min.css)</p>
-
-<h1>For boostrap-theme (optionel)</h1>
-
-<p>Rails.application.config.assets.precompile += %w(bootstrap-theme.min.css)</p>
-
-<h1>For Ui bibz js</h1>
-
-<p>Rails.application.config.assets.precompile += %w(jquery-2.1.4.min.js bootstrap.min.js)</p>
+Si vous préférez charger les librairies en locales, utilisez plutôt la méthode <code>ui_bibz_local_meta_links</code>
+et insérez dans le fichier <code>/config/initializers/assets.rb</code> de votre
+application ces 3-4 lignes:</p>
 
 <pre class="code ruby"><code class="ruby">
-Placer la ligne suivante dans ```/app/assets/stylesheets/applications.css```
+<span class='comment'># For awesome-font
+</span><span class='const'>Rails</span><span class='period'>.</span><span class='id identifier rubyid_application'>application</span><span class='period'>.</span><span class='id identifier rubyid_config'>config</span><span class='period'>.</span><span class='id identifier rubyid_assets'>assets</span><span class='period'>.</span><span class='id identifier rubyid_paths'>paths</span> <span class='op'>&lt;&lt;</span> <span class='const'>Rails</span><span class='period'>.</span><span class='id identifier rubyid_root'>root</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>app</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>assets</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>fonts</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+<span class='comment'># For Ui bibz css
+</span><span class='const'>Rails</span><span class='period'>.</span><span class='id identifier rubyid_application'>application</span><span class='period'>.</span><span class='id identifier rubyid_config'>config</span><span class='period'>.</span><span class='id identifier rubyid_assets'>assets</span><span class='period'>.</span><span class='id identifier rubyid_precompile'>precompile</span> <span class='op'>+=</span> <span class='qwords_beg'>%w(</span><span class='tstring_content'>bootstrap.min.css</span><span class='words_sep'> </span><span class='tstring_content'>bootstrap-theme.min.css</span><span class='words_sep'> </span><span class='tstring_content'>font-awesome.min.css</span><span class='words_sep'>)</span>
+<span class='comment'># For boostrap-theme (optionel)
+</span><span class='const'>Rails</span><span class='period'>.</span><span class='id identifier rubyid_application'>application</span><span class='period'>.</span><span class='id identifier rubyid_config'>config</span><span class='period'>.</span><span class='id identifier rubyid_assets'>assets</span><span class='period'>.</span><span class='id identifier rubyid_precompile'>precompile</span> <span class='op'>+=</span> <span class='qwords_beg'>%w(</span><span class='tstring_content'>bootstrap-theme.min.css</span><span class='words_sep'>)</span>
+<span class='comment'># For Ui bibz js
+</span><span class='const'>Rails</span><span class='period'>.</span><span class='id identifier rubyid_application'>application</span><span class='period'>.</span><span class='id identifier rubyid_config'>config</span><span class='period'>.</span><span class='id identifier rubyid_assets'>assets</span><span class='period'>.</span><span class='id identifier rubyid_precompile'>precompile</span> <span class='op'>+=</span> <span class='qwords_beg'>%w(</span><span class='tstring_content'>jquery-2.1.4.min.js</span><span class='words_sep'> </span><span class='tstring_content'>bootstrap.min.js</span><span class='words_sep'>)</span>
 
 </code></pre>
 
-<p>...
+<p>Placer la ligne suivante dans <code>/app/assets/stylesheets/applications.css</code></p>
+
+<pre class="code ruby"><code class="ruby">...
 *= require ui_bibz
-...</p>
-
-<pre class="code ruby"><code class="ruby">
-Placer la ligne suivante dans ```/app/assets/javascripts/applications.js```
-
+...
 </code></pre>
 
-<p>...
+<p>Placer la ligne suivante dans <code>/app/assets/javascripts/applications.js</code></p>
+
+<pre class="code ruby"><code class="ruby">...
 //= require ui_bibz
-...</p>
-
-<pre class="code ruby"><code class="ruby">
-## Utilisation
-
-### Alert
-
-![alert](http://hummel.link/Ui-Bibz/images/alert.png)
-
-L'élément ```notify``` à pour ```options``` un Hash acceptant les clefs :
-
-* [state](#state-values)
-* [glyph](#glyph-arguments)
-
+...
 </code></pre>
 
-<p>notify &#39;Alert&#39;, state: :info, glyph: &#39;eye&#39;</p>
+<h2>Utilisation</h2>
 
-<pre class="code ruby"><code class="ruby">
-Voir la [doc](http://hummel.link/Ui-Bibz/UiBibz/Ui/Core/Alert.html)
+<h3>Alert</h3>
 
-### Breadcrumb (fil d'ariane)
+<p><img src="http://hummel.link/Ui-Bibz/images/alert.png" alt="alert"></p>
 
-![breadcrumb](http://hummel.link/Ui-Bibz/images/breadcrumb.png)
+<p>L&#39;élément <code>notify</code> à pour <code>options</code> un Hash acceptant les clefs :</p>
 
-L'élément ```breadcrumb``` à pour enfant l'élément ```link``` qui accepte pour option un Hash avec les clefs :
+<ul>
+<li><a href="#state-values">state</a></li>
+<li><a href="#glyph-arguments">glyph</a></li>
+</ul>
 
-* [status](#status-values)
-* [glyph](#glyph-arguments)
-* url
-
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_notify'>notify</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Alert</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='label'>state:</span> <span class='symbol'>:info</span><span class='comma'>,</span> <span class='label'>glyph:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>eye</span><span class='tstring_end'>'</span></span>
 </code></pre>
 
-<p>breadcrumb do |b|
-  b.link &#39;Exemple 1&#39;, url: &#39;#exemple-1&#39;, glyph: &#39;home&#39;
-  b.link({ url: &#39;#exemple-2&#39; }, { class:&#39;link&#39; }) do
-    &#39;Exemple 2&#39;
-  end
-  b.link &#39;Exemple 3&#39;, status: :active
-end</p>
+<p>Voir la <a href="http://hummel.link/Ui-Bibz/UiBibz/Ui/Core/Alert.html">doc</a></p>
 
-<pre class="code ruby"><code class="ruby">
-Voir la [doc](http://hummel.link/Ui-Bibz/UiBibz/Ui/Core/Breadcrumb.html)
+<h3>Breadcrumb (fil d&#39;ariane)</h3>
 
-### Buttons (Boutons)
+<p><img src="http://hummel.link/Ui-Bibz/images/breadcrumb.png" alt="breadcrumb"></p>
 
-#### Button
+<p>L&#39;élément <code>breadcrumb</code> à pour enfant l&#39;élément <code>link</code> qui accepte pour option un Hash avec les clefs :</p>
 
-![button](http://hummel.link/Ui-Bibz/images/button.png)
+<ul>
+<li><a href="#status-values">status</a></li>
+<li><a href="#glyph-arguments">glyph</a></li>
+<li>url</li>
+</ul>
 
-L'élément ```button``` à pour ```options``` un Hash acceptant les clefs :
-
-* [state](#state-values)
-* [status](#status-values)
-* [glyph](#glyph-arguments)
-* [size](#size-values)
-
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_breadcrumb'>breadcrumb</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_b'>b</span><span class='op'>|</span>
+  <span class='id identifier rubyid_b'>b</span><span class='period'>.</span><span class='id identifier rubyid_link'>link</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Exemple 1</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='label'>url:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>#exemple-1</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='label'>glyph:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>home</span><span class='tstring_end'>'</span></span>
+  <span class='id identifier rubyid_b'>b</span><span class='period'>.</span><span class='id identifier rubyid_link'>link</span><span class='lparen'>(</span><span class='lbrace'>{</span> <span class='label'>url:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>#exemple-2</span><span class='tstring_end'>'</span></span> <span class='rbrace'>}</span><span class='comma'>,</span> <span class='lbrace'>{</span> <span class='label'>class:</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>link</span><span class='tstring_end'>'</span></span> <span class='rbrace'>}</span><span class='rparen'>)</span> <span class='kw'>do</span>
+    <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Exemple 2</span><span class='tstring_end'>'</span></span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_b'>b</span><span class='period'>.</span><span class='id identifier rubyid_link'>link</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Exemple 3</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='label'>status:</span> <span class='symbol'>:active</span>
+<span class='kw'>end</span>
 </code></pre>
 
-<p>button &#39;Button&#39;, { state: :danger, size: :xs, glyph: &#39;star&#39; } , { class: &#39;my-button&#39; }</p>
+<p>Voir la <a href="http://hummel.link/Ui-Bibz/UiBibz/Ui/Core/Breadcrumb.html">doc</a></p>
 
-<pre class="code ruby"><code class="ruby">
-Voir la [doc](http://hummel.link/Ui-Bibz/UiBibz/Ui/Core/Button.html)
+<h3>Buttons (Boutons)</h3>
 
-#### Button Dropdown
+<h4>Button</h4>
 
-L'élément ```button_dropdown``` accepte pour options les mêmes clefs que l'élément
-[dropdown](#dropdown).
+<p><img src="http://hummel.link/Ui-Bibz/images/button.png" alt="button"></p>
 
-![button_link](http://hummel.link/Ui-Bibz/images/button_dropdown.png)
+<p>L&#39;élément <code>button</code> à pour <code>options</code> un Hash acceptant les clefs :</p>
 
+<ul>
+<li><a href="#state-values">state</a></li>
+<li><a href="#status-values">status</a></li>
+<li><a href="#glyph-arguments">glyph</a></li>
+<li><a href="#size-values">size</a></li>
+</ul>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_button'>button</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Button</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='lbrace'>{</span> <span class='label'>state:</span> <span class='symbol'>:danger</span><span class='comma'>,</span> <span class='label'>size:</span> <span class='symbol'>:xs</span><span class='comma'>,</span> <span class='label'>glyph:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>star</span><span class='tstring_end'>'</span></span> <span class='rbrace'>}</span> <span class='comma'>,</span> <span class='lbrace'>{</span> <span class='label'>class:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>my-button</span><span class='tstring_end'>'</span></span> <span class='rbrace'>}</span>
 </code></pre>
 
-<p>button_dropdown &#39;Button Dropdown&#39; do |bd|
-  bd.list link_to(&#39;Link 1&#39;, &#39;#&#39;)
-  bd.list &#39;Header 1&#39;, type: :header
-  bd.list link_to(&#39;Link 2&#39;, &#39;#&#39;)
-  bd.list &#39;---&#39;
-  bd.list link_to(&#39;Link 3&#39;, &#39;#&#39;)
-end</p>
+<p>Voir la <a href="http://hummel.link/Ui-Bibz/UiBibz/Ui/Core/Button.html">doc</a></p>
 
-<pre class="code ruby"><code class="ruby">
-Voir la [doc](http://hummel.link/Ui-Bibz/UiBibz/Ui/Core/ButtonLink.html)
+<h4>Button Dropdown</h4>
 
-#### Button group
+<p>L&#39;élément <code>button_dropdown</code> accepte pour options les mêmes clefs que l&#39;élément
+<a href="#dropdown">dropdown</a>.</p>
 
-![button_group](http://hummel.link/Ui-Bibz/images/button_group.png)
+<p><img src="http://hummel.link/Ui-Bibz/images/button_dropdown.png" alt="button_link"></p>
 
-L'élément ```button_group``` à pour ```options``` un Hash acceptant les clefs :
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_button_dropdown'>button_dropdown</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Button Dropdown</span><span class='tstring_end'>'</span></span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_bd'>bd</span><span class='op'>|</span>
+  <span class='id identifier rubyid_bd'>bd</span><span class='period'>.</span><span class='id identifier rubyid_list'>list</span> <span class='id identifier rubyid_link_to'>link_to</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Link 1</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>#</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_bd'>bd</span><span class='period'>.</span><span class='id identifier rubyid_list'>list</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Header 1</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='label'>type:</span> <span class='symbol'>:header</span>
+  <span class='id identifier rubyid_bd'>bd</span><span class='period'>.</span><span class='id identifier rubyid_list'>list</span> <span class='id identifier rubyid_link_to'>link_to</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Link 2</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>#</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_bd'>bd</span><span class='period'>.</span><span class='id identifier rubyid_list'>list</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>---</span><span class='tstring_end'>'</span></span>
+  <span class='id identifier rubyid_bd'>bd</span><span class='period'>.</span><span class='id identifier rubyid_list'>list</span> <span class='id identifier rubyid_link_to'>link_to</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Link 3</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>#</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
+<span class='kw'>end</span>
+</code></pre>
 
-* position (:vertical, :horizontal)
-* [size](#size-values)
+<p>Voir la <a href="http://hummel.link/Ui-Bibz/UiBibz/Ui/Core/ButtonLink.html">doc</a></p>
 
-L'élément ```list``` à pour ```options``` un Hash acceptant les clefs :
+<h4>Button group</h4>
 
-* [status](#status-values)
-* [state](#state-values)
+<p><img src="http://hummel.link/Ui-Bibz/images/button_group.png" alt="button_group"></p>
 
-```ruby
-button_group({ position: :vertical, size: :xs }) do
-  button 'Button 1', status: :active
-  button 'Button 2'
-  button 'Button 3'
-end
+<p>L&#39;élément <code>button_group</code> à pour <code>options</code> un Hash acceptant les clefs :</p>
 
-button_group do
-  button 'Button 1', status: :active
-  button 'Button 2'
-  button 'Button 3'
-  button_dropdown 'Button Dropdown' do |bd|
-    bd.list 'header', type: :header
-    bd.list link_to('Link 1', '#')
-    bd.list '---'
-    bd.list link_to('Link 2', '#')
-  end
-end
+<ul>
+<li>position (:vertical, :horizontal)</li>
+<li><a href="#size-values">size</a></li>
+</ul>
+
+<p>L&#39;élément <code>list</code> à pour <code>options</code> un Hash acceptant les clefs :</p>
+
+<ul>
+<li><a href="#status-values">status</a></li>
+<li><a href="#state-values">state</a></li>
+</ul>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_button_group'>button_group</span><span class='lparen'>(</span><span class='lbrace'>{</span> <span class='label'>position:</span> <span class='symbol'>:vertical</span><span class='comma'>,</span> <span class='label'>size:</span> <span class='symbol'>:xs</span> <span class='rbrace'>}</span><span class='rparen'>)</span> <span class='kw'>do</span>
+  <span class='id identifier rubyid_button'>button</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Button 1</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='label'>status:</span> <span class='symbol'>:active</span>
+  <span class='id identifier rubyid_button'>button</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Button 2</span><span class='tstring_end'>'</span></span>
+  <span class='id identifier rubyid_button'>button</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Button 3</span><span class='tstring_end'>'</span></span>
+<span class='kw'>end</span>
+
+<span class='id identifier rubyid_button_group'>button_group</span> <span class='kw'>do</span>
+  <span class='id identifier rubyid_button'>button</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Button 1</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='label'>status:</span> <span class='symbol'>:active</span>
+  <span class='id identifier rubyid_button'>button</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Button 2</span><span class='tstring_end'>'</span></span>
+  <span class='id identifier rubyid_button'>button</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Button 3</span><span class='tstring_end'>'</span></span>
+  <span class='id identifier rubyid_button_dropdown'>button_dropdown</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Button Dropdown</span><span class='tstring_end'>'</span></span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_bd'>bd</span><span class='op'>|</span>
+    <span class='id identifier rubyid_bd'>bd</span><span class='period'>.</span><span class='id identifier rubyid_list'>list</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>header</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='label'>type:</span> <span class='symbol'>:header</span>
+    <span class='id identifier rubyid_bd'>bd</span><span class='period'>.</span><span class='id identifier rubyid_list'>list</span> <span class='id identifier rubyid_link_to'>link_to</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Link 1</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>#</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_bd'>bd</span><span class='period'>.</span><span class='id identifier rubyid_list'>list</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>---</span><span class='tstring_end'>'</span></span>
+    <span class='id identifier rubyid_bd'>bd</span><span class='period'>.</span><span class='id identifier rubyid_list'>list</span> <span class='id identifier rubyid_link_to'>link_to</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Link 2</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>#</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span>
 </code></pre>
 
 <p>Voir la <a href="http://hummel.link/Ui-Bibz/UiBibz/Ui/Core/ButtonGroup.html">doc</a></p>
@@ -1117,7 +1105,7 @@ comme ci-dessous.</p>
 </div></div>
 
     <div id="footer">
-  Generated on Mon Aug 31 13:55:00 2015 by
+  Generated on Mon Aug 31 14:08:52 2015 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7.6 (ruby-1.9.3).
 </div>
