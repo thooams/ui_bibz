@@ -360,13 +360,35 @@ glyph { name: 'star', size: 3, type: 'fw' }
 
 Voir la [doc](http://hummel.link/Ui-Bibz/UiBibz/Ui/Core/Glyph.html)
 
+### Stars
+
+![stars](http://hummel.link/Ui-Bibz/images/stars.png)
+
+L'élément ```stars``` à pour ```options``` un Hash acceptant les clefs :
+
+* num - Correspond au nombre d'étoiles affichées (default: 5)
+* [state](#state-values)
+
+```ruby
+stars 3.2
+
+stars 7, { num: 10, state: :danger }
+
+stars num: 3 do
+  1
+end
+```
+
+Voir la [doc](http://hummel.link/Ui-Bibz/UiBibz/Ui/Core/Stars.html)
+
+
 ### Panel
 
 ![panel](http://hummel.link/Ui-Bibz/images/panel.png)
 
 L'élément ```panel``` à pour ```options``` un Hash acceptant les clefs :
 
-* [state](#state)
+* [state](#state-values)
 * tap (true) : permet de créer un header, body et footer
 
 Les éléments ```header```, ```body```,```footer``` sont des éléments [component](#component).
@@ -940,16 +962,16 @@ Voir la [doc](http://hummel.link/Ui-Bibz/UiBibz/Ui/Ux/Grid.html)
 
 ### Arguments and Values
 
-#### Status values
+#### status-values
 * :active
 * :disable
 
-#### Size values
+#### size-values
 * :xs
 * :sm
 * :lg
 
-#### State values
+#### state-values
 * :default
 * :primary
 * :info
@@ -957,7 +979,7 @@ Voir la [doc](http://hummel.link/Ui-Bibz/UiBibz/Ui/Ux/Grid.html)
 * :warning
 * :danger
 
-#### Glyph arguments
+#### glyph-arguments
 * name
 * size
 * type

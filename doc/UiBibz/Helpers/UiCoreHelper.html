@@ -32,7 +32,7 @@
       <div id="menu">
   
     <a href="../../_index.html">Index (U)</a> &raquo;
-    <span class='title'><span class='object_link'><a href="../../UiBibz.html" title="UiBibz (module)">UiBibz</a></span></span> &raquo; <span class='title'>Helpers</span>
+    <span class='title'><span class='object_link'><a href="../../UiBibz.html" title="UiBibz (module)">UiBibz</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Helpers.html" title="UiBibz::Helpers (module)">Helpers</a></span></span>
      &raquo; 
     <span class="title">UiCoreHelper</span>
   
@@ -505,6 +505,28 @@ lib/action_view/helpers/form_helper.rb" conflict.</p>
 </li>
 
       
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#stars-instance_method" title="#stars (instance method)">- (Object) <strong>stars</strong>(content = nil, options = nil, html_options = nil, &amp;block) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
     </ul>
   
 
@@ -540,12 +562,12 @@ lib/action_view/helpers/form_helper.rb" conflict.</p>
       <pre class="lines">
 
 
-60
-61
-62</pre>
+64
+65
+66</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ui_bibz/helpers/ui_core_helper.rb', line 60</span>
+      <pre class="code"><span class="info file"># File 'lib/ui_bibz/helpers/ui_core_helper.rb', line 64</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_breadcrumb'>breadcrumb</span> <span class='id identifier rubyid_content'>content</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_html_options'>html_options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span>
   <span class='const'>UiBibz</span><span class='op'>::</span><span class='const'>Ui</span><span class='op'>::</span><span class='const'>Core</span><span class='op'>::</span><span class='const'>Breadcrumb</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_content'>content</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='comma'>,</span> <span class='id identifier rubyid_html_options'>html_options</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_tap'>tap</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_render'>render</span>
@@ -570,12 +592,12 @@ lib/action_view/helpers/form_helper.rb" conflict.</p>
       <pre class="lines">
 
 
-47
-48
-49</pre>
+51
+52
+53</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ui_bibz/helpers/ui_core_helper.rb', line 47</span>
+      <pre class="code"><span class="info file"># File 'lib/ui_bibz/helpers/ui_core_helper.rb', line 51</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_button'>button</span> <span class='id identifier rubyid_content'>content</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_html_options'>html_options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span>
   <span class='const'>UiBibz</span><span class='op'>::</span><span class='const'>Ui</span><span class='op'>::</span><span class='const'>Core</span><span class='op'>::</span><span class='const'>Button</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_content'>content</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='comma'>,</span> <span class='id identifier rubyid_html_options'>html_options</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_render'>render</span>
@@ -600,12 +622,12 @@ lib/action_view/helpers/form_helper.rb" conflict.</p>
       <pre class="lines">
 
 
-51
-52
-53</pre>
+55
+56
+57</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ui_bibz/helpers/ui_core_helper.rb', line 51</span>
+      <pre class="code"><span class="info file"># File 'lib/ui_bibz/helpers/ui_core_helper.rb', line 55</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_button_dropdown'>button_dropdown</span> <span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_html_options'>html_options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span>
   <span class='const'>UiBibz</span><span class='op'>::</span><span class='const'>Ui</span><span class='op'>::</span><span class='const'>Core</span><span class='op'>::</span><span class='const'>ButtonDropdown</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='comma'>,</span> <span class='id identifier rubyid_html_options'>html_options</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_tap'>tap</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_render'>render</span>
@@ -630,12 +652,12 @@ lib/action_view/helpers/form_helper.rb" conflict.</p>
       <pre class="lines">
 
 
-43
-44
-45</pre>
+47
+48
+49</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ui_bibz/helpers/ui_core_helper.rb', line 43</span>
+      <pre class="code"><span class="info file"># File 'lib/ui_bibz/helpers/ui_core_helper.rb', line 47</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_button_group'>button_group</span> <span class='id identifier rubyid_content'>content</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_html_options'>html_options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span>
   <span class='const'>UiBibz</span><span class='op'>::</span><span class='const'>Ui</span><span class='op'>::</span><span class='const'>Core</span><span class='op'>::</span><span class='const'>ButtonGroup</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_content'>content</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='comma'>,</span> <span class='id identifier rubyid_html_options'>html_options</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_render'>render</span>
@@ -671,12 +693,12 @@ lib/action_view/helpers/form_helper.rb" conflict.</p>
       <pre class="lines">
 
 
-39
-40
-41</pre>
+43
+44
+45</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ui_bibz/helpers/ui_core_helper.rb', line 39</span>
+      <pre class="code"><span class="info file"># File 'lib/ui_bibz/helpers/ui_core_helper.rb', line 43</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_button_link'>button_link</span> <span class='id identifier rubyid_content'>content</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_html_options'>html_options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span>
   <span class='const'>UiBibz</span><span class='op'>::</span><span class='const'>Ui</span><span class='op'>::</span><span class='const'>Core</span><span class='op'>::</span><span class='const'>ButtonLink</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_content'>content</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='comma'>,</span> <span class='id identifier rubyid_html_options'>html_options</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_render'>render</span>
@@ -701,12 +723,12 @@ lib/action_view/helpers/form_helper.rb" conflict.</p>
       <pre class="lines">
 
 
-55
-56
-57</pre>
+59
+60
+61</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ui_bibz/helpers/ui_core_helper.rb', line 55</span>
+      <pre class="code"><span class="info file"># File 'lib/ui_bibz/helpers/ui_core_helper.rb', line 59</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_button_split_dropdown'>button_split_dropdown</span> <span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_html_options'>html_options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span>
   <span class='const'>UiBibz</span><span class='op'>::</span><span class='const'>Ui</span><span class='op'>::</span><span class='const'>Core</span><span class='op'>::</span><span class='const'>ButtonSplitDropdown</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='comma'>,</span> <span class='id identifier rubyid_html_options'>html_options</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_tap'>tap</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_render'>render</span>
@@ -731,12 +753,12 @@ lib/action_view/helpers/form_helper.rb" conflict.</p>
       <pre class="lines">
 
 
-84
-85
-86</pre>
+88
+89
+90</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ui_bibz/helpers/ui_core_helper.rb', line 84</span>
+      <pre class="code"><span class="info file"># File 'lib/ui_bibz/helpers/ui_core_helper.rb', line 88</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_col'>col</span> <span class='id identifier rubyid_content'>content</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_html_options'>html_options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span>
   <span class='const'>UiBibz</span><span class='op'>::</span><span class='const'>Ui</span><span class='op'>::</span><span class='const'>Core</span><span class='op'>::</span><span class='const'>Col</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_content'>content</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='comma'>,</span> <span class='id identifier rubyid_html_options'>html_options</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_render'>render</span>
@@ -761,12 +783,12 @@ lib/action_view/helpers/form_helper.rb" conflict.</p>
       <pre class="lines">
 
 
-64
-65
-66</pre>
+68
+69
+70</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ui_bibz/helpers/ui_core_helper.rb', line 64</span>
+      <pre class="code"><span class="info file"># File 'lib/ui_bibz/helpers/ui_core_helper.rb', line 68</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_dropdown'>dropdown</span> <span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_html_options'>html_options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span>
   <span class='const'>UiBibz</span><span class='op'>::</span><span class='const'>Ui</span><span class='op'>::</span><span class='const'>Core</span><span class='op'>::</span><span class='const'>Dropdown</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='comma'>,</span> <span class='id identifier rubyid_html_options'>html_options</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_tap'>tap</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_render'>render</span>
@@ -803,12 +825,12 @@ lib/action_view/helpers/form_helper.rb" conflict</p>
       <pre class="lines">
 
 
-17
-18
-19</pre>
+21
+22
+23</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ui_bibz/helpers/ui_core_helper.rb', line 17</span>
+      <pre class="code"><span class="info file"># File 'lib/ui_bibz/helpers/ui_core_helper.rb', line 21</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_etiquette'>etiquette</span> <span class='id identifier rubyid_content'>content</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_html_options'>html_options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span>
   <span class='const'>UiBibz</span><span class='op'>::</span><span class='const'>Ui</span><span class='op'>::</span><span class='const'>Core</span><span class='op'>::</span><span class='const'>Label</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_content'>content</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='comma'>,</span> <span class='id identifier rubyid_html_options'>html_options</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_render'>render</span>
@@ -833,12 +855,12 @@ lib/action_view/helpers/form_helper.rb" conflict</p>
       <pre class="lines">
 
 
-68
-69
-70</pre>
+72
+73
+74</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ui_bibz/helpers/ui_core_helper.rb', line 68</span>
+      <pre class="code"><span class="info file"># File 'lib/ui_bibz/helpers/ui_core_helper.rb', line 72</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_glyph'>glyph</span> <span class='id identifier rubyid_content'>content</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_html_options'>html_options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span>
   <span class='const'>UiBibz</span><span class='op'>::</span><span class='const'>Ui</span><span class='op'>::</span><span class='const'>Core</span><span class='op'>::</span><span class='const'>Glyph</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_content'>content</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='comma'>,</span> <span class='id identifier rubyid_html_options'>html_options</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_render'>render</span>
@@ -863,12 +885,12 @@ lib/action_view/helpers/form_helper.rb" conflict</p>
       <pre class="lines">
 
 
-21
-22
-23</pre>
+25
+26
+27</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ui_bibz/helpers/ui_core_helper.rb', line 21</span>
+      <pre class="code"><span class="info file"># File 'lib/ui_bibz/helpers/ui_core_helper.rb', line 25</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_jumbotron'>jumbotron</span> <span class='id identifier rubyid_content'>content</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_html_options'>html_options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span>
   <span class='const'>UiBibz</span><span class='op'>::</span><span class='const'>Ui</span><span class='op'>::</span><span class='const'>Core</span><span class='op'>::</span><span class='const'>Jumbotron</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_content'>content</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='comma'>,</span> <span class='id identifier rubyid_html_options'>html_options</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_render'>render</span>
@@ -893,12 +915,12 @@ lib/action_view/helpers/form_helper.rb" conflict</p>
       <pre class="lines">
 
 
-33
-34
-35</pre>
+37
+38
+39</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ui_bibz/helpers/ui_core_helper.rb', line 33</span>
+      <pre class="code"><span class="info file"># File 'lib/ui_bibz/helpers/ui_core_helper.rb', line 37</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_list_group'>list_group</span> <span class='id identifier rubyid_content'>content</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_html_options'>html_options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span>
   <span class='const'>UiBibz</span><span class='op'>::</span><span class='const'>Ui</span><span class='op'>::</span><span class='const'>Core</span><span class='op'>::</span><span class='const'>ListGroup</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_content'>content</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='comma'>,</span> <span class='id identifier rubyid_html_options'>html_options</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_tap'>tap</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_render'>render</span>
@@ -923,12 +945,12 @@ lib/action_view/helpers/form_helper.rb" conflict</p>
       <pre class="lines">
 
 
-25
-26
-27</pre>
+29
+30
+31</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ui_bibz/helpers/ui_core_helper.rb', line 25</span>
+      <pre class="code"><span class="info file"># File 'lib/ui_bibz/helpers/ui_core_helper.rb', line 29</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_nav'>nav</span> <span class='id identifier rubyid_content'>content</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_html_options'>html_options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span>
   <span class='const'>UiBibz</span><span class='op'>::</span><span class='const'>Ui</span><span class='op'>::</span><span class='const'>Core</span><span class='op'>::</span><span class='const'>Nav</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_content'>content</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='comma'>,</span> <span class='id identifier rubyid_html_options'>html_options</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_tap'>tap</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_render'>render</span>
@@ -953,12 +975,12 @@ lib/action_view/helpers/form_helper.rb" conflict</p>
       <pre class="lines">
 
 
-29
-30
-31</pre>
+33
+34
+35</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ui_bibz/helpers/ui_core_helper.rb', line 29</span>
+      <pre class="code"><span class="info file"># File 'lib/ui_bibz/helpers/ui_core_helper.rb', line 33</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_navbar'>navbar</span> <span class='id identifier rubyid_content'>content</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_html_options'>html_options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span>
   <span class='const'>UiBibz</span><span class='op'>::</span><span class='const'>Ui</span><span class='op'>::</span><span class='const'>Core</span><span class='op'>::</span><span class='const'>Navbar</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_content'>content</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='comma'>,</span> <span class='id identifier rubyid_html_options'>html_options</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_tap'>tap</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_render'>render</span>
@@ -1063,16 +1085,16 @@ lib/action_view/helpers/form_helper.rb" conflict</p>
       <pre class="lines">
 
 
-72
-73
-74
-75
 76
 77
-78</pre>
+78
+79
+80
+81
+82</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ui_bibz/helpers/ui_core_helper.rb', line 72</span>
+      <pre class="code"><span class="info file"># File 'lib/ui_bibz/helpers/ui_core_helper.rb', line 76</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_progress_bar'>progress_bar</span> <span class='id identifier rubyid_percentage'>percentage</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_html_options'>html_options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_is_tap'>is_tap</span><span class='lparen'>(</span><span class='id identifier rubyid_percentage'>percentage</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
@@ -1101,15 +1123,45 @@ lib/action_view/helpers/form_helper.rb" conflict</p>
       <pre class="lines">
 
 
-80
-81
-82</pre>
+84
+85
+86</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ui_bibz/helpers/ui_core_helper.rb', line 80</span>
+      <pre class="code"><span class="info file"># File 'lib/ui_bibz/helpers/ui_core_helper.rb', line 84</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_row'>row</span> <span class='id identifier rubyid_content'>content</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_html_options'>html_options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span>
   <span class='const'>UiBibz</span><span class='op'>::</span><span class='const'>Ui</span><span class='op'>::</span><span class='const'>Core</span><span class='op'>::</span><span class='const'>Row</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_content'>content</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='comma'>,</span> <span class='id identifier rubyid_html_options'>html_options</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_render'>render</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="stars-instance_method">
+  
+    - (<tt>Object</tt>) <strong>stars</strong>(content = nil, options = nil, html_options = nil, &amp;block) 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+16
+17
+18</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ui_bibz/helpers/ui_core_helper.rb', line 16</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_stars'>stars</span> <span class='id identifier rubyid_content'>content</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_html_options'>html_options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span>
+  <span class='const'>UiBibz</span><span class='op'>::</span><span class='const'>Ui</span><span class='op'>::</span><span class='const'>Core</span><span class='op'>::</span><span class='const'>Stars</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_content'>content</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='comma'>,</span> <span class='id identifier rubyid_html_options'>html_options</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_render'>render</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1121,7 +1173,7 @@ lib/action_view/helpers/form_helper.rb" conflict</p>
 </div>
 
     <div id="footer">
-  Generated on Thu Jul 16 14:09:02 2015 by
+  Generated on Mon Aug 31 13:55:00 2015 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7.6 (ruby-1.9.3).
 </div>

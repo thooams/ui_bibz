@@ -143,19 +143,19 @@ arguments in options attribute:</p>
 <h4>Signatures</h4>
 
 <pre class="code ruby"><code class="ruby">UiBibz::Ui::Core::Dropdown.new(options = nil, html_options = nil).tap do |d|
+  ...
   d.list content = nil, options = nil, html_options = nil, &amp;block
-  d.list content = nil, options = nil, html_options = nil, &amp;block
-  d.list content = nil, options = nil, html_options = nil, &amp;block
+  d.link content = nil, options = nil, html_options = nil, &amp;block
   ...
 end</code></pre>
 
 <h4>Examples</h4>
 
 <pre class="code ruby"><code class="ruby"><span class='const'>UiBibz</span><span class='op'>::</span><span class='const'>Ui</span><span class='op'>::</span><span class='const'>Core</span><span class='op'>::</span><span class='const'>Dropdown</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='label'>state:</span> <span class='symbol'>:success</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_tap'>tap</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_d'>d</span><span class='op'>|</span>
-  <span class='id identifier rubyid_d'>d</span><span class='period'>.</span><span class='id identifier rubyid_link'>link</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>test</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>#</span><span class='tstring_end'>'</span></span>
-  <span class='id identifier rubyid_d'>d</span><span class='period'>.</span><span class='id identifier rubyid_list'>list</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>---</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_d'>d</span><span class='period'>.</span><span class='id identifier rubyid_list'>list</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Header 1</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='lbrace'>{</span> <span class='label'>type:</span> <span class='symbol'>:header</span> <span class='rbrace'>}</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_d'>d</span><span class='period'>.</span><span class='id identifier rubyid_list'>list</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>test2</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>#</span><span class='tstring_end'>'</span></span>
+  <span class='id identifier rubyid_d'>d</span><span class='period'>.</span><span class='id identifier rubyid_link'>link</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>test</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='lbrace'>{</span> <span class='label'>url:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>#</span><span class='tstring_end'>'</span></span> <span class='rbrace'>}</span>
+  <span class='id identifier rubyid_d'>d</span><span class='period'>.</span><span class='id identifier rubyid_list'>list</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>---</span><span class='tstring_end'>'</span></span>
+  <span class='id identifier rubyid_d'>d</span><span class='period'>.</span><span class='id identifier rubyid_list'>list</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Header 1</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='lbrace'>{</span> <span class='label'>type:</span> <span class='symbol'>:header</span> <span class='rbrace'>}</span>
+  <span class='id identifier rubyid_d'>d</span><span class='period'>.</span><span class='id identifier rubyid_link'>link</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>test2</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='lbrace'>{</span> <span class='label'>url:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>#</span><span class='tstring_end'>'</span></span> <span class='rbrace'>}</span>
 <span class='kw'>end</span><span class='period'>.</span><span class='id identifier rubyid_render'>render</span></code></pre>
 
 <h4>Helper</h4>
@@ -205,94 +205,6 @@ end</code></pre>
     </h2>
 
     <ul class="summary">
-      
-        <li class="protected ">
-  <span class="summary_signature">
-    
-      <a href="#button_content-instance_method" title="#button_content (instance method)">- (Object) <strong>button_content</strong> </a>
-    
-
-    
-  </span>
-  
-  
-  
-  <span class="note title protected">protected</span>
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'></div></span>
-  
-</li>
-
-      
-        <li class="protected ">
-  <span class="summary_signature">
-    
-      <a href="#button_html-instance_method" title="#button_html (instance method)">- (Object) <strong>button_html</strong> </a>
-    
-
-    
-  </span>
-  
-  
-  
-  <span class="note title protected">protected</span>
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'></div></span>
-  
-</li>
-
-      
-        <li class="protected ">
-  <span class="summary_signature">
-    
-      <a href="#button_state-instance_method" title="#button_state (instance method)">- (Object) <strong>button_state</strong> </a>
-    
-
-    
-  </span>
-  
-  
-  
-  <span class="note title protected">protected</span>
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'></div></span>
-  
-</li>
-
-      
-        <li class="protected ">
-  <span class="summary_signature">
-    
-      <a href="#caret-instance_method" title="#caret (instance method)">- (Object) <strong>caret</strong> </a>
-    
-
-    
-  </span>
-  
-  
-  
-  <span class="note title protected">protected</span>
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'></div></span>
-  
-</li>
-
       
         <li class="public ">
   <span class="summary_signature">
@@ -368,28 +280,6 @@ end</code></pre>
 </li>
 
       
-        <li class="protected ">
-  <span class="summary_signature">
-    
-      <a href="#position-instance_method" title="#position (instance method)">- (Object) <strong>position</strong> </a>
-    
-
-    
-  </span>
-  
-  
-  
-  <span class="note title protected">protected</span>
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'></div></span>
-  
-</li>
-
-      
         <li class="public ">
   <span class="summary_signature">
     
@@ -410,74 +300,6 @@ end</code></pre>
     <span class="summary_desc"><div class='inline'>
 <p>Render html tag.</p>
 </div></span>
-  
-</li>
-
-      
-        <li class="protected ">
-  <span class="summary_signature">
-    
-      <a href="#size-instance_method" title="#size (instance method)">- (Object) <strong>size</strong> </a>
-    
-
-    
-  </span>
-  
-  
-  
-  <span class="note title protected">protected</span>
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'>
-<p>:lg, :sm or :xs.</p>
-</div></span>
-  
-</li>
-
-      
-        <li class="protected ">
-  <span class="summary_signature">
-    
-      <a href="#type-instance_method" title="#type (instance method)">- (Object) <strong>type</strong> </a>
-    
-
-    
-  </span>
-  
-  
-  
-  <span class="note title protected">protected</span>
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'></div></span>
-  
-</li>
-
-      
-        <li class="protected ">
-  <span class="summary_signature">
-    
-      <a href="#ul_html-instance_method" title="#ul_html (instance method)">- (Object) <strong>ul_html</strong> </a>
-    
-
-    
-  </span>
-  
-  
-  
-  <span class="note title protected">protected</span>
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'></div></span>
   
 </li>
 
@@ -564,129 +386,7 @@ end</code></pre>
 
     
       <div class="method_details first">
-  <h3 class="signature first" id="button_content-instance_method">
-  
-    - (<tt>Object</tt>) <strong>button_content</strong>  <span class="extras">(protected)</span>
-  
-
-  
-
-  
-</h3><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-90
-91
-92</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/ui_bibz/ui/core/dropdown/dropdown.rb', line 90</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_button_content'>button_content</span>
-  <span class='lbracket'>[</span><span class='id identifier rubyid_glyph_with_space'>glyph_with_space</span><span class='comma'>,</span> <span class='ivar'>@content</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'> </span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='id identifier rubyid_caret'>caret</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_compact'>compact</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='period'>.</span><span class='id identifier rubyid_html_safe'>html_safe</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="button_html-instance_method">
-  
-    - (<tt>Object</tt>) <strong>button_html</strong>  <span class="extras">(protected)</span>
-  
-
-  
-
-  
-</h3><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-94
-95
-96</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/ui_bibz/ui/core/dropdown/dropdown.rb', line 94</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_button_html'>button_html</span>
-  <span class='id identifier rubyid_content_tag'>content_tag</span> <span class='symbol'>:button</span><span class='comma'>,</span> <span class='id identifier rubyid_button_content'>button_content</span><span class='comma'>,</span> <span class='label'>class:</span> <span class='id identifier rubyid_add_classes'>add_classes</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>btn</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_button_state'>button_state</span><span class='comma'>,</span> <span class='id identifier rubyid_size'>size</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>dropdown-toggle</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='comma'>,</span> <span class='label'>type:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>button</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>data-toggle</span><span class='tstring_end'>&quot;</span></span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>dropdown</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>aria-expanded</span><span class='tstring_end'>&quot;</span></span> <span class='op'>=&gt;</span> <span class='kw'>false</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="button_state-instance_method">
-  
-    - (<tt>Object</tt>) <strong>button_state</strong>  <span class="extras">(protected)</span>
-  
-
-  
-
-  
-</h3><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-114
-115
-116
-117</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/ui_bibz/ui/core/dropdown/dropdown.rb', line 114</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_button_state'>button_state</span>
-  <span class='id identifier rubyid_sym'>sym</span> <span class='op'>=</span> <span class='ivar'>@state</span> <span class='op'>||</span> <span class='symbol'>:default</span>
-  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>btn-</span><span class='embexpr_beg'>#{</span>  <span class='id identifier rubyid_states'>states</span><span class='lbracket'>[</span><span class='id identifier rubyid_sym'>sym</span><span class='rbracket'>]</span> <span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="caret-instance_method">
-  
-    - (<tt>Object</tt>) <strong>caret</strong>  <span class="extras">(protected)</span>
-  
-
-  
-
-  
-</h3><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-102
-103
-104</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/ui_bibz/ui/core/dropdown/dropdown.rb', line 102</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_caret'>caret</span>
-  <span class='id identifier rubyid_content_tag'>content_tag</span> <span class='symbol'>:span</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='label'>class:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>caret</span><span class='tstring_end'>'</span></span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="link-instance_method">
+  <h3 class="signature first" id="link-instance_method">
   
     - (<tt>Object</tt>) <strong>link</strong>(content = nil, options = nil, html_options = nil, &amp;block) 
   
@@ -768,36 +468,6 @@ end</code></pre>
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="position-instance_method">
-  
-    - (<tt>Object</tt>) <strong>position</strong>  <span class="extras">(protected)</span>
-  
-
-  
-
-  
-</h3><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-106
-107
-108</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/ui_bibz/ui/core/dropdown/dropdown.rb', line 106</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_position'>position</span>
-  <span class='ivar'>@options</span><span class='lbracket'>[</span><span class='symbol'>:position</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>left</span><span class='tstring_end'>'</span></span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
   <h3 class="signature " id="render-instance_method">
   
     - (<tt>Object</tt>) <strong>render</strong> 
@@ -844,113 +514,12 @@ end</code></pre>
 </table>
 </div>
     
-      <div class="method_details ">
-  <h3 class="signature " id="size-instance_method">
-  
-    - (<tt>Object</tt>) <strong>size</strong>  <span class="extras">(protected)</span>
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    
-<p>:lg, :sm or :xs</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-120
-121
-122</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/ui_bibz/ui/core/dropdown/dropdown.rb', line 120</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_size'>size</span>
-  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>btn-</span><span class='embexpr_beg'>#{</span> <span class='ivar'>@options</span><span class='lbracket'>[</span><span class='symbol'>:size</span><span class='rbracket'>]</span> <span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>if</span> <span class='ivar'>@options</span><span class='lbracket'>[</span><span class='symbol'>:size</span><span class='rbracket'>]</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="type-instance_method">
-  
-    - (<tt>Object</tt>) <strong>type</strong>  <span class="extras">(protected)</span>
-  
-
-  
-
-  
-</h3><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-110
-111
-112</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/ui_bibz/ui/core/dropdown/dropdown.rb', line 110</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_type'>type</span>
-  <span class='ivar'>@options</span><span class='lbracket'>[</span><span class='symbol'>:type</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>dropdown</span><span class='tstring_end'>'</span></span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="ul_html-instance_method">
-  
-    - (<tt>Object</tt>) <strong>ul_html</strong>  <span class="extras">(protected)</span>
-  
-
-  
-
-  
-</h3><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-98
-99
-100</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/ui_bibz/ui/core/dropdown/dropdown.rb', line 98</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_ul_html'>ul_html</span>
-  <span class='id identifier rubyid_content_tag'>content_tag</span> <span class='symbol'>:ul</span><span class='comma'>,</span> <span class='ivar'>@items</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='period'>.</span><span class='id identifier rubyid_html_safe'>html_safe</span><span class='comma'>,</span> <span class='label'>class:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>dropdown-menu dropdown-menu-</span><span class='embexpr_beg'>#{</span> <span class='id identifier rubyid_position'>position</span> <span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='label'>role:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>menu</span><span class='tstring_end'>'</span></span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
   </div>
 
 </div>
 
     <div id="footer">
-  Generated on Thu Jul 16 14:09:03 2015 by
+  Generated on Mon Aug 31 13:55:01 2015 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7.6 (ruby-1.9.3).
 </div>
