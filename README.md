@@ -194,11 +194,12 @@ L'élément ```button_dropdown``` accepte pour options les mêmes clefs que l'é
 
 ```
 button_dropdown 'Button Dropdown' do |bd|
-  bd.list link_to('Link 1', '#')
-  bd.list 'Header 1', type: :header
-  bd.list link_to('Link 2', '#')
-  bd.list '---'
-  bd.list link_to('Link 3', '#')
+  bd.link Link 1', '#'
+  bd.header 'Header 1'
+  bd.link 'Link 2'
+  bd.divider
+  bd.link 'Link 3', '#'
+  bd.html link_to('Link 4', '#')
 end
 ```
 
@@ -230,10 +231,10 @@ button_group do
   button 'Button 2'
   button 'Button 3'
   button_dropdown 'Button Dropdown' do |bd|
-    bd.list 'header', type: :header
-    bd.list link_to('Link 1', '#')
-    bd.list '---'
-    bd.list link_to('Link 2', '#')
+    bd.header 'header'
+    bd.link 'Link 1', '#'
+    bd.divider
+    bd.link 'Link 2', '#'
   end
 end
 ```
@@ -261,13 +262,13 @@ que l'élément [dropdown](#dropdown).
 
 ```ruby
 button_split_dropdown 'Dropdown', state: :primary do |d|
-  d.list do
-    link_to 'Link 1', "#"
+  d.link url: "#" do
+    'Link 1'
   end
-  d.list 'Header 1', type: :header
-  d.list link_to 'Link 2', '#'
-  d.list '---'
-  d.list link_to 'Link 3', '#'
+  d.header 'Header 1'
+  d.link 'Link 2', '#'
+  d.divider
+  d.link 'Link 3', '#'
 end
 ```
 
@@ -526,13 +527,14 @@ Exemple :
 ```
 # app/views/documents/index.html.haml
 table store: @documents do |g|
-  g.actions do
-    link_action 'Show', documents_path(:id), glyph: 'eye'
-    link_action 'Edit', edit_document_path(:id), glyph: 'pencil'
-    link_action 'Delete', documents_path(:id), method: :delete, glyph: 'trash', data: { confirm: 'Are you sure?' }
-    link_action "---"
-    link_action 'Duplicate', duplicate_document_path(:id), glyph: 'files-o'
-    link_action 'Alert', alert_document_path(:id), glyph: 'bell'
+  g.actions do |acs|
+    acs.headr 'Main Actions'
+    acs.link 'Show', documents_path(:id), glyph: 'eye'
+    acs.link 'Edit', edit_document_path(:id), glyph: 'pencil'
+    acs.link 'Delete', documents_path(:id), method: :delete, glyph: 'trash', data: { confirm: 'Are you sure?' }
+    acs.divider
+    acs.link 'Duplicate', duplicate_document_path(:id), glyph: 'files-o'
+    acs.link 'Alert', alert_document_path(:id), glyph: 'bell'
   end
 end
 ```
@@ -652,11 +654,11 @@ table store: @documents do |t|
   t.actions do |acs|
     acs.format do |record|
       if record.active?
-        acs.action 'Active', { url: active_document_path(record.id) }
+        acs.link 'Active', { url: active_document_path(record.id) }
       else
-        acs.action 'Disabled', { url: disabled_document_path(record.id) }
+        acs.link 'Disabled', { url: disabled_document_path(record.id) }
       end
-      acs.action 'Show', { url: document_path(record.id) }
+      acs.link 'Show', { url: document_path(record.id) }
     end
   end
 end
@@ -734,9 +736,9 @@ table_panel({ store: @users, tap: true, glyph: 'home', state: :danger }) do |g|
     cls.column :role_name, { name: 'Role', sort: 'roles.name' }
   end
   g.actions do |acs|
-    acs.action 'Action 1', { url: edit_user_path(:id), glyph: 'pencil' }
-    acs.action "---"
-    acs.action { url: user_path(:id), glyph: 'eye' } do
+    acs.link 'Action 1', { url: edit_user_path(:id), glyph: 'pencil' }
+    acs.divider
+    acs.link { url: user_path(:id), glyph: 'eye' } do
       'Action 2'
     end
   end
