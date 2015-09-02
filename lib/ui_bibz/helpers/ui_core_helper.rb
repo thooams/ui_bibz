@@ -44,6 +44,10 @@ module UiBibz::Helpers::UiCoreHelper
     UiBibz::Ui::Core::ButtonLink.new(content, options, html_options, &block).render
   end
 
+  def button_checkbox content = nil, options = nil, html_options = nil, &block
+    UiBibz::Ui::Core::ButtonCheckbox.new(content, options, html_options, &block).render
+  end
+
   def button_group content = nil, options = nil, html_options = nil, &block
     UiBibz::Ui::Core::ButtonGroup.new(content, options, html_options, &block).render
   end
