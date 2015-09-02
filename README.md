@@ -1012,9 +1012,9 @@ panel 'Exemple', { state: :success }, { class: 'exemple' }
 
 # Ui Bibz versions
 
-[Ui Bibz v1.1.0](http://hummel.link/Ui-Bibz/1.1.0/index.html)
-[Ui Bibz v1.1.1](http://hummel.link/Ui-Bibz/1.1.1/index.html)
-[Ui Bibz v1.1.2](http://hummel.link/Ui-Bibz/1.1.2/index.html)
+* [Ui Bibz v1.1.0](http://hummel.link/Ui-Bibz/1.1.0/index.html)
+* [Ui Bibz v1.1.1](http://hummel.link/Ui-Bibz/1.1.1/index.html)
+* [Ui Bibz v1.1.2](http://hummel.link/Ui-Bibz/1.1.2/index.html)
 
 # Roadmap
 
