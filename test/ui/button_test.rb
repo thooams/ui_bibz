@@ -34,7 +34,7 @@ class ButtonTest < ActionView::TestCase
       d.divider
       d.link 'lolo'
     end.render
-    expected = "<div class=\"btn-group dropup\" role=\"group\"><button class=\"btn btn-success dropdown-toggle\" type=\"button\" data-toggle=\"dropdown\" aria-expanded=\"false\">Dropdown <span class=\"caret\"></span></button><ul class=\"dropdown-menu dropdown-menu-left\" role=\"menu\"><li class=\"\" role=\"presentation\"><a href=\"#\">toto</a></li><li class=\"dropdown-header\" role=\"presentation\">header</li><li class=\"\" role=\"presentation\"><a href=\"#\">momo</a></li><li class=\"dropdown-divider\"></li><li class=\"\" role=\"presentation\"><a href=\"#\">lolo</a></li></ul></div>"
+    expected = "<div class=\"btn-group dropup\" role=\"group\"><button class=\"btn btn-success dropdown-toggle\" type=\"button\" data-toggle=\"dropdown\" aria-expanded=\"false\">Dropdown <span class=\"caret\"></span></button><ul class=\"dropdown-menu dropdown-menu-left\" role=\"menu\"><li class=\"\" role=\"presentation\"><a href=\"#\">toto</a></li><li class=\"dropdown-header\" role=\"presentation\">header</li><li class=\"\" role=\"presentation\"><a href=\"#\">momo</a></li><li class=\"divider\" role=\"separator\"></li><li class=\"\" role=\"presentation\"><a href=\"#\">lolo</a></li></ul></div>"
 
     assert_equal expected, actual
   end
@@ -47,7 +47,7 @@ class ButtonTest < ActionView::TestCase
       d.divider
       d.link 'lolo'
     end.render
-    expected = "<div class=\"btn-group dropup\" role=\"group\"><button class=\"btn btn-primary\">Dropdown</button><button class=\"btn btn-primary dropdown-toggle\" type=\"button\" data-toggle=\"dropdown\" aria-expanded=\"false\"><span class=\"caret\"></span><span class=\"sr-only\">Toggle Dropdown</span></button><ul class=\"dropdown-menu dropdown-menu-left\" role=\"menu\"><li class=\"\" role=\"presentation\"><a href=\"#\">toto</a></li><li class=\"dropdown-header\" role=\"presentation\">header</li><li class=\"\" role=\"presentation\"><a href=\"#\">momo</a></li><li class=\"dropdown-divider\"></li><li class=\"\" role=\"presentation\"><a href=\"#\">lolo</a></li></ul></div>"
+    expected = "<div class=\"btn-group dropup\" role=\"group\"><button class=\"btn btn-primary\">Dropdown</button><button class=\"btn btn-primary dropdown-toggle\" type=\"button\" data-toggle=\"dropdown\" aria-expanded=\"false\"><span class=\"caret\"></span><span class=\"sr-only\">Toggle Dropdown</span></button><ul class=\"dropdown-menu dropdown-menu-left\" role=\"menu\"><li class=\"\" role=\"presentation\"><a href=\"#\">toto</a></li><li class=\"dropdown-header\" role=\"presentation\">header</li><li class=\"\" role=\"presentation\"><a href=\"#\">momo</a></li><li class=\"divider\" role=\"separator\"></li><li class=\"\" role=\"presentation\"><a href=\"#\">lolo</a></li></ul></div>"
 
     assert_equal expected, actual
   end

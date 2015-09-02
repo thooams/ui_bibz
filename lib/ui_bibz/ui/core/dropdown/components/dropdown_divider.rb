@@ -10,7 +10,7 @@ module UiBibz::Ui::Core
 
     # Render html tag
     def render
-      content_tag :li, '', class: 'dropdown-divider'
+      content_tag :li, nil, class: 'divider', role: 'separator'
     end
 
   end
