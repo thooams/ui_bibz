@@ -48,9 +48,15 @@ module UiBibz::Ui::Core
 
     # Render html tag
     def render
-      content_tag :li, @html_options.merge({ role: 'presentation' }) do
-        link_to glyph_and_content_html, @options[:url], @options[:link_html_options]
+      content_tag :li, class_and_html_options('').merge({ role: 'presentation' }) do
+        link_to glyph_and_content_html, link_url, @options[:link_html_options]
       end
+    end
+
+    private
+
+    def link_url
+      @options[:url] || "#"
     end
 
   end
