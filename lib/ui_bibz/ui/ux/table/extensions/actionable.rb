@@ -33,7 +33,7 @@ module UiBibz::Ui::Ux
         unless @actions.nil?
           @actions.format_action.call(record) unless @actions.format_action.nil?
           actions_links(record).each do |l|
-            d.list l.to_s.html_safe
+            d.html l.to_s.html_safe
           end
           @actions.reset
         end

@@ -172,9 +172,9 @@ class TableTest < ActionView::TestCase
         c.column(:name_en, { name: 'Name en', format: lambda{ |records, record| "name #{ record.id}"}})
       end
       pane.actions do |a|
-        a.action 'toto', url: users_path(:id), glyph: 'eye'
-        a.action '---'
-        a.action 'momo', url: users_path(:id), glyph: 'home'
+        a.link 'toto', url: users_path(:id), glyph: 'eye'
+        a.divider
+        a.link 'momo', url: users_path(:id), glyph: 'home'
       end
     end.render
   end

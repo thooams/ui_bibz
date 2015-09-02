@@ -1,4 +1,3 @@
-require "ui_bibz/ui/ux/table/components/table_action"
 module UiBibz::Ui::Ux
   class Actions
 
@@ -8,9 +7,17 @@ module UiBibz::Ui::Ux
       @action_order = -1
     end
 
-    # Add action in table
-    def action content = nil, options = nil, html_options = nil, &block
-      @actions << TableAction.new(content, options, html_options, &block).render
+    # Add link action in table
+    def link content = nil, options = nil, html_options = nil, &block
+      @actions << UiBibz::Ui::Core::DropdownLink.new(content, options, html_options, &block).render
+    end
+
+    def divider
+      @actions << UiBibz::Ui::Core::DropdownDivider.new.render
+    end
+
+    def header content = nil, options = nil, html_options = nil, &block
+      @actions << UiBibz::Ui::Core::DropdownHeader.new(content, options, html_options, &block).render
     end
 
     def reset
@@ -34,9 +41,9 @@ module UiBibz::Ui::Ux
 
     def defaults_actions
       [
-        UiBibz::Ui::Ux::TableAction.new(show_name, url: { controller: @store.controller, action: 'show', id: :id }, glyph: 'eye').render,
-        UiBibz::Ui::Ux::TableAction.new(edit_name, url:{ controller: @store.controller, action: 'edit', id: :id }, glyph: 'pencil').render,
-        UiBibz::Ui::Ux::TableAction.new(delete_name, { glyph: 'trash', url: { controller: @store.controller, action: 'destroy', id: :id }}, data: { confirm: 'Are you sure?', method: :delete }).render
+        UiBibz::Ui::Core::DropdownLink.new(show_name, url: { controller: @store.controller, action: 'show', id: :id }, glyph: 'eye').render,
+        UiBibz::Ui::Core::DropdownLink.new(edit_name, url:{ controller: @store.controller, action: 'edit', id: :id }, glyph: 'pencil').render,
+        UiBibz::Ui::Core::DropdownLink.new(delete_name, { glyph: 'trash', url: { controller: @store.controller, action: 'destroy', id: :id }}, data: { confirm: 'Are you sure?', method: :delete }).render
       ]
     end
 
