@@ -26,6 +26,13 @@ class ButtonTest < ActionView::TestCase
     assert_equal expected, actual
   end
 
+  test 'checkbox button' do
+    actual   = UiBibz::Ui::Core::ButtonCheckbox.new('Toto', { status: :active }).render
+    expected = ""
+
+    assert_equal expected, actual
+  end
+
   test 'button dropdown' do
       actual = UiBibz::Ui::Core::ButtonDropdown.new("Dropdown", type: :dropup, state: :success).tap do |d|
       d.link 'toto'
