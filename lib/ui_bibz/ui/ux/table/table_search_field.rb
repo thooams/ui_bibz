@@ -38,8 +38,8 @@ module UiBibz::Ui::Ux
     def search_field_html
       content_tag :div, @search_field.class_and_html_options(div_class) do
         concat content_tag(:span, UiBibz::Ui::Core::Glyph.new('search').render, class: 'input-group-addon')
-        concat tag(:input, type: 'search', value: store.search, name: 'search', class: 'form-control', placeholder: search_placeholder_field)
         concat tag(:input, type: 'hidden', name: 'store_id', value: store.id) unless store.id.nil? # if there is more one table in html page
+        concat tag(:input, type: 'search', value: store.search, name: 'search', class: 'form-control', placeholder: search_placeholder_field)
         concat content_tag(:span, UiBibz::Ui::Core::Glyph.new('times-circle').render, class: 'clear-search-btn input-group-addon')
       end
     end
