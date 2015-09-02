@@ -89,6 +89,10 @@ module UiBibz::Helpers::UiCoreHelper
     UiBibz::Ui::Core::Col.new(content, options, html_options, &block).render
   end
 
+  def container content = nil, options = nil, html_options = nil, &block
+    UiBibz::Ui::Core::Container.new(content, options, html_options, &block).render
+  end
+
 private
 
   def is_tap content, options
