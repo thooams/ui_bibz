@@ -75,4 +75,10 @@ class UiHelperTest < ActionView::TestCase
     assert_equal expected, actual
   end
 
+  test 'contaner' do
+    actual   = container type: :fluid
+    expected = "<div class=\"container-fluid\"></div>"
+
+    assert_equal expected, actual
+  end
 end
