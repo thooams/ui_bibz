@@ -15,9 +15,12 @@ module UiBibz::Ui::Core
   # You can add HTML attributes using the +html_options+.
   # You can pass arguments in options attribute:
   # * +state+ - State of élement with symbol value:
-  #   (+:default+, +:primary+, +:info+, +:warning+, +:danger+)
+  #   (+:default+, +:primary+, +:info+, +:warning+, +:danger+, +:link+)
   # * +size+
   #   (+:xs+, +:sm+, +:lg+)
+  # * +outline+ - Boolean
+  # * +status+ - Symbol (+:active+, +:disabled)
+  # * +type+ - Symbol (+:outline)
   # * +glyph+ - Add glyph with name or hash options
   #   * +name+ - String
   #   * +size+ - Integer
@@ -55,14 +58,26 @@ module UiBibz::Ui::Core
 
     # Render html tag
     def render
-      content_tag :button, glyph_and_content_html, class_and_html_options(['btn', size])
+      content_tag :button, glyph_and_content_html, class_and_html_options(['btn', size, type]).merge(toggle)
     end
 
   private
 
     def state
-      sym = @options[:state] || :default
-      "btn-#{  states[sym] }"
+      sym = @options[:state] || :primary
+      "btn-#{  states[sym] }#{ outline }"
+    end
+
+    def outline
+      "outline" unless @options[:outline].nil?
+    end
+
+    def toggle
+      @options[:toggle].nil? ? {} : { "data-toggle" => 'button', "aria-pressed" => false, "autocomplete" => "off" }
+    end
+
+    def type
+      "btn-block" if @options[:type] == :block
     end
 
     # :lg, :sm or :xs

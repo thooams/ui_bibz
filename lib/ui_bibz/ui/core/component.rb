@@ -90,7 +90,7 @@ module UiBibz::Ui::Core
     # Set :default state symbol
     def state
       sym = options.delete(:state) if options[:state]
-      sym = sym || :default
+      sym = sym || :primary
       states[:sym]
     end
 
@@ -123,7 +123,7 @@ module UiBibz::Ui::Core
     def states
       if @states.nil?
         states = {}
-        %w(default success primary info warning danger).each do |s|
+        %w(success primary secondary info warning danger).each do |s|
           states = states.merge(Hash[s.to_sym, s])
         end
         @states = states

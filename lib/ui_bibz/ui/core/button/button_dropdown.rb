@@ -18,6 +18,9 @@ module UiBibz::Ui::Core
   #   (+:default+, +:primary+, +:info+, +:warning+, +:danger+)
   # * +size+
   #   (+:xs+, +:sm+, +:lg+)
+  # * +outline+ - Boolean
+  # * +status+ - Symbol (+:active+, +:disabled)
+  # * +type+ - Symbol (+:block)
   # * +glyph+ - Add glyph with name or hash options
   #   * +name+ - String
   #   * +size+ - Integer

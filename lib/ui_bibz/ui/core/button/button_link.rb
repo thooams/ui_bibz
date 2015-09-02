@@ -19,6 +19,9 @@ module UiBibz::Ui::Core
   # * +size+
   #   (+:xs+, +:sm+, +:lg+)
   # * +url+ - String url
+  # * +outline+ - Boolean
+  # * +status+ - Symbol (+:active+, +:disabled)
+  # * +type+ - Symbol (+:block)
   # * +glyph+ - Add glyph with name or hash options
   #   * +name+ - String
   #   * +size+ - Integer
@@ -48,7 +51,7 @@ module UiBibz::Ui::Core
   #     content
   #   end
   #
-  class ButtonLink < Component
+  class ButtonLink < UiBibz::Ui::Core::Button
 
     # See UiBibz::Ui::Core::Component.initialize
     def initialize content = nil, options = nil, html_options = nil, &block
@@ -57,19 +60,7 @@ module UiBibz::Ui::Core
 
     # Render html tag
     def render
-      link_to glyph_and_content_html, @options[:url], class_and_html_options("btn")
-    end
-
-  private
-
-    def state
-      sym = @options[:state] || :default
-      "btn-#{  states[sym] }"
-    end
-
-    # :lg, :sm or :xs
-    def size
-      "btn-#{ @options[:size] }" if @options[:size]
+      link_to glyph_and_content_html, @options[:url], class_and_html_options(['btn', size, type]).merge(toggle)
     end
 
   end
