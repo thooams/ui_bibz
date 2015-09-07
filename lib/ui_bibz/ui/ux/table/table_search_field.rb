@@ -54,7 +54,8 @@ module UiBibz::Ui::Ux
 
     def searchable_attributes_sentence
       store.searchable_attributes.map do |i|
-        UiBibz::Utils::Internationalization.new("ui_bibz.grid.searchable.field.searchable_attributes.#{ model_name }.#{ i }", default: [translate_searchable_attributes_by_active_record(i), i.to_s]).translate
+        attribute_name = underscorize_hash(i)
+        UiBibz::Utils::Internationalization.new("ui_bibz.grid.searchable.field.searchable_attributes.#{ model_name }.#{ attribute_name }", default: [translate_searchable_attributes_by_active_record(attribute_name), attribute_name.to_s.humanize]).translate
       end.to_sentence(locale: I18n.locale)
     end
 
@@ -64,6 +65,10 @@ module UiBibz::Ui::Ux
 
     def translate_searchable_attributes_by_active_record attr
       store.model.human_attribute_name(attr)
+    end
+
+    def underscorize_hash attr
+      attr.kind_of?(Hash) ? "#{ attr.keys.first }_#{ attr.values.first }".to_sym : attr
     end
 
   end
