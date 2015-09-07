@@ -1,6 +1,6 @@
 lib/ui_bibz.rb d87b32c7833f15e5046449ab5ac2c6ec3f6cc084
 lib/ui_bibz/ui/base.rb a0840e2ee2d49117ac28b51dc89d3d724cfb6747
-lib/ui_bibz/version.rb ebf3733fb43ec3deaae249e00616d4134833e48c
+lib/ui_bibz/version.rb 8b25eba7771b2149e8d0a6da160fff2dda34ebae
 lib/ui_bibz/ui/ux/grid.rb 079a9b94c43980e5ae86b9e4c50499f0153aa345
 lib/ui_bibz/ui/core/col.rb 657fd5aeed007c9d2848f99f3d7bb4f642bf756c
 lib/ui_bibz/ui/core/row.rb 539ef1d6caf28cb460671cf3877313b3fc3fd74c
@@ -24,7 +24,7 @@ lib/ui_bibz/ui/core/list/list_group.rb ff0e84c591a84b4ce63db939a37f55c4b97714a9
 lib/ui_bibz/ui/ux/table/table_panel.rb 8156dd1c99b1b3e4cd8c03e9059ff01c6024c9a9
 lib/ui_bibz/ui/core/dropdown/dropdown.rb b5c804c45e9d7a1b2b8e38788f031288ebc66749
 lib/ui_bibz/utils/internationalization.rb 247008bccd7b820cd534082a846a29e5de0063dc
-lib/ui_bibz/concerns/models/searchable.rb dd0a2aae11560dc183d4ecf3c3f838e7fa172858
+lib/ui_bibz/concerns/models/searchable.rb e6cd48d3a78570f6fc2ebc907af47cb1d75d7920
 lib/ui_bibz/ui/core/button/button_link.rb aab49e47762ac39326de4ec9a8dd9a9695ab57b6
 lib/ui_bibz/ui/core/button/button_group.rb dac533adecbb81cb1d94175d49da6782a4af6ad2
 lib/ui_bibz/ui/core/list/components/list.rb 2717ed6f342dd4ad0c92864425fe8123fb82143f
@@ -34,7 +34,7 @@ lib/ui_bibz/ui/ux/table/components/column.rb da034f1a7f05096ffc03c2f25785bf264e8
 lib/ui_bibz/ui/core/breadcrumb/breadcrumb.rb 60ca3ffd3ce3f484249bc5d49bcde53b407c33fa
 lib/ui_bibz/ui/ux/table/components/columns.rb ad81e6a9ce7e30e2a9b6491132ce428f710f056f
 lib/ui_bibz/ui/core/button/button_dropdown.rb 49f453e7024956cf7b5e0ad9989ecac53c7216b2
-lib/ui_bibz/ui/ux/table/table_search_field.rb 766dd07c08bedabb96e38673dc852909c7d76b25
+lib/ui_bibz/ui/ux/table/table_search_field.rb 316b44d19cf88e780ba0cfdefcab8c12806e8fa0
 lib/ui_bibz/ui/ux/table/components/actions.rb e9c79111f5de47c79eb48961a8c66891310137d1
 lib/ui_bibz/ui/ux/table/extensions/sortable.rb 7d8575271cc19adaf6c0b14171e3dca4c00f2855
 lib/ui_bibz/ui/core/nav/components/nav_link.rb 27fbcf7b456c64178e238e63b3b4e641737635c7
