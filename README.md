@@ -490,13 +490,15 @@ Exemple :
 ```
 
 Dans le **model**, insérer la méthode ```searchable_attributes``` afin de pouvoir
-faire une recherche sur les attributs souhaités.
+faire une recherche sur les attributs souhaités. Vous pouvez même faire une
+recherche sur une table différente en insérant un hash avec pour clef le nom du model et en valeur le nom
+de l'attribut recherché.
 
 Exemple :
 
 ```
 # app/models/document.rb
-searchable_attributes :name_fr, :name_en
+searchable_attributes :name_fr, :name_en, user: :name
 ```
 
 Dans la **vue**, insérer la méthode ```table``` qui peut contenir plusieurs arguments :
