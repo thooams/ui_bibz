@@ -714,6 +714,16 @@ activerecord:
 ...
 ```
 
+Pour forcer le nombre de résultat par page par défaut, vous pouvez insérer dans
+votre model la méthode suivante :
+
+```
+# app/model/user.rb
+
+self.per_page = 10
+```
+
+
 Voir la [doc](http://hummel.link/Ui-Bibz/1.1.2/UiBibz/Ui/Ux/Table.html)
 
 ### Table Panel
