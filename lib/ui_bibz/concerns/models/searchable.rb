@@ -87,10 +87,11 @@ module UiBibz::Concerns::Models::Searchable
       @searchable_attributes.each do |attribute|
         if attribute.kind_of?(Hash)
           sql_query << "lower(#{ attribute.keys.first.to_s.pluralize }.#{ attribute.values.first }) LIKE :#{ attribute.values.first }"
+          sql_attributes = sql_attributes.merge(Hash[attribute.values.first, "%#{ @params[:search].downcase }%"])
         else
           sql_query << "lower(#{ self.to_s.downcase.pluralize }.#{ attribute }) LIKE :#{ attribute }"
+          sql_attributes = sql_attributes.merge(Hash[attribute, "%#{ @params[:search].downcase }%"])
         end
-        sql_attributes = sql_attributes.merge(Hash[attribute, "%#{ @params[:search].downcase }%"])
       end
 
       sql.where([sql_query.join(' OR '), sql_attributes])
