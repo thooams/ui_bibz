@@ -19,7 +19,7 @@ module UiBibz::Ui::Core
   # You can add HTML attributes using the +html_options+.
   # You can pass arguments in options attribute:
   # * +state+ - State of élement with symbol value:
-  #   (+:default+, +:primary+, +:info+, +:warning+, +:danger+)
+  #   (+:primary+, +:secondary+, +:info+, +:warning+, +:danger+)
   # * +size+
   #   (+:xs+, +:sm+, +:lg+)
   # * +glyph+ - Add glyph with name or hash options
@@ -70,7 +70,7 @@ module UiBibz::Ui::Core
 
     # Render html tag
     def render
-      content_tag :div, class_and_html_options(type) do
+      content_tag :div, class_and_html_options([type, "btn-group"]) do
         concat button_html
         concat ul_html
       end
@@ -106,11 +106,11 @@ module UiBibz::Ui::Core
     end
 
     def button_html
-      content_tag :button, button_content, class: add_classes("btn", button_state, size, "dropdown-toggle"), type: 'button', "data-toggle" => 'dropdown', "aria-expanded" => false
+      content_tag :button, button_content, class: add_classes("btn", button_state, size, "dropdown-toggle"), type: 'button', "data-toggle" => 'dropdown', "aria-haspopup" => true, "aria-expanded" => false
     end
 
     def ul_html
-      content_tag :ul, @items.join.html_safe, class: "dropdown-menu dropdown-menu-#{ position }", role: 'menu'
+      content_tag :div, @items.join.html_safe, class: "dropdown-menu dropdown-menu-#{ position }"
     end
 
     def caret
@@ -126,7 +126,7 @@ module UiBibz::Ui::Core
     end
 
     def button_state
-      sym = @state || :default
+      sym = @state || :primary
       "btn-#{  states[sym] }"
     end
 
