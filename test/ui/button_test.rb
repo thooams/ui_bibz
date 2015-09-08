@@ -26,6 +26,13 @@ class ButtonTest < ActionView::TestCase
     assert_equal expected, actual
   end
 
+  test 'button outline' do
+    actual   = UiBibz::Ui::Core::Button.new('toto', state: :success, outline: true).render
+    expected = "<button class=\"btn-success-outline btn\">toto</button>"
+
+    assert_equal expected, actual
+  end
+
   test 'checkbox button checked' do
     actual   = UiBibz::Ui::Core::ButtonCheckbox.new('Toto', { status: :active }).render
     expected = "<label class=\"active btn-primary btn\"><input type=\"checkbox\" autocomplete=\"off\" checked=\"checked\" />Toto</label>"

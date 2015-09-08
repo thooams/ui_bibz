@@ -69,7 +69,7 @@ module UiBibz::Ui::Core
     end
 
     def outline
-      "outline" unless @options[:outline].nil?
+      "-outline" unless @options[:outline].nil?
     end
 
     def toggle
