@@ -70,7 +70,7 @@ module UiBibz::Ui::Core
 
     # Render html tag
     def render
-      content_tag :div, class_and_html_options([type, "btn-group"]) do
+      content_tag :div, class_and_html_options([type, "btn-group", open]) do
         concat button_html
         concat ul_html
       end
@@ -123,6 +123,10 @@ module UiBibz::Ui::Core
 
     def type
       @options[:type] || 'dropdown'
+    end
+
+    def open
+      "open" if @options[:open]
     end
 
     def button_state
