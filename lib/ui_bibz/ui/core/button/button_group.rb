@@ -15,7 +15,7 @@ module UiBibz::Ui::Core
   # You can add HTML attributes using the +html_options+.
   # You can pass arguments in options attribute:
   # * +state+ - State of element with +symbol+ value:
-  #   (+:default+, +:primary+, +:info+, +:warning+, +:danger+)
+  #   (+:primary+, +:secondary+, +:info+, +:warning+, +:danger+)
   # * +size+ - Size of element with +symbol+ value:
   #   (+:xs+, +:sm+, +:lg+)
   # * +position+ - Position vertical or horizontal with +symbol+ value:

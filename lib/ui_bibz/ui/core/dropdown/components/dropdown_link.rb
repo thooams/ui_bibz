@@ -48,15 +48,23 @@ module UiBibz::Ui::Core
 
     # Render html tag
     def render
-      content_tag :li, class_and_html_options('').merge({ role: 'presentation' }) do
-        link_to glyph_and_content_html, link_url, @options[:link_html_options]
-      end
+      link_to glyph_and_content_html, link_url, link_html_options.merge({ class: options_class })
     end
 
     private
 
     def link_url
       @options[:url] || "#"
+    end
+
+    def link_html_options
+      @options[:link_html_options].nil? ? {} : @options[:link_html_options]
+    end
+
+    def options_class
+      klass = [link_html_options[:class].nil? ? '' : link_html_options[:class]]
+      klass << "dropdown-item"
+      klass.join(' ')
     end
 
   end
