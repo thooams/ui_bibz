@@ -55,7 +55,7 @@ class ButtonTest < ActionView::TestCase
       d.divider
       d.link 'lolo'
     end.render
-    expected = "<div class=\"btn-group dropup\" role=\"group\"><button class=\"btn btn-success dropdown-toggle\" type=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">Dropdown <span class=\"caret\"></span></button><div class=\"dropdown-menu dropdown-menu-left\"><a class=\" dropdown-item\" href=\"#\">toto</a><div class=\"dropdown-header\" role=\"presentation\">header</div><a class=\" dropdown-item\" href=\"#\">momo</a><div class=\"dropdown-divider\"></div><a class=\" dropdown-item\" href=\"#\">lolo</a></div></div>"
+    expected = "<div class=\"btn-group dropup\" role=\"group\"><button class=\"btn btn-success dropdown-toggle\" type=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">Dropdown <span class=\"caret\"></span></button><div class=\"dropdown-menu dropdown-menu-left\"><a class=\" dropdown-item\" href=\"#\">toto</a><h6 class=\"dropdown-header\" role=\"presentation\">header</h6><a class=\" dropdown-item\" href=\"#\">momo</a><div class=\"dropdown-divider\"></div><a class=\" dropdown-item\" href=\"#\">lolo</a></div></div>"
 
     assert_equal expected, actual
   end
@@ -68,7 +68,7 @@ class ButtonTest < ActionView::TestCase
       d.divider
       d.link 'lolo'
     end.render
-    expected = "<div class=\"btn-group dropup\" role=\"group\"><button class=\"btn btn-primary\">Dropdown</button><button class=\"btn btn-primary dropdown-toggle\" type=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\"><span class=\"caret\"></span><span class=\"sr-only\">Toggle Dropdown</span></button><div class=\"dropdown-menu dropdown-menu-left\"><a class=\" dropdown-item\" href=\"#\">toto</a><div class=\"dropdown-header\" role=\"presentation\">header</div><a class=\" dropdown-item\" href=\"#\">momo</a><div class=\"dropdown-divider\"></div><a class=\" dropdown-item\" href=\"#\">lolo</a></div></div>"
+    expected = "<div class=\"btn-group dropup\" role=\"group\"><button class=\"btn btn-primary\">Dropdown</button><button class=\"btn btn-primary dropdown-toggle\" type=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\"><span class=\"caret\"></span><span class=\"sr-only\">Toggle Dropdown</span></button><div class=\"dropdown-menu dropdown-menu-left\"><a class=\" dropdown-item\" href=\"#\">toto</a><h6 class=\"dropdown-header\" role=\"presentation\">header</h6><a class=\" dropdown-item\" href=\"#\">momo</a><div class=\"dropdown-divider\"></div><a class=\" dropdown-item\" href=\"#\">lolo</a></div></div>"
 
     assert_equal expected, actual
   end
