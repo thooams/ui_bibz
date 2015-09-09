@@ -1,3 +1,6 @@
+require 'ui_bibz/ui/core/dropdown/components/dropdown_header'
+require 'ui_bibz/ui/core/dropdown/components/dropdown_divider'
+require 'ui_bibz/ui/core/dropdown/components/dropdown_link'
 module UiBibz::Ui::Ux
   class Actions
 
