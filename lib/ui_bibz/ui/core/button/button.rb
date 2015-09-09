@@ -15,7 +15,7 @@ module UiBibz::Ui::Core
   # You can add HTML attributes using the +html_options+.
   # You can pass arguments in options attribute:
   # * +state+ - State of élement with symbol value:
-  #   (+:default+, +:primary+, +:info+, +:warning+, +:danger+, +:link+)
+  #   (+:primary+, +:secondary+, +:info+, +:warning+, +:danger+, +:link+)
   # * +size+
   #   (+:xs+, +:sm+, +:lg+)
   # * +outline+ - Boolean
@@ -69,7 +69,7 @@ module UiBibz::Ui::Core
     end
 
     def outline
-      "outline" unless @options[:outline].nil?
+      "-outline" unless @options[:outline].nil?
     end
 
     def toggle

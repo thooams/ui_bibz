@@ -14,7 +14,7 @@ class ButtonTest < ActionView::TestCase
     actual = UiBibz::Ui::Core::ButtonGroup.new position: :vertical do
       UiBibz::Ui::Core::Button.new('toto').render
     end.render
-    expected = "<div class=\"btn-group btn-group-vertical\" role=\"group\"><button class=\"btn-default btn\">toto</button></div>"
+    expected = "<div class=\"btn-group btn-group-vertical\" role=\"group\"><button class=\"btn-primary btn\">toto</button></div>"
 
     assert_equal expected, actual
   end
@@ -22,6 +22,13 @@ class ButtonTest < ActionView::TestCase
   test 'link button' do
     actual   = UiBibz::Ui::Core::ButtonLink.new('Toto', { url: users_path, state: :danger, glyph: 'add'}).render
     expected = "<a class=\"btn-danger btn\" href=\"/users\"><i class=\"glyph fa fa-add\"></i> Toto</a>"
+
+    assert_equal expected, actual
+  end
+
+  test 'button outline' do
+    actual   = UiBibz::Ui::Core::Button.new('toto', state: :success, outline: true).render
+    expected = "<button class=\"btn-success-outline btn\">toto</button>"
 
     assert_equal expected, actual
   end
@@ -48,7 +55,7 @@ class ButtonTest < ActionView::TestCase
       d.divider
       d.link 'lolo'
     end.render
-    expected = "<div class=\"btn-group dropup\" role=\"group\"><button class=\"btn btn-success dropdown-toggle\" type=\"button\" data-toggle=\"dropdown\" aria-expanded=\"false\">Dropdown <span class=\"caret\"></span></button><ul class=\"dropdown-menu dropdown-menu-left\" role=\"menu\"><li class=\"\" role=\"presentation\"><a href=\"#\">toto</a></li><li class=\"dropdown-header\" role=\"presentation\">header</li><li class=\"\" role=\"presentation\"><a href=\"#\">momo</a></li><li class=\"divider\" role=\"separator\"></li><li class=\"\" role=\"presentation\"><a href=\"#\">lolo</a></li></ul></div>"
+    expected = "<div class=\"btn-group dropup\" role=\"group\"><button class=\"btn btn-success dropdown-toggle\" type=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">Dropdown <span class=\"caret\"></span></button><div class=\"dropdown-menu dropdown-menu-left\"><a class=\" dropdown-item\" href=\"#\">toto</a><h6 class=\"dropdown-header\" role=\"presentation\">header</h6><a class=\" dropdown-item\" href=\"#\">momo</a><div class=\"dropdown-divider\"></div><a class=\" dropdown-item\" href=\"#\">lolo</a></div></div>"
 
     assert_equal expected, actual
   end
@@ -61,7 +68,7 @@ class ButtonTest < ActionView::TestCase
       d.divider
       d.link 'lolo'
     end.render
-    expected = "<div class=\"btn-group dropup\" role=\"group\"><button class=\"btn btn-primary\">Dropdown</button><button class=\"btn btn-primary dropdown-toggle\" type=\"button\" data-toggle=\"dropdown\" aria-expanded=\"false\"><span class=\"caret\"></span><span class=\"sr-only\">Toggle Dropdown</span></button><ul class=\"dropdown-menu dropdown-menu-left\" role=\"menu\"><li class=\"\" role=\"presentation\"><a href=\"#\">toto</a></li><li class=\"dropdown-header\" role=\"presentation\">header</li><li class=\"\" role=\"presentation\"><a href=\"#\">momo</a></li><li class=\"divider\" role=\"separator\"></li><li class=\"\" role=\"presentation\"><a href=\"#\">lolo</a></li></ul></div>"
+    expected = "<div class=\"btn-group dropup\" role=\"group\"><button class=\"btn btn-primary\">Dropdown</button><button class=\"btn btn-primary dropdown-toggle\" type=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\"><span class=\"caret\"></span><span class=\"sr-only\">Toggle Dropdown</span></button><div class=\"dropdown-menu dropdown-menu-left\"><a class=\" dropdown-item\" href=\"#\">toto</a><h6 class=\"dropdown-header\" role=\"presentation\">header</h6><a class=\" dropdown-item\" href=\"#\">momo</a><div class=\"dropdown-divider\"></div><a class=\" dropdown-item\" href=\"#\">lolo</a></div></div>"
 
     assert_equal expected, actual
   end

@@ -16,7 +16,7 @@ module UiBibz::Ui::Core
   # You can add HTML attributes using the +html_options+.
   # You can pass arguments in options attribute:
   # * +state+ - State of élement with symbol value:
-  #   (+:default+, +:primary+, +:info+, +:warning+, +:danger+)
+  #   (+:primary+, +:secondary+, +:info+, +:warning+, +:danger+)
   #
   # ==== Signatures
   #
@@ -110,7 +110,7 @@ module UiBibz::Ui::Core
   protected
 
     def state
-      sym = @options[:state] || :default
+      sym = @options[:state] || :primary
       "panel-#{ states[sym] }"
     end
 

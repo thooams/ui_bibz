@@ -8,7 +8,7 @@ class PanelTest < ActionView::TestCase
 
   test 'simple panel' do
     actual   = UiBibz::Ui::Core::Panel.new(@content).render
-    expected = "<div class=\"panel-default panel\"><div class=\"panel-body\">#{ @content }</div></div>"
+    expected = "<div class=\"panel-primary panel\"><div class=\"panel-body\">#{ @content }</div></div>"
 
     assert_equal expected, actual
   end
@@ -17,7 +17,7 @@ class PanelTest < ActionView::TestCase
     actual = UiBibz::Ui::Core::Panel.new do
       @content
     end.render
-    expected = "<div class=\"panel-default panel\"><div class=\"panel-body\">#{ @content }</div></div>"
+    expected = "<div class=\"panel-primary panel\"><div class=\"panel-body\">#{ @content }</div></div>"
 
     assert_equal expected, actual
   end
@@ -26,7 +26,7 @@ class PanelTest < ActionView::TestCase
     actual = UiBibz::Ui::Core::Panel.new().tap do |p|
       p.body @content
     end.render
-    expected = "<div class=\"panel-default panel\"><div class=\"panel-body\">#{ @content }</div></div>"
+    expected = "<div class=\"panel-primary panel\"><div class=\"panel-body\">#{ @content }</div></div>"
 
     assert_equal expected, actual
   end
