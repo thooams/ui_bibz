@@ -15,7 +15,7 @@ module UiBibz::Ui::Core
   # You can add HTML attributes using the +html_options+.
   # You can pass arguments in options attribute:
   # * +state+ - State of élement with symbol value:
-  #   (+:default+, +:primary+, +:info+, +:warning+, +:danger+)
+  #   (+:primary+, +:secondary+, +:info+, +:warning+, +:danger+)
   # * +size+
   #   (+:xs+, +:sm+, +:lg+)
   # * +outline+ - Boolean
@@ -71,13 +71,12 @@ module UiBibz::Ui::Core
 
   private
 
-
     def button_html
       content_tag :button, button_content, class: add_classes("btn", button_state, size)
     end
 
     def split_html
-      content_tag :button, split_content, class: add_classes("btn", button_state, "dropdown-toggle"), type: 'button', "data-toggle" => 'dropdown', "aria-expanded" => false
+      content_tag :button, split_content, class: add_classes("btn", button_state, "dropdown-toggle"), type: 'button', "data-toggle" => 'dropdown', "aria-haspopup" => true, "aria-expanded" => false
     end
 
     def split_content

@@ -21,6 +21,8 @@ module UiBibz::Ui::Core
   #   * +name+ - String
   #   * +size+ - Integer
   #   * +type+ - Symbol
+  # * +type+ - Symbol
+  #   (+pill+)
   #
   # ==== Signatures
   #
@@ -32,7 +34,7 @@ module UiBibz::Ui::Core
   #
   # ==== Examples
   #
-  #   UiBibz::Ui::Core::Label.new(content, state: :success).render
+  #   UiBibz::Ui::Core::Label.new(content, state: :success, type: :pill).render
   #
   #   UiBibz::Ui::Core::Label.new() do
   #     #content
@@ -55,7 +57,7 @@ module UiBibz::Ui::Core
 
     # Render html tag
     def render
-      content_tag :span, glyph_and_content_html, class_and_html_options('label')
+      content_tag :span, glyph_and_content_html, class_and_html_options(['label', type])
     end
 
   private
@@ -63,6 +65,10 @@ module UiBibz::Ui::Core
     def state
       sym = @options[:state] || :default
       "label-#{ states[sym] }"
+    end
+
+    def type
+      "label-pill" if @options[:type] == :pill
     end
 
   end

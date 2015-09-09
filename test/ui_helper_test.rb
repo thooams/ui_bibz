@@ -27,6 +27,13 @@ class UiHelperTest < ActionView::TestCase
     assert_equal expected, actual
   end
 
+  test 'etiquette pill' do
+    actual   = etiquette 'toto', state: :success, type: :pill, glyph: 'pencil'
+    expected = "<span class=\"label-success label label-pill\"><i class=\"glyph fa fa-pencil\"></i> toto</span>"
+
+    assert_equal expected, actual
+  end
+
   test 'jumbotron with full_width' do
     actual   = jumbotron 'toto', full_width: true
     expected = "<div class=\"jumbotron\"><div class=\"container\">toto</div></div>"
