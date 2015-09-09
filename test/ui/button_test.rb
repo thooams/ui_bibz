@@ -73,5 +73,4 @@ class ButtonTest < ActionView::TestCase
     assert_equal expected, actual
   end
 
-
 end
