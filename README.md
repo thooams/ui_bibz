@@ -1016,6 +1016,10 @@ panel 'Exemple', { state: :success }, { class: 'exemple' }
 
 * [Ui Bibz v1.1.0](http://hummel.link/Ui-Bibz/1.1.0/index.html)
 * [Ui Bibz v1.1.1](http://hummel.link/Ui-Bibz/1.1.1/index.html)
+* [Ui Bibz v1.1.2](http://hummel.link/Ui-Bibz/1.1.2/index.html)
+* [Ui Bibz v1.1.3](http://hummel.link/Ui-Bibz/1.1.3/index.html)
+* [Ui Bibz v1.1.4](http://hummel.link/Ui-Bibz/1.1.4/index.html)
+* [Ui Bibz v1.1.5](http://hummel.link/Ui-Bibz/1.1.5/index.html)
 * [Ui Bibz v2.0.0](http://hummel.link/Ui-Bibz/2.0.0/index.html)
 
 # Roadmap

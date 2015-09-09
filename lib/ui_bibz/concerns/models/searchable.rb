@@ -32,9 +32,11 @@ module UiBibz::Concerns::Models::Searchable
     # If there is more one table in html page
     def self.initialize_params
       unless self.is_good_store_id?
-        @params[:search]   = nil
-        @params[:per_page] = nil
-        @params[:page]     = nil
+        @params[:search]    = nil
+        @params[:per_page]  = nil
+        @params[:page]      = nil
+        @params[:sort]      = nil
+        @params[:direction] = nil
       end
     end
 
@@ -59,7 +61,7 @@ module UiBibz::Concerns::Models::Searchable
         sq = "SELECT * FROM (#{ sql.group(table_name + '.id').to_sql }) countable ORDER BY countable.count #{ @params[:direction] || asc }"
         self.paginate_by_sql(sq, :page => @params[:page], per_page: @session[:per_page])
       else
-        sql.order(order_sql).paginate(:page => @params[:page], per_page: @session[:per_page])
+        sql.reorder(order_sql).paginate(:page => @params[:page], per_page: @session[:per_page])
      end
 
     end
