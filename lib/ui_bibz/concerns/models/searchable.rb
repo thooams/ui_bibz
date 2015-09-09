@@ -56,14 +56,24 @@ module UiBibz::Concerns::Models::Searchable
       # Main query with argument or not
       sql = search_by_query sql unless @params[:search].blank?
 
-      # Select Count or Not
-      if column_args[:count]
-        sq = "SELECT * FROM (#{ sql.group(table_name + '.id').to_sql }) countable ORDER BY countable.count #{ @params[:direction] || asc }"
-        self.paginate_by_sql(sq, :page => @params[:page], per_page: @session[:per_page])
+      generate_sql sql, column_args
+    end
+
+    def self.generate_sql sql, column_args
+      column_args[:count].nil? ? generate_default_sql(sql) : generate_count_sql(sql)
+    end
+
+    def self.generate_default_sql sql
+      if is_sorting?
+        sql.paginate(:page => @params[:page], per_page: @session[:per_page])
       else
         sql.reorder(order_sql).paginate(:page => @params[:page], per_page: @session[:per_page])
-     end
+      end
+    end
 
+    def self.generate_count_sql sql
+      sq = "SELECT * FROM (#{ sql.group(table_name + '.id').to_sql }) countable ORDER BY countable.count #{ @params[:direction] || asc }"
+      self.paginate_by_sql(sq, :page => @params[:page], per_page: @session[:per_page])
     end
 
     def self.generate_select_count_sort_query sql, column_args
@@ -80,6 +90,10 @@ module UiBibz::Concerns::Models::Searchable
         column_args = [@arguments[:sortable]].flatten.detect{|f| f[:column] = @params[:column_name] } || {}
       end
       column_args
+    end
+
+    def self.is_sorting?
+      @params[:sort].nil? || @params[:direction].nil?
     end
 
     def self.search_by_query sql
@@ -100,7 +114,7 @@ module UiBibz::Concerns::Models::Searchable
     end
 
     def self.order_sql
-      @params[:sort].nil? || @params[:direction].nil? ? "#{ self.table_name }.id asc" : "#{ @params[:sort]} #{ @params[:direction] }"
+      self.is_sorting? ? "#{ self.table_name }.id asc" : "#{ @params[:sort]} #{ @params[:direction] }"
     end
 
     def self.search_sort_paginate
