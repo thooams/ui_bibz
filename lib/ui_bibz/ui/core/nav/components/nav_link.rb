@@ -45,7 +45,7 @@ module UiBibz::Ui::Core
 
     # Render html tag
     def render
-      content_tag :li, content_htm, class_and_html_options.merge({ role: 'presentation' })
+      content_tag :li, content_htm, class_and_html_options('nav-item')
     end
 
   private
@@ -59,12 +59,19 @@ module UiBibz::Ui::Core
     end
 
     def link_html_options
-      lho = @options[:link_html_options] || {}
-      if @options[:nav_type] == :tabs
-        lho.merge({ "aria-controls" => @options[:selector], "role" => "tab", "data-toggle" => "tab" })
+      if lho[:nav_type] == :tabs
+        lho.merge({ "aria-controls" => @options[:selector], class: link_class })
       else
-        lho
+        lho.merge({class: link_class})
       end
+    end
+
+    def lho
+      @options[:link_html_options] || {}
+    end
+
+    def link_class
+      [@options.delete(:status), lho[:class], "nav-link"].compact.join(' ')
     end
 
   end
