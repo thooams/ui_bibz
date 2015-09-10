@@ -50,7 +50,7 @@ module UiBibz::Ui::Core
 
     # Render html tag
     def render
-      content_tag :li, class_and_html_options(type) do
+      content_tag :li, class_and_html_options([type, 'nav-item']) do
         concat link_html
         concat ul_html
       end
@@ -59,7 +59,7 @@ module UiBibz::Ui::Core
   private
 
     def link_html
-      link_to button_content, "#", class: add_classes(size, "dropdown-toggle"), "data-toggle" => 'dropdown', "aria-expanded" => false
+      link_to button_content, "#", class: add_classes(size, "dropdown-toggle", 'nav-link'), "data-toggle" => 'dropdown', "aria-expanded" => false
     end
 
   end
