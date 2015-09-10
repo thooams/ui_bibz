@@ -15,7 +15,7 @@ module UiBibz
       autoload :Alert,                   "ui_bibz/ui/core/alert"
       autoload :Breadcrumb,              "ui_bibz/ui/core/breadcrumb/breadcrumb"
       autoload :Button,                  "ui_bibz/ui/core/button/button"
-      autoload :ButtonCheckbox,          "ui_bibz/ui/core/button/button_checkbox"
+      autoload :ButtonChoice,            "ui_bibz/ui/core/button/button_choice"
       autoload :ButtonDropdown,          "ui_bibz/ui/core/button/button_dropdown"
       autoload :ButtonGroup,             "ui_bibz/ui/core/button/button_group"
       autoload :ButtonLink,              "ui_bibz/ui/core/button/button_link"
