@@ -14,7 +14,7 @@ class ButtonTest < ActionView::TestCase
     actual = UiBibz::Ui::Core::ButtonGroup.new position: :vertical do
       UiBibz::Ui::Core::Button.new('toto').render
     end.render
-    expected = "<div class=\"btn-group btn-group-vertical\" role=\"group\"><button class=\"btn-primary btn\">toto</button></div>"
+    expected = "<div class=\"btn-group btn-group-vertical\" role=\"group\" data-toggle=\"buttons\"><button class=\"btn-primary btn\">toto</button></div>"
 
     assert_equal expected, actual
   end
@@ -34,15 +34,35 @@ class ButtonTest < ActionView::TestCase
   end
 
   test 'checkbox button checked' do
-    actual   = UiBibz::Ui::Core::ButtonCheckbox.new('Toto', { status: :active }).render
+    actual   = UiBibz::Ui::Core::ButtonChoice.new('Toto', { status: :active }).render
     expected = "<label class=\"active btn-primary btn\"><input type=\"checkbox\" autocomplete=\"off\" checked=\"checked\" />Toto</label>"
 
     assert_equal expected, actual
   end
 
   test 'checkbox button non checked' do
-    actual   = UiBibz::Ui::Core::ButtonCheckbox.new('Toto', { name: 'toto', id: 'toto', input_html_options: { class: 'toto'}}).render
+    actual   = UiBibz::Ui::Core::ButtonChoice.new('Toto', { name: 'toto', id: 'toto', input_html_options: { class: 'toto'}}).render
     expected = "<label class=\"btn-primary btn\"><input type=\"checkbox\" autocomplete=\"off\" name=\"toto\" id=\"toto\" class=\"toto\" />Toto</label>"
+
+    assert_equal expected, actual
+  end
+
+  test 'button group choice checkbox' do
+    actual = UiBibz::Ui::Core::ButtonGroup.new do
+      concat UiBibz::Ui::Core::ButtonChoice.new('Toto1').render
+      concat UiBibz::Ui::Core::ButtonChoice.new('Toto2').render
+    end.render
+    expected = "<div class=\"btn-group\" role=\"group\" data-toggle=\"buttons\"><label class=\"btn-primary btn\"><input type=\"checkbox\" autocomplete=\"off\" />Toto1</label><label class=\"btn-primary btn\"><input type=\"checkbox\" autocomplete=\"off\" />Toto2</label></div>"
+
+    assert_equal expected, actual
+  end
+
+  test 'button group choice radio' do
+    actual = UiBibz::Ui::Core::ButtonGroup.new do
+      concat UiBibz::Ui::Core::ButtonChoice.new('Toto1', type: :radio).render
+      concat UiBibz::Ui::Core::ButtonChoice.new('Toto2', type: :radio).render
+    end.render
+    expected = "<div class=\"btn-group\" role=\"group\" data-toggle=\"buttons\"><label class=\"btn-primary btn\"><input type=\"radio\" autocomplete=\"off\" />Toto1</label><label class=\"btn-primary btn\"><input type=\"radio\" autocomplete=\"off\" />Toto2</label></div>"
 
     assert_equal expected, actual
   end

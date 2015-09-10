@@ -51,7 +51,7 @@ module UiBibz::Ui::Core
 
     # Render html tag
     def render
-      content_tag :div, @content, class_and_html_options(["btn-#{ type }", size, position]).merge({ role: type })
+      content_tag :div, @content, class_and_html_options(["btn-#{ type }", size, position]).merge({ role: type, data: { toggle: 'buttons' }})
     end
 
   private

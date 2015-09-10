@@ -1,6 +1,6 @@
 module UiBibz::Ui::Core
 
-  # Create a button checkbox
+  # Create a button choice
   #
   # This element is an extend of UiBibz::Ui::Core::Component.
   #
@@ -14,6 +14,7 @@ module UiBibz::Ui::Core
   #
   # You can add HTML attributes using the +html_options+.
   # You can pass arguments in options attribute:
+  # * +type+ - Symbol (+:checkbox+, +:radio+)
   # * +state+ - State of élement with symbol value:
   #   (+:primary+, +:secondary+, +:info+, +:warning+, +:danger+)
   # * +size+
@@ -32,17 +33,17 @@ module UiBibz::Ui::Core
   #
   # ==== Signatures
   #
-  #   UiBibz::Ui::Core::ButtonCheckbox.new(content, options = nil, html_options = nil)
+  #   UiBibz::Ui::Core::ButtonChoice.new(content, options = nil, html_options = nil)
   #
-  #   UiBibz::Ui::Core::ButtonCheckbox.new(options = nil, html_options = nil) do
+  #   UiBibz::Ui::Core::ButtonChoice.new(options = nil, html_options = nil) do
   #     content
   #   end
   #
   # ==== Examples
   #
-  #   UiBibz::Ui::Core::ButtonCheckbox.new('test', status: :active)
+  #   UiBibz::Ui::Core::ButtonChoice.new('test', status: :active)
   #
-  #   UiBibz::Ui::Core::ButtonCheckbox.new({id: 'toto', input_html_options: { class: 'toto'}}, { class: 'lable-class'}) do
+  #   UiBibz::Ui::Core::ButtonChoice.new({id: 'toto', input_html_options: { class: 'toto'}}, { class: 'lable-class'}) do
   #     test
   #   end.render
   #
@@ -54,7 +55,7 @@ module UiBibz::Ui::Core
   #     content
   #   end
   #
-  class ButtonCheckbox < UiBibz::Ui::Core::Button
+  class ButtonChoice < UiBibz::Ui::Core::Button
 
     # See UiBibz::Ui::Core::Component.initialize
     def initialize content = nil, options = nil, html_options = nil, &block
@@ -63,8 +64,8 @@ module UiBibz::Ui::Core
 
     # Render html tag
     def render
-      content_tag :label, class_and_html_options(['btn', size, type]) do
-        concat tag(:input, { type: :checkbox, autocomplete: :off }.merge(checked).merge(name).merge(id).merge(input_html_options))
+      content_tag :label, class_and_html_options(['btn', size]) do
+        concat tag(:input, { type: type, autocomplete: :off }.merge(checked).merge(name).merge(id).merge(input_html_options))
         concat @content
       end
     end
@@ -85,6 +86,10 @@ module UiBibz::Ui::Core
 
     def input_html_options
       @options[:input_html_options].nil? ? {} : @options[:input_html_options]
+    end
+
+    def type
+      @options[:type] || :checkbox
     end
 
   end
