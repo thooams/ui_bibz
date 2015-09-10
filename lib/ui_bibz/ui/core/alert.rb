@@ -54,7 +54,7 @@ module UiBibz::Ui::Core
 
     # Render html tag
     def render
-      content_tag :div, class_and_html_options('alert').merge({ role: 'alert'}) do
+      content_tag :div, class_and_html_options(['alert', 'alert-dismissible']).merge({ role: 'alert'}) do
         concat glyph_and_content_html
         concat close_html if @options[:close]
       end
@@ -64,7 +64,8 @@ module UiBibz::Ui::Core
 
     def close_html
       content_tag :button, type: 'button', class: 'close', "data-dismiss" => "alert", "aria-label" => "Close" do
-        content_tag :span, "x", "aria-hidden" => true
+        concat content_tag :span, "×", "aria-hidden" => true
+        concat content_tag :span, "Close", class: "sr-only"
       end
     end
 
