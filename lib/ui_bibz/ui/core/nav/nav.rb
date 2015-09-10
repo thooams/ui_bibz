@@ -85,7 +85,7 @@ module UiBibz::Ui::Core
 
     # tabs or pills
     def type
-     "nav-#{ @options[:type] || :tabs }"
+      "nav-#{ @options[:type] }" unless @options[:type].nil?
     end
 
     def position
