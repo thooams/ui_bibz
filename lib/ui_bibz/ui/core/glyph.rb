@@ -18,7 +18,7 @@ module UiBibz::Ui::Core
   # * +size+ - Integer
   # * +type+ - Symbol
   # * +state+ - Symbol
-  #   (+:default+, +:primary+, +:info+, +:warning+, +:danger+)
+  #   (+:secondary+, +:primary+, +:info+, +:warning+, +:danger+)
   #
   # ==== Signatures
   #

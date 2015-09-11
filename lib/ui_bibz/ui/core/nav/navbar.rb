@@ -17,9 +17,11 @@ module UiBibz::Ui::Core
   #
   # You can add HTML attributes using the +html_options+.
   # You can pass arguments in options attribute:
-  # * +type+ - Symbol (default: :default)
-  #   (+:inverse+, +:default+)
+  # * +type+ - Symbol
+  #   (+:light+, +:dark+)
   # * +glyph+
+  # * +state+
+  #   (+:secondary+, +:primary+, +:info+, +:warning+, +:danger+, +inverse+)
   # * +position+ - Symbol
   #   (+:top+, +:bottom+)
   # * +title+ - String
@@ -92,11 +94,12 @@ module UiBibz::Ui::Core
       @items << UiBibz::Ui::Core::NavbarForm.new(model_or_url, options, &block).render
     end
 
+    # Not use !!!!!
     # Add navbar text items
     # See UiBibz::Ui::Core::NavbarText
-    def text content = nil, options = nil, html_options = nil, &block
-      @items << UiBibz::Ui::Core::NavbarText.new(content, options, html_options, &block).render
-    end
+    #def text content = nil, options = nil, html_options = nil, &block
+      #@items << UiBibz::Ui::Core::NavbarText.new(content, options, html_options, &block).render
+    #end
 
     def brand content = nil, options = nil, html_options = nil, &block
       @brand = UiBibz::Ui::Core::Component.new(content, options, html_options, &block)
@@ -107,7 +110,6 @@ module UiBibz::Ui::Core
     def header_html
       content_tag :div, class: 'navbar-header' do
         concat navbar_toggle_button_html
-        concat link_to title.content, title.options[:url], title.class_and_html_options('navbar-brand') unless title.nil?
       end
     end
 
@@ -120,7 +122,10 @@ module UiBibz::Ui::Core
     end
 
     def body_html
-      content_tag :div, @items.join.html_safe, class: "collapse navbar-collapse", id: id
+      content_tag :div, class: "collapse navbar-toggleable-xs", id: id do
+        concat link_to title.content, title.options[:url], title.class_and_html_options('navbar-brand') unless title.nil?
+        concat @items.join.html_safe
+      end
     end
 
     def id
@@ -128,12 +133,7 @@ module UiBibz::Ui::Core
     end
 
     def navbar_toggle_button_html
-      content_tag :button, class: 'navbar-toggle collapsed', data: { toggle: 'collapse', target:"##{ id }" } do
-        concat content_tag :span, 'Toggle navigation', class: 'sr-only'
-        concat content_tag :span, '', class: 'icon-bar'
-        concat content_tag :span, '', class: 'icon-bar'
-        concat content_tag :span, '', class: 'icon-bar'
-      end
+      content_tag :button, "☰", class: 'navbar-toggler hidden-sm-up', type: :button, data: { toggle: 'collapse', target:"##{ id }" }
     end
 
     def position
@@ -141,7 +141,11 @@ module UiBibz::Ui::Core
     end
 
     def type
-      "navbar-#{ @options[:type] || 'default' }"
+      "navbar-#{ @options[:type] || 'light' }"
+    end
+
+    def state
+      "bg-#{ @options[:state] }" unless @options[:state].nil?
     end
 
   end

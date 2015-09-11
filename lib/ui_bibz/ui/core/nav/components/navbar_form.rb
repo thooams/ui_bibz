@@ -50,7 +50,7 @@ module UiBibz::Ui::Core
       if type == :form_for
         @form = form_for(model_or_url, options, &block)
       else
-        @form = form_tag(model_or_url, class: "navbar-form #{ position }", &block)
+        @form = form_tag(model_or_url, class: "navbar-form form-inline #{ position }", &block)
       end
     end
 
@@ -74,7 +74,7 @@ module UiBibz::Ui::Core
     end
 
     def position
-      "navbar-#{ @options[:position] }" unless @options[:position].nil?
+      "pull-#{ @options[:position] }" unless @options[:position].nil?
     end
 
   end
