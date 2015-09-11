@@ -89,7 +89,7 @@ module UiBibz::Ui::Core
     end
 
     def position
-      "nav-#{ @options[:position] }" unless @options[:position].nil?
+      "pull-#{ @options[:position] }" unless @options[:position].nil?
     end
 
   end

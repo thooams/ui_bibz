@@ -18,7 +18,7 @@ class NavTest < ActionView::TestCase
       n.link 'Profile', url: "#profile", selector: 'profile', badge: 16
       n.link 'Messages', url: "#messages", selector: 'messages', status: :disabled
     end.render
-    expected = "<ul class=\"nav nav-pills nav-justified\"><li class=\"nav-item\"><a class=\"active nav-link\" href=\"#Home\">Home</a></li><li class=\"nav-item\"><a class=\"nav-link\" href=\"#profile\">Profile<span class=\"badge\">16</span></a></li><li class=\"nav-item\"><a class=\"disabled nav-link\" href=\"#messages\">Messages</a></li></ul>"
+    expected = "<ul class=\"nav nav-pills pull-justified\"><li class=\"nav-item\"><a class=\"active nav-link\" href=\"#Home\">Home</a></li><li class=\"nav-item\"><a class=\"nav-link\" href=\"#profile\">Profile<span class=\"badge\">16</span></a></li><li class=\"nav-item\"><a class=\"disabled nav-link\" href=\"#messages\">Messages</a></li></ul>"
 
     assert_equal expected, actual
   end
