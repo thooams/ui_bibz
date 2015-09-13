@@ -22,6 +22,11 @@ module UiBibz::Ui::Core
   # You can pass arguments in options attribute:
   # * +state+ - State of élement with symbol value:
   #   (+:primary+, +:secondary+, +:info+, +:warning+, +:danger+)
+  # * text_position - Symbole
+  #   (+:left+, +:right+, +:center+)
+  # * block - Boolean
+  # * type - Symbol
+  #   (+:inverse+)
   #
   # ==== Signatures
   #
@@ -116,7 +121,7 @@ module UiBibz::Ui::Core
 
     # Render html tag
     def render
-      content_tag :div, @items.join.html_safe, class_and_html_options(["card", text_position])
+      content_tag :div, @items.join.html_safe, class_and_html_options(["card", text_position, card_block])
     end
 
   protected
@@ -125,21 +130,16 @@ module UiBibz::Ui::Core
       "card-#{ states[@options[:state]] }" unless @options[:state].nil?
     end
 
-    def header_html
-      content_tag :div, @header.render, @header.class_and_html_options("card-header")
-    end
-
-    def body_html
-      @body = Component.new @content unless @content.nil?
-      content_tag :div, @body.render, @body.class_and_html_options("card-block")
-    end
-
-    def footer_html
-      content_tag :div, @footer.render, @footer.class_and_html_options("card-footer")
-    end
-
     def text_position
       "text-#{ @options[:text_position] }" unless @options[:text_position].nil?
+    end
+
+    def card_block
+      "card-block" unless @options[:block].nil?
+    end
+
+    def type
+      "card-#{ @options[:type] }" unless @options[:type].nil?
     end
 
   end
