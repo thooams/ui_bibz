@@ -8,6 +8,14 @@ module UiBibz::Helpers::UiCoreHelper
     end
   end
 
+  def card content = nil, options = nil, html_options = nil, &block
+    if is_tap(content, options)
+      UiBibz::Ui::Core::Card.new(content, options, html_options).tap(&block).render
+    else
+      UiBibz::Ui::Core::Card.new(content, options, html_options, &block).render
+    end
+  end
+
   # Use "notify" instead of "alert" : due to "actionview (4.2.0) lib/action_view/helpers/form_helper.rb" conflict
   def notify content = nil, options = nil, html_options = nil, &block
     UiBibz::Ui::Core::Alert.new(content, options, html_options, &block).render

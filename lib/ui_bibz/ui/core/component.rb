@@ -100,6 +100,7 @@ module UiBibz::Ui::Core
       cls = [
         html_options[:class],
         status,
+        other_classes,
         state,
         options_class
       ]
@@ -114,7 +115,7 @@ module UiBibz::Ui::Core
       classes.compact.join(' ')
     end
 
-  private
+  protected
 
     def status
       options[:status] unless options[:status].nil?
@@ -129,6 +130,9 @@ module UiBibz::Ui::Core
         @states = states
       end
       @states
+    end
+
+    def other_classes
     end
 
   end
