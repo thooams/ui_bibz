@@ -4,7 +4,7 @@ lib/ui_bibz/version.rb fb7ca06617deaf5e1e4795e9fc49b7166ccb5c90
 lib/ui_bibz/ui/ux/grid.rb 079a9b94c43980e5ae86b9e4c50499f0153aa345
 lib/ui_bibz/ui/core/col.rb 657fd5aeed007c9d2848f99f3d7bb4f642bf756c
 lib/ui_bibz/ui/core/row.rb 539ef1d6caf28cb460671cf3877313b3fc3fd74c
-lib/ui_bibz/rails/engine.rb 0720bf9cc7da2f36de5e2212a590b58ec19d31a8
+lib/ui_bibz/rails/engine.rb 0d38746eac6afaa56796c64d7aa0ec77121e4070
 lib/ui_bibz/ui/core/alert.rb 48c30806eec62987f07b57375ccf406712308df8
 lib/ui_bibz/ui/core/stars.rb bfb37a8b1e2b61b4e153b828f0d6ea0d67072d94
 lib/ui_bibz/ui/core/glyph.rb cf35976f93328f4b475bd41b07151ccba76bec78
@@ -15,7 +15,7 @@ lib/ui_bibz/ui/ux/table/table.rb 1b04d576a2868345bd69c03b461a3abd4f1f8f22
 lib/ui_bibz/ui/core/jumbotron.rb 7654b2765b0c085182545c2fb5a39a3920e4baf3
 lib/ui_bibz/ui/core/component.rb b0df13610fa2c33c3fcce825262ded8871c66fe3
 lib/ui_bibz/ui/core/nav/navbar.rb 6db829caf51ebfedda453fc5532b14b87b608105
-lib/ui_bibz/helpers/meta_helper.rb 57fc655c259132af0aa518bb2cdcb39c27e658f9
+lib/ui_bibz/helpers/meta_helper.rb b90ee3e3274c1c0a80cd4b5c3a5d8849e0e20923
 lib/ui_bibz/helpers/ui_ux_helper.rb b47a87a3133385d921951d86f1344c155faa942f
 lib/ui_bibz/helpers/utils_helper.rb 53d9372821f8c1b29ea1e180d58995685b230153
 lib/ui_bibz/ui/core/button/button.rb 31b36244d461cbb8531a5c85f6f8a8fed17570ca

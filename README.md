@@ -1,4 +1,4 @@
-![Ui Bibz logo](http://hummel.link/Ui-Bibz/1.1.5/images/ui-bibz-logo-without-border.gif)
+![Ui Bibz logo](http://hummel.link/Ui-Bibz/1.1.7/images/ui-bibz-logo-without-border.gif)
 
 [![Gem Version](https://badge.fury.io/rb/ui_bibz.svg)](http://badge.fury.io/rb/ui_bibz)
 [![Build Status](https://travis-ci.org/thooams/Ui-Bibz.svg)](https://travis-ci.org/thooams/Ui-Bibz)
@@ -67,7 +67,7 @@ dans ```options``` et ```html_options```.
 Ajouter la gem dans Rails :
 
 ```
-gem "ui_bibz", '~> 1.0.0'
+gem "ui_bibz", '~> 1.1.7'
 ```
 
 Lancer la command suivante :
@@ -96,18 +96,11 @@ Exemple ([haml](http://haml.info/)):
 Ui Bibz chargera les librairies en CDN directement dans votre application.
 Si vous préférez charger les librairies en locales, utilisez plutôt la méthode ```ui_bibz_local_meta_links```
 et insérez dans le fichier ```/config/initializers/assets.rb``` de votre
-application ces 3-4 lignes:
+application cette ligne:
 
 ```
-
-# For awesome-font
-Rails.application.config.assets.paths << Rails.root.join("app", "assets", "fonts")
-# For Ui bibz css
-Rails.application.config.assets.precompile += %w(bootstrap.min.css bootstrap-theme.min.css font-awesome.min.css)
-# For boostrap-theme (optionel)
-Rails.application.config.assets.precompile += %w(bootstrap-theme.min.css)
 # For Ui bibz js
-Rails.application.config.assets.precompile += %w(jquery-2.1.4.min.js bootstrap.min.js)
+Rails.application.config.assets.precompile += %w(jquery-2.1.4.min.js)
 
 ```
 
@@ -127,11 +120,13 @@ Placer la ligne suivante dans ```/app/assets/javascripts/applications.js```
 ...
 ```
 
+_Ps: Vous pouvez utiliser les variables sass présentes dans boostrap._
+
 ## Utilisation
 
 ### Alert
 
-![alert](http://hummel.link/Ui-Bibz/1.1.5/images/alert.png)
+![alert](http://hummel.link/Ui-Bibz/1.1.7/images/alert.png)
 
 L'élément ```notify``` à pour ```options``` un Hash acceptant les clefs :
 
@@ -142,11 +137,11 @@ L'élément ```notify``` à pour ```options``` un Hash acceptant les clefs :
 notify 'Alert', state: :info, glyph: 'eye'
 ```
 
-Voir la [doc](http://hummel.link/Ui-Bibz/1.1.5/UiBibz/Ui/Core/Alert.html)
+Voir la [doc](http://hummel.link/Ui-Bibz/1.1.7/UiBibz/Ui/Core/Alert.html)
 
 ### Breadcrumb (fil d'ariane)
 
-![breadcrumb](http://hummel.link/Ui-Bibz/1.1.5/images/breadcrumb.png)
+![breadcrumb](http://hummel.link/Ui-Bibz/1.1.7/images/breadcrumb.png)
 
 L'élément ```breadcrumb``` à pour enfant l'élément ```link``` qui accepte pour option un Hash avec les clefs :
 
@@ -164,13 +159,13 @@ breadcrumb do |b|
 end
 ```
 
-Voir la [doc](http://hummel.link/Ui-Bibz/1.1.5/UiBibz/Ui/Core/Breadcrumb.html)
+Voir la [doc](http://hummel.link/Ui-Bibz/1.1.7/UiBibz/Ui/Core/Breadcrumb.html)
 
 ### Buttons (Boutons)
 
 #### Button
 
-![button](http://hummel.link/Ui-Bibz/1.1.5/images/button.png)
+![button](http://hummel.link/Ui-Bibz/1.1.7/images/button.png)
 
 L'élément ```button``` à pour ```options``` un Hash acceptant les clefs :
 
@@ -183,14 +178,14 @@ L'élément ```button``` à pour ```options``` un Hash acceptant les clefs :
 button 'Button', { state: :danger, size: :xs, glyph: 'star' } , { class: 'my-button' }
 ```
 
-Voir la [doc](http://hummel.link/Ui-Bibz/1.1.5/UiBibz/Ui/Core/Button.html)
+Voir la [doc](http://hummel.link/Ui-Bibz/1.1.7/UiBibz/Ui/Core/Button.html)
 
 #### Button Dropdown
 
 L'élément ```button_dropdown``` accepte pour options les mêmes clefs que l'élément
 [dropdown](#dropdown).
 
-![button_link](http://hummel.link/Ui-Bibz/1.1.5/images/button_dropdown.png)
+![button_link](http://hummel.link/Ui-Bibz/1.1.7/images/button_dropdown.png)
 
 ```
 button_dropdown 'Button Dropdown' do |bd|
@@ -203,11 +198,11 @@ button_dropdown 'Button Dropdown' do |bd|
 end
 ```
 
-Voir la [doc](http://hummel.link/Ui-Bibz/1.1.5/UiBibz/Ui/Core/ButtonLink.html)
+Voir la [doc](http://hummel.link/Ui-Bibz/1.1.7/UiBibz/Ui/Core/ButtonLink.html)
 
 #### Button group
 
-![button_group](http://hummel.link/Ui-Bibz/1.1.5/images/button_group.png)
+![button_group](http://hummel.link/Ui-Bibz/1.1.7/images/button_group.png)
 
 L'élément ```button_group``` à pour ```options``` un Hash acceptant les clefs :
 
@@ -239,11 +234,11 @@ button_group do
 end
 ```
 
-Voir la [doc](http://hummel.link/Ui-Bibz/1.1.5/UiBibz/Ui/Core/ButtonGroup.html)
+Voir la [doc](http://hummel.link/Ui-Bibz/1.1.7/UiBibz/Ui/Core/ButtonGroup.html)
 
 #### Button Link (Lien Bouton)
 
-![button_link](http://hummel.link/Ui-Bibz/1.1.5/images/button_link.png)
+![button_link](http://hummel.link/Ui-Bibz/1.1.7/images/button_link.png)
 
 L'élément ```button_link``` à pour ```options``` un Hash acceptant les clefs :
 
@@ -251,11 +246,11 @@ L'élément ```button_link``` à pour ```options``` un Hash acceptant les clefs 
 button_link 'Button', { url: '#button', state: :primary, glyph: 'star' }, { class: 'my-button' }
 ```
 
-Voir la [doc](http://hummel.link/Ui-Bibz/1.1.5/UiBibz/Ui/Core/ButtonLink.html)
+Voir la [doc](http://hummel.link/Ui-Bibz/1.1.7/UiBibz/Ui/Core/ButtonLink.html)
 
 #### Button Split Dropdown
 
-![button_group](http://hummel.link/Ui-Bibz/1.1.5/images/button_split_dropdown.png)
+![button_group](http://hummel.link/Ui-Bibz/1.1.7/images/button_split_dropdown.png)
 
 L'élément ```button_split_dropdown```accepte pour options les mêmes clefs
 que l'élément [dropdown](#dropdown).
@@ -272,7 +267,7 @@ button_split_dropdown 'Dropdown', state: :primary do |d|
 end
 ```
 
-Voir la [doc](http://hummel.link/Ui-Bibz/1.1.5/UiBibz/Ui/Core/ButtonSplitDropdown.html)
+Voir la [doc](http://hummel.link/Ui-Bibz/1.1.7/UiBibz/Ui/Core/ButtonSplitDropdown.html)
 
 ### Dropdown
 
@@ -309,11 +304,11 @@ d.list '--'
 ...
 ```
 
-Voir la [doc](http://hummel.link/Ui-Bibz/1.1.5/UiBibz/Ui/Core/Dropdown.html)
+Voir la [doc](http://hummel.link/Ui-Bibz/1.1.7/UiBibz/Ui/Core/Dropdown.html)
 
 ### Progress Bar
 
-![glyph](http://hummel.link/Ui-Bibz/1.1.5/images/progress_bar.png)
+![glyph](http://hummel.link/Ui-Bibz/1.1.7/images/progress_bar.png)
 
 L'élément ```progress_bar``` à pour ```options``` un Hash acceptant les clefs :
 
@@ -341,11 +336,11 @@ progress_bar(tap: true) do |pb|
 end
 ```
 
-Voir la [doc](http://hummel.link/Ui-Bibz/1.1.5/UiBibz/Ui/Core/ProgressBar.html)
+Voir la [doc](http://hummel.link/Ui-Bibz/1.1.7/UiBibz/Ui/Core/ProgressBar.html)
 
 ### Glyph
 
-![glyph](http://hummel.link/Ui-Bibz/1.1.5/images/glyph.png)
+![glyph](http://hummel.link/Ui-Bibz/1.1.7/images/glyph.png)
 
 Les glyphs utilisés proviennent de [Font Awesome](http://fontawesome.io/).
 L'élément ```glyph``` peut contenir un hash pour ```content```
@@ -360,11 +355,11 @@ glyph 'star', { size: 3, type: 'fw' }, class: 'star-exemple'
 glyph { name: 'star', size: 3, type: 'fw' }
 ```
 
-Voir la [doc](http://hummel.link/Ui-Bibz/1.1.5/UiBibz/Ui/Core/Glyph.html)
+Voir la [doc](http://hummel.link/Ui-Bibz/1.1.7/UiBibz/Ui/Core/Glyph.html)
 
 ### Stars
 
-![stars](http://hummel.link/Ui-Bibz/1.1.5/images/stars.png)
+![stars](http://hummel.link/Ui-Bibz/1.1.7/images/stars.png)
 
 L'élément ```stars``` à pour ```options``` un Hash acceptant les clefs :
 
@@ -381,12 +376,12 @@ stars num: 3 do
 end
 ```
 
-Voir la [doc](http://hummel.link/Ui-Bibz/1.1.5/UiBibz/Ui/Core/Stars.html)
+Voir la [doc](http://hummel.link/Ui-Bibz/1.1.7/UiBibz/Ui/Core/Stars.html)
 
 
 ### Panel
 
-![panel](http://hummel.link/Ui-Bibz/1.1.5/images/panel.png)
+![panel](http://hummel.link/Ui-Bibz/1.1.7/images/panel.png)
 
 L'élément ```panel``` à pour ```options``` un Hash acceptant les clefs :
 
@@ -413,11 +408,11 @@ panel({ tap: true, state: :danger, table_options: { actionable: true } }, { clas
 end
 ```
 
-Voir la [doc](http://hummel.link/Ui-Bibz/1.1.5/UiBibz/Ui/Core/Panel.html)
+Voir la [doc](http://hummel.link/Ui-Bibz/1.1.7/UiBibz/Ui/Core/Panel.html)
 
 ### Table
 
-![table](http://hummel.link/Ui-Bibz/1.1.5/images/table.png)
+![table](http://hummel.link/Ui-Bibz/1.1.7/images/table.png)
 
 L'élément ```table``` est un tableau composé d'une recherche, une pagination et un trie de colonnes intégrées.
 Le tableau est compatible [I18n](http://guides.rubyonrails.org/i18n.html).
@@ -453,7 +448,7 @@ searchable_attributes :name_fr, :name_en
 
 Un champ recherche est disponible dans la vue :
 
-![table_search_field](http://hummel.link/Ui-Bibz/1.1.5/images/table_search_field.png)
+![table_search_field](http://hummel.link/Ui-Bibz/1.1.7/images/table_search_field.png)
 
 ```
 table_search_field store: @documents
@@ -467,7 +462,7 @@ table_pagination store: @documents
 
 Un champs select par page est disponible dans la vue :
 
-![table_search_field](http://hummel.link/Ui-Bibz/1.1.5/images/table_pagination_per_page.png)
+![table_search_field](http://hummel.link/Ui-Bibz/1.1.7/images/table_pagination_per_page.png)
 
 ```
 table_pagination_per_page store: @documents
@@ -716,11 +711,11 @@ activerecord:
 ...
 ```
 
-Voir la [doc](http://hummel.link/Ui-Bibz/1.1.5/UiBibz/Ui/Ux/Table.html)
+Voir la [doc](http://hummel.link/Ui-Bibz/1.1.7/UiBibz/Ui/Ux/Table.html)
 
 ### Table Panel
 
-![table_panel](http://hummel.link/Ui-Bibz/1.1.5/images/table_panel.png)
+![table_panel](http://hummel.link/Ui-Bibz/1.1.7/images/table_panel.png)
 
 Le composant ```table_panel``` est un [tableau](#table) dans un [panel](#panel).
 
@@ -747,11 +742,11 @@ table_panel({ store: @users, tap: true, glyph: 'home', state: :danger }) do |g|
 end
 ```
 
-Voir la [doc](http://hummel.link/Ui-Bibz/1.1.5/UiBibz/Ui/Ux/TablePanel.html)
+Voir la [doc](http://hummel.link/Ui-Bibz/1.1.7/UiBibz/Ui/Ux/TablePanel.html)
 
 ### List
 
-![list](http://hummel.link/Ui-Bibz/1.1.5/images/list.png)
+![list](http://hummel.link/Ui-Bibz/1.1.7/images/list.png)
 
 Par défaut une liste à pour tag ```<li>```.
 Mais elle peut se transformer en lien ```<a>``` à travers l'option ```type:```.
@@ -772,11 +767,11 @@ list_group do |lg|
 end
 ```
 
-Voir la [doc](http://hummel.link/Ui-Bibz/1.1.5/UiBibz/Ui/Core/List.html)
+Voir la [doc](http://hummel.link/Ui-Bibz/1.1.7/UiBibz/Ui/Core/List.html)
 
 ### Nav
 
-![nav](http://hummel.link/Ui-Bibz/1.1.5/images/nav.png)
+![nav](http://hummel.link/Ui-Bibz/1.1.7/images/nav.png)
 
 Par défaut la navigation comporte des onglets "tab".
 L'élément ```nav``` accepte en option les arguments :
@@ -796,11 +791,11 @@ nav(type: :pills, position: :justified) do |d|
 end
 ```
 
-Voir la [doc](http://hummel.link/Ui-Bibz/1.1.5/UiBibz/Ui/Core/Nav.html)
+Voir la [doc](http://hummel.link/Ui-Bibz/1.1.7/UiBibz/Ui/Core/Nav.html)
 
 ### Navbar
 
-![navbar](http://hummel.link/Ui-Bibz/1.1.5/images/navbar.png)
+![navbar](http://hummel.link/Ui-Bibz/1.1.7/images/navbar.png)
 
 Par défaut la navigation comporte des onglets "tab".
 L'élément ```navbar``` accepte en option les arguments :
@@ -831,12 +826,12 @@ navbar(type: :inverse, position: :top) do |nb|
 end
 ```
 
-Voir la [doc](http://hummel.link/Ui-Bibz/1.1.5/UiBibz/Ui/Core/Navbar.html)
+Voir la [doc](http://hummel.link/Ui-Bibz/1.1.7/UiBibz/Ui/Core/Navbar.html)
 
 
 ### Etiquette
 
-![list](http://hummel.link/Ui-Bibz/1.1.5/images/etiquette.png)
+![list](http://hummel.link/Ui-Bibz/1.1.7/images/etiquette.png)
 
 
 NB : Les méthodes ```Tag, label``` sont déjà utilisées par Rails.
@@ -853,7 +848,7 @@ etiquette 'label 2', state: :success
 etiquette 'label 2', state: :danger
 ```
 
-Voir la [doc](http://hummel.link/Ui-Bibz/1.1.5/UiBibz/Ui/Core/Etiquette.html)
+Voir la [doc](http://hummel.link/Ui-Bibz/1.1.7/UiBibz/Ui/Core/Etiquette.html)
 
 ### Row
 
@@ -866,7 +861,7 @@ end
 # => <div class='row toto'>content</div>
 ```
 
-Voir la [doc](http://hummel.link/Ui-Bibz/1.1.5/UiBibz/Ui/Core/Content.html)
+Voir la [doc](http://hummel.link/Ui-Bibz/1.1.7/UiBibz/Ui/Core/Content.html)
 
 ### Col
 
@@ -897,7 +892,7 @@ end
 # => <div class='col-xs-offset-1 col-md-3 test'>content</div>
 ```
 
-Voir la [doc](http://hummel.link/Ui-Bibz/1.1.5/UiBibz/Ui/Core/Col.html)
+Voir la [doc](http://hummel.link/Ui-Bibz/1.1.7/UiBibz/Ui/Core/Col.html)
 
 ### Grid
 
@@ -963,7 +958,7 @@ grid do |g|
 end
 ```
 
-Voir la [doc](http://hummel.link/Ui-Bibz/1.1.5/UiBibz/Ui/Ux/Grid.html)
+Voir la [doc](http://hummel.link/Ui-Bibz/1.1.7/UiBibz/Ui/Ux/Grid.html)
 
 ### Arguments and Values
 
@@ -1020,6 +1015,8 @@ panel 'Exemple', { state: :success }, { class: 'exemple' }
 * [Ui Bibz v1.1.3](http://hummel.link/Ui-Bibz/1.1.3/index.html)
 * [Ui Bibz v1.1.4](http://hummel.link/Ui-Bibz/1.1.4/index.html)
 * [Ui Bibz v1.1.5](http://hummel.link/Ui-Bibz/1.1.5/index.html)
+* [Ui Bibz v1.1.6](http://hummel.link/Ui-Bibz/1.1.6/index.html)
+* [Ui Bibz v1.1.7](http://hummel.link/Ui-Bibz/1.1.7/index.html)
 
 # Roadmap
 
