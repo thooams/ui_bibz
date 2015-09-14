@@ -21,6 +21,7 @@ module UiBibz
       autoload :ButtonLink,              "ui_bibz/ui/core/button/button_link"
       autoload :ButtonSplitDropdown,     "ui_bibz/ui/core/button/button_split_dropdown"
       autoload :Card,                    "ui_bibz/ui/core/card/card"
+      autoload :CardColumn,              "ui_bibz/ui/core/card/card_column"
       autoload :CardGroup,               "ui_bibz/ui/core/card/card_group"
       autoload :CardDeck,                "ui_bibz/ui/core/card/card_deck"
       autoload :Col,                     "ui_bibz/ui/core/col"
