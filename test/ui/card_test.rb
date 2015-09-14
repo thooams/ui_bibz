@@ -65,4 +65,15 @@ class CardTest < ActionView::TestCase
     assert_equal expected, actual
   end
 
+  test 'create card column' do
+    actual = card_column do |cg|
+      cg.card 'test 1', block: true
+      cg.card 'test 2', block: true
+      cg.card 'test 3', block: true
+    end
+    expected = "<div class=\"card-columns\"><div class=\"card card-block\">test 1</div><div class=\"card card-block\">test 2</div><div class=\"card card-block\">test 3</div></div>"
+
+    assert_equal expected, actual
+  end
+
 end
