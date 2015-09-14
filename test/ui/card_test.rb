@@ -43,5 +43,26 @@ class CardTest < ActionView::TestCase
     assert_equal expected, actual
   end
 
+  test 'create card group' do
+    actual = card_group do |cg|
+      cg.card 'test 1', block: true
+      cg.card 'test 2', block: true
+      cg.card 'test 3', block: true
+    end
+    expected = "<div class=\"card-group\"><div class=\"card card-block\">test 1</div><div class=\"card card-block\">test 2</div><div class=\"card card-block\">test 3</div></div>"
+
+    assert_equal expected, actual
+  end
+
+  test 'create card deck' do
+    actual = card_deck do |cg|
+      cg.card 'test 1', block: true
+      cg.card 'test 2', block: true
+      cg.card 'test 3', block: true
+    end
+    expected = "<div class=\"card-deck-wrapper\"><div class=\"card-deck\"><div class=\"card card-block\">test 1</div><div class=\"card card-block\">test 2</div><div class=\"card card-block\">test 3</div></div></div>"
+
+    assert_equal expected, actual
+  end
 
 end

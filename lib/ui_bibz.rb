@@ -22,6 +22,7 @@ module UiBibz
       autoload :ButtonSplitDropdown,     "ui_bibz/ui/core/button/button_split_dropdown"
       autoload :Card,                    "ui_bibz/ui/core/card/card"
       autoload :CardGroup,               "ui_bibz/ui/core/card/card_group"
+      autoload :CardDeck,                "ui_bibz/ui/core/card/card_deck"
       autoload :Col,                     "ui_bibz/ui/core/col"
       autoload :Component,               "ui_bibz/ui/core/component"
       autoload :Container,               "ui_bibz/ui/core/container"
