@@ -2,11 +2,6 @@
 require "codeclimate-test-reporter"
 CodeClimate::TestReporter.start
 
-#require 'color_pound_spec_reporter'
-
-#Minitest::Reporters.use! [ColorPoundSpecReporter.new]
-require 'minitest/line/describe_track'
-
 # Configure Rails Environment
 ENV["RAILS_ENV"] = "test"
 
