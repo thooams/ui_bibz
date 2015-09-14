@@ -75,7 +75,7 @@ module UiBibz::Ui::Core
 
     # Render html tag
     def render
-      content_tag :div, content, class: 'progress'
+      content_tag :progress, content, class: 'progress'
     end
 
     # Add progressbar bar items
