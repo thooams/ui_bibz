@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    ui_bibz (1.1.6)
+    ui_bibz (1.1.7)
       bootstrap-sass (~> 3.3.5)
       font-awesome-sass
       haml
@@ -50,7 +50,6 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
-    ansi (1.5.0)
     arel (6.0.3)
     autoprefixer-rails (6.0.2)
       execjs
@@ -62,7 +61,6 @@ GEM
     builder (3.2.2)
     codeclimate-test-reporter (0.4.8)
       simplecov (>= 0.7.1, < 1.0.0)
-    color_pound_spec_reporter (0.0.5)
     docile (1.1.5)
     erubis (2.7.0)
     execjs (2.6.0)
@@ -97,13 +95,6 @@ GEM
     mime-types (2.6.2)
     mini_portile (0.6.2)
     minitest (5.8.0)
-    minitest-line (0.6.3)
-      minitest (~> 5.0)
-    minitest-reporters (1.1.0)
-      ansi
-      builder
-      minitest (>= 5.0)
-      ruby-progressbar
     nokogiri (1.6.6.2)
       mini_portile (~> 0.6.0)
     rack (1.6.4)
@@ -136,7 +127,6 @@ GEM
     rake (10.4.2)
     rdoc (4.2.0)
       json (~> 1.4)
-    ruby-progressbar (1.7.5)
     ruby_parser (3.7.1)
       sexp_processor (~> 4.1)
     sass (3.4.18)
@@ -175,11 +165,8 @@ PLATFORMS
 DEPENDENCIES
   awesome_print
   codeclimate-test-reporter
-  color_pound_spec_reporter
   factory_girl_rails (~> 4.0)
   minitest
-  minitest-line
-  minitest-reporters
   rdoc
   sqlite3
   ui_bibz!
