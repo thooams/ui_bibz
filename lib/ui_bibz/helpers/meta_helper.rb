@@ -24,23 +24,9 @@ module UiBibz::Helpers::MetaHelper
 
   def ui_bibz_local_meta_links
     capture do
-      # Latest compiled and minified CSS
-      concat stylesheet_link_tag "bootstrap.min"
-      # font awesome icons
-      concat stylesheet_link_tag "font-awesome.min"
       # Jquery is required for boostrap
       concat javascript_include_tag 'jquery-2.1.4.min'
-      # Latest compiled and minified JavaScript
-      concat javascript_include_tag "bootstrap.min"
     end
   end
-
-
-  #def ui_bibz_meta_links_ext
-    #capture do
-      ##concat javascript_include_tag '/vendor/assets/javascripts/moment.js'
-      ##concat javascript_include_tag 'boostrap-datetimepicker.js'
-    #end
-  #end
 
 end

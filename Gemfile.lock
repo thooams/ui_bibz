@@ -2,10 +2,12 @@ PATH
   remote: .
   specs:
     ui_bibz (1.1.6)
+      bootstrap-sass (~> 3.3.5)
+      font-awesome-sass
       haml
       haml-rails
-      rails (~> 4.2.0)
-      sass-rails (~> 5.0.1)
+      rails (~> 4.2.4)
+      sass-rails (~> 5.0.4)
       will-paginate-i18n
       will_paginate (~> 3.0.6)
       will_paginate-bootstrap
@@ -50,18 +52,27 @@ GEM
       tzinfo (~> 1.1)
     ansi (1.5.0)
     arel (6.0.3)
+    autoprefixer-rails (6.0.2)
+      execjs
+      json
     awesome_print (1.6.1)
+    bootstrap-sass (3.3.5.1)
+      autoprefixer-rails (>= 5.0.0.1)
+      sass (>= 3.3.0)
     builder (3.2.2)
-    codeclimate-test-reporter (0.4.7)
+    codeclimate-test-reporter (0.4.8)
       simplecov (>= 0.7.1, < 1.0.0)
     color_pound_spec_reporter (0.0.5)
     docile (1.1.5)
     erubis (2.7.0)
+    execjs (2.6.0)
     factory_girl (4.5.0)
       activesupport (>= 3.0.0)
     factory_girl_rails (4.5.0)
       factory_girl (~> 4.5.0)
       railties (>= 3.0.0)
+    font-awesome-sass (4.4.0)
+      sass (>= 3.2)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
     haml (4.0.7)
@@ -83,12 +94,12 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
-    mime-types (2.6.1)
+    mime-types (2.6.2)
     mini_portile (0.6.2)
     minitest (5.8.0)
     minitest-line (0.6.3)
       minitest (~> 5.0)
-    minitest-reporters (1.0.20)
+    minitest-reporters (1.1.0)
       ansi
       builder
       minitest (>= 5.0)
@@ -143,7 +154,7 @@ GEM
     simplecov-html (0.10.0)
     sprockets (3.3.4)
       rack (~> 1.0)
-    sprockets-rails (2.3.2)
+    sprockets-rails (2.3.3)
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (>= 2.8, < 4.0)
