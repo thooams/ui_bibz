@@ -51,7 +51,6 @@ module UiBibz
   end
 
   module Helpers
-    autoload :MetaHelper,   "ui_bibz/helpers/meta_helper"
     autoload :UiCoreHelper, "ui_bibz/helpers/ui_core_helper"
     autoload :UiUxHelper,   "ui_bibz/helpers/ui_ux_helper"
     autoload :UtilsHelper,  "ui_bibz/helpers/utils_helper"

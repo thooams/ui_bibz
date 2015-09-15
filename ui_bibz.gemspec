@@ -27,6 +27,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'haml'
   s.add_dependency 'haml-rails'
   s.add_dependency 'sass-rails', '~> 5.0.4'
+  s.add_dependency 'jquery-rails'
   s.add_dependency 'font-awesome-sass'
   s.add_dependency 'bootstrap-sass', '~> 3.3.5'
 

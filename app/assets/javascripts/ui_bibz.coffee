@@ -1,4 +1,7 @@
-#= require bootstrap
+#= require jquery2
+#= require jquery_ujs
+# Remove bootstrap-4.0.0-alpha.min when gem boostrap 4 is created
+#= require bootstrap-4.0.0-alpha.min
 #= require bootstrap-datepicker.min
 #= require bootstrap-select.min
 #= require bootstrap-switch.min
