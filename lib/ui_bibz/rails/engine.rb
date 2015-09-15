@@ -11,7 +11,6 @@ module UiBibz
         ActionView::Base.send :include, UiBibz::Helpers::UiCoreHelper
         ActionView::Base.send :include, UiBibz::Helpers::UiUxHelper
         ActionView::Base.send :include, UiBibz::Helpers::UtilsHelper
-        ActionView::Base.send :include, UiBibz::Helpers::MetaHelper
       end
 
     end
