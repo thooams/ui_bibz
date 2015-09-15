@@ -22,8 +22,8 @@ module UiBibz
       autoload :ButtonSplitDropdown,     "ui_bibz/ui/core/button/button_split_dropdown"
       autoload :Card,                    "ui_bibz/ui/core/card/card"
       autoload :CardColumn,              "ui_bibz/ui/core/card/card_column"
-      autoload :CardGroup,               "ui_bibz/ui/core/card/card_group"
       autoload :CardDeck,                "ui_bibz/ui/core/card/card_deck"
+      autoload :CardGroup,               "ui_bibz/ui/core/card/card_group"
       autoload :Col,                     "ui_bibz/ui/core/col"
       autoload :Component,               "ui_bibz/ui/core/component"
       autoload :Container,               "ui_bibz/ui/core/container"
@@ -34,7 +34,6 @@ module UiBibz
       autoload :ListGroup,               "ui_bibz/ui/core/list/list_group"
       autoload :Nav,                     "ui_bibz/ui/core/nav/nav"
       autoload :Navbar,                  "ui_bibz/ui/core/nav/navbar"
-      autoload :Panel,                   "ui_bibz/ui/core/panel"
       autoload :ProgressBar,             "ui_bibz/ui/core/progress_bar/progress_bar"
       autoload :Row,                     "ui_bibz/ui/core/row"
       autoload :Stars,                   "ui_bibz/ui/core/stars"
@@ -43,9 +42,8 @@ module UiBibz
 
     # Ux
     module Ux
-      autoload :Grid,                    "ui_bibz/ui/ux/grid"
       autoload :Table,                   "ui_bibz/ui/ux/table/table"
-      autoload :TablePanel,              "ui_bibz/ui/ux/table/table_panel"
+      autoload :TableCard,               "ui_bibz/ui/ux/table/table_card"
       autoload :TableSearchField,        "ui_bibz/ui/ux/table/table_search_field"
       autoload :TablePagination,         "ui_bibz/ui/ux/table/table_pagination"
       autoload :TablePaginationPerPage,  "ui_bibz/ui/ux/table/table_pagination_per_page"
