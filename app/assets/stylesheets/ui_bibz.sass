@@ -1,13 +1,23 @@
-@import 'bootstrap-datepicker3.min'
-@import 'bootstrap-select.min'
-@import 'bootstrap-switch.min'
+// Awesome Font
+@import font-awesome-sprockets
+@import font-awesome
+
+// Bootstrap
+//@import bootstrap/variables
+@import bootstrap-sprockets
+@import bootstrap
+
+// Boostrap Plugins
+@import bootstrap-datepicker3.min
+@import bootstrap-select.min
+@import bootstrap-switch.min
 
 // Table section
 .table-panel
   .action
     width: 92px
   .panel-heading
-    background-color: #f5f5f5
+    background-color: $table-bg-active
     .title
       float: left
       font-size: 20px
@@ -54,15 +64,15 @@
 
 // Glyph section
 .glyph-success
-  color: #5cb85c
+  color: $brand-success
 .glyph-primary
-  color: darken(#428bca, 6.5%)
+  color: $brand-primary
 .glyph-info
-  color: #5bc0de
+  color: $brand-info
 .glyph-warning
-  color: #f0ad4e
+  color: $brand-warning
 .glyph-danger
-  color: #d9534f
+  color: $brand-danger
 
 // Other section
 .ui-bibz-clear

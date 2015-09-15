@@ -1,3 +1,4 @@
+#= require bootstrap
 #= require bootstrap-datepicker.min
 #= require bootstrap-select.min
 #= require bootstrap-switch.min
