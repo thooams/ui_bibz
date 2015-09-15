@@ -1,14 +1,15 @@
 module UiBibz::Ui::Ux
   class Searchable < UiBibz::Ui::Base
 
-    def initialize store, options
-      @store   = store
-      @options = options
+    def initialize store, options, html_options = nil
+      @store        = store
+      @options      = options
+      @html_options = html_options
     end
 
     # Render html tag
     def render
-      content_tag :div do
+      content_tag :div, @html_options do
         concat content_tag(:div, table_name, class: 'title')
         concat TableSearchField.new(store: @store, wrap_form: false).render if searchable?
         concat tag :br, class: 'ui-bibz-clear'

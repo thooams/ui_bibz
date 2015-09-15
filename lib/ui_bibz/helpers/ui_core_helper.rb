@@ -1,13 +1,5 @@
 module UiBibz::Helpers::UiCoreHelper
 
-  def panel content = nil, options = nil, html_options = nil, &block
-    if is_tap(content, options)
-      UiBibz::Ui::Core::Panel.new(content, options, html_options).tap(&block).render
-    else
-      UiBibz::Ui::Core::Panel.new(content, options, html_options, &block).render
-    end
-  end
-
   def card content = nil, options = nil, html_options = nil, &block
     if is_tap(content, options)
       UiBibz::Ui::Core::Card.new(content, options, html_options).tap(&block).render

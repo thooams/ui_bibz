@@ -2,14 +2,15 @@ module UiBibz::Ui::Ux
   class Paginable < UiBibz::Ui::Base
     include WillPaginate::ActionView
 
-    def initialize store, options
-      @store   = store
-      @options = options
+    def initialize store, options, html_options = nil
+      @store        = store
+      @options      = options
+      @html_options = html_options
     end
 
     # Render html tag
     def render
-      content_tag :div do
+      content_tag :div, @html_options do
         concat UiBibz::Ui::Ux::TablePagination.new(store: @store).render
         concat UiBibz::Ui::Ux::TablePaginationPerPage.new(store: @store).render
         concat tag(:br, class: 'ui-bibz-clear')

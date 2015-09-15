@@ -1,8 +1,8 @@
 module UiBibz::Ui::Ux
 
-  # Create a TablePanel
+  # Create a TableCard
   #
-  # This element is an extend of UiBibz::Ui::Ux::Panel.
+  # This element is an extend of UiBibz::Ui::Ux::card.
   #
   # ==== Attributes
   #
@@ -24,9 +24,9 @@ module UiBibz::Ui::Ux
   #
   # ==== Signatures
   #
-  #   UiBibz::Ui::Ux::TablePanel.new(store: @store)
+  #   UiBibz::Ui::Ux::TableCard.new(store: @store)
   #
-  #   UiBibz::Ui::Ux::TablePanel.new(store: @store, tap: true) do |t|
+  #   UiBibz::Ui::Ux::TableCard.new(store: @store, tap: true) do |t|
   #     t.columns do |c|
   #       c.column '#', { data_index: '#' }
   #     end
@@ -37,10 +37,10 @@ module UiBibz::Ui::Ux
   #
   # ==== Examples
   #
-  #   UiBibz::Ui::Ux::TablePanel.new(store: @users, table_options: { actionable: false }).render
+  #   UiBibz::Ui::Ux::TableCard.new(store: @users, table_options: { actionable: false }).render
   #
-  #   UiBibz::Ui::Ux::TablePanel.new(store: @users).tap do |t|
-  #     t.header 'My Table panel'
+  #   UiBibz::Ui::Ux::TableCard.new(store: @users).tap do |t|
+  #     t.header 'My Table card'
   #     t.columns do |c|
   #       c.column :id, { name: '# }, { class: 'column-id' }
   #       c.column :name_fr, { name: 'Name FR', link: edit_user_path(:id), order: 2 }
@@ -56,9 +56,9 @@ module UiBibz::Ui::Ux
   #
   # ==== Helper
   #
-  #   table_panel(options = {}, html_options = {})
+  #   table_card(options = {}, html_options = {})
   #
-  #   table_panel(options = { tap: true }, html_options = {}) do |t|
+  #   table_card(options = { tap: true }, html_options = {}) do |t|
   #     t.header(content, options = {}, html_options = {})
   #     # or
   #     t.header(options = {}, html_options = {}) do
@@ -90,7 +90,7 @@ module UiBibz::Ui::Ux
   #       content
   #     end
   #   end
-  class TablePanel < UiBibz::Ui::Core::Panel
+  class TableCard < UiBibz::Ui::Core::Card
 
     attr_accessor :columns
 
@@ -104,15 +104,11 @@ module UiBibz::Ui::Ux
 
     # Render html tag
     def render
-      initialize_header
-      initialize_footer
+      init_components
 
-      content_tag :div, class_and_html_options(panel_classes) do |f|
+      content_tag :div, class_and_html_options("card") do
         form_tag(url_for(url_parameters), method: :get) do
-          concat(header_html) unless @header.nil?
-          concat(body_html)   unless @body.nil?
-          concat(table_html)  unless @store.nil?
-          concat(footer_html) unless @footer.nil?
+          @items.join.html_safe
         end
       end
     end
@@ -132,38 +128,29 @@ module UiBibz::Ui::Ux
       @table.actions_list
     end
 
+
   private
+
+    def init_components
+      @items << search.render     if search.searchable?
+      @items << table.render      unless @store.nil?
+      @items << pagination.render if pagination.paginable?
+    end
 
     def url_parameters
       { controller: @store.controller, action: @store.action, id: @store.param_id }
     end
 
-    def table_html
-      content_tag :div, @table.render, class: 'panel-table'
-    end
-
-    def panel_classes
-      %w(panel panel-default table-panel)
+    def table
+      @table
     end
 
     def search
-      @search ||= Searchable.new @store, @options
+      @search ||= Searchable.new @store, @options, { class: 'card-header' }
     end
 
     def pagination
-      @pagination ||= Paginable.new @store, @options
-    end
-
-    def initialize_footer
-      @footer = @table.pagination
-    end
-
-    def initialize_header
-      @header = UiBibz::Ui::Core::Component.new search.render
-    end
-
-    def initialize_footer
-      @footer = UiBibz::Ui::Core::Component.new(pagination.render) if pagination.paginable?
+      @pagination ||= Paginable.new @store, @options, { class: 'card-footer' }
     end
 
   end

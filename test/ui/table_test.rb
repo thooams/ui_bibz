@@ -146,25 +146,19 @@ class TableTest < ActionView::TestCase
     assert_equal expected, actual
   end
 
-  test 'simple table_panel' do
-    actual = UiBibz::Ui::Ux::TablePanel.new(store: @users, tap: true).render
+  test 'simple table_card' do
+    actual = UiBibz::Ui::Ux::TableCard.new(store: @users, tap: true).render
   end
 
-  test 'complex table_panel' do
-    actual = UiBibz::Ui::Ux::TablePanel.new({ store: @users, tap: true }, { class: 'toto' }).tap do |pane|
+  test 'complex table_card' do
+    actual = UiBibz::Ui::Ux::TableCard.new({ store: @users, tap: true }, { class: 'toto' }).tap do |pane|
       pane.header 'Test header'
-      pane.body class: 'ui' do
-        'Test body'
-      end
     end.render
   end
 
-  test 'complex table_panel with custom actions' do
-    actual = UiBibz::Ui::Ux::TablePanel.new({ store: @users, tap: true }, { class: 'toto'}).tap do |pane|
+  test 'complex table_card with custom actions' do
+    actual = UiBibz::Ui::Ux::TableCard.new({ store: @users, tap: true }, { class: 'toto'}).tap do |pane|
       pane.header 'Test header'
-      pane.body cls: 'ui' do
-        'Test body'
-      end
       pane.columns do |c|
         c.column(:id, { name: '#' })
         c.column(:name_fr, { name: 'Name fr', link: edit_user_path(:id), order: 2 })
@@ -180,7 +174,7 @@ class TableTest < ActionView::TestCase
   end
 
   test 'format action' do
-    actual = UiBibz::Ui::Ux::TablePanel.new(store: @users, tap: true).tap do |pane|
+    actual = UiBibz::Ui::Ux::TableCard.new(store: @users, tap: true).tap do |pane|
       pane.columns do |cls|
         cls.column :id, name: '#'
       end
