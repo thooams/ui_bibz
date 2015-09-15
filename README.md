@@ -67,7 +67,7 @@ dans ```options``` et ```html_options```.
 Ajouter la gem dans Rails :
 
 ```
-gem "ui_bibz", '~> 1.0.0'
+gem "ui_bibz", '~> 2.0.0'
 ```
 
 Lancer la command suivante :
@@ -96,18 +96,11 @@ Exemple ([haml](http://haml.info/)):
 Ui Bibz chargera les librairies en CDN directement dans votre application.
 Si vous préférez charger les librairies en locales, utilisez plutôt la méthode ```ui_bibz_local_meta_links```
 et insérez dans le fichier ```/config/initializers/assets.rb``` de votre
-application ces 3-4 lignes:
+application cette ligne:
 
 ```
-
-# For awesome-font
-Rails.application.config.assets.paths << Rails.root.join("app", "assets", "fonts")
-# For Ui bibz css
-Rails.application.config.assets.precompile += %w(bootstrap.min.css bootstrap-theme.min.css font-awesome.min.css)
-# For boostrap-theme (optionel)
-Rails.application.config.assets.precompile += %w(bootstrap-theme.min.css)
 # For Ui bibz js
-Rails.application.config.assets.precompile += %w(jquery-2.1.4.min.js bootstrap.min.js)
+Rails.application.config.assets.precompile += %w(jquery-2.1.4.min.js)
 
 ```
 
@@ -126,6 +119,8 @@ Placer la ligne suivante dans ```/app/assets/javascripts/applications.js```
 //= require ui_bibz
 ...
 ```
+
+_Ps: Vous pouvez utiliser les variables sass présentes dans boostrap._
 
 ## Utilisation
 
@@ -1020,6 +1015,8 @@ panel 'Exemple', { state: :success }, { class: 'exemple' }
 * [Ui Bibz v1.1.3](http://hummel.link/Ui-Bibz/1.1.3/index.html)
 * [Ui Bibz v1.1.4](http://hummel.link/Ui-Bibz/1.1.4/index.html)
 * [Ui Bibz v1.1.5](http://hummel.link/Ui-Bibz/1.1.5/index.html)
+* [Ui Bibz v1.1.6](http://hummel.link/Ui-Bibz/1.1.6/index.html)
+* [Ui Bibz v1.1.7](http://hummel.link/Ui-Bibz/1.1.7/index.html)
 * [Ui Bibz v2.0.0](http://hummel.link/Ui-Bibz/2.0.0/index.html)
 
 # Roadmap

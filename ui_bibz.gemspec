@@ -20,18 +20,17 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib", "vendor"]
 
   # rails
-  s.add_dependency 'rails', '~> 4.2.0'
+  s.add_dependency 'rails', '~> 4.2.4'
   s.add_dependency 'will_paginate', '~> 3.0.6'
   s.add_dependency 'will_paginate-bootstrap'
   s.add_dependency 'will-paginate-i18n'
   s.add_dependency 'haml'
   s.add_dependency 'haml-rails'
-  s.add_dependency 'sass-rails', '~> 5.0.1'
+  s.add_dependency 'sass-rails', '~> 5.0.4'
+  s.add_dependency 'font-awesome-sass'
+  s.add_dependency 'bootstrap-sass', '~> 3.3.5'
 
   s.add_development_dependency "minitest"
-  s.add_development_dependency "minitest-line"
-  s.add_development_dependency "minitest-reporters"
-  s.add_development_dependency "color_pound_spec_reporter"
   s.add_development_dependency "rdoc"
   s.add_development_dependency "sqlite3"
   s.add_development_dependency "factory_girl_rails", "~> 4.0"
