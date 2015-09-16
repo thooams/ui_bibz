@@ -24,7 +24,7 @@ class TableTest < ActionView::TestCase
 
   test 'table search field' do
     actual   = UiBibz::Ui::Ux::TableSearchField.new({ store: @users}).render
-    expected = "<form class=\"form-table-search-field\" action=\"/users\" accept-charset=\"UTF-8\" method=\"get\"><input name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" /><div class=\"input-group input-group-sm table-search-field\"><span class=\"input-group-addon\"><i class=\"glyph fa fa-search\"></i></span><input type=\"search\" value=\"Name fr\" name=\"search\" class=\"form-control\" placeholder=\"Search by Name fr and Name en...\" /><span class=\"clear-search-btn input-group-addon\"><i class=\"glyph fa fa-times-circle\"></i></span></div></form>"
+    expected = "<form class=\"form-table-search-field\" action=\"/users\" accept-charset=\"UTF-8\" method=\"get\"><input name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" /><div class=\"input-group input-group-sm table-search-field\"><span class=\"input-group-addon\"><i class=\"glyph fa fa-search\"></i></span><input type=\"search\" value=\"Name fr\" name=\"search\" class=\"form-control\" placeholder=\"Search by Name fr and Name en...\" /><span class=\"input-group-btn\"><button type=\"button\" class=\"btn btn-secondary\"><i class=\"glyph fa fa-times-circle\"></i></button></span></div></form>"
 
     assert_equal expected, actual
   end
@@ -96,7 +96,7 @@ class TableTest < ActionView::TestCase
   test 'table searchable' do
     options  = { searchable: true }
     actual   = UiBibz::Ui::Ux::Searchable.new(@store, options).render
-    expected = "<div><div class=\"title\">Users list</div><div class=\"input-group input-group-sm table-search-field\"><span class=\"input-group-addon\"><i class=\"glyph fa fa-search\"></i></span><input type=\"search\" value=\"Name fr\" name=\"search\" class=\"form-control\" placeholder=\"Search by Name fr and Name en...\" /><span class=\"clear-search-btn input-group-addon\"><i class=\"glyph fa fa-times-circle\"></i></span></div><br class=\"ui-bibz-clear\" /></div>"
+    expected = "<div><div class=\"title\">Users list</div><div class=\"input-group input-group-sm table-search-field\"><span class=\"input-group-addon\"><i class=\"glyph fa fa-search\"></i></span><input type=\"search\" value=\"Name fr\" name=\"search\" class=\"form-control\" placeholder=\"Search by Name fr and Name en...\" /><span class=\"input-group-btn\"><button type=\"button\" class=\"btn btn-secondary\"><i class=\"glyph fa fa-times-circle\"></i></button></span></div><br class=\"ui-bibz-clear\" /></div>"
 
     assert_equal expected, actual
   end
