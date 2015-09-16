@@ -40,8 +40,12 @@ module UiBibz::Ui::Ux
         concat content_tag(:span, UiBibz::Ui::Core::Glyph.new('search').render, class: 'input-group-addon')
         concat tag(:input, type: 'hidden', name: 'store_id', value: store.id) unless store.id.nil? # if there is more one table in html page
         concat tag(:input, type: 'search', value: store.search, name: 'search', class: 'form-control', placeholder: search_placeholder_field)
-        concat content_tag(:span, UiBibz::Ui::Core::Glyph.new('times-circle').render, class: 'clear-search-btn input-group-addon')
+        concat content_tag(:span, clear_button, class: 'input-group-btn')
       end
+    end
+
+    def clear_button
+      content_tag :button, UiBibz::Ui::Core::Glyph.new('times-circle').render, type: :button, class: 'btn btn-secondary'
     end
 
     def div_class

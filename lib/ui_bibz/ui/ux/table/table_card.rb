@@ -106,7 +106,7 @@ module UiBibz::Ui::Ux
     def render
       init_components
 
-      content_tag :div, class_and_html_options("card") do
+      content_tag :div, class_and_html_options("card table-card") do
         form_tag(url_for(url_parameters), method: :get) do
           @items.join.html_safe
         end
