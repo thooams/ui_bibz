@@ -94,6 +94,9 @@ module UiBibz::Ui::Core
       states[:sym]
     end
 
+    def effect
+    end
+
     # Add classes in html_options
     def class_and_html_options classes = nil
       options_class = options[:class] if options.kind_of?(Hash)
@@ -102,6 +105,7 @@ module UiBibz::Ui::Core
         status,
         other_classes,
         state,
+        effect,
         options_class
       ]
       cls << classes unless classes.nil?
