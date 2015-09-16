@@ -20,6 +20,10 @@ module UiBibz::Helpers::UiCoreHelper
     UiBibz::Ui::Core::CardColumn.new(content, options, html_options).tap(&block).render
   end
 
+  def modal content = nil, options = nil, html_options = nil, &block
+    UiBibz::Ui::Core::Modal.new(content, options, html_options).tap(&block).render
+  end
+
   # Use "notify" instead of "alert" : due to "actionview (4.2.0) lib/action_view/helpers/form_helper.rb" conflict
   def notify content = nil, options = nil, html_options = nil, &block
     UiBibz::Ui::Core::Alert.new(content, options, html_options, &block).render

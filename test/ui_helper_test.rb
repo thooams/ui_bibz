@@ -88,4 +88,18 @@ class UiHelperTest < ActionView::TestCase
 
     assert_equal expected, actual
   end
+
+  test 'modal' do
+    actual = modal do |m|
+      m.header 'My title'
+      m.body 'My body'
+      m.footer do
+        concat button_link 'Close', url: '#', state: :link
+        concat button_link 'Save', url: '#', state: :primary
+      end
+    end
+    expected = "<div class=\"modal\"><div class=\"modal-dialog\" role=\"document\"><div class=\"modal-content\"><div class=\"modal-header\"><button class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\"><span aria-hidden=\"true\">×</span><span class=\"sr-only\">Close</span></button><h4 class=\"modal-title\">My title</h4></div><div class=\"modal-body\">My body</div><div class=\"modal-footer\"><a class=\"btn- btn\" href=\"#\">Close</a><a class=\"btn-primary btn\" href=\"#\">Save</a></div></div></div></div>"
+
+    assert_equal expected, actual
+  end
 end
