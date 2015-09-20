@@ -17,35 +17,37 @@ module UiBibz::Ui::Core
   #
   # You can add HTML attributes using the +html_options+.
   # You can pass arguments in options attribute:
-  # * +state+ - State of élement with symbol value:
-  #   (+:default+, +:primary+, +:info+, +:warning+, +:danger+)
-  # * +glyph+ - Add glyph with name or hash options
-  #   * +name+ - String
-  #   * +size+ - Integer
-  #   * +type+ - Symbol
   #
   # ==== Signatures
   #
-  #   UiBibz::Ui::Core::Modal.new(content, options = nil, html_options = nil)
-  #
-  #   UiBibz::Ui::Core::Modal.new(options = nil, html_options = nil) do
-  #     content
+  #   UiBibz::Ui::Core::Modal.new(options = nil, html_options = nil) do  |m|
+  #     m.header content, options, html_options, &block
+  #     m.body content, options, html_options, &block
+  #     m.footer content, options, html_options, &block
   #   end
   #
   # ==== Examples
   #
-  #   UiBibz::Ui::Core::Modal.new(content, { state: :success, glyph: 'eye' },{ class: 'test' }).render
-  #
-  #   UiBibz::Ui::Core::Modal.new({glyph: { name: 'eye', size: 3}, { class: 'test' }) do
-  #     content
+  #   UiBibz::Ui::Core::Modal.new({glyph: { name: 'eye', size: 3}, { class: 'test' }) do |m|
+  #     m.header 'Title'
+  #     m.body 'Content'
+  #     m.footer do
+  #       button_link 'Ok', '#', class: :success
+  #     end
   #   end.render
   #
   # ==== Helper
   #
-  #   modal(content, options = {}, html_options = {})
-  #
-  #   modal(options = {}, html_options = {}) do
-  #     content
+  #   modal(options = {}, html_options = {}) do |m|
+  #     m.header do
+  #       'Title'
+  #     end
+  #     m.body do
+  #       'Content'
+  #     end
+  #     m.footer do
+  #       'Footer'
+  #     end
   #   end
   #
   class Modal < Component

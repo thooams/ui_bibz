@@ -17,14 +17,16 @@ module UiBibz::Ui::Core
   #
   #   UiBibz::Ui::Core::CardColumn.new(content, options = nil, html_options = nil)
   #
-  #   UiBibz::Ui::Core::CardColumn.new(options = nil, html_options = nil) do
-  #     content
+  #   UiBibz::Ui::Core::CardColumn.new(options = nil, html_options = nil) do |cg|
+  #     cg.card content, options, html_options, &block
   #   end
   #
   # ==== Examples
   #
   #   UiBibz::Ui::Core::CardColumn.new do |cg|
-  #     cg.card 'Exemple'
+  #     cg.card 'Exemple 1'
+  #     cg.card 'Exemple 2'
+  #     cg.card 'Exemple 3'
   #   end.render
   #
   class CardColumn < Component

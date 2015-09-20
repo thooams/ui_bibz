@@ -28,7 +28,7 @@ module UiBibz::Ui::Core
   #   UiBibz::Ui::Core::CardImage.new.render
   #
   #   UiBibz::Ui::Core::CardImage.new do
-  #     'Exemple'
+  #     "/assets/images/test.png"
   #   end.render
   #
   class CardImage < Component
