@@ -4,7 +4,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>
-  Class: UiBibz::Ui::Core::BreadcrumbLink
+  Class: UiBibz::Ui::Core::ModalHeader
   
     &mdash; Documentation by YARD 0.8.7.6
   
@@ -17,7 +17,7 @@
 <script type="text/javascript" charset="utf-8">
   hasFrames = window.top.frames.main ? true : false;
   relpath = '../../../';
-  framesUrl = "../../../frames.html#!UiBibz/Ui/Core/BreadcrumbLink.html";
+  framesUrl = "../../../frames.html#!UiBibz/Ui/Core/ModalHeader.html";
 </script>
 
 
@@ -31,10 +31,10 @@
     <div id="header">
       <div id="menu">
   
-    <a href="../../../_index.html">Index (B)</a> &raquo;
+    <a href="../../../_index.html">Index (M)</a> &raquo;
     <span class='title'><span class='object_link'><a href="../../../UiBibz.html" title="UiBibz (module)">UiBibz</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../../Ui.html" title="UiBibz::Ui (module)">Ui</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Core.html" title="UiBibz::Ui::Core (module)">Core</a></span></span>
      &raquo; 
-    <span class="title">BreadcrumbLink</span>
+    <span class="title">ModalHeader</span>
   
 
   <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
@@ -63,7 +63,7 @@
 
     <iframe id="search_frame"></iframe>
 
-    <div id="content"><h1>Class: UiBibz::Ui::Core::BreadcrumbLink
+    <div id="content"><h1>Class: UiBibz::Ui::Core::ModalHeader
   
   
   
@@ -82,7 +82,7 @@
           
             <li class="next"><span class='object_link'><a href="Component.html" title="UiBibz::Ui::Core::Component (class)">Component</a></span></li>
           
-            <li class="next">UiBibz::Ui::Core::BreadcrumbLink</li>
+            <li class="next">UiBibz::Ui::Core::ModalHeader</li>
           
         </ul>
         <a href="#" class="inheritanceTree">show all</a>
@@ -98,7 +98,7 @@
   
   
     <dt class="r2 last">Defined in:</dt>
-    <dd class="r2 last">lib/ui_bibz/ui/core/breadcrumb/components/breadcrumb_link.rb</dd>
+    <dd class="r2 last">lib/ui_bibz/ui/core/modal/components/modal_header.rb</dd>
   
 </dl>
 <div class="clear"></div>
@@ -106,9 +106,7 @@
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
     
-<p>Create a BreadcrumbLink</p>
-
-<p>This element is an extend of UiBibz::Ui::Core::Component.</p>
+<p>Create a modal header</p>
 
 <h4>Attributes</h4>
 <ul><li>
@@ -123,36 +121,22 @@
 
 <p>You can add HTML attributes using the <tt>html_options</tt>. You can pass
 arguments in options attribute:</p>
-<ul><li>
-<p><tt>status</tt> - State of élement with symbol value: (<tt>:active</tt>)</p>
-</li><li>
-<p><tt>url</tt> - String</p>
-</li><li>
-<p><tt>glyph</tt> - Add glyph with name or hash options</p>
-<ul><li>
-<p><tt>name</tt> - String</p>
-</li><li>
-<p><tt>size</tt> - Integer</p>
-</li><li>
-<p><tt>type</tt> - Symbol</p>
-</li></ul>
-</li></ul>
 
 <h4>Signatures</h4>
 
-<pre class="code ruby"><code class="ruby"><span class='const'>UiBibz</span><span class='op'>::</span><span class='const'>Ui</span><span class='op'>::</span><span class='const'>Core</span><span class='op'>::</span><span class='const'>BreadcrumbLink</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_content'>content</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_html_options'>html_options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+<pre class="code ruby"><code class="ruby"><span class='const'>UiBibz</span><span class='op'>::</span><span class='const'>Ui</span><span class='op'>::</span><span class='const'>Core</span><span class='op'>::</span><span class='const'>ModalHeader</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_content'>content</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_html_options'>html_options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
 
-<span class='const'>UiBibz</span><span class='op'>::</span><span class='const'>Ui</span><span class='op'>::</span><span class='const'>Core</span><span class='op'>::</span><span class='const'>BreadcrumbLink</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_html_options'>html_options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span> <span class='kw'>do</span>
+<span class='const'>UiBibz</span><span class='op'>::</span><span class='const'>Ui</span><span class='op'>::</span><span class='const'>Core</span><span class='op'>::</span><span class='const'>CarHeader</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_html_options'>html_options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span> <span class='kw'>do</span>
   <span class='id identifier rubyid_content'>content</span>
 <span class='kw'>end</span></code></pre>
 
 <h4>Examples</h4>
 
-<pre class="code ruby"><code class="ruby">UiBibz::Ui::Core::BreadcrumbLink.new('Home', { glyph: 'home', status: :active },{ class: 'test' }).render
+<pre class="code ruby"><code class="ruby"><span class='const'>UiBibz</span><span class='op'>::</span><span class='const'>Ui</span><span class='op'>::</span><span class='const'>Core</span><span class='op'>::</span><span class='const'>ModalHeader</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='period'>.</span><span class='id identifier rubyid_render'>render</span>
 
-UiBibz::Ui::Core::BreadcrumbLink.new({glyph: { name: 'eye', size: 3}, { class: 'test' }) do
-  'Home'
-end.render</code></pre>
+<span class='const'>UiBibz</span><span class='op'>::</span><span class='const'>Ui</span><span class='op'>::</span><span class='const'>Core</span><span class='op'>::</span><span class='const'>ModalHeader</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='kw'>do</span>
+  <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Exemple</span><span class='tstring_end'>'</span></span>
+<span class='kw'>end</span><span class='period'>.</span><span class='id identifier rubyid_render'>render</span></code></pre>
 
 
   </div>
@@ -188,7 +172,7 @@ end.render</code></pre>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#initialize-instance_method" title="#initialize (instance method)">- (BreadcrumbLink) <strong>initialize</strong>(content = nil, options = nil, html_options = nil, &amp;block) </a>
+      <a href="#initialize-instance_method" title="#initialize (instance method)">- (ModalHeader) <strong>initialize</strong>(content = nil, options = nil, html_options = nil, &amp;block) </a>
     
 
     
@@ -267,7 +251,7 @@ end.render</code></pre>
     <div class="method_details first">
   <h3 class="signature first" id="initialize-instance_method">
   
-    - (<tt><span class='object_link'><a href="" title="UiBibz::Ui::Core::BreadcrumbLink (class)">BreadcrumbLink</a></span></tt>) <strong>initialize</strong>(content = nil, options = nil, html_options = nil, &amp;block) 
+    - (<tt><span class='object_link'><a href="" title="UiBibz::Ui::Core::ModalHeader (class)">ModalHeader</a></span></tt>) <strong>initialize</strong>(content = nil, options = nil, html_options = nil, &amp;block) 
   
 
   
@@ -290,12 +274,12 @@ end.render</code></pre>
       <pre class="lines">
 
 
-44
-45
-46</pre>
+36
+37
+38</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ui_bibz/ui/core/breadcrumb/components/breadcrumb_link.rb', line 44</span>
+      <pre class="code"><span class="info file"># File 'lib/ui_bibz/ui/core/modal/components/modal_header.rb', line 36</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span> <span class='id identifier rubyid_content'>content</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_html_options'>html_options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span>
   <span class='kw'>super</span>
@@ -338,15 +322,21 @@ end.render</code></pre>
       <pre class="lines">
 
 
-49
-50
-51</pre>
+41
+42
+43
+44
+45
+46</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ui_bibz/ui/core/breadcrumb/components/breadcrumb_link.rb', line 49</span>
+      <pre class="code"><span class="info file"># File 'lib/ui_bibz/ui/core/modal/components/modal_header.rb', line 41</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_render'>render</span>
-  <span class='id identifier rubyid_content_tag'>content_tag</span> <span class='symbol'>:li</span><span class='comma'>,</span> <span class='id identifier rubyid_link_html'>link_html</span><span class='comma'>,</span> <span class='id identifier rubyid_class_and_html_options'>class_and_html_options</span>
+  <span class='id identifier rubyid_content_tag'>content_tag</span> <span class='symbol'>:div</span><span class='comma'>,</span> <span class='id identifier rubyid_class_and_html_options'>class_and_html_options</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>modal-header</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='kw'>do</span>
+    <span class='id identifier rubyid_concat'>concat</span> <span class='id identifier rubyid_close_button_html'>close_button_html</span>
+    <span class='id identifier rubyid_concat'>concat</span> <span class='id identifier rubyid_content_tag'>content_tag</span> <span class='symbol'>:h4</span><span class='comma'>,</span> <span class='id identifier rubyid_glyph_and_content_html'>glyph_and_content_html</span><span class='comma'>,</span> <span class='label'>class:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>modal-title</span><span class='tstring_end'>'</span></span>
+  <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>

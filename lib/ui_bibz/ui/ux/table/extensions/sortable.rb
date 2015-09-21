@@ -43,12 +43,13 @@ module UiBibz::Ui::Ux
 
     def url_options
       args =  {
-        controller: @store.controller,
-        id:         @store.param_id,
-        action:     @store.action,
-        search:     @store.search,
-        sort:       sort_name,
-        direction:  direction
+        controller:  @store.controller,
+        id:          @store.param_id,
+        action:      @store.action,
+        search:      @store.search,
+        sort:        sort_name,
+        column_id:   @column.id,
+        direction:   direction
       }
       args = args.merge({ custom_sort: true, column_name: @column.data_index }) if @column.custom_sort
       args = args.merge({ parent: true }) if @column.parent
@@ -65,7 +66,7 @@ module UiBibz::Ui::Ux
     end
 
     def name_with_caret
-      sort_name == sort_column ? @name + caret : @name
+      sort_name == sort_column && @column.id.to_s == @store.column_id.to_s ? @name + caret : @name
     end
 
     def caret
@@ -80,8 +81,12 @@ module UiBibz::Ui::Ux
       sort_name == sort_column && sort_direction == "asc" ? "desc" : "asc"
     end
 
+    def column_name
+      @column.data_index || @column
+    end
+
     def sort_column_name
-      @column.sort.nil? ? "#{ @store.model.to_s.downcase.pluralize }.#{ @column.data_index}" : @column.sort
+      @column.sort.nil? ? "#{ @store.model.to_s.underscore.pluralize }.#{ @column.data_index}" : @column.sort
     end
 
     def sort_name

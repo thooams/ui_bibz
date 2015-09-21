@@ -1,11 +1,12 @@
 module UiBibz::Ui::Ux
   class Column < UiBibz::Ui::Core::Component
 
-    attr_accessor :hidden, :link, :name, :data_index, :date_format, :sort, :format, :date_format, :count, :custom_sort, :parent
+    attr_accessor :hidden, :link, :name, :data_index, :date_format, :sort, :format, :date_format, :count, :custom_sort, :parent, :id
 
     def initialize content = nil, options = nil, html_options = nil, &block
       super
       @data_index  = @content
+      @id          = @options[:column_id] || @data_index
       @name        = @options[:name]
       @link        = @options[:link] # for show or edit action
       @order       = @options[:order]
