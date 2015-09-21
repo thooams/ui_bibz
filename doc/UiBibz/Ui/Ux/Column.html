@@ -275,6 +275,33 @@
       <li class="public ">
   <span class="summary_signature">
     
+      <a href="#id-instance_method" title="#id (instance method)">- (Object) <strong>id</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute id.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
       <a href="#link-instance_method" title="#link (instance method)">- (Object) <strong>link</strong> </a>
     
 
@@ -563,7 +590,8 @@
 16
 17
 18
-19</pre>
+19
+20</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ui_bibz/ui/ux/table/components/column.rb', line 6</span>
@@ -571,6 +599,7 @@
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span> <span class='id identifier rubyid_content'>content</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_html_options'>html_options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span>
   <span class='kw'>super</span>
   <span class='ivar'>@data_index</span>  <span class='op'>=</span> <span class='ivar'>@content</span>
+  <span class='ivar'>@id</span>          <span class='op'>=</span> <span class='ivar'>@options</span><span class='lbracket'>[</span><span class='symbol'>:column_id</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='ivar'>@data_index</span>
   <span class='ivar'>@name</span>        <span class='op'>=</span> <span class='ivar'>@options</span><span class='lbracket'>[</span><span class='symbol'>:name</span><span class='rbracket'>]</span>
   <span class='ivar'>@link</span>        <span class='op'>=</span> <span class='ivar'>@options</span><span class='lbracket'>[</span><span class='symbol'>:link</span><span class='rbracket'>]</span> <span class='comment'># for show or edit action
 </span>  <span class='ivar'>@order</span>       <span class='op'>=</span> <span class='ivar'>@options</span><span class='lbracket'>[</span><span class='symbol'>:order</span><span class='rbracket'>]</span>
@@ -851,6 +880,49 @@
 </div>
     
       
+      <span id="id=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="id-instance_method">
+  
+    - (<tt>Object</tt>) <strong>id</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the value of attribute id</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+4
+5
+6</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ui_bibz/ui/ux/table/components/column.rb', line 4</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_id'>id</span>
+  <span class='ivar'>@id</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
       <span id="link=-instance_method"></span>
       <div class="method_details ">
   <h3 class="signature " id="link-instance_method">
@@ -1066,12 +1138,12 @@
       <pre class="lines">
 
 
-29
 30
-31</pre>
+31
+32</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ui_bibz/ui/ux/table/components/column.rb', line 29</span>
+      <pre class="code"><span class="info file"># File 'lib/ui_bibz/ui/ux/table/components/column.rb', line 30</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_hidden?'>hidden?</span>
   <span class='ivar'>@hidden</span> <span class='op'>==</span> <span class='kw'>true</span>
@@ -1118,12 +1190,12 @@
       <pre class="lines">
 
 
-21
 22
-23</pre>
+23
+24</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ui_bibz/ui/ux/table/components/column.rb', line 21</span>
+      <pre class="code"><span class="info file"># File 'lib/ui_bibz/ui/ux/table/components/column.rb', line 22</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_linkable?'>linkable?</span>
   <span class='op'>!</span><span class='ivar'>@link</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
@@ -1148,12 +1220,12 @@
       <pre class="lines">
 
 
-25
 26
-27</pre>
+27
+28</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ui_bibz/ui/ux/table/components/column.rb', line 25</span>
+      <pre class="code"><span class="info file"># File 'lib/ui_bibz/ui/ux/table/components/column.rb', line 26</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_order'>order</span>
   <span class='ivar'>@order</span> <span class='op'>||</span> <span class='int'>0</span>
@@ -1168,7 +1240,7 @@
 </div>
 
     <div id="footer">
-  Generated on Mon Sep 14 10:07:37 2015 by
+  Generated on Mon Sep 21 15:43:47 2015 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7.6 (ruby-1.9.3).
 </div>
