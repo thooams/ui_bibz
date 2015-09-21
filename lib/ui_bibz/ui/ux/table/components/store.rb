@@ -32,6 +32,10 @@ module UiBibz::Ui::Ux
       @store.sort
     end
 
+    def column_id
+      @store.column_id
+    end
+
     def direction
       @store.direction
     end

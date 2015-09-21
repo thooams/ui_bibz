@@ -6,8 +6,8 @@ PATH
       font-awesome-sass
       haml
       haml-rails
-      rails (~> 4.2.4)
-      sass-rails (~> 5.0.4)
+      rails (>= 4.2.0)
+      sass-rails (>= 5.0.0)
       will-paginate-i18n
       will_paginate (~> 3.0.6)
       will_paginate-bootstrap

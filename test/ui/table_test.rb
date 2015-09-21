@@ -47,7 +47,7 @@ class TableTest < ActionView::TestCase
   test 'table sortable' do
     options  = { sortable: true }
     actual   = UiBibz::Ui::Ux::Sortable.new(@store, options).header(@store.columns.list.first)
-    expected = "<a class=\"dropup\" href=\"/users?direction=asc&amp;search=Name+fr&amp;sort=users.id\">Id</a>"
+    expected = "<a class=\"dropup\" href=\"/users?column_id=id&amp;direction=asc&amp;search=Name+fr&amp;sort=users.id\">Id</a>"
 
     assert_equal expected, actual
   end
