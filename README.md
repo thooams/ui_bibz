@@ -381,9 +381,9 @@ Voir la [doc](http://hummel.link/Ui-Bibz/1.1.7/UiBibz/Ui/Core/Stars.html)
 
 ### Modal
 
-![panel](http://hummel.link/Ui-Bibz/1.1.7/images/modal.png)
+![modal](http://hummel.link/Ui-Bibz/1.1.7/images/modal.png)
 
-Les éléments ```header```, ```body```,```footer``` sont des éléments [component](#component).
+Les éléments ```header```, ```body```, ```footer``` sont des éléments [component](#component).
 
 Exemple :
 
