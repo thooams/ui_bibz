@@ -1,6 +1,6 @@
 lib/ui_bibz.rb b86436b727c765b1fa18a5351ab42dc288747540
 lib/ui_bibz/ui/base.rb a0840e2ee2d49117ac28b51dc89d3d724cfb6747
-lib/ui_bibz/version.rb e0767c728b959dfa5059be17354a0a7da80849bf
+lib/ui_bibz/version.rb 876ec1e1d674bd12544167c205656568413e2b42
 lib/ui_bibz/ui/ux/grid.rb 079a9b94c43980e5ae86b9e4c50499f0153aa345
 lib/ui_bibz/ui/core/col.rb 657fd5aeed007c9d2848f99f3d7bb4f642bf756c
 lib/ui_bibz/ui/core/row.rb 539ef1d6caf28cb460671cf3877313b3fc3fd74c
