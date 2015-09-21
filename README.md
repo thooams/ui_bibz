@@ -379,6 +379,27 @@ end
 Voir la [doc](http://hummel.link/Ui-Bibz/2.0.0/UiBibz/Ui/Core/Stars.html)
 
 
+### Modal
+
+![modal](http://hummel.link/Ui-Bibz/1.2.0/images/modal.png)
+
+Les éléments ```header```, ```body```, ```footer``` sont des éléments [component](#component).
+
+Exemple :
+
+```ruby
+
+modal do |m|
+  m.header 'Header', glyph: 'eye'
+  m.body(class: 'my-body') do
+   'Content body'
+  end
+  m.footer 'Footer'
+end
+```
+
+Voir la [doc](http://hummel.link/Ui-Bibz/1.2.0/UiBibz/Ui/Core/Modal.html)
+
 ### Panel
 
 ![panel](http://hummel.link/Ui-Bibz/2.0.0/images/panel.png)
@@ -1017,6 +1038,7 @@ panel 'Exemple', { state: :success }, { class: 'exemple' }
 * [Ui Bibz v1.1.5](http://hummel.link/Ui-Bibz/1.1.5/index.html)
 * [Ui Bibz v1.1.6](http://hummel.link/Ui-Bibz/1.1.6/index.html)
 * [Ui Bibz v1.1.7](http://hummel.link/Ui-Bibz/1.1.7/index.html)
+* [Ui Bibz v1.2.0](http://hummel.link/Ui-Bibz/1.2.0/index.html)
 * [Ui Bibz v2.0.0](http://hummel.link/Ui-Bibz/2.0.0/index.html)
 
 # Roadmap

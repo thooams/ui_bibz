@@ -40,7 +40,7 @@ module UiBibz::Ui::Core
     def render
       content_tag :div, class_and_html_options("modal-header") do
         concat close_button_html
-        concat content_tag :h4, @content, class: 'modal-title'
+        concat content_tag :h4, glyph_and_content_html, class: 'modal-title'
       end
     end
 

@@ -22,6 +22,7 @@ module UiBibz::Concerns::Models::Searchable
         search:                @params[:search],
         sort:                  @params[:sort],
         action:                @params[:action],
+        column_id:             @params[:column_id],
         id:                    @arguments[:store_id],
         records:               search_sort_paginate,
         searchable_attributes: @searchable_attributes,
@@ -105,7 +106,7 @@ module UiBibz::Concerns::Models::Searchable
           sql_query << "lower(#{ attribute.keys.first.to_s.pluralize }.#{ attribute.values.first }) LIKE :#{ attribute.values.first }"
           sql_attributes = sql_attributes.merge(Hash[attribute.values.first, "%#{ @params[:search].downcase }%"])
         else
-          sql_query << "lower(#{ self.to_s.downcase.pluralize }.#{ attribute }) LIKE :#{ attribute }"
+          sql_query << "lower(#{ self.to_s.underscore.pluralize }.#{ attribute }) LIKE :#{ attribute }"
           sql_attributes = sql_attributes.merge(Hash[attribute, "%#{ @params[:search].downcase }%"])
         end
       end
