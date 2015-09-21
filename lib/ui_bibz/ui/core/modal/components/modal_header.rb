@@ -1,0 +1,58 @@
+# encoding: UTF-8
+module UiBibz::Ui::Core
+
+  # Create a modal header
+  #
+  # ==== Attributes
+  #
+  # * +content+ - Content of element
+  # * +options+ - Options of element
+  # * +html_options+ - Html Options of element
+  #
+  # ==== Options
+  #
+  # You can add HTML attributes using the +html_options+.
+  # You can pass arguments in options attribute:
+  #
+  # ==== Signatures
+  #
+  #   UiBibz::Ui::Core::ModalHeader.new(content, options = nil, html_options = nil)
+  #
+  #   UiBibz::Ui::Core::CarHeader.new(options = nil, html_options = nil) do
+  #     content
+  #   end
+  #
+  # ==== Examples
+  #
+  #   UiBibz::Ui::Core::ModalHeader.new.render
+  #
+  #   UiBibz::Ui::Core::ModalHeader.new do
+  #     'Exemple'
+  #   end.render
+  #
+  class ModalHeader < Component
+
+    # See UiBibz::Ui::Core::Component.initialize
+    def initialize content = nil, options = nil, html_options = nil, &block
+      super
+    end
+
+    # Render html tag
+    def render
+      content_tag :div, class_and_html_options("modal-header") do
+        concat close_button_html
+        concat content_tag :h4, @content, class: 'modal-title'
+      end
+    end
+
+    private
+
+    def close_button_html
+      content_tag :button, class: 'close', "data-dismiss" => 'modal', "aria-label" => "Close" do
+        concat content_tag :span, "×", "aria-hidden" => true
+        concat content_tag :span, "Close", class: 'sr-only'
+      end
+    end
+
+  end
+end
