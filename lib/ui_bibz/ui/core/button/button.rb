@@ -85,5 +85,16 @@ module UiBibz::Ui::Core
       "btn-#{ @options[:size] }" if @options[:size]
     end
 
+    def states
+      if @states.nil?
+        states = {}
+        %w(success primary secondary info warning danger link).each do |s|
+          states = states.merge(Hash[s.to_sym, s])
+        end
+        @states = states
+      end
+      @states
+    end
+
   end
 end

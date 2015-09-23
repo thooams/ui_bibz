@@ -75,6 +75,11 @@ module UiBibz::Ui::Core
       @items << NavLink.new(content, options.merge({ nav_type: type }), html_options, &block).render
     end
 
+    # Add nav in nav
+    def nav content = nil, options = {}, html_options = nil, &block
+      @items << content_tag(:li, Nav.new(content, options, html_options).tap(&block).render, class: 'nav-item')
+    end
+
     # Add nav dropdown items
     # See UiBibz::Ui::Core::NavDropdown
     def dropdown content = nil, options = {}, html_options = nil, &block
