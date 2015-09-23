@@ -49,9 +49,9 @@ module UiBibz::Ui::Core
   #
   # ==== Helper
   #
-  #   button_checkbox(content, options = {}, html_options = {})
+  #   button_choice(content, options = {}, html_options = {})
   #
-  #   button_checkbox(options = {}, html_options = {}) do
+  #   button_choice(options = {}, html_options = {}) do
   #     content
   #   end
   #
