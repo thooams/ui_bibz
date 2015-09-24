@@ -76,7 +76,7 @@ module UiBibz::Ui::Core
     end
 
     def split_html
-      content_tag :button, split_content, class: add_classes("btn", button_state, "dropdown-toggle"), type: 'button', "data-toggle" => 'dropdown', "aria-haspopup" => true, "aria-expanded" => false
+      content_tag :button, split_content, class: add_classes("btn", button_state, size, "dropdown-toggle"), type: 'button', "data-toggle" => 'dropdown', "aria-haspopup" => true, "aria-expanded" => false
     end
 
     def split_content

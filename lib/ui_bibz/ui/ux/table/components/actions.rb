@@ -46,7 +46,7 @@ module UiBibz::Ui::Ux
       [
         UiBibz::Ui::Core::DropdownLink.new(show_name, url: { controller: @store.controller, action: 'show', id: :id }, glyph: 'eye').render,
         UiBibz::Ui::Core::DropdownLink.new(edit_name, url:{ controller: @store.controller, action: 'edit', id: :id }, glyph: 'pencil').render,
-        UiBibz::Ui::Core::DropdownLink.new(delete_name, { glyph: 'trash', url: { controller: @store.controller, action: 'destroy', id: :id }}, data: { confirm: 'Are you sure?', method: :delete }).render
+        UiBibz::Ui::Core::DropdownLink.new(delete_name, { glyph: 'trash', url: { controller: @store.controller, action: 'destroy', id: :id }, link_html_options: { data: { confirm: 'Are you sure?', method: :delete }}}).render
       ]
     end
 
