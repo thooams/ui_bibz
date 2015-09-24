@@ -21,7 +21,7 @@ module UiBibz::Ui::Ux
     end
 
     def header_name name
-      name = name || @column.name.try('titleize')
+      name = name || @column.name
       name || @column.data_index.to_s.try('titleize')
     end
 
