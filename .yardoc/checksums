@@ -1,6 +1,6 @@
 lib/ui_bibz.rb b86436b727c765b1fa18a5351ab42dc288747540
 lib/ui_bibz/ui/base.rb a0840e2ee2d49117ac28b51dc89d3d724cfb6747
-lib/ui_bibz/version.rb 876ec1e1d674bd12544167c205656568413e2b42
+lib/ui_bibz/version.rb 814ef32a0d9a8ed27c8eea282b2259c2975c5ee9
 lib/ui_bibz/ui/ux/grid.rb 079a9b94c43980e5ae86b9e4c50499f0153aa345
 lib/ui_bibz/ui/core/col.rb 657fd5aeed007c9d2848f99f3d7bb4f642bf756c
 lib/ui_bibz/ui/core/row.rb 539ef1d6caf28cb460671cf3877313b3fc3fd74c
@@ -35,10 +35,10 @@ lib/ui_bibz/ui/core/breadcrumb/breadcrumb.rb 60ca3ffd3ce3f484249bc5d49bcde53b407
 lib/ui_bibz/ui/ux/table/components/column.rb 9055ce20a2e1a8868502dc5d0735d422babdf73a
 lib/ui_bibz/ui/ux/table/components/columns.rb ad81e6a9ce7e30e2a9b6491132ce428f710f056f
 lib/ui_bibz/ui/ux/table/table_search_field.rb 316b44d19cf88e780ba0cfdefcab8c12806e8fa0
-lib/ui_bibz/ui/ux/table/components/actions.rb e7459be83daa3f8ca944441d1a86049ec7bf7855
+lib/ui_bibz/ui/ux/table/components/actions.rb 30019fda78933ff7549815433b0aef570948f661
 lib/ui_bibz/ui/core/button/button_dropdown.rb 49f453e7024956cf7b5e0ad9989ecac53c7216b2
 lib/ui_bibz/ui/core/nav/components/nav_link.rb 27fbcf7b456c64178e238e63b3b4e641737635c7
-lib/ui_bibz/ui/ux/table/extensions/sortable.rb ece02241d76ca1d737122f094678635ac83d14b2
+lib/ui_bibz/ui/ux/table/extensions/sortable.rb bef27f0bcec20971dc7a68e22c4be551a8ff3171
 lib/ui_bibz/ui/ux/table/extensions/paginable.rb 89dd34ccca0c0acaec94e21c32720ce9e3a929e4
 lib/ui_bibz/ui/ux/table/extensions/searchable.rb 2ab1b29fd7cb5335cb7177a93187729f728726d0
 lib/ui_bibz/ui/ux/table/extensions/actionable.rb 7ba002df2a38b1e4ea185a63b4aeab9127a72e0d
@@ -49,7 +49,7 @@ lib/ui_bibz/ui/core/nav/components/navbar_form.rb 72a4dee1c6fd0d27f6adf62181e740
 lib/ui_bibz/ui/core/modal/components/modal_body.rb 1fa19a7cf70301b89c0fb452dbf5e436d0db5d02
 lib/ui_bibz/ui/core/nav/components/nav_dropdown.rb 3f592f3bf71c45773280ecc7f0dcec90b8811308
 lib/ui_bibz/ui/core/progress_bar/components/bar.rb e02355fef5a6b683b9495891e9217b594b27a024
-lib/ui_bibz/ui/core/button/button_split_dropdown.rb 78045ee23b55e8a9e217f67ae625d115a105e3ed
+lib/ui_bibz/ui/core/button/button_split_dropdown.rb d6dc0b3cc7170a96a73038ebd033a5334ff50e09
 lib/ui_bibz/ui/core/modal/components/modal_header.rb f6def330962ffb9ada1146154aed617458115279
 lib/ui_bibz/ui/core/modal/components/modal_footer.rb 13256ab30019589f28dc28d96dabe6403b54ad52
 lib/ui_bibz/ui/ux/table/table_pagination_per_page.rb c7e2cf5665b29bc05df096e537fb7ce1056ed908
