@@ -45,7 +45,11 @@ module UiBibz::Ui::Core
 
     # Render html tag
     def render
-      content_tag :li, content_htm, class_and_html_options('nav-item')
+      if @options[:nav_type] == "nav-links"
+        content_htm
+      else
+        content_tag :li, content_htm, class_and_html_options('nav-item')
+      end
     end
 
   private
@@ -59,7 +63,7 @@ module UiBibz::Ui::Core
     end
 
     def link_html_options
-      if lho[:nav_type] == :tabs
+      if @options[:nav_type] == "nav-tabs"
         lho.merge({ "aria-controls" => @options[:selector], class: link_class })
       else
         lho.merge({class: link_class})

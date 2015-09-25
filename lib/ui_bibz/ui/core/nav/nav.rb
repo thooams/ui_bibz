@@ -66,7 +66,7 @@ module UiBibz::Ui::Core
 
     # Render html tag
     def render
-      content_tag :ul, @items.join.html_safe, class_and_html_options(["nav", type, position])
+      content_tag tag, @items.join.html_safe, class_and_html_options(["nav", type, position])
     end
 
     # Add nav link items
@@ -95,6 +95,10 @@ module UiBibz::Ui::Core
 
     def position
       "pull-#{ @options[:position] }" unless @options[:position].nil?
+    end
+
+    def tag
+      type == "nav-links" ? :nav : :ul
     end
 
   end
