@@ -76,6 +76,19 @@ class CardTest < ActionView::TestCase
     assert_equal expected, actual
   end
 
+  test 'card list group' do
+    actual = card tap: true do |c|
+      c.list_group do |lg|
+        lg.list "list 1"
+        lg.list "list 2"
+        lg.list "list 3"
+      end
+    end
+    expected = "<div class=\"card\"><ul class=\"list-group-flush list-group\"><li class=\"list-group-item\">list 1</li><li class=\"list-group-item\">list 2</li><li class=\"list-group-item\">list 3</li></ul></div>"
+
+    assert_equal expected, actual
+  end
+
   test 'card block parameters' do
     actual = card tap: true do |c|
       c.block tap: true do |b|
