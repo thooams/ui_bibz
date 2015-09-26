@@ -119,6 +119,10 @@ module UiBibz::Ui::Core
       classes.compact.join(' ')
     end
 
+    def is_tap content, options
+      (content[:tap] if content.kind_of?(Hash)) || (options[:tap] unless options.nil?)
+    end
+
   protected
 
     def status
