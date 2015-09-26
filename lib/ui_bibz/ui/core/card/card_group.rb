@@ -43,7 +43,11 @@ module UiBibz::Ui::Core
     end
 
     def card content = nil, options = nil, html_options = nil, &block
-      @items << UiBibz::Ui::Core::Card.new(content, options, html_options, &block).render
+      if is_tap content, options
+        @items << UiBibz::Ui::Core::Card.new(content, options, html_options).tap(&block).render
+      else
+        @items << UiBibz::Ui::Core::Card.new(content, options, html_options, &block).render
+      end
     end
 
   end
