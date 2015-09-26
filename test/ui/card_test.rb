@@ -6,7 +6,7 @@ class CardTest < ActionView::TestCase
     actual = card do
       'test'
     end
-    expected = "<div class=\"card\">test</div>"
+    expected = "<div class=\"card card-block\">test</div>"
 
     assert_equal expected, actual
   end
@@ -72,6 +72,19 @@ class CardTest < ActionView::TestCase
       cg.card 'test 3', block: true
     end
     expected = "<div class=\"card-columns\"><div class=\"card card-block\">test 1</div><div class=\"card card-block\">test 2</div><div class=\"card card-block\">test 3</div></div>"
+
+    assert_equal expected, actual
+  end
+
+  test 'card block parameters' do
+    actual = card tap: true do |c|
+      c.block tap: true do |b|
+        b.title "title"
+        b.text "text"
+        b.link 'link'
+      end
+    end
+    expected = "<div class=\"card\"><div class=\"card-block\"><h4 class=\"card-title\">title</h4><p class=\"card-text\">text</p><a class=\"card-title\">link</a></div></div>"
 
     assert_equal expected, actual
   end

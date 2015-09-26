@@ -101,7 +101,11 @@ module UiBibz::Ui::Core
 
     # Add Block div which is a component
     def block content = nil, options = nil, html_options = nil, &block
-      @items << CardBlock.new(content, options, html_options, &block).render
+      if is_tap(content, options)
+        @items << CardBlock.new(content, options, html_options).tap(&block).render
+      else
+        @items << CardBlock.new(content, options, html_options, &block).render
+      end
     end
 
     # Add Footer which is a component
@@ -126,6 +130,11 @@ module UiBibz::Ui::Core
 
   protected
 
+
+    def is_tap content, options
+      (content[:tap] if content.kind_of?(Hash)) || (options[:tap] unless options.nil?)
+    end
+
     def state
       "card-#{ states[@options[:state]] }" unless @options[:state].nil?
     end
@@ -135,7 +144,7 @@ module UiBibz::Ui::Core
     end
 
     def card_block
-      "card-block" unless @options[:block].nil?
+      "card-block" if !@options[:block].nil? || @options[:tap].nil?
     end
 
     def type
