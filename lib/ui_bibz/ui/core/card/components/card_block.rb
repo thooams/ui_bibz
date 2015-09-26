@@ -1,3 +1,6 @@
+require 'ui_bibz/ui/core/card/components/block/card_block_text'
+require 'ui_bibz/ui/core/card/components/block/card_block_title'
+require 'ui_bibz/ui/core/card/components/block/card_block_link'
 module UiBibz::Ui::Core
 
   # Create a card block
@@ -34,12 +37,24 @@ module UiBibz::Ui::Core
     # See UiBibz::Ui::Core::Component.initialize
     def initialize content = nil, options = nil, html_options = nil, &block
       super
+      @items = [@content]
     end
 
     # Render html tag
     def render
-      content_tag :div, @content, class_and_html_options("card-block")
+      content_tag :div, @items.join.html_safe, class_and_html_options("card-block")
     end
 
+    def title content = nil, options = nil, html_options = nil, &block
+      @items << CardBlockTitle.new(content, options, html_options, &block).render
+    end
+
+    def link content = nil, options = nil, html_options = nil, &block
+      @items << CardBlockLink.new(content, options, html_options, &block).render
+    end
+
+    def text content = nil, options = nil, html_options = nil, &block
+      @items << CardBlockText.new(content, options, html_options, &block).render
+    end
   end
 end
