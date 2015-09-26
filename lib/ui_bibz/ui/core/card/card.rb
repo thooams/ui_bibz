@@ -125,7 +125,7 @@ module UiBibz::Ui::Core
 
     # Render html tag
     def render
-      content_tag :div, @items.join.html_safe, class_and_html_options(["card", text_position, card_block])
+      content_tag :div, @items.join.html_safe, class_and_html_options(["card", text_position, card_block, type])
     end
 
   protected
