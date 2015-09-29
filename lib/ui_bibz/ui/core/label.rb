@@ -71,5 +71,16 @@ module UiBibz::Ui::Core
       "label-pill" if @options[:type] == :pill
     end
 
+    def states
+      if @states.nil?
+        states = {}
+        %w(success primary default info warning danger).each do |s|
+          states = states.merge(Hash[s.to_sym, s])
+        end
+        @states = states
+      end
+      @states
+    end
+
   end
 end

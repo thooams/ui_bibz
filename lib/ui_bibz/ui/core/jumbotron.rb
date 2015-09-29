@@ -49,9 +49,9 @@ module UiBibz::Ui::Core
 
     # Render html tag
     def render
-      content_tag :div, class_and_html_options('jumbotron') do
-        if full_width
-          content_tag :div, @content, class: 'container'
+      content_tag :div, class_and_html_options(['jumbotron', fluid]) do
+        if fluid
+          Container.new(@content).render
         else
           @content
         end
@@ -60,8 +60,8 @@ module UiBibz::Ui::Core
 
   private
 
-    def full_width
-      @options[:full_width]
+    def fluid
+      "jumbotron-fluid" unless @options[:fluid].nil?
     end
 
   end

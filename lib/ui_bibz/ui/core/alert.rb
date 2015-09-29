@@ -56,7 +56,7 @@ module UiBibz::Ui::Core
     def render
       content_tag :div, class_and_html_options(['alert', 'alert-dismissible']).merge({ role: 'alert'}) do
         concat glyph_and_content_html
-        concat close_html if @options[:close]
+        concat close_html if @options[:closable]
       end
     end
 
