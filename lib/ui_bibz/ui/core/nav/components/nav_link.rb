@@ -60,7 +60,7 @@ module UiBibz::Ui::Core
 
     def link_html_options
       lho = @options[:link_html_options] || {}
-      if @options[:nav_type] == :tabs
+      if @options[:nav_type] == "nav-tabs"
         lho.merge({ "aria-controls" => @options[:selector], "role" => "tab", "data-toggle" => "tab" })
       else
         lho
