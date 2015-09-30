@@ -17,6 +17,7 @@ module UiBibz::Ui::Core
   # You can pass arguments in options attribute:
   # * +state+ - State of élement with symbol value:
   #   (+:default+, +:primary+, +:info+, +:warning+, +:danger+)
+  # * +tab+ - String | To link with the component nav
   #
   # ==== Signatures
   #
@@ -100,7 +101,9 @@ module UiBibz::Ui::Core
 
     # Render html tag
     def render
-      content_tag :div, class_and_html_options("panel") do
+      @html_options[:id] = @options[:tab] unless @options[:tab].nil?
+
+      content_tag :div, class_and_html_options(["panel", tab_pane]) do
         concat(header_html) unless @header.nil?
         concat(body_html)   if !@body.nil? || !@content.nil?
         concat(footer_html) unless @footer.nil?
@@ -125,6 +128,10 @@ module UiBibz::Ui::Core
 
     def footer_html
       content_tag :div, @footer.render, @footer.class_and_html_options("panel-footer")
+    end
+
+    def tab_pane
+      "tab-pane" if @options[:tab]
     end
 
   end
