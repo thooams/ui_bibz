@@ -69,7 +69,7 @@ module UiBibz::Ui::Ux
     end
 
     def parameters
-      @store.params
+      @store.try(:params) || {}
     end
 
     def action

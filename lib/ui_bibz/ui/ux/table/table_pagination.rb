@@ -35,7 +35,8 @@ module UiBibz::Ui::Ux
 
     # Render html tag with boostrap pagination theme
     def render
-      will_paginate(store.records, params: store.parameters,  renderer: BootstrapPagination::Rails)
+      paginate_parameters = { controller: store.controller }.merge(store.parameters)
+      will_paginate(store.records, params: paginate_parameters,  renderer: BootstrapPagination::Rails)
     end
 
   private
