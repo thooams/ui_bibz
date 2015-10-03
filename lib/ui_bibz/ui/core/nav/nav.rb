@@ -72,7 +72,8 @@ module UiBibz::Ui::Core
     # Add nav link items
     # See UiBibz::Ui::Core::NavLink
     def link content = nil, options = {}, html_options = nil, &block
-      @items << NavLink.new(content, options.merge({ nav_type: type }), html_options, &block).render
+      block_given? ? content.merge!({ nav_type: type }) : options.merge!({ nav_type: type })
+      @items << NavLink.new(content, options, html_options, &block).render
     end
 
     # Add nav in nav
