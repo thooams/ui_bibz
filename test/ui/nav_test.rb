@@ -8,7 +8,7 @@ class NavTest < ActionView::TestCase
       n.link 'Profile', url: "#profile", selector: 'profile'
       n.link 'Messages', url: "#messages", selector: 'messages'
     end.render
-    expected = "<ul class=\"nav nav-tabs\"><li class=\"nav-item\"><a aria-controls=\"home\" class=\"active nav-link\" href=\"#Home\">Home</a></li><li class=\"nav-item\"><a aria-controls=\"profile\" class=\"nav-link\" href=\"#profile\">Profile</a></li><li class=\"nav-item\"><a aria-controls=\"messages\" class=\"nav-link\" href=\"#messages\">Messages</a></li></ul>"
+    expected = "<ul class=\"nav nav-tabs\"><li class=\"nav-item\"><a data-toggle=\"tab\" role=\"tab\" class=\"active nav-link\" href=\"#Home\">Home</a></li><li class=\"nav-item\"><a data-toggle=\"tab\" role=\"tab\" class=\"nav-link\" href=\"#profile\">Profile</a></li><li class=\"nav-item\"><a data-toggle=\"tab\" role=\"tab\" class=\"nav-link\" href=\"#messages\">Messages</a></li></ul>"
     assert_equal expected, actual
   end
 

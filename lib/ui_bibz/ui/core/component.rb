@@ -95,6 +95,7 @@ module UiBibz::Ui::Core
     end
 
     def effect
+      @options[:effect]
     end
 
     # Add classes in html_options

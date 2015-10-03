@@ -39,6 +39,7 @@ module UiBibz
       autoload :Row,                     "ui_bibz/ui/core/row"
       autoload :Stars,                   "ui_bibz/ui/core/stars"
       autoload :Tab,                     "ui_bibz/ui/core/nav/tab"
+      autoload :Textfield,               "ui_bibz/ui/core/input/textfield"
     end
 
     # Ux

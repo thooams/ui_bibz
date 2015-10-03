@@ -103,4 +103,12 @@ class UiHelperTest < ActionView::TestCase
 
     assert_equal expected, actual
   end
+
+  test 'textfield' do
+    actual = textfield 'test', append: '1', prepend: '2'
+    expected = "<div class=\"input-group\"><span class=\"input-group-addon\">1</span><input type=\"text\" name=\"test\" id=\"test\" class=\"form-control\" /><span class=\"input-group-addon\">2</span></div>"
+
+    assert_equal expected, actual
+  end
+
 end
