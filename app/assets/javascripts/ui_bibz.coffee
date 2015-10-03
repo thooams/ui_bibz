@@ -19,18 +19,22 @@ $(document).on 'ready page:load', ->
     $(this).parents('form').submit()
 
   # Resize search field
-  $('.table-panel input[type=search]').blur ->
+  $('.table-card input[type=search]').blur ->
     $parent = $(this).parent()
     $parent.removeClass('has-value') if $(this).val() == ''
     $parent.removeClass('is-focused')
 
-  $('.table-panel input[type=search]').focus ->
+  $('.table-card input[type=search]').focus ->
     $(this).parent().addClass('is-focused has-value')
 
-  $('.table-panel input[type=search]').each ->
+  $('.table-card input[type=search]').each ->
     $(this).parent().addClass('has-value') if $(this).val() != ''
 
   $('.selectpicker').selectpicker()
 
   $('.switch').bootstrapSwitch()
+
+  $('.nav-tabs a').click (e) ->
+    e.preventDefault()
+    $(this).tab('show')
 

@@ -125,7 +125,7 @@ module UiBibz::Ui::Core
 
     # Render html tag
     def render
-      content_tag :div, @items.join.html_safe, class_and_html_options(["card", text_position, card_block, type])
+      content_tag :div, @items.join.html_safe, class_and_html_options(["card", text_position, card_block, type, tab_pane])
     end
 
   protected
@@ -145,6 +145,10 @@ module UiBibz::Ui::Core
 
     def type
       "card-#{ @options[:type] }" unless @options[:type].nil?
+    end
+
+    def tab_pane
+      "tab-pane" if @options[:tab]
     end
 
   end

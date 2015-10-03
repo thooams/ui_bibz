@@ -18,6 +18,7 @@ module UiBibz::Concerns::Models::Searchable
       {
         controller:            @params[:controller],
         param_id:              @params[:id],
+        params:                @params,
         direction:             @params[:direction],
         search:                @params[:search],
         sort:                  @params[:sort],

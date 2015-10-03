@@ -514,7 +514,7 @@ Exemple :
 
 ```
 # app/models/document.rb
-searchable_attributes :name_fr, :name_en, user: :name
+searchable_attributes :name_fr, :name_en, { user: :name }
 ```
 
 Dans la **vue**, insérer la méthode ```table``` qui peut contenir plusieurs arguments :
@@ -567,6 +567,7 @@ L'ajout de colonnes à travers la méthode ```column``` contient plusieurs argum
   * format (formate les élements de la colone en utilisant **lambda**)
   * link (ajoute un lien où l'expression ```:id``` est parsé et remplacé par l'entier correspondant)
   * sort (permet de trier sur des champs )
+  * column_id (permet d'identifier la colonne : peut être utile pour le sort)
   * custom_sort (indique que le tableau sera triéé d'une manière personnalisée)
 * html_options (hash)
 
@@ -1039,6 +1040,8 @@ panel 'Exemple', { state: :success }, { class: 'exemple' }
 * [Ui Bibz v1.1.6](http://hummel.link/Ui-Bibz/1.1.6/index.html)
 * [Ui Bibz v1.1.7](http://hummel.link/Ui-Bibz/1.1.7/index.html)
 * [Ui Bibz v1.2.0](http://hummel.link/Ui-Bibz/1.2.0/index.html)
+* [Ui Bibz v1.2.1](http://hummel.link/Ui-Bibz/1.2.2/index.html)
+* [Ui Bibz v1.2.2](http://hummel.link/Ui-Bibz/1.2.2/index.html)
 * [Ui Bibz v2.0.0](http://hummel.link/Ui-Bibz/2.0.0/index.html)
 
 # Roadmap
