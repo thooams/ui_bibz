@@ -565,7 +565,7 @@ L'ajout de colonnes à travers la méthode ```column``` contient plusieurs argum
   * count (utilise la méthode count sur l'élément)
   * date_format (formate l'affichage de la date en utilisant la méthode ```strftime``` ex: '%Y/%M/%D')
   * format (formate les élements de la colone en utilisant **lambda**)
-  * link (ajoute un lien où l'expression ```:id``` est parsé et remplacé par l'entier correspondant)
+  * link (ajoute un lien où l'expression ```:id``` est parsé et remplacé par l'entier correspondent)
   * sort (permet de trier sur des champs )
   * column_id (permet d'identifier la colonne : peut être utile pour le sort)
   * custom_sort (indique que le tableau sera triéé d'une manière personnalisée)
