@@ -62,7 +62,7 @@ module UiBibz::Ui::Core
 
     # Render html tag
     def render
-      content_tag tag, class_and_html_options('list-group-item') do
+      content_tag tag_type, class_and_html_options('list-group-item') do
         concat glyph_and_content_html if @content
         concat header_html if @body
         concat body_html   if @body
@@ -91,13 +91,24 @@ module UiBibz::Ui::Core
       content_tag :p, @body.render, @body.class_and_html_options('list-group-item-text')
     end
 
-    def tag
-      is_link_type? ? :a : :li
+    def tag_type
+      ap @options[:type]
+      if is_link_type?
+        :a
+      elsif is_button_type?
+        :button
+      else
+        :li
+      end
     end
 
     def is_link_type?
       @html_options[:href] = @options[:url] if @options[:url]
       @options[:type] == :link || @html_options[:type] == :link
+    end
+
+    def is_button_type?
+      @options[:type] == :button || @html_options[:type] == :button
     end
 
     def state
