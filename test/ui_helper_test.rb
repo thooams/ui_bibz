@@ -67,7 +67,7 @@ class UiHelperTest < ActionView::TestCase
 
   test 'progress bar' do
     actual = progress(20)
-    expected = "<progress class=\"progress\" max=\"100\" value=\"0\">20</progress>"
+    expected = "<progress class=\"progress\" max=\"100\" value=\"20\">20</progress>"
 
     assert_equal expected, actual
   end
