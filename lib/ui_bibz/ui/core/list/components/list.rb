@@ -92,7 +92,6 @@ module UiBibz::Ui::Core
     end
 
     def tag_type
-      ap @options[:type]
       if is_link_type?
         :a
       elsif is_button_type?
