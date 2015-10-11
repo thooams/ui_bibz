@@ -17,7 +17,7 @@ module UiBibz::Ui::Core
   # * +state+ - State of élement with symbol value:
   #   (+:secondary+, +:primary+, +:info+, +:warning+, +:danger+)
   # * +max+ - Max value (default: 100)
-  # * +value+ - Value of percentage (default: 0)
+  # * +value+ - Value of percentage (default: content)
   # * +animated+ - Boolean
   # * +striped+ - Boolean
   #
@@ -79,7 +79,7 @@ module UiBibz::Ui::Core
     end
 
     def value
-      @options[:value] || 0
+      @options[:value] || @content.to_i
     end
 
     def state
