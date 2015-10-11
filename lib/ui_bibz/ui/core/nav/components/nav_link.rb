@@ -58,7 +58,7 @@ module UiBibz::Ui::Core
     def content_htm
       link_to @options[:url], link_html_options do
         concat glyph_and_content_html
-        concat badge_html if @options[:badge]
+        concat label_html if @options[:label]
       end
     end
 
