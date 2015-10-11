@@ -66,9 +66,10 @@ module UiBibz::Ui::Core
         concat glyph_and_content_html if @content
         concat header_html if @body
         concat body_html   if @body
-        concat badge_html  if @options[:badge]
+        concat label_html  if @options[:label]
       end
     end
+
 
     # Add header which is a component
     def header content = nil, options = nil, html_options = nil, &block

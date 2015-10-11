@@ -82,9 +82,8 @@ module UiBibz::Ui::Core
       Glyph.new(glyph_info).render unless glyph_info.nil?
     end
 
-    # Render badge html tag
-    def badge_html
-      content_tag :span, @options[:badge], class: 'badge'
+    def label_html
+      UiBibz::Ui::Core::Label.new(@options[:label], class: 'pull-right', type: :pill, state: (@options[:label_state] || :default)).render
     end
 
     # Set :default state symbol
