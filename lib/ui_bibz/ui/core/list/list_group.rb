@@ -85,7 +85,7 @@ module UiBibz::Ui::Core
     # See UiBibz::Ui::Core::List
     def list content = nil, options = {} , html_options = nil, &block
       is_tap  = (content[:tap] if content.kind_of?(Hash)) || (options[:tap] unless options.nil?)
-      options = options.merge({ type: :link }) if @options[:type] == :link
+      options = options.merge({ type: @options[:type] }) unless @options[:type].nil?
 
       if is_tap
         @lists << List.new(content, options, html_options).tap(&block).render
@@ -97,7 +97,7 @@ module UiBibz::Ui::Core
   private
 
     def type
-      @options[:type] == :link ? :div : :ul
+      [:link, :button].include?(@options[:type]) ? :div : :ul
     end
 
   end
