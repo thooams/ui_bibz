@@ -97,12 +97,8 @@ module UiBibz::Helpers::UiCoreHelper
     UiBibz::Ui::Core::Glyph.new(content, options, html_options, &block).render
   end
 
-  def progress_bar percentage = nil, options = nil, html_options = nil, &block
-    if is_tap(percentage, options)
-      UiBibz::Ui::Core::ProgressBar.new(percentage, options, html_options).tap(&block).render
-    else
-      UiBibz::Ui::Core::ProgressBar.new(percentage, options, html_options, &block).render
-    end
+  def progress percentage = nil, options = nil, html_options = nil, &block
+    UiBibz::Ui::Core::Progress.new(percentage, options, html_options, &block).render
   end
 
   def row content = nil, options = nil, html_options = nil, &block

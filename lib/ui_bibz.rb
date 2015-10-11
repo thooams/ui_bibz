@@ -35,7 +35,7 @@ module UiBibz
       autoload :Modal,                   "ui_bibz/ui/core/modal/modal"
       autoload :Nav,                     "ui_bibz/ui/core/nav/nav"
       autoload :Navbar,                  "ui_bibz/ui/core/nav/navbar"
-      autoload :ProgressBar,             "ui_bibz/ui/core/progress_bar/progress_bar"
+      autoload :Progress,                "ui_bibz/ui/core/progress"
       autoload :Row,                     "ui_bibz/ui/core/row"
       autoload :Stars,                   "ui_bibz/ui/core/stars"
       autoload :Tab,                     "ui_bibz/ui/core/nav/tab"
