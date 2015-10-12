@@ -17,6 +17,8 @@ module UiBibz::Ui::Core
   #
   # You can add HTML attributes using the +html_options+.
   # You can pass arguments in options attribute:
+  # * +size+
+  #   (+:sm+, +:lg+)
   #
   # ==== Signatures
   #
@@ -60,7 +62,7 @@ module UiBibz::Ui::Core
     # Render html tag
     def render
       content_tag :div, class_and_html_options(['modal', effect]) do
-        content_tag :div, class: 'modal-dialog', role: 'document' do
+        content_tag :div, class: "modal-dialog #{ size }", role: 'document' do
           content_tag :div, class: 'modal-content' do
             concat @header
             concat @body
@@ -83,6 +85,11 @@ module UiBibz::Ui::Core
     end
 
     private
+
+    # :lg, :sm or :xs
+    def size
+      "modal-#{ @options[:size] }" if @options[:size]
+    end
 
     def effect
       @options[:effect] unless @options[:effect].nil?
