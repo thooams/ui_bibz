@@ -110,29 +110,31 @@
     
 <p>Create a pagination for table</p>
 
-<h4>Attributes</h4>
+<h4 id="label-Attributes">Attributes</h4>
 <ul><li>
-<p><tt>options</tt> - Options of element</p>
+<p><code>options</code> - Options of element</p>
 </li><li>
-<p><tt>html_options</tt> - Html Options of element</p>
+<p><code>html_options</code> - Html Options of element</p>
 </li></ul>
 
-<h4>Options</h4>
+<h4 id="label-Options">Options</h4>
 
-<p>You can add HTML attributes using the <tt>html_options</tt>. You can pass
-arguments in options attribute:</p>
+<p>You can add HTML attributes using the <code>html_options</code>. You can
+pass arguments in options attribute:</p>
 <ul><li>
-<p><tt>store</tt> - Store generate by '<tt>table_search_pagination</tt>'
-method</p>
+<p><code>store</code> - Store generate by
+&#39;<code>table_search_pagination</code>&#39; method</p>
 </li></ul>
 
-<h4>Signatures</h4>
+<h4 id="label-Signatures">Signatures</h4>
 
-<pre class="code ruby"><code class="ruby"><span class='const'>UiBibz</span><span class='op'>::</span><span class='const'>Ui</span><span class='op'>::</span><span class='const'>Ux</span><span class='op'>::</span><span class='const'>TablePagination</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='label'>store:</span> <span class='ivar'>@store</span><span class='rparen'>)</span></code></pre>
+<pre class="code ruby"><code class="ruby"><span class='const'>UiBibz</span><span class='op'>::</span><span class='const'>Ui</span><span class='op'>::</span><span class='const'>Ux</span><span class='op'>::</span><span class='const'>TablePagination</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='label'>store:</span> <span class='ivar'>@store</span><span class='rparen'>)</span>
+</code></pre>
 
-<h4>Helper</h4>
+<h4 id="label-Helper">Helper</h4>
 
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_table_pagination'>table_pagination</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span></code></pre>
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_table_pagination'>table_pagination</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+</code></pre>
 
 
   </div>
@@ -308,13 +310,17 @@ gem</p>
 37
 38
 39
-40</pre>
+40
+41
+42</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ui_bibz/ui/ux/table/table_pagination.rb', line 37</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_render'>render</span>
-  <span class='id identifier rubyid_paginate_parameters'>paginate_parameters</span> <span class='op'>=</span> <span class='lbrace'>{</span> <span class='label'>controller:</span> <span class='id identifier rubyid_store'>store</span><span class='period'>.</span><span class='id identifier rubyid_controller'>controller</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='id identifier rubyid_store'>store</span><span class='period'>.</span><span class='id identifier rubyid_parameters'>parameters</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_paginate_parameters'>paginate_parameters</span> <span class='op'>=</span> <span class='lbrace'>{</span> <span class='label'>controller:</span> <span class='id identifier rubyid_store'>store</span><span class='period'>.</span><span class='id identifier rubyid_controller'>controller</span> <span class='rbrace'>}</span>
+  <span class='id identifier rubyid_paginate_parameters'>paginate_parameters</span> <span class='op'>=</span> <span class='id identifier rubyid_paginate_parameters'>paginate_parameters</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='lbrace'>{</span> <span class='label'>store_id:</span> <span class='id identifier rubyid_store'>store</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span> <span class='rbrace'>}</span><span class='rparen'>)</span> <span class='kw'>unless</span> <span class='id identifier rubyid_store'>store</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+  <span class='id identifier rubyid_paginate_parameters'>paginate_parameters</span> <span class='op'>=</span> <span class='id identifier rubyid_paginate_parameters'>paginate_parameters</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='id identifier rubyid_store'>store</span><span class='period'>.</span><span class='id identifier rubyid_parameters'>parameters</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_will_paginate'>will_paginate</span><span class='lparen'>(</span><span class='id identifier rubyid_store'>store</span><span class='period'>.</span><span class='id identifier rubyid_records'>records</span><span class='comma'>,</span> <span class='label'>params:</span> <span class='id identifier rubyid_paginate_parameters'>paginate_parameters</span><span class='comma'>,</span>  <span class='label'>renderer:</span> <span class='const'>BootstrapPagination</span><span class='op'>::</span><span class='const'>Rails</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -327,9 +333,9 @@ gem</p>
 </div>
 
     <div id="footer">
-  Generated on Fri Oct  2 15:02:53 2015 by
+  Generated on Mon Oct 19 15:15:15 2015 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.8.7.6 (ruby-1.9.3).
+  0.8.7.6 (ruby-2.2.3).
 </div>
 
   </body>

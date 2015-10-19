@@ -110,49 +110,53 @@
 
 <p>This element is an extend of UiBibz::Ui::Core::Component.</p>
 
-<h4>Attributes</h4>
+<h4 id="label-Attributes">Attributes</h4>
 <ul><li>
-<p><tt>content</tt> - Content of element</p>
+<p><code>content</code> - Content of element</p>
 </li><li>
-<p><tt>options</tt> - Options of element</p>
+<p><code>options</code> - Options of element</p>
 </li><li>
-<p><tt>html_options</tt> - Html Options of element</p>
+<p><code>html_options</code> - Html Options of element</p>
 </li></ul>
 
-<h4>Options</h4>
+<h4 id="label-Options">Options</h4>
 
-<p>You can add HTML attributes using the <tt>html_options</tt>. You can pass
-arguments in options attribute:</p>
+<p>You can add HTML attributes using the <code>html_options</code>. You can
+pass arguments in options attribute:</p>
 <ul><li>
-<p><tt>state</tt> - State of élement with symbol value: (<tt>:default</tt>,
-<tt>:primary</tt>, <tt>:info</tt>, <tt>:warning</tt>, <tt>:danger</tt>)</p>
+<p><code>state</code> - State of élement with symbol value:
+(<code>:default</code>, <code>:primary</code>, <code>:info</code>,
+<code>:warning</code>, <code>:danger</code>)</p>
 </li><li>
-<p><tt>num</tt> - Integer, number of stars</p>
+<p><code>num</code> - Integer, number of stars</p>
 </li></ul>
 
-<h4>Signatures</h4>
+<h4 id="label-Signatures">Signatures</h4>
 
 <pre class="code ruby"><code class="ruby"><span class='const'>UiBibz</span><span class='op'>::</span><span class='const'>Ui</span><span class='op'>::</span><span class='const'>Core</span><span class='op'>::</span><span class='const'>Stars</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_content'>content</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_html_options'>html_options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
 
 <span class='const'>UiBibz</span><span class='op'>::</span><span class='const'>Ui</span><span class='op'>::</span><span class='const'>Core</span><span class='op'>::</span><span class='const'>Stars</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_html_options'>html_options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span> <span class='kw'>do</span>
   <span class='id identifier rubyid_content'>content</span>
-<span class='kw'>end</span></code></pre>
+<span class='kw'>end</span>
+</code></pre>
 
-<h4>Examples</h4>
+<h4 id="label-Examples">Examples</h4>
 
 <pre class="code ruby"><code class="ruby"><span class='const'>UiBibz</span><span class='op'>::</span><span class='const'>Ui</span><span class='op'>::</span><span class='const'>Core</span><span class='op'>::</span><span class='const'>Stars</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_content'>content</span><span class='comma'>,</span> <span class='label'>state:</span> <span class='symbol'>:success</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_render'>render</span>
 
 <span class='const'>UiBibz</span><span class='op'>::</span><span class='const'>Ui</span><span class='op'>::</span><span class='const'>Core</span><span class='op'>::</span><span class='const'>Stars</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='lbrace'>{</span> <span class='label'>num:</span> <span class='int'>10</span> <span class='rbrace'>}</span><span class='rparen'>)</span> <span class='kw'>do</span>
   <span class='comment'>#content
-</span><span class='kw'>end</span><span class='period'>.</span><span class='id identifier rubyid_render'>render</span></code></pre>
+</span><span class='kw'>end</span><span class='period'>.</span><span class='id identifier rubyid_render'>render</span>
+</code></pre>
 
-<h4>Helper</h4>
+<h4 id="label-Helper">Helper</h4>
 
 <pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_stars'>stars</span><span class='lparen'>(</span><span class='id identifier rubyid_content'>content</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='id identifier rubyid_html_options'>html_options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
 
 <span class='id identifier rubyid_stars'>stars</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='id identifier rubyid_html_options'>html_options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span> <span class='kw'>do</span>
   <span class='id identifier rubyid_content'>content</span>
-<span class='kw'>end</span></code></pre>
+<span class='kw'>end</span>
+</code></pre>
 
 
   </div>
@@ -346,7 +350,7 @@ arguments in options attribute:</p>
       <pre class="code"><span class="info file"># File 'lib/ui_bibz/ui/core/stars.rb', line 53</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_render'>render</span>
-  <span class='id identifier rubyid_content_tag'>content_tag</span> <span class='symbol'>:span</span><span class='comma'>,</span> <span class='id identifier rubyid_stars_notation'>stars_notation</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'> </span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_html_safe'>html_safe</span><span class='comma'>,</span> <span class='id identifier rubyid_class_and_html_options'>class_and_html_options</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>stars-notation</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_content_tag'>content_tag</span> <span class='symbol'>:span</span><span class='comma'>,</span> <span class='id identifier rubyid_stars_notation'>stars_notation</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'> </span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_html_safe'>html_safe</span><span class='comma'>,</span> <span class='id identifier rubyid_class_and_html_options'>class_and_html_options</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>stars-notation</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -358,9 +362,9 @@ arguments in options attribute:</p>
 </div>
 
     <div id="footer">
-  Generated on Fri Oct  2 15:02:52 2015 by
+  Generated on Mon Oct 19 15:15:14 2015 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.8.7.6 (ruby-1.9.3).
+  0.8.7.6 (ruby-2.2.3).
 </div>
 
   </body>
