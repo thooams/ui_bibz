@@ -110,29 +110,31 @@
     
 <p>Create a select pagination per page</p>
 
-<h4>Attributes</h4>
+<h4 id="label-Attributes">Attributes</h4>
 <ul><li>
-<p><tt>options</tt> - Options of element</p>
+<p><code>options</code> - Options of element</p>
 </li><li>
-<p><tt>html_options</tt> - Html Options of element</p>
+<p><code>html_options</code> - Html Options of element</p>
 </li></ul>
 
-<h4>Options</h4>
+<h4 id="label-Options">Options</h4>
 
-<p>You can add HTML attributes using the <tt>html_options</tt>. You can pass
-arguments in options attribute:</p>
+<p>You can add HTML attributes using the <code>html_options</code>. You can
+pass arguments in options attribute:</p>
 <ul><li>
-<p><tt>store</tt> - Store generate by '<tt>table_search_pagination</tt>'
-method</p>
+<p><code>store</code> - Store generate by
+&#39;<code>table_search_pagination</code>&#39; method</p>
 </li></ul>
 
-<h4>Signatures</h4>
+<h4 id="label-Signatures">Signatures</h4>
 
-<pre class="code ruby"><code class="ruby"><span class='const'>UiBibz</span><span class='op'>::</span><span class='const'>Ui</span><span class='op'>::</span><span class='const'>Ux</span><span class='op'>::</span><span class='const'>TablePaginationPerPage</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='label'>store:</span> <span class='ivar'>@store</span><span class='rparen'>)</span></code></pre>
+<pre class="code ruby"><code class="ruby"><span class='const'>UiBibz</span><span class='op'>::</span><span class='const'>Ui</span><span class='op'>::</span><span class='const'>Ux</span><span class='op'>::</span><span class='const'>TablePaginationPerPage</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='label'>store:</span> <span class='ivar'>@store</span><span class='rparen'>)</span>
+</code></pre>
 
-<h4>Helper</h4>
+<h4 id="label-Helper">Helper</h4>
 
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_table_pagination_per_page'>table_pagination_per_page</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span></code></pre>
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_table_pagination_per_page'>table_pagination_per_page</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+</code></pre>
 
 
   </div>
@@ -321,7 +323,7 @@ WillPaginate gem</p>
 <span class='kw'>def</span> <span class='id identifier rubyid_render'>render</span>
   <span class='kw'>if</span> <span class='ivar'>@per_page_field</span><span class='period'>.</span><span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:wrap_form</span><span class='rbracket'>]</span> <span class='op'>!=</span> <span class='kw'>false</span>
     <span class='id identifier rubyid_form_tag'>form_tag</span><span class='lparen'>(</span><span class='id identifier rubyid_url_for'>url_for</span><span class='lparen'>(</span><span class='id identifier rubyid_url_parameters'>url_parameters</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='label'>method:</span> <span class='symbol'>:get</span><span class='rparen'>)</span> <span class='kw'>do</span>
-      <span class='id identifier rubyid_per_page_html'>per_page_html</span>
+      <span class='id identifier rubyid_per_page_html_in_wrap'>per_page_html_in_wrap</span>
     <span class='kw'>end</span>
   <span class='kw'>else</span>
     <span class='id identifier rubyid_per_page_html'>per_page_html</span>
@@ -337,9 +339,9 @@ WillPaginate gem</p>
 </div>
 
     <div id="footer">
-  Generated on Fri Oct  2 15:02:54 2015 by
+  Generated on Mon Oct 19 15:15:16 2015 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.8.7.6 (ruby-1.9.3).
+  0.8.7.6 (ruby-2.2.3).
 </div>
 
   </body>
