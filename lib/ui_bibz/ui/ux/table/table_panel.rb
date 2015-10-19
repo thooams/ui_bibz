@@ -1,3 +1,4 @@
+require "ui_bibz/ui/ux/table/components/store"
 module UiBibz::Ui::Ux
 
   # Create a TablePanel
@@ -97,8 +98,7 @@ module UiBibz::Ui::Ux
     # See UiBibz::Ui::Core::Component.initialize
     def initialize content = nil, options = nil, html_options = nil, &block
       super
-      @store        = @options.delete(:store) if @options[:store]
-      table_options = (@options[:table_options] || {}).merge({ store: @store })
+      table_options = (@options[:table_options] || {}).merge({ store: store })
       @table        = UiBibz::Ui::Ux::Table.new(table_options, @options[:table_html_options])
     end
 
@@ -109,9 +109,13 @@ module UiBibz::Ui::Ux
 
       content_tag :div, class_and_html_options(panel_classes) do |f|
         form_tag(url_for(url_parameters), method: :get) do
+          store.parameters.each do |k,v|
+            concat tag(:input, type: 'hidden', name: k, value: v) if !default_parameters?(k) && !v.blank?
+          end
+          concat tag(:input, type: 'hidden', name: 'store_id', value: store.id) unless store.id.nil? # if there is more one table in html page
           concat(header_html) unless @header.nil?
           concat(body_html)   unless @body.nil?
-          concat(table_html)  unless @store.nil?
+          concat(table_html)  unless store.nil?
           concat(footer_html) unless @footer.nil?
         end
       end
@@ -134,8 +138,22 @@ module UiBibz::Ui::Ux
 
   private
 
+    def store
+      @store ||= if @options[:store].nil?
+        raise 'Store is nil!'
+      elsif @options[:store].try(:records).nil?
+        raise 'Store can be created only with "table_search_pagination" method!'
+      else
+        Store.new @options.delete(:store) if @options[:store]
+      end
+    end
+
+    def default_parameters?(k)
+      %w(store_id per_page search utf8 search controller action utf8).include?(k)
+    end
+
     def url_parameters
-      { controller: @store.controller, action: @store.action, id: @store.param_id }
+      { controller: store.controller, action: store.action, id: store.param_id }
     end
 
     def table_html
@@ -147,11 +165,11 @@ module UiBibz::Ui::Ux
     end
 
     def search
-      @search ||= Searchable.new @store, @options
+      @search ||= Searchable.new store, @options.merge({ wrap_form: false })
     end
 
     def pagination
-      @pagination ||= Paginable.new @store, @options
+      @pagination ||= Paginable.new store, @options.merge({ wrap_form: false })
     end
 
     def initialize_footer
