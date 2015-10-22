@@ -39,7 +39,7 @@ module UiBibz::Ui::Ux
   #       c.column :id, name: '#'
   #     end
   #     t.actions do |a|
-  #       a.action '', url: url, glyph: ''
+  #       a.link '', url: url, glyph: ''
   #     end
   #   end
   #
@@ -55,9 +55,9 @@ module UiBibz::Ui::Ux
   #       c.column :status_id, { name: 'Status', format: lambda{ |records, record| "Test #{ record.id}"} }
   #     end
   #     t.actions do |a|
-  #       a.action 'toto', url: users_path(:id), glyph: 'eye'
-  #       a.action '---'
-  #       a.action 'momo', url: users_path(:id), glyph: 'home'
+  #       a.link 'toto', url: users_path(:id), glyph: 'eye'
+  #       a.divider
+  #       a.link 'momo', url: users_path(:id), glyph: 'home'
   #     end
   #   end.render
   #
