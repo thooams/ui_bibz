@@ -73,8 +73,8 @@ module UiBibz::Ui::Ux
   #       end
   #     end
   #     t.actions do |acs|
-  #       acs.action(content, options = {}, html_options = {})
-  #       acs.action(options = {}, html_options = {}) do
+  #       acs.link(content, options = {}, html_options = {})
+  #       acs.link(options = {}, html_options = {}) do
   #         content
   #       end
   #     end

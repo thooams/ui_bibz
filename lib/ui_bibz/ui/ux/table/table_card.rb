@@ -1,3 +1,4 @@
+require "ui_bibz/ui/ux/table/components/store"
 module UiBibz::Ui::Ux
 
   # Create a TableCard
@@ -97,8 +98,7 @@ module UiBibz::Ui::Ux
     # See UiBibz::Ui::Core::Component.initialize
     def initialize content = nil, options = nil, html_options = nil, &block
       super
-      @store        = @options.delete(:store) if @options[:store]
-      table_options = (@options[:table_options] || {}).merge({ store: @store })
+      table_options = (@options[:table_options] || {}).merge({ store: store })
       @table        = UiBibz::Ui::Ux::Table.new(table_options, @options[:table_html_options])
     end
 
@@ -108,7 +108,11 @@ module UiBibz::Ui::Ux
 
       content_tag :div, class_and_html_options("card table-card") do
         form_tag(url_for(url_parameters), method: :get) do
-          @items.join.html_safe
+          store.parameters.each do |k,v|
+            concat tag(:input, type: 'hidden', name: k, value: v) if !default_parameters?(k) && !v.blank?
+          end
+          concat tag(:input, type: 'hidden', name: 'store_id', value: store.id) unless store.id.nil? # if there is more one table in html page
+          concat @items.join.html_safe
         end
       end
     end
@@ -128,8 +132,17 @@ module UiBibz::Ui::Ux
       @table.actions_list
     end
 
-
   private
+
+    def store
+      @store ||= if @options[:store].nil?
+        raise 'Store is nil!'
+      elsif @options[:store].try(:records).nil?
+        raise 'Store can be created only with "table_search_pagination" method!'
+      else
+        Store.new @options.delete(:store) if @options[:store]
+      end
+    end
 
     def init_components
       @items << search.render     if search.searchable?
@@ -137,20 +150,32 @@ module UiBibz::Ui::Ux
       @items << pagination.render if pagination.paginable?
     end
 
+    def default_parameters?(k)
+      %w(store_id per_page search utf8 search controller action utf8).include?(k)
+    end
+
     def url_parameters
-      { controller: @store.controller, action: @store.action, id: @store.param_id }
+      { controller: store.controller, action: store.action, id: store.param_id }
     end
 
     def table
       @table
     end
 
+    def table_html
+      content_tag :div, @table.render, class: 'card-table'
+    end
+
+    def panel_classes
+      %w(panel panel-default table-panel)
+    end
+
     def search
-      @search ||= Searchable.new @store, @options, { class: 'card-header' }
+      @search ||= Searchable.new store, @options.merge({ wrap_form: false }), { class: 'card-header' }
     end
 
     def pagination
-      @pagination ||= Paginable.new @store, @options, { class: 'card-footer' }
+      @pagination ||= Paginable.new store, @options.merge({ wrap_form: false }), { class: 'card-footer' }
     end
 
   end

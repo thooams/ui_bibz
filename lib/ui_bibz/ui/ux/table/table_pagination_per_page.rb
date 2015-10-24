@@ -35,7 +35,7 @@ module UiBibz::Ui::Ux
     def render
       if @per_page_field.options[:wrap_form] != false
         form_tag(url_for(url_parameters), method: :get) do
-          per_page_html
+          per_page_html_in_wrap
         end
       else
         per_page_html
@@ -62,8 +62,16 @@ module UiBibz::Ui::Ux
       content_tag :div, class: 'table-pagination-per-page' do
         concat results_count_html
         concat UiBibz::Utils::Internationalization.new("ui_bibz.table.pagination.per_page", default: "Per page: ").translate
+        concat select_tag('per_page', options_for_select([5, 10, 20, 30, 50, 100, 200, 500], store.per_page), class: 'form-control')
+      end
+    end
+
+    def per_page_html_in_wrap
+      content_tag :div, class: 'table-pagination-per-page' do
+        concat results_count_html
+        concat UiBibz::Utils::Internationalization.new("ui_bibz.table.pagination.per_page", default: "Per page: ").translate
         store.parameters.each do |k,v|
-          concat tag(:input, type: 'hidden', name: k, value: v) unless default_parameters?(k)
+          concat tag(:input, type: 'hidden', name: k, value: v) if !default_parameters?(k) && !v.blank?
         end
         concat select_tag('per_page', options_for_select([5, 10, 20, 30, 50, 100, 200, 500], store.per_page), class: 'form-control')
         concat tag(:input, type: 'hidden', name: 'store_id', value: store.id) unless store.id.nil? # If there is more 1 table in html page
