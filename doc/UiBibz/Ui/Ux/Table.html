@@ -110,66 +110,67 @@
 
 <p>This element is an extend of UiBibz::Ui::Ux::Component.</p>
 
-<h4>Attributes</h4>
+<h4 id="label-Attributes">Attributes</h4>
 <ul><li>
-<p><tt>content</tt> - Content of element</p>
+<p><code>content</code> - Content of element</p>
 </li><li>
-<p><tt>options</tt> - Options of element</p>
+<p><code>options</code> - Options of element</p>
 </li><li>
-<p><tt>html_options</tt> - Html Options of element</p>
+<p><code>html_options</code> - Html Options of element</p>
 </li></ul>
 
-<h4>Options</h4>
+<h4 id="label-Options">Options</h4>
 
-<p>You can add HTML attributes using the <tt>html_options</tt>. You can pass
-arguments in options attribute:</p>
+<p>You can add HTML attributes using the <code>html_options</code>. You can
+pass arguments in options attribute:</p>
 <ul><li>
-<p><tt>store</tt> - Store generate by '<tt>table_search_pagination</tt>'
-method</p>
+<p><code>store</code> - Store generate by
+&#39;<code>table_search_pagination</code>&#39; method</p>
 </li><li>
-<p><tt>url</tt> - String</p>
+<p><code>url</code> - String</p>
 </li><li>
-<p><tt>tap</tt> - Boolean</p>
+<p><code>tap</code> - Boolean</p>
 </li><li>
-<p><tt>actionable</tt> - Boolean</p>
+<p><code>actionable</code> - Boolean</p>
 </li><li>
-<p><tt>sortable</tt> - Boolean</p>
+<p><code>sortable</code> - Boolean</p>
 </li><li>
-<p><tt>searchable</tt> - Boolean</p>
+<p><code>searchable</code> - Boolean</p>
 </li></ul>
 
-<h4>Signatures</h4>
+<h4 id="label-Signatures">Signatures</h4>
 
 <pre class="code ruby"><code class="ruby"><span class='const'>UiBibz</span><span class='op'>::</span><span class='const'>Ui</span><span class='op'>::</span><span class='const'>Ux</span><span class='op'>::</span><span class='const'>Table</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='label'>store:</span> <span class='ivar'>@store</span><span class='rparen'>)</span>
 
 <span class='const'>UiBibz</span><span class='op'>::</span><span class='const'>Ui</span><span class='op'>::</span><span class='const'>Ux</span><span class='op'>::</span><span class='const'>Table</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='label'>store:</span> <span class='ivar'>@store</span><span class='comma'>,</span> <span class='label'>tap:</span> <span class='kw'>true</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_t'>t</span><span class='op'>|</span>
   <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_columns'>columns</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_c'>c</span><span class='op'>|</span>
-    <span class='id identifier rubyid_c'>c</span><span class='period'>.</span><span class='id identifier rubyid_column'>column</span> <span class='symbol'>:id</span><span class='comma'>,</span> <span class='label'>name:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>#</span><span class='tstring_end'>'</span></span>
+    <span class='id identifier rubyid_c'>c</span><span class='period'>.</span><span class='id identifier rubyid_column'>column</span> <span class='symbol'>:id</span><span class='comma'>,</span> <span class='label'>name:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>#</span><span class='tstring_end'>&#39;</span></span>
   <span class='kw'>end</span>
   <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_actions'>actions</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_a'>a</span><span class='op'>|</span>
-    <span class='id identifier rubyid_a'>a</span><span class='period'>.</span><span class='id identifier rubyid_action'>action</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='label'>url:</span> <span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>glyph:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_end'>'</span></span>
+    <span class='id identifier rubyid_a'>a</span><span class='period'>.</span><span class='id identifier rubyid_action'>action</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>url:</span> <span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>glyph:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span>
   <span class='kw'>end</span>
-<span class='kw'>end</span></code></pre>
+<span class='kw'>end</span>
+</code></pre>
 
-<h4>Examples</h4>
+<h4 id="label-Examples">Examples</h4>
 
 <pre class="code ruby"><code class="ruby">UiBibz::Ui::Ux::Table.new(store: @users).render
 
 UiBibz::Ui::Ux::Table.new(store: @users).tap do |t|
   t.columns do |c|
-    c.column :id, { name: '#' }
-    c.column :name_fr', { link: edit_user_path(:id), order: 2 }
-    c.column :name_en'
-    c.column :status_id, { name: 'Status', format: lambda{ |records, record| &quot;Test #{ record.id}&quot;} }
+    c.column :id, { name: &#39;#&#39; }
+    c.column :name_fr&#39;, { link: edit_user_path(:id), order: 2 }
+    c.column :name_en&#39;
+    c.column :status_id, { name: &#39;Status&#39;, format: lambda{ |records, record| &quot;Test #{ record.id}&quot;} }
   end
   t.actions do |a|
-    a.action 'toto', url: users_path(:id), glyph: 'eye'
-    a.action '---'
-    a.action 'momo', url: users_path(:id), glyph: 'home'
+    a.action &#39;toto&#39;, url: users_path(:id), glyph: &#39;eye&#39;
+    a.action &#39;---&#39;
+    a.action &#39;momo&#39;, url: users_path(:id), glyph: &#39;home&#39;
   end
 end.render</code></pre>
 
-<h4>Helper</h4>
+<h4 id="label-Helper">Helper</h4>
 
 <pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_table'>table</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='id identifier rubyid_html_options'>html_options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
 
@@ -186,7 +187,8 @@ end.render</code></pre>
       <span class='id identifier rubyid_content'>content</span>
     <span class='kw'>end</span>
   <span class='kw'>end</span>
-<span class='kw'>end</span></code></pre>
+<span class='kw'>end</span>
+</code></pre>
 
 
   </div>
@@ -367,7 +369,7 @@ end.render</code></pre>
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Store must be generated by <b>table_search_pagination</b> method.</p>
+<p>Store must be generated by <strong>table_search_pagination</strong> method.</p>
 </div></span>
   
 </li>
@@ -637,7 +639,7 @@ end.render</code></pre>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Store must be generated by <b>table_search_pagination</b> method</p>
+<p>Store must be generated by <strong>table_search_pagination</strong> method</p>
 
 
   </div>
@@ -666,9 +668,9 @@ end.render</code></pre>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_store'>store</span>
   <span class='ivar'>@store</span> <span class='op'>||=</span> <span class='kw'>if</span> <span class='ivar'>@options</span><span class='lbracket'>[</span><span class='symbol'>:store</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
-    <span class='id identifier rubyid_raise'>raise</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Store is nil!</span><span class='tstring_end'>'</span></span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Store is nil!</span><span class='tstring_end'>&#39;</span></span>
   <span class='kw'>elsif</span> <span class='ivar'>@options</span><span class='lbracket'>[</span><span class='symbol'>:store</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_try'>try</span><span class='lparen'>(</span><span class='symbol'>:records</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
-    <span class='id identifier rubyid_raise'>raise</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Store can be created only with &quot;table_search_pagination&quot; method!</span><span class='tstring_end'>'</span></span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Store can be created only with &quot;table_search_pagination&quot; method!</span><span class='tstring_end'>&#39;</span></span>
   <span class='kw'>else</span>
     <span class='const'>Store</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='ivar'>@options</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span> <span class='symbol'>:store</span>
   <span class='kw'>end</span>
@@ -683,9 +685,9 @@ end.render</code></pre>
 </div>
 
     <div id="footer">
-  Generated on Fri Oct  2 15:02:52 2015 by
+  Generated on Mon Oct 19 15:25:15 2015 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.8.7.6 (ruby-1.9.3).
+  0.8.7.6 (ruby-2.2.3).
 </div>
 
   </body>

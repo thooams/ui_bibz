@@ -29,13 +29,14 @@ module UiBibz::Ui::Ux
   private
 
     def dropdown_action record
-      UiBibz::Ui::Core::Dropdown.new(dropdown_action_name, { position: :right, glyph: actions_glyph }, class: 'btn-group-xs dropdown-action').tap do |d|
+      UiBibz::Ui::Core::Dropdown.new(dropdown_action_name, { position: :right, size: :sm, glyph: actions_glyph }, { class: 'dropdown-action' }).tap do |d|
         unless @actions.nil?
           @actions.format_action.call(record) unless @actions.format_action.nil?
           actions_links(record).each do |l|
             d.html l.to_s.html_safe
           end
-          @actions.reset
+          # Maybe remove this line
+          @actions.reset unless @actions.format_action.nil?
         end
       end.render
     end

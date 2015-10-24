@@ -110,31 +110,31 @@
 
 <p>This element is an extend of UiBibz::Ui::Core::Component.</p>
 
-<h4>Attributes</h4>
+<h4 id="label-Attributes">Attributes</h4>
 <ul><li>
-<p><tt>content</tt> - Content of element</p>
+<p><code>content</code> - Content of element</p>
 </li><li>
-<p><tt>options</tt> - Options of element</p>
+<p><code>options</code> - Options of element</p>
 </li><li>
-<p><tt>html_options</tt> - Html Options of element</p>
+<p><code>html_options</code> - Html Options of element</p>
 </li></ul>
 
-<h4>Options</h4>
+<h4 id="label-Options">Options</h4>
 
-<p>You can add HTML attributes using the <tt>html_options</tt>. You can pass
-arguments in options attribute:</p>
+<p>You can add HTML attributes using the <code>html_options</code>. You can
+pass arguments in options attribute:</p>
 <ul><li>
-<p><tt>name</tt> - String</p>
+<p><code>name</code> - String</p>
 </li><li>
-<p><tt>size</tt> - Integer</p>
+<p><code>size</code> - Integer</p>
 </li><li>
-<p><tt>type</tt> - Symbol</p>
+<p><code>type</code> - Symbol</p>
 </li><li>
-<p><tt>state</tt> - Symbol (<tt>:default</tt>, <tt>:primary</tt>,
-<tt>:info</tt>, <tt>:warning</tt>, <tt>:danger</tt>)</p>
+<p><code>state</code> - Symbol (<code>:default</code>, <code>:primary</code>,
+<code>:info</code>, <code>:warning</code>, <code>:danger</code>)</p>
 </li></ul>
 
-<h4>Signatures</h4>
+<h4 id="label-Signatures">Signatures</h4>
 
 <pre class="code ruby"><code class="ruby"><span class='const'>UiBibz</span><span class='op'>::</span><span class='const'>Ui</span><span class='op'>::</span><span class='const'>Core</span><span class='op'>::</span><span class='const'>Glyph</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='id identifier rubyid_content'>content</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_html_options'>html_options</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span>
 <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span>
@@ -145,21 +145,23 @@ arguments in options attribute:</p>
 
 <span class='const'>UiBibz</span><span class='op'>::</span><span class='const'>Ui</span><span class='op'>::</span><span class='const'>Core</span><span class='op'>::</span><span class='const'>Glyph</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='id identifier rubyid_content'>content</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
 
-<span class='const'>UiBibz</span><span class='op'>::</span><span class='const'>Ui</span><span class='op'>::</span><span class='const'>Core</span><span class='op'>::</span><span class='const'>Glyph</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='id identifier rubyid_content'>content</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='id identifier rubyid_html_options'>html_options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span></code></pre>
+<span class='const'>UiBibz</span><span class='op'>::</span><span class='const'>Ui</span><span class='op'>::</span><span class='const'>Core</span><span class='op'>::</span><span class='const'>Glyph</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='id identifier rubyid_content'>content</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='id identifier rubyid_html_options'>html_options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
+</code></pre>
 
-<h4>Exemples</h4>
+<h4 id="label-Exemples">Exemples</h4>
 
-<pre class="code ruby"><code class="ruby"><span class='const'>UiBibz</span><span class='op'>::</span><span class='const'>Ui</span><span class='op'>::</span><span class='const'>Core</span><span class='op'>::</span><span class='const'>Glyph</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>eye</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_render'>render</span>
+<pre class="code ruby"><code class="ruby"><span class='const'>UiBibz</span><span class='op'>::</span><span class='const'>Ui</span><span class='op'>::</span><span class='const'>Core</span><span class='op'>::</span><span class='const'>Glyph</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>eye</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_render'>render</span>
 
 <span class='const'>UiBibz</span><span class='op'>::</span><span class='const'>Ui</span><span class='op'>::</span><span class='const'>Core</span><span class='op'>::</span><span class='const'>Glyph</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='rparen'>)</span> <span class='kw'>do</span>
   <span class='id identifier rubyid_name'>name</span>
 <span class='kw'>end</span><span class='period'>.</span><span class='id identifier rubyid_render'>render</span>
 
-<span class='const'>UiBibz</span><span class='op'>::</span><span class='const'>Ui</span><span class='op'>::</span><span class='const'>Core</span><span class='op'>::</span><span class='const'>Glyph</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>eye</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='lbrace'>{</span> <span class='label'>size:</span> <span class='int'>3</span><span class='comma'>,</span> <span class='label'>type:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>fw</span><span class='tstring_end'>'</span></span> <span class='rbrace'>}</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_render'>render</span>
+<span class='const'>UiBibz</span><span class='op'>::</span><span class='const'>Ui</span><span class='op'>::</span><span class='const'>Core</span><span class='op'>::</span><span class='const'>Glyph</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>eye</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='lbrace'>{</span> <span class='label'>size:</span> <span class='int'>3</span><span class='comma'>,</span> <span class='label'>type:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>fw</span><span class='tstring_end'>&#39;</span></span> <span class='rbrace'>}</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_render'>render</span>
 
-<span class='const'>UiBibz</span><span class='op'>::</span><span class='const'>Ui</span><span class='op'>::</span><span class='const'>Core</span><span class='op'>::</span><span class='const'>Glyph</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='lbrace'>{</span> <span class='label'>name:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>eye</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='label'>size:</span> <span class='int'>3</span><span class='comma'>,</span> <span class='label'>type:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>fw</span><span class='tstring_end'>'</span></span> <span class='rbrace'>}</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_render'>render</span></code></pre>
+<span class='const'>UiBibz</span><span class='op'>::</span><span class='const'>Ui</span><span class='op'>::</span><span class='const'>Core</span><span class='op'>::</span><span class='const'>Glyph</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='lbrace'>{</span> <span class='label'>name:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>eye</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>size:</span> <span class='int'>3</span><span class='comma'>,</span> <span class='label'>type:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>fw</span><span class='tstring_end'>&#39;</span></span> <span class='rbrace'>}</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_render'>render</span>
+</code></pre>
 
-<h4>Helper</h4>
+<h4 id="label-Helper">Helper</h4>
 
 <pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_glyph'>glyph</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
 
@@ -167,7 +169,8 @@ arguments in options attribute:</p>
 
 <span class='id identifier rubyid_glyph'>glyph</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='id identifier rubyid_html_options'>html_options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span> <span class='kw'>do</span>
   <span class='id identifier rubyid_name'>name</span>
-<span class='kw'>end</span></code></pre>
+<span class='kw'>end</span>
+</code></pre>
 
 
   </div>
@@ -361,7 +364,7 @@ arguments in options attribute:</p>
       <pre class="code"><span class="info file"># File 'lib/ui_bibz/ui/core/glyph.rb', line 65</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_render'>render</span>
-  <span class='id identifier rubyid_content_tag'>content_tag</span> <span class='symbol'>:i</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='id identifier rubyid_class_and_html_options'>class_and_html_options</span><span class='lparen'>(</span><span class='id identifier rubyid_classes'>classes</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_content_tag'>content_tag</span> <span class='symbol'>:i</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_class_and_html_options'>class_and_html_options</span><span class='lparen'>(</span><span class='id identifier rubyid_classes'>classes</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -373,9 +376,9 @@ arguments in options attribute:</p>
 </div>
 
     <div id="footer">
-  Generated on Fri Oct  2 15:02:52 2015 by
+  Generated on Mon Oct 19 15:25:14 2015 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.8.7.6 (ruby-1.9.3).
+  0.8.7.6 (ruby-2.2.3).
 </div>
 
   </body>

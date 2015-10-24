@@ -11,7 +11,7 @@ module UiBibz::Ui::Ux
     def render
       if @search_field.options[:wrap_form] != false
         form_tag(url_for(url_parameters), method: :get, class: 'form-table-search-field') do
-          search_field_html
+          search_field_html_in_wrap
         end
       else
         search_field_html
@@ -37,6 +37,14 @@ module UiBibz::Ui::Ux
     end
 
     def search_field_html
+      content_tag :div, @search_field.class_and_html_options(div_class) do
+        concat content_tag(:span, UiBibz::Ui::Core::Glyph.new('search').render, class: 'input-group-addon')
+        concat tag(:input, type: 'search', value: store.search, name: 'search', class: 'form-control', placeholder: search_placeholder_field)
+        concat content_tag(:span, UiBibz::Ui::Core::Glyph.new('times-circle').render, class: 'clear-search-btn input-group-addon')
+      end
+    end
+
+    def search_field_html_in_wrap
       content_tag :div, @search_field.class_and_html_options(div_class) do
         concat content_tag(:span, UiBibz::Ui::Core::Glyph.new('search').render, class: 'input-group-addon')
         store.parameters.each do |k,v|
