@@ -71,7 +71,10 @@ module UiBibz::Ui::Core
     end
 
     def glyph_opts
-      { state: @options[:state] } unless @options[:state].nil?
+      opts = {}
+      opts = opts.merge({ state: @options[:state] }) unless @options[:state].nil?
+      opts = opts.merge({ size: @options[:size] })   unless @options[:size].nil?
+      opts
     end
 
     def star_name star
