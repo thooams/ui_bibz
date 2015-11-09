@@ -79,7 +79,16 @@ module UiBibz::Ui::Core
     end
 
     def size
-      @options[:size]
+      case @options[:size]
+      when :xs
+        1
+      when :md
+        3
+      when :lg
+        5
+      else
+        @options[:size]
+      end
     end
 
     def stack
