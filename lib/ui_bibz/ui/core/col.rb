@@ -66,7 +66,7 @@ module UiBibz::Ui::Core
       classes.join(' ')
     end
 
-    def size col
+    def size col = {}
       col[:size] || :md
     end
 
@@ -75,7 +75,7 @@ module UiBibz::Ui::Core
     end
 
     def offset col
-      "col-offset-#{ col[:offset] }" if col[:offset]
+      "col-#{ size }-offset-#{ col[:offset] }" if col[:offset]
     end
 
   end
