@@ -73,6 +73,7 @@ module UiBibz::Ui::Core
       cls << "fa-#{ size }x"         unless size.nil?
       cls << "fa-rotate-#{ rotate }" unless rotate.nil?
       cls << "fa-flip-#{ flip }"     unless flip.nil?
+      cls << "fa-inverse"            unless inverse.nil?
       cls << "fa-stack-#{ stack }x"  unless stack.nil?
       cls << "fa-#{ type }"          unless type.nil?
       cls.compact.join(' ')
@@ -97,6 +98,10 @@ module UiBibz::Ui::Core
 
     def rotate
       @options[:rotate]
+    end
+
+    def inverse
+      @options[:inverse]
     end
 
     def flip
