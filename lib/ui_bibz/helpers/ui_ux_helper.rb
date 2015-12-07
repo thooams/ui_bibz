@@ -25,6 +25,10 @@ module UiBibz::Helpers::UiUxHelper
     UiBibz::Ui::Ux::TablePagination.new(options, html_options).render
   end
 
+  def glyph_and_text glyph_args, text
+    "#{ glyph glyph_args } #{ text }".html_safe
+  end
+
   def table_card content = nil, options = nil, html_options = nil, &block
     if is_tap(content, options)
       UiBibz::Ui::Ux::TableCard.new(content, options, html_options).tap(&block).render
