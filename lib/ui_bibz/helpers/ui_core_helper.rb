@@ -86,7 +86,11 @@ module UiBibz::Helpers::UiCoreHelper
   # Button section end ----------------------------------------------------
 
   def breadcrumb content = nil, options = nil, html_options = nil, &block
-    UiBibz::Ui::Core::Breadcrumb.new(content, options, html_options).tap(&block).render
+    if is_tap(content, options)
+      UiBibz::Ui::Core::Breadcrumb.new(content, options, html_options).tap(&block).render
+    else
+      UiBibz::Ui::Core::Breadcrumb.new(content, options, html_options, &block).render
+    end
   end
 
   def dropdown name, options = nil, html_options = nil, &block

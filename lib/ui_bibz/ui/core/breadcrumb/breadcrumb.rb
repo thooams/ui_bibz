@@ -44,12 +44,14 @@ module UiBibz::Ui::Core
   #
   # ==== Helper
   #
-  #   breadcrumb do |b|
+  #   breadcrumb({tap: true}) do |b|
   #     b.link(content, options = {}, html_options = {})
   #     b.link(options = {}, html_options = {}) do
   #       content
   #     end
   #   end
+  #
+  #   breadcrumb({store: @users, link_label: name, link_url: user_path(:id)})
   #
   class Breadcrumb < Component
 
@@ -61,6 +63,7 @@ module UiBibz::Ui::Core
 
     # Render html tag
     def render
+      generate_links unless store.nil?
       content_tag :ol, @links.join.html_safe, class_and_html_options("breadcrumb")
     end
 
@@ -68,6 +71,34 @@ module UiBibz::Ui::Core
     # See UiBibz::Ui::Core::BreadcrumbLink
     def link content = nil, options = nil, html_options = nil, &block
       @links << BreadcrumbLink.new(content, options, html_options, &block).render
+    end
+
+    private
+
+    def store
+      @options[:store]
+    end
+
+    def model_name
+      store.class.to_s
+    end
+
+    def link_label
+      @options[:link_label] || :name
+    end
+
+    def link_url
+      @options[:link_url] || '#'
+    end
+
+    def generate_links
+      @options[:store].each do |item|
+        @links << BreadcrumbLink.new(item.send(link_label), url: inject_url(link_url, item)).render
+      end
+    end
+
+    def inject_url url, record
+      url.gsub(/(\/id\/?)/, "/#{ record.id }/")
     end
 
   end
