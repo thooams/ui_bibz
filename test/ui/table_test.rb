@@ -96,7 +96,7 @@ class TableTest < ActionView::TestCase
   test 'table searchable' do
     options  = { searchable: true }
     actual   = UiBibz::Ui::Ux::Searchable.new(@store, options).render
-    expected = "<div><div class=\"title\">Users list</div><div class=\"input-group input-group-sm table-search-field\"><span class=\"input-group-addon\"><i class=\"glyph fa fa-search\"></i></span><input type=\"search\" value=\"Name fr\" name=\"search\" class=\"form-control\" placeholder=\"Search by Name fr and Name en...\" /><span class=\"input-group-btn\"><button type=\"button\" class=\"btn btn-secondary\"><i class=\"glyph fa fa-times-circle\"></i></button></span></div><br class=\"ui-bibz-clear\" /></div>"
+    expected = "<div><div class=\"title\">Users list</div><div class=\"input-group input-group-sm table-search-field\"><span class=\"input-group-addon\"><i class=\"glyph fa fa-search\"></i></span><input type=\"search\" value=\"Name fr\" name=\"search\" class=\"form-control\" placeholder=\"Search by Name fr and Name en...\" /><span class=\"clear-search-btn input-group-addon\"><i class=\"glyph fa fa-times-circle\"></i></span></div><br class=\"ui-bibz-clear\" /></div>"
 
     assert_equal expected, actual
   end
@@ -114,7 +114,7 @@ class TableTest < ActionView::TestCase
     options  = { actionable: true }
     action   = UiBibz::Ui::Ux::Actionable.new(@store, options)
     actual   = action.body @store.records.first, []
-    expected = ["<td><div class=\"btn-group-xs dropdown-action dropdown btn-group\"><button class=\"btn btn-primary dropdown-toggle\" type=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\"><i class=\"glyph fa fa-ellipsis-v fa-fw\"></i> Actions <span class=\"caret\"></span></button><div class=\"dropdown-menu dropdown-menu-right\"></div></div></td>"]
+    expected = ["<td><div class=\"dropdown-action dropdown btn-group\"><button class=\"btn btn-primary btn-sm dropdown-toggle\" type=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\"><i class=\"glyph fa fa-ellipsis-v fa-fw\"></i> Actions <span class=\"caret\"></span></button><div class=\"dropdown-menu dropdown-menu-right\"></div></div></td>"]
 
     assert_equal expected, actual
   end
