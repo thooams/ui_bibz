@@ -54,12 +54,12 @@ module UiBibz::Ui::Ux
       args = args.merge({ custom_sort: true, column_name: @column.data_index }) if @column.custom_sort
       args = args.merge({ parent: true }) if @column.parent
       args = args.merge({ store_id: @store.id }) unless @store.id.nil?
-      args = args.merge(@store.parameters.reject{ |k,v| default_parameters.include?(k) })
+      args = args.merge(@store.parameters.reject{ |k,v| default_parameters.include?(k.to_s) })
       args
     end
 
     def default_parameters
-      %w(column_id direction search store_id controller sort)
+      %w(column_id direction search store_id controller sort page per_page)
     end
 
     def sortable?
