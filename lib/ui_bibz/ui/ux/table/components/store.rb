@@ -68,8 +68,12 @@ module UiBibz::Ui::Ux
       @store.controller
     end
 
+    def params
+      @store.params || {}
+    end
+
     def parameters
-      @store.try(:params) || {}
+      @store.params
     end
 
     def action
