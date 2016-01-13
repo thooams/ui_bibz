@@ -99,20 +99,30 @@ module UiBibz::Concerns::Models::Searchable
     end
 
     def self.search_by_query sql
-      sql_query      = []
-      sql_attributes = {}
+      sql_query       = []
+      sql_attributes  = {}
+      search_patterns = @params[:search].strip.gsub(/(?<=[\\s])\\s*|^\\s+|\\s+$/, '').downcase
 
-      @searchable_attributes.each do |attribute|
-        if attribute.kind_of?(Hash)
-          sql_query << "lower(#{ attribute.keys.first.to_s.pluralize }.#{ attribute.values.first }) LIKE :#{ attribute.values.first }"
-          sql_attributes = sql_attributes.merge(Hash[attribute.values.first, "%#{ @params[:search].downcase }%"])
-        else
-          sql_query << "lower(#{ self.to_s.underscore.pluralize }.#{ attribute }) LIKE :#{ attribute }"
-          sql_attributes = sql_attributes.merge(Hash[attribute, "%#{ @params[:search].downcase }%"])
+      search_patterns_tmp = search_patterns.scan(/"(.*?)"/).flatten
+      search_patterns     = search_patterns.gsub(/"(.*?)"/, '').split(' ')
+      search_patterns     << search_patterns_tmp
+
+      search_patterns.flatten.each_with_index do |pattern, i|
+        sql_subquery = []
+        @searchable_attributes.each do |attribute|
+          if attribute.kind_of?(Hash)
+            key_name = attribute.keys.first.to_s.pluralize
+            sql_subquery << "lower(#{ key_name }.#{ attribute.values.first }) LIKE :#{ key_name }_#{ attribute.values.first }_#{ i }"
+            sql_attributes = sql_attributes.merge(Hash["#{ key_name }_#{ attribute.values.first }_#{ i }".to_sym, "%#{ pattern }%"])
+          else
+            sql_subquery << "lower(#{ self.to_s.underscore.pluralize }.#{ attribute }) LIKE :#{ attribute }_#{ i }"
+            sql_attributes = sql_attributes.merge(Hash["#{ attribute }_#{ i }".to_sym, "%#{ pattern }%"])
+          end
         end
+        sql_query << "(" + sql_subquery.join(' OR ') + ")"
       end
 
-      sql.where([sql_query.join(' OR '), sql_attributes])
+      sql.where([sql_query.join(' AND '), sql_attributes])
     end
 
     def self.order_sql
