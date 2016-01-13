@@ -64,12 +64,16 @@ module UiBibz::Ui::Ux
       @store.search
     end
 
+    def params
+      @store.params || {}
+    end
+
     def controller
       @store.controller
     end
 
     def parameters
-      @store.try(:params) || {}
+      @store.params
     end
 
     def action
