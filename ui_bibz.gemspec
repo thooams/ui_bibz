@@ -21,7 +21,7 @@ Gem::Specification.new do |s|
 
   # rails
   s.add_dependency 'rails', '>= 4.2.0'
-  s.add_dependency 'will_paginate', '~> 3.0.7'
+  s.add_dependency 'will_paginate', '~> 3.1.0'
   s.add_dependency 'will_paginate-bootstrap'
   s.add_dependency 'will-paginate-i18n'
   s.add_dependency 'haml'
