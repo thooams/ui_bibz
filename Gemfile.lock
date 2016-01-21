@@ -51,7 +51,7 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     arel (6.0.3)
-    autoprefixer-rails (6.2.3)
+    autoprefixer-rails (6.3.1)
       execjs
       json
     awesome_print (1.6.1)
@@ -96,7 +96,7 @@ GEM
     mime-types (2.99)
     mini_portile2 (2.0.0)
     minitest (5.8.3)
-    nokogiri (1.6.7.1)
+    nokogiri (1.6.7.2)
       mini_portile2 (~> 2.0.0.rc2)
     rack (1.6.4)
     rack-test (0.6.3)
