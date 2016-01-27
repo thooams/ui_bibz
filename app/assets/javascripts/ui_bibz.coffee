@@ -5,6 +5,9 @@
 #= require bootstrap-datepicker.min
 #= require bootstrap-select.min
 #= require bootstrap-switch.min
+#= require jquery.quicksearch
+#= require jquery.multi-select
+#= require multi_select
 
 # For turbolink
 $(document).on 'ready page:load', ->
@@ -37,4 +40,3 @@ $(document).on 'ready page:load', ->
   $('.nav-tabs a').click (e) ->
     e.preventDefault()
     $(this).tab('show')
-

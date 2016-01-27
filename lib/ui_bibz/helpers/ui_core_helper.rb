@@ -50,6 +50,10 @@ module UiBibz::Helpers::UiCoreHelper
     UiBibz::Ui::Core::SurroundField.new(content, options, html_options, &block).render
   end
 
+  def multi_select_field content = nil, options = nil, html_options = nil, &block
+    UiBibz::Ui::Core::MultiSelectField.new(content, options, html_options, &block).render
+  end
+
   def navbar content = nil, options = nil, html_options = nil, &block
     UiBibz::Ui::Core::Navbar.new(content, options, html_options).tap(&block).render
   end
@@ -57,7 +61,6 @@ module UiBibz::Helpers::UiCoreHelper
   def list_group content = nil, options = nil, html_options = nil, &block
     UiBibz::Ui::Core::ListGroup.new(content, options, html_options).tap(&block).render
   end
-
 
   # Button section begin ----------------------------------------------------
   def button_link content = nil, options = nil, html_options = nil, &block

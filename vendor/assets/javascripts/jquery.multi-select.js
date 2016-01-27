@@ -1,5 +1,5 @@
 /*
-* MultiSelect v0.9.12
+* MultiSelect v0.9.11
 * Copyright (c) 2012 Louis Cuny
 *
 * This program is free software. It comes without any warranty, to
@@ -174,12 +174,9 @@
     'addOption' : function(options){
       var that = this;
 
-      if (options.value !== undefined && options.value !== null){
-        options = [options];
-      } 
+      if (options.value) options = [options];
       $.each(options, function(index, option){
-        if (option.value !== undefined && option.value !== null &&
-            that.$element.find("option[value='"+option.value+"']").length === 0){
+        if (option.value && that.$element.find("option[value='"+option.value+"']").length === 0){
           var $option = $('<option value="'+option.value+'">'+option.text+'</option>'),
               index = parseInt((typeof option.index === 'undefined' ? that.$element.children().length : option.index)),
               $container = option.nested == undefined ? that.$element : $("optgroup[label='"+option.nested+"']")
@@ -323,13 +320,13 @@
     'activeMouse' : function($list){
       var that = this;
 
-      this.$container.on('mouseenter', that.elemsSelector, function(){
+      $('body').on('mouseenter', that.elemsSelector, function(){
         $(this).parents('.ms-container').find(that.elemsSelector).removeClass('ms-hover');
         $(this).addClass('ms-hover');
       });
 
-      this.$container.on('mouseleave', that.elemsSelector, function () {
-        $(this).parents('.ms-container').find(that.elemsSelector).removeClass('ms-hover');;
+      $('body').on('mouseleave', that.elemsSelector, function () {
+          $(this).parents('.ms-container').find(that.elemsSelector).removeClass('ms-hover');;
       });
     },
 
