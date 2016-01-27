@@ -101,22 +101,22 @@ class UiHelperTest < ActionView::TestCase
     assert_equal expected, actual
   end
 
-  test 'textfield without prepend and append' do
-    actual = textfield 'test'
+  test 'surround_field without prepend and append' do
+    actual = surround_field 'test'
     expected = "<input type=\"text\" name=\"test\" id=\"test\" class=\"form-control\" />"
 
     assert_equal expected, actual
   end
 
-  test 'textfield with prepend and append' do
-    actual = textfield 'test', append: '1', prepend: '2'
+  test 'surround_field with prepend and append' do
+    actual = surround_field 'test', append: '1', prepend: '2'
     expected = "<div class=\"input-group\"><span class=\"input-group-addon\">1</span><input type=\"text\" name=\"test\" id=\"test\" class=\"form-control\" /><span class=\"input-group-addon\">2</span></div>"
 
     assert_equal expected, actual
   end
 
-  test 'textfield size' do
-    actual = textfield 'test', size: :xs, append: '1', prepend: '2'
+  test 'surround_field size' do
+    actual = surround_field 'test', size: :xs, append: '1', prepend: '2'
     expected = "<div class=\"input-group input-group-xs\"><span class=\"input-group-addon\">1</span><input type=\"text\" name=\"test\" id=\"test\" class=\"form-control\" /><span class=\"input-group-addon\">2</span></div>"
 
     assert_equal expected, actual
