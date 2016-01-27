@@ -19,25 +19,25 @@ module UiBibz::Ui::Core
   #
   # ==== Signatures
   #
-  #   UiBibz::Ui::Core::Textfield.new(content, options = {}, html_options = {}).render
+  #   UiBibz::Ui::Core::MultiSelectField.new(content, options = {}, html_options = {}).render
   #
-  #   UiBibz::Ui::Core::Textfield.new(options = {}, html_options = {}) do
+  #   UiBibz::Ui::Core::MultiSelectField.new(options = {}, html_options = {}) do
   #     content
   #   end.render
   #
   # ==== Examples
   #
-  #   UiBibz::Ui::Core::Textfield.new({num: 2, offset: 1, size: 3}, class: 'test') do
+  #   UiBibz::Ui::Core::MultiSelectField.new({num: 2, offset: 1, size: 3}, class: 'test') do
   #     #content
   #   end
   #
-  #   UiBibz::Ui::Core::Textfield.new([{num: 2, offset: 1, size: 3}, { num: 3}], class: 'test') do
+  #   UiBibz::Ui::Core::MultiSelectField.new([{num: 2, offset: 1, size: 3}, { num: 3}], class: 'test') do
   #     #content
   #   end
   #
   # ==== Helper
   #
-  #   textfield(options = {}, html_options = {}) do
+  #   multi_select_field(options = {}, html_options = {}) do
   #    # content
   #   end
   #
@@ -46,21 +46,23 @@ module UiBibz::Ui::Core
     # See UiBibz::Ui::Core::Component.initialize
     def initialize content = nil, options = nil, html_options = nil, &block
       super
+      searchable
+      selectable_opt_group
     end
 
     # Render html tag
     def render
-      select_tag @content, @options[:option_tags], @html_options.merge({ multiple: true })
+      select_tag @content, @options[:option_tags], class_and_html_options('multi-select').merge({ multiple: true })
     end
 
     private
 
     def searchable
-      @html_options.merge({ "data-searchable" => true }) if @options[:searchable]
+      @html_options = @html_options.merge({ "data-searchable" => true }) if @options[:searchable]
     end
 
     def selectable_opt_group
-      @html_options.merge({ "data-selectable-opt-group" => true }) if @options[:selectable_opt_group]
+      @html_options = @html_options.merge!({ "data-selectable-opt-group" => true }) if @options[:selectable_opt_group]
     end
 
   end
