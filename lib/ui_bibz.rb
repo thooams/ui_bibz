@@ -33,13 +33,14 @@ module UiBibz
       autoload :Label,                   "ui_bibz/ui/core/label"
       autoload :ListGroup,               "ui_bibz/ui/core/list/list_group"
       autoload :Modal,                   "ui_bibz/ui/core/modal/modal"
+      autoload :MultiSelectField,        "ui_bibz/ui/core/input/multi_select_field"
       autoload :Nav,                     "ui_bibz/ui/core/nav/nav"
       autoload :Navbar,                  "ui_bibz/ui/core/nav/navbar"
       autoload :Progress,                "ui_bibz/ui/core/progress"
       autoload :Row,                     "ui_bibz/ui/core/row"
       autoload :Stars,                   "ui_bibz/ui/core/stars"
+      autoload :SurroundField,           "ui_bibz/ui/core/input/surround_field"
       autoload :Tab,                     "ui_bibz/ui/core/nav/tab"
-      autoload :Textfield,               "ui_bibz/ui/core/input/textfield"
     end
 
     # Ux

@@ -46,8 +46,8 @@ module UiBibz::Helpers::UiCoreHelper
     UiBibz::Ui::Core::Nav.new(content, options, html_options).tap(&block).render
   end
 
-  def textfield content = nil, options = nil, html_options = nil, &block
-    UiBibz::Ui::Core::Textfield.new(content, options, html_options, &block).render
+  def surround_field content = nil, options = nil, html_options = nil, &block
+    UiBibz::Ui::Core::SurroundField.new(content, options, html_options, &block).render
   end
 
   def navbar content = nil, options = nil, html_options = nil, &block

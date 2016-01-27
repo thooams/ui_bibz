@@ -1,6 +1,6 @@
 module UiBibz::Ui::Core
 
-  # Create a textfield
+  # Create a multiSelect
   #
   # This element is an extend of UiBibz::Ui::Core::Component.
   #
@@ -14,9 +14,8 @@ module UiBibz::Ui::Core
   #
   # You can add HTML attributes using the +html_options+.
   # You can pass arguments in options attribute:
-  # * +num+ - Integer | 0..12
-  # * +offset+ - Integer
-  # * +size+ - Integer
+  # * searchable - Boolean
+  # * selectable_opt_group - Boolean
   #
   # ==== Signatures
   #
@@ -42,7 +41,7 @@ module UiBibz::Ui::Core
   #    # content
   #   end
   #
-  class Textfield < Component
+  class MultiSelectField < Component
 
     # See UiBibz::Ui::Core::Component.initialize
     def initialize content = nil, options = nil, html_options = nil, &block
@@ -51,22 +50,17 @@ module UiBibz::Ui::Core
 
     # Render html tag
     def render
-      if @options[:append].nil? && @options[:prepend].nil?
-        text_field_tag @content, @html_options[:value], class_and_html_options('form-control')
-      else
-        content_tag :div, class: add_classes('input-group', size) do
-          concat content_tag :span, @options[:append], class: 'input-group-addon' unless @options[:append].nil?
-          concat text_field_tag @content, @html_options[:value], class_and_html_options('form-control')
-          concat content_tag :span, @options[:prepend], class: 'input-group-addon' unless @options[:prepend].nil?
-        end
-      end
+      select_tag @content, @options[:option_tags], @html_options.merge({ multiple: true })
     end
 
     private
 
-    # :lg, :sm or :xs
-    def size
-      "input-group-#{ @options[:size] }" if @options[:size]
+    def searchable
+      @html_options.merge({ "data-searchable" => true }) if @options[:searchable]
+    end
+
+    def selectable_opt_group
+      @html_options.merge({ "data-selectable-opt-group" => true }) if @options[:selectable_opt_group]
     end
 
   end
