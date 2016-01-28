@@ -1,20 +1,22 @@
+#= require jquery.quicksearch.min
+#= require jquery.multi-select.min
+
 # For turbolink
 $(document).on 'ready page:load', ->
 
   $('.multi-select').each ->
     data = $(this).data()
     delete data["multiselect"]
-    console.log(data)
     if data["searchable"]
-      console.log('searchable')
       $(this).multiSelect
         selectableOptgroup: if data["selectableOptgroup"] then true else false
-        selectableHeader: "<input type='text' class='search-input form-control' autocomplete='off' placeholder='Search in selectable items'><br/>"
-        selectionHeader: "<input type='text' class='search-input form-control' autocomplete='off' placeholder='Search in selected items'><br/>"
+        selectableHeader:  "<input type='text' class='search-input form-control' autocomplete='off' placeholder='Search in selectable items'><br/>"
+        selectionHeader:   "<input type='text' class='search-input form-control' autocomplete='off' placeholder='Search in selected items'><br/>"
         afterInit: (ms) ->
           that                   = this
-          $selectableSearch      = that.$selectableUl.prev()
-          $selectionSearch       = that.$selectionUl.prev()
+          $selectableSearch      = that.$selectableUl.siblings('input')
+          $selectionSearch       = that.$selectionUl.siblings('input')
+          $selectionSearch       = that.$selectionUl.siblings('input')
           selectableSearchString = "#" + that.$container.attr("id") + " .ms-elem-selectable:not(.ms-selected)"
           selectionSearchString  = "#" + that.$container.attr("id") + " .ms-elem-selection.ms-selected"
 
