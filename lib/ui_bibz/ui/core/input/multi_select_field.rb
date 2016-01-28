@@ -62,7 +62,7 @@ module UiBibz::Ui::Core
     end
 
     def selectable_opt_group
-      @html_options = @html_options.merge!({ "data-selectable-opt-group" => true }) if @options[:selectable_opt_group]
+      @html_options = @html_options.merge!({ "data-selectable-optgroup" => true }) if @options[:selectable_optgroup]
     end
 
   end

@@ -5,8 +5,6 @@
 #= require bootstrap-datepicker.min
 #= require bootstrap-select.min
 #= require bootstrap-switch.min
-#= require jquery.quicksearch
-#= require jquery.multi-select
 #= require multi_select
 
 # For turbolink
