@@ -5,8 +5,8 @@
 #= require bootstrap-datepicker.min
 #= require bootstrap-select.min
 #= require bootstrap-switch.min
-#= require bootstrap-multiselect
-#= require multi_select
+#= require bootstrap-multiselect.min
+#= require multi_column
 
 # For turbolink
 $(document).on 'ready page:load', ->
@@ -39,3 +39,7 @@ $(document).on 'ready page:load', ->
   $('.nav-tabs a').click (e) ->
     e.preventDefault()
     $(this).tab('show')
+
+  $('.multi-select').each ->
+    console.log($(this).data())
+    $(this).multiselect($(this).data())

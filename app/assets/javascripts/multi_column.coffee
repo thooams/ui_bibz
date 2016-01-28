@@ -4,7 +4,7 @@
 # For turbolink
 $(document).on 'ready page:load', ->
 
-  $('.multi-select').each ->
+  $('.multi-column').each ->
     data = $(this).data()
     delete data["multiselect"]
     if data["searchable"]
