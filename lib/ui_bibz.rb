@@ -34,6 +34,7 @@ module UiBibz
       autoload :ListGroup,               "ui_bibz/ui/core/list/list_group"
       autoload :Modal,                   "ui_bibz/ui/core/modal/modal"
       autoload :MultiSelectField,        "ui_bibz/ui/core/input/multi_select_field"
+      autoload :MultiColumnField,        "ui_bibz/ui/core/input/multi_column_field"
       autoload :Nav,                     "ui_bibz/ui/core/nav/nav"
       autoload :Navbar,                  "ui_bibz/ui/core/nav/navbar"
       autoload :Progress,                "ui_bibz/ui/core/progress"

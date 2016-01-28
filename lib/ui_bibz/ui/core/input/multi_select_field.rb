@@ -46,8 +46,10 @@ module UiBibz::Ui::Core
     # See UiBibz::Ui::Core::Component.initialize
     def initialize content = nil, options = nil, html_options = nil, &block
       super
-      searchable
-      selectable_opt_group
+      clickable_opt_group
+      collapsible_opt_group
+      filter
+      select_all_option
     end
 
     # Render html tag
@@ -57,12 +59,20 @@ module UiBibz::Ui::Core
 
     private
 
-    def searchable
-      @html_options = @html_options.merge({ "data-searchable" => true }) if @options[:searchable]
+    def clickable_opt_group
+      @html_options = @html_options.merge({ "data-enable-clickable-opt-groups" => true }) if @options[:clickable_opt_group]
     end
 
-    def selectable_opt_group
-      @html_options = @html_options.merge!({ "data-selectable-optgroup" => true }) if @options[:selectable_optgroup]
+    def collapsible_opt_group
+      @html_options = @html_options.merge!({ "data-enable-collapsible-opt-groups" => true }) if @options[:collapsible_opt_group]
+    end
+
+    def filter
+      @html_options = @html_options.merge!({ "data-enable-filtering" => true }) if @options[:filter]
+    end
+
+    def select_all_option
+      @html_options = @html_options.merge!({ "data-include-select-all-option" => true }) if @options[:select_all_option]
     end
 
   end

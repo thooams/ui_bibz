@@ -50,6 +50,10 @@ module UiBibz::Helpers::UiCoreHelper
     UiBibz::Ui::Core::SurroundField.new(content, options, html_options, &block).render
   end
 
+  def multi_column_field content = nil, options = nil, html_options = nil, &block
+    UiBibz::Ui::Core::MultiColumnField.new(content, options, html_options, &block).render
+  end
+
   def multi_select_field content = nil, options = nil, html_options = nil, &block
     UiBibz::Ui::Core::MultiSelectField.new(content, options, html_options, &block).render
   end
