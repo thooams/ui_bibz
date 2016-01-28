@@ -2,6 +2,7 @@ PATH
   remote: .
   specs:
     ui_bibz (2.0.0)
+      bootstrap-multiselect-rails
       bootstrap-sass (~> 3.3.5)
       font-awesome-sass
       haml
@@ -55,6 +56,8 @@ GEM
       execjs
       json
     awesome_print (1.6.1)
+    bootstrap-multiselect-rails (0.9.9)
+      rails (>= 4.0.0)
     bootstrap-sass (3.3.6)
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)

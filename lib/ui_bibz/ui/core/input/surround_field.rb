@@ -28,11 +28,9 @@ module UiBibz::Ui::Core
   #
   # ==== Examples
   #
-  #   UiBibz::Ui::Core::SurroundField.new({num: 2, offset: 1, size: 3}, class: 'test') do
-  #     #content
-  #   end
+  #   UiBibz::Ui::Core::SurroundField.new('search', prepend: 'Prepend content', append: 'Append content', class: 'test')
   #
-  #   UiBibz::Ui::Core::SurroundField.new([{num: 2, offset: 1, size: 3}, { num: 3}], class: 'test') do
+  #   UiBibz::Ui::Core::SurroundField.new(prepend: glyph('pencil'), append: glyph('camera-retro')) do
   #     #content
   #   end
   #
