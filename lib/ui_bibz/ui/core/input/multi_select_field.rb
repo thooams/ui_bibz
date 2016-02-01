@@ -50,11 +50,12 @@ module UiBibz::Ui::Core
       collapsible_opt_group
       filter
       select_all_option
+      @html_options = class_and_html_options(['btn', size, type, 'multi-select']).merge({ multiple: true })
     end
 
     # Render html tag
     def render
-      select_tag @content, @options[:option_tags], class_and_html_options(['btn', size, type, 'multi-select']).merge({ multiple: true })
+      select_tag @content, @options[:option_tags], @html_options
     end
 
     private

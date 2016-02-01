@@ -48,11 +48,12 @@ module UiBibz::Ui::Core
       super
       searchable
       selectable_opt_group
+      @html_options = class_and_html_options('multi-column').merge({ multiple: true })
     end
 
     # Render html tag
     def render
-      select_tag @content, @options[:option_tags], class_and_html_options('multi-column').merge({ multiple: true })
+      select_tag @content, @options[:option_tags], @html_options
     end
 
     private
