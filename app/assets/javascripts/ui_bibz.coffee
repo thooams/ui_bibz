@@ -41,5 +41,8 @@ $(document).on 'ready page:load', ->
     $(this).tab('show')
 
   $('.multi-select').each ->
-    console.log($(this).data())
-    $(this).multiselect($(this).data())
+    data = $(this).data()
+    delete data["multiselect"]
+    data = Object.assign({ inheritClass: true }, data)
+    console.log(data)
+    $(this).multiselect(data)
