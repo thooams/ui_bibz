@@ -61,7 +61,7 @@ module UiBibz::Ui::Core
       content_tag :button, glyph_and_content_html, class_and_html_options(['btn', size, type]).merge(toggle)
     end
 
-  private
+  protected
 
     def state
       sym = @options[:state] || :primary

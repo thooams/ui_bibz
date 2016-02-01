@@ -41,7 +41,7 @@ module UiBibz::Ui::Core
   #    # content
   #   end
   #
-  class MultiSelectField < Component
+  class MultiSelectField < UiBibz::Ui::Core::Button
 
     # See UiBibz::Ui::Core::Component.initialize
     def initialize content = nil, options = nil, html_options = nil, &block
@@ -54,7 +54,7 @@ module UiBibz::Ui::Core
 
     # Render html tag
     def render
-      select_tag @content, @options[:option_tags], class_and_html_options('multi-select').merge({ multiple: true })
+      select_tag @content, @options[:option_tags], class_and_html_options(['btn', size, type, 'multi-select']).merge({ multiple: true })
     end
 
     private
