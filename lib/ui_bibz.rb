@@ -27,6 +27,7 @@ module UiBibz
       autoload :Col,                     "ui_bibz/ui/core/col"
       autoload :Component,               "ui_bibz/ui/core/component"
       autoload :Container,               "ui_bibz/ui/core/container"
+      autoload :DatePickerField,         "ui_bibz/ui/core/input/date_picker_field"
       autoload :Dropdown,                "ui_bibz/ui/core/dropdown/dropdown"
       autoload :Glyph,                   "ui_bibz/ui/core/glyph"
       autoload :Jumbotron,               "ui_bibz/ui/core/jumbotron"
