@@ -44,5 +44,4 @@ $(document).on 'ready page:load', ->
     data = $(this).data()
     delete data["multiselect"]
     data = Object.assign({ inheritClass: true }, data)
-    console.log(data)
     $(this).multiselect(data)

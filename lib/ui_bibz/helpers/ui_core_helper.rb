@@ -20,6 +20,10 @@ module UiBibz::Helpers::UiCoreHelper
     UiBibz::Ui::Core::CardColumn.new(content, options, html_options).tap(&block).render
   end
 
+  def date_picker_field content = nil, options = nil, html_options = nil, &block
+    UiBibz::Ui::Core::DatePickerField.new(content, options, html_options, &block).render
+  end
+
   def modal content = nil, options = nil, html_options = nil, &block
     UiBibz::Ui::Core::Modal.new(content, options, html_options).tap(&block).render
   end
