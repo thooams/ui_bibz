@@ -45,11 +45,6 @@ module UiBibz::Ui::Core
     # See UiBibz::Ui::Core::Component.initialize
     def initialize content = nil, options = nil, html_options = nil, &block
       super
-      date_locale
-      provide
-      date_format
-      date_today_btn
-      date_today_highlight
       @html_options = class_and_html_options('date_picker')
     end
 
@@ -69,6 +64,17 @@ module UiBibz::Ui::Core
     end
 
   private
+
+    def add_data_html_options
+      date_locale
+      provide
+      date_format
+      date_today_btn
+      date_today_highlight
+      calendar_weeks
+      autoclose
+      dates_disabled
+    end
 
     def date_locale
       add_html_data "date_locale", I18n.locale.to_s
@@ -91,11 +97,19 @@ module UiBibz::Ui::Core
     end
 
     def date_today_highlight
-      add_html_data 'date_today_highlight'
+      add_html_data('date_today_highlight') if @options[:date_today_highlight]
     end
 
     def calendar_weeks
-      add_html_data "calendar_weeks"
+      add_html_data("calendar_weeks") if @options[:calendar_weeks]
+    end
+
+    def autoclose
+      add_html_data("autoclose") if @options[:autoclose]
+    end
+
+    def dates_disabled
+      add_html_data("dates_disabled", [@options[:dates_disabled]].flatten) if @options[:dates_disabled]
     end
 
     # :lg, :sm or :xs
