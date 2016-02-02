@@ -59,6 +59,7 @@ module UiBibz::Ui::Core
       end
       @html_options = @html_options || {}
       @options      = @options || {}
+      add_data_html_options
     end
 
     # Render html tag
@@ -123,7 +124,15 @@ module UiBibz::Ui::Core
       (content[:tap] if content.kind_of?(Hash)) || (options[:tap] unless options.nil?)
     end
 
+    def add_html_data name, value = true
+      @html_options = @html_options.merge(Hash["data-#{ name.dasherize }", value])
+    end
+
   protected
+
+    # Add your data html options
+    def add_data_html_options
+    end
 
     def status
       options[:status] unless options[:status].nil?

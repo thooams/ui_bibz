@@ -46,8 +46,6 @@ module UiBibz::Ui::Core
     # See UiBibz::Ui::Core::Component.initialize
     def initialize content = nil, options = nil, html_options = nil, &block
       super
-      searchable
-      selectable_opt_group
       @html_options = class_and_html_options('multi-column').merge({ multiple: true })
     end
 
@@ -58,12 +56,17 @@ module UiBibz::Ui::Core
 
     private
 
+    def add_data_html_options
+      searchable
+      selectable_opt_group
+    end
+
     def searchable
-      @html_options = @html_options.merge({ "data-searchable" => true }) if @options[:searchable]
+      add_html_data('searchable') if @options[:searchable]
     end
 
     def selectable_opt_group
-      @html_options = @html_options.merge!({ "data-selectable-optgroup" => true }) if @options[:selectable_optgroup]
+      add_html_data('selectable_optgroup') if @options[:selectable_opt_group]
     end
 
   end
