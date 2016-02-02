@@ -50,27 +50,36 @@ module UiBibz::Ui::Core
       date_format
       date_today_btn
       date_today_highlight
-      @options[prepend_or_append] = UiBibz::Ui::Core::Glyph.new('calendar').render
       @html_options = class_and_html_options('date_picker')
     end
 
     # Render html tag
     def render
-      UiBibz::Ui::Core::SurroundField.new(@content, @options, @html_options).render
+      if @options[:range]
+        content_tag :div, class: add_classes('input-group', 'input-daterange', size) do
+          concat content_tag :span, @options[:append], class: 'input-group-addon' unless @options[:append].nil?
+          concat text_field_tag @content, @html_options[:value], class_and_html_options('form-control')
+          concat content_tag :span, @options[:range], class: 'input-group-addon input-group-range'
+          concat text_field_tag @content, @html_options[:value], class_and_html_options('form-control')
+          concat content_tag :span, @options[:prepend], class: 'input-group-addon' unless @options[:prepend].nil?
+        end
+      else
+        UiBibz::Ui::Core::SurroundField.new(@content, @options, @html_options).render
+      end
     end
 
   private
 
     def date_locale
-      @html_options = @html_options.merge({ "data-date-locale" => I18n.locale.to_s })
+      add_html_data "date_locale", I18n.locale.to_s
     end
 
     def provide
-      @html_options = @html_options.merge({ "data-provide" => "datepicker"})
+      add_html_data "provide", 'datepicker'
     end
 
     def date_format
-      @html_options = @html_options.merge({ "data-date-format" => picker_pattern })
+      add_html_data "date_format", picker_pattern
     end
 
     def picker_pattern
@@ -78,15 +87,15 @@ module UiBibz::Ui::Core
     end
 
     def date_today_btn
-      @html_options = @html_options.merge({ "data-date-today-btn" => 'linked' })
+      add_html_data 'date_today_btn', 'linked'
     end
 
     def date_today_highlight
-      @html_options = @html_options.merge({ "data-date-today-highlight" => true })
+      add_html_data 'date_today_highlight'
     end
 
-    def prepend_or_append
-      @options[:position] == :left ? :append : :prepend
+    def calendar_weeks
+      add_html_data "calendar_weeks"
     end
 
     # :lg, :sm or :xs

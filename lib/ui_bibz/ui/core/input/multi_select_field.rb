@@ -46,10 +46,6 @@ module UiBibz::Ui::Core
     # See UiBibz::Ui::Core::Component.initialize
     def initialize content = nil, options = nil, html_options = nil, &block
       super
-      clickable_opt_group
-      collapsible_opt_group
-      filter
-      select_all_option
       @html_options = class_and_html_options(['btn', size, type, 'multi-select']).merge({ multiple: true })
     end
 
@@ -60,20 +56,27 @@ module UiBibz::Ui::Core
 
     private
 
+    def add_data_html_options
+      clickable_opt_group
+      collapsible_opt_group
+      filter
+      select_all_option
+    end
+
     def clickable_opt_group
-      @html_options = @html_options.merge({ "data-enable-clickable-opt-groups" => true }) if @options[:clickable_opt_group]
+      add_html_data('enable_clickable_opt_groups') if @options[:clickable_opt_group]
     end
 
     def collapsible_opt_group
-      @html_options = @html_options.merge!({ "data-enable-collapsible-opt-groups" => true }) if @options[:collapsible_opt_group]
+      add_html_data('enable_collapsible_opt_groups') if @options[:collapsible_opt_group]
     end
 
     def filter
-      @html_options = @html_options.merge!({ "data-enable-filtering" => true }) if @options[:filter]
+      add_html_data('enable_filtering') if @options[:filter]
     end
 
     def select_all_option
-      @html_options = @html_options.merge!({ "data-include-select-all-option" => true }) if @options[:select_all_option]
+      add_html_data('include_select_all_option') if @options[:select_all_option]
     end
 
   end
