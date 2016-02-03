@@ -1,6 +1,6 @@
 module UiBibz::Ui::Core
 
-  # Create a multiSelect
+  # Create a MultiColumnField
   #
   # This element is an extend of UiBibz::Ui::Core::Component.
   #
@@ -14,8 +14,9 @@ module UiBibz::Ui::Core
   #
   # You can add HTML attributes using the +html_options+.
   # You can pass arguments in options attribute:
-  # * searchable - Boolean
+  # * option_tags - Array, Object [required]
   # * selectable_opt_group - Boolean
+  # * searchable - Boolean
   #
   # ==== Signatures
   #
@@ -27,19 +28,15 @@ module UiBibz::Ui::Core
   #
   # ==== Examples
   #
-  #   UiBibz::Ui::Core::MultiColumnField.new({num: 2, offset: 1, size: 3}, class: 'test') do
-  #     #content
-  #   end
+  #   UiBibz::Ui::Core::MultiColumnField.new('fruits', { option_tags: list_of_fruits, searchable: true }, { class: 'test' })
   #
-  #   UiBibz::Ui::Core::MultiColumnField.new([{num: 2, offset: 1, size: 3}, { num: 3}], class: 'test') do
-  #     #content
+  #   UiBibz::Ui::Core::MultiColumnField.new({ option_tags: list_of_fruits, selectable_opt_group: true }, { class: 'test' }) do
+  #     'fruits'
   #   end
   #
   # ==== Helper
   #
-  #   multi_column_field(options = {}, html_options = {}) do
-  #    # content
-  #   end
+  #   multi_column_field(content, options = {}, html_options = {})
   #
   class MultiColumnField < Component
 

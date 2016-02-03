@@ -1,6 +1,6 @@
 module UiBibz::Ui::Core
 
-  # Create a surround_field
+  # Create a DatePickerField
   #
   # This element is an extend of UiBibz::Ui::Core::Component.
   #
@@ -14,31 +14,32 @@ module UiBibz::Ui::Core
   #
   # You can add HTML attributes using the +html_options+.
   # You can pass arguments in options attribute:
-  # * +num+ - Integer | 0..12
-  # * +offset+ - Integer
-  # * +size+ - Integer
+  # * +prepend+ - String
+  # * +append+ - String
+  # * +range+ - String
+  # * +date_today_highlight+ - Boolean
+  # * +calendar_weeks+ - Boolean
+  # * +date_disabled+ - Array, String
   #
   # ==== Signatures
   #
-  #   UiBibz::Ui::Core::SurroundField.new(content, options = {}, html_options = {}).render
+  #   UiBibz::Ui::Core::DatePickerField.new(content, options = {}, html_options = {}).render
   #
-  #   UiBibz::Ui::Core::SurroundField.new(options = {}, html_options = {}) do
+  #   UiBibz::Ui::Core::DatePickerField.new(options = {}, html_options = {}) do
   #     content
   #   end.render
   #
   # ==== Examples
   #
-  #   UiBibz::Ui::Core::SurroundField.new('search', prepend: 'Prepend content', append: 'Append content', class: 'test')
+  #   UiBibz::Ui::Core::DatePickerField.new('date', { prepend: 'Prepend content', append: 'Append content' }, { class: 'test' })
   #
-  #   UiBibz::Ui::Core::SurroundField.new(prepend: glyph('pencil'), append: glyph('camera-retro')) do
-  #     #content
+  #   UiBibz::Ui::Core::DatePickerField.new({ date_today_highlight: true, calendar_weeks: true, range: 'to' }, { class: 'test' }) do
+  #     'date'
   #   end
   #
   # ==== Helper
   #
-  #   surround_field(options = {}, html_options = {}) do
-  #    # content
-  #   end
+  #   date_picker_field(content, options = {}, html_options = {})
   #
   class DatePickerField < Component
 
