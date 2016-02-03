@@ -1,6 +1,6 @@
 module UiBibz::Ui::Core
 
-  # Create a surround_field
+  # Create a SurroundField
   #
   # This element is an extend of UiBibz::Ui::Core::Component.
   #

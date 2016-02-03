@@ -1,6 +1,6 @@
 module UiBibz::Ui::Core
 
-  # Create a multiSelect
+  # Create a MultiSelectField
   #
   # This element is an extend of UiBibz::Ui::Core::Component.
   #
@@ -14,8 +14,11 @@ module UiBibz::Ui::Core
   #
   # You can add HTML attributes using the +html_options+.
   # You can pass arguments in options attribute:
+  # * option_tags - Array, Object [required]
+  # * clickable_opt_group - Boolean
+  # * collapsible_opt_group - Boolean
   # * searchable - Boolean
-  # * selectable_opt_group - Boolean
+  # * select_all_option - Boolean
   #
   # ==== Signatures
   #
@@ -27,19 +30,15 @@ module UiBibz::Ui::Core
   #
   # ==== Examples
   #
-  #   UiBibz::Ui::Core::MultiSelectField.new({num: 2, offset: 1, size: 3}, class: 'test') do
-  #     #content
-  #   end
+  #   UiBibz::Ui::Core::MultiSelectField.new('fruits', { option_tags: list_of_fruits, searchable: true }, { class: 'test' })
   #
-  #   UiBibz::Ui::Core::MultiSelectField.new([{num: 2, offset: 1, size: 3}, { num: 3}], class: 'test') do
-  #     #content
+  #   UiBibz::Ui::Core::MultiSelectField.new({ option_tags: list_of_fruits, select_all_option: true }, { class: 'test' }) do
+  #     'fruits'
   #   end
   #
   # ==== Helper
   #
-  #   multi_select_field(options = {}, html_options = {}) do
-  #    # content
-  #   end
+  #   multi_select_field(content, options = {}, html_options = {})
   #
   class MultiSelectField < UiBibz::Ui::Core::Button
 
