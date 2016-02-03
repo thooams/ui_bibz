@@ -72,7 +72,7 @@ module UiBibz::Ui::Core
     end
 
     def searchable
-      add_html_data('enable_filtering') if @options[:filter]
+      add_html_data('enable_filtering') if @options[:searchable]
     end
 
     def select_all_option
