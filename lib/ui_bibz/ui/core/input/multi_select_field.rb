@@ -59,7 +59,7 @@ module UiBibz::Ui::Core
     def add_data_html_options
       clickable_opt_group
       collapsible_opt_group
-      filter
+      searchable
       select_all_option
     end
 
@@ -71,7 +71,7 @@ module UiBibz::Ui::Core
       add_html_data('enable_collapsible_opt_groups') if @options[:collapsible_opt_group]
     end
 
-    def filter
+    def searchable
       add_html_data('enable_filtering') if @options[:filter]
     end
 
