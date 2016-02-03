@@ -46,6 +46,7 @@ module UiBibz::Ui::Core
     def initialize content = nil, options = nil, html_options = nil, &block
       super
       @html_options = class_and_html_options('date_picker')
+      ap @html_options
     end
 
     # Render html tag
