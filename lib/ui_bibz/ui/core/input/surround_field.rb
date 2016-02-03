@@ -14,9 +14,8 @@ module UiBibz::Ui::Core
   #
   # You can add HTML attributes using the +html_options+.
   # You can pass arguments in options attribute:
-  # * +num+ - Integer | 0..12
-  # * +offset+ - Integer
-  # * +size+ - Integer
+  # * +prepend+ - String
+  # * +append+ - String
   #
   # ==== Signatures
   #
