@@ -125,7 +125,8 @@ module UiBibz::Ui::Core
     end
 
     def add_html_data name, value = true
-      @html_options = @html_options.merge(Hash["data-#{ name.dasherize }", value])
+      @html_options[:data] = {} if @html_options[:data].nil?
+      @html_options[:data].update(Hash[name, value])
     end
 
   protected

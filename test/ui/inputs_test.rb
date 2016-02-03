@@ -1,0 +1,17 @@
+require 'test_helper'
+
+include UiBibz::Helpers
+class InputsTest < ActionView::TestCase
+
+    test "Date Picker Field" do
+      actual   = UiBibz::Ui::Core::DatePickerField.new('date', { append: 'a', prepend: 'b', range: 'u' }, { class: 'datepicker-test' }).render
+      expected = "<div class=\"input-group input-daterange\"><span class=\"input-group-addon\">a</span><input type=\"text\" name=\"date\" id=\"date\" class=\"datepicker-test date_picker form-control\" data-date-locale=\"en\" data-provide=\"datepicker\" data-date-format=\"dd/mm/yyyy\" data-date-today-btn=\"linked\" /><span class=\"input-group-addon input-group-range\">u</span><input type=\"text\" name=\"date\" id=\"date\" class=\"datepicker-test date_picker form-control form-control\" data-date-locale=\"en\" data-provide=\"datepicker\" data-date-format=\"dd/mm/yyyy\" data-date-today-btn=\"linked\" /><span class=\"input-group-addon\">b</span></div>"
+      assert_equal expected, actual
+    end
+
+    test "Date Picker Field data html options" do
+      actual   = UiBibz::Ui::Core::DatePickerField.new('date', { date_today_highlight: true, calendar_weeks: true, autoclose: true, dates_disabled: ["11/01/2016", "12/01/2016"] }, { class: 'datepicker-test' }).render
+      expected = "<input type=\"text\" name=\"date\" id=\"date\" class=\"datepicker-test date_picker form-control\" data-date-locale=\"en\" data-provide=\"datepicker\" data-date-format=\"dd/mm/yyyy\" data-date-today-btn=\"linked\" data-date-today-highlight=\"true\" data-calendar-weeks=\"true\" data-autoclose=\"true\" data-dates-disabled=\"[&quot;11/01/2016&quot;,&quot;12/01/2016&quot;]\" />"
+      assert_equal expected, actual
+    end
+end
