@@ -100,7 +100,7 @@ module UiBibz::Ui::Core
 
     # Add classes in html_options
     def class_and_html_options classes = nil
-      options_class = options[:class] if options.kind_of?(Hash)
+      options_class = @options[:class] if @options.kind_of?(Hash)
       cls = [
         html_options[:class],
         status,
@@ -136,7 +136,7 @@ module UiBibz::Ui::Core
     end
 
     def status
-      options[:status] unless options[:status].nil?
+      @options[:status] unless @options[:status].nil?
     end
 
     def states
