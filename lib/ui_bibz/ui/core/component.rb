@@ -131,6 +131,7 @@ module UiBibz::Ui::Core
 
   protected
 
+
     # Add your data html options
     def add_data_html_options
     end

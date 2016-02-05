@@ -10,5 +10,10 @@ module UiBibz::Ui
     def i18n_set? key
       I18n.t key, :raise => true rescue false
     end
+
+    # Add "id" in url to match with current record
+    def inject_url url, record
+      url.gsub(/(\/id\/?)/, "/#{ record.id }/")
+    end
   end
 end
