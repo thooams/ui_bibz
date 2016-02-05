@@ -93,12 +93,12 @@ module UiBibz::Ui::Core
 
     def generate_links
       @options[:store].each do |item|
-        @links << BreadcrumbLink.new(item.send(link_label), url: inject_url(link_url, item)).render
+        if item == @options[:store].last
+          @links << BreadcrumbLink.new(item.send(link_label), state: :disabled).render
+        else
+          @links << BreadcrumbLink.new(item.send(link_label), url: inject_url(link_url, item)).render
+        end
       end
-    end
-
-    def inject_url url, record
-      url.gsub(/(\/id\/?)/, "/#{ record.id }/")
     end
 
   end

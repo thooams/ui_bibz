@@ -15,9 +15,9 @@ class UiHelperTest < ActionView::TestCase
   end
 
   test 'breadcrumb with store' do
-    users = create_list(:user, 25)
-    actual = breadcrumb store: users, link_label: :name_fr, link_url: user_path(:id)
-    expected = "<ol class=\"breadcrumb\"><li><a href=\"/users/1/\">Name fr</a></li><li><a href=\"/users/2/\">Name fr</a></li><li><a href=\"/users/3/\">Name fr</a></li><li><a href=\"/users/4/\">Name fr</a></li><li><a href=\"/users/5/\">Name fr</a></li><li><a href=\"/users/6/\">Name fr</a></li><li><a href=\"/users/7/\">Name fr</a></li><li><a href=\"/users/8/\">Name fr</a></li><li><a href=\"/users/9/\">Name fr</a></li><li><a href=\"/users/10/\">Name fr</a></li><li><a href=\"/users/11/\">Name fr</a></li><li><a href=\"/users/12/\">Name fr</a></li><li><a href=\"/users/13/\">Name fr</a></li><li><a href=\"/users/14/\">Name fr</a></li><li><a href=\"/users/15/\">Name fr</a></li><li><a href=\"/users/16/\">Name fr</a></li><li><a href=\"/users/17/\">Name fr</a></li><li><a href=\"/users/18/\">Name fr</a></li><li><a href=\"/users/19/\">Name fr</a></li><li><a href=\"/users/20/\">Name fr</a></li><li><a href=\"/users/21/\">Name fr</a></li><li><a href=\"/users/22/\">Name fr</a></li><li><a href=\"/users/23/\">Name fr</a></li><li><a href=\"/users/24/\">Name fr</a></li><li><a href=\"/users/25/\">Name fr</a></li></ol>"
+    users    = create_list(:user, 3)
+    actual   = breadcrumb store: users, link_label: :name_fr, link_url: user_path(:id)
+    expected = "<ol class=\"breadcrumb\"><li><a href=\"/users/1/\">Name fr</a></li><li><a href=\"/users/2/\">Name fr</a></li><li>Name fr</li></ol>"
 
     assert_equal expected, actual
   end
