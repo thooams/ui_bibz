@@ -29,6 +29,7 @@ module UiBibz::Ui::Ux
   # * +actionable+ - Boolean
   # * +sortable+ - Boolean
   # * +searchable+ - Boolean
+  # * +default_actions+ - Boolean
   #
   # ==== Signatures
   #
