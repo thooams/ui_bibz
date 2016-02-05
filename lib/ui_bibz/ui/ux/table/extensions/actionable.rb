@@ -23,17 +23,23 @@ module UiBibz::Ui::Ux
 
   private
 
+    def default_actions?
+      @options[:default_actions].nil? ? true : @options[:default_actions]
+    end
+
     def dropdown_action record
-      UiBibz::Ui::Core::Dropdown.new(dropdown_action_name, { position: :right, size: :sm, glyph: actions_glyph }, { class: 'dropdown-action' }).tap do |d|
-        unless @actions.nil?
-          @actions.format_action.call(record) unless @actions.format_action.nil?
-          actions_links(record).each do |l|
-            d.html l.to_s.html_safe
-          end
-          # Maybe remove this line
-          @actions.reset unless @actions.format_action.nil?
+      unless @actions.nil?
+        @actions.format_action.call(record) unless @actions.format_action.nil?
+        unless (default_actions? != true && @actions.raw_list.empty?)
+          UiBibz::Ui::Core::Dropdown.new(dropdown_action_name, { position: :right, size: :sm, glyph: actions_glyph }, { class: 'dropdown-action' }).tap do |d|
+            actions_links(record).each do |l|
+              d.html l.to_s.html_safe
+            end
+            # Maybe remove this line
+            @actions.reset unless @actions.format_action.nil?
+          end.render
         end
-      end.render
+      end
     end
 
     def actions_glyph

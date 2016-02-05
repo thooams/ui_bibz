@@ -36,6 +36,10 @@ module UiBibz::Ui::Ux
       @actions.empty? ? defaults_actions : @actions
     end
 
+    def raw_list
+      @actions
+    end
+
     def format_action
       @format_action
     end
