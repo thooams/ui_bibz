@@ -21,11 +21,6 @@ module UiBibz::Ui::Ux
       tds
     end
 
-    # Add "id" in url to match with current record
-    def inject_url url, record
-      url.gsub(/(\/id\/?)/, "/#{ record.id }/")
-    end
-
   private
 
     def dropdown_action record
