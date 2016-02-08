@@ -55,7 +55,7 @@ module UiBibz::Ui::Core
 
     private
 
-    def add_data_html_options
+    def component_html_data
       clickable_opt_group
       collapsible_opt_group
       searchable

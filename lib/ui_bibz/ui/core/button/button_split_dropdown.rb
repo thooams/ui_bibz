@@ -72,11 +72,11 @@ module UiBibz::Ui::Core
   private
 
     def button_html
-      content_tag :button, button_content, class: add_classes("btn", button_state, size)
+      content_tag :button, button_content, class: join_classes("btn", button_state, size)
     end
 
     def split_html
-      content_tag :button, split_content, class: add_classes("btn", button_state, size, "dropdown-toggle"), type: 'button', "data-toggle" => 'dropdown', "aria-haspopup" => true, "aria-expanded" => false
+      content_tag :button, split_content, class: join_classes("btn", button_state, size, "dropdown-toggle"), type: 'button', "data-toggle" => 'dropdown', "aria-haspopup" => true, "aria-expanded" => false
     end
 
     def split_content

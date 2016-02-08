@@ -59,7 +59,7 @@ module UiBibz::Ui::Core
       end
       @html_options = @html_options || {}
       @options      = @options || {}
-      add_data_html_options
+      init_component_html_options
     end
 
     # Render html tag
@@ -69,7 +69,7 @@ module UiBibz::Ui::Core
 
     # Render glyph and content html
     def glyph_and_content_html
-      [glyph_with_space, @content].compact.join.html_safe
+      [glyph_with_space, content].compact.join.html_safe
     end
 
     # Render glyph with space html
@@ -84,7 +84,7 @@ module UiBibz::Ui::Core
     end
 
     def label_html
-      UiBibz::Ui::Core::Label.new(@options[:label], class: 'pull-right', type: :pill, state: (@options[:label_state] || :default)).render
+      UiBibz::Ui::Core::Label.new(options[:label], class: 'pull-right', type: :pill, state: (options[:label_state] || :default)).render
     end
 
     # Set :default state symbol
@@ -94,18 +94,12 @@ module UiBibz::Ui::Core
       states[:sym]
     end
 
-    # Set effect class
-    def effect
-      @options[:effect]
-    end
-
     # Add classes in html_options
     def class_and_html_options classes = nil
-      options_class = @options[:class] if @options.kind_of?(Hash)
+      options_class = options[:class] if options.kind_of?(Hash)
       cls = [
         html_options[:class],
         status,
-        other_classes,
         state,
         effect,
         options_class
@@ -116,35 +110,82 @@ module UiBibz::Ui::Core
       html_options
     end
 
-    # Add classes in html_options
-    def add_classes *classes
-      classes.compact.join(' ')
-    end
-
     # Know if component is tapped or not
     def is_tap content, options
       (content[:tap] if content.kind_of?(Hash)) || (options[:tap] unless options.nil?)
     end
 
-    # Add html data argument
-    def add_html_data name, value = true
-      @html_options[:data] = {} if @html_options[:data].nil?
-      @html_options[:data].update(Hash[name, value])
-    end
-
   protected
 
-    # Add "id" in url to match with current record
-    def inject_url url, record
-      url.gsub(/(\/id\/?)/, "/#{ record.id }/")
+    # Override this method to add html classes
+    # Accept Array or String
+    def component_html_classes
     end
 
-    # Add your data html options
-    def add_data_html_options
+    # Override this method to add html data
+    def component_html_data
+    end
+
+    # Override this method to add html Options
+    # Accept Hash
+    def component_html_options
+      {}
+    end
+
+    # Override this method to add a state class
+    def state
+    end
+
+    # Join classes
+    def join_classes *classes
+      [*classes].flatten.compact.reject(&:blank?).join(' ')
+    end
+
+    # Add html data arguments
+    def add_html_data name, value = true
+      html_options[:data] = {} if html_options[:data].nil?
+      html_options[:data].update(Hash[name, value])
+    end
+
+  private
+
+    def initialize_component_html_classes
+      cls = [
+        html_options[:class],
+        status,
+        state,
+        effect,
+        options_classes,
+        component_html_classes
+      ]
+      html_options[:class] = join_classes(cls)
+    end
+
+    # Set effect class
+    def effect
+      options[:effect]
+    end
+
+    def options_classes
+      options[:class] if options.kind_of?(Hash)
+    end
+
+    def initialize_component_html_data
+      component_html_data
+    end
+
+    def initialize_component_html_options
+      html_options.merge!(component_html_options)
+    end
+
+    def init_component_html_options
+      initialize_component_html_data
+      initialize_component_html_classes
+      initialize_component_html_options
     end
 
     def status
-      @options[:status] unless @options[:status].nil?
+      options[:status] unless options[:status].nil?
     end
 
     def states
@@ -156,9 +197,6 @@ module UiBibz::Ui::Core
         @states = states
       end
       @states
-    end
-
-    def other_classes
     end
 
   end
