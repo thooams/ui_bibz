@@ -30,7 +30,7 @@ module UiBibz::Ui::Core
   #
   # ==== Examples
   #
-  #   UiBibz::Ui::Core::Component.new(content, { type: :success, glyph: 'eye' },{ class: 'test' })
+  #   UiBibz::Ui::Core::Component.new(content, { type: :success, glyph: 'eye' }, { class: 'test' })
   #   # or
   #   UiBibz::Ui::Core::Component.new({glyph: { name: 'eye', size: 3}, { class: 'test' }) do
   #     content
@@ -94,6 +94,7 @@ module UiBibz::Ui::Core
       states[:sym]
     end
 
+    # Set effect class
     def effect
       @options[:effect]
     end
@@ -120,10 +121,12 @@ module UiBibz::Ui::Core
       classes.compact.join(' ')
     end
 
+    # Know if component is tapped or not
     def is_tap content, options
       (content[:tap] if content.kind_of?(Hash)) || (options[:tap] unless options.nil?)
     end
 
+    # Add html data argument
     def add_html_data name, value = true
       @html_options[:data] = {} if @html_options[:data].nil?
       @html_options[:data].update(Hash[name, value])
@@ -131,6 +134,10 @@ module UiBibz::Ui::Core
 
   protected
 
+    # Add "id" in url to match with current record
+    def inject_url url, record
+      url.gsub(/(\/id\/?)/, "/#{ record.id }/")
+    end
 
     # Add your data html options
     def add_data_html_options
