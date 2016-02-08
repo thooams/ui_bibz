@@ -46,27 +46,26 @@ module UiBibz::Ui::Core
     # See UiBibz::Ui::Core::Component.initialize
     def initialize content = nil, options = nil, html_options = nil, &block
       super
-      @html_options = class_and_html_options('date_picker')
     end
 
     # Render html tag
     def render
-      if @options[:range]
-        content_tag :div, class: add_classes('input-group', 'input-daterange', size) do
-          concat content_tag :span, @options[:append], class: 'input-group-addon' unless @options[:append].nil?
-          concat text_field_tag @content, @html_options[:value], class_and_html_options('form-control')
-          concat content_tag :span, @options[:range], class: 'input-group-addon input-group-range'
-          concat text_field_tag @content, @html_options[:value], class_and_html_options('form-control')
-          concat content_tag :span, @options[:prepend], class: 'input-group-addon' unless @options[:prepend].nil?
+      if options[:range]
+        content_tag :div, class: join_classes('input-group', 'input-daterange', size) do
+          concat content_tag :span, options[:append], class: 'input-group-addon' unless @options[:append].nil?
+          concat text_field_tag content, html_options[:value], html_options
+          concat content_tag :span, options[:range], class: 'input-group-addon input-group-range'
+          concat text_field_tag content, html_options[:value], html_options
+          concat content_tag :span, options[:prepend], class: 'input-group-addon' unless @options[:prepend].nil?
         end
       else
-        UiBibz::Ui::Core::SurroundField.new(@content, @options, @html_options).render
+        UiBibz::Ui::Core::SurroundField.new(content, options, html_options).render
       end
     end
 
   private
 
-    def add_data_html_options
+    def component_html_data
       date_locale
       provide
       date_format
@@ -75,6 +74,10 @@ module UiBibz::Ui::Core
       calendar_weeks
       autoclose
       dates_disabled
+    end
+
+    def component_html_classes
+      %w(date_picker form-control)
     end
 
     def date_locale

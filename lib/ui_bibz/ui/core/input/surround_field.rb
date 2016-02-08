@@ -48,22 +48,26 @@ module UiBibz::Ui::Core
 
     # Render html tag
     def render
-      if @options[:append].nil? && @options[:prepend].nil?
-        text_field_tag @content, @html_options[:value], class_and_html_options('form-control')
+      if options[:append].nil? && options[:prepend].nil?
+        text_field_tag content, html_options[:value], html_options
       else
-        content_tag :div, class: add_classes('input-group', size) do
-          concat content_tag :span, @options[:append], class: 'input-group-addon' unless @options[:append].nil?
-          concat text_field_tag @content, @html_options[:value], class_and_html_options('form-control')
-          concat content_tag :span, @options[:prepend], class: 'input-group-addon' unless @options[:prepend].nil?
+        content_tag :div, class: join_classes('input-group', size) do
+          concat content_tag :span, options[:append], class: 'input-group-addon' unless options[:append].nil?
+          concat text_field_tag content, html_options[:value], html_options
+          concat content_tag :span, options[:prepend], class: 'input-group-addon' unless options[:prepend].nil?
         end
       end
     end
 
     private
 
+    def component_html_classes
+      'form-control'
+    end
+
     # :lg, :sm or :xs
     def size
-      "input-group-#{ @options[:size] }" if @options[:size]
+      "input-group-#{ options[:size] }" if options[:size]
     end
 
   end
