@@ -114,7 +114,7 @@ class TableTest < ActionView::TestCase
     options  = { actionable: true }
     action   = UiBibz::Ui::Ux::Actionable.new(@store, options)
     actual   = action.body @store.records.first, []
-    expected = ["<td><div class=\"dropdown-action dropdown btn-group\"><button class=\"btn btn-primary btn-sm dropdown-toggle\" type=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\"><i class=\"glyph fa fa-ellipsis-v fa-fw\"></i> Actions <span class=\"caret\"></span></button><div class=\"dropdown-menu dropdown-menu-right\"></div></div></td>"]
+    expected = ["<td></td>"]
 
     assert_equal expected, actual
   end
