@@ -101,24 +101,24 @@ module UiBibz::Ui::Core
     end
 
     def date_today_highlight
-      add_html_data('date_today_highlight') if @options[:date_today_highlight]
+      add_html_data('date_today_highlight') if options[:date_today_highlight]
     end
 
     def calendar_weeks
-      add_html_data("calendar_weeks") if @options[:calendar_weeks]
+      add_html_data("calendar_weeks") if options[:calendar_weeks]
     end
 
     def autoclose
-      add_html_data("autoclose") if @options[:autoclose]
+      add_html_data("autoclose") if options[:autoclose]
     end
 
     def dates_disabled
-      add_html_data("dates_disabled", [@options[:dates_disabled]].flatten) if @options[:dates_disabled]
+      add_html_data("dates_disabled", [options[:dates_disabled]].flatten) if options[:dates_disabled]
     end
 
     # :lg, :sm or :xs
     def size
-      "input-group-#{ @options[:size] }" if @options[:size]
+      "input-group-#{ options[:size] }" if options[:size]
     end
 
   end
