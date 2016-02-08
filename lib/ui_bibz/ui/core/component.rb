@@ -138,7 +138,7 @@ module UiBibz::Ui::Core
 
     # Join classes
     def join_classes *classes
-      [*classes].flatten.compact.reject(&:blank?).join(' ')
+      [*classes].flatten.compact.uniq.reject(&:blank?)
     end
 
     # Add html data arguments
