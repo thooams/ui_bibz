@@ -68,22 +68,11 @@ module UiBibz::Ui::Core
 
     def state
       sym = @options[:state] || :default
-      "label-#{ states[sym] }"
+      "label-#{ sym }"
     end
 
     def type
       "label-pill" if @options[:type] == :pill
-    end
-
-    def states
-      if @states.nil?
-        states = {}
-        %w(success primary default info warning danger).each do |s|
-          states = states.merge(Hash[s.to_sym, s])
-        end
-        @states = states
-      end
-      @states
     end
 
   end

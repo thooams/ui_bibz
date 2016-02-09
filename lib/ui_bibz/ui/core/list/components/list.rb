@@ -117,9 +117,7 @@ module UiBibz::Ui::Core
     end
 
     def state
-      unless @options[:state].nil?
-        "list-group-item-#{ states[@options[:state]] }"
-      end
+      "list-group-item-#{ @options[:state] }" unless @options[:state].nil?
     end
 
   end

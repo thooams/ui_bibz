@@ -79,7 +79,7 @@ module UiBibz::Ui::Core
 
     def state
       sym = options[:state] || :info
-      "alert-#{ states[sym] }"
+      "alert-#{ sym }"
     end
 
   end

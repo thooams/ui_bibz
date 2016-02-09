@@ -87,14 +87,6 @@ module UiBibz::Ui::Core
       UiBibz::Ui::Core::Label.new(options[:label], class: 'pull-right', type: :pill, state: (options[:label_state] || :default)).render
     end
 
-    # TO REMOVE
-    # Set :default state symbol
-    def state
-      sym = options.delete(:state) if options[:state]
-      sym = sym || :primary
-      states[:sym]
-    end
-
     # Know if component is tapped or not
     def is_tap content, options
       (content[:tap] if content.kind_of?(Hash)) || (options[:tap] unless options.nil?)
@@ -172,18 +164,6 @@ module UiBibz::Ui::Core
 
     def status
       options[:status] unless options[:status].nil?
-    end
-
-    # TO REMOVE
-    def states
-      if @states.nil?
-        states = {}
-        %w(success primary secondary info warning danger).each do |s|
-          states = states.merge(Hash[s.to_sym, s])
-        end
-        @states = states
-      end
-      @states
     end
 
   end
