@@ -1,3 +1,5 @@
+require "ui_bibz/ui/core/list/components/list_header"
+require "ui_bibz/ui/core/list/components/list_body"
 module UiBibz::Ui::Core
 
   # Create a list
@@ -73,12 +75,12 @@ module UiBibz::Ui::Core
 
     # Add header which is a component
     def header content = nil, options = nil, html_options = nil, &block
-      @header = Component.new content, options, html_options, &block
+      @header = UiBibz::Ui::Core::ListHeader.new content, options, html_options, &block
     end
 
     # Add body which is a component
     def body content = nil, options = nil, html_options = nil, &block
-      @body = Component.new content, options, html_options, &block
+      @body = UiBibz::Ui::Core::ListBody.new content, options, html_options, &block
     end
 
   private
@@ -88,11 +90,11 @@ module UiBibz::Ui::Core
     end
 
     def header_html
-      content_tag :h4, @header.render, @header.class_and_html_options('list-group-item-heading')
+      @header.render
     end
 
     def body_html
-      content_tag :p, @body.render, @body.class_and_html_options('list-group-item-text')
+      @body.render
     end
 
     def tag_type

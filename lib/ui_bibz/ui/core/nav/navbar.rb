@@ -1,6 +1,7 @@
 require 'ui_bibz/ui/core/nav/components/navbar_nav'
 require 'ui_bibz/ui/core/nav/components/navbar_text'
 require 'ui_bibz/ui/core/nav/components/navbar_form'
+require 'ui_bibz/ui/core/nav/components/navbar_brand'
 module UiBibz::Ui::Core
 
   # Create a Navbar
@@ -102,7 +103,7 @@ module UiBibz::Ui::Core
     #end
 
     def brand content = nil, options = nil, html_options = nil, &block
-      @brand = UiBibz::Ui::Core::Component.new(content, options, html_options, &block)
+      @brand = UiBibz::Ui::Core::NavbarBrand.new(content, options, html_options, &block)
     end
 
   private
@@ -127,7 +128,7 @@ module UiBibz::Ui::Core
 
     def body_html
       content_tag :div, class: "collapse navbar-toggleable-xs", id: id do
-        concat link_to title.content, title.options[:url], title.class_and_html_options('navbar-brand') unless title.nil?
+        concat @title
         concat @items.join.html_safe
       end
     end

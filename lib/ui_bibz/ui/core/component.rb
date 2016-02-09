@@ -95,23 +95,6 @@ module UiBibz::Ui::Core
       states[:sym]
     end
 
-    # TO REMOVE
-    # Add classes in html_options
-    def class_and_html_options classes = nil
-      options_class = options[:class] if options.kind_of?(Hash)
-      cls = [
-        html_options[:class],
-        status,
-        state,
-        effect,
-        options_class
-      ]
-      cls << classes unless classes.nil?
-      cls = cls.flatten.compact
-      html_options[:class] = cls.empty? ? nil : cls
-      html_options
-    end
-
     # Know if component is tapped or not
     def is_tap content, options
       (content[:tap] if content.kind_of?(Hash)) || (options[:tap] unless options.nil?)

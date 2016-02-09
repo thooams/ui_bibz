@@ -106,7 +106,7 @@ module UiBibz::Ui::Ux
     def render
       init_components
 
-      content_tag :div, class_and_html_options("card table-card") do
+      content_tag :div, html_options do
         form_tag(url_for(url_parameters), method: :get) do
           store.parameters.each do |k,v|
             concat tag(:input, type: 'hidden', name: k, value: v) if !default_parameters?(k) && !v.blank?
@@ -133,6 +133,10 @@ module UiBibz::Ui::Ux
     end
 
   private
+
+    def component_html_classes
+      %w(card table-card)
+    end
 
     def store
       @store ||= if @options[:store].nil?
