@@ -73,7 +73,7 @@ module UiBibz::Ui::Core
 
     # Render html tag
     def render
-      content_tag :nav, class_and_html_options(['navbar', type, position]) do
+      content_tag :nav, html_options do
         content_tag :div, class: 'container-fluid' do
           concat header_html
           concat body_html
@@ -106,6 +106,10 @@ module UiBibz::Ui::Core
     end
 
   private
+
+    def component_html_classes
+      ['navbar', type, position]
+    end
 
     def header_html
       content_tag :div, class: 'navbar-header' do

@@ -40,13 +40,17 @@ module UiBibz::Ui::Core
 
     # Render html tag
     def render
-      content_tag :ul, @content, class_and_html_options(["navbar-text", position])
+      content_tag :ul, content, html_options
     end
 
   private
 
+    def component_html_classes
+      ["navbar-text", position]
+    end
+
     def position
-      "navbar-#{ @options[:position] }" unless @options[:position].nil?
+      "navbar-#{ options[:position] }" unless options[:position].nil?
     end
 
   end
