@@ -35,7 +35,13 @@ module UiBibz::Ui::Core
 
     # Render html tag
     def render
-      content_tag :div, @content, class_and_html_options('row')
+      content_tag :div, content, html_options
+    end
+
+  private
+
+    def component_html_classes
+      'row'
     end
 
   end

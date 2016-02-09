@@ -51,13 +51,18 @@ module UiBibz::Ui::Core
 
     # Render html tag
     def render
-      content_tag :span, stars_notation.join(' ').html_safe, class_and_html_options('stars-notation')
+      content_tag :span, stars_notation.join(' ').html_safe, html_options
     end
 
   private
 
+
+    def component_html_classes
+      'stars-notation'
+    end
+
     def number
-      @options[:num] || 5
+      options[:num] || 5
     end
 
     def stars_notation
@@ -72,15 +77,15 @@ module UiBibz::Ui::Core
 
     def glyph_opts
       opts = {}
-      opts = opts.merge({ state: @options[:state] }) unless @options[:state].nil?
-      opts = opts.merge({ size: @options[:size] })   unless @options[:size].nil?
+      opts = opts.merge({ state: options[:state] }) unless options[:state].nil?
+      opts = opts.merge({ size: options[:size] })   unless options[:size].nil?
       opts
     end
 
     def star_name star
-      if star <= @content
+      if star <= content
         'star'
-      elsif star > @content && !@content.is_a?(Integer) && star < @content + 1
+      elsif star > content && !content.is_a?(Integer) && star < content + 1
         'star-half-o'
       else
         'star-o'

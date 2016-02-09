@@ -49,19 +49,23 @@ module UiBibz::Ui::Core
 
     # Render html tag
     def render
-      content_tag :div, class_and_html_options(['jumbotron', fluid]) do
+      content_tag :div, html_options do
         if fluid
-          Container.new(@content).render
+          Container.new(content).render
         else
-          @content
+          content
         end
       end
     end
 
   private
 
+    def component_html_classes
+      ['jumbotron', fluid]
+    end
+
     def fluid
-      "jumbotron-fluid" unless @options[:fluid].nil?
+      "jumbotron-fluid" unless options[:fluid].nil?
     end
 
   end

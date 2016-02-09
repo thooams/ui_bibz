@@ -61,29 +61,37 @@ module UiBibz::Ui::Core
 
     # Render html tag
     def render
-      content_tag :progress, @content, class_and_html_options(['progress', striped, animated]).merge({ max: max, value: value })
+      content_tag :progress, content, html_options
     end
 
   private
 
+    def component_html_classes
+      ['progress', striped, animated]
+    end
+
+    def component_html_options
+      { max: max, value: value }
+    end
+
     def striped
-      'progress-striped' unless @options[:striped].nil?
+      'progress-striped' unless options[:striped].nil?
     end
 
     def animated
-      'progress-animated' unless @options[:animated].nil?
+      'progress-animated' unless options[:animated].nil?
     end
 
     def max
-      @options[:max] || 100
+      options[:max] || 100
     end
 
     def value
-      @options[:value] || @content.to_i
+      options[:value] || content.to_i
     end
 
     def state
-      "progress-#{ @options[:state] }" unless @options[:state].nil?
+      "progress-#{ options[:state] }" unless options[:state].nil?
     end
 
   end
