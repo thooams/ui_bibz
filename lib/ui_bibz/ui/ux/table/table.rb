@@ -141,7 +141,7 @@ module UiBibz::Ui::Ux
     end
 
     def table_html
-      content_tag(:table, class_and_html_options(["table", type])) do
+      content_tag(:table, html_options) do
 
         ths = cols.collect do |col|
           content_tag(:th, sort.header(col)) unless col.hidden?
@@ -170,6 +170,12 @@ module UiBibz::Ui::Ux
         content = col.format.call(@store.records, record)              unless col.format.nil?
         content
       end
+    end
+
+  private
+
+    def component_html_classes
+      ["table", type]
     end
 
   end
