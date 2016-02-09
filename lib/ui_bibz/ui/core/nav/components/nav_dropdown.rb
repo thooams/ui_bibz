@@ -50,13 +50,17 @@ module UiBibz::Ui::Core
 
     # Render html tag
     def render
-      content_tag :li, class_and_html_options([type, 'nav-item']) do
+      content_tag :li, html_options do
         concat link_html
         concat ul_html
       end
     end
 
   private
+
+    def component_html_classes
+      [type, 'nav-item']
+    end
 
     def link_html
       link_to button_content, "#", class: join_classes(size, "dropdown-toggle", 'nav-link'), "data-toggle" => 'dropdown', "aria-expanded" => false

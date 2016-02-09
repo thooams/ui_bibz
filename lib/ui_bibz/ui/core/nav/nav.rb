@@ -66,7 +66,7 @@ module UiBibz::Ui::Core
 
     # Render html tag
     def render
-      content_tag tag, @items.join.html_safe, class_and_html_options(["nav", type, position, stacked])
+      content_tag tag, @items.join.html_safe, html_options
     end
 
     # Add nav link items
@@ -88,6 +88,10 @@ module UiBibz::Ui::Core
     end
 
   private
+
+    def component_html_classes
+      ["nav", type, position, stacked]
+    end
 
     # tabs or pills
     def type

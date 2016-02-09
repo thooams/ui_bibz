@@ -1,3 +1,5 @@
+require 'ui_bibz/ui/core/nav/components/nav_link_link'
+require 'ui_bibz/ui/core/nav/components/nav_link_list'
 module UiBibz::Ui::Core
 
   # Create a NavLink
@@ -45,37 +47,13 @@ module UiBibz::Ui::Core
 
     # Render html tag
     def render
-      if @options[:nav_type] == "nav-links"
+      content_htm = UiBibz::Ui::Core::NavLinkLink.new(content, options, html_options).render
+      if options[:nav_type] == "nav-links"
         content_htm
       else
-        content_tag :li, content_htm, class_and_html_options('nav-item')
+        options.delete(:status)
+        UiBibz::Ui::Core::NavLinkList.new(content_htm, options).render
       end
-    end
-
-  private
-
-    # content_htm and not content_html for haml bug
-    def content_htm
-      link_to @options[:url], link_html_options do
-        concat glyph_and_content_html
-        concat label_html if @options[:label]
-      end
-    end
-
-    def link_html_options
-      if @options[:nav_type] == "nav-tabs"
-        lho.merge({ "data-toggle" => "tab", role: 'tab', class: link_class })
-      else
-        lho.merge({class: link_class})
-      end
-    end
-
-    def lho
-      @options[:link_html_options] || {}
-    end
-
-    def link_class
-      [@options.delete(:status), lho[:class], "nav-link"].compact.join(' ')
     end
 
   end

@@ -57,10 +57,14 @@ module UiBibz::Ui::Core
 
     # Render html tag
     def render
-      content_tag :span, glyph_and_content_html, class_and_html_options(['label', type])
+      content_tag :span, glyph_and_content_html, html_options
     end
 
   private
+
+    def component_html_classes
+      ['label', type]
+    end
 
     def state
       sym = @options[:state] || :default
