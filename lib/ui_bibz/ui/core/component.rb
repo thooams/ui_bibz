@@ -87,6 +87,7 @@ module UiBibz::Ui::Core
       UiBibz::Ui::Core::Label.new(options[:label], class: 'pull-right', type: :pill, state: (options[:label_state] || :default)).render
     end
 
+    # TO REMOVE
     # Set :default state symbol
     def state
       sym = options.delete(:state) if options[:state]
@@ -94,6 +95,7 @@ module UiBibz::Ui::Core
       states[:sym]
     end
 
+    # TO REMOVE
     # Add classes in html_options
     def class_and_html_options classes = nil
       options_class = options[:class] if options.kind_of?(Hash)
@@ -106,7 +108,7 @@ module UiBibz::Ui::Core
       ]
       cls << classes unless classes.nil?
       cls = cls.flatten.compact
-      html_options[:class] = cls.join(' ') unless cls.empty?
+      html_options[:class] = cls.empty? ? nil : cls
       html_options
     end
 
@@ -158,7 +160,8 @@ module UiBibz::Ui::Core
         options_classes,
         component_html_classes
       ]
-      html_options[:class] = join_classes(cls)
+      klass = join_classes(cls)
+      html_options[:class] = klass.empty? ? nil : klass
     end
 
     # Set effect class
@@ -188,6 +191,7 @@ module UiBibz::Ui::Core
       options[:status] unless options[:status].nil?
     end
 
+    # TO REMOVE
     def states
       if @states.nil?
         states = {}
