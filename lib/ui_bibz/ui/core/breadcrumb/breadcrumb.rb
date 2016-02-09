@@ -70,7 +70,6 @@ module UiBibz::Ui::Core
     # Add breadcrumb link items
     # See UiBibz::Ui::Core::BreadcrumbLink
     def link content = nil, options = nil, html_options = nil, &block
-      ap html_options
       @links << BreadcrumbLink.new(content, options, html_options, &block).render
     end
 

@@ -48,13 +48,17 @@ module UiBibz::Ui::Core
 
     # Render html tag
     def render
-      content_tag :div, @content, class_and_html_options(type)
+      content_tag :div, content, html_options
     end
 
   private
 
+    def component_html_classes
+      type
+    end
+
     def type
-      @options[:type] == :fluid ? "container-fluid" : "container"
+      options[:type] == :fluid ? "container-fluid" : "container"
     end
 
   end

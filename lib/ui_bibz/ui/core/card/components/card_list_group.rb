@@ -40,7 +40,7 @@ module UiBibz::Ui::Core
     protected
 
     def component_html_classes
-      "list-group-flush"
+      ["list-group-flush", "list-group"]
     end
 
   end

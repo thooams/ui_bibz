@@ -56,10 +56,14 @@ module UiBibz::Ui::Core
 
     # Render html tag
     def render
-      content_tag :div, @content, class_and_html_options(col_classes)
+      content_tag :div, content, html_options
     end
 
   private
+
+    def component_html_classes
+      col_classes
+    end
 
     def col_classes
       kl = []
@@ -67,7 +71,7 @@ module UiBibz::Ui::Core
         kl << write_classes(ke, va) if %i(xs sm md lg xl).include?(ke)
       end
       kl << write_classes(:md, @options) if kl.empty?
-      kl.join(' ')
+      kl
     end
 
     def write_classes size, opts

@@ -63,10 +63,14 @@ module UiBibz::Ui::Core
 
     # Render html tag
     def render
-      content_tag :i, '', class_and_html_options(classes)
+      content_tag :i, '', html_options
     end
 
   private
+
+    def component_html_classes
+      join_classes(classes)
+    end
 
     def classes
       cls = ["glyph", "fa", "fa-#{ content }"]
@@ -76,7 +80,7 @@ module UiBibz::Ui::Core
       cls << "fa-inverse"            unless inverse.nil?
       cls << "fa-stack-#{ stack }x"  unless stack.nil?
       cls << "fa-#{ type }"          unless type.nil?
-      cls.compact.join(' ')
+      cls
     end
 
     def size
