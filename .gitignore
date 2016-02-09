@@ -10,6 +10,7 @@ test/dummy/.sass-cache
 capybara-*.html
 .rspec
 /log
+/.yardoc
 /tmp
 /db/*.sqlite3
 /public/system
