@@ -1,5 +1,6 @@
 require 'test_helper'
 include UiBibz::Helpers
+include UiBibz::Helpers::UiCoreHelper
 class CardTest < ActionView::TestCase
 
   test 'create card' do

@@ -125,11 +125,14 @@ module UiBibz::Ui::Core
 
     # Render html tag
     def render
-      content_tag :div, @items.join.html_safe, class_and_html_options(["card", text_position, card_block, type, tab_pane])
+      content_tag :div, @items.join.html_safe, html_options
     end
 
   protected
 
+    def component_html_classes
+      ["card", text_position, card_block, type, tab_pane]
+    end
 
     def state
       "card-#{ states[@options[:state]] }" unless @options[:state].nil?

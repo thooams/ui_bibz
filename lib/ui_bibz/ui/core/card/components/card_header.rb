@@ -38,7 +38,13 @@ module UiBibz::Ui::Core
 
     # Render html tag
     def render
-      content_tag :div, glyph_and_content_html, class_and_html_options("card-header")
+      content_tag :div, glyph_and_content_html, html_options
+    end
+
+  private
+
+    def component_html_classes
+      "card-header"
     end
 
   end

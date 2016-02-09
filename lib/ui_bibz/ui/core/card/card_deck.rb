@@ -39,7 +39,7 @@ module UiBibz::Ui::Core
 
     # Render html tag
     def render
-      content_tag :div, class_and_html_options("card-deck-wrapper") do
+      content_tag :div, html_options do
         content_tag :div, @items.join.html_safe, class: 'card-deck'
       end
     end
@@ -50,6 +50,12 @@ module UiBibz::Ui::Core
       else
         @items << UiBibz::Ui::Core::Card.new(content, options, html_options, &block).render
       end
+    end
+
+  private
+
+    def component_html_classes
+      "card-deck-wrapper"
     end
 
   end

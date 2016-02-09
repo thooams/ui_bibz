@@ -38,7 +38,13 @@ module UiBibz::Ui::Core
 
     # Render html tag
     def render
-      content_tag :p, @content, class_and_html_options("card-text")
+      content_tag :p, content, html_options
+    end
+
+  private
+
+    def component_html_classes
+      "card-text"
     end
 
   end

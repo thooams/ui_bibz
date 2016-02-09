@@ -42,7 +42,7 @@ module UiBibz::Ui::Core
 
     # Render html tag
     def render
-      content_tag :div, @items.join.html_safe, class_and_html_options("card-block")
+      content_tag :div, @items.join.html_safe, html_options
     end
 
     def title content = nil, options = nil, html_options = nil, &block
@@ -56,5 +56,12 @@ module UiBibz::Ui::Core
     def text content = nil, options = nil, html_options = nil, &block
       @items << CardBlockText.new(content, options, html_options, &block).render
     end
+
+  private
+
+    def component_html_classes
+      "card-block"
+    end
+
   end
 end

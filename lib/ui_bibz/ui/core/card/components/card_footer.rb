@@ -38,13 +38,17 @@ module UiBibz::Ui::Core
 
     # Render html tag
     def render
-      content_tag :div, glyph_and_content_html, class_and_html_options(["card-footer", muted])
+      content_tag :div, glyph_and_content_html, html_options
     end
 
-    private
+  private
 
     def muted
       "text-muted" unless @options[:muted].nil?
+    end
+
+    def component_html_classes
+      ["card-footer", muted]
     end
 
   end
