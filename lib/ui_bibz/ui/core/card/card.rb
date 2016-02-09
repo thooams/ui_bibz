@@ -135,7 +135,7 @@ module UiBibz::Ui::Core
     end
 
     def state
-      "card-#{ states[@options[:state]] }" unless @options[:state].nil?
+      "card-#{ @options[:state] }" unless @options[:state].nil?
     end
 
     def text_position

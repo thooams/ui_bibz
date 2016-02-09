@@ -135,7 +135,7 @@ module UiBibz::Ui::Core
 
     def button_state
       sym = @state || :primary
-      "btn-#{  states[sym] }"
+      "btn-#{ sym }"
     end
 
     # :lg, :sm or :xs
