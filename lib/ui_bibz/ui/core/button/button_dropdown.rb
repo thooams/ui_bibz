@@ -62,10 +62,20 @@ module UiBibz::Ui::Core
 
     # Render html tag
     def render
-      content_tag :div, class_and_html_options(['btn-group', type]).merge({ role: 'group' }) do
+      content_tag :div, html_options do
         concat button_html
         concat ul_html
       end
+    end
+
+    private
+
+    def component_html_classes
+      ['btn-group', type]
+    end
+
+    def component_html_options
+      { role: 'group' }
     end
 
   end

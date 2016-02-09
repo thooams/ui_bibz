@@ -51,21 +51,33 @@ module UiBibz::Ui::Core
 
     # Render html tag
     def render
-      content_tag :div, @content, class_and_html_options(["btn-#{ type }", size, position]).merge({ role: type, data: { toggle: 'buttons' }})
+      content_tag :div, content, html_options
     end
 
   private
 
+    def component_html_classes
+      ["btn-#{ type }", size, position]
+    end
+
+    def component_html_options
+      { role: type, data: { toggle: 'buttons' } }
+    end
+
+    def component_html_data
+      add_html_data "toggle", "buttons"
+    end
+
     def type
-      @options[:type] || :group
+      options[:type] || :group
     end
 
     def size
-      "btn-group-#{ @options[:size] }" if @options[:size]
+      "btn-group-#{ options[:size] }" if options[:size]
     end
 
     def position
-      "btn-group-#{ @options[:position] }" if @options[:position]
+      "btn-group-#{ options[:position] }" if options[:position]
     end
 
   end

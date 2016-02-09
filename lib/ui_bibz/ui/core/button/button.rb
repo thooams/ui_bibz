@@ -58,31 +58,38 @@ module UiBibz::Ui::Core
 
     # Render html tag
     def render
-      content_tag :button, glyph_and_content_html, class_and_html_options(['btn', size, type]).merge(toggle)
+      content_tag :button, glyph_and_content_html, html_options
     end
 
   protected
 
+    def component_html_classes
+      ['btn', size, type]
+    end
+
+    def component_html_options
+      options[:toggle].nil? ? {} : { "data-toggle" => 'button', "aria-pressed" => false, "autocomplete" => "off" }
+    end
+
     def state
-      sym = @options[:state] || :primary
+      sym = options[:state] || :primary
       "btn-#{  states[sym] }#{ outline }"
     end
 
     def outline
-      "-outline" unless @options[:outline].nil?
+      "-outline" unless options[:outline].nil?
     end
 
     def toggle
-      @options[:toggle].nil? ? {} : { "data-toggle" => 'button', "aria-pressed" => false, "autocomplete" => "off" }
     end
 
     def type
-      "btn-block" if @options[:type] == :block
+      "btn-block" if options[:type] == :block
     end
 
     # :lg, :sm or :xs
     def size
-      "btn-#{ @options[:size] }" if @options[:size]
+      "btn-#{ options[:size] }" if options[:size]
     end
 
     def states

@@ -44,27 +44,26 @@ module UiBibz::Ui::Core
     # See UiBibz::Ui::Core::Component.initialize
     def initialize content = nil, options = nil, html_options = nil, &block
       super
+      @html_options = @html_options.merge(link_html_options)
     end
 
     # Render html tag
     def render
-      link_to glyph_and_content_html, link_url, link_html_options.merge({ class: options_class })
+      link_to glyph_and_content_html, link_url, html_options
     end
 
     private
 
+    def component_html_classes
+      'dropdown-item'
+    end
+
     def link_url
-      @options[:url] || "#"
+      options[:url] || "#"
     end
 
     def link_html_options
       @options[:link_html_options].nil? ? {} : @options[:link_html_options]
-    end
-
-    def options_class
-      klass = [link_html_options[:class].nil? ? '' : link_html_options[:class]]
-      klass << "dropdown-item"
-      klass.join(' ')
     end
 
   end

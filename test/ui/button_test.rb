@@ -14,7 +14,7 @@ class ButtonTest < ActionView::TestCase
     actual = UiBibz::Ui::Core::ButtonGroup.new position: :vertical do
       UiBibz::Ui::Core::Button.new('toto').render
     end.render
-    expected = "<div class=\"btn-group btn-group-vertical\" role=\"group\" data-toggle=\"buttons\"><button class=\"btn-primary btn\">toto</button></div>"
+    expected = "<div data-toggle=\"buttons\" class=\"btn-group btn-group-vertical\" role=\"group\"><button class=\"btn-primary btn\">toto</button></div>"
 
     assert_equal expected, actual
   end
@@ -52,7 +52,7 @@ class ButtonTest < ActionView::TestCase
       concat UiBibz::Ui::Core::ButtonChoice.new('Toto1').render
       concat UiBibz::Ui::Core::ButtonChoice.new('Toto2').render
     end.render
-    expected = "<div class=\"btn-group\" role=\"group\" data-toggle=\"buttons\"><label class=\"btn-primary btn\"><input type=\"checkbox\" autocomplete=\"off\" />Toto1</label><label class=\"btn-primary btn\"><input type=\"checkbox\" autocomplete=\"off\" />Toto2</label></div>"
+    expected = "<div data-toggle=\"buttons\" class=\"btn-group\" role=\"group\"><label class=\"btn-primary btn\"><input type=\"checkbox\" autocomplete=\"off\" />Toto1</label><label class=\"btn-primary btn\"><input type=\"checkbox\" autocomplete=\"off\" />Toto2</label></div>"
 
     assert_equal expected, actual
   end
@@ -62,7 +62,7 @@ class ButtonTest < ActionView::TestCase
       concat UiBibz::Ui::Core::ButtonChoice.new('Toto1', type: :radio).render
       concat UiBibz::Ui::Core::ButtonChoice.new('Toto2', type: :radio).render
     end.render
-    expected = "<div class=\"btn-group\" role=\"group\" data-toggle=\"buttons\"><label class=\"btn-primary btn\"><input type=\"radio\" autocomplete=\"off\" />Toto1</label><label class=\"btn-primary btn\"><input type=\"radio\" autocomplete=\"off\" />Toto2</label></div>"
+    expected = "<div data-toggle=\"buttons\" class=\"btn-group\" role=\"group\"><label class=\"btn-primary btn\"><input type=\"radio\" autocomplete=\"off\" />Toto1</label><label class=\"btn-primary btn\"><input type=\"radio\" autocomplete=\"off\" />Toto2</label></div>"
 
     assert_equal expected, actual
   end
@@ -75,7 +75,7 @@ class ButtonTest < ActionView::TestCase
       d.divider
       d.link 'lolo'
     end.render
-    expected = "<div class=\"btn-group dropup\" role=\"group\"><button class=\"btn btn-success dropdown-toggle\" type=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">Dropdown <span class=\"caret\"></span></button><div class=\"dropdown-menu dropdown-menu-left\"><a class=\" dropdown-item\" href=\"#\">toto</a><h6 class=\"dropdown-header\" role=\"presentation\">header</h6><a class=\" dropdown-item\" href=\"#\">momo</a><div class=\"dropdown-divider\"></div><a class=\" dropdown-item\" href=\"#\">lolo</a></div></div>"
+    expected = "<div class=\"btn-group dropup\" role=\"group\"><button class=\"btn btn-success dropdown-toggle\" type=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">Dropdown <span class=\"caret\"></span></button><div class=\"dropdown-menu dropdown-menu-left\"><a class=\"dropdown-item\" href=\"#\">toto</a><h6 class=\"dropdown-header\" role=\"presentation\">header</h6><a class=\"dropdown-item\" href=\"#\">momo</a><div class=\"dropdown-divider\"></div><a class=\"dropdown-item\" href=\"#\">lolo</a></div></div>"
 
     assert_equal expected, actual
   end
@@ -88,7 +88,7 @@ class ButtonTest < ActionView::TestCase
       d.divider
       d.link 'lolo'
     end.render
-    expected = "<div class=\"btn-group dropup\" role=\"group\"><button class=\"btn btn-primary\">Dropdown</button><button class=\"btn btn-primary dropdown-toggle\" type=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\"><span class=\"caret\"></span><span class=\"sr-only\">Toggle Dropdown</span></button><div class=\"dropdown-menu dropdown-menu-left\"><a class=\" dropdown-item\" href=\"#\">toto</a><h6 class=\"dropdown-header\" role=\"presentation\">header</h6><a class=\" dropdown-item\" href=\"#\">momo</a><div class=\"dropdown-divider\"></div><a class=\" dropdown-item\" href=\"#\">lolo</a></div></div>"
+    expected = "<div class=\"btn-group dropup\" role=\"group\"><button class=\"btn btn-primary\">Dropdown</button><button class=\"btn btn-primary dropdown-toggle\" type=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\"><span class=\"caret\"></span><span class=\"sr-only\">Toggle Dropdown</span></button><div class=\"dropdown-menu dropdown-menu-left\"><a class=\"dropdown-item\" href=\"#\">toto</a><h6 class=\"dropdown-header\" role=\"presentation\">header</h6><a class=\"dropdown-item\" href=\"#\">momo</a><div class=\"dropdown-divider\"></div><a class=\"dropdown-item\" href=\"#\">lolo</a></div></div>"
 
     assert_equal expected, actual
   end

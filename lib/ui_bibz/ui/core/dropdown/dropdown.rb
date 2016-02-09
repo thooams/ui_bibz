@@ -70,7 +70,7 @@ module UiBibz::Ui::Core
 
     # Render html tag
     def render
-      content_tag :div, class_and_html_options([type, "btn-group", open]) do
+      content_tag :div, html_options do
         concat button_html
         concat ul_html
       end
@@ -100,6 +100,10 @@ module UiBibz::Ui::Core
     end
 
   protected
+
+    def component_html_classes
+      [type, "btn-group", open]
+    end
 
     def button_content
       [glyph_with_space, @content, ' ', caret].compact.join.html_safe

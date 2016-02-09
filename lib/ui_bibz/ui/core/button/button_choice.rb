@@ -64,13 +64,21 @@ module UiBibz::Ui::Core
 
     # Render html tag
     def render
-      content_tag :label, class_and_html_options(['btn', size]) do
-        concat tag(:input, { type: type, autocomplete: :off }.merge(checked).merge(name).merge(id).merge(input_html_options))
+      content_tag :label, html_options do
+        concat tag(:input,input_options)
         concat @content
       end
     end
 
     private
+
+    def component_html_classes
+      ['btn', size]
+    end
+
+    def input_options
+      { type: type, autocomplete: :off }.merge(checked).merge(name).merge(id).merge(input_html_options)
+    end
 
     def checked
       @options[:status] == :active ? { checked: :checked } : {}
