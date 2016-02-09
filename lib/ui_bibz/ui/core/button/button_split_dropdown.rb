@@ -62,7 +62,7 @@ module UiBibz::Ui::Core
 
     # Render html tag
     def render
-      content_tag :div, class_and_html_options(['btn-group', type]).merge({ role: 'group' }) do
+      content_tag :div, html_options do
         concat button_html
         concat split_html
         concat ul_html
@@ -70,6 +70,14 @@ module UiBibz::Ui::Core
     end
 
   private
+
+    def component_html_classes
+      ['btn-group', type]
+    end
+
+    def component_html_options
+      { role: 'group' }
+    end
 
     def button_html
       content_tag :button, button_content, class: join_classes("btn", button_state, size)
@@ -88,7 +96,7 @@ module UiBibz::Ui::Core
     end
 
     def button_content
-      [glyph_with_space, @content].compact.join.html_safe
+      [glyph_with_space, content].compact.join.html_safe
     end
 
   end

@@ -140,7 +140,8 @@ module UiBibz::Ui::Core
 
     # Join classes
     def join_classes *classes
-      [*classes].flatten.compact.uniq.reject(&:blank?)
+      klasses = [*classes].flatten.compact.uniq.reject(&:blank?)
+      klasses.empty? ? nil : klasses
     end
 
     # Add html data arguments
@@ -160,8 +161,7 @@ module UiBibz::Ui::Core
         options_classes,
         component_html_classes
       ]
-      klass = join_classes(cls)
-      html_options[:class] = klass.empty? ? nil : klass
+      html_options[:class] = join_classes(cls)
     end
 
     # Set effect class

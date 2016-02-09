@@ -60,7 +60,13 @@ module UiBibz::Ui::Core
 
     # Render html tag
     def render
-      link_to glyph_and_content_html, @options[:url], class_and_html_options(['btn', size, type]).merge(toggle)
+      link_to glyph_and_content_html, options[:url], html_options
+    end
+
+  private
+
+    def component_html_classes
+      ['btn', size, type]
     end
 
   end

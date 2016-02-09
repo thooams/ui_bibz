@@ -40,7 +40,17 @@ module UiBibz::Ui::Core
 
     # Render html tag
     def render
-      content_tag :h6, @content, class_and_html_options('dropdown-header').merge({ role: 'presentation' })
+      content_tag :h6, content, html_options
+    end
+
+  private
+
+    def component_html_classes
+      'dropdown-header'
+    end
+
+    def component_html_options
+      { role: 'presentation' }
     end
 
   end
