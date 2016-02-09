@@ -47,14 +47,14 @@ module UiBibz::Ui::Core
 
     # Render html tag
     def render
-      content_tag :li, link_html, class_and_html_options
+      content_tag :li, link_html, html_options
     end
 
   private
 
     def link_html
-      if @options[:url]
-        link_to glyph_and_content_html, @options[:url], @options[:link_html_options]
+      if options[:url]
+        link_to glyph_and_content_html, options[:url], options[:link_html_options]
       else
         glyph_and_content_html
       end

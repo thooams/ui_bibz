@@ -64,16 +64,21 @@ module UiBibz::Ui::Core
     # Render html tag
     def render
       generate_links unless store.nil?
-      content_tag :ol, @links.join.html_safe, class_and_html_options("breadcrumb")
+      content_tag :ol, @links.join.html_safe, html_options
     end
 
     # Add breadcrumb link items
     # See UiBibz::Ui::Core::BreadcrumbLink
     def link content = nil, options = nil, html_options = nil, &block
+      ap html_options
       @links << BreadcrumbLink.new(content, options, html_options, &block).render
     end
 
     private
+
+    def component_html_classes
+      'breadcrumb'
+    end
 
     def store
       @options[:store]
