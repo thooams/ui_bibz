@@ -39,7 +39,7 @@ module UiBibz::Ui::Core
 
     # Render html tag
     def render
-      content_tag :div, @items.join.html_safe, class_and_html_options("card-group")
+      content_tag :div, @items.join.html_safe, html_options
     end
 
     def card content = nil, options = nil, html_options = nil, &block
@@ -48,6 +48,12 @@ module UiBibz::Ui::Core
       else
         @items << UiBibz::Ui::Core::Card.new(content, options, html_options, &block).render
       end
+    end
+
+  private
+
+    def component_html_classes
+      "card-group"
     end
 
   end

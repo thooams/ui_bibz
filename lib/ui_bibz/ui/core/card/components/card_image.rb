@@ -40,10 +40,14 @@ module UiBibz::Ui::Core
 
     # Render html tag
     def render
-      image_tag @content, class_and_html_options(position)
+      image_tag content, html_options
     end
 
-    private
+  private
+
+    def component_html_classes
+      position
+    end
 
     def position
       "card-img-#{ @options[:position] }" unless @options[:position].nil?
