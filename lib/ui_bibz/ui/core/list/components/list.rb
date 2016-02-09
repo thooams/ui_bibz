@@ -62,7 +62,7 @@ module UiBibz::Ui::Core
 
     # Render html tag
     def render
-      content_tag tag_type, class_and_html_options('list-group-item') do
+      content_tag tag_type, html_options do
         concat glyph_and_content_html if @content
         concat header_html if @body
         concat body_html   if @body
@@ -82,6 +82,10 @@ module UiBibz::Ui::Core
     end
 
   private
+
+    def component_html_classes
+      'list-group-item'
+    end
 
     def header_html
       content_tag :h4, @header.render, @header.class_and_html_options('list-group-item-heading')

@@ -78,7 +78,7 @@ module UiBibz::Ui::Core
 
     # Render html tag
     def render
-      content_tag type, @lists.join().html_safe, class_and_html_options("list-group")
+      content_tag type, @lists.join().html_safe, html_options
     end
 
     # Add group list
@@ -95,6 +95,10 @@ module UiBibz::Ui::Core
     end
 
   private
+
+    def component_html_classes
+      "list-group"
+    end
 
     def type
       [:link, :button].include?(@options[:type]) ? :div : :ul

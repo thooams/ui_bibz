@@ -61,7 +61,7 @@ module UiBibz::Ui::Core
 
     # Render html tag
     def render
-      content_tag :div, class_and_html_options(['modal', effect]) do
+      content_tag :div, html_options do
         content_tag :div, class: "modal-dialog #{ size }", role: 'document' do
           content_tag :div, class: 'modal-content' do
             concat @header
@@ -85,6 +85,10 @@ module UiBibz::Ui::Core
     end
 
     private
+
+    def component_html_classes
+      'modal'
+    end
 
     # :lg, :sm or :xs
     def size

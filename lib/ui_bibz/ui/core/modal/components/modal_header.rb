@@ -38,13 +38,17 @@ module UiBibz::Ui::Core
 
     # Render html tag
     def render
-      content_tag :div, class_and_html_options("modal-header") do
+      content_tag :div, html_options do
         concat close_button_html
         concat content_tag :h4, glyph_and_content_html, class: 'modal-title'
       end
     end
 
     private
+
+    def component_html_classes
+      'modal-header'
+    end
 
     def close_button_html
       content_tag :button, class: 'close', "data-dismiss" => 'modal', "aria-label" => "Close" do
