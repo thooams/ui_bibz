@@ -120,7 +120,7 @@ module UiBibz::Ui::Core
 
     def title
       @title ||= if @brand.nil?
-         brand(@options[:title], url: '/') unless @options[:title].nil?
+         brand(@options[:title]) unless @options[:title].nil?
       else
         @brand
       end
@@ -128,7 +128,7 @@ module UiBibz::Ui::Core
 
     def body_html
       content_tag :div, class: "collapse navbar-toggleable-xs", id: id do
-        concat @title
+        concat title
         concat @items.join.html_safe
       end
     end
