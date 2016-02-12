@@ -103,7 +103,7 @@ module UiBibz::Ui::Core
     #end
 
     def brand content = nil, options = nil, html_options = nil, &block
-      @brand = UiBibz::Ui::Core::NavbarBrand.new(content, options, html_options, &block)
+      @brand = UiBibz::Ui::Core::NavbarBrand.new(content, options, html_options, &block).render
     end
 
   private
