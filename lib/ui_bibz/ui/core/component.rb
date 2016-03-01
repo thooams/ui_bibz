@@ -59,6 +59,7 @@ module UiBibz::Ui::Core
       end
       @html_options = @html_options || {}
       @options      = @options || {}
+      init_options
       init_component_html_options
     end
 
@@ -109,6 +110,12 @@ module UiBibz::Ui::Core
       {}
     end
 
+    # Override this method to add Options to the component
+    # Accept Hash
+    def component_options
+      {}
+    end
+
     # Override this method to add a state class
     def state
     end
@@ -137,6 +144,10 @@ module UiBibz::Ui::Core
         component_html_classes
       ]
       html_options[:class] = join_classes(cls)
+    end
+
+    def init_options
+      @options = component_options.merge(@options)
     end
 
     # Set effect class
