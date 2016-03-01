@@ -1,7 +1,8 @@
 #= require jquery2
 #= require jquery_ujs
-# Remove bootstrap-4.0.0-alpha.min when gem boostrap 4 is created
-#= require bootstrap-4.0.0-alpha.min
+#= require tether
+#= require bootstrap-sprockets
+#= require bootstrap
 #= require bootstrap-datepicker.min
 #= require bootstrap-select.min
 #= require bootstrap-switch.min
@@ -45,3 +46,5 @@ $(document).on 'ready page:load', ->
     delete data["multiselect"]
     data = Object.assign({ inheritClass: true }, data)
     $(this).multiselect(data)
+
+  $('[data-toggle="tooltip"]').tooltip()

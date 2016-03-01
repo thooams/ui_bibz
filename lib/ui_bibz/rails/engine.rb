@@ -1,6 +1,7 @@
 # to load pagination in rails app
 require 'will_paginate'
-require 'bootstrap-sass'
+require 'bootstrap'
+require 'rails-assets-tether'
 require "font-awesome-sass"
 
 module UiBibz
