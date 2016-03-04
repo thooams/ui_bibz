@@ -15,6 +15,10 @@
 @import multi-select.min
 //@import fix-bootstrap-4
 
+$brand-secondary: #98978b
+
+$states_colors: (success: $brand-success, primary: $brand-primary, secondary: $brand-secondary, info: $brand-info, danger: $brand-danger, warning: $brand-warning)
+
 // Table section
 .table-card
   form
@@ -68,17 +72,15 @@
   .action
     width: 135px
 
+@each $key, $value in $states_colors
+  .card-#{$key}
+    .card-header
+      background-color: $value
+
 // Glyph section
-.glyph-success
-  color: $brand-success
-.glyph-primary
-  color: $brand-primary
-.glyph-info
-  color: $brand-info
-.glyph-warning
-  color: $brand-warning
-.glyph-danger
-  color: $brand-danger
+@each $key, $value in $states_colors
+  .glyph-#{$key}
+    color: $value
 
 // Other section
 .ui-bibz-clear
