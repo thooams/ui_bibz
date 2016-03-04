@@ -71,11 +71,11 @@ module UiBibz::Ui::Ux
     end
 
     def name_with_caret
-      sort_name == sort_column && @column.id.to_s == @store.column_id.to_s ? @name + caret : @name
+      sort_name.to_s == sort_column.to_s && @column.id.to_s == @store.column_id.to_s ? @name + caret : @name
     end
 
     def caret
-      content_tag(:span, '', class: 'caret')
+      UiBibz::Ui::Core::Glyph.new("caret-#{ direction == 'desc' ? 'up' : 'down' }").render
     end
 
     def cls

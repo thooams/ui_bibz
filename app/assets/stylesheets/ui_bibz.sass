@@ -3,7 +3,7 @@
 @import font-awesome
 
 // Bootstrap
-@import bootstrap/variables
+//@import bootstrap/variables
 //@import bootstrap-sprockets
 @import bootstrap
 
@@ -15,8 +15,7 @@
 @import multi-select.min
 //@import fix-bootstrap-4
 
-$brand-secondary: #98978b
-
+$brand-secondary: $gray-lighter
 $states_colors: (success: $brand-success, primary: $brand-primary, secondary: $brand-secondary, info: $brand-info, danger: $brand-danger, warning: $brand-warning)
 
 // Table section
@@ -27,7 +26,7 @@ $states_colors: (success: $brand-success, primary: $brand-primary, secondary: $b
     th
       border-top: none
   .card-header
-    background-color: $table-bg-active
+    //background-color: $table-bg-active
     .title
       float: left
       font-size: 20px
@@ -43,6 +42,7 @@ $states_colors: (success: $brand-success, primary: $brand-primary, secondary: $b
     overflow-x: auto
     min-height: 200px
   .card-footer
+    //background-color: $table-bg-active
     padding: 10px 10px
     .pagination
       margin: 0
