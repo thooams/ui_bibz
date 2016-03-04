@@ -53,9 +53,9 @@ module UiBibz::Ui::Core
       if options[:range]
         content_tag :div, class: join_classes('input-group', 'input-daterange', size) do
           concat content_tag :span, options[:append], class: 'input-group-addon' unless @options[:append].nil?
-          concat text_field_tag content, html_options[:value], html_options
+          concat text_field_input_tag content[0]
           concat content_tag :span, options[:range], class: 'input-group-addon input-group-range'
-          concat text_field_tag content, html_options[:value], html_options
+          concat text_field_input_tag content[1]
           concat content_tag :span, options[:prepend], class: 'input-group-addon' unless @options[:prepend].nil?
         end
       else
@@ -64,6 +64,14 @@ module UiBibz::Ui::Core
     end
 
   private
+
+    def text_field_input_tag name
+      if options[:builder].nil?
+        text_field_tag name, html_options[:value], html_options
+      else
+        options[:builder].text_field name, html_options
+      end
+    end
 
     def component_html_data
       date_locale
