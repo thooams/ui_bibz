@@ -3,9 +3,13 @@
 @import font-awesome
 
 // Bootstrap
-//@import bootstrap/variables
+@import bootstrap/variables
 //@import bootstrap-sprockets
 @import bootstrap
+
+
+$brand-secondary: $gray-lighter
+$states_colors: (success: $brand-success, primary: $brand-primary, secondary: $brand-secondary, info: $brand-info, danger: $brand-danger, warning: $brand-warning)
 
 // Boostrap Plugins
 @import bootstrap-datepicker3.min
@@ -13,10 +17,8 @@
 @import bootstrap-switch.min
 @import bootstrap-multiselect.min
 @import multi-select.min
-//@import fix-bootstrap-4
+@import fix-bootstrap-4
 
-$brand-secondary: $gray-lighter
-$states_colors: (success: $brand-success, primary: $brand-primary, secondary: $brand-secondary, info: $brand-info, danger: $brand-danger, warning: $brand-warning)
 
 // Table section
 .table-card
