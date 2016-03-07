@@ -28,12 +28,12 @@ Gem::Specification.new do |s|
   s.add_dependency 'haml-rails'
   s.add_dependency 'sass-rails', '>= 5.0.0'
   s.add_dependency 'font-awesome-sass'
-  s.add_dependency 'bootstrap-sass', '~> 3.3.5'
+  s.add_dependency 'bootstrap', '~> 4.0.0.alpha3'
+  s.add_dependency 'rails-assets-tether', '>= 1.1.0'
 
   s.add_development_dependency "minitest"
   s.add_development_dependency "rdoc"
   s.add_development_dependency "sqlite3"
   s.add_development_dependency "factory_girl_rails", "~> 4.0"
   s.add_development_dependency "codeclimate-test-reporter"
-
 end
