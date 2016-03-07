@@ -1,4 +1,4 @@
-class Form
+@Form = class Form
 
   constructor: ->
     @selectPicker()

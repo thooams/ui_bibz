@@ -1,4 +1,4 @@
-class Interface
+@Interface = class Interface
 
   constructor: ->
     @nav()

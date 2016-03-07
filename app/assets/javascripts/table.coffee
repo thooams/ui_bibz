@@ -1,4 +1,4 @@
-class Table
+@Table = class Table
 
   constructor: ->
     @submitPerPageSelect()
