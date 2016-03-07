@@ -97,7 +97,7 @@ class InputsTest < ActionView::TestCase
     # OK
     test 'switch_field checked' do
       actual = UiBibz::Ui::Core::SwitchField.new('test', checked: true).render
-      expected = "<input type=\"radio\" name=\"test\" id=\"test_\" data-checked=\"true\" class=\"switch\" checked=\"checked\" />"
+      expected = "<input type=\"radio\" name=\"test\" id=\"test_\" class=\"switch\" checked=\"checked\" />"
 
       assert_equal expected, actual
     end

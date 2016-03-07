@@ -48,7 +48,11 @@ module UiBibz::Ui::Core
 
     # Render html tag
     def render
-      radio_button_tag content, value, options[:checked], html_options
+      if options[:builder].nil?
+        radio_button_tag content, value, options[:checked], html_options
+      else
+        options[:builder].radio_button content, html_options
+      end
     end
 
     private
@@ -68,8 +72,8 @@ module UiBibz::Ui::Core
       default_value
       animate
       readonly
-      on_color
-      off_color
+      on_state
+      off_state
       on_label
       off_label
       text_label
@@ -92,7 +96,8 @@ module UiBibz::Ui::Core
 
     # true, false => default : true
     def checked
-      add_html_data('checked') unless options[:checked].nil?
+      @options[:status] == :active ? { checked: :checked } : {}
+      #add_html_data('checked', options[:checked]) unless options[:checked].nil?
     end
 
     # true, false => default : true
