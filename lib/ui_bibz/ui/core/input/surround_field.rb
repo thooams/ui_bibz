@@ -49,17 +49,26 @@ module UiBibz::Ui::Core
     # Render html tag
     def render
       if options[:append].nil? && options[:prepend].nil?
-        text_field_tag content, html_options[:value], html_options
+        text_field_input_tag
       else
         content_tag :div, class: join_classes('input-group', size) do
           concat content_tag :span, options[:append], class: 'input-group-addon' unless options[:append].nil?
-          concat text_field_tag content, html_options[:value], html_options
+          concat text_field_input_tag
           concat content_tag :span, options[:prepend], class: 'input-group-addon' unless options[:prepend].nil?
         end
       end
     end
 
     private
+
+    # Simple_form or not
+    def text_field_input_tag
+      if options[:builder].nil?
+        text_field_tag content, html_options[:value], html_options
+      else
+        options[:builder].text_field content, html_options
+      end
+    end
 
     def component_html_classes
       'form-control'

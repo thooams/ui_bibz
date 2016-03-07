@@ -1,47 +1,30 @@
-#= require jquery2
 #= require jquery_ujs
-# Remove bootstrap-4.0.0-alpha.min when gem boostrap 4 is created
-#= require bootstrap-4.0.0-alpha.min
+#= require tether
+#= require bootstrap-sprockets
+#= require bootstrap
 #= require bootstrap-datepicker.min
 #= require bootstrap-select.min
 #= require bootstrap-switch.min
 #= require bootstrap-multiselect.min
 #= require multi_column
 
+# Ui Bibz
+#= require table
+#= require interface
+#= require form
+
 # For turbolink
-$(document).on 'ready page:load', ->
+$(document).on 'ready page:load', (event) ->
 
-  # Submit form when per_page select changing
-  $('.table-pagination-per-page select').change () ->
-    $(this).parents('form').submit()
+  window.UiBibz ||= new UiBibz
+  return
 
-  # Clear search
-  $('.table-search-field .clear-search-btn').click () ->
-    $(this).prev().val('')
-    $(this).parents('form').submit()
+class UiBibz
 
-  # Resize search field
-  $('.table-card input[type=search]').blur ->
-    $parent = $(this).parent()
-    $parent.removeClass('has-value') if $(this).val() == ''
-    $parent.removeClass('is-focused')
-
-  $('.table-card input[type=search]').focus ->
-    $(this).parent().addClass('is-focused has-value')
-
-  $('.table-card input[type=search]').each ->
-    $(this).parent().addClass('has-value') if $(this).val() != ''
-
-  $('.selectpicker').selectpicker()
-
-  $('.switch').bootstrapSwitch()
-
-  $('.nav-tabs a').click (e) ->
-    e.preventDefault()
-    $(this).tab('show')
-
-  $('.multi-select').each ->
-    data = $(this).data()
-    delete data["multiselect"]
-    data = Object.assign({ inheritClass: true }, data)
-    $(this).multiselect(data)
+  constructor: ->
+    @table     = new window.Table
+    @form      = new window.Form
+    @interface = new window.Interface
+    delete window.Table
+    delete window.Form
+    delete window.Interface

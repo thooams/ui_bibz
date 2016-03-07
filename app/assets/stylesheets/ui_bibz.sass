@@ -3,12 +3,9 @@
 @import font-awesome
 
 // Bootstrap
-@import bootstrap/variables
+//@import bootstrap/variables
 //@import bootstrap-sprockets
-//@import bootstrap
-
-// Remove bootstrap-4.0.0-alpha.min when gem boostrap 4 is created
-@import bootstrap-4.0.0-alpha.min
+@import bootstrap
 
 // Boostrap Plugins
 @import bootstrap-datepicker3.min
@@ -16,7 +13,10 @@
 @import bootstrap-switch.min
 @import bootstrap-multiselect.min
 @import multi-select.min
-@import fix-bootstrap-4
+//@import fix-bootstrap-4
+
+$brand-secondary: $gray-lighter
+$states_colors: (success: $brand-success, primary: $brand-primary, secondary: $brand-secondary, info: $brand-info, danger: $brand-danger, warning: $brand-warning)
 
 // Table section
 .table-card
@@ -26,7 +26,7 @@
     th
       border-top: none
   .card-header
-    background-color: $table-bg-active
+    //background-color: $table-bg-active
     .title
       float: left
       font-size: 20px
@@ -42,6 +42,7 @@
     overflow-x: auto
     min-height: 200px
   .card-footer
+    //background-color: $table-bg-active
     padding: 10px 10px
     .pagination
       margin: 0
@@ -71,17 +72,15 @@
   .action
     width: 135px
 
+@each $key, $value in $states_colors
+  .card-#{$key}
+    .card-header
+      background-color: $value
+
 // Glyph section
-.glyph-success
-  color: $brand-success
-.glyph-primary
-  color: $brand-primary
-.glyph-info
-  color: $brand-info
-.glyph-warning
-  color: $brand-warning
-.glyph-danger
-  color: $brand-danger
+@each $key, $value in $states_colors
+  .glyph-#{$key}
+    color: $value
 
 // Other section
 .ui-bibz-clear
