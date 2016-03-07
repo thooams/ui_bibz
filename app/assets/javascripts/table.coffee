@@ -1,4 +1,4 @@
-@Table = class Table
+@UiBibzTable = class Table
 
   constructor: ->
     @submitPerPageSelect()
