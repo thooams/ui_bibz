@@ -1,2 +1,11 @@
-.btn-group > .dropdown-menu
-  margin: 32px 3px 0px 0px !important
+//.btn-group > .dropdown-menu
+  //margin: 32px 3px 0px 0px !important
+
+// fix form states
+@each $key, $value in $states_colors
+  .has-#{$key}
+    .form-control
+      border-color: $value !important
+    label, span.help-block
+      color: $value
+

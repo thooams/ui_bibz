@@ -1,3 +1,4 @@
+#= require jquery
 #= require jquery_ujs
 #= require tether
 #= require bootstrap-sprockets
@@ -22,9 +23,9 @@ $(document).on 'ready page:load', (event) ->
 class UiBibz
 
   constructor: ->
-    @table     = new window.Table
-    @form      = new window.Form
-    @interface = new window.Interface
-    delete window.Table
-    delete window.Form
-    delete window.Interface
+    @table     = new window.UiBibzTable
+    @form      = new window.UiBibzForm
+    @interface = new window.UiBibzInterface
+    delete window.UiBibzTable
+    delete window.UiBibzForm
+    delete window.UiBibzInterface

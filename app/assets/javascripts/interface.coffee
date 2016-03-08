@@ -1,4 +1,4 @@
-@Interface = class Interface
+@UiBibzInterface = class Interface
 
   constructor: ->
     @nav()
