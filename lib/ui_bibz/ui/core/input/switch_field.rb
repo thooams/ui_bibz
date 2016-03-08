@@ -14,8 +14,15 @@ module UiBibz::Ui::Core
   #
   # You can add HTML attributes using the +html_options+.
   # You can pass arguments in options attribute:
-  # * +prepend+ - String
-  # * +append+ - String
+  # * +status+ - String
+  # * +animate+ - Boolean
+  # * +on_color+ - String
+  # * +off_color+ - String
+  # * +on_text+ - String
+  # * +off_text+ - String
+  # * +label_text+ - String
+  # * +readonly+ - Boolean
+  # * +checked+ - Boolean
   #
   # ==== Signatures
   #
@@ -27,11 +34,7 @@ module UiBibz::Ui::Core
   #
   # ==== Examples
   #
-  #   UiBibz::Ui::Core::SwitchField.new('search', prepend: 'Prepend content', append: 'Append content', class: 'test')
-  #
-  #   UiBibz::Ui::Core::SwitchField.new(prepend: glyph('pencil'), append: glyph('camera-retro')) do
-  #     #content
-  #   end
+  #   switch_field 'name', { data: argument }, { option: argument }
   #
   # ==== Helper
   #
