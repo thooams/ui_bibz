@@ -1,4 +1,4 @@
-@Form = class Form
+@UiBibzForm = class Form
 
   constructor: ->
     @selectPicker()
