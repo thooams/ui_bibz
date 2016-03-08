@@ -49,7 +49,7 @@ module UiBibz::Ui::Core
     # Render html tag
     def render
       if options[:builder].nil?
-        check_box_tag content, value, options[:checked], html_options
+        check_box_tag content, value, html_options[:checked], html_options
       else
         options[:builder].check_box_tag content, html_options
       end
@@ -83,11 +83,6 @@ module UiBibz::Ui::Core
 
     def matching_size
       { xs: 'small', md: 'normal', lg: 'large' }
-    end
-
-    # true, false => default : true
-    def checked
-      @options[:status] == :active ? { checked: :checked } : {}
     end
 
     # true, false => default : true

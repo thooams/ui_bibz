@@ -38,21 +38,20 @@ module UiBibz
       autoload :Col,                     "ui_bibz/ui/core/layout/col"
       autoload :Container,               "ui_bibz/ui/core/layout/container"
 
+      # Nav section
+      autoload :Nav,                     "ui_bibz/ui/core/nav/nav"
+      autoload :Navbar,                  "ui_bibz/ui/core/nav/navbar"
+
       # Other section
       autoload :Alert,                   "ui_bibz/ui/core/alert"
       autoload :Breadcrumb,              "ui_bibz/ui/core/breadcrumb/breadcrumb"
-        # Buttons, cards
       autoload :Component,               "ui_bibz/ui/core/component"
       autoload :Dropdown,                "ui_bibz/ui/core/dropdown/dropdown"
       autoload :Glyph,                   "ui_bibz/ui/core/glyph"
-        # Inputs
       autoload :Jumbotron,               "ui_bibz/ui/core/jumbotron"
       autoload :Label,                   "ui_bibz/ui/core/label"
-        # Layouts
       autoload :ListGroup,               "ui_bibz/ui/core/list/list_group"
       autoload :Modal,                   "ui_bibz/ui/core/modal/modal"
-      autoload :Nav,                     "ui_bibz/ui/core/nav/nav"
-      autoload :Navbar,                  "ui_bibz/ui/core/nav/navbar"
       autoload :Progress,                "ui_bibz/ui/core/progress"
       autoload :Stars,                   "ui_bibz/ui/core/stars"
       autoload :Tab,                     "ui_bibz/ui/core/nav/tab"
