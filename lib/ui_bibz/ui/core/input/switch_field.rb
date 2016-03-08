@@ -68,9 +68,7 @@ module UiBibz::Ui::Core
     def component_html_data
       size
       status
-      checked
       animate
-      readonly
       on_color
       off_color
       on_text
@@ -99,12 +97,7 @@ module UiBibz::Ui::Core
 
     # active, disabled => default : active
     def status
-      ((options[:status] == 'disabled') & (!options[:status].nil?)) ? (add_html_option('disabled')) : (@options[:status] == :active)
-    end
-
-    # true, false => default : false
-    def readonly
-      ((options[:readonly] == true) & (!options[:readonly].nil?)) ? (add_html_option('readonly')) : ""
+      html_options[:disabled] = true if options[:status] == 'disabled'
     end
 
     # 'primary', 'info', 'success', 'warning', 'danger', 'default' => default : default

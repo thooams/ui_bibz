@@ -129,12 +129,8 @@ module UiBibz::Ui::Core
     # Add html data arguments
     def add_html_data name, value = true
       html_options[:data] = {} if html_options[:data].nil?
+      value = value.kind_of?(String) ? value.strip : value
       html_options[:data].update(Hash[name, value])
-    end
-
-    # Add html option (for readonly and status methods of switch_field)
-    def add_html_option name
-      html_options[name] = name if html_options[:name].nil?
     end
 
   private
