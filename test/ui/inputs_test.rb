@@ -81,15 +81,15 @@ class InputsTest < ActionView::TestCase
     # OK
     test 'switch_field size' do
       actual = UiBibz::Ui::Core::SwitchField.new('test', size: :lg).render
-      expected = "<input type=\"radio\" name=\"test\" id=\"test_\" data-size=\"large\" class=\"switch\" />"
+      expected = "<input type=\"checkbox\" name=\"test\" id=\"test\" data-size=\"large\" class=\"switch\" />"
 
       assert_equal expected, actual
     end
 
     # OK
     test 'switch_field animate' do
-      actual = UiBibz::Ui::Core::SwitchField.new('test', animate: true).render
-      expected = "<input type=\"radio\" name=\"test\" id=\"test_\" data-animate=\"true\" class=\"switch\" />"
+      actual = UiBibz::Ui::Core::SwitchField.new('test', animate: false).render
+      expected = "<input type=\"checkbox\" name=\"test\" id=\"test\" data-animate=\"false\" class=\"switch\" />"
 
       assert_equal expected, actual
     end
@@ -97,7 +97,7 @@ class InputsTest < ActionView::TestCase
     # OK
     test 'switch_field checked' do
       actual = UiBibz::Ui::Core::SwitchField.new('test', checked: true).render
-      expected = "<input type=\"radio\" name=\"test\" id=\"test_\" class=\"switch\" checked=\"checked\" />"
+      expected = "<input type=\"checkbox\" name=\"test\" id=\"test\" class=\"switch\" checked=\"checked\" />"
 
       assert_equal expected, actual
     end
@@ -105,71 +105,55 @@ class InputsTest < ActionView::TestCase
     # OK
     test 'switch_field status' do
       actual = UiBibz::Ui::Core::SwitchField.new('test', status: "disabled").render
-      expected = "<input type=\"radio\" name=\"test\" id=\"test_\" data-active=\"disabled\" class=\"switch\" />"
+      expected = "<input type=\"checkbox\" name=\"test\" id=\"test\" disabled=\"disabled\" class=\"disabled switch\" />"
 
       assert_equal expected, actual
     end
 
-    # OK
+    # NON FONCTIONNEL
     test 'switch_field readonly' do
       actual = UiBibz::Ui::Core::SwitchField.new('test', readonly: true).render
-      expected = "<input type=\"radio\" name=\"test\" id=\"test_\" data-readonly=\"true\" class=\"switch\" />"
+      expected = "<input type=\"checkbox\" name=\"test\" id=\"test\" readonly=\"readonly\" class=\"switch\" />"
 
       assert_equal expected, actual
     end
 
     # OK
-    test 'switch_field default_value' do
-      actual = UiBibz::Ui::Core::SwitchField.new('test', default_value: false).render
-      expected = "<input type=\"radio\" name=\"test\" id=\"test_\" data-default-value=\"false\" class=\"switch\" />"
+    test 'switch_field on_color' do
+      actual = UiBibz::Ui::Core::SwitchField.new('test', on_color: "success").render
+      expected = "<input type=\"checkbox\" name=\"test\" id=\"test\" data-on-color=\"success\" class=\"switch\" />"
 
       assert_equal expected, actual
     end
 
     # OK
-    test 'switch_field on_state' do
-      actual = UiBibz::Ui::Core::SwitchField.new('test', on_state: "success").render
-      expected = "<input type=\"radio\" name=\"test\" id=\"test_\" data-on=\"success\" class=\"switch\" />"
+    test 'switch_field off_color' do
+      actual = UiBibz::Ui::Core::SwitchField.new('test', off_color: "info").render
+      expected = "<input type=\"checkbox\" name=\"test\" id=\"test\" data-off-color=\"info\" class=\"switch\" />"
 
       assert_equal expected, actual
     end
 
     # OK
-    test 'switch_field off_state' do
-      actual = UiBibz::Ui::Core::SwitchField.new('test', off_state: "info").render
-      expected = "<input type=\"radio\" name=\"test\" id=\"test_\" data-off=\"info\" class=\"switch\" />"
+    test 'switch_field label_text' do
+      actual = UiBibz::Ui::Core::SwitchField.new('test', label_text: "testlabeltext").render
+      expected = "<input type=\"checkbox\" name=\"test\" id=\"test\" data-label-text=\"testlabeltext\" class=\"switch\" />"
 
       assert_equal expected, actual
     end
 
     # OK
-    test 'switch_field text_label' do
-      actual = UiBibz::Ui::Core::SwitchField.new('test', text_label: "testlabeltext").render
-      expected = "<input type=\"radio\" name=\"test\" id=\"test_\" data-text-label=\"testlabeltext\" class=\"switch\" />"
+    test 'switch_field on_text' do
+      actual = UiBibz::Ui::Core::SwitchField.new('test', on_text: 'testonlabel').render
+      expected = "<input type=\"checkbox\" name=\"test\" id=\"test\" data-on-text=\"testonlabel\" class=\"switch\" />"
 
       assert_equal expected, actual
     end
 
     # OK
-    test 'switch_field label_icon' do
-      actual = UiBibz::Ui::Core::SwitchField.new('test', label_icon: "testlabelicon").render
-      expected = "<input type=\"radio\" name=\"test\" id=\"test_\" data-label-icon=\"testlabelicon\" class=\"switch\" />"
-
-      assert_equal expected, actual
-    end
-
-    # OK
-    test 'switch_field on_label' do
-      actual = UiBibz::Ui::Core::SwitchField.new('test', on_label: 'testonlabel').render
-      expected = "<input type=\"radio\" name=\"test\" id=\"test_\" data-on-label=\"testonlabel\" class=\"switch\" />"
-
-      assert_equal expected, actual
-    end
-
-    # OK
-    test 'switch_field off_label' do
-      actual = UiBibz::Ui::Core::SwitchField.new('test', off_label: "testofflabel").render
-      expected = "<input type=\"radio\" name=\"test\" id=\"test_\" data-off-label=\"testofflabel\" class=\"switch\" />"
+    test 'switch_field off_text' do
+      actual = UiBibz::Ui::Core::SwitchField.new('test', off_text: "testofflabel").render
+      expected = "<input type=\"checkbox\" name=\"test\" id=\"test\" data-off-text=\"testofflabel\" class=\"switch\" />"
 
       assert_equal expected, actual
     end

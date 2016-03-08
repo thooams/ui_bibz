@@ -49,9 +49,9 @@ module UiBibz::Ui::Core
     # Render html tag
     def render
       if options[:builder].nil?
-        radio_button_tag content, value, options[:checked], html_options
+        check_box_tag content, value, options[:checked], html_options
       else
-        options[:builder].radio_button content, html_options
+        options[:builder].check_box_tag content, html_options
       end
     end
 
@@ -69,15 +69,13 @@ module UiBibz::Ui::Core
       size
       status
       checked
-      default_value
       animate
       readonly
-      on_state
-      off_state
-      on_label
-      off_label
-      text_label
-      label_icon
+      on_color
+      off_color
+      on_text
+      off_text
+      label_text
     end
 
     # '', 'mini', 'small', 'normal', 'large'
@@ -89,60 +87,49 @@ module UiBibz::Ui::Core
       { xs: 'small', md: 'normal', lg: 'large' }
     end
 
-    def default_value
-      #options[:default_value] unless options[:default_value].nil?
-      add_html_data('default_value', options[:default_value]) unless options[:default_value].nil?
-    end
-
     # true, false => default : true
     def checked
       @options[:status] == :active ? { checked: :checked } : {}
-      #add_html_data('checked', options[:checked]) unless options[:checked].nil?
     end
 
     # true, false => default : true
     def animate
-      add_html_data('animate') unless options[:animate].nil?
+      add_html_data('animate', options.delete(:animate)) unless options[:animate].nil?
     end
 
-    # true, false => default : false
+    # active, disabled => default : active
     def status
-      add_html_data('active', options.delete(:status)) unless options[:status].nil?
+      ((options[:status] == 'disabled') & (!options[:status].nil?)) ? (add_html_option('disabled')) : (@options[:status] == :active)
     end
 
     # true, false => default : false
     def readonly
-      add_html_data('readonly') unless options[:readonly].nil?
+      ((options[:readonly] == true) & (!options[:readonly].nil?)) ? (add_html_option('readonly')) : ""
     end
 
     # 'primary', 'info', 'success', 'warning', 'danger', 'default' => default : default
-    def on_state
-      add_html_data('on', options[:on_state]) unless options[:on_state].nil?
+    def on_color
+      add_html_data('on_color', options[:on_color]) unless options[:on_color].nil?
     end
 
     # 'primary', 'info', 'success', 'warning', 'danger', 'default' => default : default
-    def off_state
-      add_html_data('off', options[:off_state]) unless options[:off_state].nil?
+    def off_color
+      add_html_data('off_color', options[:off_color]) unless options[:off_color].nil?
     end
 
     # String => default : "ON"
-    def on_label
-      add_html_data('on_label', options[:on_label]) unless options[:on_label].nil?
+    def on_text
+      add_html_data('on_text', options[:on_text]) unless options[:on_text].nil?
     end
 
     # String => default : "OFF"
-    def off_label
-      add_html_data('off_label', options[:off_label]) unless options[:off_label].nil?
+    def off_text
+      add_html_data('off_text', options[:off_text]) unless options[:off_text].nil?
     end
 
     # String => default : '&nbsp;'
-    def text_label
-      add_html_data('text_label', options[:text_label]) unless options[:text_label].nil?
-    end
-
-    # String => default : nil
-    def label_icon
-      add_html_data('label_icon', options[:label_icon]) unless options[:label_icon].nil?
+    def label_text
+      add_html_data('label_text', options[:label_text]) unless options[:label_text].nil?
     end
 
   end
