@@ -34,7 +34,7 @@ module UiBibz::Ui::Core
   #
   # ==== Examples
   #
-  #   switch_field 'name', { data: argument }, { option: argument }
+  #   switch_field 'name', { on_color: :primary }, { readonly: true }
   #
   # ==== Helper
   #
