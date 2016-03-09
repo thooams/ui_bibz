@@ -96,23 +96,23 @@ class InputsTest < ActionView::TestCase
 
     # OK
     test 'switch_field checked' do
-      actual = UiBibz::Ui::Core::SwitchField.new('test', checked: true).render
-      expected = "<input type=\"checkbox\" name=\"test\" id=\"test\" class=\"switch\" checked=\"checked\" />"
+      actual = UiBibz::Ui::Core::SwitchField.new('test', {}, checked: true).render
+      expected = "<input type=\"checkbox\" name=\"test\" id=\"test\" checked=\"checked\" class=\"switch\" />"
 
       assert_equal expected, actual
     end
 
     # OK
     test 'switch_field status' do
-      actual = UiBibz::Ui::Core::SwitchField.new('test', status: "disabled").render
-      expected = "<input type=\"checkbox\" name=\"test\" id=\"test\" disabled=\"disabled\" class=\"disabled switch\" />"
+      actual = UiBibz::Ui::Core::SwitchField.new('test', {}, status: "disabled").render
+      expected = "<input type=\"checkbox\" name=\"test\" id=\"test\" status=\"disabled\" class=\"switch\" />"
 
       assert_equal expected, actual
     end
 
     # NON FONCTIONNEL
     test 'switch_field readonly' do
-      actual = UiBibz::Ui::Core::SwitchField.new('test', readonly: true).render
+      actual = UiBibz::Ui::Core::SwitchField.new('test', {}, readonly: true).render
       expected = "<input type=\"checkbox\" name=\"test\" id=\"test\" readonly=\"readonly\" class=\"switch\" />"
 
       assert_equal expected, actual
