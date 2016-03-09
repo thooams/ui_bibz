@@ -22,6 +22,18 @@ module UiBibz::Ui::Ux
   #   * +actionable+ - Boolean
   #   * +sortable+ - Boolean
   #   * +searchable+ - Boolean
+  #   * +state+
+  #     (+:inverse+)
+  #   * +thead+ - Hash
+  #     (+state+)
+  #       (+inverse+, +default+)
+  #   * +bordered+ - Boolean
+  #   * +hoverable+ - Boolean
+  #   * +size+
+  #     (+sm+)
+  #   * +responsive+ - Boolean
+  #   * +reflow+ - Boolean
+  #
   #
   # ==== Signatures
   #
