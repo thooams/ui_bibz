@@ -163,14 +163,16 @@ module UiBibz::Ui::Ux
         ths = action.header ths
         concat Thead.new(content_tag(:tr, ths.join.html_safe), @options[:thead]).render
 
-        store.records.each do |record|
+        trs = store.records.collect do |record|
           tds = cols.collect do |col|
             content_tag(:td, td_content(record, col)) unless col.hidden?
           end
 
           tds = action.body record, tds
-          concat content_tag(:tbody, content_tag(:tr, tds.join.html_safe))
+          content_tag(:tr, tds.join.html_safe)
         end
+
+        concat content_tag :tbody, trs.join.html_safe
       end
     end
 

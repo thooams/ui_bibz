@@ -193,4 +193,19 @@ class TableTest < ActionView::TestCase
     end
   end
 
+  test 'table visual options' do
+    table  = UiBibz::Ui::Ux::Table.new(store: @users, striped: true, state: :inverse, responsive: true, bordered: true, size: :sm, hoverable: true, reflow: true).render
+    actual = Nokogiri::HTML(table).xpath("//table")[0].attributes["class"].value
+    expected = "table-inverse table table-striped table-bordered table-hoverable table-sm table-responsive table-reflow"
+
+    assert_equal expected, actual
+  end
+
+  test 'table thead visual options' do
+    table  = UiBibz::Ui::Ux::Table.new(store: @users, thead: { state: :default }).render
+    actual = Nokogiri::HTML(table).xpath("//thead")[0].attributes["class"].value
+    expected = "thead-default"
+
+    assert_equal expected, actual
+  end
 end
