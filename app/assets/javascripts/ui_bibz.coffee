@@ -14,13 +14,8 @@
 #= require interface
 #= require form
 
-# For turbolink
-$(document).on 'ready page:load', (event) ->
 
-  window.UiBibz ||= new UiBibz
-  return
-
-class UiBibz
+@UiBibz = class UiBibz
 
   constructor: ->
     @table     = new window.UiBibzTable
@@ -29,3 +24,4 @@ class UiBibz
     delete window.UiBibzTable
     delete window.UiBibzForm
     delete window.UiBibzInterface
+
