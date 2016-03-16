@@ -8,6 +8,7 @@
 #= require bootstrap-switch.min
 #= require bootstrap-multiselect.min
 #= require multi_column
+#= require fix-bootstrap
 
 # Ui Bibz
 #= require table
