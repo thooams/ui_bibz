@@ -26,3 +26,7 @@
     delete window.UiBibzForm
     delete window.UiBibzInterface
 
+ready = ->
+  window.UiBibz ||= new UiBibz
+
+$(document).ready(ready)
