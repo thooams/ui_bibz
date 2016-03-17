@@ -8,7 +8,7 @@
 #= require bootstrap-switch.min
 #= require bootstrap-multiselect.min
 #= require multi_column
-#= require fix-bootstrap
+#= require fix-turbolink
 
 # Ui Bibz
 #= require table
