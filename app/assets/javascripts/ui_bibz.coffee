@@ -1,13 +1,18 @@
 #= require jquery
 #= require jquery_ujs
+
 #= require tether
+
+# Bootstrap
 #= require bootstrap-sprockets
 #= require bootstrap
 #= require bootstrap-datepicker.min
 #= require bootstrap-select.min
 #= require bootstrap-switch.min
 #= require bootstrap-multiselect.min
+
 #= require multi_column
+
 #= require fix-turbolink
 
 # Ui Bibz
