@@ -61,7 +61,7 @@ module UiBibz::Ui::Core
     end
 
     def component_html_options
-      { role: type, data: { toggle: 'buttons' } }
+      { role: type }
     end
 
     def component_html_data

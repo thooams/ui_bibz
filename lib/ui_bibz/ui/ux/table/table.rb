@@ -2,6 +2,7 @@ require "ui_bibz/ui/ux/table/components/store"
 require "ui_bibz/ui/ux/table/components/columns"
 require "ui_bibz/ui/ux/table/components/column"
 require "ui_bibz/ui/ux/table/components/actions"
+require "ui_bibz/ui/ux/table/components/thead"
 require "ui_bibz/ui/ux/table/extensions/paginable"
 require "ui_bibz/ui/ux/table/extensions/paginable"
 require "ui_bibz/ui/ux/table/extensions/searchable"
@@ -30,6 +31,18 @@ module UiBibz::Ui::Ux
   # * +sortable+ - Boolean
   # * +searchable+ - Boolean
   # * +default_actions+ - Boolean
+  # * +state+
+  #   (+:inverse+, +:default+, +:success+, +:primary+, +:secondary+, +:info+,
+  #   +:danger+, +:warning+)
+  # * +thead+ - Hash
+  #   (+state+)
+  #     (+:inverse+, +:default+)
+  # * +bordered+ - Boolean
+  # * +hoverable+ - Boolean
+  # * +size+
+  #   (+:sm+)
+  # * +responsive+ - Boolean
+  # * +reflow+ - Boolean
   #
   # ==== Signatures
   #
@@ -148,16 +161,18 @@ module UiBibz::Ui::Ux
         end
 
         ths = action.header ths
-        concat content_tag(:tr, ths.join.html_safe)
+        concat Thead.new(content_tag(:tr, ths.join.html_safe), @options[:thead]).render
 
-        store.records.each do |record|
+        trs = store.records.collect do |record|
           tds = cols.collect do |col|
             content_tag(:td, td_content(record, col)) unless col.hidden?
           end
 
           tds = action.body record, tds
-          concat content_tag :tr, tds.join.html_safe
+          content_tag(:tr, tds.join.html_safe)
         end
+
+        concat content_tag :tbody, trs.join.html_safe
       end
     end
 
@@ -175,7 +190,35 @@ module UiBibz::Ui::Ux
   private
 
     def component_html_classes
-      ["table", type]
+      ["table", striped, bordered, hoverable, size, responsive, reflow]
+    end
+
+    def state
+      "table-#{ @options[:state] }" unless @options[:state].nil?
+    end
+
+    def striped
+      "table-striped" unless @options[:striped].nil?
+    end
+
+    def bordered
+      "table-bordered" unless @options[:bordered].nil?
+    end
+
+    def hoverable
+      "table-hoverable" unless @options[:hoverable].nil?
+    end
+
+    def size
+      "table-#{ @options[:size] }" unless @options[:size].nil?
+    end
+
+    def responsive
+      "table-responsive" unless @options[:responsive].nil?
+    end
+
+    def reflow
+      "table-reflow" unless @options[:reflow].nil?
     end
 
   end
