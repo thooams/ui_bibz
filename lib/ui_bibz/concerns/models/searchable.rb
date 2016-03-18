@@ -27,8 +27,12 @@ module UiBibz::Concerns::Models::Searchable
         id:                    @arguments[:store_id],
         records:               search_sort_paginate,
         searchable_attributes: @searchable_attributes,
-        model:                 self
+        model:                 create_model
       }
+    end
+
+    def self.create_model
+      @arguments[:model].nil? ? self : @arguments[:model].to_s.camelize.classify.constantize
     end
 
     # If there is more one table in html page
@@ -115,7 +119,7 @@ module UiBibz::Concerns::Models::Searchable
             sql_subquery << "lower(#{ key_name }.#{ attribute.values.first }) LIKE :#{ key_name }_#{ attribute.values.first }_#{ i }"
             sql_attributes = sql_attributes.merge(Hash["#{ key_name }_#{ attribute.values.first }_#{ i }".to_sym, "%#{ pattern }%"])
           else
-            sql_subquery << "lower(#{ self.to_s.underscore.pluralize }.#{ attribute }) LIKE :#{ attribute }_#{ i }"
+            sql_subquery << "lower(#{ self.to_s.underscore.pluralize.split('/').last }.#{ attribute }) LIKE :#{ attribute }_#{ i }"
             sql_attributes = sql_attributes.merge(Hash["#{ attribute }_#{ i }".to_sym, "%#{ pattern }%"])
           end
         end
