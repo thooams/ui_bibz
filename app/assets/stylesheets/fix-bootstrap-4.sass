@@ -9,7 +9,18 @@
     label, span.help-block
       color: $value
 
-.btn-group > .btn + .dropdown-toggle
-  height: 2.4rem
-  padding-right: 8px
-  padding-left: 8px
+// fix dropdown size
+.btn-group
+  // fix dropdown sticky
+  padding: 0 0 0.2rem 0.05rem
+  // size default (md)
+  .btn + .dropdown-toggle
+    height: 2.37rem
+    padding-right: 8px
+    padding-left: 8px
+  // size sm
+  .btn-sm + .dropdown-toggle
+    height: 1.94rem
+  // size lg
+  .btn-lg + .dropdown-toggle
+    height: 3.28rem

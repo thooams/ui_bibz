@@ -3,6 +3,7 @@
   constructor: ->
     @nav()
     @tooltip()
+    @dropdown()
 
   nav: ->
     $('.nav-tabs a').click (e) ->
@@ -12,4 +13,5 @@
   tooltip: ->
     $('[data-toggle="tooltip"]').tooltip()
 
-
+  dropdown: ->
+    $('.dropdown-toggle').dropdown()
