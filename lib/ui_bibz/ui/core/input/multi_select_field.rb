@@ -3,6 +3,7 @@ module UiBibz::Ui::Core
   # Create a MultiSelectField
   #
   # This element is an extend of UiBibz::Ui::Core::Component.
+  # source : http://loudev.com/
   #
   # ==== Attributes
   #

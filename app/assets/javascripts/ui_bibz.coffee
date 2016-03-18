@@ -1,19 +1,17 @@
 #= require jquery
 #= require jquery_ujs
 
-#= require tether
+#= require jquery.quicksearch.min
+#= require jquery.multi-select.min
 
 # Bootstrap
+#= require tether
 #= require bootstrap-sprockets
 #= require bootstrap
 #= require bootstrap-datepicker.min
 #= require bootstrap-select.min
 #= require bootstrap-switch.min
 #= require bootstrap-multiselect.min
-
-#= require multi_column
-
-#= require fix-turbolink
 
 # Ui Bibz
 #= require table
@@ -24,14 +22,14 @@
 @UiBibz = class UiBibz
 
   constructor: ->
-    @table     = new window.UiBibzTable
-    @form      = new window.UiBibzForm
-    @interface = new window.UiBibzInterface
-    delete window.UiBibzTable
-    delete window.UiBibzForm
-    delete window.UiBibzInterface
+    @table     = new window.UiBibzTable()
+    @form      = new window.UiBibzForm()
+    @interface = new window.UiBibzInterface()
+    #delete window.UiBibzTable
+    #delete window.UiBibzForm
+    #delete window.UiBibzInterface
 
 ready = ->
-  window.UiBibz ||= new UiBibz
+  new UiBibz
 
-$(document).ready(ready)
+$(document).on('turbolinks:load page:change', ready)
