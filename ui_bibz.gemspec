@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.email       = ["thooams@gmail.com"]
   s.homepage    = "http://thooams.github.io/Ui-Bibz/"
   s.summary     = "A Rails Bootstrap framework..."
-  s.description = "A Rails Boostrap framework..."
+  s.description = "A Rails Bootstrap framework..."
   s.license     = "MIT"
 
   s.files         = `git ls-files`.split("\n")
