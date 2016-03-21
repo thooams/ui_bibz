@@ -3,9 +3,9 @@ module CustomInputs
     include UiBibz::Ui::Core
 
     def input(wrapper_options)
-      input_options = input_options || {}
-      input_options = input_options.merge({ builder: @builder })
-      UiBibz::Ui::Core::SurroundField.new(attribute_name, input_options, input_html_options).render
+      options = options || {}
+      options = options.merge({ builder: @builder })
+      UiBibz::Ui::Core::SurroundField.new(attribute_name, options, input_html_options).render
     end
 
   end
