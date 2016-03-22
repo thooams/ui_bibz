@@ -1,4 +1,5 @@
 module CustomInputs
+  # multi_column_input manages collection and grouped_collection
   class MultiColumnInput < SimpleForm::Inputs::CollectionInput
     include UiBibz::Ui::Core
 
@@ -9,16 +10,19 @@ module CustomInputs
       input_options.delete(:prompt)
       input_options.merge!({include_blank: false})
 
-      #@builder.collection_select(
-        #attribute_name, collection, value_method, label_method,
-        #input_options, i.html_options
-      #)
-      @builder.grouped_collection_select(
-        attribute_name, grouped_collection,
-        group_method, group_label_method,
-        value_method, label_method,
-        input_options, i.html_options
-      )
+      if options[:grouped] == true
+        @builder.grouped_collection_select(
+          attribute_name, grouped_collection,
+          group_method, group_label_method,
+          value_method, label_method,
+          input_options, i.html_options
+        )
+      else
+        @builder.collection_select(
+         attribute_name, collection, value_method, label_method,
+         input_options, i.html_options
+        )
+      end
     end
 
     def grouped_collection
@@ -29,8 +33,16 @@ module CustomInputs
     end
 
     # Sample collection
+    #def group_collection
+      #@group_collection ||= grouped_collection.map { |collection| collection.try(:send, group_method) }.detect(&:present?) || []
+    #end
+
     def collection
-      @collection ||= grouped_collection.map { |collection| collection.try(:send, group_method) }.detect(&:present?) || []
+      if options[:grouped]
+        @collection ||= grouped_collection.map { |collection| collection.try(:send, group_method) }.detect(&:present?) || []
+      else
+        @collection ||= options[:collection]
+      end
     end
 
     def group_method
@@ -48,13 +60,5 @@ module CustomInputs
       label
     end
 
-    def detect_method_from_class(collection_classes)
-      return {} if collection_classes.empty?
-
-      sample = collection_classes.first
-
-      { label: SimpleForm.collection_label_methods.find { |m| sample.instance_methods.include?(m) },
-        value: SimpleForm.collection_value_methods.find { |m| sample.instance_methods.include?(m) } }
-    end
   end
 end
