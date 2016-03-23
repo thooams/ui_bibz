@@ -182,10 +182,6 @@ module UiBibz::Ui::Ux
       content_tag :div, @table.render, class: 'card-table'
     end
 
-    def panel_classes
-      %w(panel panel-default table-panel)
-    end
-
     def search
       @search ||= Searchable.new store, @options.merge({ wrap_form: false }), { class: 'card-header' }
     end
