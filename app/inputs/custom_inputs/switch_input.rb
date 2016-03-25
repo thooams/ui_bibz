@@ -1,5 +1,5 @@
 module CustomInputs
-  class SurroundInput < SimpleForm::Inputs::StringInput
+  class SwitchInput < SimpleForm::Inputs::Base
     include UiBibz::Ui::Core
 
     def input(wrapper_options)
