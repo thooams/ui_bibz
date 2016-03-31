@@ -17,6 +17,7 @@
 #= require table
 #= require interface
 #= require form
+#= require fix_bootstrap
 
 
 @UiBibz = class UiBibz
