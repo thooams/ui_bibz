@@ -10,7 +10,7 @@
     $('.selectpicker').selectpicker()
 
   switch: ->
-    $('.switch').bootstrapSwitch()
+    $('input.switch').bootstrapSwitch()
 
   multiSelect: ->
     # http://loudev.com/
