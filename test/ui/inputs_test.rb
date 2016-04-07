@@ -40,7 +40,7 @@ class InputsTest < ActionView::TestCase
     test "Multi Select Field" do
       options  = options_for_select(2.times.map{ |i| "option #{i}" })
       actual   = UiBibz::Ui::Core::MultiSelectField.new('example', option_tags: options).render
-      expected = "<select name=\"example[]\" id=\"example\" class=\"btn-primary btn multi-select\" multiple=\"multiple\"><option value=\"option 0\">option 0</option>
+      expected = "<select name=\"example[]\" id=\"example\" class=\"btn-secondary btn multi-select\" multiple=\"multiple\"><option value=\"option 0\">option 0</option>
 <option value=\"option 1\">option 1</option></select>"
 
       assert_equal expected, actual
@@ -49,7 +49,7 @@ class InputsTest < ActionView::TestCase
     test "Multi Select Field data html options" do
       grouped_options = { 'North America' => [['United States','US'], 'Canada'], 'Europe' => ['Denmark','Germany','France'] }
       actual   = UiBibz::Ui::Core::MultiSelectField.new('example', { option_tags: grouped_options_for_select(grouped_options), clickable_opt_group: true, collapsible_opt_group: true, searchable: true, select_all_option: true, state: :danger }).render
-      expected = "<select name=\"example[]\" id=\"example\" data-enable-clickable-opt-groups=\"true\" data-enable-collapsible-opt-groups=\"true\" data-enable-filtering=\"true\" data-include-select-all-option=\"true\" class=\"btn-danger btn multi-select\" multiple=\"multiple\"><optgroup label=\"North America\"><option value=\"US\">United States</option>
+      expected = "<select name=\"example[]\" id=\"example\" data-enable-clickable-opt-groups=\"true\" data-enable-collapsible-opt-groups=\"true\" data-enable-filtering=\"true\" data-include-select-all-option=\"true\" class=\"danger btn multi-select\" multiple=\"multiple\"><optgroup label=\"North America\"><option value=\"US\">United States</option>
 <option value=\"Canada\">Canada</option></optgroup><optgroup label=\"Europe\"><option value=\"Denmark\">Denmark</option>
 <option value=\"Germany\">Germany</option>
 <option value=\"France\">France</option></optgroup></select>"
