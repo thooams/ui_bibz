@@ -7,7 +7,10 @@
     @multiColumn()
 
   selectPicker: ->
-    $('.selectpicker').selectpicker()
+    $('select.selectpicker').selectpicker
+      iconBase: 'fa'
+      tickIcon: 'fa-check'
+      style:    'btn-secondary'
 
   switch: ->
     $('input.switch').bootstrapSwitch()

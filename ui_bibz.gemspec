@@ -20,6 +20,7 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib", "vendor"]
 
   # rails
+  s.add_dependency 'bundler', '>= 1.8.4'
   s.add_dependency 'rails', '>= 4.2.0'
   s.add_dependency 'will_paginate', '~> 3.1.0'
   s.add_dependency 'will_paginate-bootstrap'
@@ -30,6 +31,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'font-awesome-sass'
   s.add_dependency 'bootstrap', '< 4.0.0.alpha3'
   s.add_dependency 'rails-assets-tether', '>= 1.1.0'
+  s.add_dependency 'rails-assets-bootstrap-select', '>= 1.10.0'
 
   s.add_development_dependency "minitest"
   s.add_development_dependency "rdoc"

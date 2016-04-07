@@ -64,6 +64,8 @@ module UiBibz::Ui::Core
       max_options
       selected_text_format
       menu_size
+      style
+      header
       actions_box
     end
 
@@ -82,7 +84,7 @@ module UiBibz::Ui::Core
     end
 
     def style
-      add_html_data('style', "btn-#{ options[:state] }") if options[:state]
+      add_html_data('style', "btn-#{ options[:state]}") if options[:style]
     end
 
     def menu_size

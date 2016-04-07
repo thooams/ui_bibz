@@ -2,6 +2,7 @@
 require 'will_paginate'
 require 'bootstrap'
 require 'rails-assets-tether'
+require 'rails-assets-bootstrap-select'
 require "font-awesome-sass"
 
 module UiBibz
