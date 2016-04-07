@@ -3,7 +3,7 @@ module UiBibz::Ui::Core
   # Create a DropdownSelectField
   #
   # This element is an extend of UiBibz::Ui::Core::Component.
-  # source : http://loudev.com/
+  # source : http://silviomoreto.github.io/bootstrap-select/examples/
   #
   # ==== Attributes
   #
@@ -15,31 +15,38 @@ module UiBibz::Ui::Core
   #
   # You can add HTML attributes using the +html_options+.
   # You can pass arguments in options attribute:
+  # * +state+ - State of élement with symbol value:
+  #   (+:primary+, +:secondary+, +:info+, +:warning+, +:danger+, +:link+)
   # * option_tags - Array, Object [required]
-  # * clickable_opt_group - Boolean
-  # * collapsible_opt_group - Boolean
   # * searchable - Boolean
-  # * select_all_option - Boolean
+  # * max_options - Integer
+  # * selected_text_format - String
+  # * menu_size - Integer
+  # * header - String
+  # * actions_box - Boolean
+  # * show_tick - Boolean
+  # * show_menu_arrow - Boolean
+  # * dropup - Boolean
   #
   # ==== Signatures
   #
-  #   UiBibz::Ui::Core::MultiSelectField.new(content, options = {}, html_options = {}).render
+  #   UiBibz::Ui::Core::DropdownSelectField.new(content, options = {}, html_options = {}).render
   #
-  #   UiBibz::Ui::Core::MultiSelectField.new(options = {}, html_options = {}) do
+  #   UiBibz::Ui::Core::DropdownSelectField.new(options = {}, html_options = {}) do
   #     content
   #   end.render
   #
   # ==== Examples
   #
-  #   UiBibz::Ui::Core::MultiSelectField.new('fruits', { option_tags: list_of_fruits, searchable: true }, { class: 'test' })
+  #   UiBibz::Ui::Core::DropdownSelectField.new('fruits', { option_tags: list_of_fruits, searchable: true }, { class: 'test' })
   #
-  #   UiBibz::Ui::Core::MultiSelectField.new({ option_tags: list_of_fruits, select_all_option: true }, { class: 'test' }) do
+  #   UiBibz::Ui::Core::DropdownSelectField.new({ option_tags: list_of_fruits, actions_box: true }, { class: 'test' }) do
   #     'fruits'
   #   end
   #
   # ==== Helper
   #
-  #   multi_select_field(content, options = {}, html_options = {})
+  #   dropdown_select_field(content, options = {}, html_options = {})
   #
   class DropdownSelectField < UiBibz::Ui::Core::Component
 
