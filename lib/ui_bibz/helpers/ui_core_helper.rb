@@ -72,6 +72,10 @@ module UiBibz::Helpers::UiCoreHelper
   def dropdown_select_field content = nil, options = nil, html_options = nil, &block
     UiBibz::Ui::Core::DropdownSelectField.new(content, options, html_options, &block).render
   end
+
+  def autocomplete_field content = nil, options = nil, html_options = nil, &block
+    UiBibz::Ui::Core::AutocompleteField.new(content, options, html_options, &block).render
+  end
   # Input section end ----------------------------------------------------
 
   # Nav section begin ----------------------------------------------------
