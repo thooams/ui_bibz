@@ -13,7 +13,7 @@
       style:    'btn-secondary'
 
   switch: ->
-    $('input.switch').bootstrapSwitch()
+    $('input.switch').bootstrapSwitch({ size: 'large' })
 
   multiSelect: ->
     # http://loudev.com/
