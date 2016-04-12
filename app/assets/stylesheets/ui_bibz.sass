@@ -12,12 +12,14 @@ $brand-secondary: $gray-lighter
 $states_colors: (success: $brand-success, primary: $brand-primary, secondary: $brand-secondary, info: $brand-info, danger: $brand-danger, warning: $brand-warning)
 
 // Boostrap Plugins
-@import bootstrap-datepicker3.min
-@import bootstrap-select.min
-@import bootstrap-switch.min
+@import bootstrap-datepicker
+@import bootstrap-select
+@import bootstrap-switch
 @import bootstrap-multiselect.min
 @import multi-select.min
 @import fix-bootstrap-4
+@import fix-dropdown-select
+@import bootstrap-select
 
 
 // Table section
@@ -65,7 +67,7 @@ $states_colors: (success: $brand-success, primary: $brand-primary, secondary: $b
 
 .table>tbody>tr
   td:last-child
-    height: 39px
+    height: 45px // Maybe find another way
     .dropdown-action
       display: none
 

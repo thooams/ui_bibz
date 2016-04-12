@@ -54,7 +54,7 @@ module UiBibz::Ui::Core
       if options[:builder].nil?
         check_box_tag content, value, html_options[:checked], html_options
       else
-        options[:builder].check_box_tag content, html_options
+        options[:builder].check_box(content, html_options, true, false)
       end
     end
 
@@ -72,11 +72,11 @@ module UiBibz::Ui::Core
       size
       status
       animate
-      on_color
-      off_color
-      on_text
-      off_text
-      label_text
+      left_color
+      right_color
+      left_text
+      right_text
+      middle_text
     end
 
     # '', 'mini', 'small', 'normal', 'large'
@@ -99,28 +99,28 @@ module UiBibz::Ui::Core
     end
 
     # 'primary', 'info', 'success', 'warning', 'danger', 'default' => default : default
-    def on_color
-      add_html_data('on_color', options[:on_color]) unless options[:on_color].nil?
+    def left_color
+      add_html_data('on_color', options[:left_color]) unless options[:left_color].nil?
     end
 
     # 'primary', 'info', 'success', 'warning', 'danger', 'default' => default : default
-    def off_color
-      add_html_data('off_color', options[:off_color]) unless options[:off_color].nil?
+    def right_color
+      add_html_data('off_color', options[:right_color]) unless options[:right_color].nil?
     end
 
     # String => default : "ON"
-    def on_text
-      add_html_data('on_text', options[:on_text]) unless options[:on_text].nil?
+    def left_text
+      add_html_data('on_text', options[:left_text]) unless options[:left_text].nil?
     end
 
     # String => default : "OFF"
-    def off_text
-      add_html_data('off_text', options[:off_text]) unless options[:off_text].nil?
+    def right_text
+      add_html_data('off_text', options[:right_text]) unless options[:right_text].nil?
     end
 
     # String => default : '&nbsp;'
-    def label_text
-      add_html_data('label_text', options[:label_text]) unless options[:label_text].nil?
+    def middle_text
+      add_html_data('label_text', options[:middle_text]) unless options[:middle_text].nil?
     end
 
   end

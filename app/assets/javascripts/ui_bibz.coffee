@@ -8,8 +8,8 @@
 #= require tether
 #= require bootstrap-sprockets
 #= require bootstrap
-#= require bootstrap-datepicker.min
-#= require bootstrap-select.min
+#= require bootstrap-datepicker
+#= require bootstrap-select
 #= require bootstrap-switch.min
 #= require bootstrap-multiselect.min
 
@@ -17,6 +17,7 @@
 #= require table
 #= require interface
 #= require form
+#= require fix_bootstrap
 
 
 @UiBibz = class UiBibz

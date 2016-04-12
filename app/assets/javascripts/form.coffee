@@ -7,10 +7,13 @@
     @multiColumn()
 
   selectPicker: ->
-    $('.selectpicker').selectpicker()
+    $('select.selectpicker').selectpicker
+      iconBase: 'fa'
+      tickIcon: 'fa-check'
+      style:    'btn-secondary'
 
   switch: ->
-    $('.switch').bootstrapSwitch()
+    $('input.switch').bootstrapSwitch({ size: 'large' })
 
   multiSelect: ->
     # http://loudev.com/
