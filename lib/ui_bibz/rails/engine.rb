@@ -1,9 +1,16 @@
 # to load pagination in rails app
 require 'will_paginate'
 require 'bootstrap'
+require "font-awesome-sass"
+
+# Javascript requires
 require 'rails-assets-tether'
 require 'rails-assets-bootstrap-select'
-require "font-awesome-sass"
+require 'rails-assets-bootstrap-datepicker'
+#
+# not compatible with boostrap 4
+#require 'rails-assets-bootstrap-switch'
+#require 'rails-assets-bootstrap-multiselect'
 
 module UiBibz
   module Rails

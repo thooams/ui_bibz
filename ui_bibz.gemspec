@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.name        = "ui_bibz"
   s.version     = UiBibz::VERSION
   s.authors     = ["Thooams"]
-  s.email       = ["thooams@gmail.com"]
+  s.email       = ["thomas@hummel.link"]
   s.homepage    = "http://thooams.github.io/Ui-Bibz/"
   s.summary     = "A Rails Bootstrap framework..."
   s.description = "A Rails Bootstrap framework..."
@@ -19,7 +19,7 @@ Gem::Specification.new do |s|
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = ["lib", "vendor"]
 
-  # rails
+  # Rails gems
   s.add_dependency 'bundler', '>= 1.8.4'
   s.add_dependency 'rails', '>= 4.2.0'
   s.add_dependency 'will_paginate', '~> 3.1.0'
@@ -30,9 +30,17 @@ Gem::Specification.new do |s|
   s.add_dependency 'sass-rails', '>= 5.0.0'
   s.add_dependency 'font-awesome-sass'
   s.add_dependency 'bootstrap', '< 4.0.0.alpha3'
+
+  # Javascript gems (rails-assets.org)
   s.add_dependency 'rails-assets-tether', '>= 1.1.0'
   s.add_dependency 'rails-assets-bootstrap-select', '>= 1.10.0'
+  s.add_dependency 'rails-assets-bootstrap-datepicker', '>= 1.6.0'
 
+  # not compatible with boostrap 4
+  #s.add_dependency 'rails-assets-bootstrap-switch', '>= 3.3.2'
+  #s.add_dependency 'rails-assets-bootstrap-multiselect', '>= 0.9.13'
+
+  # Development gems
   s.add_development_dependency "minitest"
   s.add_development_dependency "rdoc"
   s.add_development_dependency "sqlite3"

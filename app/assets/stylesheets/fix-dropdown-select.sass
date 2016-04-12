@@ -4,6 +4,38 @@
 // Dropdown menus
 // --------------------------------------------------
 
+$fix-caret-width-base:          4px !default
+$fix-dropdown-fallback-border:  #ccc !default
+$fix-border-radius-base:        #ccc !default
+$fix-border-radius-base:        4px !default
+$fix-border-radius-large:       6px !default
+$fix-border-radius-small:       3px !default
+$fix-line-height-base:          1.428571429 !default
+$fix-font-size-base:            14px
+$fix-font-size-large:           ceil(($fix-font-size-base * 1.25))
+$fix-font-size-small:           ceil(($fix-font-size-base * 0.85))
+$fix-line-height-computed:      floor(($fix-font-size-base * $fix-line-height-base)) !default
+$fix-screen-sm:                  768px
+$fix-screen-sm-min:              $fix-screen-sm
+$fix-screen-md:                 992px
+$fix-screen-md-min:             $fix-screen-md
+$fix-screen-sm-max:             ($fix-screen-md-min - 1)
+$fix-grid-float-breakpoint:     $fix-screen-sm-min
+$fix-zindex-dropdown:           1000
+$fix-dropdown-bg:               #fff
+$fix-dropdown-border:           rgba(0,0,0,.15)
+$fix-dropdown-divider-bg:       #e5e5e5
+$fix-dropdown-link-color:       $gray-dark
+$fix-dropdown-link-hover-color: darken($gray-dark, 5%)
+$fix-dropdown-link-hover-bg:    #f5f5f
+$fix-dropdown-link-active-color:     $component-active-color
+$fix-dropdown-link-active-bg:        $component-active-bg
+$fix-dropdown-link-disabled-color:   $gray-light
+$fix-cursor-disabled:                not-allowed
+$fix-dropdown-header-color:          $gray-light
+$fix-dropdown-caret-color:           #000
+
+
 div.bootstrap-select
   width: 100% !important
 
@@ -14,16 +46,15 @@ div.bootstrap-select
   height: 0
   margin-left: 2px
   vertical-align: middle
-  border-top: $caret-width-base dashed
-  border-top: $caret-width-base solid \9
+  border-top: $fix-caret-width-base dashed
+  border-top: $fix-caret-width-base solid \9
   // IE8
-  border-right: $caret-width-base solid transparent
-  border-left: $caret-width-base solid transparent
+  border-right: $fix-caret-width-base solid transparent
+  border-left: $fix-caret-width-base solid transparent
 
 // The dropdown wrapper (div)
 
-.dropdown_select .dropup,
-.dropdown
+.dropdown_select .dropup
   position: relative
 
 // Prevent the focus on the dropdown toggle when closing dropdowns
@@ -37,7 +68,7 @@ div.bootstrap-select
   position: absolute
   top: 100%
   left: 0
-  z-index: $zindex-dropdown
+  z-index: $fix-zindex-dropdown
   display: none
   // none by default, but block on "open" of the menu
   float: left
@@ -46,15 +77,15 @@ div.bootstrap-select
   margin: 2px 0 0
   // override default ul
   list-style: none
-  font-size: $font-size-base
+  font-size: $fix-font-size-base
   text-align: left
   // Ensures proper alignment if parent has it changed (e.g., modal footer)
-  background-color: $dropdown-bg
-  border: 1px solid $dropdown-fallback-border
+  background-color: $fix-dropdown-bg
+  border: 1px solid $fix-dropdown-fallback-border
   // IE8 fallback
-  border: 1px solid $dropdown-border
-  border-radius: $border-radius-base
-  +box-shadow(0 6px 12px rgba(0, 0, 0, 0.175))
+  border: 1px solid $fix-dropdown-border
+  border-radius: $fix-border-radius-base
+  box-shadow: 0 6px 12px
   background-clip: padding-box
   // Aligns the dropdown menu to right
   //
@@ -64,15 +95,18 @@ div.bootstrap-select
     left: auto
   // Dividers (basically an hr) within the dropdown
   .divider
-    +nav-divider($dropdown-divider-bg)
+    height: 1px
+    margin: (($fix-line-height-computed / 2) - 1) 0
+    overflow: hidden
+    background-color: $fix-dropdown-divider-bg
   // Links within the dropdown menu
   > li > a
     display: block
     padding: 3px 20px
     clear: both
     font-weight: normal
-    line-height: $line-height-base
-    color: $dropdown-link-color
+    line-height: $fix-line-height-base
+    color: $fix-dropdown-link-color
     white-space: nowrap
     // prevent links from randomly breaking onto new lines
 
@@ -81,18 +115,18 @@ div.bootstrap-select
   &:hover,
   &:focus
     text-decoration: none
-    color: $dropdown-link-hover-color
-    background-color: $dropdown-link-hover-bg
+    color: $fix-dropdown-link-hover-color
+    background-color: $fix-dropdown-link-hover-bg
 
 // Active state
 .dropdown_select .dropdown-menu > .active > a
   &,
   &:hover,
   &:focus
-    color: $dropdown-link-active-color
+    color: $fix-dropdown-link-active-color
     text-decoration: none
     outline: 0
-    background-color: $dropdown-link-active-bg
+    background-color: $fix-dropdown-link-active-bg
 
 // Disabled state
 //
@@ -102,7 +136,7 @@ div.bootstrap-select
   &,
   &:hover,
   &:focus
-    color: $dropdown-link-disabled-color
+    color: $fix-dropdown-link-disabled-color
   // Nuke hover/focus effects
   &:hover,
   &:focus
@@ -110,8 +144,8 @@ div.bootstrap-select
     background-color: transparent
     background-image: none
     // Remove CSS gradient
-    +reset-filter
-    cursor: $cursor-disabled
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled = false)
+    cursor: $fix-cursor-disabled
 
 // Open state for the dropdown
 .dropdown_select .open
@@ -145,9 +179,9 @@ div.bootstrap-select
 .dropdown_select .dropdown-header
   display: block
   padding: 3px 20px
-  font-size: $font-size-small
-  line-height: $line-height-base
-  color: $dropdown-header-color
+  font-size: $fix-font-size-small
+  line-height: $fix-line-height-base
+  color: $fix-dropdown-header-color
   white-space: nowrap
   // as with > li > a
 
@@ -158,7 +192,7 @@ div.bootstrap-select
   right: 0
   bottom: 0
   top: 0
-  z-index: $zindex-dropdown - 10
+  z-index: $fix-zindex-dropdown - 10
 
 // Right aligned dropdowns
 .dropdown_select .pull-right > .dropdown-menu
@@ -170,13 +204,12 @@ div.bootstrap-select
 // Just add .dropup after the standard .dropdown class and you're set, bro.
 // TODO: abstract this so that the navbar fixed styles are not placed here?
 
-.dropdown_select .dropup,
-.navbar-fixed-bottom .dropdown
+.dropdown_select .dropup
   // Reverse the caret
   .caret
     border-top: 0
-    border-bottom: $caret-width-base dashed
-    border-bottom: $caret-width-base solid \9
+    border-bottom: $fix-caret-width-base dashed
+    border-bottom: $fix-caret-width-base solid \9
     // IE8
     content: ""
   // Different positioning for bottom up menu
@@ -189,7 +222,7 @@ div.bootstrap-select
 //
 // Reiterate per navbar.less and the modified component alignment there.
 
-@media (min-width: $grid-float-breakpoint)
+@media (min-width: $fix-grid-float-breakpoint)
   .dropdown_select .navbar-right
     .dropdown-menu
       right: 0
