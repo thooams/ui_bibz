@@ -5,8 +5,8 @@ require "font-awesome-sass"
 
 # Javascript requires
 require 'rails-assets-tether'
-require 'rails-assets-bootstrap-select'
 require 'rails-assets-bootstrap-datepicker'
+require 'rails-assets-bootstrap-select'
 #
 # not compatible with boostrap 4
 #require 'rails-assets-bootstrap-switch'
