@@ -6,80 +6,35 @@
 @import bootstrap/variables
 //@import bootstrap-sprockets
 @import bootstrap
+@import tether.min
 
 
 $brand-secondary: $gray-lighter
 $states_colors: (success: $brand-success, primary: $brand-primary, secondary: $brand-secondary, info: $brand-info, danger: $brand-danger, warning: $brand-warning)
 
-// Boostrap Plugins
-@import bootstrap-datepicker
-@import bootstrap-select
+
+// ##### Bootstrap Plugins
+// date_picker_field component
+@import bootstrap-datepicker3.min
+// multi_column_field component
+@import jquery.multi-select.min
+// switch_field component
 @import bootstrap-switch
+// multi_select_field component
 @import bootstrap-multiselect.min
-@import multi-select.min
+// dropdown_select_field component
+@import bootstrap-select.min
+
+// fix plugins
 @import fix-bootstrap-4
 @import fix-dropdown-select
 
 
-// Table section
-.table-card
-  form
-    margin: 0
-  table
-    th
-      border-top: none
-  .card-header
-    //background-color: $table-bg-active
-    .title
-      float: left
-      font-size: 20px
-      .glyph
-        margin-right: 10px
-    .has-value
-      width: 400px !important
-    .input-group
-      width: 300px
-      transition: width .5s ease-in-out
-      float: right
-  .card-table, .card-body
-    overflow-x: auto
-    min-height: 200px
-  .card-footer
-    //background-color: $table-bg-active
-    padding: 10px 10px
-    .pagination
-      margin: 0.5rem 0 0 0
-      li
-        display: inline
-        float: left
-      li:not(:first-child)
-        margin-left: 0.7rem
-    .table-pagination-per-page
-      float: right
-      select
-        width: 75px
-        display: inline-block
+// Components
+@import table
 
-.table>tbody>tr:hover
-  td:last-child .dropdown-action
-    display: inherit
 
-.table>tbody>tr
-  td:last-child
-    height: 45px // Maybe find another way
-    .dropdown-action
-      display: none
-
-.table-search-field
-  .clear-search-btn
-    cursor: pointer
-  .glyph
-    margin: 0
-
-.table
-  .action
-    width: 135px
-
+// Custom css
 @each $key, $value in $states_colors
   .card-#{$key}
     .card-header
