@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    ui_bibz (2.0.0.alpha3)
+    ui_bibz (2.0.0.alpha4)
       bootstrap (< 4.0.0.alpha3)
       bundler (>= 1.8.4)
       font-awesome-sass
@@ -181,6 +181,9 @@ DEPENDENCIES
   codeclimate-test-reporter
   factory_girl_rails (~> 4.0)
   minitest
+  rails-assets-bootstrap-datepicker (>= 1.6.0)!
+  rails-assets-bootstrap-select (>= 1.10.0)!
+  rails-assets-tether (>= 1.1.0)!
   rdoc
   sqlite3
   ui_bibz!

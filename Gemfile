@@ -1,5 +1,4 @@
 source 'https://rubygems.org'
-source 'https://rails-assets.org'
 
 # Declare your gem's dependencies in ui_bibz.gemspec.
 # Bundler will treat runtime dependencies like base dependencies, and
@@ -14,3 +13,8 @@ gemspec
 # To use a debugger
 #gem 'byebug',        group: [:development, :test]
 gem 'awesome_print', group: [:development, :test]
+
+# To fix errors with precompile assets
+gem 'rails-assets-tether', '>= 1.1.0', source: 'https://rails-assets.org/'
+gem 'rails-assets-bootstrap-select', '>= 1.10.0', source: 'https://rails-assets.org/'
+gem 'rails-assets-bootstrap-datepicker', '>= 1.6.0', source: 'https://rails-assets.org/'
