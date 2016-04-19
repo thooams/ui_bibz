@@ -54,7 +54,7 @@ module UiBibz::Ui::Core
       if options[:builder].nil?
         check_box_tag content, value, html_options[:checked], html_options
       else
-        options[:builder].check_box(content, html_options, true, false)
+        options[:builder].check_box(content, html_options)
       end
     end
 

@@ -1,16 +1,25 @@
 #= require jquery
 #= require jquery_ujs
 
+# multi_column_field component
 #= require jquery.quicksearch.min
 #= require jquery.multi-select.min
 
 # Bootstrap
-#= require tether
+#= require tether.min
 #= require bootstrap-sprockets
 #= require bootstrap
-#= require bootstrap-datepicker
-#= require bootstrap-select
+
+# date_picker_field component
+#= require bootstrap-datepicker.min
+
+# dropdown_select_field component
+#= require bootstrap-select.min
+
+# switch_field component
 #= require bootstrap-switch.min
+
+# multi_select_field component
 #= require bootstrap-multiselect.min
 
 # Ui Bibz
@@ -18,7 +27,6 @@
 #= require interface
 #= require form
 #= require fix_bootstrap
-
 
 @UiBibz = class UiBibz
 

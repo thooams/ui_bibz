@@ -3,6 +3,9 @@ $:.push File.expand_path("../lib", __FILE__)
 # Maintain your gem's version:
 require "ui_bibz/version"
 
+lib = File.expand_path('../lib', __FILE__)
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+
 # Describe your gem and declare its dependencies:
 Gem::Specification.new do |s|
   s.name        = "ui_bibz"
@@ -32,9 +35,9 @@ Gem::Specification.new do |s|
   s.add_dependency 'bootstrap', '< 4.0.0.alpha3'
 
   # Javascript gems (rails-assets.org)
-  s.add_dependency 'rails-assets-tether', '>= 1.1.0'
-  s.add_dependency 'rails-assets-bootstrap-select', '>= 1.10.0'
-  s.add_dependency 'rails-assets-bootstrap-datepicker', '>= 1.6.0'
+  #s.add_dependency 'rails-assets-tether', '>= 1.1.0'
+  #s.add_dependency 'rails-assets-bootstrap-select', '>= 1.10.0'
+  #s.add_dependency 'rails-assets-bootstrap-datepicker', '>= 1.6.0'
 
   # not compatible with boostrap 4
   #s.add_dependency 'rails-assets-bootstrap-switch', '>= 3.3.2'
