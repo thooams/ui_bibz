@@ -158,7 +158,7 @@ module UiBibz::Ui::Ux
       content_tag(:table, html_options) do
 
         ths = cols.collect do |col|
-          content_tag(:th, sort.header(col)) unless col.hidden?
+          content_tag(:th, sort.header(col), class: col.class) unless col.hidden?
         end
 
         ths = action.header ths
