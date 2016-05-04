@@ -61,7 +61,7 @@ GEM
     builder (3.2.2)
     codeclimate-test-reporter (0.5.0)
       simplecov (>= 0.7.1, < 1.0.0)
-    concurrent-ruby (1.0.1)
+    concurrent-ruby (1.0.2)
     docile (1.1.5)
     erubis (2.7.0)
     execjs (2.6.0)
@@ -174,3 +174,6 @@ DEPENDENCIES
   rdoc
   sqlite3
   ui_bibz!
+
+BUNDLED WITH
+   1.11.2
