@@ -78,10 +78,5 @@ module UiBibz::Ui::Core
       @datalist ||= "#{ html_options[:id] || content }-datalist"
     end
 
-    # :lg, :sm or :xs
-    def size
-      "input-group-#{ options[:size] }" if options[:size]
-    end
-
   end
 end
