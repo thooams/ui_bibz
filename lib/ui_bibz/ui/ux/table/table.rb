@@ -3,6 +3,7 @@ require "ui_bibz/ui/ux/table/components/columns"
 require "ui_bibz/ui/ux/table/components/column"
 require "ui_bibz/ui/ux/table/components/actions"
 require "ui_bibz/ui/ux/table/components/thead"
+require "ui_bibz/ui/ux/table/components/as"
 require "ui_bibz/ui/ux/table/extensions/paginable"
 require "ui_bibz/ui/ux/table/extensions/paginable"
 require "ui_bibz/ui/ux/table/extensions/searchable"
@@ -165,7 +166,7 @@ module UiBibz::Ui::Ux
 
         trs = store.records.collect do |record|
           tds = cols.collect do |col|
-            content_tag(:td, td_content(record, col)) unless col.hidden?
+            content_tag(:td, td_content(record, col), class: col.class) unless col.hidden?
           end
 
           tds = action.body record, tds
@@ -183,6 +184,7 @@ module UiBibz::Ui::Ux
         content = content.strftime(col.date_format)                    unless col.date_format.nil?
         content = link_to content, action.inject_url(col.link, record) unless col.link.nil?
         content = col.format.call(@store.records, record)              unless col.format.nil?
+        content = As.new(col, record, content).render                  unless col.as.nil?
         content
       end
     end
