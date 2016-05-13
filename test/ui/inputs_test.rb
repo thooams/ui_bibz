@@ -86,4 +86,11 @@ class InputsTest < ActionView::TestCase
 
       assert_equal expected, actual
     end
+
+    test 'formula_field' do
+      actual = UiBibz::Ui::Core::FormulaField.new('value').render
+      expected = nil
+
+      assert_equal expected, actual
+    end
 end

@@ -5,6 +5,7 @@
     @switch()
     @multiSelect()
     @multiColumn()
+    @formula()
 
   selectPicker: ->
     $('select.selectpicker').selectpicker
@@ -22,6 +23,37 @@
       delete data["multiselect"]
       data = Object.assign({ inheritClass: true }, data)
       $(this).multiselect(data)
+
+  formula: ->
+    $('.formula_field_input').on 'keyup', ->
+      console.log $(this)
+      formulaInputField  = $(this)
+      formulaSignField   = formulaInputField.siblings('.formula_field_sign')
+      formulaResultField = formulaInputField.siblings('.formula_field_result')
+      formulaAlert       = formulaInputField.siblings('.formula_field_alert')
+
+      f        = new window.UiBibzFormula()
+      result   = f.go(formulaInputField.val())
+      error    = result[0]
+      response = result[1]
+
+      if !!error
+        formulaAlert.attr('data-original-title', error)
+        formulaAlert.attr('style', 'display: table-cell;')
+        formulaResultField.addClass('fix-border-right')
+      else
+        formulaAlert.hide()
+        formulaResultField.val(eval(response))
+        formulaResultField.removeClass('fix-border-right')
+
+      if isNaN(response)
+        formulaSignField.attr('style', 'display: table-cell;')
+        formulaResultField.attr('style', 'display: table-cell;')
+        formulaInputField.addClass('fix-border-right')
+      else
+        formulaSignField.hide()
+        formulaResultField.hide()
+        formulaInputField.removeClass('fix-border-right')
 
   multiColumn: ->
     $('.multi-column').each ->

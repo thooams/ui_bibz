@@ -25,6 +25,7 @@
 # Ui Bibz
 #= require table
 #= require interface
+#= require formula
 #= require form
 #= require fix_bootstrap
 
