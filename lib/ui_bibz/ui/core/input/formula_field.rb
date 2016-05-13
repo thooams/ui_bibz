@@ -82,7 +82,7 @@ module UiBibz::Ui::Core
     end
 
     def formula_field_name
-      "#{ content }_formula" || options[:formula_field_name]
+      options[:formula_field_name] || "#{ content }_formula"
     end
 
     def formula_field_sign
