@@ -46,14 +46,30 @@ module UiBibz::Ui::Core
     # Render html tag
     def render
       content_tag :div, class: 'input-group formula_field' do
-        concat text_field_tag @content, '', html_options
+        concat text_field_input_tag
         concat formula_field_sign
-        concat text_field_tag formula_field_name, '', readonly: true, class: 'formula_field_result form-control '
+        concat text_field_formula_input_tag
         concat formula_field_alert
       end
     end
 
     private
+
+    def text_field_input_tag
+      if options[:builder].nil?
+        text_field_tag content, html_options[:value], html_options
+      else
+        options[:builder].text_field content, html_options
+      end
+    end
+
+    def text_field_formula_input_tag
+      if options[:builder].nil?
+        text_field_tag formula_field_name, '', readonly: true, class: 'formula_field_result form-control'
+      else
+        options[:builder].text_field formula_field_name, readonly: true, class: 'formula_field_result form-control'
+      end
+    end
 
     def component_html_classes
       'formula_field_input form-control'
@@ -66,7 +82,7 @@ module UiBibz::Ui::Core
     end
 
     def formula_field_name
-      "#{ @content }_formula" || options[:formula_field_name]
+      "#{ content }_formula" || options[:formula_field_name]
     end
 
     def formula_field_sign
