@@ -2,7 +2,6 @@
 @UiBibzFormula = class Formula
 
   contructor: ->
-    alert 'uie'
 
   res: ''
 

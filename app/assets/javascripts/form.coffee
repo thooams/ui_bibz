@@ -1,11 +1,11 @@
 @UiBibzForm = class Form
 
   constructor: ->
-    @selectPicker()
-    @switch()
-    @multiSelect()
-    @multiColumn()
-    @formula()
+    @selectPicker() if $('select.selectpicker').length == 1
+    @switch()       if $('.input.switch').length == 1
+    @multiSelect()  if $('.multi-select').length == 1
+    @multiColumn()  if $('.multi-column').length == 1
+    @formula()      if $('.formula_field_input').length == 1
 
   selectPicker: ->
     $('select.selectpicker').selectpicker
