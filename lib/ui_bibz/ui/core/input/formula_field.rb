@@ -46,9 +46,9 @@ module UiBibz::Ui::Core
     # Render html tag
     def render
       content_tag :div, class: 'input-group formula_field' do
-        concat text_field_input_tag
-        concat formula_field_sign
         concat text_field_formula_input_tag
+        concat formula_field_sign
+        concat text_field_input_tag
         concat formula_field_alert
       end
     end
@@ -57,17 +57,17 @@ module UiBibz::Ui::Core
 
     def text_field_input_tag
       if options[:builder].nil?
-        text_field_tag content, html_options[:value], html_options
+        text_field_tag content, html_options[:value], readonly: true, class: 'formula_field_result form-control'
       else
-        options[:builder].text_field content, html_options
+        options[:builder].text_field content, readonly: true, class: 'formula_field_result form-control'
       end
     end
 
     def text_field_formula_input_tag
       if options[:builder].nil?
-        text_field_tag formula_field_name, '', readonly: true, class: 'formula_field_result form-control'
+        text_field_tag formula_field_name, '', html_options
       else
-        options[:builder].text_field formula_field_name, readonly: true, class: 'formula_field_result form-control'
+        options[:builder].text_field formula_field_name, html_options
       end
     end
 

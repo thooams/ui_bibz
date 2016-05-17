@@ -25,35 +25,41 @@
       $(this).multiselect(data)
 
   formula: ->
-    $('.formula_field_input').on 'keyup', ->
-      console.log $(this)
-      formulaInputField  = $(this)
-      formulaSignField   = formulaInputField.siblings('.formula_field_sign')
-      formulaResultField = formulaInputField.siblings('.formula_field_result')
-      formulaAlert       = formulaInputField.siblings('.formula_field_alert')
+    me = this
+    formula_input_field = $('.formula_field_input')
+    me.updateFormulaField(formula_input_field)
 
-      f        = new window.UiBibzFormula()
-      result   = f.go(formulaInputField.val())
-      error    = result[0]
-      response = result[1]
+    formula_input_field.on 'keyup', ->
+      me.updateFormulaField($(this))
 
-      if !!error
-        formulaAlert.attr('data-original-title', error)
-        formulaAlert.attr('style', 'display: table-cell;')
-        formulaResultField.addClass('fix-border-right')
-      else
-        formulaAlert.hide()
-        formulaResultField.val(eval(response))
-        formulaResultField.removeClass('fix-border-right')
+  updateFormulaField: (field) ->
+    formulaInputField  = field
+    formulaSignField   = formulaInputField.siblings('.formula_field_sign')
+    formulaResultField = formulaInputField.siblings('.formula_field_result')
+    formulaAlert       = formulaInputField.siblings('.formula_field_alert')
 
-      if isNaN(response)
-        formulaSignField.attr('style', 'display: table-cell;')
-        formulaResultField.attr('style', 'display: table-cell;')
-        formulaInputField.addClass('fix-border-right')
-      else
-        formulaSignField.hide()
-        formulaResultField.hide()
-        formulaInputField.removeClass('fix-border-right')
+    f        = new window.UiBibzFormula()
+    result   = f.go(formulaInputField.val())
+    error    = result[0]
+    response = result[1]
+
+    if !!error
+      formulaAlert.attr('data-original-title', error)
+      formulaAlert.attr('style', 'display: table-cell;')
+      formulaResultField.addClass('fix-border-right')
+    else
+      formulaAlert.hide()
+      formulaResultField.val(eval(response))
+      formulaResultField.removeClass('fix-border-right')
+
+    if isNaN(response)
+      formulaSignField.attr('style', 'display: table-cell;')
+      formulaResultField.attr('style', 'display: table-cell; visible: visible')
+      formulaInputField.addClass('fix-border-right')
+    else
+      formulaSignField.hide()
+      formulaResultField.attr('style', 'visible: hidden;')
+      formulaInputField.removeClass('fix-border-right')
 
   multiColumn: ->
     $('.multi-column').each ->
