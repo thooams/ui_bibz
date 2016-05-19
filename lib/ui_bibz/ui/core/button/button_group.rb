@@ -64,10 +64,6 @@ module UiBibz::Ui::Core
       { role: type }
     end
 
-    def component_html_data
-      add_html_data "toggle", "buttons"
-    end
-
     def type
       options[:type] || :group
     end
