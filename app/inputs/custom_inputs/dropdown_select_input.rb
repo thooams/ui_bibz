@@ -6,9 +6,6 @@ module CustomInputs
       label_method, value_method = detect_collection_methods
       i = UiBibz::Ui::Core::DropdownSelectField.new(attribute_name, options, input_html_options)
 
-      input_options.delete(:prompt)
-      input_options.merge!({include_blank: false})
-
       if options[:grouped] == true
         @builder.grouped_collection_select(
           attribute_name, grouped_collection,
