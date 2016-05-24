@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    ui_bibz (2.0.0.alpha7)
+    ui_bibz (2.0.0.alpha8)
       bootstrap (< 4.0.0.alpha3)
       bundler (>= 1.8.4)
       font-awesome-sass
@@ -64,7 +64,7 @@ GEM
     concurrent-ruby (1.0.2)
     docile (1.1.5)
     erubis (2.7.0)
-    execjs (2.6.0)
+    execjs (2.7.0)
     factory_girl (4.7.0)
       activesupport (>= 3.0.0)
     factory_girl_rails (4.7.0)
@@ -93,9 +93,9 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.6.4)
       mime-types (>= 1.16, < 4)
-    mime-types (3.0)
+    mime-types (3.1)
       mime-types-data (~> 3.2015)
-    mime-types-data (3.2016.0221)
+    mime-types-data (3.2016.0521)
     mini_portile2 (2.0.0)
     minitest (5.9.0)
     nokogiri (1.6.7.2)
