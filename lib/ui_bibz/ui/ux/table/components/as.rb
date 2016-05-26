@@ -6,7 +6,6 @@ module UiBibz::Ui::Ux
 
     def initialize col, record, content
       @col     = col
-      puts col.inspect
       @record  = record
       @content = content
     end
