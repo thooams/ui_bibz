@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    ui_bibz (2.0.0.alpha8)
+    ui_bibz (2.0.0.alpha9)
       bootstrap (< 4.0.0.alpha3)
       bundler (>= 1.8.4)
       font-awesome-sass
