@@ -6,6 +6,7 @@ module UiBibz::Ui::Ux
 
     def initialize col, record, content
       @col     = col
+      puts col.inspect
       @record  = record
       @content = content
     end
@@ -14,6 +15,8 @@ module UiBibz::Ui::Ux
       case @col.as
       when :boolean
         boolean_render
+      when :progress
+        progress_render
       end
     end
 
@@ -26,6 +29,10 @@ module UiBibz::Ui::Ux
         glyph = UiBibz::Ui::Core::Glyph.new('minus-circle', state: :danger)
       end
       glyph.render
+    end
+
+    def progress_render
+      UiBibz::Ui::Core::Progress.new(@content, state: (@col.state || :primary)).render
     end
 
   end
