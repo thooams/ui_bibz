@@ -38,13 +38,13 @@ module UiBibz::Ui::Core
 
     # Render html tag
     def render
-      content_tag :a, content, html_options
+      link_to content, options[:url], html_options
     end
 
   private
 
     def component_html_classes
-      "card-title"
+      "card-link"
     end
 
   end
