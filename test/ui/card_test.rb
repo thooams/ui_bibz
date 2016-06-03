@@ -95,10 +95,10 @@ class CardTest < ActionView::TestCase
       c.block tap: true do |b|
         b.title "title"
         b.text "text"
-        b.link 'link'
+        b.link 'link', url: '#'
       end
     end
-    expected = "<div class=\"card\"><div class=\"card-block\"><h4 class=\"card-title\">title</h4><p class=\"card-text\">text</p><a class=\"card-title\">link</a></div></div>"
+    expected = "<div class=\"card\"><div class=\"card-block\"><h4 class=\"card-title\">title</h4><p class=\"card-text\">text</p><a class=\"card-link\" href=\"#\">link</a></div></div>"
 
     assert_equal expected, actual
   end
