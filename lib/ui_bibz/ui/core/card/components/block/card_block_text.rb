@@ -38,7 +38,7 @@ module UiBibz::Ui::Core
 
     # Render html tag
     def render
-      content_tag :p, content, html_options
+      content_tag :p, content.html_safe, html_options
     end
 
   private

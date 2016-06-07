@@ -68,6 +68,10 @@ module UiBibz::Ui::Core
       options[:type] || :group
     end
 
+    def component_html_data
+      add_html_data "toggle", "buttons"
+    end
+
     def size
       "btn-group-#{ options[:size] }" if options[:size]
     end
