@@ -184,9 +184,9 @@ module UiBibz::Ui::Ux
         content = content.strftime(col.date_format)                    unless col.date_format.nil?
         content = link_to content, action.inject_url(col.link, record) unless col.link.nil?
         content = col.format.call(@store.records, record)              unless col.format.nil?
-        content = As.new(col, record, content).render                  unless col.as.nil?
-        content
       end
+      content = As.new(col, record, content, @options).render unless col.as.nil?
+      content
     end
 
   private

@@ -23,6 +23,10 @@ module UiBibz::Ui::Ux
       @actions << UiBibz::Ui::Core::DropdownHeader.new(content, options, html_options, &block).render
     end
 
+    def html content
+      @actions << content
+    end
+
     def reset
       @actions = []
     end

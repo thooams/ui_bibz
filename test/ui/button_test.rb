@@ -14,7 +14,7 @@ class ButtonTest < ActionView::TestCase
     actual = UiBibz::Ui::Core::ButtonGroup.new position: :vertical do
       UiBibz::Ui::Core::Button.new('toto').render
     end.render
-    expected = "<div class=\"btn-group btn-group-vertical\" role=\"group\"><button class=\"btn-primary btn\">toto</button></div>"
+    expected = "<div data-toggle=\"buttons\" class=\"btn-group btn-group-vertical\" role=\"group\"><button class=\"btn-primary btn\">toto</button></div>"
 
     assert_equal expected, actual
   end
@@ -52,7 +52,7 @@ class ButtonTest < ActionView::TestCase
       concat UiBibz::Ui::Core::ButtonChoice.new('Toto1').render
       concat UiBibz::Ui::Core::ButtonChoice.new('Toto2').render
     end.render
-    expected = "<div class=\"btn-group\" role=\"group\"><label class=\"btn-primary btn\"><input type=\"checkbox\" autocomplete=\"off\" />Toto1</label><label class=\"btn-primary btn\"><input type=\"checkbox\" autocomplete=\"off\" />Toto2</label></div>"
+    expected = "<div data-toggle=\"buttons\" class=\"btn-group\" role=\"group\"><label class=\"btn-primary btn\"><input type=\"checkbox\" autocomplete=\"off\" />Toto1</label><label class=\"btn-primary btn\"><input type=\"checkbox\" autocomplete=\"off\" />Toto2</label></div>"
 
     assert_equal expected, actual
   end
@@ -62,7 +62,7 @@ class ButtonTest < ActionView::TestCase
       concat UiBibz::Ui::Core::ButtonChoice.new('Toto1', type: :radio).render
       concat UiBibz::Ui::Core::ButtonChoice.new('Toto2', type: :radio).render
     end.render
-    expected = "<div class=\"btn-group\" role=\"group\"><label class=\"btn-primary btn\"><input type=\"radio\" autocomplete=\"off\" />Toto1</label><label class=\"btn-primary btn\"><input type=\"radio\" autocomplete=\"off\" />Toto2</label></div>"
+    expected = "<div data-toggle=\"buttons\" class=\"btn-group\" role=\"group\"><label class=\"btn-primary btn\"><input type=\"radio\" autocomplete=\"off\" />Toto1</label><label class=\"btn-primary btn\"><input type=\"radio\" autocomplete=\"off\" />Toto2</label></div>"
 
     assert_equal expected, actual
   end
