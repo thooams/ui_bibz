@@ -13,8 +13,8 @@ Gem::Specification.new do |s|
   s.authors     = ["Thooams"]
   s.email       = ["thomas@hummel.link"]
   s.homepage    = "http://thooams.github.io/Ui-Bibz/"
-  s.summary     = "A Rails Bootstrap framework..."
-  s.description = "A Rails Bootstrap framework..."
+  s.summary     = "Create your project with Ui Bibz. Over a thirty reusable components built to provide iconography, dropdowns, input groups, navigation, alerts, and much more."
+  s.description = "A Rails Interface Framework using Bootstrap."
   s.license     = "MIT"
 
   s.files         = `git ls-files`.split("\n")
