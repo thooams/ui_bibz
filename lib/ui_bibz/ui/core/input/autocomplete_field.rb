@@ -67,7 +67,9 @@ module UiBibz::Ui::Core
     end
 
     def component_html_options
-      { autocomplete: true, list: data_list_name }
+      args = { autocomplete: true, list: data_list_name }
+      args = args.merge(options[:state] == :disable ? { disabled: 'disabled' } : {})
+      args
     end
 
     def component_html_classes
@@ -80,10 +82,6 @@ module UiBibz::Ui::Core
 
     def status
       "form-control-#{ options[:status] }" if options[:status]
-    end
-
-    def component_html_options
-      options[:state] == :disable ? { disabled: 'disabled' } : {}
     end
 
   end
