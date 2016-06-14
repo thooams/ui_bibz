@@ -14,7 +14,7 @@ module UiBibz::Ui::Core
   #
   # You can add HTML attributes using the +html_options+.
   # You can pass arguments in options attribute:
-  # * +status+ - State of élement with symbol value:
+  # * +state+ - status of élement with symbol value:
   #   (+:active+)
   # * +url+ - String
   # * +glyph+ - Add glyph with name or hash options
@@ -33,7 +33,7 @@ module UiBibz::Ui::Core
   #
   # ==== Examples
   #
-  #   UiBibz::Ui::Core::DropdownLink.new('Home', { glyph: 'home', status: :active, url: '#home', link_html_options: { class: 'link1' }},{ class: 'test' }).render
+  #   UiBibz::Ui::Core::DropdownLink.new('Home', { glyph: 'home', state: :active, url: '#home', link_html_options: { class: 'link1' }},{ class: 'test' }).render
   #
   #   UiBibz::Ui::Core::DropdownLink.new({ glyph: { name: 'eye', size: 3 }, url: '#home' }, { class: 'test' }) do
   #     'Home'

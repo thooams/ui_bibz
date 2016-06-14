@@ -35,7 +35,7 @@ module UiBibz::Ui::Core
   #
   #   UiBibz::Ui::Core::Nav.new(type: :pills).tap do |n|
   #     n.link 'Test', url: '#test'
-  #     n.link 'Test2', url: '#test2', status: :active
+  #     n.link 'Test2', url: '#test2', state: :active
   #     n.dropdown('Action') do |d|
   #       d.list content = nil, options = nil, html_options = nil, &block
   #     end

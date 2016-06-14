@@ -22,10 +22,10 @@ module UiBibz::Ui::Ux
   #   * +actionable+ - Boolean
   #   * +sortable+ - Boolean
   #   * +searchable+ - Boolean
-  #   * +state+
+  #   * +status+
   #     (+:inverse+)
   #   * +thead+ - Hash
-  #     (+state+)
+  #     (+status+)
   #       (+inverse+, +default+)
   #   * +bordered+ - Boolean
   #   * +hoverable+ - Boolean
@@ -58,10 +58,10 @@ module UiBibz::Ui::Ux
   #       c.column :id, { name: '# }, { class: 'column-id' }
   #       c.column :name_fr, { name: 'Name FR', link: edit_user_path(:id), order: 2 }
   #       c.column :name_en
-  #       c.column :status_id, { name: 'Status', format: lambda{ |records, record| "Test #{ record.id}"} }
+  #       c.column :state_id, { name: 'state', format: lambda{ |records, record| "Test #{ record.id}"} }
   #     end
   #     t.actions do |a|
-  #       a.link 'toto', url: users_path(:id), glyph: 'eye'
+  #       a.link 'state', url: users_path(:id), glyph: 'eye'
   #       a.divider
   #       a.link 'momo', url: users_path(:id), glyph: 'home'
   #     end

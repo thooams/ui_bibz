@@ -86,8 +86,8 @@ module UiBibz::Ui::Core
       add_html_data('include_select_all_option') if options[:select_all_option]
     end
 
-    def state
-      options[:state] || 'btn-secondary'
+    def status
+      options[:status] || 'btn-secondary'
     end
 
   end

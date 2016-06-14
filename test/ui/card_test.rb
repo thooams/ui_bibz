@@ -34,12 +34,12 @@ class CardTest < ActionView::TestCase
   end
 
   test 'create card with header, block and footer' do
-    actual = card(state: :danger, tap: true, class: 'toto') do |p|
-      p.header 'toto', glyph: 'eye'
-      p.block 'toto'
-      p.footer 'toto'
+    actual = card(status: :danger, tap: true, class: 'state') do |p|
+      p.header 'state', glyph: 'eye'
+      p.block 'state'
+      p.footer 'state'
     end
-    expected = "<div class=\"card-danger toto card\"><div class=\"card-header\"><i class=\"glyph fa fa-eye\"></i> toto</div><div class=\"card-block\">toto</div><div class=\"card-footer\">toto</div></div>"
+    expected = "<div class=\"card-danger state card\"><div class=\"card-header\"><i class=\"glyph fa fa-eye\"></i> state</div><div class=\"card-block\">state</div><div class=\"card-footer\">state</div></div>"
 
     assert_equal expected, actual
   end

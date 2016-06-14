@@ -21,7 +21,7 @@ module UiBibz::Ui::Core
   # * +type+ - Symbol
   #   (+:light+, +:dark+)
   # * +glyph+
-  # * +state+
+  # * +status+
   #   (+:secondary+, +:primary+, +:info+, +:warning+, +:danger+, +inverse+)
   # * +position+ - Symbol
   #   (+:top+, +:bottom+)
@@ -149,8 +149,8 @@ module UiBibz::Ui::Core
       "navbar-#{ @options[:type] || 'light' }"
     end
 
-    def state
-      "bg-#{ @options[:state] }" unless @options[:state].nil?
+    def status
+      "bg-#{ @options[:status] }" unless @options[:status].nil?
     end
 
   end

@@ -14,12 +14,12 @@ module UiBibz::Ui::Core
   #
   # You can add HTML attributes using the +html_options+.
   # You can pass arguments in options attribute:
-  # * +state+ - State of élement with symbol value:
+  # * +status+ - status of élement with symbol value:
   #   (+:primary+, +:secondary+, +:info+, +:warning+, +:danger+, +:link+)
   # * +size+
   #   (+:xs+, +:sm+, +:lg+)
   # * +outline+ - Boolean
-  # * +status+ - Symbol (+:active+, +:disabled)
+  # * +state+ - Symbol (+:active+, +:disabled)
   # * +type+ - Symbol (+:outline)
   # * +glyph+ - Add glyph with name or hash options
   #   * +name+ - String
@@ -71,8 +71,8 @@ module UiBibz::Ui::Core
       options[:toggle].nil? ? {} : { "data-toggle" => 'button', "aria-pressed" => false, "autocomplete" => "off" }
     end
 
-    def state
-      s = options[:state] || :primary
+    def status
+      s = options[:status] || :primary
       "btn-#{ s }#{ outline }"
     end
 
@@ -92,15 +92,15 @@ module UiBibz::Ui::Core
       "btn-#{ options[:size] }" if options[:size]
     end
 
-    #def states
-      #if @states.nil?
-        #states = {}
+    #def statuss
+      #if @statuss.nil?
+        #statuss = {}
         #%w(success primary secondary info warning danger link).each do |s|
-          #states = states.merge(Hash[s.to_sym, s])
+          #statuss = statuss.merge(Hash[s.to_sym, s])
         #end
-        #@states = states
+        #@statuss = statuss
       #end
-      #@states
+      #@statuss
     #end
 
   end

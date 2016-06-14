@@ -14,13 +14,13 @@ module UiBibz::Ui::Core
   #
   # You can add HTML attributes using the +html_options+.
   # You can pass arguments in options attribute:
-  # * +state+ - State of élement with symbol value:
+  # * +status+ - status of élement with symbol value:
   #   (+:primary+, +:secondary+, +:info+, +:warning+, +:danger+)
   # * +size+
   #   (+:xs+, +:sm+, +:lg+)
   # * +url+ - String url
   # * +outline+ - Boolean
-  # * +status+ - Symbol (+:active+, +:disabled)
+  # * +state+ - Symbol (+:active+, +:disabled)
   # * +type+ - Symbol (+:block)
   # * +glyph+ - Add glyph with name or hash options
   #   * +name+ - String

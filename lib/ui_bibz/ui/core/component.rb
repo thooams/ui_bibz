@@ -13,7 +13,7 @@ module UiBibz::Ui::Core
   #
   # You can add HTML attributes using the +html_options+.
   # You can pass arguments in options attribute:
-  # * +state+ - State of élement with symbol value:
+  # * +status+ - status of élement with symbol value:
   #   (+:default+, +:primary+, +:info+, +:warning+, +:danger+)
   # * +glyph+ - Add glyph with name or hash options
   #   * +name+ - String
@@ -85,7 +85,7 @@ module UiBibz::Ui::Core
     end
 
     def label_html
-      UiBibz::Ui::Core::Label.new(options[:label], class: 'pull-right', type: :pill, state: (options[:label_state] || :default)).render
+      UiBibz::Ui::Core::Label.new(options[:label], class: 'pull-right', type: :pill, status: (options[:label_status] || :default)).render
     end
 
     # Know if component is tapped or not
@@ -116,8 +116,8 @@ module UiBibz::Ui::Core
       {}
     end
 
-    # Override this method to add a state class
-    def state
+    # Override this method to add a status class
+    def status
     end
 
     # Join classes
@@ -138,8 +138,8 @@ module UiBibz::Ui::Core
     def initialize_component_html_classes
       cls = [
         html_options[:class],
-        status,
         state,
+        status,
         effect,
         options_classes,
         component_html_classes
@@ -174,8 +174,8 @@ module UiBibz::Ui::Core
       initialize_component_html_options
     end
 
-    def status
-      options[:status] unless options[:status].nil?
+    def state
+      options[:state] unless options[:state].nil?
     end
 
   end

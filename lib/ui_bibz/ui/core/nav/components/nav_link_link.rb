@@ -14,7 +14,7 @@ module UiBibz::Ui::Core
   #
   # You can add HTML attributes using the +html_options+.
   # You can pass arguments in options attribute:
-  # * +status+ - State of élement with symbol value:
+  # * +state+ - status of élement with symbol value:
   #   (+:active+)
   #
   class NavLinkLink < Component

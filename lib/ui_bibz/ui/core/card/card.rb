@@ -20,7 +20,7 @@ module UiBibz::Ui::Core
   #
   # You can add HTML attributes using the +html_options+.
   # You can pass arguments in options attribute:
-  # * +state+ - State of élement with symbol value:
+  # * +status+ - status of élement with symbol value:
   #   (+:primary+, +:secondary+, +:info+, +:warning+, +:danger+)
   # * text_position - Symbole
   #   (+:left+, +:right+, +:center+)
@@ -46,7 +46,7 @@ module UiBibz::Ui::Core
   #
   #   UiBibz::Ui::Core::Card('test').render
   #
-  #   UiBibz::Ui::Core::Card(state: :primary) do |d|
+  #   UiBibz::Ui::Core::Card(status: :primary) do |d|
   #     'test'
   #   end.render
   #
@@ -134,8 +134,8 @@ module UiBibz::Ui::Core
       ["card", text_position, card_block, type, tab_pane]
     end
 
-    def state
-      "card-#{ @options[:state] }" unless @options[:state].nil?
+    def status
+      "card-#{ @options[:status] }" unless @options[:status].nil?
     end
 
     def text_position

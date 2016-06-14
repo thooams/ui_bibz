@@ -14,7 +14,7 @@ module UiBibz::Ui::Core
   #
   # You can add HTML attributes using the +html_options+.
   # You can pass arguments in options attribute:
-  # * +state+ - State of élement with symbol value:
+  # * +status+ - status of élement with symbol value:
   #   (+:secondary+, +:primary+, +:info+, +:warning+, +:danger+)
   # * +max+ - Max value (default: 100)
   # * +value+ - Value of percentage (default: content)
@@ -34,9 +34,9 @@ module UiBibz::Ui::Core
   #
   #   UiBibz::Ui::Core::Progress.new(50%, { value: 50})
   #   # or
-  #   UiBibz::Ui::Core::Progress.new(10%, { value: 10, state: :success },{ class: 'test' }).render
+  #   UiBibz::Ui::Core::Progress.new(10%, { value: 10, status: :success },{ class: 'test' }).render
   #   # or
-  #   UiBibz::Ui::Core::Progress.new({ value: 10, state: :success},{ class: 'test' }) do
+  #   UiBibz::Ui::Core::Progress.new({ value: 10, status: :success},{ class: 'test' }) do
   #     10%
   #   end.render
   #
@@ -90,8 +90,8 @@ module UiBibz::Ui::Core
       options[:value] || content.to_i
     end
 
-    def state
-      "progress-#{ options[:state] }" unless options[:state].nil?
+    def status
+      "progress-#{ options[:status] }" unless options[:status].nil?
     end
 
   end

@@ -28,9 +28,9 @@ class InputsSwitchFieldTest < ActionView::TestCase
     end
 
     # OK
-    test 'switch_field status' do
-      actual = UiBibz::Ui::Core::SwitchField.new('test', {}, status: "disabled").render
-      expected = "<input type=\"checkbox\" name=\"test\" id=\"test\" status=\"disabled\" class=\"switch\" />"
+    test 'switch_field state' do
+      actual = UiBibz::Ui::Core::SwitchField.new('test', {}, state: "disabled").render
+      expected = "<input type=\"checkbox\" name=\"test\" id=\"test\" state=\"disabled\" class=\"switch\" />"
 
       assert_equal expected, actual
     end

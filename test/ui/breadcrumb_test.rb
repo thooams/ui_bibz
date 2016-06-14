@@ -5,9 +5,9 @@ class NavTest < ActionView::TestCase
   test 'breadcrumb' do
     actual = UiBibz::Ui::Core::Breadcrumb.new.tap do |b|
       b.link 'Home', url: '#home', glyph: 'home'
-      b.link 'Toto', { url: '#toto', status: :active }
+      b.link 'state', { url: '#state', state: :active }
     end.render
-    expected = "<ol class=\"breadcrumb\"><li><a href=\"#home\"><i class=\"glyph fa fa-home\"></i> Home</a></li><li class=\"active\"><a href=\"#toto\">Toto</a></li></ol>"
+    expected = "<ol class=\"breadcrumb\"><li><a href=\"#home\"><i class=\"glyph fa fa-home\"></i> Home</a></li><li class=\"active\"><a href=\"#state\">state</a></li></ol>"
 
     assert_equal expected, actual
   end

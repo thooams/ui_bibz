@@ -29,16 +29,16 @@ module UiBibz::Ui::Core
   # ==== Examples
   #
   #   UiBibz::Ui::Core::ListGroup.new().tap do |d|
-  #     d.list 'Test', state: :success
-  #     d.list 'Test2', state: :primary
+  #     d.list 'Test', status: :success
+  #     d.list 'Test2', status: :primary
   #   end.render
   #
   #   UiBibz::Ui::Core::ListGroup.new(type: :link).tap do |d|
-  #     d.list 'Test', state: :success, url: '#test'
-  #     d.list(state: :primary) do
+  #     d.list 'Test', status: :success, url: '#test'
+  #     d.list(status: :primary) do
   #       'Test 2'
   #     end
-  #     d.list(tap: true, status: :active) do |l|
+  #     d.list(tap: true, state: :active) do |l|
   #       l.header 'My title', nil, class: 'my-title'
   #       l.body do
   #         'My content'

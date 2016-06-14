@@ -16,7 +16,7 @@ module UiBibz::Ui::Core
   #
   # You can add HTML attributes using the +html_options+.
   # You can pass arguments in options attribute:
-  # * +status+ - State of élement with symbol value:
+  # * +state+ - status of élement with symbol value:
   #   (+:active+)
   # * +url+ - String
   # * +badge+ - String
@@ -32,7 +32,7 @@ module UiBibz::Ui::Core
   #
   # ==== Examples
   #
-  #   UiBibz::Ui::Core::NavLink.new(content, { badge: 15, url: '/', status: :active, link_html_options: { class: 'link1' }},{ class: 'test' }).render
+  #   UiBibz::Ui::Core::NavLink.new(content, { badge: 15, url: '/', state: :active, link_html_options: { class: 'link1' }},{ class: 'test' }).render
   #
   #   UiBibz::Ui::Core::NavLink.new({glyph: { name: 'eye', size: 3 }, { class: 'test' }) do
   #     'Home'
@@ -51,7 +51,7 @@ module UiBibz::Ui::Core
       if options[:nav_type] == "nav-links"
         content_htm
       else
-        options.delete(:status)
+        options.delete(:state)
         UiBibz::Ui::Core::NavLinkList.new(content_htm, options).render
       end
     end

@@ -15,7 +15,7 @@ module UiBibz::Ui::Core
   #
   # You can add HTML attributes using the +html_options+.
   # You can pass arguments in options attribute:
-  # * +state+ - State of élement with symbol value:
+  # * +status+ - status of élement with symbol value:
   #   (+:default+, +:primary+, +:info+, +:warning+, +:danger+)
   # * +size+
   #   (+:xs+, +:sm+, +:lg+)
@@ -36,7 +36,7 @@ module UiBibz::Ui::Core
   #
   # ==== Examples
   #
-  #   UiBibz::Ui::Core::NavDropdown.new(name, state: :success).tap do |d|
+  #   UiBibz::Ui::Core::NavDropdown.new(name, status: :success).tap do |d|
   #     d.list link_to('test', '#')
   #     d.list link_to('test2', '#')
   #   end.render

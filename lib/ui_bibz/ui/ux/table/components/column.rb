@@ -1,7 +1,7 @@
 module UiBibz::Ui::Ux
   class Column < UiBibz::Ui::Core::Component
 
-    attr_accessor :hidden, :link, :state, :name, :input_options, :class, :as, :data_index, :date_format, :sort, :format, :date_format, :count, :custom_sort, :parent, :id
+    attr_accessor :hidden, :link, :status, :name, :input_options, :class, :as, :data_index, :date_format, :sort, :format, :date_format, :count, :custom_sort, :parent, :id
 
     def initialize content = nil, options = nil, html_options = nil, &block
       super
@@ -20,7 +20,7 @@ module UiBibz::Ui::Ux
       @class         = @options[:class]
       @hidden        = @options[:hidden]
       @input_options = @options[:input_options]
-      @state         = @options[:state]
+      @status         = @options[:status]
     end
 
     def linkable?

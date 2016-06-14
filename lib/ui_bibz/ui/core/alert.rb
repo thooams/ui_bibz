@@ -14,7 +14,7 @@ module UiBibz::Ui::Core
   #
   # You can add HTML attributes using the +html_options+.
   # You can pass arguments in options attribute:
-  # * +state+ - State of élement with symbol value:
+  # * +status+ - status of élement with symbol value:
   #   (+:default+, +:primary+, +:info+, +:warning+, +:danger+)
   # * +glyph+ - Add glyph with name or hash options
   #   * +name+ - String
@@ -31,7 +31,7 @@ module UiBibz::Ui::Core
   #
   # ==== Examples
   #
-  #   UiBibz::Ui::Core::Alert.new(content, { state: :success, glyph: 'eye' },{ class: 'test' }).render
+  #   UiBibz::Ui::Core::Alert.new(content, { status: :success, glyph: 'eye' },{ class: 'test' }).render
   #
   #   UiBibz::Ui::Core::Alert.new({glyph: { name: 'eye', size: 3}, { class: 'test' }) do
   #     content
@@ -77,8 +77,8 @@ module UiBibz::Ui::Core
       end
     end
 
-    def state
-      sym = options[:state] || :info
+    def status
+      sym = options[:status] || :info
       "alert-#{ sym }"
     end
 

@@ -18,7 +18,7 @@ module UiBibz::Ui::Core
   #
   # You can add HTML attributes using the +html_options+.
   # You can pass arguments in options attribute:
-  # * +state+ - State of élement with symbol value:
+  # * +status+ - status of élement with symbol value:
   #   (+:primary+, +:secondary+, +:info+, +:warning+, +:danger+)
   # * +size+
   #   (+:xs+, +:sm+, +:lg+)
@@ -39,7 +39,7 @@ module UiBibz::Ui::Core
   #
   # ==== Examples
   #
-  #   UiBibz::Ui::Core::Dropdown.new(name, state: :success).tap do |d|
+  #   UiBibz::Ui::Core::Dropdown.new(name, status: :success).tap do |d|
   #     d.link 'test', { url: '#' }
   #     d.divider
   #     d.header 'Header 1'
@@ -65,7 +65,7 @@ module UiBibz::Ui::Core
     def initialize content, options = nil, html_options  = nil, &block
       super
       @items = []
-      @state = @options.delete(:state)
+      @status = @options.delete(:status)
     end
 
     # Render html tag
@@ -110,7 +110,7 @@ module UiBibz::Ui::Core
     end
 
     def button_html
-      content_tag :button, button_content, class: join_classes("btn", button_state, size, "dropdown-toggle"), type: 'button', "data-toggle" => 'dropdown', "aria-haspopup" => true, "aria-expanded" => false
+      content_tag :button, button_content, class: join_classes("btn", button_status, size, "dropdown-toggle"), type: 'button', "data-toggle" => 'dropdown', "aria-haspopup" => true, "aria-expanded" => false
     end
 
     def ul_html
@@ -133,8 +133,8 @@ module UiBibz::Ui::Core
       "open" if @options[:open]
     end
 
-    def button_state
-      sym = @state || :primary
+    def button_status
+      sym = @status || :primary
       "btn-#{ sym }"
     end
 

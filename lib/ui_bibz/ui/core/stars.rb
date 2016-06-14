@@ -14,7 +14,7 @@ module UiBibz::Ui::Core
   #
   # You can add HTML attributes using the +html_options+.
   # You can pass arguments in options attribute:
-  # * +state+ - State of élement with symbol value:
+  # * +status+ - status of élement with symbol value:
   #   (+:default+, +:primary+, +:info+, +:warning+, +:danger+)
   # * +num+ - Integer, number of stars
   #
@@ -28,7 +28,7 @@ module UiBibz::Ui::Core
   #
   # ==== Examples
   #
-  #   UiBibz::Ui::Core::Stars.new(content, state: :success).render
+  #   UiBibz::Ui::Core::Stars.new(content, status: :success).render
   #
   #   UiBibz::Ui::Core::Stars.new({ num: 10 }) do
   #     #content
@@ -77,7 +77,7 @@ module UiBibz::Ui::Core
 
     def glyph_opts
       opts = {}
-      opts = opts.merge({ state: options[:state] }) unless options[:state].nil?
+      opts = opts.merge({ status: options[:status] }) unless options[:status].nil?
       opts = opts.merge({ size: options[:size] })   unless options[:size].nil?
       opts
     end

@@ -32,11 +32,11 @@ module UiBibz::Ui::Ux
   # * +sortable+ - Boolean
   # * +searchable+ - Boolean
   # * +default_actions+ - Boolean
-  # * +state+
+  # * +status+
   #   (+:inverse+, +:default+, +:success+, +:primary+, +:secondary+, +:info+,
   #   +:danger+, +:warning+)
   # * +thead+ - Hash
-  #   (+state+)
+  #   (+status+)
   #     (+:inverse+, +:default+)
   # * +bordered+ - Boolean
   # * +hoverable+ - Boolean
@@ -67,10 +67,10 @@ module UiBibz::Ui::Ux
   #       c.column :id, { name: '#' }
   #       c.column :name_fr', { link: edit_user_path(:id), order: 2 }
   #       c.column :name_en'
-  #       c.column :status_id, { name: 'Status', format: lambda{ |records, record| "Test #{ record.id}"} }
+  #       c.column :state_id, { name: 'state', format: lambda{ |records, record| "Test #{ record.id}"} }
   #     end
   #     t.actions do |a|
-  #       a.link 'toto', url: users_path(:id), glyph: 'eye'
+  #       a.link 'state', url: users_path(:id), glyph: 'eye'
   #       a.divider
   #       a.link 'momo', url: users_path(:id), glyph: 'home'
   #     end
@@ -195,8 +195,8 @@ module UiBibz::Ui::Ux
       ["table", striped, bordered, hoverable, size, responsive, reflow]
     end
 
-    def state
-      "table-#{ @options[:state] }" unless @options[:state].nil?
+    def status
+      "table-#{ @options[:status] }" unless @options[:status].nil?
     end
 
     def striped

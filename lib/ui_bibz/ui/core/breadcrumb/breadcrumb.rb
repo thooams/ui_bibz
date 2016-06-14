@@ -39,7 +39,7 @@ module UiBibz::Ui::Core
   #     b.link url: '#level-1' do
   #       'Level 1'
   #     end
-  #     b.link 'Level 2', status: :active
+  #     b.link 'Level 2', state: :active
   #   end.render
   #
   # ==== Helper
@@ -98,7 +98,7 @@ module UiBibz::Ui::Core
     def generate_links
       @options[:store].each do |item|
         if item == @options[:store].last
-          @links << BreadcrumbLink.new(item.send(link_label), state: :disabled).render
+          @links << BreadcrumbLink.new(item.send(link_label), status: :disabled).render
         else
           @links << BreadcrumbLink.new(item.send(link_label), url: inject_url(link_url, item)).render
         end

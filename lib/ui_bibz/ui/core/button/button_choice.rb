@@ -15,13 +15,13 @@ module UiBibz::Ui::Core
   # You can add HTML attributes using the +html_options+.
   # You can pass arguments in options attribute:
   # * +type+ - Symbol (+:checkbox+, +:radio+)
-  # * +state+ - State of élement with symbol value:
+  # * +status+ - status of élement with symbol value:
   #   (+:primary+, +:secondary+, +:info+, +:warning+, +:danger+)
   # * +size+
   #   (+:xs+, +:sm+, +:lg+)
   # * +url+ - String url
   # * +outline+ - Boolean
-  # * +status+ - Symbol (+:active+, +:disabled)
+  # * +state+ - Symbol (+:active+, +:disabled)
   # * +type+ - Symbol (+:block)
   # * +name+ - String name of input checkbox
   # * +id+ - String id of input checkbox
@@ -41,9 +41,9 @@ module UiBibz::Ui::Core
   #
   # ==== Examples
   #
-  #   UiBibz::Ui::Core::ButtonChoice.new('test', status: :active)
+  #   UiBibz::Ui::Core::ButtonChoice.new('test', state: :active)
   #
-  #   UiBibz::Ui::Core::ButtonChoice.new({id: 'toto', input_html_options: { class: 'toto'}}, { class: 'lable-class'}) do
+  #   UiBibz::Ui::Core::ButtonChoice.new({id: 'state', input_html_options: { class: 'state'}}, { class: 'lable-class'}) do
   #     test
   #   end.render
   #
@@ -81,7 +81,7 @@ module UiBibz::Ui::Core
     end
 
     def checked
-      @options[:status] == :active ? { checked: :checked } : {}
+      @options[:state] == :active ? { checked: :checked } : {}
     end
 
     def name

@@ -15,8 +15,8 @@ class StarsTest < ActionView::TestCase
       assert_equal expected, actual
     end
 
-    test "stars with 3.6 with state danger" do
-      actual   = UiBibz::Ui::Core::Stars.new(3.6, { state: :danger }).render
+    test "stars with 3.6 with status danger" do
+      actual   = UiBibz::Ui::Core::Stars.new(3.6, { status: :danger }).render
       expected = "<span class=\"stars-notation\"><i class=\"glyph-danger glyph fa fa-star\"></i> <i class=\"glyph-danger glyph fa fa-star\"></i> <i class=\"glyph-danger glyph fa fa-star\"></i> <i class=\"glyph-danger glyph fa fa-star-half-o\"></i> <i class=\"glyph-danger glyph fa fa-star-o\"></i></span>"
       assert_equal expected, actual
     end

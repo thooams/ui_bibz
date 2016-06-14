@@ -33,7 +33,7 @@ module UiBibz::Ui::Core
   #
   #   UiBibz::Ui::Core::NavbarNav.new().tap do |n|
   #     n.link 'Test', url: '#test'
-  #     n.link 'Test2', url: '#test2', status: :active
+  #     n.link 'Test2', url: '#test2', state: :active
   #   end.render
   #
   class NavbarNav < Nav

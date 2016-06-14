@@ -27,15 +27,15 @@ module UiBibz::Ui::Ux
 
     def boolean_render
       if @content == true
-        glyph = UiBibz::Ui::Core::Glyph.new('check-circle', state: :success)
+        glyph = UiBibz::Ui::Core::Glyph.new('check-circle', status: :success)
       else
-        glyph = UiBibz::Ui::Core::Glyph.new('minus-circle', state: :danger)
+        glyph = UiBibz::Ui::Core::Glyph.new('minus-circle', status: :danger)
       end
       glyph.render
     end
 
     def progress_render
-      UiBibz::Ui::Core::Progress.new(@content, state: (@col.state || :primary)).render
+      UiBibz::Ui::Core::Progress.new(@content, status: (@col.status || :primary)).render
     end
 
   end

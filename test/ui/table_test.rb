@@ -87,9 +87,9 @@ class TableTest < ActionView::TestCase
   end
 
   test 'table non searchable with a title and glyph' do
-    options  = { searchable: false, glyph: 'toto', title: 'Title list' }
+    options  = { searchable: false, glyph: 'state', title: 'Title list' }
     actual   = UiBibz::Ui::Ux::Searchable.new(@store, options).render
-    expected = "<div><div class=\"title\"><i class=\"glyph fa fa-toto\"></i>Title list</div><br class=\"ui-bibz-clear\" /></div>"
+    expected = "<div><div class=\"title\"><i class=\"glyph fa fa-state\"></i>Title list</div><br class=\"ui-bibz-clear\" /></div>"
 
     assert_equal expected, actual
   end
@@ -152,7 +152,7 @@ class TableTest < ActionView::TestCase
   end
 
   test 'complex table_card' do
-    actual = UiBibz::Ui::Ux::TableCard.new({ store: @users, tap: true }, { class: 'toto' }).tap do |pane|
+    actual = UiBibz::Ui::Ux::TableCard.new({ store: @users, tap: true }, { class: 'state' }).tap do |pane|
       pane.header 'Test header'
       pane.block class: 'ui' do
         'Test body'
@@ -161,7 +161,7 @@ class TableTest < ActionView::TestCase
   end
 
   test 'complex table_card with custom actions' do
-    actual = UiBibz::Ui::Ux::TableCard.new({ store: @users, tap: true }, { class: 'toto'}).tap do |pane|
+    actual = UiBibz::Ui::Ux::TableCard.new({ store: @users, tap: true }, { class: 'state'}).tap do |pane|
       pane.header 'Test header'
       pane.block cls: 'ui' do
         'Test body'
@@ -173,7 +173,7 @@ class TableTest < ActionView::TestCase
         c.column(:name_en, { name: 'Name en', format: lambda{ |records, record| "name #{ record.id}"}})
       end
       pane.actions do |a|
-        a.link 'toto', url: users_path(:id), glyph: 'eye'
+        a.link 'state', url: users_path(:id), glyph: 'eye'
         a.divider
         a.link 'momo', url: users_path(:id), glyph: 'home'
       end
@@ -195,7 +195,7 @@ class TableTest < ActionView::TestCase
   end
 
   test 'table visual options' do
-    table  = UiBibz::Ui::Ux::Table.new(store: @users, striped: true, state: :inverse, responsive: true, bordered: true, size: :sm, hoverable: true, reflow: true).render
+    table  = UiBibz::Ui::Ux::Table.new(store: @users, striped: true, status: :inverse, responsive: true, bordered: true, size: :sm, hoverable: true, reflow: true).render
     actual = Nokogiri::HTML(table).xpath("//table")[0].attributes["class"].value
     expected = "table-inverse table table-striped table-bordered table-hoverable table-sm table-responsive table-reflow"
 
@@ -203,7 +203,7 @@ class TableTest < ActionView::TestCase
   end
 
   test 'table thead visual options' do
-    table  = UiBibz::Ui::Ux::Table.new(store: @users, thead: { state: :default }).render
+    table  = UiBibz::Ui::Ux::Table.new(store: @users, thead: { status: :default }).render
     actual = Nokogiri::HTML(table).xpath("//thead")[0].attributes["class"].value
     expected = "thead-default"
 

@@ -14,7 +14,7 @@ module UiBibz::Ui::Core
   #
   # You can add HTML attributes using the +html_options+.
   # You can pass arguments in options attribute:
-  # * +status+ - String
+  # * +state+ - String
   # * +animate+ - Boolean
   # * +on_color+ - String
   # * +off_color+ - String
@@ -70,7 +70,7 @@ module UiBibz::Ui::Core
 
     def component_html_data
       size
-      status
+      state
       animate
       left_color
       right_color
@@ -94,8 +94,8 @@ module UiBibz::Ui::Core
     end
 
     # active, disabled => default : active
-    def status
-      html_options[:disabled] = true if options[:status] == 'disabled'
+    def state
+      html_options[:disabled] = true if options[:state] == 'disabled'
     end
 
     # 'primary', 'info', 'success', 'warning', 'danger', 'default' => default : default

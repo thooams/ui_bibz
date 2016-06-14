@@ -77,7 +77,7 @@ module UiBibz::Ui::Core
 
     def formula_field_alert
       content_tag :span, class: 'formula_field_alert input-group-addon', data: { toggle: 'tooltip' } do
-        UiBibz::Ui::Core::Glyph.new('exclamation-triangle', state: :danger ).render
+        UiBibz::Ui::Core::Glyph.new('exclamation-triangle', status: :danger ).render
       end
     end
 

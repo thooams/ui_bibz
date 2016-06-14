@@ -16,11 +16,11 @@ module UiBibz::Ui::Core
   #
   # You can add HTML attributes using the +html_options+.
   # You can pass arguments in options attribute:
-  # * +status+ - State of élement with symbol value:
+  # * +state+ - status of élement with symbol value:
   #   (+:active+, +:disable+)
   # * +url+
   # * +tap+ - Boolean to add header and body
-  # * +state+ - State of élement with symbol value:
+  # * +status+ - status of élement with symbol value:
   #   (+:default+, +:primary+, +:info+, +:warning+, +:danger+)
   # * +glyph+ - Add glyph with name or hash options
   #   * +name+ - String
@@ -42,13 +42,13 @@ module UiBibz::Ui::Core
   #
   # ==== Examples
   #
-  #   UiBibz::Ui::Core::List.new('Test', state: :success, url: '#test').render
+  #   UiBibz::Ui::Core::List.new('Test', status: :success, url: '#test').render
   #
-  #   UiBibz::Ui::Core::List.new(state: :primary) do
+  #   UiBibz::Ui::Core::List.new(status: :primary) do
   #       'Test 2'
   #   end.render
   #
-  #   UiBibz::Ui::Core::List.new(tap: true, status: :active) do |l|
+  #   UiBibz::Ui::Core::List.new(tap: true, state: :active) do |l|
   #     l.header 'My title', nil, class: 'my-title'
   #     l.body do
   #       'My content'
@@ -116,8 +116,8 @@ module UiBibz::Ui::Core
       @options[:type] == :button || @html_options[:type] == :button
     end
 
-    def state
-      "list-group-item-#{ @options[:state] }" unless @options[:state].nil?
+    def status
+      "list-group-item-#{ @options[:status] }" unless @options[:status].nil?
     end
 
   end
