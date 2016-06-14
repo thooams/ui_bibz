@@ -78,5 +78,13 @@ module UiBibz::Ui::Core
       @datalist ||= "#{ html_options[:id] || content }-datalist"
     end
 
+    def state
+      "form-control-#{ options[:state] }" if options[:state]
+    end
+
+    def component_html_options
+      options[:status] == :disable ? { disabled: 'disabled' } : {}
+    end
+
   end
 end

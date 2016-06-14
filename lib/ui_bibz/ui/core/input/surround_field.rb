@@ -51,7 +51,7 @@ module UiBibz::Ui::Core
       if options[:append].nil? && options[:prepend].nil?
         text_field_input_tag
       else
-        content_tag :div, class: join_classes('input-group', size) do
+        content_tag :div, class: join_classes('input-group', size, state) do
           concat content_tag :span, options[:append], class: 'input-group-addon' unless options[:append].nil?
           concat text_field_input_tag
           concat content_tag :span, options[:prepend], class: 'input-group-addon' unless options[:prepend].nil?
@@ -77,6 +77,14 @@ module UiBibz::Ui::Core
     # :lg, :sm or :xs
     def size
       "input-group-#{ options[:size] }" if options[:size]
+    end
+
+    def state
+      "has-#{ options[:state] }" if options[:state]
+    end
+
+    def component_html_options
+      options[:status] == :disable ? { disabled: 'disabled' } : {}
     end
 
   end
