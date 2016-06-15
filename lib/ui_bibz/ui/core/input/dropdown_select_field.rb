@@ -76,6 +76,10 @@ module UiBibz::Ui::Core
       actions_box
     end
 
+    def component_html_options
+      options[:state] == :disable ? { disabled: 'disabled' } : {}
+    end
+
     ############################ Data html options
 
     def max_options
@@ -120,5 +124,6 @@ module UiBibz::Ui::Core
     def dropup
       'dropup' if options[:dropup]
     end
+
   end
 end
