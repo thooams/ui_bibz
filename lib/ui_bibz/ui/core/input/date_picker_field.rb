@@ -51,7 +51,7 @@ module UiBibz::Ui::Core
     # Render html tag
     def render
       if options[:range]
-        content_tag :div, class: join_classes('input-group', 'input-daterange', size) do
+        content_tag :div, class: join_classes('input-group', 'input-daterange', size, status) do
           concat content_tag :span, options[:append], class: 'input-group-addon' unless @options[:append].nil?
           concat text_field_input_tag content[0]
           concat content_tag :span, options[:range], class: 'input-group-addon input-group-range'
@@ -86,6 +86,10 @@ module UiBibz::Ui::Core
 
     def component_html_classes
       %w(date_picker form-control)
+    end
+
+    def component_html_options
+      options[:state] == :disable ? { disabled: 'disabled' } : {}
     end
 
     def date_locale
@@ -127,6 +131,10 @@ module UiBibz::Ui::Core
     # :lg, :sm or :xs
     def size
       "input-group-#{ options[:size] }" if options[:size]
+    end
+
+    def status
+      "has-#{ options[:status] }" if options[:status]
     end
 
   end
