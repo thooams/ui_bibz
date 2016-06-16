@@ -56,7 +56,7 @@ module UiBibz::Ui::Core
     private
 
     def component_html_options
-      { multiple: true }
+      { multiple: true }.merge(options[:state] == :disable ? { disabled: 'disabled' } : {})
     end
 
     def component_html_classes
@@ -87,7 +87,7 @@ module UiBibz::Ui::Core
     end
 
     def status
-      options[:status] || 'btn-secondary'
+      options[:status].nil? ? 'btn-secondary' : "btn-#{ options[:status] }"
     end
 
   end

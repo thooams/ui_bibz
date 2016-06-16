@@ -49,7 +49,7 @@ class InputsTest < ActionView::TestCase
     test "Multi Select Field data html options" do
       grouped_options = { 'North America' => [['United statuss','US'], 'Canada'], 'Europe' => ['Denmark','Germany','France'] }
       actual   = UiBibz::Ui::Core::MultiSelectField.new('example', { option_tags: grouped_options_for_select(grouped_options), clickable_opt_group: true, collapsible_opt_group: true, searchable: true, select_all_option: true, status: :danger }).render
-      expected = "<select name=\"example[]\" id=\"example\" data-enable-clickable-opt-groups=\"true\" data-enable-collapsible-opt-groups=\"true\" data-enable-filtering=\"true\" data-include-select-all-option=\"true\" class=\"danger btn multi-select\" multiple=\"multiple\"><optgroup label=\"North America\"><option value=\"US\">United statuss</option>
+      expected = "<select name=\"example[]\" id=\"example\" data-enable-clickable-opt-groups=\"true\" data-enable-collapsible-opt-groups=\"true\" data-enable-filtering=\"true\" data-include-select-all-option=\"true\" class=\"btn-danger btn multi-select\" multiple=\"multiple\"><optgroup label=\"North America\"><option value=\"US\">United statuss</option>
 <option value=\"Canada\">Canada</option></optgroup><optgroup label=\"Europe\"><option value=\"Denmark\">Denmark</option>
 <option value=\"Germany\">Germany</option>
 <option value=\"France\">France</option></optgroup></select>"

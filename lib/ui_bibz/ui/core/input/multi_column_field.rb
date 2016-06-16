@@ -62,7 +62,7 @@ module UiBibz::Ui::Core
     end
 
     def component_html_options
-      { multiple: true }
+      { multiple: true }.merge(options[:state] == :disable ? { disabled: 'disabled' } : {})
     end
 
     def searchable
@@ -71,6 +71,10 @@ module UiBibz::Ui::Core
 
     def selectable_opt_group
       add_html_data('selectable_optgroup') if options[:selectable_opt_group]
+    end
+
+    def status
+      "has-#{ options[:status] }" if options[:status]
     end
 
   end

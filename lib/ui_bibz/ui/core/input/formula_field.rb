@@ -45,7 +45,7 @@ module UiBibz::Ui::Core
 
     # Render html tag
     def render
-      content_tag :div, class: 'input-group formula_field' do
+      content_tag :div, class: join_classes('input-group', 'formula_field', status) do
         concat text_field_formula_input_tag
         concat formula_field_sign
         concat text_field_input_tag
@@ -75,6 +75,10 @@ module UiBibz::Ui::Core
       'formula_field_input form-control'
     end
 
+    def component_html_options
+      options[:state] == :disable ? { disabled: 'disabled' } : {}
+    end
+
     def formula_field_alert
       content_tag :span, class: 'formula_field_alert input-group-addon', data: { toggle: 'tooltip' } do
         UiBibz::Ui::Core::Glyph.new('exclamation-triangle', status: :danger ).render
@@ -87,6 +91,10 @@ module UiBibz::Ui::Core
 
     def formula_field_sign
       content_tag :span, '=', class: 'formula_field_sign input-group-addon'
+    end
+
+     def status
+      "has-#{ options[:status] }" if options[:status]
     end
 
   end
