@@ -19,5 +19,5 @@ Ui Bibz load [boostrap](http://getbootstrap.com/) and [awesomefont](http://fonta
 
 
 ## Documentation
-Documentation is here :
-[http://hummel.link/ui-bibz-app/](http://hummel.link/ui-bibz-app/)
+Full documentation is here :
+[Ui Bibz](http://hummel.link/Ui-Bibz/)
