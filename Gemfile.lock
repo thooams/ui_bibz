@@ -3,7 +3,6 @@ PATH
   specs:
     ui_bibz (2.0.0.alpha13)
       bootstrap (= 4.0.0.alpha3)
-      bundler (>= 1.8.4)
       font-awesome-sass
       haml
       haml-rails
