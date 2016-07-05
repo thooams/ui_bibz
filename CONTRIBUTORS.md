@@ -20,4 +20,5 @@
   * [bootstrap-multiselect](https://github.com/davidstutz/bootstrap-multiselect)
 * [Louis Cuny](https://github.com/lou)
   * [multi-select](https://github.com/lou/multi-select/)
-
+* [Taufan Aditya](https://github.com/toopay)
+  * [boostrap-markdown](https://github.com/toopay/bootstrap-markdown)
