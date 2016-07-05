@@ -23,7 +23,7 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib", "vendor"]
 
   # Rails gems
-  s.add_dependency 'bundler', '>= 1.8.4'
+  #s.add_dependency 'bundler', '>= 1.8.4'
   s.add_dependency 'rails', '>= 4.2.0'
   s.add_dependency 'will_paginate', '~> 3.1.0'
   s.add_dependency 'will_paginate-bootstrap'
