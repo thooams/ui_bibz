@@ -62,6 +62,6 @@ Ps: You can use sass variables into Boostrap.
 
 ## And after
 
-See documentation [here](http://hummel.link/Ui-Bibz/) for boostrap 4.
-See documentation [here](http://hummel.link/Ui-Bibz/1.2.5/) for boostrap 3.
+* See documentation [here](http://hummel.link/Ui-Bibz/) for boostrap 4.
+* See documentation [here](http://hummel.link/Ui-Bibz/1.2.5/) for boostrap 3.
 
