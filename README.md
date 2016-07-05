@@ -21,3 +21,46 @@ Ui Bibz load [boostrap](http://getbootstrap.com/) and [awesomefont](http://fonta
 ## Documentation
 Full documentation is here :
 [Ui Bibz](http://hummel.link/Ui-Bibz/)
+
+
+## Installation
+
+Add it to your Gemfile
+For bootstrap v4:
+
+```
+gem 'ui_bibz'
+```
+
+For bootstrap v3:
+
+```
+gem 'ui_bibz', '~> 1.2.5.3'
+```
+
+Run the following command to install it:
+
+```
+bundle install
+```
+
+## Configuration
+
+Put this line in: /app/assets/stylesheets/applications.css
+
+```
+*= require ui_bibz
+```
+
+Put this line in: /app/assets/javascripts/applications.js
+
+```
+//= require ui_bibz
+```
+
+Ps: You can use sass variables into Boostrap.
+
+## And after
+
+See documentation [here](http://hummel.link/Ui-Bibz/).
+
