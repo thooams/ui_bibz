@@ -1,6 +1,6 @@
 module UiBibz::Ui::Core
 
-  # Create a SurroundField
+  # Create a MarkdownEditorField
   #
   # This element is an extend of UiBibz::Ui::Core::Component.
   #
@@ -14,32 +14,30 @@ module UiBibz::Ui::Core
   #
   # You can add HTML attributes using the +html_options+.
   # You can pass arguments in options attribute:
-  # * +prepend+ - String
-  # * +append+ - String
   #
   # ==== Signatures
   #
-  #   UiBibz::Ui::Core::SurroundField.new(content, options = {}, html_options = {}).render
+  #   UiBibz::Ui::Core::MarkdownEditorField.new(content, options = {}, html_options = {}).render
   #
-  #   UiBibz::Ui::Core::SurroundField.new(options = {}, html_options = {}) do
+  #   UiBibz::Ui::Core::MarkdownEditorField.new(options = {}, html_options = {}) do
   #     content
   #   end.render
   #
   # ==== Examples
   #
-  #   UiBibz::Ui::Core::SurroundField.new('search', prepend: 'Prepend content', append: 'Append content', class: 'test')
+  #   UiBibz::Ui::Core::MarkdownEditorField.new('search', prepend: 'Prepend content', append: 'Append content', class: 'test')
   #
-  #   UiBibz::Ui::Core::SurroundField.new(prepend: glyph('pencil'), append: glyph('camera-retro')) do
+  #   UiBibz::Ui::Core::MarkdownEditorField.new(prepend: glyph('pencil'), append: glyph('camera-retro')) do
   #     #content
   #   end
   #
   # ==== Helper
   #
-  #   surround_field(options = {}, html_options = {}) do
+  #   markdown_editor_field(options = {}, html_options = {}) do
   #    # content
   #   end
   #
-  class SurroundField < Component
+  class MarkdownEditorField < Component
 
     # See UiBibz::Ui::Core::Component.initialize
     def initialize content = nil, options = nil, html_options = nil, &block
@@ -48,25 +46,17 @@ module UiBibz::Ui::Core
 
     # Render html tag
     def render
-      if options[:append].nil? && options[:prepend].nil?
-        text_field_input_tag
-      else
-        content_tag :div, class: join_classes('input-group', size, status) do
-          concat content_tag :span, options[:append], class: 'input-group-addon' unless options[:append].nil?
-          concat text_field_input_tag
-          concat content_tag :span, options[:prepend], class: 'input-group-addon' unless options[:prepend].nil?
-        end
-      end
+      text_area_input_tag 'toto'
     end
 
     private
 
     # Simple_form or not
-    def text_field_input_tag
+    def text_area_input_tag
       if options[:builder].nil?
-        text_field_tag content, html_options[:value], html_options
+        text_area_tag content, html_options[:value], html_options
       else
-        options[:builder].text_field content, html_options
+        options[:builder].text_area content, html_options
       end
     end
 

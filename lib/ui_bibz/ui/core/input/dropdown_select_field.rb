@@ -77,7 +77,7 @@ module UiBibz::Ui::Core
     end
 
     def component_html_options
-      options[:state] == :disable ? { disabled: 'disabled' } : {}
+      options[:state] == :disabled ? { disabled: 'disabled' } : {}
     end
 
     ############################ Data html options

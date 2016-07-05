@@ -32,6 +32,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'haml-rails'
   s.add_dependency 'sass-rails', '>= 5.0.0'
   s.add_dependency 'font-awesome-sass'
+  s.add_dependency 'rails-bootstrap-markdown'
   s.add_dependency 'bootstrap', '< 4.0.0.alpha3'
 
   # Javascript gems (rails-assets.org)

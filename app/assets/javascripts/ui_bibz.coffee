@@ -22,6 +22,9 @@
 # multi_select_field component
 #= require bootstrap-multiselect.min
 
+# mardown-editor
+#= require bootstrap-markdown-bundle
+
 # Ui Bibz
 #= require table
 #= require interface

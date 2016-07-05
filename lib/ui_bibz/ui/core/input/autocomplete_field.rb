@@ -68,7 +68,7 @@ module UiBibz::Ui::Core
 
     def component_html_options
       args = { autocomplete: true, list: data_list_name }
-      args = args.merge(options[:state] == :disable ? { disabled: 'disabled' } : {})
+      args = args.merge(options[:state] == :disabled ? { disabled: 'disabled' } : {})
       args
     end
 

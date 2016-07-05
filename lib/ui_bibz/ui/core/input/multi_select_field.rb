@@ -56,7 +56,7 @@ module UiBibz::Ui::Core
     private
 
     def component_html_options
-      { multiple: true }.merge(options[:state] == :disable ? { disabled: 'disabled' } : {})
+      { multiple: true }.merge(options[:state] == :disabled ? { disabled: 'disabled' } : {})
     end
 
     def component_html_classes

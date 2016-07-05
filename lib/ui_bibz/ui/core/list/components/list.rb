@@ -17,7 +17,7 @@ module UiBibz::Ui::Core
   # You can add HTML attributes using the +html_options+.
   # You can pass arguments in options attribute:
   # * +state+ - status of élement with symbol value:
-  #   (+:active+, +:disable+)
+  #   (+:active+, +:disabled+)
   # * +url+
   # * +tap+ - Boolean to add header and body
   # * +status+ - status of élement with symbol value:
