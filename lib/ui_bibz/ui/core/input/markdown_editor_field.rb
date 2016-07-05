@@ -15,6 +15,13 @@ module UiBibz::Ui::Core
   # You can add HTML attributes using the +html_options+.
   # You can pass arguments in options attribute:
   #
+  # * +state+ - (:disabled, :active)
+  # * +autofocus+ - Boolean
+  # * +savable+ - Boolean
+  # * +hideable+ - Boolean
+  # * +hidden_buttons+ - (Array || String)
+  # * +disabled_buttons+ - (Array || String)
+  #
   # ==== Signatures
   #
   #   UiBibz::Ui::Core::MarkdownEditorField.new(content, options = {}, html_options = {}).render
