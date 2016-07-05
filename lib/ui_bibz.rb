@@ -31,6 +31,7 @@ module UiBibz
       autoload :DatePickerField,         "ui_bibz/ui/core/input/date_picker_field"
       autoload :DropdownSelectField,     "ui_bibz/ui/core/input/dropdown_select_field"
       autoload :FormulaField,            "ui_bibz/ui/core/input/formula_field"
+      autoload :MarkdownEditorField,     "ui_bibz/ui/core/input/markdown_editor_field"
       autoload :MultiColumnField,        "ui_bibz/ui/core/input/multi_column_field"
       autoload :MultiSelectField,        "ui_bibz/ui/core/input/multi_select_field"
       autoload :SurroundField,           "ui_bibz/ui/core/input/surround_field"

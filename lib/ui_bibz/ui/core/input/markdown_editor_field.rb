@@ -46,13 +46,6 @@ module UiBibz::Ui::Core
 
     # Render html tag
     def render
-      text_area_input_tag 'toto'
-    end
-
-    private
-
-    # Simple_form or not
-    def text_area_input_tag
       if options[:builder].nil?
         text_area_tag content, html_options[:value], html_options
       else
@@ -60,13 +53,44 @@ module UiBibz::Ui::Core
       end
     end
 
-    def component_html_classes
-      'form-control'
+    private
+
+    def component_html_data
+      provide
+      autofocus
+      savable
+      hideable
+      icon_library
+      hidden_buttons
+      disabled_buttons
     end
 
-    # :lg, :sm or :xs
-    def size
-      "input-group-#{ options[:size] }" if options[:size]
+    def provide
+      add_html_data('provide', 'markdown')
+    end
+
+    def autofocus
+      add_html_data('autofocus') if options[:autofocus]
+    end
+
+    def savable
+      add_html_data('savable') if options[:savable]
+    end
+
+    def hideable
+      add_html_data('hideable') if options[:hideable]
+    end
+
+    def icon_library
+      add_html_data('iconlibrary', 'fa')
+    end
+
+    def hidden_buttons
+      add_html_data('hiddenButtons', options[:hidden_buttons]) if options[:hidden_buttons]
+    end
+
+    def disabled_buttons
+      add_html_data('disabledButtons', options[:disabled_buttons]) if options[:disabled_buttons]
     end
 
     def status

@@ -23,7 +23,8 @@
 #= require bootstrap-multiselect.min
 
 # mardown-editor
-#= require bootstrap-markdown-bundle
+#= require marked
+#= require bootstrap-markdown
 
 # Ui Bibz
 #= require table
