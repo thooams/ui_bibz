@@ -1,10 +1,10 @@
 module CustomInputs
   class MultiSelectInput < SimpleForm::Inputs::CollectionInput
-    include UiBibz::Ui::Core
+    include UiBibz::Ui::Core::Inputs
 
     def input(wrapper_options)
       label_method, value_method = detect_collection_methods
-      i = UiBibz::Ui::Core::MultiSelectField.new(attribute_name, options, input_html_options)
+      i = UiBibz::Ui::Core::Inputs::MultiSelectField.new(attribute_name, options, input_html_options)
 
       @builder.collection_select(
         attribute_name, collection, value_method, label_method,

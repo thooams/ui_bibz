@@ -1,11 +1,11 @@
 module CustomInputs
   # multi_column_input manages collection and grouped_collection
   class MultiColumnInput < SimpleForm::Inputs::CollectionInput
-    include UiBibz::Ui::Core
+    include UiBibz::Ui::Core::Inputs
 
     def input(wrapper_options)
       label_method, value_method = detect_collection_methods
-      i = UiBibz::Ui::Core::MultiColumnField.new(attribute_name, options, input_html_options)
+      i = UiBibz::Ui::Core::Inputs::MultiColumnField.new(attribute_name, options, input_html_options)
 
       input_options.delete(:prompt)
       input_options.merge!({include_blank: false})
