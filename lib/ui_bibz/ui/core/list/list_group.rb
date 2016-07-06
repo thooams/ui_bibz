@@ -68,7 +68,7 @@ module UiBibz::Ui::Core
   #     end
   #   end
   #
-  class ListGroup < Component
+  class ListGroup < UiBibz::Ui::Core::Component
 
     # See UiBibz::Ui::Core::Component.initialize
     def initialize content = nil, options = nil, html_options = nil, &block

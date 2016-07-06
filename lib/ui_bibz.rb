@@ -12,39 +12,50 @@ module UiBibz
 
     # Core
     module Core
+
       # Button section
-      autoload :Button,                  "ui_bibz/ui/core/button/button"
-      autoload :ButtonChoice,            "ui_bibz/ui/core/button/button_choice"
-      autoload :ButtonDropdown,          "ui_bibz/ui/core/button/button_dropdown"
-      autoload :ButtonGroup,             "ui_bibz/ui/core/button/button_group"
-      autoload :ButtonLink,              "ui_bibz/ui/core/button/button_link"
-      autoload :ButtonSplitDropdown,     "ui_bibz/ui/core/button/button_split_dropdown"
+      module Buttons
+        autoload :Button,                  "ui_bibz/ui/core/buttons/button"
+        autoload :ButtonChoice,            "ui_bibz/ui/core/buttons/button_choice"
+        autoload :ButtonDropdown,          "ui_bibz/ui/core/buttons/button_dropdown"
+        autoload :ButtonGroup,             "ui_bibz/ui/core/buttons/button_group"
+        autoload :ButtonLink,              "ui_bibz/ui/core/buttons/button_link"
+        autoload :ButtonSplitDropdown,     "ui_bibz/ui/core/buttons/button_split_dropdown"
+      end
 
       # Card section
-      autoload :Card,                    "ui_bibz/ui/core/card/card"
-      autoload :CardColumn,              "ui_bibz/ui/core/card/card_column"
-      autoload :CardDeck,                "ui_bibz/ui/core/card/card_deck"
-      autoload :CardGroup,               "ui_bibz/ui/core/card/card_group"
+      module Cards
+        autoload :Card,                    "ui_bibz/ui/core/cards/card"
+        autoload :CardColumn,              "ui_bibz/ui/core/cards/card_column"
+        autoload :CardDeck,                "ui_bibz/ui/core/cards/card_deck"
+        autoload :CardGroup,               "ui_bibz/ui/core/cards/card_group"
+      end
 
       # Input section
-      autoload :AutocompleteField,       "ui_bibz/ui/core/input/autocomplete_field"
-      autoload :DatePickerField,         "ui_bibz/ui/core/input/date_picker_field"
-      autoload :DropdownSelectField,     "ui_bibz/ui/core/input/dropdown_select_field"
-      autoload :FormulaField,            "ui_bibz/ui/core/input/formula_field"
-      autoload :MarkdownEditorField,     "ui_bibz/ui/core/input/markdown_editor_field"
-      autoload :MultiColumnField,        "ui_bibz/ui/core/input/multi_column_field"
-      autoload :MultiSelectField,        "ui_bibz/ui/core/input/multi_select_field"
-      autoload :SurroundField,           "ui_bibz/ui/core/input/surround_field"
-      autoload :SwitchField,             "ui_bibz/ui/core/input/switch_field"
+      module Inputs
+        autoload :AutocompleteField,       "ui_bibz/ui/core/inputs/autocomplete_field"
+        autoload :DatePickerField,         "ui_bibz/ui/core/inputs/date_picker_field"
+        autoload :DropdownSelectField,     "ui_bibz/ui/core/inputs/dropdown_select_field"
+        autoload :FormulaField,            "ui_bibz/ui/core/inputs/formula_field"
+        autoload :MarkdownEditorField,     "ui_bibz/ui/core/inputs/markdown_editor_field"
+        autoload :MultiColumnField,        "ui_bibz/ui/core/inputs/multi_column_field"
+        autoload :MultiSelectField,        "ui_bibz/ui/core/inputs/multi_select_field"
+        autoload :SurroundField,           "ui_bibz/ui/core/inputs/surround_field"
+        autoload :SwitchField,             "ui_bibz/ui/core/inputs/switch_field"
+      end
 
       # Layout section
-      autoload :Row,                     "ui_bibz/ui/core/layout/row"
-      autoload :Col,                     "ui_bibz/ui/core/layout/col"
-      autoload :Container,               "ui_bibz/ui/core/layout/container"
+      module Layouts
+        autoload :Row,                     "ui_bibz/ui/core/layouts/row"
+        autoload :Col,                     "ui_bibz/ui/core/layouts/col"
+        autoload :Container,               "ui_bibz/ui/core/layouts/container"
+      end
 
       # Nav section
-      autoload :Nav,                     "ui_bibz/ui/core/nav/nav"
-      autoload :Navbar,                  "ui_bibz/ui/core/nav/navbar"
+      module Navs
+        autoload :Nav,                     "ui_bibz/ui/core/navs/nav"
+        autoload :Navbar,                  "ui_bibz/ui/core/navs/navbar"
+      end
 
       # Other section
       autoload :Alert,                   "ui_bibz/ui/core/alert"
@@ -63,11 +74,16 @@ module UiBibz
 
     # Ux
     module Ux
-      autoload :Table,                   "ui_bibz/ui/ux/table/table"
-      autoload :TableCard,               "ui_bibz/ui/ux/table/table_card"
-      autoload :TableSearchField,        "ui_bibz/ui/ux/table/table_search_field"
-      autoload :TablePagination,         "ui_bibz/ui/ux/table/table_pagination"
-      autoload :TablePaginationPerPage,  "ui_bibz/ui/ux/table/table_pagination_per_page"
+
+      # Table section
+      module Tables
+        autoload :Table,                   "ui_bibz/ui/ux/tables/table"
+        autoload :TableCard,               "ui_bibz/ui/ux/tables/table_card"
+        autoload :TableSearchField,        "ui_bibz/ui/ux/tables/table_search_field"
+        autoload :TablePagination,         "ui_bibz/ui/ux/tables/table_pagination"
+        autoload :TablePaginationPerPage,  "ui_bibz/ui/ux/tables/table_pagination_per_page"
+      end
+
     end
   end
 

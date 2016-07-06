@@ -11,9 +11,9 @@ module UiBibz::Helpers::UiUxHelper
   # +footer+.
   def table content = nil, options = nil, html_options = nil, &block
     if is_tap(content, options)
-      UiBibz::Ui::Ux::Table.new(content, options, html_options).tap(&block).render
+      UiBibz::Ui::Ux::Tables::Table.new(content, options, html_options).tap(&block).render
     else
-      UiBibz::Ui::Ux::Table.new(content, options, html_options, &block).render
+      UiBibz::Ui::Ux::Tables::Table.new(content, options, html_options, &block).render
     end
   end
 
@@ -22,7 +22,7 @@ module UiBibz::Helpers::UiUxHelper
   # +options+ (Hash) [Required]
   # +html_options+ (Hash)
   def table_search_field options, html_options = nil
-    UiBibz::Ui::Ux::TableSearchField.new(options, html_options).render
+    UiBibz::Ui::Ux::Tables::TableSearchField.new(options, html_options).render
   end
 
   # Table Pagination Per Page Component
@@ -30,7 +30,7 @@ module UiBibz::Helpers::UiUxHelper
   # +options+ (Hash) [Required]
   # +html_options+ (Hash)
   def table_pagination_per_page options, html_options = nil
-    UiBibz::Ui::Ux::TablePaginationPerPage.new(options, html_options).render
+    UiBibz::Ui::Ux::Tables::TablePaginationPerPage.new(options, html_options).render
   end
 
   # Table Pagination Component
@@ -38,7 +38,7 @@ module UiBibz::Helpers::UiUxHelper
   # +options+ (Hash) [Required]
   # +html_options+ (Hash)
   def table_pagination options, html_options = nil
-    UiBibz::Ui::Ux::TablePagination.new(options, html_options).render
+    UiBibz::Ui::Ux::Tables::TablePagination.new(options, html_options).render
   end
 
   # Glyph and Text method
@@ -57,9 +57,9 @@ module UiBibz::Helpers::UiUxHelper
   # +footer+.
   def table_card content = nil, options = nil, html_options = nil, &block
     if is_tap(content, options)
-      UiBibz::Ui::Ux::TableCard.new(content, options, html_options).tap(&block).render
+      UiBibz::Ui::Ux::Tables::TableCard.new(content, options, html_options).tap(&block).render
     else
-      UiBibz::Ui::Ux::TableCard.new(content, options, html_options, &block).render
+      UiBibz::Ui::Ux::Tables::TableCard.new(content, options, html_options, &block).render
     end
   end
 
