@@ -106,7 +106,7 @@ module UiBibz::Ui::Core
     end
 
     def picker_pattern
-      I18n.t('datepicker.pformat', default: 'dd/mm/yyyy')
+      options[:format] || I18n.t('datepicker.pformat', default: 'dd/mm/yyyy')
     end
 
     def today_btn
