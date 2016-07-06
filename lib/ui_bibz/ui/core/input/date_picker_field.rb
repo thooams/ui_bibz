@@ -17,9 +17,10 @@ module UiBibz::Ui::Core
   # * +prepend+ - String
   # * +append+ - String
   # * +range+ - String
-  # * +date_today_highlight+ - Boolean
+  # * +autoclose+ - Boolean
+  # * +today_highlight+ - Boolean
   # * +calendar_weeks+ - Boolean
-  # * +date_disabled+ - Array, String
+  # * +dates_disabled+ - Array, String
   #
   # ==== Signatures
   #
