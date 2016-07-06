@@ -11,8 +11,8 @@ class InputsTest < ActionView::TestCase
     end
 
     test "Date Picker Field data html options" do
-      actual   = UiBibz::Ui::Core::DatePickerField.new('date', { date_today_highlight: true, calendar_weeks: true, autoclose: true, dates_disabled: ["11/01/2016", "12/01/2016"] }, { class: 'datepicker-test' }).render
-      expected = "<input type=\"text\" name=\"date\" id=\"date\" class=\"datepicker-test date_picker form-control\" data-date-locale=\"en\" data-provide=\"datepicker\" data-date-format=\"dd/mm/yyyy\" data-date-today-btn=\"linked\" data-date-today-highlight=\"true\" data-calendar-weeks=\"true\" data-autoclose=\"true\" data-dates-disabled=\"[&quot;11/01/2016&quot;,&quot;12/01/2016&quot;]\" />"
+      actual   = UiBibz::Ui::Core::DatePickerField.new('date', { today_highlight: true, calendar_weeks: true, autoclose: true, dates_disabled: ["11/01/2016", "12/01/2016"] }, { class: 'datepicker-test' }).render
+      expected = "<input type=\"text\" name=\"date\" id=\"date\" class=\"datepicker-test date_picker form-control\" data-date-locale=\"en\" data-provide=\"datepicker\" data-date-format=\"dd/mm/yyyy\" data-date-today-btn=\"linked\" data-date-today-highlight=\"true\" data-date-calendar-weeks=\"true\" data-date-autoclose=\"true\" data-dates-disabled=\"[&quot;11/01/2016&quot;,&quot;12/01/2016&quot;]\" />"
 
       assert_equal expected, actual
     end

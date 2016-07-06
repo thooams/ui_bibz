@@ -76,9 +76,9 @@ module UiBibz::Ui::Core
     def component_html_data
       date_locale
       provide
-      date_format
-      date_today_btn
-      date_today_highlight
+      format
+      today_btn
+      today_highlight
       calendar_weeks
       autoclose
       dates_disabled
@@ -100,7 +100,7 @@ module UiBibz::Ui::Core
       add_html_data "provide", 'datepicker'
     end
 
-    def date_format
+    def format
       add_html_data "date_format", picker_pattern
     end
 
@@ -108,20 +108,20 @@ module UiBibz::Ui::Core
       I18n.t('datepicker.pformat', default: 'dd/mm/yyyy')
     end
 
-    def date_today_btn
+    def today_btn
       add_html_data 'date_today_btn', 'linked'
     end
 
-    def date_today_highlight
-      add_html_data('date_today_highlight') if options[:date_today_highlight]
+    def today_highlight
+      add_html_data('date_today_highlight') if options[:today_highlight]
     end
 
     def calendar_weeks
-      add_html_data("calendar_weeks") if options[:calendar_weeks]
+      add_html_data("date_calendar_weeks") if options[:calendar_weeks]
     end
 
     def autoclose
-      add_html_data("autoclose") if options[:autoclose]
+      add_html_data("date_autoclose") if options[:autoclose]
     end
 
     def dates_disabled
