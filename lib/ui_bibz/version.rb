@@ -1,3 +1,3 @@
 module UiBibz
-  VERSION = "2.0.0.alpha14"
+  VERSION = "2.0.0.alpha15"
 end
