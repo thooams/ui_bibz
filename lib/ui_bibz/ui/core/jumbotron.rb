@@ -40,7 +40,7 @@ module UiBibz::Ui::Core
   #     content
   #   end
   #
-  class Jumbotron < Component
+  class Jumbotron < UiBibz::Ui::Core::Component
 
     # See UiBibz::Ui::Core::Component.initialize
     def initialize content = nil, options = nil, html_options = nil, &block
@@ -51,7 +51,7 @@ module UiBibz::Ui::Core
     def render
       content_tag :div, html_options do
         if fluid
-          Container.new(content).render
+          UiBibz::Ui::Core::Layouts::Container.new(content).render
         else
           content
         end
