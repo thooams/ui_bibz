@@ -7,7 +7,6 @@
 
 # Bootstrap
 #= require tether.min
-#= require bootstrap-sprockets
 #= require bootstrap
 
 # date_picker_field component
