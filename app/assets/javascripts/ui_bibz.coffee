@@ -39,11 +39,14 @@
     @table     = new window.UiBibzTable()
     @form      = new window.UiBibzForm()
     @interface = new window.UiBibzInterface()
+    @formula   = new window.UiBibzFormula()
     #delete window.UiBibzTable
     #delete window.UiBibzForm
     #delete window.UiBibzInterface
 
 ready = ->
   new UiBibz
+  # Fix for turbolinks
+  $( "textarea[data-provide*='markdown']" ).markdown() # fix markdown js if turbolinks exists
 
-$(document).on('turbolinks:load page:change', ready)
+$(document).on('ready turbolinks:load page:change', ready) # catch event for turbolinks and fix in ready() function
