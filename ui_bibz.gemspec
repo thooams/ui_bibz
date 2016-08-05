@@ -11,11 +11,14 @@ Gem::Specification.new do |s|
   s.name        = "ui_bibz"
   s.version     = UiBibz::VERSION
   s.authors     = ["Thooams"]
-  s.email       = ["thomas@hummel.link"]
+  s.email       = "thomas@hummel.link"
   s.homepage    = "http://thooams.github.io/Ui-Bibz/"
   s.summary     = "Create your project with Ui Bibz. Over a thirty reusable components built to provide iconography, dropdowns, input groups, navigation, alerts, and much more."
   s.description = "A Rails Interface Framework using Bootstrap."
   s.license     = "MIT"
+
+  s.required_ruby_version = '>= 2.0'
+  s.post_install_message  = 'Thanks for installing Ui Bibz!'
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
@@ -45,7 +48,6 @@ Gem::Specification.new do |s|
 
   # Development gems
   s.add_development_dependency "minitest"
-  s.add_development_dependency "rdoc"
   s.add_development_dependency "sqlite3"
   s.add_development_dependency "factory_girl_rails", "~> 4.0"
   s.add_development_dependency "codeclimate-test-reporter"
