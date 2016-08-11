@@ -52,6 +52,10 @@ module UiBibz::Ui::Core
 
   private
 
+    def component_html_classes
+      "breadcrumb-item"
+    end
+
     def link_html
       if options[:url]
         link_to glyph_and_content_html, options[:url], options[:link_html_options]
