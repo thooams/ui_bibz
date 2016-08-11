@@ -64,7 +64,7 @@ module UiBibz
       autoload :Dropdown,                "ui_bibz/ui/core/dropdown/dropdown"
       autoload :Glyph,                   "ui_bibz/ui/core/glyph"
       autoload :Jumbotron,               "ui_bibz/ui/core/jumbotron"
-      autoload :Label,                   "ui_bibz/ui/core/label"
+      autoload :Tag,                     "ui_bibz/ui/core/tag"
       autoload :ListGroup,               "ui_bibz/ui/core/list/list_group"
       autoload :Modal,                   "ui_bibz/ui/core/modal/modal"
       autoload :Progress,                "ui_bibz/ui/core/progress"

@@ -1,6 +1,6 @@
 module UiBibz::Ui::Core
 
-  # Create a label
+  # Create a tag
   #
   # This element is an extend of UiBibz::Ui::Core::Component.
   # The helper use 'etiquette' method to avoid conflict with Rails.
@@ -26,17 +26,17 @@ module UiBibz::Ui::Core
   #
   # ==== Signatures
   #
-  #   UiBibz::Ui::Core::Label.new(content, options = nil, html_options = nil)
+  #   UiBibz::Ui::Core::Tag.new(content, options = nil, html_options = nil)
   #
-  #   UiBibz::Ui::Core::Label.new(options = nil, html_options = nil) do
+  #   UiBibz::Ui::Core::Tag.new(options = nil, html_options = nil) do
   #     content
   #   end
   #
   # ==== Examples
   #
-  #   UiBibz::Ui::Core::Label.new(content, status: :success, type: :pill).render
+  #   UiBibz::Ui::Core::Tag.new(content, status: :success, type: :pill).render
   #
-  #   UiBibz::Ui::Core::Label.new() do
+  #   UiBibz::Ui::Core::Tag.new() do
   #     #content
   #   end.render
   #
@@ -48,7 +48,7 @@ module UiBibz::Ui::Core
   #     content
   #   end
   #
-  class Label < Component
+  class Tag < Component
 
     # See UiBibz::Ui::Core::Component.initialize
     def initialize content = nil, options = nil, html_options = nil, &block
@@ -63,16 +63,16 @@ module UiBibz::Ui::Core
   private
 
     def component_html_classes
-      ['label', type]
+      ['tag', type]
     end
 
     def status
       sym = @options[:status] || :default
-      "label-#{ sym }"
+      "tag-#{ sym }"
     end
 
     def type
-      "label-pill" if @options[:type] == :pill
+      "tag-pill" if @options[:type] == :pill
     end
 
   end

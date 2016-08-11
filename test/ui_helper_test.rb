@@ -31,14 +31,14 @@ class UiHelperTest < ActionView::TestCase
 
   test 'etiquette' do
     actual   = etiquette 'state', status: :success, glyph: 'pencil'
-    expected = "<span class=\"label-success label\"><i class=\"glyph fa fa-pencil\"></i> state</span>"
+    expected = "<span class=\"tag-success tag\"><i class=\"glyph fa fa-pencil\"></i> state</span>"
 
     assert_equal expected, actual
   end
 
   test 'etiquette pill' do
     actual   = etiquette 'state', status: :success, type: :pill, glyph: 'pencil'
-    expected = "<span class=\"label-success label label-pill\"><i class=\"glyph fa fa-pencil\"></i> state</span>"
+    expected = "<span class=\"tag-success tag tag-pill\"><i class=\"glyph fa fa-pencil\"></i> state</span>"
 
     assert_equal expected, actual
   end

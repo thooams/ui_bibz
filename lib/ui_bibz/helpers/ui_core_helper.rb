@@ -285,7 +285,7 @@ module UiBibz::Helpers::UiCoreHelper
   #
   # Use "etiquette" instead of "label" : due to "actionview (4.2.0) lib/action_view/helpers/form_helper.rb" conflict
   def etiquette content = nil, options = nil, html_options = nil, &block
-    UiBibz::Ui::Core::Label.new(content, options, html_options, &block).render
+    UiBibz::Ui::Core::Tag.new(content, options, html_options, &block).render
   end
 
   # List Group Component

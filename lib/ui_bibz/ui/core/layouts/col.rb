@@ -85,7 +85,7 @@ module UiBibz::Ui::Core::Layouts
 
     # col-md-offset-9
     def offset size, n
-      "col-#{ size }-offset-#{ n }"
+      "offset-#{ size }-#{ n }"
     end
 
     # col-md-push-9

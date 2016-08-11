@@ -103,6 +103,7 @@ module UiBibz::Concerns::Models::Searchable
     end
 
     def self.search_by_query sql
+      raise 'Add searchable_attributes method in Model' if @searchable_attributes.nil?
       sql_query       = []
       sql_attributes  = {}
       search_patterns = @params[:search].strip.gsub(/(?<=[\\s])\\s*|^\\s+|\\s+$/, '').downcase

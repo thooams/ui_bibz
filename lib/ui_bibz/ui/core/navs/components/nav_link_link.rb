@@ -28,7 +28,7 @@ module UiBibz::Ui::Core::Navs
     def render
       link_to options[:url], html_options do
         concat glyph_and_content_html
-        concat label_html if options[:label]
+        concat tag_html if options[:tag]
       end
     end
 

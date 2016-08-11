@@ -68,7 +68,7 @@ module UiBibz::Ui::Core
         concat glyph_and_content_html if @content
         concat header_html if @body
         concat body_html   if @body
-        concat label_html  if @options[:label]
+        concat tag_html    if @options[:tag]
       end
     end
 

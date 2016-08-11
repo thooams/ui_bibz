@@ -84,8 +84,8 @@ module UiBibz::Ui::Core
       Glyph.new(glyph_info).render unless glyph_info.nil?
     end
 
-    def label_html
-      UiBibz::Ui::Core::Label.new(options[:label], class: 'pull-right', type: :pill, status: (options[:label_status] || :default)).render
+    def tag_html
+      UiBibz::Ui::Core::Tag.new(options[:tag], class: 'pull-right', type: :pill, status: (options[:tag_status] || :default)).render
     end
 
     # Know if component is tapped or not
