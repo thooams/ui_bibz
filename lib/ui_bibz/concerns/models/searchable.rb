@@ -4,7 +4,7 @@ module UiBibz::Concerns::Models::Searchable
   included do
     # Maybe create a class to put all methods of table_search_pagination
     def self.table_search_pagination params, session, args = {}
-      @params           = params.clone
+      @params           = params.permit!
       @session          = session
       @arguments        = args
 

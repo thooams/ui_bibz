@@ -10,7 +10,7 @@ class TableTest < ActionView::TestCase
 
   setup do
     create_list(:user, 25)
-    params = {
+    params = ActionController::Parameters.new({
       controller: 'users',
       action:     'index',
       sort:       'users.name_fr',
@@ -18,14 +18,14 @@ class TableTest < ActionView::TestCase
       search:     'Name fr',
       per_page:   2,
       page:       1
-    }
+    })
     @users  = User.table_search_pagination(params, session)
     @store = UiBibz::Ui::Ux::Tables::Store.new @users
   end
 
   test 'table search field' do
     actual   = UiBibz::Ui::Ux::Tables::TableSearchField.new({ store: @users}).render
-    expected = "<form class=\"form-table-search-field\" action=\"/users?direction=asc&amp;page=1&amp;per_page=2&amp;search=Name+fr&amp;sort=users.name_fr\" accept-charset=\"UTF-8\" method=\"get\"><input name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" /><div class=\"input-group input-group-sm table-search-field\"><span class=\"input-group-addon\"><i class=\"glyph fa fa-search\"></i></span><input type=\"hidden\" name=\"controller\" value=\"users\" /><input type=\"hidden\" name=\"action\" value=\"index\" /><input type=\"hidden\" name=\"sort\" value=\"users.name_fr\" /><input type=\"hidden\" name=\"direction\" value=\"asc\" /><input type=\"hidden\" name=\"search\" value=\"Name fr\" /><input type=\"hidden\" name=\"per_page\" value=\"2\" /><input type=\"hidden\" name=\"page\" value=\"1\" /><input type=\"search\" value=\"Name fr\" name=\"search\" class=\"form-control\" placeholder=\"Search by Name fr and Name en...\" /><span class=\"input-group-btn\"><button type=\"button\" class=\"btn btn-secondary\"><i class=\"glyph fa fa-times-circle\"></i></button></span></div></form>"
+    expected = "<form class=\"form-table-search-field\" action=\"/users?direction=asc&amp;page=1&amp;per_page=2&amp;search=Name+fr&amp;sort=users.name_fr\" accept-charset=\"UTF-8\" method=\"get\"><input name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" /><div class=\"input-group input-group-sm table-search-field\"><span class=\"input-group-addon\"><i class=\"glyph fa fa-search\"></i></span><input type=\"hidden\" name=\"sort\" value=\"users.name_fr\" /><input type=\"hidden\" name=\"direction\" value=\"asc\" /><input type=\"hidden\" name=\"per_page\" value=\"2\" /><input type=\"hidden\" name=\"page\" value=\"1\" /><input type=\"search\" value=\"Name fr\" name=\"search\" class=\"form-control\" placeholder=\"Search by Name fr and Name en...\" /><span class=\"input-group-btn\"><button type=\"button\" class=\"btn btn-secondary\"><i class=\"glyph fa fa-times-circle\"></i></button></span></div></form>"
 
     assert_equal expected, actual
   end
@@ -48,7 +48,7 @@ class TableTest < ActionView::TestCase
   test 'table sortable' do
     options  = { sortable: true }
     actual   = UiBibz::Ui::Ux::Tables::Sortable.new(@store, options).header(@store.columns.list.first)
-    expected = "<a class=\"dropup\" href=\"/users?column_id=id&amp;direction=asc&amp;search=Name+fr&amp;sort=users.id\">Id</a>"
+    expected = "<a class=\"dropup\" href=\"/users?action=index&amp;column_id=id&amp;direction=asc&amp;search=Name+fr&amp;sort=users.id\">Id</a>"
 
     assert_equal expected, actual
   end
@@ -66,7 +66,7 @@ class TableTest < ActionView::TestCase
     options      = { paginable: true }
     pagination   = UiBibz::Ui::Ux::Tables::Paginable.new(@store, options)
     actual       = pagination.render if pagination.paginable?
-    expected     = "<div><ul class=\"pagination pagination\"><li class=\"prev disabled\"><span>&#8592; Previous</span></li> <li class=\"active\"><span>1</span></li> <li><a rel=\"next\" href=\"/users?direction=asc&amp;page=2&amp;per_page=2&amp;search=Name+fr&amp;sort=users.name_fr\">2</a></li> <li><a href=\"/users?direction=asc&amp;page=3&amp;per_page=2&amp;search=Name+fr&amp;sort=users.name_fr\">3</a></li> <li><a href=\"/users?direction=asc&amp;page=4&amp;per_page=2&amp;search=Name+fr&amp;sort=users.name_fr\">4</a></li> <li><a href=\"/users?direction=asc&amp;page=5&amp;per_page=2&amp;search=Name+fr&amp;sort=users.name_fr\">5</a></li> <li><a href=\"/users?direction=asc&amp;page=6&amp;per_page=2&amp;search=Name+fr&amp;sort=users.name_fr\">6</a></li> <li><a href=\"/users?direction=asc&amp;page=7&amp;per_page=2&amp;search=Name+fr&amp;sort=users.name_fr\">7</a></li> <li><a href=\"/users?direction=asc&amp;page=8&amp;per_page=2&amp;search=Name+fr&amp;sort=users.name_fr\">8</a></li> <li><a href=\"/users?direction=asc&amp;page=9&amp;per_page=2&amp;search=Name+fr&amp;sort=users.name_fr\">9</a></li> <li class=\"disabled\"><span>&hellip;</span></li> <li><a href=\"/users?direction=asc&amp;page=12&amp;per_page=2&amp;search=Name+fr&amp;sort=users.name_fr\">12</a></li> <li><a href=\"/users?direction=asc&amp;page=13&amp;per_page=2&amp;search=Name+fr&amp;sort=users.name_fr\">13</a></li> <li class=\"next\"><a rel=\"next\" href=\"/users?direction=asc&amp;page=2&amp;per_page=2&amp;search=Name+fr&amp;sort=users.name_fr\">Next &#8594;</a></li></ul><form action=\"/users\" accept-charset=\"UTF-8\" method=\"get\"><input name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" /><div class=\"table-pagination-per-page\">Displaying User <b>1&nbsp;-&nbsp;2</b> of <b>25</b> in total | Per page: <input type=\"hidden\" name=\"controller\" value=\"users\" /><input type=\"hidden\" name=\"action\" value=\"index\" /><input type=\"hidden\" name=\"sort\" value=\"users.name_fr\" /><input type=\"hidden\" name=\"direction\" value=\"asc\" /><input type=\"hidden\" name=\"search\" value=\"Name fr\" /><input type=\"hidden\" name=\"per_page\" value=\"2\" /><input type=\"hidden\" name=\"page\" value=\"1\" /><select name=\"per_page\" id=\"per_page\" class=\"form-control\"><option value=\"5\">5</option>
+    expected     = "<div><ul class=\"pagination pagination\"><li class=\"prev disabled\"><span>&#8592; Previous</span></li> <li class=\"active\"><span>1</span></li> <li><a rel=\"next\" href=\"/users?direction=asc&amp;page=2&amp;per_page=2&amp;search=Name+fr&amp;sort=users.name_fr\">2</a></li> <li><a href=\"/users?direction=asc&amp;page=3&amp;per_page=2&amp;search=Name+fr&amp;sort=users.name_fr\">3</a></li> <li><a href=\"/users?direction=asc&amp;page=4&amp;per_page=2&amp;search=Name+fr&amp;sort=users.name_fr\">4</a></li> <li><a href=\"/users?direction=asc&amp;page=5&amp;per_page=2&amp;search=Name+fr&amp;sort=users.name_fr\">5</a></li> <li><a href=\"/users?direction=asc&amp;page=6&amp;per_page=2&amp;search=Name+fr&amp;sort=users.name_fr\">6</a></li> <li><a href=\"/users?direction=asc&amp;page=7&amp;per_page=2&amp;search=Name+fr&amp;sort=users.name_fr\">7</a></li> <li><a href=\"/users?direction=asc&amp;page=8&amp;per_page=2&amp;search=Name+fr&amp;sort=users.name_fr\">8</a></li> <li><a href=\"/users?direction=asc&amp;page=9&amp;per_page=2&amp;search=Name+fr&amp;sort=users.name_fr\">9</a></li> <li class=\"disabled\"><span>&hellip;</span></li> <li><a href=\"/users?direction=asc&amp;page=12&amp;per_page=2&amp;search=Name+fr&amp;sort=users.name_fr\">12</a></li> <li><a href=\"/users?direction=asc&amp;page=13&amp;per_page=2&amp;search=Name+fr&amp;sort=users.name_fr\">13</a></li> <li class=\"next\"><a rel=\"next\" href=\"/users?direction=asc&amp;page=2&amp;per_page=2&amp;search=Name+fr&amp;sort=users.name_fr\">Next &#8594;</a></li></ul><form action=\"/users\" accept-charset=\"UTF-8\" method=\"get\"><input name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" /><div class=\"table-pagination-per-page\">Displaying User <b>1&nbsp;-&nbsp;2</b> of <b>25</b> in total | Per page: <input type=\"hidden\" name=\"sort\" value=\"users.name_fr\" /><input type=\"hidden\" name=\"direction\" value=\"asc\" /><input type=\"hidden\" name=\"per_page\" value=\"2\" /><input type=\"hidden\" name=\"page\" value=\"1\" /><select name=\"per_page\" id=\"per_page\" class=\"form-control\"><option value=\"5\">5</option>
 <option value=\"10\">10</option>
 <option value=\"20\">20</option>
 <option value=\"30\">30</option>

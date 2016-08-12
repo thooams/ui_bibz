@@ -84,11 +84,11 @@ module UiBibz::Ui::Core::Buttons
     end
 
     def split_html
-      content_tag :button, split_content, class: join_classes("btn", button_status, size, "dropdown-toggle"), type: 'button', "data-toggle" => 'dropdown', "aria-haspopup" => true, "aria-expanded" => false
+      content_tag :button, split_content, class: join_classes("btn", button_status, size, "dropdown-toggle", "dropdown-toggle-split"), type: 'button', "data-toggle" => 'dropdown', "aria-haspopup" => true, "aria-expanded" => false
     end
 
     def split_content
-      [caret, src_only].join.html_safe
+      src_only
     end
 
     def src_only

@@ -7,14 +7,14 @@ class StoreTest < ActionView::TestCase
 
   setup do
     create_list(:user, 25)
-    params = {
+    params = ActionController::Parameters.new({
       controller: 'users',
       action:     'index',
       sort:       'users.name_fr',
       direction:  'asc',
       per_page:   10,
       page:       1
-    }
+    })
     users  = User.table_search_pagination(params, session)
     @store = UiBibz::Ui::Ux::Tables::Store.new users
   end

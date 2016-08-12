@@ -73,7 +73,7 @@ module UiBibz::Ui::Ux::Tables
     end
 
     def parameters
-      @store.params
+      @store.params.to_h
     end
 
     def action

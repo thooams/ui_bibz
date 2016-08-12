@@ -73,11 +73,11 @@ module UiBibz::Ui::Core::Buttons
 
     def status
       s = options[:status] || :primary
-      "btn-#{ s }#{ outline }"
+      ["btn", outline, s].compact.join('-')
     end
 
     def outline
-      "-outline" unless options[:outline].nil?
+      "outline" unless options[:outline].nil?
     end
 
     def toggle
