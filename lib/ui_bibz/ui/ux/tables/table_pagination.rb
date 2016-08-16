@@ -1,6 +1,7 @@
 require 'will_paginate'
 require "will_paginate-bootstrap"
 require "ui_bibz/ui/ux/tables/components/store"
+require 'ui_bibz/helpers/pagination_helper'
 module UiBibz::Ui::Ux::Tables
 
   # Create a pagination for table
