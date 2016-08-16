@@ -22,7 +22,7 @@ module UiBibz::Ui::Core::Cards
   # You can pass arguments in options attribute:
   # * +status+ - status of élement with symbol value:
   #   (+:primary+, +:secondary+, +:info+, +:warning+, +:danger+)
-  # * text_position - Symbole
+  # * text - Hash (+:size+, +:position+)
   #   (+:left+, +:right+, +:center+)
   # * block - Boolean
   # * type - Symbol
@@ -131,15 +131,15 @@ module UiBibz::Ui::Core::Cards
   protected
 
     def component_html_classes
-      ["card", text_position, card_block, type, tab_pane]
+      ["card", text, card_block, type, tab_pane]
     end
 
     def status
       "card-#{ @options[:status] }" unless @options[:status].nil?
     end
 
-    def text_position
-      "text-#{ @options[:text_position] }" unless @options[:text_position].nil?
+    def text
+      "text-#{ @options[:text][:size] || :md }-#{ @options[:text][:position] || :left }" unless @options[:text].nil?
     end
 
     def card_block
