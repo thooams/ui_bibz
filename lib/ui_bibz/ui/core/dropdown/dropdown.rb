@@ -110,7 +110,7 @@ module UiBibz::Ui::Core
     end
 
     def button_html
-      content_tag :button, button_content, class: join_classes("btn", button_status, size, "dropdown-toggle"), type: 'button', "data-toggle" => 'dropdown', "aria-haspopup" => true, "aria-expanded" => false
+      content_tag :button, button_content, class: join_classes("btn", button_status, state, size, "dropdown-toggle"), type: 'button', "data-toggle" => 'dropdown', "aria-haspopup" => true, "aria-expanded" => false
     end
 
     def ul_html
