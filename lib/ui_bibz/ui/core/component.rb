@@ -1,4 +1,6 @@
 require 'haml'
+require 'ui_bibz/ui/core/component/klass_extension'
+require 'ui_bibz/ui/core/component/glyph_extension'
 module UiBibz::Ui::Core
 
   # Creates a component of the given +name+ using options created by the set of +options+.
@@ -37,6 +39,8 @@ module UiBibz::Ui::Core
   #   end
   #
   class Component < UiBibz::Ui::Base
+    include Component::KlassExtension
+    include Component::GlyphExtension
 
     attr_accessor :content, :html_options, :options
 
@@ -66,22 +70,6 @@ module UiBibz::Ui::Core
     # Render html tag
     def render
       glyph_and_content_html
-    end
-
-    # Render glyph and content html
-    def glyph_and_content_html
-      [glyph_with_space, content].compact.join.html_safe
-    end
-
-    # Render glyph with space html
-    def glyph_with_space
-      "#{ glyph } " unless glyph.nil?
-    end
-
-    # Render glyph html
-    def glyph
-      glyph_info = options[:glyph] if options.kind_of?(Hash)
-      Glyph.new(glyph_info).render unless glyph_info.nil?
     end
 
     def tag_html
@@ -120,12 +108,6 @@ module UiBibz::Ui::Core
     def status
     end
 
-    # Join classes
-    def join_classes *classes
-      klasses = [*classes].flatten.compact.uniq.reject(&:blank?)
-      klasses.empty? ? nil : klasses
-    end
-
     # Add html data arguments
     def add_html_data name, value = true
       html_options[:data] = {} if html_options[:data].nil?
@@ -135,29 +117,8 @@ module UiBibz::Ui::Core
 
   private
 
-    def initialize_component_html_classes
-      cls = [
-        html_options[:class],
-        state,
-        status,
-        effect,
-        options_classes,
-        component_html_classes
-      ]
-      html_options[:class] = join_classes(cls)
-    end
-
     def init_options
       @options = component_options.merge(@options)
-    end
-
-    # Set effect class
-    def effect
-      options[:effect]
-    end
-
-    def options_classes
-      options[:class] if options.kind_of?(Hash)
     end
 
     def initialize_component_html_data
@@ -172,10 +133,6 @@ module UiBibz::Ui::Core
       initialize_component_html_data
       initialize_component_html_classes
       initialize_component_html_options
-    end
-
-    def state
-      options[:state] unless options[:state].nil?
     end
 
   end
