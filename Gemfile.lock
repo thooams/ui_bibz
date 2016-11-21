@@ -60,8 +60,7 @@ GEM
       autoprefixer-rails (>= 6.0.3)
       sass (>= 3.4.19)
     builder (3.2.2)
-    codeclimate-test-reporter (0.6.0)
-      simplecov (>= 0.7.1, < 1.0.0)
+    codeclimate-test-reporter (1.0.2)
     concurrent-ruby (1.0.2)
     docile (1.1.5)
     erubis (2.7.0)
@@ -174,8 +173,9 @@ DEPENDENCIES
   codeclimate-test-reporter
   factory_girl_rails (~> 4.0)
   minitest
+  simplecov
   sqlite3
   ui_bibz!
 
 BUNDLED WITH
-   1.12.5
+   1.13.6

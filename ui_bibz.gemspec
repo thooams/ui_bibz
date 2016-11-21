@@ -50,5 +50,6 @@ Gem::Specification.new do |s|
   s.add_development_dependency "minitest"
   s.add_development_dependency "sqlite3"
   s.add_development_dependency "factory_girl_rails", "~> 4.0"
+  s.add_development_dependency "simplecov"
   s.add_development_dependency "codeclimate-test-reporter"
 end
