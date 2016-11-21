@@ -67,8 +67,7 @@ module UiBibz::Ui::Core
     end
 
     def status
-      sym = @options[:status] || :default
-      "tag-#{ sym }"
+      "tag-#{ @options[:status] || :default  }"
     end
 
     def type

@@ -78,8 +78,7 @@ module UiBibz::Ui::Core
     end
 
     def status
-      sym = options[:status] || :info
-      "alert-#{ sym }"
+      "alert-#{ options[:status] || :info  }"
     end
 
   end

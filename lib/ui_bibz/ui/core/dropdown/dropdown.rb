@@ -134,8 +134,7 @@ module UiBibz::Ui::Core
     end
 
     def button_status
-      sym = @status || :primary
-      "btn-#{ sym }"
+      "btn-#{ @status || :primary }"
     end
 
     # :lg, :sm or :xs

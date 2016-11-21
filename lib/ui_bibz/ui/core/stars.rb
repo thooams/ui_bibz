@@ -62,13 +62,13 @@ module UiBibz::Ui::Core
     end
 
     def number
-      options[:num] || 5
+      (options[:num] || 5).to_i
     end
 
     def stars_notation
       stars = []
-      number.to_i.times do |star|
-        star = star + 1
+      number.times do |star|
+        star += 1
         name = star_name(star)
         stars << UiBibz::Ui::Core::Glyph.new(name, glyph_opts).render
       end
