@@ -1,4 +1,4 @@
-module UiBibz::Ui::Core::Inputs
+module UiBibz::Ui::Core::Inputs::Dates
 
   # Create a DatePickerField
   #
@@ -24,17 +24,17 @@ module UiBibz::Ui::Core::Inputs
   #
   # ==== Signatures
   #
-  #   UiBibz::Ui::Core::Inputs::DatePickerField.new(content, options = {}, html_options = {}).render
+  #   UiBibz::Ui::Core::Inputs::Dates::DatePickerField.new(content, options = {}, html_options = {}).render
   #
-  #   UiBibz::Ui::Core::Inputs::DatePickerField.new(options = {}, html_options = {}) do
+  #   UiBibz::Ui::Core::Inputs::Dates::DatePickerField.new(options = {}, html_options = {}) do
   #     content
   #   end.render
   #
   # ==== Examples
   #
-  #   UiBibz::Ui::Core::Inputs::DatePickerField.new('date', { prepend: 'Prepend content', append: 'Append content' }, { class: 'test' })
+  #   UiBibz::Ui::Core::Inputs::Dates::DatePickerField.new('date', { prepend: 'Prepend content', append: 'Append content' }, { class: 'test' })
   #
-  #   UiBibz::Ui::Core::Inputs::DatePickerField.new({ date_today_highlight: true, calendar_weeks: true, range: 'to' }, { class: 'test' }) do
+  #   UiBibz::Ui::Core::Inputs::Dates::DatePickerField.new({ date_today_highlight: true, calendar_weeks: true, range: 'to' }, { class: 'test' }) do
   #     'date'
   #   end
   #
@@ -60,7 +60,7 @@ module UiBibz::Ui::Core::Inputs
           concat content_tag :span, options[:prepend], class: 'input-group-addon' unless @options[:prepend].nil?
         end
       else
-        UiBibz::Ui::Core::Inputs::SurroundField.new(content, options, html_options).render
+        UiBibz::Ui::Core::Inputs::Texts::SurroundField.new(content, options, html_options).render
       end
     end
 

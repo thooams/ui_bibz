@@ -1,4 +1,4 @@
-module UiBibz::Ui::Core::Inputs
+module UiBibz::Ui::Core::Inputs::Selects
 
   # Create a MultiColumnField
   #
@@ -20,17 +20,17 @@ module UiBibz::Ui::Core::Inputs
   #
   # ==== Signatures
   #
-  #   UiBibz::Ui::Core::Inputs::MultiColumnField.new(content, options = {}, html_options = {}).render
+  #   UiBibz::Ui::Core::Inputs::Selects::MultiColumnField.new(content, options = {}, html_options = {}).render
   #
-  #   UiBibz::Ui::Core::Inputs::MultiColumnField.new(options = {}, html_options = {}) do
+  #   UiBibz::Ui::Core::Inputs::Selects::MultiColumnField.new(options = {}, html_options = {}) do
   #     content
   #   end.render
   #
   # ==== Examples
   #
-  #   UiBibz::Ui::Core::Inputs::MultiColumnField.new('fruits', { option_tags: list_of_fruits, searchable: true }, { class: 'test' })
+  #   UiBibz::Ui::Core::Inputs::Selects::MultiColumnField.new('fruits', { option_tags: list_of_fruits, searchable: true }, { class: 'test' })
   #
-  #   UiBibz::Ui::Core::Inputs::MultiColumnField.new({ option_tags: list_of_fruits, selectable_opt_group: true }, { class: 'test' }) do
+  #   UiBibz::Ui::Core::Inputs::Selects::MultiColumnField.new({ option_tags: list_of_fruits, selectable_opt_group: true }, { class: 'test' }) do
   #     'fruits'
   #   end
   #

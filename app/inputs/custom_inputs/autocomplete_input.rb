@@ -8,7 +8,7 @@ module CustomInputs
       options = options || {}
       options = options.merge({ builder: @builder })
       options = options.merge(option_tags: options_from_collection_for_select(collection, label_method, label_method))
-      UiBibz::Ui::Core::Inputs::AutocompleteField.new(attribute_name, options, input_html_options).render
+      UiBibz::Ui::Core::Inputs::Texts::AutocompleteField.new(attribute_name, options, input_html_options).render
     end
   end
 end

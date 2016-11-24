@@ -1,4 +1,4 @@
-module UiBibz::Ui::Core::Inputs
+module UiBibz::Ui::Core::Inputs::Numbers
 
   # Create a FormulaField
   #
@@ -18,17 +18,17 @@ module UiBibz::Ui::Core::Inputs
   #
   # ==== Signatures
   #
-  #   UiBibz::Ui::Core::Inputs::FormulaField.new(content, options = {}, html_options = {}).render
+  #   UiBibz::Ui::Core::Inputs::Numbers::FormulaField.new(content, options = {}, html_options = {}).render
   #
-  #   UiBibz::Ui::Core::Inputs::FormulaField.new(options = {}, html_options = {}) do
+  #   UiBibz::Ui::Core::Inputs::Numbers::FormulaField.new(options = {}, html_options = {}) do
   #     content
   #   end.render
   #
   # ==== Examples
   #
-  #   UiBibz::Ui::Core::Inputs::FormulaField.new('value', { formula_field_name: :formula }, { class: 'test' })
+  #   UiBibz::Ui::Core::Inputs::Numbers::FormulaField.new('value', { formula_field_name: :formula }, { class: 'test' })
   #
-  #   UiBibz::Ui::Core::Inputs::FormulaField.new do
+  #   UiBibz::Ui::Core::Inputs::Numbers::FormulaField.new do
   #     'value'
   #   end
   #

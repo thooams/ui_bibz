@@ -7,7 +7,7 @@ module UiBibz::Helpers::UiCoreHelper
   # +options+ (Hash)
   # +html_options+ (Hash)
   def button content = nil, options = nil, html_options = nil, &block
-    UiBibz::Ui::Core::Buttons::Button.new(content, options, html_options, &block).render
+    UiBibz::Ui::Core::Inputs::Buttons::Button.new(content, options, html_options, &block).render
   end
 
   # Button Choice Component
@@ -15,7 +15,7 @@ module UiBibz::Helpers::UiCoreHelper
   # +options+ (Hash)
   # +html_options+ (Hash)
   def button_choice content = nil, options = nil, html_options = nil, &block
-    UiBibz::Ui::Core::Buttons::ButtonChoice.new(content, options, html_options, &block).render
+    UiBibz::Ui::Core::Inputs::Buttons::ButtonChoice.new(content, options, html_options, &block).render
   end
 
   # Button Dropdown Component
@@ -24,7 +24,7 @@ module UiBibz::Helpers::UiCoreHelper
   # +options+ (Hash)
   # +html_options+ (Hash)
   def button_dropdown name, options = nil, html_options = nil, &block
-    UiBibz::Ui::Core::Buttons::ButtonDropdown.new(name, options, html_options).tap(&block).render
+    UiBibz::Ui::Core::Inputs::Buttons::ButtonDropdown.new(name, options, html_options).tap(&block).render
   end
 
   # Button Group Component
@@ -32,7 +32,7 @@ module UiBibz::Helpers::UiCoreHelper
   # +options+ (Hash)
   # +html_options+ (Hash)
   def button_group content = nil, options = nil, html_options = nil, &block
-    UiBibz::Ui::Core::Buttons::ButtonGroup.new(content, options, html_options, &block).render
+    UiBibz::Ui::Core::Inputs::Buttons::ButtonGroup.new(content, options, html_options, &block).render
   end
 
   # Button Link Component
@@ -40,7 +40,7 @@ module UiBibz::Helpers::UiCoreHelper
   # +options+ (Hash)
   # +html_options+ (Hash)
   def button_link content = nil, options = nil, html_options = nil, &block
-    UiBibz::Ui::Core::Buttons::ButtonLink.new(content, options, html_options, &block).render
+    UiBibz::Ui::Core::Inputs::Buttons::ButtonLink.new(content, options, html_options, &block).render
   end
 
   # Button Split Dropdown Component
@@ -49,7 +49,7 @@ module UiBibz::Helpers::UiCoreHelper
   # +options+ (Hash)
   # +html_options+ (Hash)
   def button_split_dropdown name, options = nil, html_options = nil, &block
-    UiBibz::Ui::Core::Buttons::ButtonSplitDropdown.new(name, options, html_options).tap(&block).render
+    UiBibz::Ui::Core::Inputs::Buttons::ButtonSplitDropdown.new(name, options, html_options).tap(&block).render
   end
 
   # Button section end ----------------------------------------------------
@@ -104,7 +104,7 @@ module UiBibz::Helpers::UiCoreHelper
   # +options+ (Hash)
   # +html_options+ (Hash)
   def date_picker_field content = nil, options = nil, html_options = nil, &block
-    UiBibz::Ui::Core::Inputs::DatePickerField.new(content, options, html_options, &block).render
+    UiBibz::Ui::Core::Inputs::Dates::DatePickerField.new(content, options, html_options, &block).render
   end
 
   # Markdown Editor Field Component
@@ -112,7 +112,7 @@ module UiBibz::Helpers::UiCoreHelper
   # +options+ (Hash)
   # +html_options+ (Hash)
   def markdown_editor_field content = nil, options = nil, html_options = nil, &block
-    UiBibz::Ui::Core::Inputs::MarkdownEditorField.new(content, options, html_options, &block).render
+    UiBibz::Ui::Core::Inputs::TextAreas::MarkdownEditorField.new(content, options, html_options, &block).render
   end
 
   # Multi Column Field Component
@@ -120,7 +120,7 @@ module UiBibz::Helpers::UiCoreHelper
   # +options+ (Hash)
   # +html_options+ (Hash)
   def multi_column_field content = nil, options = nil, html_options = nil, &block
-    UiBibz::Ui::Core::Inputs::MultiColumnField.new(content, options, html_options, &block).render
+    UiBibz::Ui::Core::Inputs::Selects::MultiColumnField.new(content, options, html_options, &block).render
   end
 
   # Multi Select Field Component
@@ -128,7 +128,7 @@ module UiBibz::Helpers::UiCoreHelper
   # +options+ (Hash)
   # +html_options+ (Hash)
   def multi_select_field content = nil, options = nil, html_options = nil, &block
-    UiBibz::Ui::Core::Inputs::MultiSelectField.new(content, options, html_options, &block).render
+    UiBibz::Ui::Core::Inputs::Selects::MultiSelectField.new(content, options, html_options, &block).render
   end
 
   # Formula Field Component
@@ -136,7 +136,7 @@ module UiBibz::Helpers::UiCoreHelper
   # +options+ (Hash)
   # +html_options+ (Hash)
   def formula_field content = nil, options = nil, html_options = nil, &block
-    UiBibz::Ui::Core::Inputs::FormulaField.new(content, options, html_options, &block).render
+    UiBibz::Ui::Core::Inputs::Numbers::FormulaField.new(content, options, html_options, &block).render
   end
 
   # Surround Field Component
@@ -144,7 +144,7 @@ module UiBibz::Helpers::UiCoreHelper
   # +options+ (Hash)
   # +html_options+ (Hash)
   def surround_field content = nil, options = nil, html_options = nil, &block
-    UiBibz::Ui::Core::Inputs::SurroundField.new(content, options, html_options, &block).render
+    UiBibz::Ui::Core::Inputs::Texts::SurroundField.new(content, options, html_options, &block).render
   end
 
   # Switch Field Component
@@ -160,7 +160,7 @@ module UiBibz::Helpers::UiCoreHelper
   # +options+ (Hash)
   # +html_options+ (Hash)
   def dropdown_select_field content = nil, options = nil, html_options = nil, &block
-    UiBibz::Ui::Core::Inputs::DropdownSelectField.new(content, options, html_options, &block).render
+    UiBibz::Ui::Core::Inputs::Selects::DropdownSelectField.new(content, options, html_options, &block).render
   end
 
   # Autocomplete Field Component
@@ -168,7 +168,7 @@ module UiBibz::Helpers::UiCoreHelper
   # +options+ (Hash)
   # +html_options+ (Hash)
   def autocomplete_field content = nil, options = nil, html_options = nil, &block
-    UiBibz::Ui::Core::Inputs::AutocompleteField.new(content, options, html_options, &block).render
+    UiBibz::Ui::Core::Inputs::Texts::AutocompleteField.new(content, options, html_options, &block).render
   end
 
   # Input section end ----------------------------------------------------

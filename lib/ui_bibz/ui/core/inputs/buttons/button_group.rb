@@ -1,4 +1,4 @@
-module UiBibz::Ui::Core::Buttons
+module UiBibz::Ui::Core::Inputs::Buttons
 
   # Create a button group
   #
@@ -23,15 +23,15 @@ module UiBibz::Ui::Core::Buttons
   #
   # ==== Signatures
   #
-  #   UiBibz::Ui::Core::Buttons::ButtonGroup.new(options = nil, html_options = nil) do
+  #   UiBibz::Ui::Core::Inputs::Buttons::ButtonGroup.new(options = nil, html_options = nil) do
   #     ...
   #   end
   #
   # ==== Examples
   #
-  #   UiBibz::Ui::Core::Buttons::ButtonGroup.new(position: :vertical, size: :xs) do
-  #     UiBibz::Ui::Core::Buttons.Button.new('test').render
-  #     UiBibz::Ui::Core::Buttons.Button.new('test2').render
+  #   UiBibz::Ui::Core::Inputs::Buttons::ButtonGroup.new(position: :vertical, size: :xs) do
+  #     UiBibz::Ui::Core::Inputs::Buttons.Button.new('test').render
+  #     UiBibz::Ui::Core::Inputs::Buttons.Button.new('test2').render
   #   end.render
   #
   # ==== Helper

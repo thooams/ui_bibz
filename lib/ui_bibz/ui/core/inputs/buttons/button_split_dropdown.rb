@@ -1,8 +1,8 @@
-module UiBibz::Ui::Core::Buttons
+module UiBibz::Ui::Core::Inputs::Buttons
 
   # Create a button dropdown
   #
-  # This element is an extend of UiBibz::Ui::Core::Dropdown
+  # This element is an extend of UiBibz::Ui::Core::Dropdown.
   #
   # ==== Attributes
   #
@@ -28,32 +28,32 @@ module UiBibz::Ui::Core::Buttons
   #
   # ==== Signatures
   #
-  #   UiBibz::Ui::Core::Buttons::ButtonDropdown.new(options = nil, html_options = nil).tap do |d|
-  #     ...
+  #   UiBibz::Ui::Core::Inputs::Buttons::ButtonSplitDropdown.new(options = nil, html_options = nil).tap do |d|
   #     d.list content = nil, options = nil, html_options = nil, &block
-  #     d.link content = nil, options = nil, html_options = nil, &block
+  #     d.list content = nil, options = nil, html_options = nil, &block
+  #     d.list content = nil, options = nil, html_options = nil, &block
   #     ...
   #   end
   #
   # ==== Examples
   #
-  #   UiBibz::Ui::Core::Buttons::ButtonDropdown.new(name, status: :success).tap do |d|
-  #     d.link 'test', { url: '#Test1' }
+  #   UiBibz::Ui::Core::Inputs::Buttons::ButtonSplitDropdown.new(name, status: :success).tap do |d|
+  #     d.list link_to('test', '#')
   #     d.list('---')
   #     d.list('Header 1', { type: :header })
-  #     d.link 'test2', { url: '#Test2' }
+  #     d.list link_to('test2', '#')
   #   end.render
   #
   # ==== Helper
   #
-  #   button_dropdown(name, options = { tap: true }, html_options = {}) do |d|
+  #   button_split_dropdown(name, options = {}, html_options = {}) do |b|
   #     d.list(content, options = {}, html_options = {})
   #     d.list(options = {}, html_options = {}) do
   #       content
   #     end
   #   end
   #
-  class ButtonDropdown < UiBibz::Ui::Core::Dropdown
+  class ButtonSplitDropdown < UiBibz::Ui::Core::Dropdown
 
     # See UiBibz::Ui::Core::Dropdown.initialize
     def initialize name, options = nil, html_options = nil, &block
@@ -64,11 +64,12 @@ module UiBibz::Ui::Core::Buttons
     def render
       content_tag :div, html_options do
         concat button_html
+        concat split_html
         concat ul_html
       end
     end
 
-    private
+  private
 
     def component_html_classes
       ['btn-group', type]
@@ -76,6 +77,26 @@ module UiBibz::Ui::Core::Buttons
 
     def component_html_options
       { role: 'group' }
+    end
+
+    def button_html
+      content_tag :button, button_content, class: join_classes("btn", button_status, size)
+    end
+
+    def split_html
+      content_tag :button, split_content, class: join_classes("btn", button_status, size, "dropdown-toggle", "dropdown-toggle-split"), type: 'button', "data-toggle" => 'dropdown', "aria-haspopup" => true, "aria-expanded" => false
+    end
+
+    def split_content
+      src_only
+    end
+
+    def src_only
+      content_tag :span, "Toggle Dropdown", class: "sr-only"
+    end
+
+    def button_content
+      [glyph_with_space, content].compact.join.html_safe
     end
 
   end

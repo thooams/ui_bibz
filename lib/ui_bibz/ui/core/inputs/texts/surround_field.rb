@@ -1,4 +1,4 @@
-module UiBibz::Ui::Core::Inputs
+module UiBibz::Ui::Core::Inputs::Texts
 
   # Create a SurroundField
   #
@@ -19,17 +19,17 @@ module UiBibz::Ui::Core::Inputs
   #
   # ==== Signatures
   #
-  #   UiBibz::Ui::Core::Inputs::SurroundField.new(content, options = {}, html_options = {}).render
+  #   UiBibz::Ui::Core::Inputs::Texts::SurroundField.new(content, options = {}, html_options = {}).render
   #
-  #   UiBibz::Ui::Core::Inputs::SurroundField.new(options = {}, html_options = {}) do
+  #   UiBibz::Ui::Core::Inputs::Texts::SurroundField.new(options = {}, html_options = {}) do
   #     content
   #   end.render
   #
   # ==== Examples
   #
-  #   UiBibz::Ui::Core::Inputs::SurroundField.new('search', prepend: 'Prepend content', append: 'Append content', class: 'test')
+  #   UiBibz::Ui::Core::Inputs::Texts::SurroundField.new('search', prepend: 'Prepend content', append: 'Append content', class: 'test')
   #
-  #   UiBibz::Ui::Core::Inputs::SurroundField.new(prepend: glyph('pencil'), append: glyph('camera-retro')) do
+  #   UiBibz::Ui::Core::Inputs::Texts::SurroundField.new(prepend: glyph('pencil'), append: glyph('camera-retro')) do
   #     #content
   #   end
   #
