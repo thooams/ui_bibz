@@ -152,7 +152,15 @@ module UiBibz::Helpers::UiCoreHelper
   # +options+ (Hash)
   # +html_options+ (Hash)
   def switch_field content = nil, options = nil, html_options = nil, &block
-    UiBibz::Ui::Core::Inputs::SwitchField.new(content, options, html_options, &block).render
+    UiBibz::Ui::Core::Inputs::Choices::SwitchField.new(content, options, html_options, &block).render
+  end
+
+  # Checkbox Field Component
+  #
+  # +options+ (Hash)
+  # +html_options+ (Hash)
+  def checkbox_field content = nil, options = nil, html_options = nil, &block
+    UiBibz::Ui::Core::Inputs::Choices::CheckboxField.new(content, options, html_options, &block).render
   end
 
   # Dropdown Select Field Component

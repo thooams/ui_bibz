@@ -56,8 +56,10 @@ module UiBibz
           autoload :ButtonSplitDropdown,     "ui_bibz/ui/core/inputs/buttons/button_split_dropdown"
         end
 
-        autoload :SwitchField,             "ui_bibz/ui/core/inputs/switch_field"
-        autoload :Checkbox,                "ui_bibz/ui/core/inputs/checkbox"
+        module Choices
+          autoload :SwitchField,             "ui_bibz/ui/core/inputs/choices/switch_field"
+          autoload :CheckboxField,           "ui_bibz/ui/core/inputs/choices/checkbox_field"
+        end
       end
 
       # Layout section

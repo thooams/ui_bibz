@@ -103,7 +103,7 @@ class InputsTest < ActionView::TestCase
     end
 
     test 'checkbox' do
-      actual = UiBibz::Ui::Core::Inputs::Checkbox.new('John', { value: 1, status: :primary, type: :circle }).render
+      actual = UiBibz::Ui::Core::Inputs::Choices::CheckboxField.new('John', { value: 1, status: :primary, type: :circle }).render
       expected = "<input type=\"checkbox\" name=\"John\" id=\"John\" value=\"1\" class=\"abc-checkbox-primary abc-checkbox-circle\" />"
 
       assert_equal expected, actual

@@ -1,4 +1,4 @@
-module UiBibz::Ui::Core::Inputs
+module UiBibz::Ui::Core::Inputs::Choices
 
   # Create a checkbox
   #
@@ -21,17 +21,17 @@ module UiBibz::Ui::Core::Inputs
   #
   # ==== Signatures
   #
-  #   UiBibz::Ui::Core::Inputs::Checkbox.new(content, options = nil, html_options = nil)
+  #   UiBibz::Ui::Core::Inputs::CheckboxField.new(content, options = nil, html_options = nil)
   #
-  #   UiBibz::Ui::Core::Inputs::Checkbox.new(options = nil, html_options = nil) do
+  #   UiBibz::Ui::Core::Inputs::CheckboxField.new(options = nil, html_options = nil) do
   #     content
   #   end
   #
   # ==== Examples
   #
-  #   UiBibz::Ui::Core::Inputs::Checkbox.new(content, { status: :success, type: :circle },{ class: 'test' }).render
+  #   UiBibz::Ui::Core::Inputs::CheckboxField.new(content, { status: :success, type: :circle },{ class: 'test' }).render
   #
-  #   UiBibz::Ui::Core::Inputs::Checkbox.new({ status: :primary }, { class: 'test' }) do
+  #   UiBibz::Ui::Core::Inputs::CheckboxField.new({ status: :primary }, { class: 'test' }) do
   #     content
   #   end.render
   #
@@ -43,7 +43,7 @@ module UiBibz::Ui::Core::Inputs
   #     content
   #   end
   #
-  class Checkbox < UiBibz::Ui::Core::Component
+  class CheckboxField < UiBibz::Ui::Core::Component
 
     # See UiBibz::Ui::Core::Component.initialize
     def initialize content = nil, options = nil, html_options = nil, &block
