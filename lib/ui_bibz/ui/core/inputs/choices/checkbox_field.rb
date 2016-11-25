@@ -52,10 +52,27 @@ module UiBibz::Ui::Core::Inputs::Choices
 
     # Render html tag
     def render
-      check_box_tag content, options[:value], options[:checked] || false, html_options
+      content_tag :div, html_options.except(:id) do
+        concat check_box_tag content, options[:value], options[:checked] || false, checkbox_html_options
+        concat label_tag label_name, label_content
+      end
     end
 
   private
+
+    def checkbox_html_options
+      opts = { class: 'styled' }
+      opts = opts.merge({ onclick: "changeState(this)" }) unless options[:intermediate].nil?
+      opts
+    end
+
+    def label_name
+      content
+    end
+
+    def label_content
+      options[:label] || content
+    end
 
     def status
       "abc-checkbox-#{ options[:status] || :default  }"
@@ -66,7 +83,7 @@ module UiBibz::Ui::Core::Inputs::Choices
     end
 
     def component_html_classes
-      [type]
+      ["checkbox", "abc-checkbox", type]
     end
 
   end
