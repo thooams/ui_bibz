@@ -112,7 +112,7 @@ module UiBibz::Helpers::UiCoreHelper
   # +options+ (Hash)
   # +html_options+ (Hash)
   def markdown_editor_field content = nil, options = nil, html_options = nil, &block
-    UiBibz::Ui::Core::Inputs::TextAreas::MarkdownEditorField.new(content, options, html_options, &block).render
+    UiBibz::Ui::Core::Inputs::Textareas::MarkdownEditorField.new(content, options, html_options, &block).render
   end
 
   # Multi Column Field Component

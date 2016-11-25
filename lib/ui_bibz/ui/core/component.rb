@@ -104,10 +104,6 @@ module UiBibz::Ui::Core
       {}
     end
 
-    # Override this method to add a status class
-    def status
-    end
-
     # Add html data arguments
     def add_html_data name, value = true
       html_options[:data] = {} if html_options[:data].nil?

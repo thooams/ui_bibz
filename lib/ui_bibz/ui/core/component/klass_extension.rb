@@ -5,6 +5,10 @@ module KlassExtension
     klasses.empty? ? nil : klasses
   end
 
+  # Override this method to add a status class
+  def status
+  end
+
   private
 
   def initialize_component_html_classes

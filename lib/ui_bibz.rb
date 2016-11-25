@@ -30,7 +30,7 @@ module UiBibz
         end
 
         module Textareas
-          autoload :MarkdownEditorField,     "ui_bibz/ui/core/inputs/textearas/markdown_editor_field"
+          autoload :MarkdownEditorField,     "ui_bibz/ui/core/inputs/textareas/markdown_editor_field"
         end
 
         module Numbers
