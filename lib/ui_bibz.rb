@@ -59,6 +59,7 @@ module UiBibz
         module Choices
           autoload :SwitchField,             "ui_bibz/ui/core/inputs/choices/switch_field"
           autoload :CheckboxField,           "ui_bibz/ui/core/inputs/choices/checkbox_field"
+          autoload :RadioField,              "ui_bibz/ui/core/inputs/choices/radio_field"
         end
       end
 

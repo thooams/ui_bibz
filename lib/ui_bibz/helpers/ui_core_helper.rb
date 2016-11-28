@@ -163,6 +163,14 @@ module UiBibz::Helpers::UiCoreHelper
     UiBibz::Ui::Core::Inputs::Choices::CheckboxField.new(content, options, html_options, &block).render
   end
 
+  # Radio Field Component
+  #
+  # +options+ (Hash)
+  # +html_options+ (Hash)
+  def radio_field content = nil, options = nil, html_options = nil, &block
+    UiBibz::Ui::Core::Inputs::Choices::RadioField.new(content, options, html_options, &block).render
+  end
+
   # Dropdown Select Field Component
   #
   # +options+ (Hash)

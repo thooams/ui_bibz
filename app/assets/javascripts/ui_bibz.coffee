@@ -48,4 +48,6 @@ ready = ->
   # Fix for turbolinks
   $( "textarea[data-provide*='markdown']" ).markdown() # fix markdown js if turbolinks exists
 
-$(document).on('ready turbolinks:load page:change', ready) # catch event for turbolinks and fix in ready() function
+# turbolinks:load and ready together load twice time javascript
+#$(document).on('ready turbolinks:load page:change', ready) # catch event for turbolinks and fix in ready() function
+$(document).on('turbolinks:load page:change', ready) # catch event for turbolinks and fix in ready() function
