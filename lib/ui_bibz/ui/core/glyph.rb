@@ -17,6 +17,7 @@ module UiBibz::Ui::Core
   # * +name+ - String
   # * +size+ - Integer
   # * +type+ - Symbol
+  # * +text+ - String
   # * +status+ - Symbol
   #   (+:secondary+, +:primary+, +:info+, +:warning+, +:danger+)
   #
@@ -63,7 +64,7 @@ module UiBibz::Ui::Core
 
     # Render html tag
     def render
-      content_tag :i, '', html_options
+      [content_tag(:i, '', html_options), options[:text]].compact.join(' ').html_safe
     end
 
   private
