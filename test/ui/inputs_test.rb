@@ -102,9 +102,16 @@ class InputsTest < ActionView::TestCase
       assert_equal expected, actual
     end
 
-    test 'checkbox' do
+    test 'checkbox_field' do
       actual = UiBibz::Ui::Core::Inputs::Choices::CheckboxField.new('John', { value: 1, status: :primary, type: :circle }).render
-      expected = "<input type=\"checkbox\" name=\"John\" id=\"John\" value=\"1\" class=\"abc-checkbox-primary abc-checkbox-circle\" />"
+      expected = "<div class=\"abc-checkbox-primary checkbox abc-checkbox abc-checkbox-circle\"><input type=\"checkbox\" name=\"John\" id=\"John\" value=\"1\" class=\"styled\" /><label for=\"John\">John</label></div>"
+
+      assert_equal expected, actual
+    end
+
+    test 'radio_field' do
+      actual = UiBibz::Ui::Core::Inputs::Choices::RadioField.new('John', { value: 1, status: :primary, type: :square }).render
+      expected = "<div class=\"abc-checkbox-primary checkbox abc-checkbox\"><input type=\"radio\" name=\"John\" id=\"John_1\" value=\"1\" /><label for=\"John_1\">John</label></div>"
 
       assert_equal expected, actual
     end

@@ -20,4 +20,10 @@ class GlyphTest < ActionView::TestCase
     expected = '<i class="glyph fa fa-add fa-3x fa-li"></i>'
     assert_equal expected, actual
   end
+
+  test 'create glyph with text' do
+    actual   = UiBibz::Ui::Core::Glyph.new('add', { text: 'Example' }).render
+    expected = "<i class=\"glyph fa fa-add\"></i> Example"
+    assert_equal expected, actual
+  end
 end

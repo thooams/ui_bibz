@@ -39,7 +39,7 @@ module UiBibz::Ui::Core
   #   end
   #
   class Component < UiBibz::Ui::Base
-    include Component::KlassExtension
+    include UiBibz::Ui::Core::Component::KlassExtension
     include Component::GlyphExtension
 
     attr_accessor :content, :html_options, :options
