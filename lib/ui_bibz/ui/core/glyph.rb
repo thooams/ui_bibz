@@ -64,7 +64,7 @@ module UiBibz::Ui::Core
 
     # Render html tag
     def render
-      [content_tag(:i, '', html_options), options[:text]].compact.join(' ').html_safe
+      [content_tag(:i, '', html_options), options[:label]].compact.join(' ').html_safe
     end
 
   private
