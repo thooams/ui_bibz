@@ -67,8 +67,13 @@ class UiHelperTest < ActionView::TestCase
         n.link 'lala', url: '#'
         n.link 'lolo', url: '#'
       end
+      nb.form '/search', { type: :form_tag, position: :right } do
+        concat text_field_tag 'search'
+        concat button :submit
+      end
     end
-    expected = "<nav class=\"navbar navbar-inverse navbar-fixed-bottom\"><div class=\"container-fluid\"><div class=\"navbar-header\"><button class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#navbar-collapse-57604740876218660627112051613797907862\"><span class=\"sr-only\">Toggle navigation</span><span class=\"icon-bar\"></span><span class=\"icon-bar\"></span><span class=\"icon-bar\"></span></button><a class=\"navbar-brand\" href=\"#\"><i class=\"glyph fa fa-pencil\"></i> My title</a></div><div class=\"collapse navbar-collapse\" id=\"navbar-collapse-57604740876218660627112051613797907862\"><ul class=\"nav navbar-nav\"><li role=\"presentation\"><a href=\"#\">state</a></li><li role=\"presentation\"><a href=\"#\">Tata</a></li></ul><ul class=\"nav navbar-nav nav-right\"><li role=\"presentation\"><a href=\"#\">lala</a></li><li role=\"presentation\"><a href=\"#\">lolo</a></li></ul></div></div></nav>"
+    expected = "<nav class=\"navbar navbar-inverse navbar-fixed-bottom\"><div class=\"container-fluid\"><div class=\"navbar-header\"><button class=\"navbar-toggler hidden-sm-up\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbar-collapse-243510900091050741589988795055654058002\">☰</button></div><div class=\"collapse navbar-toggleable-xs\" id=\"navbar-collapse-243510900091050741589988795055654058002\"><a class=\"navbar-brand\" href=\"/\">My title</a><ul class=\"nav navbar-nav\"><li class=\"nav-item\"><a class=\"nav-link\" href=\"#\">state</a></li><li class=\"nav-item\"><a class=\"nav-link\" href=\"#\">Tata</a></li></ul><ul class=\"nav navbar-nav pull-right\"><li class=\"nav-item\"><a class=\"nav-link\" href=\"#\">lala</a></li><li class=\"nav-item\"><a class=\"nav-link\" href=\"#\">lolo</a></li></ul><form class=\"navbar-form form-inline pull-right\" action=\"/search\" accept-charset=\"UTF-8\" method=\"post\"><input name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" /><input type=\"text\" name=\"search\" id=\"search\" /><button class=\"btn-primary btn\">submit</button><input type=\"text\" name=\"search\" id=\"search\" /><button class=\"btn-primary btn\">submit</button></form>
++</div></div></nav>"
 
     refute_equal expected, actual
   end

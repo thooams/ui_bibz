@@ -49,7 +49,9 @@ module UiBibz::Ui::Core::Navs
       if type == :form_for
         @form = form_for(model_or_url, options, &block)
       else
-        @form = form_tag(model_or_url, class: "navbar-form form-inline #{ position }", &block)
+        #@form = form_tag(model_or_url, class: "navbar-form form-inline #{ position }", block)
+        html_options = html_options_for_form(model_or_url, { class: "navbar-form form-inline #{ position }" })
+        @form = form_tag_with_body(html_options, capture(&block))
       end
     end
 
