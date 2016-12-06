@@ -60,10 +60,14 @@ module UiBibz::Ui::Core::Inputs::Buttons
 
     # Render html tag
     def render
-      link_to glyph_and_content_html, options[:url], html_options
+      link_to glyph_and_content_html, link_url, html_options
     end
 
   private
+
+    def link_url
+      options[:url] || "#"
+    end
 
     def component_html_classes
       ['btn', size, type]
