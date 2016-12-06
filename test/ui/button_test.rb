@@ -67,30 +67,4 @@ class ButtonTest < ActionView::TestCase
     assert_equal expected, actual
   end
 
-  test 'button dropdown' do
-      actual = UiBibz::Ui::Core::Inputs::Buttons::ButtonDropdown.new("Dropdown", type: :dropup, status: :success).tap do |d|
-      d.link 'state'
-      d.header 'header'
-      d.link 'momo'
-      d.divider
-      d.link 'lolo'
-    end.render
-    expected = "<div class=\"btn-group dropup\" role=\"group\"><button class=\"btn btn-success dropdown-toggle\" type=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">Dropdown <span class=\"caret\"></span></button><div class=\"dropdown-menu dropdown-menu-left\"><a class=\"dropdown-item\" href=\"#\">state</a><h6 class=\"dropdown-header\" role=\"presentation\">header</h6><a class=\"dropdown-item\" href=\"#\">momo</a><div class=\"dropdown-divider\"></div><a class=\"dropdown-item\" href=\"#\">lolo</a></div></div>"
-
-    assert_equal expected, actual
-  end
-
-  test 'button split dropdown' do
-      actual = UiBibz::Ui::Core::Inputs::Buttons::ButtonSplitDropdown.new("Dropdown", type: :dropup, status: :primary).tap do |d|
-      d.link 'state'
-      d.header 'header'
-      d.link 'momo'
-      d.divider
-      d.link 'lolo'
-    end.render
-    expected = "<div class=\"btn-group dropup\" role=\"group\"><button class=\"btn btn-primary\">Dropdown</button><button class=\"btn btn-primary dropdown-toggle dropdown-toggle-split\" type=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\"><span class=\"sr-only\">Toggle Dropdown</span></button><div class=\"dropdown-menu dropdown-menu-left\"><a class=\"dropdown-item\" href=\"#\">state</a><h6 class=\"dropdown-header\" role=\"presentation\">header</h6><a class=\"dropdown-item\" href=\"#\">momo</a><div class=\"dropdown-divider\"></div><a class=\"dropdown-item\" href=\"#\">lolo</a></div></div>"
-
-    assert_equal expected, actual
-  end
-
 end

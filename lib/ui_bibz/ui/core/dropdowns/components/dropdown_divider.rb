@@ -1,4 +1,4 @@
-module UiBibz::Ui::Core
+module UiBibz::Ui::Core::Dropdowns::Components
 
   # Create DropdownDivider
   #

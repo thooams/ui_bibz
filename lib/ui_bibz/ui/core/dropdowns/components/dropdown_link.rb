@@ -1,4 +1,4 @@
-module UiBibz::Ui::Core
+module UiBibz::Ui::Core::Dropdowns::Components
 
   # Create DropdownLink
   #
@@ -39,7 +39,7 @@ module UiBibz::Ui::Core
   #     'Home'
   #   end.render
   #
-  class DropdownLink < Component
+  class DropdownLink <  UiBibz::Ui::Core::Component
 
     # See UiBibz::Ui::Core::Component.initialize
     def initialize content = nil, options = nil, html_options = nil, &block

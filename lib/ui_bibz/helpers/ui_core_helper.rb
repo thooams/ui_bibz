@@ -18,15 +18,6 @@ module UiBibz::Helpers::UiCoreHelper
     UiBibz::Ui::Core::Inputs::Buttons::ButtonChoice.new(content, options, html_options, &block).render
   end
 
-  # Button Dropdown Component
-  #
-  # +name+ (String) [Required]
-  # +options+ (Hash)
-  # +html_options+ (Hash)
-  def button_dropdown name, options = nil, html_options = nil, &block
-    UiBibz::Ui::Core::Inputs::Buttons::ButtonDropdown.new(name, options, html_options).tap(&block).render
-  end
-
   # Button Group Component
   #
   # +options+ (Hash)
@@ -43,14 +34,6 @@ module UiBibz::Helpers::UiCoreHelper
     UiBibz::Ui::Core::Inputs::Buttons::ButtonLink.new(content, options, html_options, &block).render
   end
 
-  # Button Split Dropdown Component
-  #
-  # +name+ (String) [Required]
-  # +options+ (Hash)
-  # +html_options+ (Hash)
-  def button_split_dropdown name, options = nil, html_options = nil, &block
-    UiBibz::Ui::Core::Inputs::Buttons::ButtonSplitDropdown.new(name, options, html_options).tap(&block).render
-  end
 
   # Button section end ----------------------------------------------------
 
@@ -269,7 +252,16 @@ module UiBibz::Helpers::UiCoreHelper
   # +options+ (Hash)
   # +html_options+ (Hash)
   def dropdown name, options = nil, html_options = nil, &block
-    UiBibz::Ui::Core::Dropdown.new(name, options, html_options).tap(&block).render
+    UiBibz::Ui::Core::Dropdowns::Dropdown.new(name, options, html_options).tap(&block).render
+  end
+
+  # Split Dropdown Component
+  #
+  # +name+ (String) [Required]
+  # +options+ (Hash)
+  # +html_options+ (Hash)
+  def split_dropdown name, options = nil, html_options = nil, &block
+    UiBibz::Ui::Core::Dropdowns::SplitDropdown.new(name, options, html_options).tap(&block).render
   end
 
   # Glyph Component

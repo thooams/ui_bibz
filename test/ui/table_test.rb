@@ -59,7 +59,7 @@ class TableTest < ActionView::TestCase
     actual       = pagination.render if pagination.paginable?
     expected     = nil
 
-    assert_equal expected, actual
+    assert_nil actual
   end
 
   test 'table paginable' do

@@ -1,7 +1,7 @@
-require 'ui_bibz/ui/core/dropdown/components/dropdown_header'
-require 'ui_bibz/ui/core/dropdown/components/dropdown_divider'
-require 'ui_bibz/ui/core/dropdown/components/dropdown_link'
-module UiBibz::Ui::Core
+require 'ui_bibz/ui/core/dropdowns/components/dropdown_header'
+require 'ui_bibz/ui/core/dropdowns/components/dropdown_divider'
+require 'ui_bibz/ui/core/dropdowns/components/dropdown_link'
+module UiBibz::Ui::Core::Dropdowns
 
   # Create a dropdown
   #
@@ -29,7 +29,7 @@ module UiBibz::Ui::Core
   #
   # ==== Signatures
   #
-  #   UiBibz::Ui::Core::Dropdown.new(options = nil, html_options = nil).tap do |d|
+  #   UiBibz::Ui::Core::Dropdowns::Dropdown.new(options = nil, html_options = nil).tap do |d|
   #     ...
   #     d.header content = nil, options = nil, html_options = nil, &block
   #     d.divider
@@ -39,7 +39,7 @@ module UiBibz::Ui::Core
   #
   # ==== Examples
   #
-  #   UiBibz::Ui::Core::Dropdown.new(name, status: :success).tap do |d|
+  #   UiBibz::Ui::Core::Dropdowns::Dropdown.new(name, status: :success).tap do |d|
   #     d.link 'test', { url: '#' }
   #     d.divider
   #     d.header 'Header 1'
@@ -60,7 +60,7 @@ module UiBibz::Ui::Core
   #     end
   #   end
   #
-  class Dropdown < Component
+  class Dropdown < UiBibz::Ui::Core::Component
 
     def initialize content, options = nil, html_options  = nil, &block
       super
@@ -79,19 +79,19 @@ module UiBibz::Ui::Core
     # Add dropdown header
     # See UiBibz::Ui::Core::DropdownHeader
     def header content = nil, options = nil, html_options = nil, &block
-      @items << DropdownHeader.new(content, options, html_options, &block).render
+      @items << UiBibz::Ui::Core::Dropdowns::Components::DropdownHeader.new(content, options, html_options, &block).render
     end
 
     # Add dropdown Separator
     # See UiBibz::Ui::Core::DropdownDivider
     def divider
-      @items << DropdownDivider.new.render
+      @items << UiBibz::Ui::Core::Dropdowns::Components::DropdownDivider.new.render
     end
 
     # Add dropdown link in list
     # See UiBibz::Ui::Core::DropdownLink
     def link content = nil, options = nil, html_options = nil, &block
-      @items << DropdownLink.new(content, options, html_options, &block).render
+      @items << UiBibz::Ui::Core::Dropdowns::Components::DropdownLink.new(content, options, html_options, &block).render
     end
 
     # Add html component

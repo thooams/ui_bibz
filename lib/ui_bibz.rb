@@ -50,10 +50,8 @@ module UiBibz
         module Buttons
           autoload :Button,                  "ui_bibz/ui/core/inputs/buttons/button"
           autoload :ButtonChoice,            "ui_bibz/ui/core/inputs/buttons/button_choice"
-          autoload :ButtonDropdown,          "ui_bibz/ui/core/inputs/buttons/button_dropdown"
           autoload :ButtonGroup,             "ui_bibz/ui/core/inputs/buttons/button_group"
           autoload :ButtonLink,              "ui_bibz/ui/core/inputs/buttons/button_link"
-          autoload :ButtonSplitDropdown,     "ui_bibz/ui/core/inputs/buttons/button_split_dropdown"
         end
 
         module Choices
@@ -76,11 +74,16 @@ module UiBibz
         autoload :Navbar,                  "ui_bibz/ui/core/navs/navbar"
       end
 
+      # Dropdowns
+      module Dropdowns
+        autoload :Dropdown,              "ui_bibz/ui/core/dropdowns/dropdown"
+        autoload :SplitDropdown,         "ui_bibz/ui/core/dropdowns/split_dropdown"
+      end
+
       # Other section
       autoload :Alert,                   "ui_bibz/ui/core/alert"
       autoload :Breadcrumb,              "ui_bibz/ui/core/breadcrumb/breadcrumb"
       autoload :Component,               "ui_bibz/ui/core/component"
-      autoload :Dropdown,                "ui_bibz/ui/core/dropdown/dropdown"
       autoload :Glyph,                   "ui_bibz/ui/core/glyph"
       autoload :Jumbotron,               "ui_bibz/ui/core/jumbotron"
       autoload :Tag,                     "ui_bibz/ui/core/tag"

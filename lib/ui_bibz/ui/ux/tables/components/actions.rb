@@ -1,6 +1,6 @@
-require 'ui_bibz/ui/core/dropdown/components/dropdown_header'
-require 'ui_bibz/ui/core/dropdown/components/dropdown_divider'
-require 'ui_bibz/ui/core/dropdown/components/dropdown_link'
+require 'ui_bibz/ui/core/dropdowns/components/dropdown_header'
+require 'ui_bibz/ui/core/dropdowns/components/dropdown_divider'
+require 'ui_bibz/ui/core/dropdowns/components/dropdown_link'
 module UiBibz::Ui::Ux::Tables
   class Actions
 
@@ -12,15 +12,15 @@ module UiBibz::Ui::Ux::Tables
 
     # Add link action in table
     def link content = nil, options = nil, html_options = nil, &block
-      @actions << UiBibz::Ui::Core::DropdownLink.new(content, options, html_options, &block).render
+      @actions << UiBibz::Ui::Core::Dropdowns::Components::DropdownLink.new(content, options, html_options, &block).render
     end
 
     def divider
-      @actions << UiBibz::Ui::Core::DropdownDivider.new.render
+      @actions << UiBibz::Ui::Core::Dropdowns::Components::DropdownDivider.new.render
     end
 
     def header content = nil, options = nil, html_options = nil, &block
-      @actions << UiBibz::Ui::Core::DropdownHeader.new(content, options, html_options, &block).render
+      @actions << UiBibz::Ui::Core::Dropdowns::Components::DropdownHeader.new(content, options, html_options, &block).render
     end
 
     def html content
@@ -52,9 +52,9 @@ module UiBibz::Ui::Ux::Tables
 
     def defaults_actions
       [
-        UiBibz::Ui::Core::DropdownLink.new(show_name, url: { controller: @store.controller, action: 'show', id: :id }, glyph: 'eye').render,
-        UiBibz::Ui::Core::DropdownLink.new(edit_name, url:{ controller: @store.controller, action: 'edit', id: :id }, glyph: 'pencil').render,
-        UiBibz::Ui::Core::DropdownLink.new(delete_name, { glyph: 'trash', url: { controller: @store.controller, action: 'destroy', id: :id }, link_html_options: { data: { confirm: 'Are you sure?', method: :delete }}}).render
+        UiBibz::Ui::Core::Dropdowns::Components::DropdownLink.new(show_name, url: { controller: @store.controller, action: 'show', id: :id }, glyph: 'eye').render,
+        UiBibz::Ui::Core::Dropdowns::Components::DropdownLink.new(edit_name, url:{ controller: @store.controller, action: 'edit', id: :id }, glyph: 'pencil').render,
+        UiBibz::Ui::Core::Dropdowns::Components::DropdownLink.new(delete_name, { glyph: 'trash', url: { controller: @store.controller, action: 'destroy', id: :id }, link_html_options: { data: { confirm: 'Are you sure?', method: :delete }}}).render
       ]
     end
 

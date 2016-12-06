@@ -1,4 +1,4 @@
-module UiBibz::Ui::Core
+module UiBibz::Ui::Core::Dropdowns::Components
 
   # Create DropdownHeader
   #
@@ -31,7 +31,7 @@ module UiBibz::Ui::Core
   #     'Home'
   #   end.render
   #
-  class DropdownHeader < Component
+  class DropdownHeader < UiBibz::Ui::Core::Component
 
     # See UiBibz::Ui::Core::Component.initialize
     def initialize content = nil, options = nil, html_options = nil, &block

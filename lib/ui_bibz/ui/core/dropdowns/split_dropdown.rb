@@ -1,8 +1,8 @@
-module UiBibz::Ui::Core::Inputs::Buttons
+module UiBibz::Ui::Core::Dropdowns
 
   # Create a button dropdown
   #
-  # This element is an extend of UiBibz::Ui::Core::Dropdown.
+  # This element is an extend of UiBibz::Ui::Core::Dropdowns::Dropdown.
   #
   # ==== Attributes
   #
@@ -28,7 +28,7 @@ module UiBibz::Ui::Core::Inputs::Buttons
   #
   # ==== Signatures
   #
-  #   UiBibz::Ui::Core::Inputs::Buttons::ButtonSplitDropdown.new(options = nil, html_options = nil).tap do |d|
+  #   UiBibz::Ui::Core::Dropdowns::SplitDropdown.new(options = nil, html_options = nil).tap do |d|
   #     d.list content = nil, options = nil, html_options = nil, &block
   #     d.list content = nil, options = nil, html_options = nil, &block
   #     d.list content = nil, options = nil, html_options = nil, &block
@@ -37,7 +37,7 @@ module UiBibz::Ui::Core::Inputs::Buttons
   #
   # ==== Examples
   #
-  #   UiBibz::Ui::Core::Inputs::Buttons::ButtonSplitDropdown.new(name, status: :success).tap do |d|
+  #   UiBibz::Ui::Core::Dropdowns::SplitDropdown.new(name, status: :success).tap do |d|
   #     d.list link_to('test', '#')
   #     d.list('---')
   #     d.list('Header 1', { type: :header })
@@ -46,14 +46,14 @@ module UiBibz::Ui::Core::Inputs::Buttons
   #
   # ==== Helper
   #
-  #   button_split_dropdown(name, options = {}, html_options = {}) do |b|
+  #  split_dropdown(name, options = {}, html_options = {}) do |b|
   #     d.list(content, options = {}, html_options = {})
   #     d.list(options = {}, html_options = {}) do
   #       content
   #     end
   #   end
   #
-  class ButtonSplitDropdown < UiBibz::Ui::Core::Dropdown
+  class SplitDropdown < UiBibz::Ui::Core::Dropdowns::Dropdown
 
     # See UiBibz::Ui::Core::Dropdown.initialize
     def initialize name, options = nil, html_options = nil, &block
@@ -73,10 +73,6 @@ module UiBibz::Ui::Core::Inputs::Buttons
 
     def component_html_classes
       ['btn-group', type]
-    end
-
-    def component_html_options
-      { role: 'group' }
     end
 
     def button_html

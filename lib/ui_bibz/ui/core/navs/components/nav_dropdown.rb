@@ -41,7 +41,7 @@ module UiBibz::Ui::Core::Navs
   #     d.list link_to('test2', '#')
   #   end.render
   #
-  class NavDropdown < UiBibz::Ui::Core::Dropdown
+  class NavDropdown < UiBibz::Ui::Core::Dropdowns::Dropdown
 
     # See UiBibz::Ui::Core::Dropdown.initialize
     def initialize content, options = nil, html_options  = nil, &block
