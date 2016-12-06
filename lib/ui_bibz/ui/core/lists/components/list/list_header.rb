@@ -1,6 +1,6 @@
-module UiBibz::Ui::Core
+module UiBibz::Ui::Core::Lists::Components::List
 
-  # Create a listBody
+  # Create a listHeader
   #
   # This element is an extend of UiBibz::Ui::Core::Component.
   #
@@ -14,7 +14,7 @@ module UiBibz::Ui::Core
   #
   # You can add HTML attributes using the +html_options+.
   # You can pass arguments in options attribute:
-  class ListBody < Component
+  class ListHeader < UiBibz::Ui::Core::Component
 
     # See UiBibz::Ui::Core::Component.initialize
     def initialize content = nil, options = nil, html_options = nil, &block
@@ -23,13 +23,13 @@ module UiBibz::Ui::Core
 
     # Render html tag
     def render
-      content_tag :p, content, html_options
+      content_tag :h4, content, html_options
     end
 
   private
 
     def component_html_classes
-      'list-group-item-text'
+      'list-group-item-heading'
     end
 
   end

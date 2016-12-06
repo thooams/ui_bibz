@@ -1,7 +1,7 @@
-require 'ui_bibz/ui/core/modal/components/modal_header'
-require 'ui_bibz/ui/core/modal/components/modal_body'
-require 'ui_bibz/ui/core/modal/components/modal_footer'
-module UiBibz::Ui::Core
+require 'ui_bibz/ui/core/windows/components/modal_header'
+require 'ui_bibz/ui/core/windows/components/modal_body'
+require 'ui_bibz/ui/core/windows/components/modal_footer'
+module UiBibz::Ui::Core::Windows
 
   # Create an modal
   #
@@ -52,7 +52,7 @@ module UiBibz::Ui::Core
   #     end
   #   end
   #
-  class Modal < Component
+  class Modal < UiBibz::Ui::Core::Component
 
     # See UiBibz::Ui::Core::Component.initialize
     def initialize content = nil, options = nil, html_options = nil, &block
@@ -73,15 +73,15 @@ module UiBibz::Ui::Core
     end
 
     def header content = nil, options = nil, html_options = nil, &block
-      @header = ModalHeader.new(content, options, html_options, &block).render
+      @header = UiBibz::Ui::Core::Windows::Components::ModalHeader.new(content, options, html_options, &block).render
     end
 
     def footer content = nil, options = nil, html_options = nil, &block
-      @footer = ModalFooter.new(content, options, html_options, &block).render
+      @footer = UiBibz::Ui::Core::Windows::Components::ModalFooter.new(content, options, html_options, &block).render
     end
 
     def body content = nil, options = nil, html_options = nil, &block
-      @body = ModalBody.new(content, options, html_options, &block).render
+      @body = UiBibz::Ui::Core::Windows::Components::ModalBody.new(content, options, html_options, &block).render
     end
 
     private

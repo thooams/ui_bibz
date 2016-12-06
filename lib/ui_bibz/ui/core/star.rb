@@ -1,6 +1,6 @@
 module UiBibz::Ui::Core
 
-  # Create stars notation
+  # Create star notation
   #
   # This element is an extend of UiBibz::Ui::Core::Component.
   #
@@ -16,33 +16,33 @@ module UiBibz::Ui::Core
   # You can pass arguments in options attribute:
   # * +status+ - status of élement with symbol value:
   #   (+:default+, +:primary+, +:info+, +:warning+, +:danger+)
-  # * +num+ - Integer, number of stars
+  # * +num+ - Integer, number of star
   #
   # ==== Signatures
   #
-  #   UiBibz::Ui::Core::Stars.new(content, options = nil, html_options = nil)
+  #   UiBibz::Ui::Core::Star.new(content, options = nil, html_options = nil)
   #
-  #   UiBibz::Ui::Core::Stars.new(options = nil, html_options = nil) do
+  #   UiBibz::Ui::Core::Star.new(options = nil, html_options = nil) do
   #     content
   #   end
   #
   # ==== Examples
   #
-  #   UiBibz::Ui::Core::Stars.new(content, status: :success).render
+  #   UiBibz::Ui::Core::Star.new(content, status: :success).render
   #
-  #   UiBibz::Ui::Core::Stars.new({ num: 10 }) do
+  #   UiBibz::Ui::Core::Star.new({ num: 10 }) do
   #     #content
   #   end.render
   #
   # ==== Helper
   #
-  #   stars(content, options = {}, html_options = {})
+  #   star(content, options = {}, html_options = {})
   #
-  #   stars(options = {}, html_options = {}) do
+  #   star(options = {}, html_options = {}) do
   #     content
   #   end
   #
-  class Stars < Component
+  class Star < UiBibz::Ui::Core::Component
 
     # See UiBibz::Ui::Core::Component.initialize
     def initialize content = nil, options = nil, html_options = nil, &block
@@ -51,7 +51,7 @@ module UiBibz::Ui::Core
 
     # Render html tag
     def render
-      content_tag :span, stars_notation.join(' ').html_safe, html_options
+      content_tag :span, star_notation.join(' ').html_safe, html_options
     end
 
   private
@@ -65,7 +65,7 @@ module UiBibz::Ui::Core
       (options[:num] || 5).to_i
     end
 
-    def stars_notation
+    def star_notation
       stars = []
       number.times do |star|
         star += 1

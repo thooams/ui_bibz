@@ -1,5 +1,5 @@
-require "ui_bibz/ui/core/list/components/list"
-module UiBibz::Ui::Core
+require "ui_bibz/ui/core/lists/components/list"
+module UiBibz::Ui::Core::Lists
 
   # Create a list group
   #
@@ -88,9 +88,9 @@ module UiBibz::Ui::Core
       options = options.merge({ type: @options[:type] }) unless @options[:type].nil?
 
       if is_tap
-        @lists << List.new(content, options, html_options).tap(&block).render
+        @lists << UiBibz::Ui::Core::Lists::Components::List.new(content, options, html_options).tap(&block).render
       else
-        @lists << List.new(content, options, html_options, &block).render
+        @lists << UiBibz::Ui::Core::Lists::Components::List.new(content, options, html_options, &block).render
       end
     end
 

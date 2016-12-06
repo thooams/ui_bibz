@@ -1,4 +1,4 @@
-module UiBibz::Ui::Core
+module UiBibz::Ui::Core::Windows::Components
 
   # Create a modal footer
   #
@@ -29,7 +29,7 @@ module UiBibz::Ui::Core
   #     'Exemple'
   #   end.render
   #
-  class ModalFooter < Component
+  class ModalFooter < UiBibz::Ui::Core::Component
 
     # See UiBibz::Ui::Core::Component.initialize
     def initialize content = nil, options = nil, html_options = nil, &block

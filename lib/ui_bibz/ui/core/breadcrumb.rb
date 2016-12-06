@@ -17,7 +17,7 @@ module UiBibz::Ui::Core
   #
   # ==== Components
   #
-  # +link+ is UiBibz::Ui::Core::BreadcrumbLink component
+  # +link+ is UiBibz::Ui::Core::BreadCrumb::Components::BreadcrumbLink component
   #
   # ==== Signatures
   #
@@ -53,7 +53,7 @@ module UiBibz::Ui::Core
   #
   #   breadcrumb({store: @users, link_label: name, link_url: user_path(:id)})
   #
-  class Breadcrumb < Component
+  class Breadcrumb < UiBibz::Ui::Core::Component
 
     # See UiBibz::Ui::Core::Component.initialize
     def initialize content = nil, options = nil, html_options = nil, &block
@@ -70,7 +70,7 @@ module UiBibz::Ui::Core
     # Add breadcrumb link items
     # See UiBibz::Ui::Core::BreadcrumbLink
     def link content = nil, options = nil, html_options = nil, &block
-      @links << BreadcrumbLink.new(content, options, html_options, &block).render
+      @links << UiBibz::Ui::Core::Breadcrumbs::Components::BreadcrumbLink.new(content, options, html_options, &block).render
     end
 
     private
@@ -98,9 +98,9 @@ module UiBibz::Ui::Core
     def generate_links
       @options[:store].each do |item|
         if item == @options[:store].last
-          @links << BreadcrumbLink.new(item.send(link_label), status: :disabled).render
+          @links << UiBibz::Ui::Core::Breadcrumb::Components::BreadcrumbLink.new(item.send(link_label), status: :disabled).render
         else
-          @links << BreadcrumbLink.new(item.send(link_label), url: inject_url(link_url, item)).render
+          @links << UiBibz::Ui::Core::Breadcrumb::Components::BreadcrumbLink.new(item.send(link_label), url: inject_url(link_url, item)).render
         end
       end
     end

@@ -1,6 +1,6 @@
-require "ui_bibz/ui/core/list/components/list_header"
-require "ui_bibz/ui/core/list/components/list_body"
-module UiBibz::Ui::Core
+require "ui_bibz/ui/core/lists/components/list/list_header"
+require "ui_bibz/ui/core/lists/components/list/list_body"
+module UiBibz::Ui::Core::Lists::Components
 
   # Create a list
   #
@@ -29,22 +29,22 @@ module UiBibz::Ui::Core
   #
   # ==== Signatures
   #
-  #   UiBibz::Ui::Core::List.new(tap: true) do |l|
+  #   UiBibz::Ui::Core::Lists::Components::List.new(tap: true) do |l|
   #     l.header content =  nil, options = nil, html_options = nil, &block
   #     l.body content =  nil, options = nil, html_options = nil, &block
   #   end
   #
-  #   UiBibz::Ui::Core::List.new content, options = nil, html_options = nil
+  #   UiBibz::Ui::Core::Lists::Components::List.new content, options = nil, html_options = nil
   #
-  #   UiBibz::Ui::Core::List.new options = nil, html_options = nil do
+  #   UiBibz::Ui::Core::Lists::Components::List.new options = nil, html_options = nil do
   #     content
   #   end
   #
   # ==== Examples
   #
-  #   UiBibz::Ui::Core::List.new('Test', status: :success, url: '#test').render
+  #   UiBibz::Ui::Core::Lists::Components::List.new('Test', status: :success, url: '#test').render
   #
-  #   UiBibz::Ui::Core::List.new(status: :primary) do
+  #   UiBibz::Ui::Core::Lists::Components::List.new(status: :primary) do
   #       'Test 2'
   #   end.render
   #
@@ -55,7 +55,7 @@ module UiBibz::Ui::Core
   #     end
   #   end.render
   #
-  class List < Component
+  class List < UiBibz::Ui::Core::Component
 
     # See UiBibz::Ui::Core::Component.initialize
     def initialize content = nil, options = nil, html_options = nil, &block
@@ -75,12 +75,12 @@ module UiBibz::Ui::Core
 
     # Add header which is a component
     def header content = nil, options = nil, html_options = nil, &block
-      @header = UiBibz::Ui::Core::ListHeader.new content, options, html_options, &block
+      @header = UiBibz::Ui::Core::Lists::Components::List::ListHeader.new content, options, html_options, &block
     end
 
     # Add body which is a component
     def body content = nil, options = nil, html_options = nil, &block
-      @body = UiBibz::Ui::Core::ListBody.new content, options, html_options, &block
+      @body = UiBibz::Ui::Core::Lists::Components::List::ListBody.new content, options, html_options, &block
     end
 
   private

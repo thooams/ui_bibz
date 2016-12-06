@@ -1,6 +1,6 @@
-module UiBibz::Ui::Core::Cards::Components::Block
+module UiBibz::Ui::Core::Windows::Components
 
-  # Create a card block title
+  # Create a modal body
   #
   # ==== Attributes
   #
@@ -15,21 +15,21 @@ module UiBibz::Ui::Core::Cards::Components::Block
   #
   # ==== Signatures
   #
-  #   UiBibz::Ui::Core::Cards::CardBlockText.new(content, options = nil, html_options = nil)
+  #   UiBibz::Ui::Core::ModalBody.new(content, options = nil, html_options = nil)
   #
-  #   UiBibz::Ui::Core::Cards::CardBlockText.new(options = nil, html_options = nil) do
+  #   UiBibz::Ui::Core::ModalBody.new(options = nil, html_options = nil) do
   #     content
   #   end
   #
   # ==== Examples
   #
-  #   UiBibz::Ui::Core::Cards::CardBlockText.new.render
+  #   UiBibz::Ui::Core::ModalBody.new.render
   #
-  #   UiBibz::Ui::Core::Cards::CardBlockText.new do
+  #   UiBibz::Ui::Core::ModalBody.new do
   #     'Exemple'
   #   end.render
   #
-  class CardBlockText < UiBibz::Ui::Core::Component
+  class ModalBody < UiBibz::Ui::Core::Component
 
     # See UiBibz::Ui::Core::Component.initialize
     def initialize content = nil, options = nil, html_options = nil, &block
@@ -38,13 +38,13 @@ module UiBibz::Ui::Core::Cards::Components::Block
 
     # Render html tag
     def render
-      content_tag :p, content.html_safe, html_options
+      content_tag :div, content, html_options
     end
 
   private
 
     def component_html_classes
-      "card-text"
+      'modal-body'
     end
 
   end

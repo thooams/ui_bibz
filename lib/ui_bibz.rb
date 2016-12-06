@@ -80,18 +80,30 @@ module UiBibz
         autoload :SplitDropdown,         "ui_bibz/ui/core/dropdowns/split_dropdown"
       end
 
+      # Paths
+      module Paths
+        autoload :Breadcrumb,             "ui_bibz/ui/core/paths/breadcrumb"
+      end
+
+      # Windows
+      module Windows
+        autoload :Modal,                  "ui_bibz/ui/core/windows/modal"
+      end
+
+      # Lists
+      module Lists
+        autoload :ListGroup,              "ui_bibz/ui/core/lists/list_group"
+      end
+
       # Other section
       autoload :Alert,                   "ui_bibz/ui/core/alert"
-      autoload :Breadcrumb,              "ui_bibz/ui/core/breadcrumb/breadcrumb"
       autoload :Component,               "ui_bibz/ui/core/component"
       autoload :Glyph,                   "ui_bibz/ui/core/glyph"
       autoload :Jumbotron,               "ui_bibz/ui/core/jumbotron"
       autoload :Tag,                     "ui_bibz/ui/core/tag"
-      autoload :ListGroup,               "ui_bibz/ui/core/list/list_group"
-      autoload :Modal,                   "ui_bibz/ui/core/modal/modal"
       autoload :Progress,                "ui_bibz/ui/core/progress"
-      autoload :Stars,                   "ui_bibz/ui/core/stars"
-      autoload :Tab,                     "ui_bibz/ui/core/nav/tab"
+      autoload :Star,                    "ui_bibz/ui/core/star"
+      autoload :Tab,                     "ui_bibz/ui/core/navs/tab"
     end
 
     # Ux

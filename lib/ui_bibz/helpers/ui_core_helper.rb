@@ -240,9 +240,9 @@ module UiBibz::Helpers::UiCoreHelper
   #
   def breadcrumb content = nil, options = nil, html_options = nil, &block
     if is_tap(content, options)
-      UiBibz::Ui::Core::Breadcrumb.new(content, options, html_options).tap(&block).render
+      UiBibz::Ui::Core::Paths::Breadcrumb.new(content, options, html_options).tap(&block).render
     else
-      UiBibz::Ui::Core::Breadcrumb.new(content, options, html_options, &block).render
+      UiBibz::Ui::Core::Paths::Breadcrumb.new(content, options, html_options, &block).render
     end
   end
 
@@ -309,7 +309,7 @@ module UiBibz::Helpers::UiCoreHelper
   # +options+ (Hash)
   # +html_options+ (Hash)
   def modal content = nil, options = nil, html_options = nil, &block
-    UiBibz::Ui::Core::Modal.new(content, options, html_options).tap(&block).render
+    UiBibz::Ui::Core::Windows::Modal.new(content, options, html_options).tap(&block).render
   end
 
   # Progress Component
@@ -324,8 +324,8 @@ module UiBibz::Helpers::UiCoreHelper
   #
   # +options+ (Hash)
   # +html_options+ (Hash)
-  def stars content = nil, options = nil, html_options = nil, &block
-    UiBibz::Ui::Core::Stars.new(content, options, html_options, &block).render
+  def star content = nil, options = nil, html_options = nil, &block
+    UiBibz::Ui::Core::Star.new(content, options, html_options, &block).render
   end
 
   # Other section end ----------------------------------------------------

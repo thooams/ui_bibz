@@ -1,4 +1,4 @@
-module UiBibz::Ui::Core::Cards
+module UiBibz::Ui::Core::Cards::Components::Block
 
   # Create a card block title
   #

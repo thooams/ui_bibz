@@ -1,6 +1,8 @@
-module UiBibz::Ui::Core
+module UiBibz::Ui::Core::Lists::Components::List
 
-  # Create a modal body
+  # Create a listBody
+  #
+  # This element is an extend of UiBibz::Ui::Core::Component.
   #
   # ==== Attributes
   #
@@ -12,24 +14,7 @@ module UiBibz::Ui::Core
   #
   # You can add HTML attributes using the +html_options+.
   # You can pass arguments in options attribute:
-  #
-  # ==== Signatures
-  #
-  #   UiBibz::Ui::Core::ModalBody.new(content, options = nil, html_options = nil)
-  #
-  #   UiBibz::Ui::Core::ModalBody.new(options = nil, html_options = nil) do
-  #     content
-  #   end
-  #
-  # ==== Examples
-  #
-  #   UiBibz::Ui::Core::ModalBody.new.render
-  #
-  #   UiBibz::Ui::Core::ModalBody.new do
-  #     'Exemple'
-  #   end.render
-  #
-  class ModalBody < Component
+  class ListBody < UiBibz::Ui::Core::Component
 
     # See UiBibz::Ui::Core::Component.initialize
     def initialize content = nil, options = nil, html_options = nil, &block
@@ -38,13 +23,13 @@ module UiBibz::Ui::Core
 
     # Render html tag
     def render
-      content_tag :div, content, html_options
+      content_tag :p, content, html_options
     end
 
   private
 
     def component_html_classes
-      'modal-body'
+      'list-group-item-text'
     end
 
   end

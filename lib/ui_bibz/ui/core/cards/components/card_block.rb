@@ -1,7 +1,7 @@
 require 'ui_bibz/ui/core/cards/components/block/card_block_text'
 require 'ui_bibz/ui/core/cards/components/block/card_block_title'
 require 'ui_bibz/ui/core/cards/components/block/card_block_link'
-module UiBibz::Ui::Core::Cards
+module UiBibz::Ui::Core::Cards::Components
 
   # Create a card block
   #
@@ -46,15 +46,15 @@ module UiBibz::Ui::Core::Cards
     end
 
     def title content = nil, options = nil, html_options = nil, &block
-      @items << CardBlockTitle.new(content, options, html_options, &block).render
+      @items << UiBibz::Ui::Core::Cards::Components::Block::CardBlockTitle.new(content, options, html_options, &block).render
     end
 
     def link content = nil, options = nil, html_options = nil, &block
-      @items << CardBlockLink.new(content, options, html_options, &block).render
+      @items << UiBibz::Ui::Core::Cards::Components::Block::CardBlockLink.new(content, options, html_options, &block).render
     end
 
     def text content = nil, options = nil, html_options = nil, &block
-      @items << CardBlockText.new(content, options, html_options, &block).render
+      @items << UiBibz::Ui::Core::Cards::Components::Block::CardBlockText.new(content, options, html_options, &block).render
     end
 
   private

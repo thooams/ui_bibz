@@ -1,4 +1,4 @@
-module UiBibz::Ui::Core::Cards
+module UiBibz::Ui::Core::Cards::Components
 
   # Create a card list_group
   #
@@ -29,7 +29,7 @@ module UiBibz::Ui::Core::Cards
   #     'Exemple'
   #   end.render
   #
-  class CardListGroup < UiBibz::Ui::Core::ListGroup
+  class CardListGroup < UiBibz::Ui::Core::Lists::ListGroup
 
     # See UiBibz::Ui::Core::Component.initialize
     def initialize content = nil, options = nil, html_options = nil, &block
