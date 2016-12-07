@@ -301,7 +301,7 @@ module UiBibz::Helpers::UiCoreHelper
   # +options+ (Hash)
   # +html_options+ (Hash)
   def list_group content = nil, options = nil, html_options = nil, &block
-    UiBibz::Ui::Core::ListGroup.new(content, options, html_options).tap(&block).render
+    UiBibz::Ui::Core::Lists::ListGroup.new(content, options, html_options).tap(&block).render
   end
 
   # Modal Component
