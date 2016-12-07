@@ -1,4 +1,4 @@
-module UiBibz::Ui::Core::Inputs::Selects
+module UiBibz::Ui::Core::Forms::Selects
 
   # Create a DropdownSelectField
   #
@@ -30,17 +30,17 @@ module UiBibz::Ui::Core::Inputs::Selects
   #
   # ==== Signatures
   #
-  #   UiBibz::Ui::Core::Inputs::Selects::DropdownSelectField.new(content, options = {}, html_options = {}).render
+  #   UiBibz::Ui::Core::Forms::Selects::DropdownSelectField.new(content, options = {}, html_options = {}).render
   #
-  #   UiBibz::Ui::Core::Inputs::Selects::DropdownSelectField.new(options = {}, html_options = {}) do
+  #   UiBibz::Ui::Core::Forms::Selects::DropdownSelectField.new(options = {}, html_options = {}) do
   #     content
   #   end.render
   #
   # ==== Examples
   #
-  #   UiBibz::Ui::Core::Inputs::Selects::DropdownSelectField.new('fruits', { option_tags: list_of_fruits, searchable: true }, { class: 'test' })
+  #   UiBibz::Ui::Core::Forms::Selects::DropdownSelectField.new('fruits', { option_tags: list_of_fruits, searchable: true }, { class: 'test' })
   #
-  #   UiBibz::Ui::Core::Inputs::Selects::DropdownSelectField.new({ option_tags: list_of_fruits, actions_box: true }, { class: 'test' }) do
+  #   UiBibz::Ui::Core::Forms::Selects::DropdownSelectField.new({ option_tags: list_of_fruits, actions_box: true }, { class: 'test' }) do
   #     'fruits'
   #   end
   #

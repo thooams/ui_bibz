@@ -1,8 +1,8 @@
-module UiBibz::Ui::Core::Inputs::Selects
+module UiBibz::Ui::Core::Forms::Selects
 
   # Create a MultiSelectField
   #
-  # This element is an extend of UiBibz::Ui::Core::Inputs::Buttons::Button
+  # This element is an extend of UiBibz::Ui::Core::Forms::Buttons::Button
   # source : http://loudev.com/
   #
   # ==== Attributes
@@ -23,17 +23,17 @@ module UiBibz::Ui::Core::Inputs::Selects
   #
   # ==== Signatures
   #
-  #   UiBibz::Ui::Core::Inputs::Selects::MultiSelectField.new(content, options = {}, html_options = {}).render
+  #   UiBibz::Ui::Core::Forms::Selects::MultiSelectField.new(content, options = {}, html_options = {}).render
   #
-  #   UiBibz::Ui::Core::Inputs::Selects::MultiSelectField.new(options = {}, html_options = {}) do
+  #   UiBibz::Ui::Core::Forms::Selects::MultiSelectField.new(options = {}, html_options = {}) do
   #     content
   #   end.render
   #
   # ==== Examples
   #
-  #   UiBibz::Ui::Core::Inputs::Selects::MultiSelectField.new('fruits', { option_tags: list_of_fruits, searchable: true }, { class: 'test' })
+  #   UiBibz::Ui::Core::Forms::Selects::MultiSelectField.new('fruits', { option_tags: list_of_fruits, searchable: true }, { class: 'test' })
   #
-  #   UiBibz::Ui::Core::Inputs::Selects::MultiSelectField.new({ option_tags: list_of_fruits, select_all_option: true }, { class: 'test' }) do
+  #   UiBibz::Ui::Core::Forms::Selects::MultiSelectField.new({ option_tags: list_of_fruits, select_all_option: true }, { class: 'test' }) do
   #     'fruits'
   #   end
   #
@@ -41,9 +41,9 @@ module UiBibz::Ui::Core::Inputs::Selects
   #
   #   multi_select_field(content, options = {}, html_options = {})
   #
-  class MultiSelectField < UiBibz::Ui::Core::Inputs::Buttons::Button
+  class MultiSelectField < UiBibz::Ui::Core::Forms::Buttons::Button
 
-    # See UiBibz::Ui::Core::Inputs::Buttons::Button.initialize
+    # See UiBibz::Ui::Core::Forms::Buttons::Button.initialize
     def initialize content = nil, options = nil, html_options = nil, &block
       super
     end

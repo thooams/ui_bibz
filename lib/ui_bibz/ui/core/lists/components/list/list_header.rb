@@ -1,4 +1,4 @@
-module UiBibz::Ui::Core::Lists::Components::List
+module UiBibz::Ui::Core::Lists::Components
 
   # Create a listHeader
   #

@@ -1,4 +1,4 @@
-module UiBibz::Ui::Core::Inputs::Texts
+module UiBibz::Ui::Core::Forms::Texts
 
   # Create a AutocompleteField
   #
@@ -18,19 +18,19 @@ module UiBibz::Ui::Core::Inputs::Texts
   #
   # ==== Signatures
   #
-  #   UiBibz::Ui::Core::Inputs::Texts::AutocompleteField.new(content, options = {}, html_options = {}).render
+  #   UiBibz::Ui::Core::Forms::Texts::AutocompleteField.new(content, options = {}, html_options = {}).render
   #
-  #   UiBibz::Ui::Core::Inputs::Texts::AutocompleteField.new(options = {}, html_options = {}) do
+  #   UiBibz::Ui::Core::Forms::Texts::AutocompleteField.new(options = {}, html_options = {}) do
   #     content
   #   end.render
   #
   # ==== Examples
   #
   #   options = options_for_select(2.times.map{ |i| "option #{i}" })
-  #   UiBibz::Ui::Core::Inputs::Texts::AutocompleteField.new('company', { option_tags: options }, { class: 'test' })
+  #   UiBibz::Ui::Core::Forms::Texts::AutocompleteField.new('company', { option_tags: options }, { class: 'test' })
   #
   #   options = options_for_select(2.times.map{ |i| "option #{i}" })
-  #   UiBibz::Ui::Core::Inputs::Texts::AutocompleteField.new(option_tags: options) do
+  #   UiBibz::Ui::Core::Forms::Texts::AutocompleteField.new(option_tags: options) do
   #     #content
   #   end
   #

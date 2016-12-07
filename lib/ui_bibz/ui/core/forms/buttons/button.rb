@@ -1,4 +1,4 @@
-module UiBibz::Ui::Core::Inputs::Buttons
+module UiBibz::Ui::Core::Forms::Buttons
 
   # Create a button
   #
@@ -28,17 +28,17 @@ module UiBibz::Ui::Core::Inputs::Buttons
   #
   # ==== Signatures
   #
-  #   UiBibz::Ui::Core::Inputs::Buttons::Button.new(content, options = nil, html_options = nil)
+  #   UiBibz::Ui::Core::Forms::Buttons::Button.new(content, options = nil, html_options = nil)
   #
-  #   UiBibz::Ui::Core::Inputs::Buttons::Button.new(options = nil, html_options = nil) do
+  #   UiBibz::Ui::Core::Forms::Buttons::Button.new(options = nil, html_options = nil) do
   #     content
   #   end
   #
   # ==== Examples
   #
-  #   UiBibz::Ui::Core::Inputs::Buttons::Button.new('test', type: :primary, size: :xs).render
+  #   UiBibz::Ui::Core::Forms::Buttons::Button.new('test', type: :primary, size: :xs).render
   #
-  #   UiBibz::Ui::Core::Inputs::Buttons::Button.new(type: :primary) do
+  #   UiBibz::Ui::Core::Forms::Buttons::Button.new(type: :primary) do
   #     test
   #   end.render
   #

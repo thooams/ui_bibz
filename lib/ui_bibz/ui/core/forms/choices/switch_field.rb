@@ -1,4 +1,4 @@
-module UiBibz::Ui::Core::Inputs::Choices
+module UiBibz::Ui::Core::Forms::Choices
 
   # Create a SurroundField
   #
@@ -26,9 +26,9 @@ module UiBibz::Ui::Core::Inputs::Choices
   #
   # ==== Signatures
   #
-  #   UiBibz::Ui::Core::Inputs::SwitchField.new(content, options = {}, html_options = {}).render
+  #   UiBibz::Ui::Core::Forms::SwitchField.new(content, options = {}, html_options = {}).render
   #
-  #   UiBibz::Ui::Core::Inputs::SwitchField.new(options = {}, html_options = {}) do
+  #   UiBibz::Ui::Core::Forms::SwitchField.new(options = {}, html_options = {}) do
   #     content
   #   end.render
   #

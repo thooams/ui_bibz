@@ -7,7 +7,7 @@ module UiBibz::Helpers::UiCoreHelper
   # +options+ (Hash)
   # +html_options+ (Hash)
   def button content = nil, options = nil, html_options = nil, &block
-    UiBibz::Ui::Core::Inputs::Buttons::Button.new(content, options, html_options, &block).render
+    UiBibz::Ui::Core::Forms::Buttons::Button.new(content, options, html_options, &block).render
   end
 
   # Button Choice Component
@@ -15,7 +15,7 @@ module UiBibz::Helpers::UiCoreHelper
   # +options+ (Hash)
   # +html_options+ (Hash)
   def button_choice content = nil, options = nil, html_options = nil, &block
-    UiBibz::Ui::Core::Inputs::Buttons::ButtonChoice.new(content, options, html_options, &block).render
+    UiBibz::Ui::Core::Forms::Buttons::ButtonChoice.new(content, options, html_options, &block).render
   end
 
   # Button Group Component
@@ -23,7 +23,7 @@ module UiBibz::Helpers::UiCoreHelper
   # +options+ (Hash)
   # +html_options+ (Hash)
   def button_group content = nil, options = nil, html_options = nil, &block
-    UiBibz::Ui::Core::Inputs::Buttons::ButtonGroup.new(content, options, html_options, &block).render
+    UiBibz::Ui::Core::Forms::Buttons::ButtonGroup.new(content, options, html_options, &block).render
   end
 
   # Button Link Component
@@ -31,7 +31,7 @@ module UiBibz::Helpers::UiCoreHelper
   # +options+ (Hash)
   # +html_options+ (Hash)
   def button_link content = nil, options = nil, html_options = nil, &block
-    UiBibz::Ui::Core::Inputs::Buttons::ButtonLink.new(content, options, html_options, &block).render
+    UiBibz::Ui::Core::Forms::Buttons::ButtonLink.new(content, options, html_options, &block).render
   end
 
 
@@ -87,7 +87,7 @@ module UiBibz::Helpers::UiCoreHelper
   # +options+ (Hash)
   # +html_options+ (Hash)
   def date_picker_field content = nil, options = nil, html_options = nil, &block
-    UiBibz::Ui::Core::Inputs::Dates::DatePickerField.new(content, options, html_options, &block).render
+    UiBibz::Ui::Core::Forms::Dates::DatePickerField.new(content, options, html_options, &block).render
   end
 
   # Markdown Editor Field Component
@@ -95,7 +95,7 @@ module UiBibz::Helpers::UiCoreHelper
   # +options+ (Hash)
   # +html_options+ (Hash)
   def markdown_editor_field content = nil, options = nil, html_options = nil, &block
-    UiBibz::Ui::Core::Inputs::Textareas::MarkdownEditorField.new(content, options, html_options, &block).render
+    UiBibz::Ui::Core::Forms::Textareas::MarkdownEditorField.new(content, options, html_options, &block).render
   end
 
   # Multi Column Field Component
@@ -103,7 +103,7 @@ module UiBibz::Helpers::UiCoreHelper
   # +options+ (Hash)
   # +html_options+ (Hash)
   def multi_column_field content = nil, options = nil, html_options = nil, &block
-    UiBibz::Ui::Core::Inputs::Selects::MultiColumnField.new(content, options, html_options, &block).render
+    UiBibz::Ui::Core::Forms::Selects::MultiColumnField.new(content, options, html_options, &block).render
   end
 
   # Multi Select Field Component
@@ -111,7 +111,7 @@ module UiBibz::Helpers::UiCoreHelper
   # +options+ (Hash)
   # +html_options+ (Hash)
   def multi_select_field content = nil, options = nil, html_options = nil, &block
-    UiBibz::Ui::Core::Inputs::Selects::MultiSelectField.new(content, options, html_options, &block).render
+    UiBibz::Ui::Core::Forms::Selects::MultiSelectField.new(content, options, html_options, &block).render
   end
 
   # Formula Field Component
@@ -119,7 +119,7 @@ module UiBibz::Helpers::UiCoreHelper
   # +options+ (Hash)
   # +html_options+ (Hash)
   def formula_field content = nil, options = nil, html_options = nil, &block
-    UiBibz::Ui::Core::Inputs::Numbers::FormulaField.new(content, options, html_options, &block).render
+    UiBibz::Ui::Core::Forms::Numbers::FormulaField.new(content, options, html_options, &block).render
   end
 
   # Surround Field Component
@@ -127,7 +127,7 @@ module UiBibz::Helpers::UiCoreHelper
   # +options+ (Hash)
   # +html_options+ (Hash)
   def surround_field content = nil, options = nil, html_options = nil, &block
-    UiBibz::Ui::Core::Inputs::Texts::SurroundField.new(content, options, html_options, &block).render
+    UiBibz::Ui::Core::Forms::Texts::SurroundField.new(content, options, html_options, &block).render
   end
 
   # Switch Field Component
@@ -135,7 +135,7 @@ module UiBibz::Helpers::UiCoreHelper
   # +options+ (Hash)
   # +html_options+ (Hash)
   def switch_field content = nil, options = nil, html_options = nil, &block
-    UiBibz::Ui::Core::Inputs::Choices::SwitchField.new(content, options, html_options, &block).render
+    UiBibz::Ui::Core::Forms::Choices::SwitchField.new(content, options, html_options, &block).render
   end
 
   # Checkbox Field Component
@@ -143,7 +143,7 @@ module UiBibz::Helpers::UiCoreHelper
   # +options+ (Hash)
   # +html_options+ (Hash)
   def checkbox_field content = nil, options = nil, html_options = nil, &block
-    UiBibz::Ui::Core::Inputs::Choices::CheckboxField.new(content, options, html_options, &block).render
+    UiBibz::Ui::Core::Forms::Choices::CheckboxField.new(content, options, html_options, &block).render
   end
 
   # Radio Field Component
@@ -151,7 +151,7 @@ module UiBibz::Helpers::UiCoreHelper
   # +options+ (Hash)
   # +html_options+ (Hash)
   def radio_field content = nil, options = nil, html_options = nil, &block
-    UiBibz::Ui::Core::Inputs::Choices::RadioField.new(content, options, html_options, &block).render
+    UiBibz::Ui::Core::Forms::Choices::RadioField.new(content, options, html_options, &block).render
   end
 
   # Dropdown Select Field Component
@@ -159,7 +159,7 @@ module UiBibz::Helpers::UiCoreHelper
   # +options+ (Hash)
   # +html_options+ (Hash)
   def dropdown_select_field content = nil, options = nil, html_options = nil, &block
-    UiBibz::Ui::Core::Inputs::Selects::DropdownSelectField.new(content, options, html_options, &block).render
+    UiBibz::Ui::Core::Forms::Selects::DropdownSelectField.new(content, options, html_options, &block).render
   end
 
   # Autocomplete Field Component
@@ -167,7 +167,7 @@ module UiBibz::Helpers::UiCoreHelper
   # +options+ (Hash)
   # +html_options+ (Hash)
   def autocomplete_field content = nil, options = nil, html_options = nil, &block
-    UiBibz::Ui::Core::Inputs::Texts::AutocompleteField.new(content, options, html_options, &block).render
+    UiBibz::Ui::Core::Forms::Texts::AutocompleteField.new(content, options, html_options, &block).render
   end
 
   # Input section end ----------------------------------------------------

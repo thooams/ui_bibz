@@ -1,8 +1,8 @@
-module UiBibz::Ui::Core::Inputs::Buttons
+module UiBibz::Ui::Core::Forms::Buttons
 
   # Create a button choice
   #
-  # This element is an extend of UiBibz::Ui::Core::Inputs::Buttons::Button
+  # This element is an extend of UiBibz::Ui::Core::Forms::Buttons::Button
   #
   # ==== Attributes
   #
@@ -33,17 +33,17 @@ module UiBibz::Ui::Core::Inputs::Buttons
   #
   # ==== Signatures
   #
-  #   UiBibz::Ui::Core::Inputs::Buttons::ButtonChoice.new(content, options = nil, html_options = nil)
+  #   UiBibz::Ui::Core::Forms::Buttons::ButtonChoice.new(content, options = nil, html_options = nil)
   #
-  #   UiBibz::Ui::Core::Inputs::Buttons::ButtonChoice.new(options = nil, html_options = nil) do
+  #   UiBibz::Ui::Core::Forms::Buttons::ButtonChoice.new(options = nil, html_options = nil) do
   #     content
   #   end
   #
   # ==== Examples
   #
-  #   UiBibz::Ui::Core::Inputs::Buttons::ButtonChoice.new('test', state: :active)
+  #   UiBibz::Ui::Core::Forms::Buttons::ButtonChoice.new('test', state: :active)
   #
-  #   UiBibz::Ui::Core::Inputs::Buttons::ButtonChoice.new({id: 'state', input_html_options: { class: 'state'}}, { class: 'lable-class'}) do
+  #   UiBibz::Ui::Core::Forms::Buttons::ButtonChoice.new({id: 'state', input_html_options: { class: 'state'}}, { class: 'lable-class'}) do
   #     test
   #   end.render
   #
@@ -55,9 +55,9 @@ module UiBibz::Ui::Core::Inputs::Buttons
   #     content
   #   end
   #
-  class ButtonChoice < UiBibz::Ui::Core::Inputs::Buttons::Button
+  class ButtonChoice < UiBibz::Ui::Core::Forms::Buttons::Button
 
-    # See UiBibz::Ui::Core::Inputs::Buttons::Button.initialize
+    # See UiBibz::Ui::Core::Forms::Buttons::Button.initialize
     def initialize content = nil, options = nil, html_options = nil, &block
       super
     end

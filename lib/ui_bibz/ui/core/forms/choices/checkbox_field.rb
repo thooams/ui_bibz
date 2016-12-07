@@ -1,6 +1,6 @@
-module UiBibz::Ui::Core::Inputs::Choices
+module UiBibz::Ui::Core::Forms::Choices
 
-  # Create a radio
+  # Create a checkbox
   #
   # This element is an extend of UiBibz::Ui::Core::Component.
   #
@@ -17,33 +17,33 @@ module UiBibz::Ui::Core::Inputs::Choices
   # * +value+ - String, Integer, Boolean [required]
   # * +status+ - status of élement with symbol value:
   #   (+:default+, +:primary+, +:success+, +:info+, +:warning+, +:danger+)
-  # * +type+ - Symbol (:radio, :checkbox)
+  # * +type+ - Symbol (:circle)
   #
   # ==== Signatures
   #
-  #   UiBibz::Ui::Core::Inputs::RadioField.new(content, options = nil, html_options = nil)
+  #   UiBibz::Ui::Core::Forms::CheckboxField.new(content, options = nil, html_options = nil)
   #
-  #   UiBibz::Ui::Core::Inputs::RadioField.new(options = nil, html_options = nil) do
+  #   UiBibz::Ui::Core::Forms::CheckboxField.new(options = nil, html_options = nil) do
   #     content
   #   end
   #
   # ==== Examples
   #
-  #   UiBibz::Ui::Core::Inputs::RadioField.new(content, { status: :success, type: :circle },{ class: 'test' }).render
+  #   UiBibz::Ui::Core::Forms::CheckboxField.new(content, { status: :success, type: :circle },{ class: 'test' }).render
   #
-  #   UiBibz::Ui::Core::Inputs::RadioField.new({ status: :primary }, { class: 'test' }) do
+  #   UiBibz::Ui::Core::Forms::CheckboxField.new({ status: :primary }, { class: 'test' }) do
   #     content
   #   end.render
   #
   # ==== Helper
   #
-  #   radio(content, options = {}, html_options = {})
+  #   checkbox(content, options = {}, html_options = {})
   #
-  #   radio(options = {}, html_options = {}) do
+  #   checkbox(options = {}, html_options = {}) do
   #     content
   #   end
   #
-  class RadioField < UiBibz::Ui::Core::Component
+  class CheckboxField < UiBibz::Ui::Core::Component
 
     # See UiBibz::Ui::Core::Component.initialize
     def initialize content = nil, options = nil, html_options = nil, &block
@@ -53,7 +53,7 @@ module UiBibz::Ui::Core::Inputs::Choices
     # Render html tag
     def render
       content_tag :div, html_options.except(:id) do
-        concat radio_button_tag content, options[:value], options[:checked] || false, checkbox_html_options
+        concat check_box_tag content, options[:value], options[:checked] || false, checkbox_html_options
         concat label_tag label_name, label_content
       end
     end
@@ -61,13 +61,13 @@ module UiBibz::Ui::Core::Inputs::Choices
   private
 
     def checkbox_html_options
-      opts = {}
+      opts = { class: 'styled' }
       opts = opts.merge({ disabled: true}) if options[:state] == :disabled
       opts
     end
 
     def label_name
-      "#{ content }_#{ options[:value] }"
+      html_options[:id] || content
     end
 
     def label_content
@@ -75,23 +75,23 @@ module UiBibz::Ui::Core::Inputs::Choices
     end
 
     def status
-      "abc-#{ type }-#{ options[:status] || :default  }"
+      "abc-checkbox-#{ options[:status] || :default  }"
     end
 
     def type
-      if !options[:type].nil? && options[:type] == :square
-        :checkbox
-      else
-        :radio
-      end
+      "abc-checkbox-circle" unless options[:type].nil?
+    end
+
+    def indeterminate
+      "indeterminate" unless options[:indeterminate].nil?
     end
 
     def inline
-      "#{ type }-inline" unless options[:inline].nil?
+      "checkbox-inline" unless options[:inline].nil?
     end
 
     def component_html_classes
-      [type, "abc-#{ type }", inline]
+      ["checkbox", "abc-checkbox", type, indeterminate, inline]
     end
 
   end

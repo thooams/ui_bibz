@@ -1,4 +1,4 @@
-module UiBibz::Ui::Core::Inputs::Textareas
+module UiBibz::Ui::Core::Forms::Textareas
 
   # Create a MarkdownEditorField
   #
@@ -24,17 +24,17 @@ module UiBibz::Ui::Core::Inputs::Textareas
   #
   # ==== Signatures
   #
-  #   UiBibz::Ui::Core::Inputs::Textareas::MarkdownEditorField.new(content, options = {}, html_options = {}).render
+  #   UiBibz::Ui::Core::Forms::Textareas::MarkdownEditorField.new(content, options = {}, html_options = {}).render
   #
-  #   UiBibz::Ui::Core::Inputs::Textareas::MarkdownEditorField.new(options = {}, html_options = {}) do
+  #   UiBibz::Ui::Core::Forms::Textareas::MarkdownEditorField.new(options = {}, html_options = {}) do
   #     content
   #   end.render
   #
   # ==== Examples
   #
-  #   UiBibz::Ui::Core::Inputs::Textareas::MarkdownEditorField.new('search', prepend: 'Prepend content', append: 'Append content', class: 'test')
+  #   UiBibz::Ui::Core::Forms::Textareas::MarkdownEditorField.new('search', prepend: 'Prepend content', append: 'Append content', class: 'test')
   #
-  #   UiBibz::Ui::Core::Inputs::Textareas::MarkdownEditorField.new(prepend: glyph('pencil'), append: glyph('camera-retro')) do
+  #   UiBibz::Ui::Core::Forms::Textareas::MarkdownEditorField.new(prepend: glyph('pencil'), append: glyph('camera-retro')) do
   #     #content
   #   end
   #

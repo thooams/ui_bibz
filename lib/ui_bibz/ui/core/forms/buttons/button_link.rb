@@ -1,8 +1,8 @@
-module UiBibz::Ui::Core::Inputs::Buttons
+module UiBibz::Ui::Core::Forms::Buttons
 
   # Create a button link
   #
-  # This element is an extend of UiBibz::Ui::Core::Inputs::Buttons::Button.
+  # This element is an extend of UiBibz::Ui::Core::Forms::Buttons::Button.
   #
   # ==== Attributes
   #
@@ -29,17 +29,17 @@ module UiBibz::Ui::Core::Inputs::Buttons
   #
   # ==== Signatures
   #
-  #   UiBibz::Ui::Core::Inputs::Buttons::ButtonLink.new(content, options = nil, html_options = nil)
+  #   UiBibz::Ui::Core::Forms::Buttons::ButtonLink.new(content, options = nil, html_options = nil)
   #
-  #   UiBibz::Ui::Core::Inputs::Buttons::ButtonLink.new(options = nil, html_options = nil) do
+  #   UiBibz::Ui::Core::Forms::Buttons::ButtonLink.new(options = nil, html_options = nil) do
   #     content
   #   end
   #
   # ==== Examples
   #
-  #   UiBibz::Ui::Core::Inputs::Buttons::ButtonLink.new('test', type: :primary, url: '#')
+  #   UiBibz::Ui::Core::Forms::Buttons::ButtonLink.new('test', type: :primary, url: '#')
   #
-  #   UiBibz::Ui::Core::Inputs::Buttons::ButtonLink.new(type: :primary, url: '#') do
+  #   UiBibz::Ui::Core::Forms::Buttons::ButtonLink.new(type: :primary, url: '#') do
   #     test
   #   end.render
   #
@@ -51,9 +51,9 @@ module UiBibz::Ui::Core::Inputs::Buttons
   #     content
   #   end
   #
-  class ButtonLink < UiBibz::Ui::Core::Inputs::Buttons::Button
+  class ButtonLink < UiBibz::Ui::Core::Forms::Buttons::Button
 
-    # See UiBibz::Ui::Core::Inputs::Buttons::Button
+    # See UiBibz::Ui::Core::Forms::Buttons::Button
     def initialize content = nil, options = nil, html_options = nil, &block
       super
     end

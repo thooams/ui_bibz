@@ -75,12 +75,12 @@ module UiBibz::Ui::Core::Lists::Components
 
     # Add header which is a component
     def header content = nil, options = nil, html_options = nil, &block
-      @header = UiBibz::Ui::Core::Lists::Components::List::ListHeader.new content, options, html_options, &block
+      @header = UiBibz::Ui::Core::Lists::Components::ListHeader.new content, options, html_options, &block
     end
 
     # Add body which is a component
     def body content = nil, options = nil, html_options = nil, &block
-      @body = UiBibz::Ui::Core::Lists::Components::List::ListBody.new content, options, html_options, &block
+      @body = UiBibz::Ui::Core::Lists::Components::ListBody.new content, options, html_options, &block
     end
 
   private
