@@ -1,7 +1,6 @@
-require 'will_paginate'
-require "will_paginate-bootstrap"
+#require 'will_paginate'
+require "will_paginate-bootstrap4"
 require "ui_bibz/ui/ux/tables/components/store"
-require 'ui_bibz/helpers/pagination_helper'
 module UiBibz::Ui::Ux::Tables
 
   # Create a pagination for table
@@ -27,6 +26,8 @@ module UiBibz::Ui::Ux::Tables
   #
   class TablePagination < UiBibz::Ui::Base
     include WillPaginate::ActionView
+    include ActionView
+    #include WillPaginate::ActionView::BootstrapLinkRenderer
 
     # Initialize pagination with component item
     # pagination require WillPaginate gem
@@ -39,7 +40,7 @@ module UiBibz::Ui::Ux::Tables
       paginate_parameters = { controller: store.controller }
       paginate_parameters = paginate_parameters.merge({ store_id: store.id }) unless store.id.nil?
       paginate_parameters = paginate_parameters.merge(store.parameters)
-      will_paginate(store.records, params: paginate_parameters,  renderer: BootstrapPagination::Rails)
+      will_paginate(store.records, params: paginate_parameters, renderer: WillPaginate::ActionView::BootstrapLinkRenderer)
     end
 
   private

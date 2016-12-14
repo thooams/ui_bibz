@@ -20,3 +20,4 @@ gemspec
 # To use a debugger
 #gem 'byebug',        group: [:development, :test]
 gem 'awesome_print', group: [:development, :test]
+gem 'simple_form',   group: :test

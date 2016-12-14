@@ -29,8 +29,8 @@ Gem::Specification.new do |s|
   #s.add_dependency 'bundler', '>= 1.8.4'
   s.add_dependency 'rails', '>= 4.2.0'
   s.add_dependency 'will_paginate', '~> 3.1.0'
-  s.add_dependency 'will_paginate-bootstrap'
   s.add_dependency 'will-paginate-i18n'
+  s.add_dependency 'will_paginate-bootstrap4'
   s.add_dependency 'haml'
   s.add_dependency 'haml-rails'
   s.add_dependency 'sass-rails', '>= 5.0.0'
@@ -42,7 +42,7 @@ Gem::Specification.new do |s|
   #s.add_dependency 'rails-assets-bootstrap-select', '>= 1.10.0'
   #s.add_dependency 'rails-assets-bootstrap-datepicker', '>= 1.6.0'
 
-  # not compatible with boostrap 4
+  # not compatible with bootstrap 4
   #s.add_dependency 'rails-assets-bootstrap-switch', '>= 3.3.2'
   #s.add_dependency 'rails-assets-bootstrap-multiselect', '>= 0.9.13'
 
