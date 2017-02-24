@@ -69,6 +69,7 @@ module UiBibz::Ui::Core::Forms::Buttons
     end
 
     def component_html_data
+      super
       add_html_data "toggle", "buttons"
     end
 

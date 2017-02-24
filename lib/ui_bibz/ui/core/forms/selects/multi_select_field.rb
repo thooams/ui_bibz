@@ -64,6 +64,7 @@ module UiBibz::Ui::Core::Forms::Selects
     end
 
     def component_html_data
+      super
       clickable_opt_group
       collapsible_opt_group
       searchable

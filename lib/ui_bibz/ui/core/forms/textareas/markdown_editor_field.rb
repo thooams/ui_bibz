@@ -63,6 +63,7 @@ module UiBibz::Ui::Core::Forms::Textareas
     private
 
     def component_html_data
+      super
       provide
       autofocus
       savable

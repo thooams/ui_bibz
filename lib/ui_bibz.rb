@@ -43,6 +43,7 @@ module UiBibz
 
         module Selects
           autoload :DropdownSelectField,     "ui_bibz/ui/core/forms/selects/dropdown_select_field"
+          autoload :SelectField,             "ui_bibz/ui/core/forms/selects/select_field"
           autoload :MultiColumnField,        "ui_bibz/ui/core/forms/selects/multi_column_field"
           autoload :MultiSelectField,        "ui_bibz/ui/core/forms/selects/multi_select_field"
         end

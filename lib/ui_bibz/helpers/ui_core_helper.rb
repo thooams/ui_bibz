@@ -154,6 +154,14 @@ module UiBibz::Helpers::UiCoreHelper
     UiBibz::Ui::Core::Forms::Choices::RadioField.new(content, options, html_options, &block).render
   end
 
+  # Select Field Component
+  #
+  # +options+ (Hash)
+  # +html_options+ (Hash)
+  def select_field content = nil, options = nil, html_options = nil, &block
+    UiBibz::Ui::Core::Forms::Selects::SelectField.new(content, options, html_options, &block).render
+  end
+
   # Dropdown Select Field Component
   #
   # +options+ (Hash)

@@ -75,6 +75,7 @@ module UiBibz::Ui::Core::Forms::Dates
     end
 
     def component_html_data
+      super
       date_locale
       provide
       format

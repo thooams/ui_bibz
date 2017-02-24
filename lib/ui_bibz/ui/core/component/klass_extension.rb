@@ -18,6 +18,7 @@ module KlassExtension
       status,
       effect,
       options_classes,
+      connect,
       component_html_classes
     ]
     html_options[:class] = join_classes(cls)
@@ -33,6 +34,10 @@ module KlassExtension
 
   def state
     options[:state] unless options[:state].nil?
+  end
+
+  def connect
+    "ui-bibz-connect" unless options[:connect].nil?
   end
 
 end

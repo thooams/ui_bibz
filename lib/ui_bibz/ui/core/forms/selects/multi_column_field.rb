@@ -53,6 +53,7 @@ module UiBibz::Ui::Core::Forms::Selects
     private
 
     def component_html_data
+      super
       searchable
       selectable_opt_group
     end

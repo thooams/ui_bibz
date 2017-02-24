@@ -21,6 +21,9 @@
 # multi_select_field component
 #= require bootstrap-multiselect.min
 
+# input_connected
+#= require input-connected
+
 # mardown-editor
 #= require marked
 #= require bootstrap-markdown

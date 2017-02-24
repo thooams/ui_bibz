@@ -2,10 +2,14 @@
 
   constructor: ->
     @switch()       if $('input.switch').length > 0
+    @inputConnected()
     @selectPicker() if $('select.selectpicker').length > 0
     @multiSelect()  if $('.multi-select').length > 0
     @multiColumn()  if $('.multi-column').length > 0
     @formula()      if $('.formula_field_input').length > 0
+
+  inputConnected: ->
+    $('.ui-bibz-connect').inputConnected()
 
   selectPicker: ->
     $('select.selectpicker').selectpicker
