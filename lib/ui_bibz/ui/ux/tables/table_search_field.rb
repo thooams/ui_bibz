@@ -44,7 +44,7 @@ module UiBibz::Ui::Ux::Tables
       # add surround_field maybe ?
       content_tag :div, html_options do
         concat content_tag(:span, UiBibz::Ui::Core::Glyph.new('search').render, class: 'input-group-addon')
-        concat tag(:input, type: 'search', value: store.search, name: 'search', class: 'form-control', placeholder: search_placeholder_field)
+        concat tag(:input, type: 'search', value: search_content, name: 'search', class: 'form-control', placeholder: search_placeholder_field)
         concat content_tag(:span, UiBibz::Ui::Core::Glyph.new('times-circle').render, class: 'clear-search-btn input-group-addon')
       end
     end
@@ -56,8 +56,16 @@ module UiBibz::Ui::Ux::Tables
           concat tag(:input, type: 'hidden', name: k, value: v) unless default_parameters?(k)
         end
         concat tag(:input, type: 'hidden', name: 'store_id', value: store.id) unless store.id.nil? # if there is more one table in html page
-        concat tag(:input, type: 'search', value: store.search, name: 'search', class: 'form-control', placeholder: search_placeholder_field)
+        concat tag(:input, type: 'search', value: search_content, name: 'search', class: 'form-control', placeholder: search_placeholder_field)
         concat content_tag(:span, clear_button, class: 'input-group-btn')
+      end
+    end
+
+    def search_content
+      if store.id.nil?
+        store.search
+      else
+        store.id == store.params[:store_id] ? store.search : ''
       end
     end
 

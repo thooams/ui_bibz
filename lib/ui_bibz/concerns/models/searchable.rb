@@ -8,7 +8,7 @@ module UiBibz::Concerns::Models::Searchable
       @session          = session
       @arguments        = args
 
-      initialize_params unless @arguments[:store_id].nil?
+      initialize_params
       OpenStruct.new(generate_parameters)
     end
 
@@ -37,12 +37,15 @@ module UiBibz::Concerns::Models::Searchable
 
     # If there is more one table in html page
     def self.initialize_params
-      unless self.is_good_store_id?
-        @params[:search]    = nil
-        @params[:per_page]  = nil
-        @params[:page]      = nil
-        @params[:sort]      = nil
-        @params[:direction] = nil
+      @tmp_params = {}
+      if self.is_good_store_id?
+        @tmp_params = {
+          search:    @params[:search],
+          per_page:  @params[:per_page],
+          page:      @params[:page],
+          sort:      @params[:sort],
+          direction: @params[:direction]
+        }
       end
     end
 
@@ -60,7 +63,7 @@ module UiBibz::Concerns::Models::Searchable
       sql = generate_parent_sort_query sql if @params[:parent]
 
       # Main query with argument or not
-      sql = search_by_query sql unless @params[:search].blank?
+      sql = search_by_query sql unless @tmp_params[:search].blank?
 
       generate_sql sql, column_args
     end
@@ -71,15 +74,15 @@ module UiBibz::Concerns::Models::Searchable
 
     def self.generate_default_sql sql
       if is_sorting?
-        sql.paginate(:page => @params[:page], per_page: @session[:per_page])
+        sql.paginate(:page => @tmp_params[:page], per_page: @session[:per_page])
       else
-        sql.reorder(order_sql).paginate(:page => @params[:page], per_page: @session[:per_page])
+        sql.reorder(order_sql).paginate(:page => @tmp_params[:page], per_page: @session[:per_page])
       end
     end
 
     def self.generate_count_sql sql
-      sq = "SELECT * FROM (#{ sql.group(table_name + '.id').to_sql }) countable ORDER BY countable.count #{ @params[:direction] || asc }"
-      self.paginate_by_sql(sq, :page => @params[:page], per_page: @session[:per_page])
+      sq = "SELECT * FROM (#{ sql.group(table_name + '.id').to_sql }) countable ORDER BY countable.count #{ @tmp_params[:direction] || asc }"
+      self.paginate_by_sql(sq, :page => @tmp_params[:page], per_page: @session[:per_page])
     end
 
     def self.generate_select_count_sort_query sql, column_args
@@ -87,7 +90,7 @@ module UiBibz::Concerns::Models::Searchable
     end
 
     def self.generate_parent_sort_query sql
-      sql.select("#{ table_name }2.*, #{ @params[:sort] } AS parent_name").from("#{ table_name } #{ table_name }2").joins("LEFT OUTER JOIN #{ table_name } ON #{ table_name }2.parent_id = #{ table_name }.id")
+      sql.select("#{ table_name }2.*, #{ @tmp_params[:sort] } AS parent_name").from("#{ table_name } #{ table_name }2").joins("LEFT OUTER JOIN #{ table_name } ON #{ table_name }2.parent_id = #{ table_name }.id")
     end
 
     def self.get_column_args
@@ -99,14 +102,14 @@ module UiBibz::Concerns::Models::Searchable
     end
 
     def self.is_sorting?
-      @params[:sort].nil? || @params[:direction].nil?
+      @tmp_params[:sort].nil? || @tmp_params[:direction].nil?
     end
 
     def self.search_by_query sql
       raise 'Add searchable_attributes method in Model' if @searchable_attributes.nil?
       sql_query       = []
       sql_attributes  = {}
-      search_patterns = @params[:search].strip.gsub(/(?<=[\\s])\\s*|^\\s+|\\s+$/, '').downcase
+      search_patterns = @tmp_params[:search].strip.gsub(/(?<=[\\s])\\s*|^\\s+|\\s+$/, '').downcase
 
       search_patterns_tmp = search_patterns.scan(/"(.*?)"/).flatten
       search_patterns     = search_patterns.gsub(/"(.*?)"/, '').split(' ')
@@ -131,11 +134,11 @@ module UiBibz::Concerns::Models::Searchable
     end
 
     def self.order_sql
-      self.is_sorting? ? "#{ self.table_name }.id asc" : "#{ @params[:sort]} #{ @params[:direction] }"
+      self.is_sorting? ? "#{ self.table_name }.id asc" : "#{ @tmp_params[:sort]} #{ @tmp_params[:direction] }"
     end
 
     def self.search_sort_paginate
-      @session[:per_page] = @params[:per_page] unless @params[:per_page].nil?
+      @session[:per_page] = @tmp_params[:per_page] unless @tmp_params[:per_page].nil?
       self.search
     end
 
