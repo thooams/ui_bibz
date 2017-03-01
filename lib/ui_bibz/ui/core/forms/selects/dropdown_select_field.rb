@@ -74,6 +74,7 @@ module UiBibz::Ui::Core::Forms::Selects
       style
       header
       actions_box
+      connect_options
     end
 
     def component_html_options
@@ -81,6 +82,10 @@ module UiBibz::Ui::Core::Forms::Selects
     end
 
     ############################ Data html options
+
+    def connect_options
+      add_html_data('connect', options[:connect]) if options[:connect]
+    end
 
     def max_options
       add_html_data('max_options', options[:max_options]) if options[:max_options]

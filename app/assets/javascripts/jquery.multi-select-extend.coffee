@@ -26,7 +26,8 @@ $.fn.multiSelect.defaults =
           false
       )
     else
-      that.removeHeaders()
+      that.$selectableContainer.children('.search-input').remove()
+      that.$selectionContainer.children('.search-input').remove()
 
   afterSelect: ->
     @qs1.cache() if @qs1?

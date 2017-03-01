@@ -1,19 +1,24 @@
 (($) ->
 
   updateOptionsHtml = (data, componentTarget) ->
+    componentTarget.children('option').remove()
     data.forEach (opt) ->
-      console.log opt
       componentTarget.append($("<option></option>").attr("value", opt.value).text(opt.text))
 
   updateMultiColumnHtml = (data, componentTarget) ->
-    componentTarget.multiSelect('removeAllOptions')
     updateOptionsHtml(data, componentTarget)
     componentTarget.multiSelect('refresh')
 
+  updateDropdownHtml = (data, componentTarget) ->
+    updateOptionsHtml(data, componentTarget)
+    console.log componentTarget
+    componentTarget.selectpicker('render')
+
   updateTargetComponent = (target, data, componentTarget) ->
     switch target.component
-      when "select"             then updateOptionsHtml(data, componentTarget)
-      when "multi_column_field" then updateMultiColumnHtml(data, componentTarget)
+      when "select"                then updateOptionsHtml(data, componentTarget)
+      when "multi_column_field"    then updateMultiColumnHtml(data, componentTarget)
+      when "dropdown_select_field" then updateDropdownHtml(data, componentTarget)
 
   afterActionMultiColumn = (that, mode, target, componentTarget)->
     me = that
@@ -51,7 +56,8 @@
 
     self = this
     return this.each ->
-      connect = $(this).data().connect
+      component = $(this)
+      connect   = component.data().connect
       connect.target = connect.target || {}
       return unless connect?
 
@@ -65,11 +71,23 @@
 
       componentTarget = $("#{ target.selector }")
 
+      if component.hasClass("selectpicker")
+        component.on 'changed.bs.select', () ->
 
-      console.log mode
+          if mode == "remote"
+            $.ajax({ url: target.url, data: { id: component.val() }  }).done (data) ->
+              updateTargetComponent(target, data, componentTarget)
 
-      if target.component == "multi_column_field"
-        $(this).multiSelect
+          if mode == "local"
+            data               = target.data || settings.target.data
+            connect_option_id  = component.children("option:selected").val()
+            data               = data.filter (value) ->
+              return Number(value.connect_option_id) == Number(connect_option_id)
+
+            updateTargetComponent(target, data, componentTarget)
+
+      if component.hasClass("multi-column")
+        component.multiSelect
           values: []
           afterSelect: (values) ->
             @options.values.push values[0]
@@ -79,18 +97,18 @@
             @options.values.splice($.inArray(values[0], @options.values), 1)
             afterActionMultiColumn(this, mode, target, componentTarget)
 
-      if $(this).hasClass("select-field")
-        $(this).on events, (e) ->
+      if component.hasClass("select-field") or component.hasClass("input-refresh-button")
+        component.on events, (e) ->
           e.preventDefault()
           componentTarget.empty()
 
           if mode == "remote"
-            $.ajax({ url: target.url }).done (data) ->
+            $.ajax({ url: target.url, data: { id: component.val() } }).done (data) ->
               updateTargetComponent(target, data, componentTarget)
 
           if mode == "local"
             data               = target.data || settings.target.data
-            connect_option_id  = $(this).children("option:selected").val()
+            connect_option_id  = component.children("option:selected").val()
             data               = data.filter (value) ->
               return Number(value.connect_option_id) == Number(connect_option_id)
 

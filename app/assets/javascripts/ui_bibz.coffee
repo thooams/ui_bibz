@@ -3,7 +3,7 @@
 
 # multi_column_field component
 #= require jquery.quicksearch.min
-#= require jquery.multi-select
+#= require jquery.multi-select.min
 #= require jquery.multi-select-extend
 
 # Bootstrap

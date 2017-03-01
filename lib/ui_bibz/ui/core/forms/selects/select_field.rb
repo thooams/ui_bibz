@@ -82,7 +82,7 @@ module UiBibz::Ui::Core::Forms::Selects
       connect = options[:refresh] || {}
       {
         events: connect.try(:[], :events) || "click",
-        type:   connect.try(:[], :type)   || "remote",
+        mode:   connect.try(:[], :type)   || "remote",
         target: {
           selector: connect.try(:[], :target).try(:[], :selector) || "##{ content.parameterize.underscore }",
           url:      connect.try(:[], :target).try(:[], :url)      || "",
