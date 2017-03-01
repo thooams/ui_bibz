@@ -1,8 +1,8 @@
 PATH
   remote: .
   specs:
-    ui_bibz (2.0.0.alpha25)
-      bootstrap (= 4.0.0.alpha6)
+    ui_bibz (2.0.0.alpha26)
+      bootstrap (= 4.0.0.alpha5)
       font-awesome-sass
       haml
       haml-rails
@@ -56,7 +56,7 @@ GEM
     autoprefixer-rails (6.7.5)
       execjs
     awesome_print (1.7.0)
-    bootstrap (4.0.0.alpha6)
+    bootstrap (4.0.0.alpha5)
       autoprefixer-rails (>= 6.0.3)
       sass (>= 3.4.19)
     builder (3.2.3)
