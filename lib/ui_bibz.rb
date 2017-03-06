@@ -53,6 +53,7 @@ module UiBibz
           autoload :ButtonChoice,            "ui_bibz/ui/core/forms/buttons/button_choice"
           autoload :ButtonGroup,             "ui_bibz/ui/core/forms/buttons/button_group"
           autoload :ButtonLink,              "ui_bibz/ui/core/forms/buttons/button_link"
+          autoload :ButtonRefresh,           "ui_bibz/ui/core/forms/buttons/button_refresh"
         end
 
         module Texts

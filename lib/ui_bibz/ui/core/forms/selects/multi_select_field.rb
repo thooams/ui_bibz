@@ -15,11 +15,18 @@ module UiBibz::Ui::Core::Forms::Selects
   #
   # You can add HTML attributes using the +html_options+.
   # You can pass arguments in options attribute:
-  # * option_tags - Array, Object [required]
-  # * clickable_opt_group - Boolean
-  # * collapsible_opt_group - Boolean
-  # * searchable - Boolean
-  # * select_all_option - Boolean
+  # * +option_tags+ - Array, Object [required]
+  # * +clickable_opt_group+ - Boolean
+  # * +collapsible_opt_group+ - Boolean
+  # * +searchable+ - Boolean
+  # * +select_all_option+ - Boolean
+  # * +connect+ - Hash
+  #   * +event+ - String
+  #   * +mode+ - String
+  #   * +target+ - Hash
+  #     * +selector+ - String
+  #     * +data+ - Array
+  #     * +url+ - String
   #
   # ==== Signatures
   #
@@ -50,7 +57,14 @@ module UiBibz::Ui::Core::Forms::Selects
 
     # Render html tag
     def render
-      select_tag content, options[:option_tags], html_options
+      if options[:refresh]
+        content_tag :div, class: 'input-group select-field-refresh' do
+          concat select_tag content, options[:option_tags], html_options
+          concat content_tag(:span, UiBibz::Ui::Core::Forms::Buttons::ButtonRefresh.new('', connect: connect_opts).render, class: 'input-group-btn')
+        end
+      else
+        select_tag content, options[:option_tags], html_options
+      end
     end
 
     private
@@ -69,6 +83,7 @@ module UiBibz::Ui::Core::Forms::Selects
       collapsible_opt_group
       searchable
       select_all_option
+      connect_options
     end
 
     def clickable_opt_group
@@ -89,6 +104,15 @@ module UiBibz::Ui::Core::Forms::Selects
 
     def status
       options[:status].nil? ? 'btn-secondary' : "btn-#{ options[:status] }"
+    end
+
+    def connect_opts
+      options[:refresh][:target].merge!({ selector: "##{ content.parameterize.underscore }" })
+      options[:refresh]
+    end
+
+    def connect_options
+      add_html_data('connect', options[:connect]) if options[:connect]
     end
 
   end

@@ -14,9 +14,16 @@ module UiBibz::Ui::Core::Forms::Selects
   #
   # You can add HTML attributes using the +html_options+.
   # You can pass arguments in options attribute:
-  # * option_tags - Array, Object [required]
-  # * selectable_opt_group - Boolean
-  # * searchable - Boolean
+  # * +option_tags+ - Array, Object [required]
+  # * +selectable_opt_group+ - Boolean
+  # * +searchable+ - Boolean
+  # * +connect+ - Hash
+  #   * +event+ - String
+  #   * +mode+ - String
+  #   * +target+ - Hash
+  #     * +selector+ - String
+  #     * +data+ - Array
+  #     * +url+ - String
   #
   # ==== Signatures
   #

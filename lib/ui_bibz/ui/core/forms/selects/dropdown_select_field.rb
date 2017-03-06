@@ -17,16 +17,30 @@ module UiBibz::Ui::Core::Forms::Selects
   # You can pass arguments in options attribute:
   # * +status+ - status of élement with symbol value:
   #   (+:primary+, +:secondary+, +:info+, +:warning+, +:danger+, +:link+)
-  # * option_tags - Array, Object [required]
-  # * searchable - Boolean
-  # * max_options - Integer
-  # * selected_text_format - String
-  # * menu_size - Integer
-  # * header - String
-  # * actions_box - Boolean
-  # * show_tick - Boolean
-  # * show_menu_arrow - Boolean
-  # * dropup - Boolean
+  # * +option_tags+ - Array, Object [required]
+  # * +searchable+ - Boolean
+  # * +max_options+ - Integer
+  # * +selected_text_format+ - String
+  # * +menu_size+ - Integer
+  # * +header+ - String
+  # * +actions_box+ - Boolean
+  # * +show_tick+ - Boolean
+  # * +show_menu_arrow+ - Boolean
+  # * +dropup+ - Boolean
+  # * +connect+ - Hash
+  #   * +event+ - String
+  #   * +mode+ - String
+  #   * +target+ - Hash
+  #     * +selector+ - String
+  #     * +data+ - Array
+  #     * +url+ - String
+  # * +refresh+ - Hash
+  #   * +event+ - String
+  #   * +mode+ - String
+  #   * +target+ - Hash
+  #     * +selector+ - String
+  #     * +data+ - Array
+  #     * +url+ - String
   #
   # ==== Signatures
   #
@@ -57,7 +71,14 @@ module UiBibz::Ui::Core::Forms::Selects
 
     # Render html tag
     def render
-      select_tag content, options[:option_tags], html_options
+      if options[:refresh]
+        content_tag :div, class: 'input-group select-field-refresh' do
+          concat select_tag content, options[:option_tags], html_options
+          concat content_tag(:span, UiBibz::Ui::Core::Forms::Buttons::ButtonRefresh.new('', connect: connect_opts).render, class: 'input-group-btn')
+        end
+      else
+        select_tag content, options[:option_tags], html_options
+      end
     end
 
     private
@@ -81,11 +102,12 @@ module UiBibz::Ui::Core::Forms::Selects
       options[:state] == :disabled ? { disabled: 'disabled' } : {}
     end
 
-    ############################ Data html options
-
-    def connect_options
-      add_html_data('connect', options[:connect]) if options[:connect]
+    def connect_opts
+      options[:refresh][:target].merge!({ selector: "##{ content.parameterize.underscore }" })
+      options[:refresh]
     end
+
+    ############################ Data html options
 
     def max_options
       add_html_data('max_options', options[:max_options]) if options[:max_options]
@@ -113,6 +135,10 @@ module UiBibz::Ui::Core::Forms::Selects
 
     def header
       add_html_data('header', options[:header]) if options[:header]
+    end
+
+    def connect_options
+      add_html_data('connect', options[:connect]) if options[:connect]
     end
 
 
