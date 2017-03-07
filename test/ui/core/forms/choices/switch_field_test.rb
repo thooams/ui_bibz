@@ -1,7 +1,7 @@
 require 'test_helper'
-
 include UiBibz::Helpers
-class ChoicesSwitchFieldTest < ActionView::TestCase
+
+class SwitchFieldTest < ActionView::TestCase
 
     # OK
     test 'switch_field size' do

@@ -1,6 +1,7 @@
 require 'test_helper'
 include UiBibz::Helpers
-class NavTest < ActionView::TestCase
+
+class BreadcrumbTest < ActionView::TestCase
 
   test 'breadcrumb' do
     actual = UiBibz::Ui::Core::Paths::Breadcrumb.new.tap do |b|

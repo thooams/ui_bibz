@@ -1,48 +1,13 @@
 require 'test_helper'
-
 include UiBibz::Helpers
-class ButtonTest < ActionView::TestCase
 
-  test "button" do
-    actual   = UiBibz::Ui::Core::Forms::Buttons::Button.new('state', status: :success).render
-    expected = "<button class=\"btn-success btn\">state</button>"
-
-    assert_equal expected, actual
-  end
+class ButtonGroupTest < ActionView::TestCase
 
   test 'button group' do
     actual = UiBibz::Ui::Core::Forms::Buttons::ButtonGroup.new position: :vertical do
       UiBibz::Ui::Core::Forms::Buttons::Button.new('state').render
     end.render
     expected = "<div data-toggle=\"buttons\" class=\"btn-group btn-group-vertical\" role=\"group\"><button class=\"btn-primary btn\">state</button></div>"
-
-    assert_equal expected, actual
-  end
-
-  test 'link button' do
-    actual   = UiBibz::Ui::Core::Forms::Buttons::ButtonLink.new('state', { url: users_path, status: :danger, glyph: 'add'}).render
-    expected = "<a class=\"btn-danger btn\" href=\"/users\"><i class=\"glyph fa fa-add\"></i> state</a>"
-
-    assert_equal expected, actual
-  end
-
-  test 'button outline' do
-    actual   = UiBibz::Ui::Core::Forms::Buttons::Button.new('state', status: :success, outline: true).render
-    expected = "<button class=\"btn-outline-success btn\">state</button>"
-
-    assert_equal expected, actual
-  end
-
-  test 'checkbox button checked' do
-    actual   = UiBibz::Ui::Core::Forms::Buttons::ButtonChoice.new('state', { state: :active }).render
-    expected = "<label class=\"active btn-primary btn\"><input type=\"checkbox\" autocomplete=\"off\" checked=\"checked\" />state</label>"
-
-    assert_equal expected, actual
-  end
-
-  test 'checkbox button non checked' do
-    actual   = UiBibz::Ui::Core::Forms::Buttons::ButtonChoice.new('state', { name: 'state', id: 'state', input_html_options: { class: 'state'}}).render
-    expected = "<label class=\"btn-primary btn\"><input type=\"checkbox\" autocomplete=\"off\" name=\"state\" id=\"state\" class=\"state\" />state</label>"
 
     assert_equal expected, actual
   end
