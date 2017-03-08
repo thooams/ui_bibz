@@ -1,12 +1,12 @@
 @UiBibzForm = class Form
 
   constructor: ->
-    @switch()       if $('input.switch').length > 0
-    @inputConnected()
-    @selectPicker() if $('select.selectpicker').length > 0
-    @multiSelect()  if $('.multi-select').length > 0
-    @multiColumn()  if $('.multi-column').length > 0
-    @formula()      if $('.formula_field_input').length > 0
+    @switch()         if $('input.switch').length > 0
+    @inputConnected() if $('.ui-bibz-connect').length > 0
+    @selectPicker()   if $('select.selectpicker').length > 0
+    @multiSelect()    if $('.multi-select').length > 0
+    @multiColumn()    if $('.multi-column').length > 0
+    @formula()        if $('.formula_field_input').length > 0
 
   inputConnected: ->
     $('.ui-bibz-connect').inputConnected()
@@ -67,42 +67,3 @@
 
   multiColumn: ->
     $(".multi-column").multiSelect()
-    # $('.multi-column').each ->
-    #   data = $(this).data()
-    #   delete data["multiselect"]
-    #   if data["searchable"]
-    #     $(this).multiSelect
-    #       selectableOptgroup: if data["selectableOptgroup"] then true else false
-    #       selectableHeader:  "<input type='text' class='search-input form-control' autocomplete='off' placeholder='Search in selectable items'><br/>"
-    #       selectionHeader:   "<input type='text' class='search-input form-control' autocomplete='off' placeholder='Search in selected items'><br/>"
-    #       afterInit: (ms) ->
-    #         that                   = this
-    #         $selectableSearch      = that.$selectableUl.siblings('input')
-    #         $selectionSearch       = that.$selectionUl.siblings('input')
-    #         $selectionSearch       = that.$selectionUl.siblings('input')
-    #         selectableSearchString = "#" + that.$container.attr("id") + " .ms-elem-selectable:not(.ms-selected)"
-    #         selectionSearchString  = "#" + that.$container.attr("id") + " .ms-elem-selection.ms-selected"
-
-    #         that.qs1 = $selectableSearch.quicksearch(selectableSearchString).on("keydown", (e) ->
-    #           if e.which is 40
-    #             that.$selectableUl.focus()
-    #             false
-    #         )
-    #         that.qs2 = $selectionSearch.quicksearch(selectionSearchString).on("keydown", (e) ->
-    #           if e.which is 40
-    #             that.$selectionUl.focus()
-    #             false
-    #         )
-    #         return
-
-    #       afterSelect: ->
-    #         @qs1.cache()
-    #         @qs2.cache()
-    #         return
-
-    #       afterDeselect: ->
-    #         @qs1.cache()
-    #         @qs2.cache()
-    #         return
-    #   else
-    #     $(this).multiSelect(data)

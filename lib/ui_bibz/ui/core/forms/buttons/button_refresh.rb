@@ -68,7 +68,7 @@ module UiBibz::Ui::Core::Forms::Buttons
     def connect_options
       {
         events: options[:connect].try(:[], :events) || "click",
-        mode:   options[:connect].try(:[], :type)   || "remote",
+        mode:   options[:connect].try(:[], :mode)   || "remote",
         target: {
           selector: options[:connect].try(:[], :target).try(:[], :selector) || "",
           url:      options[:connect].try(:[], :target).try(:[], :url)      || "",

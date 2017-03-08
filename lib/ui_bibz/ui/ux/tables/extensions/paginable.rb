@@ -11,8 +11,8 @@ module UiBibz::Ui::Ux::Tables
     # Render html tag
     def render
       content_tag :div, @html_options do
-        concat UiBibz::Ui::Ux::Tables::TablePagination.new(store: @store).render
-        concat UiBibz::Ui::Ux::Tables::TablePaginationPerPage.new(store: @store).render
+        concat UiBibz::Ui::Ux::Tables::TablePagination.new(store: @store, wrap_form: @options[:wrap_form]).render
+        concat UiBibz::Ui::Ux::Tables::TablePaginationPerPage.new(store: @store, wrap_form: @options[:wrap_form]).render
         concat tag(:br, class: 'ui-bibz-clear')
       end
     end

@@ -10,12 +10,13 @@
   # Submit form when per_page select changing
   submitPerPageSelect: ->
     $('.table-pagination-per-page select').change () ->
+      $(this).parents('form').find('input[name=link_type]').val('per_page')
       $(this).parents('form').submit()
 
   # Clear search
   clearSearch: ->
-    $('.table-search-field .clear-search-btn').click () ->
-      $(this).prev().val('')
+    $('.clear-search-btn').click () ->
+      $(this).parents('form').find('input[type=search]').val('')
       $(this).parents('form').submit()
 
   # Resize search field

@@ -120,8 +120,8 @@ module UiBibz::Ui::Ux::Tables
 
       content_tag :div, html_options do
         form_tag(url_for(url_parameters), method: :get) do
-          store.parameters.each do |k,v|
-            concat tag(:input, type: 'hidden', name: k, value: v) if !default_parameters?(k) && !v.blank?
+          store.parameters.with_indifferent_access.reject{ |k,v|  default_parameters?(k) || v.blank? }.each do |k,v|
+            concat tag(:input, type: 'hidden', name: k, value: v)
           end
           concat tag(:input, type: 'hidden', name: 'store_id', value: store.id) unless store.id.nil? # if there is more one table in html page
           concat @items.join.html_safe
@@ -167,7 +167,7 @@ module UiBibz::Ui::Ux::Tables
     end
 
     def default_parameters?(k)
-      %w(store_id per_page search utf8 search controller action utf8).include?(k)
+      %w(store_id per_page page search utf8 search controller action link_type).include?(k)
     end
 
     def url_parameters

@@ -49,7 +49,15 @@ module UiBibz::Ui::Core::Forms::Texts
 
     # Render html tag
     def render
-      text_field_input_tag  + data_list_render
+      if options[:refresh]
+        content_tag :div, class: 'input-group select-field-refresh' do
+          concat text_field_input_tag
+          concat data_list_render
+          concat content_tag(:span, UiBibz::Ui::Core::Forms::Buttons::ButtonRefresh.new('', connect: connect_opts).render, class: 'input-group-btn')
+        end
+      else
+        text_field_input_tag  + data_list_render
+      end
     end
 
     private
@@ -77,11 +85,16 @@ module UiBibz::Ui::Core::Forms::Texts
     end
 
     def data_list_name
-      @datalist ||= "#{ html_options[:id] || content }-datalist"
+      @datalist ||= "#{ html_options[:id] || content.parameterize.underscore }-datalist"
     end
 
     def status
       "form-control-#{ options[:status] }" if options[:status]
+    end
+
+    def connect_opts
+      options[:refresh][:target].merge!({ selector: "##{ data_list_name }"})
+      options[:refresh]
     end
 
   end

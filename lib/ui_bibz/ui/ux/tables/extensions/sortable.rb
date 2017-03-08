@@ -49,13 +49,15 @@ module UiBibz::Ui::Ux::Tables
         search:      @store.search,
         sort:        sort_name,
         column_id:   @column.id,
-        direction:   direction
+        direction:   direction,
+        only_path: true
       }
       args = args.merge({ custom_sort: true, column_name: @column.data_index }) if @column.custom_sort
       args = args.merge({ parent: true }) if @column.parent
       args = args.merge({ store_id: @store.id }) unless @store.id.nil?
+      args = args.merge({ link_type: 'column' })
       args = args.merge(@store.parameters.reject{ |k,v| default_parameters.include?(k.to_s) })
-      args
+      args.with_indifferent_access
     end
 
     def default_parameters

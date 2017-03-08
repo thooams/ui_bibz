@@ -42,12 +42,13 @@ module UiBibz::Concerns::Models::Searchable
         @tmp_params = {
           search:    @params[:search],
           per_page:  @params[:per_page],
-          page:      @params[:page],
+          page:      self.new_search? ? nil : @params[:page],
           sort:      @params[:sort],
           direction: @params[:direction]
         }
       end
     end
+
 
     def self.search
       sql         = all
@@ -145,6 +146,10 @@ module UiBibz::Concerns::Models::Searchable
     # If there's several table in the same page
     def self.is_good_store_id?
       @arguments[:store_id] == @params[:store_id]
+    end
+
+    def self.new_search?
+      @params[:link_type] == 'search'
     end
   end
 

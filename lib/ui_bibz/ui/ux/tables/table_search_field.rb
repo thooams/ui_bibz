@@ -45,6 +45,7 @@ module UiBibz::Ui::Ux::Tables
       content_tag :div, html_options do
         concat content_tag(:span, UiBibz::Ui::Core::Glyph.new('search').render, class: 'input-group-addon')
         concat tag(:input, type: 'search', value: search_content, name: 'search', class: 'form-control', placeholder: search_placeholder_field)
+        concat tag(:input, type: 'hidden', name: 'link_type', value: 'search')
         concat content_tag(:span, UiBibz::Ui::Core::Glyph.new('times-circle').render, class: 'clear-search-btn input-group-addon')
       end
     end
@@ -52,12 +53,13 @@ module UiBibz::Ui::Ux::Tables
     def search_field_html_in_wrap
       content_tag :div, html_options do
         concat content_tag(:span, UiBibz::Ui::Core::Glyph.new('search').render, class: 'input-group-addon')
-        store.parameters.each do |k,v|
-          concat tag(:input, type: 'hidden', name: k, value: v) unless default_parameters?(k)
+        store.parameters.with_indifferent_access.reject{ |k,_|  default_parameters?(k) }.each do |k,v|
+          concat tag(:input, type: 'hidden', name: k, value: v)
         end
         concat tag(:input, type: 'hidden', name: 'store_id', value: store.id) unless store.id.nil? # if there is more one table in html page
+        concat tag(:input, type: 'hidden', name: 'link_type', value: 'search')
         concat tag(:input, type: 'search', value: search_content, name: 'search', class: 'form-control', placeholder: search_placeholder_field)
-        concat content_tag(:span, clear_button, class: 'input-group-btn')
+        concat content_tag(:span, clear_button, class: 'input-group-btn clear-search-btn')
       end
     end
 
@@ -101,7 +103,7 @@ module UiBibz::Ui::Ux::Tables
     end
 
     def default_parameters?(k)
-      %w(store_id search controller action utf8).include?(k)
+      %w(store_id search controller action utf8 link_type).include?(k)
     end
 
   end
