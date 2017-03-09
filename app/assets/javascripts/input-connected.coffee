@@ -2,8 +2,18 @@
 
   updateOptionsHtml = (data, componentTarget) ->
     componentTarget.children('option').remove()
+
+    if Array.isArray(data)
+      appendToElement(data, componentTarget)
+    else
+      $.each data, (k,v) ->
+        optgroup = $("<optgroup></optgroup>").attr("label", k)
+        appendToElement(v, optgroup)
+        componentTarget.append(optgroup)
+
+  appendToElement = (data, element) ->
     data.forEach (opt) ->
-      componentTarget.append($("<option></option>").attr("value", opt.value).text(opt.text))
+      element.append($("<option></option>").attr("value", opt.value).text(opt.text))
 
   updateTargetComponent = (data, componentTarget) ->
     updateOptionsHtml(data, componentTarget)

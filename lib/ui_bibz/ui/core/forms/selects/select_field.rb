@@ -89,7 +89,8 @@ module UiBibz::Ui::Core::Forms::Selects
     end
 
     def connect_opts
-      options[:refresh][:target].merge!({ selector: "##{ content.parameterize.underscore }" })
+      selector = options[:refresh][:target][:selector]
+      options[:refresh][:target][:selector] = selector.blank? ? "##{ content.to_s.parameterize.underscore }" : selector
       options[:refresh]
     end
 
