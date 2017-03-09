@@ -100,9 +100,20 @@ test1</textarea></div></form>"
       f.input :name_fr, as: :multi_select_field, collection: @users, label_method: :name_fr
     end
 
-    expected = "<form class=\"simple_form edit_user\" id=\"edit_user_1\" action=\"/users/1\" accept-charset=\"UTF-8\" method=\"post\"><input name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" /><input type=\"hidden\" name=\"_method\" value=\"patch\" /><div class=\"form-group multi_select_field optional user_name_fr\"><label class=\"control-label multi_select_field optional\" for=\"user_name_fr\">Name fr</label><input name=\"user[name_fr][]\" type=\"hidden\" value=\"\" /><select class=\"multi_select_field optional btn-secondary btn multi-select\" multiple=\"multiple\" name=\"user[name_fr][]\" id=\"user_name_fr\"><option value=\"\"></option>
-<option value=\"1\">test1</option>
+    expected = "<form class=\"simple_form edit_user\" id=\"edit_user_1\" action=\"/users/1\" accept-charset=\"UTF-8\" method=\"post\"><input name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" /><input type=\"hidden\" name=\"_method\" value=\"patch\" /><div class=\"form-group multi_select_field optional user_name_fr\"><label class=\"control-label multi_select_field optional\" for=\"user_name_fr\">Name fr</label><select name=\"name_fr[]\" id=\"name_fr\" class=\"multi_select_field optional btn-secondary btn multi-select\" multiple=\"multiple\"><option value=\"1\">test1</option>
 <option value=\"2\">test2</option></select></div></form>"
+
+    assert_equal expected, actual
+  end
+
+  test 'multi select input with grouped option in simple form' do
+
+    actual = simple_form_for @user do |f|
+      f.input :name_fr, as: :multi_select_field, collection: @continents, toto: 'lala', grouped: true, group_method: :countries
+    end
+
+    expected = "<form class=\"simple_form edit_user\" id=\"edit_user_1\" action=\"/users/1\" accept-charset=\"UTF-8\" method=\"post\"><input name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" /><input type=\"hidden\" name=\"_method\" value=\"patch\" /><div class=\"form-group multi_select_field optional user_name_fr\"><label class=\"control-label multi_select_field optional\" for=\"user_name_fr\">Name fr</label><select name=\"name_fr[]\" id=\"name_fr\" class=\"multi_select_field optional btn-secondary btn multi-select\" multiple=\"multiple\"><optgroup label=\"Europe\"><option value=\"1\">France</option>
+<option value=\"2\">Deutchland</option></optgroup></select></div></form>"
 
     assert_equal expected, actual
   end
@@ -155,6 +166,18 @@ test1</textarea></div></form>"
 
      expected = "<form class=\"simple_form edit_user\" id=\"edit_user_1\" action=\"/users/1\" accept-charset=\"UTF-8\" method=\"post\"><input name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" /><input type=\"hidden\" name=\"_method\" value=\"patch\" /><div class=\"form-group select_field optional user_name_fr\"><label class=\"control-label select_field optional\" for=\"user_name_fr\">Name fr</label><div class=\"input-group select-field-refresh\"><select name=\"name_fr\" id=\"name_fr\" class=\"select_field optional select-field form-control\"><option value=\"1\">test1</option>
 <option value=\"2\">test2</option></select><span class=\"input-group-btn\"><button data-connect=\"{&quot;events&quot;:&quot;click&quot;,&quot;mode&quot;:&quot;remote&quot;,&quot;target&quot;:{&quot;selector&quot;:&quot;#name_fr&quot;,&quot;url&quot;:&quot;&quot;,&quot;data&quot;:[]}}\" class=\"btn-primary ui-bibz-connect input-refresh-button btn\"><i class=\"glyph fa fa-refresh\"></i> </button></span></div></div></form>"
+
+    assert_equal expected, actual
+  end
+
+  test 'select input with grouped option in simple form' do
+
+    actual = simple_form_for @user do |f|
+      f.input :name_fr, as: :select_field, collection: @continents, toto: 'lala', grouped: true, group_method: :countries
+    end
+
+    expected = "<form class=\"simple_form edit_user\" id=\"edit_user_1\" action=\"/users/1\" accept-charset=\"UTF-8\" method=\"post\"><input name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" /><input type=\"hidden\" name=\"_method\" value=\"patch\" /><div class=\"form-group select_field optional user_name_fr\"><label class=\"control-label select_field optional\" for=\"user_name_fr\">Name fr</label><select name=\"name_fr\" id=\"name_fr\" class=\"select_field optional select-field form-control\"><optgroup label=\"Europe\"><option value=\"1\">France</option>
+<option value=\"2\">Deutchland</option></optgroup></select></div></form>"
 
     assert_equal expected, actual
   end

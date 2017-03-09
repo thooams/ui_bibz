@@ -59,8 +59,12 @@
         componentTarget.empty()
         values = component.val()
 
+        name = component.attr('name')
+        name = if name? then name.replace(' ', '_').split('[')[0] else "id"
+        name = if Array.isArray(values) then "#{ name }s" else name
+
         if mode == "remote"
-          params = if Array.isArray(values) then { ids: values } else { id: values }
+          params = { "#{ name }": values }
           $.ajax({ url: target.url, data: params }).done (data) ->
             updateTargetComponent(data, componentTarget)
 
