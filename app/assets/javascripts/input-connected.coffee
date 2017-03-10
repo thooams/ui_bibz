@@ -15,8 +15,14 @@
     data.forEach (opt) ->
       element.append($("<option></option>").attr("value", opt.value).text(opt.text))
 
-  updateTargetComponent = (data, componentTarget) ->
+  updateTargetComponent = (data, componentTarget, component) ->
     updateOptionsHtml(data, componentTarget)
+
+    parentDiv = componentTarget.parents('.input-group')
+    if parentDiv.hasClass('select-field-refresh')
+      refreshBtn = parentDiv.find('.input-refresh-button')
+      refreshBtn.attr('value', component.val()).attr('name', component.attr('name'))
+
     componentTarget.multiSelect('refresh')  if componentTarget.hasClass('multi-column')
     componentTarget.selectpicker('refresh') if componentTarget.hasClass('selectpicker')
     componentTarget.multiselect('rebuild')  if componentTarget.hasClass('multi-select')
@@ -66,7 +72,7 @@
         if mode == "remote"
           params = { "#{ name }": values }
           $.ajax({ url: target.url, data: params }).done (data) ->
-            updateTargetComponent(data, componentTarget)
+            updateTargetComponent(data, componentTarget, component)
 
         if mode == "local"
           data = target.data || settings.target.data
@@ -74,6 +80,6 @@
             values = [].concat.apply([], [values]) # flatten
             return values.includes(String(value.connect_option_id))
 
-          updateTargetComponent(data, componentTarget)
+          updateTargetComponent(data, componentTarget, component)
 
 )(jQuery)
