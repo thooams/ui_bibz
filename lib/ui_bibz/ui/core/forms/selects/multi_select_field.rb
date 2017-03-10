@@ -58,10 +58,7 @@ module UiBibz::Ui::Core::Forms::Selects
     # Render html tag
     def render
       if options[:refresh]
-        content_tag :div, class: 'input-group select-field-refresh' do
-          concat select_tag content, options[:option_tags], html_options
-          concat content_tag(:span, UiBibz::Ui::Core::Forms::Buttons::ButtonRefresh.new('', connect: connect_opts).render, class: 'input-group-btn')
-        end
+        refresh_render
       else
         select_tag content, options[:option_tags], html_options
       end
@@ -83,7 +80,6 @@ module UiBibz::Ui::Core::Forms::Selects
       collapsible_opt_group
       searchable
       select_all_option
-      connect_options
     end
 
     def clickable_opt_group
@@ -110,10 +106,6 @@ module UiBibz::Ui::Core::Forms::Selects
       selector = options[:refresh][:target][:selector]
       options[:refresh][:target][:selector] = selector.blank? ? "##{ content.to_s.parameterize.underscore }" : selector
       options[:refresh]
-    end
-
-    def connect_options
-      add_html_data('connect', options[:connect]) if options[:connect]
     end
 
   end

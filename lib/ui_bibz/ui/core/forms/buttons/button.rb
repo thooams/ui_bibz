@@ -49,7 +49,7 @@ module UiBibz::Ui::Core::Forms::Buttons
   #  button(options = {}, html_options = {}) do
   #    content
   #  end
-  class Button < UiBibz::Ui::Core::Component
+  class Button < UiBibz::Ui::Core::ConnectedComponent
 
     # See UiBibz::Ui::Core::Component.initialize
     def initialize content = nil, options = nil, html_options = nil, &block

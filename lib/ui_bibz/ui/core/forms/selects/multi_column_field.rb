@@ -45,7 +45,7 @@ module UiBibz::Ui::Core::Forms::Selects
   #
   #   multi_column_field(content, options = {}, html_options = {})
   #
-  class MultiColumnField < UiBibz::Ui::Core::Component
+  class MultiColumnField < UiBibz::Ui::Core::ConnectedComponent
 
     # See UiBibz::Ui::Core::Component.initialize
     def initialize content = nil, options = nil, html_options = nil, &block
@@ -63,6 +63,7 @@ module UiBibz::Ui::Core::Forms::Selects
       super
       searchable
       selectable_opt_group
+      connect_options
     end
 
     def component_html_classes

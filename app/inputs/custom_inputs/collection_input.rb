@@ -8,8 +8,8 @@ module CustomInputs
 
     def input_html_options
       opts = super
-      opts = opts.merge({ prompt: options[:prompt] })               unless options[:prompt].nil?
-      opts = opts.merge({ include_blank: options[:include_blank] }) unless options[:include_blank].nil?
+      opts = opts.merge({ prompt: options[:prompt] })               unless options[:prompt].blank?
+      opts = opts.merge({ include_blank: options[:include_blank] }) unless options[:include_blank].blank?
       opts
     end
 

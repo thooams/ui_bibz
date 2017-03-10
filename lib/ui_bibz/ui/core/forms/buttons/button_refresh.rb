@@ -57,7 +57,7 @@ module UiBibz::Ui::Core::Forms::Buttons
     private
 
     def component_options
-      options[:connect] = connect_options
+      options[:connect] = cnt_opts
       { glyph: 'refresh', status: options[:status] }
     end
 
@@ -65,7 +65,7 @@ module UiBibz::Ui::Core::Forms::Buttons
       ['input-refresh-button', 'btn']
     end
 
-    def connect_options
+    def cnt_opts
       {
         events: options[:connect].try(:[], :events) || "click",
         mode:   options[:connect].try(:[], :mode)   || "remote",

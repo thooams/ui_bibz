@@ -63,7 +63,7 @@ module UiBibz::Ui::Core::Forms::Selects
   #
   #   dropdown_select_field(content, options = {}, html_options = {})
   #
-  class SelectField < UiBibz::Ui::Core::Component
+  class SelectField < UiBibz::Ui::Core::ConnectedComponent
 
     # See UiBibz::Ui::Core::Component.initialize
     def initialize content = nil, options = nil, html_options = nil, &block
@@ -73,10 +73,7 @@ module UiBibz::Ui::Core::Forms::Selects
     # Render html tag
     def render
       if options[:refresh]
-        content_tag :div, class: 'input-group select-field-refresh' do
-          concat select_tag content, options[:option_tags], html_options
-          concat content_tag(:span, UiBibz::Ui::Core::Forms::Buttons::ButtonRefresh.new('', connect: connect_opts).render, class: 'input-group-btn')
-        end
+        refresh_render
       else
         select_tag content, options[:option_tags], html_options
       end
@@ -86,12 +83,6 @@ module UiBibz::Ui::Core::Forms::Selects
 
     def component_html_classes
       ['select-field', 'form-control']
-    end
-
-    def connect_opts
-      selector = options[:refresh][:target][:selector]
-      options[:refresh][:target][:selector] = selector.blank? ? "##{ content.to_s.parameterize.underscore }" : selector
-      options[:refresh]
     end
 
   end

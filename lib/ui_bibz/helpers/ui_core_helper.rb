@@ -174,8 +174,8 @@ module UiBibz::Helpers::UiCoreHelper
   #
   # +options+ (Hash)
   # +html_options+ (Hash)
-  def autocomplete_field content = nil, options = nil, html_options = nil, &block
-    UiBibz::Ui::Core::Forms::Texts::AutocompleteField.new(content, options, html_options, &block).render
+  def auto_complete_field content = nil, options = nil, html_options = nil, &block
+    UiBibz::Ui::Core::Forms::Texts::AutoCompleteField.new(content, options, html_options, &block).render
   end
 
   # Input section end ----------------------------------------------------

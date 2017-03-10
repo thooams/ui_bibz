@@ -40,7 +40,7 @@ module UiBibz::Ui::Core::Forms::Texts
   #    # content
   #   end
   #
-  class AutoCompleteField < UiBibz::Ui::Core::Component
+  class AutoCompleteField < UiBibz::Ui::Core::ConnectedComponent
 
     # See UiBibz::Ui::Core::Component.initialize
     def initialize content = nil, options = nil, html_options = nil, &block
@@ -50,17 +50,25 @@ module UiBibz::Ui::Core::Forms::Texts
     # Render html tag
     def render
       if options[:refresh]
-        content_tag :div, class: 'input-group select-field-refresh' do
-          concat text_field_input_tag
-          concat data_list_render
-          concat content_tag(:span, UiBibz::Ui::Core::Forms::Buttons::ButtonRefresh.new('', connect: connect_opts).render, class: 'input-group-btn')
-        end
+        refresh_render
       else
         text_field_input_tag  + data_list_render
       end
     end
 
     private
+
+    def refresh_render
+      content_tag :div, class: 'input-group field-refresh' do
+        concat text_field_input_tag
+        concat data_list_render
+        concat refresh_btn_html
+      end
+    end
+
+    def component_html_data
+      connect_options
+    end
 
     def data_list_render
       content_tag :datalist, options[:option_tags], id: data_list_name
@@ -85,16 +93,11 @@ module UiBibz::Ui::Core::Forms::Texts
     end
 
     def data_list_name
-      @datalist ||= "#{ html_options[:id] || content.parameterize.underscore }-datalist"
+      @datalist ||= "#{ html_options[:id] || content.to_s.parameterize.underscore }-datalist"
     end
 
     def status
       "form-control-#{ options[:status] }" if options[:status]
-    end
-
-    def connect_opts
-      options[:refresh][:target].merge!({ selector: "##{ data_list_name }"})
-      options[:refresh]
     end
 
   end

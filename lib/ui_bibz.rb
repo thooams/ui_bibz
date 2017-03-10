@@ -92,6 +92,7 @@ module UiBibz
 
       # Other section
       autoload :Alert,                   "ui_bibz/ui/core/alert"
+      autoload :ConnectedComponent,      "ui_bibz/ui/core/connected_component"
       autoload :Component,               "ui_bibz/ui/core/component"
       autoload :Glyph,                   "ui_bibz/ui/core/glyph"
       autoload :Jumbotron,               "ui_bibz/ui/core/jumbotron"

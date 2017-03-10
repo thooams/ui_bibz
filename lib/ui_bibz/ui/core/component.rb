@@ -90,7 +90,6 @@ module UiBibz::Ui::Core
 
     # Override this method to add html data
     def component_html_data
-      add_html_data('connect', options[:connect]) if options[:connect]
     end
 
     # Override this method to add html Options
