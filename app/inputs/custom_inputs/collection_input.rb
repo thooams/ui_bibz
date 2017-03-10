@@ -3,13 +3,12 @@ module CustomInputs
     include UiBibz::Ui::Core::Forms::Selects
     include ActionView::Helpers::FormOptionsHelper
 
-    def input(wrapper_options)
-    end
-
     def input_html_options
       opts = super
       opts = opts.merge({ prompt: options[:prompt] })               unless options[:prompt].blank?
+      opts = opts.merge({ disabled: options[:disabled] })           unless options[:disabled].blank?
       opts = opts.merge({ include_blank: options[:include_blank] }) unless options[:include_blank].blank?
+      opts = opts.merge({ multiple: options[:multiple] })           unless options[:multiple].blank?
       opts
     end
 

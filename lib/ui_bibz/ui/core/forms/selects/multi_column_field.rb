@@ -71,7 +71,11 @@ module UiBibz::Ui::Core::Forms::Selects
     end
 
     def component_html_options
-      { multiple: true }.merge(options[:state] == :disabled ? { disabled: 'disabled' } : {})
+      opts = { multiple: true }
+      opts = opts.merge({ disabled: true })            if options[:state] == :disabled
+      opts = opts.merge({ include_blank: true})        if options[:include_blank]
+      opts = opts.merge({ prompt: options[:prompt] })  unless options[:prompt].blank?
+      opts
     end
 
     def searchable

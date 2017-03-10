@@ -81,6 +81,15 @@ module UiBibz::Ui::Core::Forms::Selects
 
     private
 
+    def component_html_options
+      opts = {}
+      opts = opts.merge({ multiple: true })            if options[:multiple]
+      opts = opts.merge({ disabled: true })            if options[:state] == :disabled
+      opts = opts.merge({ include_blank: true})        if options[:include_blank]
+      opts = opts.merge({ prompt: options[:prompt] })  unless options[:prompt].blank?
+      opts
+    end
+
     def component_html_classes
       ['select-field', 'form-control']
     end

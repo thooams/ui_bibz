@@ -80,6 +80,14 @@ module UiBibz::Ui::Core::Forms::Selects
 
     private
 
+    def component_html_options
+      opts = {}
+      opts = opts.merge({ disabled: true })            if options[:state] == :disabled
+      opts = opts.merge({ include_blank: true})        if options[:include_blank]
+      opts = opts.merge({ prompt: options[:prompt] })  unless options[:prompt].blank?
+      opts
+    end
+
     def component_html_classes
       ['selectpicker', show_tick, show_menu_arrow, dropup]
     end
@@ -93,10 +101,6 @@ module UiBibz::Ui::Core::Forms::Selects
       style
       header
       actions_box
-    end
-
-    def component_html_options
-      options[:state] == :disabled ? { disabled: 'disabled' } : {}
     end
 
     ############################ Data html options

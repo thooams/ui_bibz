@@ -1,7 +1,7 @@
 (($) ->
 
   updateOptionsHtml = (data, componentTarget) ->
-    componentTarget.children('option').remove()
+    componentTarget.children('option:not(option[value=""])').remove()
 
     if Array.isArray(data)
       appendToElement(data, componentTarget)
@@ -17,25 +17,29 @@
 
   updateTargetComponent = (data, componentTarget, component) ->
     updateOptionsHtml(data, componentTarget)
-
-    parentDiv = componentTarget.parents('.input-group')
-    if parentDiv.hasClass('select-field-refresh')
-      refreshBtn = parentDiv.find('.input-refresh-button')
-      refreshBtn.attr('value', component.val()).attr('name', component.attr('name'))
-
+    updateTargetRefreshButton(componentTarget, component)
     componentTarget.multiSelect('refresh')  if componentTarget.hasClass('multi-column')
     componentTarget.selectpicker('refresh') if componentTarget.hasClass('selectpicker')
     componentTarget.multiselect('rebuild')  if componentTarget.hasClass('multi-select')
+    componentTarget.change()
+
+  updateTargetRefreshButton = (componentTarget, component) ->
+    if hasRefreshButton(componentTarget)
+      refreshBtn = componentTarget.parents('.input-group').find('.input-refresh-button')
+      refreshBtn.attr('value', component.val()).attr('name', component.attr('name'))
+
+  hasRefreshButton = (component) ->
+    component.parents('.input-group').hasClass('select-field-refresh')
 
   $.fn.inputConnected = (options) ->
 
     defaults =
-      mode:        "remote"
-      events:      "change"  # change, click, ...
+      mode:        "remote"  # String: remote || local
+      events:      "change"  # String: change, click, ...
       target:
-        url:        null     # url for remote connection
-        selector:   null     # component target id
-        data: []             # data for local connection
+        url:        null     # String: url for remote connection
+        selector:   null     # String: component target id or class
+        data: []             # Array : data for local connection
         # Add a proxy
         # Proxy:
         #  url:    null
