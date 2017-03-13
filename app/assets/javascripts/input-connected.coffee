@@ -30,7 +30,7 @@
       refreshBtn.attr('value', component.val()).attr('name', component.attr('name'))
 
   hasRefreshButton = (component) ->
-    component.parents('.input-group').hasClass('select-field-refresh')
+    component.parents('.input-group').hasClass('field-refresh')
 
   $.fn.inputConnected = (options) ->
 
