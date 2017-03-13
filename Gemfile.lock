@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    ui_bibz (2.0.0.alpha28)
+    ui_bibz (2.0.0.alpha29)
       bootstrap (= 4.0.0.alpha5)
       font-awesome-sass
       haml
@@ -53,14 +53,14 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
     arel (7.1.4)
-    autoprefixer-rails (6.7.6)
+    autoprefixer-rails (6.7.7)
       execjs
     awesome_print (1.7.0)
     bootstrap (4.0.0.alpha5)
       autoprefixer-rails (>= 6.0.3)
       sass (>= 3.4.19)
     builder (3.2.3)
-    codeclimate-test-reporter (1.0.6)
+    codeclimate-test-reporter (1.0.7)
       simplecov
     concurrent-ruby (1.0.5)
     docile (1.1.5)
