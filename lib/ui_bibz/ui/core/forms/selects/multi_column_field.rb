@@ -67,7 +67,7 @@ module UiBibz::Ui::Core::Forms::Selects
     end
 
     def component_html_classes
-      'multi-column'
+      'multi-column-field'
     end
 
     def component_html_options

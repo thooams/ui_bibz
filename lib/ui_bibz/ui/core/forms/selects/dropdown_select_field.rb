@@ -89,7 +89,7 @@ module UiBibz::Ui::Core::Forms::Selects
     end
 
     def component_html_classes
-      ['selectpicker', show_tick, show_menu_arrow, dropup]
+      ['dropdown-select-field', show_tick, show_menu_arrow, dropup]
     end
 
     def component_html_data

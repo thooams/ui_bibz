@@ -57,9 +57,9 @@ module UiBibz::Ui::Core::Forms::Numbers
 
     def text_field_input_tag
       if options[:builder].nil?
-        text_field_tag content, html_options[:value], readonly: true, class: 'formula_field_result form-control'
+        text_field_tag content, html_options[:value], readonly: true, class: 'formula-field-result form-control'
       else
-        options[:builder].text_field content, readonly: true, class: 'formula_field_result form-control'
+        options[:builder].text_field content, readonly: true, class: 'formula-field-result form-control'
       end
     end
 
@@ -72,7 +72,7 @@ module UiBibz::Ui::Core::Forms::Numbers
     end
 
     def component_html_classes
-      'formula_field_input form-control'
+      'formula-field form-control'
     end
 
     def component_html_options
@@ -80,7 +80,7 @@ module UiBibz::Ui::Core::Forms::Numbers
     end
 
     def formula_field_alert
-      content_tag :span, class: 'formula_field_alert input-group-addon', data: { toggle: 'tooltip' } do
+      content_tag :span, class: 'formula-field-alert input-group-addon', data: { toggle: 'tooltip' } do
         UiBibz::Ui::Core::Glyph.new('exclamation-triangle', status: :danger ).render
       end
     end
@@ -90,7 +90,7 @@ module UiBibz::Ui::Core::Forms::Numbers
     end
 
     def formula_field_sign
-      content_tag :span, '=', class: 'formula_field_sign input-group-addon'
+      content_tag :span, '=', class: 'formula-field-sign input-group-addon'
     end
 
      def status

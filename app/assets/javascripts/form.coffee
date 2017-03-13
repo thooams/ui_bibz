@@ -1,36 +1,37 @@
 @UiBibzForm = class Form
 
   constructor: ->
-    @switch()         if $('input.switch').length > 0
+    @switch()         if $('input.switch-field').length > 0
     @inputConnected() if $('.ui-bibz-connect').length > 0
-    @selectPicker()   if $('select.selectpicker').length > 0
-    @multiSelect()    if $('.multi-select').length > 0
-    @multiColumn()    if $('.multi-column').length > 0
-    @formula()        if $('.formula_field_input').length > 0
+    @selectPicker()   if $('.dropdown-select-field').length > 0
+    @multiSelect()    if $('.multi-select-field').length > 0
+    @multiColumn()    if $('.multi-column-field').length > 0
+    @formula()        if $('.formula-field').length > 0
 
   inputConnected: ->
     $('.ui-bibz-connect').inputConnected()
 
   selectPicker: ->
-    $('select.selectpicker').selectpicker
+    $('select.dropdown-select-field').selectpicker
       iconBase: 'fa'
       tickIcon: 'fa-check'
       style:    'btn-secondary'
+      showTick: false
 
   switch: ->
-    $('input.switch').bootstrapSwitch({ size: 'large' })
+    $('input.switch-field').bootstrapSwitch({ size: 'large' })
 
   multiSelect: ->
     # http://loudev.com/
-    $('.multi-select').each ->
+    $('.multi-select-field').each ->
       data = $(this).data()
       delete data["multiselect"]
-      data = Object.assign({ inheritClass: true }, data)
+      data = Object.assign({ buttonClass: 'btn btn-secondary', inheritClass: true }, data)
       $(this).multiselect(data)
 
   formula: ->
     me = this
-    formula_input_field = $('.formula_field_input')
+    formula_input_field = $('.formula-field')
     me.updateFormulaField(formula_input_field)
 
     formula_input_field.on 'keyup', ->
@@ -38,9 +39,9 @@
 
   updateFormulaField: (field) ->
     formulaInputField  = field
-    formulaSignField   = formulaInputField.siblings('.formula_field_sign')
-    formulaResultField = formulaInputField.siblings('.formula_field_result')
-    formulaAlert       = formulaInputField.siblings('.formula_field_alert')
+    formulaSignField   = formulaInputField.siblings('.formula-field-sign')
+    formulaResultField = formulaInputField.siblings('.formula-field-result')
+    formulaAlert       = formulaInputField.siblings('.formula-field-alert')
 
     f        = new window.UiBibzFormula()
     result   = f.go(formulaInputField.val())
@@ -66,4 +67,4 @@
       formulaInputField.removeClass('fix-border-right')
 
   multiColumn: ->
-    $(".multi-column").multiSelect()
+    $(".multi-column-field").multiSelect()

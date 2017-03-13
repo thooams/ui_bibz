@@ -65,7 +65,7 @@ module UiBibz::Ui::Core::Forms::Choices
     end
 
     def component_html_classes
-      "switch"
+      "switch-field"
     end
 
     def component_html_data

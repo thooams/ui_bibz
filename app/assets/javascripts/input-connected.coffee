@@ -1,12 +1,13 @@
 (($) ->
 
   updateOptionsHtml = (data, componentTarget) ->
-    componentTarget.children('option:not(option[value=""])').remove()
+    componentTarget.children('option:not([value=""])').remove()
 
     if Array.isArray(data)
       appendToElement(data, componentTarget)
     else
       $.each data, (k,v) ->
+        updateOptionsHtml(data, componentTarget)
         optgroup = $("<optgroup></optgroup>").attr("label", k)
         appendToElement(v, optgroup)
         componentTarget.append(optgroup)
@@ -18,9 +19,9 @@
   updateTargetComponent = (data, componentTarget, component) ->
     updateOptionsHtml(data, componentTarget)
     updateTargetRefreshButton(componentTarget, component)
-    componentTarget.multiSelect('refresh')  if componentTarget.hasClass('multi-column')
-    componentTarget.selectpicker('refresh') if componentTarget.hasClass('selectpicker')
-    componentTarget.multiselect('rebuild')  if componentTarget.hasClass('multi-select')
+    componentTarget.multiSelect('refresh')  if componentTarget.hasClass('multi-column-field')
+    componentTarget.selectpicker('refresh') if componentTarget.hasClass('dropdown-select-field')
+    componentTarget.multiselect('rebuild')  if componentTarget.hasClass('multi-select-field')
     componentTarget.change()
 
   updateTargetRefreshButton = (componentTarget, component) ->
@@ -66,7 +67,6 @@
 
       component.on events, (e) ->
         e.preventDefault()
-        componentTarget.empty()
         values = component.val()
 
         name = component.attr('name')

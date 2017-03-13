@@ -88,6 +88,12 @@ module UiBibz::Ui::Core::Forms::Texts
       args
     end
 
+    def connect_opts
+      selector = options[:refresh][:target][:selector]
+      options[:refresh][:target][:selector] = selector.blank? ? "##{ data_list_name }" : selector
+      options[:refresh]
+    end
+
     def component_html_classes
       'form-control'
     end
