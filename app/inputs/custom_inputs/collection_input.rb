@@ -14,6 +14,8 @@ module CustomInputs
 
     def new_options
       label_method, value_method = detect_collection_methods
+      merged_input_options       = merge_wrapper_options(input_html_options, wrapper_options)
+
       if options[:grouped] == true
         options.merge({ option_tags: option_groups_from_collection_for_select(
           grouped_collection,
@@ -23,7 +25,7 @@ module CustomInputs
         )})
       else
         options.merge({ option_tags: options_from_collection_for_select(
-          collection, value_method, label_method, input_options
+          collection, value_method, label_method, input_options, merged_input_options
         )})
       end
     end
@@ -36,10 +38,18 @@ module CustomInputs
     end
 
     def collection
-      if options[:grouped]
-        @collection ||= grouped_collection.map { |collection| collection.try(:send, group_method) }.detect(&:present?) || []
-      else
-        @collection ||= options[:collection]
+      # if options[:grouped]
+      #   @collection ||= grouped_collection.map { |collection| collection.try(:send, group_method) }.detect(&:present?) || []
+      # else
+      #   @collection ||= options[:collection]
+      # end
+      @collection ||= begin
+        if options[:grouped]
+          grouped_collection.map { |collection| collection.try(:send, group_method) }.detect(&:present?) || []
+        else
+          collection = options.delete(:collection) || self.class.boolean_collection
+          collection.respond_to?(:call) ? collection.call : collection.to_a
+        end
       end
     end
 
