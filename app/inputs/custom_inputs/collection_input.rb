@@ -14,18 +14,17 @@ module CustomInputs
 
     def new_options
       label_method, value_method = detect_collection_methods
-      merged_input_options       = merge_wrapper_options(input_html_options, wrapper_options)
 
       if options[:grouped] == true
         options.merge({ option_tags: option_groups_from_collection_for_select(
           grouped_collection,
           group_method, group_label_method,
           value_method, label_method,
-          input_options
+          input_options, input_html_options
         )})
       else
         options.merge({ option_tags: options_from_collection_for_select(
-          collection, value_method, label_method, input_options, merged_input_options
+          collection, value_method, label_method, input_options, input_html_options
         )})
       end
     end
