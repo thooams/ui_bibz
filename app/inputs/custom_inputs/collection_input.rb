@@ -20,11 +20,12 @@ module CustomInputs
           grouped_collection,
           group_method, group_label_method,
           value_method, label_method,
-          input_options, input_html_options
+          @builder.object.send(attribute_name) #input_options, input_html_options
         )})
       else
+        #ap @builder.object.send(attribute_name)
         options.merge({ option_tags: options_from_collection_for_select(
-          collection, value_method, label_method, input_options, input_html_options
+          collection, value_method, label_method, @builder.object.send(attribute_name)#,input_options, input_html_options
         )})
       end
     end
