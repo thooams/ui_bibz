@@ -20,12 +20,11 @@ module CustomInputs
           grouped_collection,
           group_method, group_label_method,
           value_method, label_method,
-          @builder.object.send(attribute_name) #input_options, input_html_options
+          @builder.object.send(attribute_name)
         )})
       else
-        #ap @builder.object.send(attribute_name)
         options.merge({ option_tags: options_from_collection_for_select(
-          collection, value_method, label_method, @builder.object.send(attribute_name)#,input_options, input_html_options
+          collection, value_method, label_method, @builder.object.send(attribute_name)
         )})
       end
     end
@@ -37,12 +36,11 @@ module CustomInputs
       end
     end
 
+    def input_attribute_name
+      "#{ @builder.object.class.to_s.parameterize.underscore }[#{ attribute_name }]"
+    end
+
     def collection
-      # if options[:grouped]
-      #   @collection ||= grouped_collection.map { |collection| collection.try(:send, group_method) }.detect(&:present?) || []
-      # else
-      #   @collection ||= options[:collection]
-      # end
       @collection ||= begin
         if options[:grouped]
           grouped_collection.map { |collection| collection.try(:send, group_method) }.detect(&:present?) || []

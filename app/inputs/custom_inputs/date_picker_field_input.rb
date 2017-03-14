@@ -1,10 +1,9 @@
 module CustomInputs
-  class DatePickerFieldInput < SimpleForm::Inputs::StringInput
+  class DatePickerFieldInput < StringInput
     include UiBibz::Ui::Core::Forms::Dates
 
     def input(wrapper_options)
-      options = @options.merge({ builder: @builder })
-      UiBibz::Ui::Core::Forms::Dates::DatePickerField.new(attribute_name, options, input_html_options).render
+      UiBibz::Ui::Core::Forms::Dates::DatePickerField.new(input_attribute_name, new_options, input_html_options).render
     end
 
   end

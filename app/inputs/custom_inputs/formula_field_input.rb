@@ -1,10 +1,9 @@
 module CustomInputs
-  class FormulaFieldInput < SimpleForm::Inputs::StringInput
+  class FormulaFieldInput < StringInput
     include UiBibz::Ui::Core::Forms::Numbers
 
     def input(wrapper_options)
-      options = @options.merge({ builder: @builder })
-      UiBibz::Ui::Core::Forms::Numbers::FormulaField.new(attribute_name, options, input_html_options).render
+      UiBibz::Ui::Core::Forms::Numbers::FormulaField.new(input_attribute_name, new_options, input_html_options).render
     end
 
   end

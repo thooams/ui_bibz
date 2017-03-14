@@ -1,10 +1,9 @@
 module CustomInputs
-  class SurroundFieldInput < SimpleForm::Inputs::StringInput
+  class SurroundFieldInput < StringInput
     include UiBibz::Ui::Core::Forms::Texts
 
     def input(wrapper_options)
-      options = @options.merge({ builder: @builder })
-      UiBibz::Ui::Core::Forms::Texts::SurroundField.new(attribute_name, options, input_html_options).render
+      UiBibz::Ui::Core::Forms::Texts::SurroundField.new(input_attribute_name, new_options, input_html_options).render
     end
 
   end
