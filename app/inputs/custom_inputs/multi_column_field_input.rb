@@ -1,6 +1,5 @@
 module CustomInputs
-  # multi_column_input manages collection and grouped_collection
-  class MultiColumnFieldInput < SimpleForm::Inputs::CollectionInput
+  class MultiColumnFieldInput < CollectionInput
     include UiBibz::Ui::Core::Forms::Selects
 
     def input(wrapper_options)

@@ -30,8 +30,11 @@ ActiveRecord::Schema.define(version: 20170309084453) do
     t.string   "name_en"
     t.string   "body_fr"
     t.string   "body_en"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.boolean  "active"
+    t.float    "price"
+    t.string   "price_formula"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
 end

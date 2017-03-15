@@ -56,19 +56,11 @@ module UiBibz::Ui::Core::Forms::Numbers
     private
 
     def text_field_input_tag
-      if options[:builder].nil?
-        text_field_tag content, html_options[:value], readonly: true, class: 'formula-field-result form-control'
-      else
-        options[:builder].text_field content, readonly: true, class: 'formula-field-result form-control'
-      end
+      text_field_tag content, html_options.delete(:value), readonly: true, class: 'formula-field-result form-control'
     end
 
     def text_field_formula_input_tag
-      if options[:builder].nil?
-        text_field_tag formula_field_name, '', html_options
-      else
-        options[:builder].text_field formula_field_name, html_options
-      end
+      text_field_tag formula_field_name, html_options.delete(:formula_field_value), html_options.except(:value)
     end
 
     def component_html_classes
@@ -86,14 +78,18 @@ module UiBibz::Ui::Core::Forms::Numbers
     end
 
     def formula_field_name
-      options[:formula_field_name] || "#{ content }_formula"
+      options[:formula_field_name] || content_formula_name
+    end
+
+    def content_formula_name
+      content.to_s.split('').select{ |i| i == "]" }.count > 0 ? content.to_s.gsub(/]$/, "_formula]") : "#{ content }_formula"
     end
 
     def formula_field_sign
       content_tag :span, '=', class: 'formula-field-sign input-group-addon'
     end
 
-     def status
+    def status
       "has-#{ options[:status] }" if options[:status]
     end
 

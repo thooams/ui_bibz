@@ -5,10 +5,6 @@ module CustomInputs
       super
     end
 
-    def new_options
-      @options.merge({ builder: @builder })
-    end
-
     def input_attribute_name
       "#{ @builder.object.class.to_s.parameterize.underscore }[#{ attribute_name }]"
     end

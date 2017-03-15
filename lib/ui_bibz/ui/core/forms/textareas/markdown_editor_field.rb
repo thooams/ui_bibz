@@ -53,11 +53,7 @@ module UiBibz::Ui::Core::Forms::Textareas
 
     # Render html tag
     def render
-      if options[:builder].nil?
-        text_area_tag content, html_options[:value], html_options
-      else
-        options[:builder].text_area content, html_options
-      end
+      text_area_tag content, html_options[:value], html_options
     end
 
     private

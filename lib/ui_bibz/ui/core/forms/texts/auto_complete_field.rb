@@ -75,11 +75,7 @@ module UiBibz::Ui::Core::Forms::Texts
     end
 
     def text_field_input_tag
-      if options[:builder].nil?
-        text_field_tag content, html_options[:value], html_options
-      else
-        options[:builder].text_field content, html_options
-      end
+      text_field_tag content, html_options[:value], html_options
     end
 
     def component_html_options

@@ -31,10 +31,11 @@
 
   formula: ->
     me = this
-    formula_input_field = $('.formula-field')
-    me.updateFormulaField(formula_input_field)
+    formula_input_fields = $('.formula-field')
+    formula_input_fields.each ->
+      me.updateFormulaField($(this))
 
-    formula_input_field.on 'keyup', ->
+    formula_input_fields.on 'keyup', ->
       me.updateFormulaField($(this))
 
   updateFormulaField: (field) ->

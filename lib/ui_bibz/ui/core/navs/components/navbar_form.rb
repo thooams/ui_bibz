@@ -47,10 +47,10 @@ module UiBibz::Ui::Core::Navs
       init_haml_helpers
       @options = options
       if type == :form_for
-        @form = form_for(model_or_url, options, &block)
+        @form = form_for(model_or_url, new_option, &block)
       else
         #@form = form_tag(model_or_url, class: "navbar-form form-inline #{ position }", block)
-        html_options = html_options_for_form(model_or_url, { class: "navbar-form form-inline #{ position }" })
+        html_options = html_options_for_form(model_or_url, new_option)
         @form = form_tag_with_body(html_options, capture(&block))
       end
     end
@@ -61,6 +61,10 @@ module UiBibz::Ui::Core::Navs
     end
 
   private
+
+    def new_option
+      (@options || {}).merge({ class: "navbar-form form-inline #{ position }" })
+    end
 
     def protect_against_forgery?
       false

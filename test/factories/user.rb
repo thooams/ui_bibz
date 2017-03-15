@@ -4,5 +4,6 @@ FactoryGirl.define do
     name_en "Name en"
     body_fr "Body fr"
     body_en "Body en"
+    active  true
   end
 end

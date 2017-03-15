@@ -67,11 +67,7 @@ module UiBibz::Ui::Core::Forms::Dates
   private
 
     def text_field_input_tag name
-      if options[:builder].nil?
-        text_field_tag name, html_options[:value], html_options
-      else
-        options[:builder].text_field name, html_options
-      end
+      text_field_tag name, html_options[:value], html_options
     end
 
     def component_html_data
