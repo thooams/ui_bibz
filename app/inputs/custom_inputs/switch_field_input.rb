@@ -11,7 +11,7 @@ module CustomInputs
     end
 
     def new_input_html_options
-      input_html_options.merge({ checked: !value.nil? })
+      input_html_options.merge({ checked: value.nil? ? false : value })
     end
 
     def value
