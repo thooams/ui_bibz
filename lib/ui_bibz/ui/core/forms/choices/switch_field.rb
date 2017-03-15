@@ -51,11 +51,7 @@ module UiBibz::Ui::Core::Forms::Choices
 
     # Render html tag
     def render
-      if options[:builder].nil?
-        check_box_tag content, value, html_options[:checked], html_options
-      else
-        options[:builder].check_box(content, html_options)
-      end
+      check_box_tag content, value, html_options[:checked], html_options
     end
 
     private
