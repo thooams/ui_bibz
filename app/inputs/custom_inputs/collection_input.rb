@@ -37,7 +37,7 @@ module CustomInputs
     end
 
     def input_attribute_name
-      "#{ @builder.object.class.to_s.parameterize.underscore }[#{ attribute_name }]"
+      "#{ @builder.object.class.to_s.underscore }[#{ attribute_name }]"
     end
 
     def collection
