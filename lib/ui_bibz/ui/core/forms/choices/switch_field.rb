@@ -51,7 +51,10 @@ module UiBibz::Ui::Core::Forms::Choices
 
     # Render html tag
     def render
-      check_box_tag content, value, html_options[:checked], html_options
+      content_tag :div, html_options do
+        concat hidden_field_tag content, '0'
+        concat check_box_tag content, '1', html_options[:checked], html_options
+      end
     end
 
     private
