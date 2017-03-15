@@ -70,8 +70,9 @@
         values = component.val()
 
         name = component.attr('name')
-        name = if name? then name.replace(' ', '_').split('[')[0] else "id"
-        name = if Array.isArray(values) then "#{ name }s" else name
+        #name = if name? then name.replace(' ', '_').split('[')[0] else "id"
+        name = if name? then name else "id"
+        #name = if Array.isArray(values) then "#{ name }s" else name
 
         if mode == "remote"
           params = { "#{ name }": values }
