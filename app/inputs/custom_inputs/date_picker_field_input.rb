@@ -1,5 +1,5 @@
 module CustomInputs
-  class DatePickerFieldInput < StringInput
+  class DatePickerFieldInput < BaseInput
     include UiBibz::Ui::Core::Forms::Dates
 
     def input(wrapper_options)

@@ -132,11 +132,12 @@ class SimpleFormTest < ActionView::TestCase
   end
 
   test 'switch field input in simple form' do
+    @user.active = true
     actual = simple_form_for @user do |f|
       f.input :active, as: :switch_field, collection: @users, label_method: :name_fr
     end
 
-    expected = "<form class=\"simple_form edit_user\" id=\"edit_user_1\" action=\"/users/1\" accept-charset=\"UTF-8\" method=\"post\"><input name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" /><input type=\"hidden\" name=\"_method\" value=\"patch\" /><div class=\"form-group switch_field optional user_active\"><label class=\"control-label switch_field optional\" for=\"user_active\">Active</label><input type=\"checkbox\" name=\"user[active]\" id=\"user_active\" class=\"switch_field optional switch-field\" /></div></form>"
+    expected = "<form class=\"simple_form edit_user\" id=\"edit_user_1\" action=\"/users/1\" accept-charset=\"UTF-8\" method=\"post\"><input name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" /><input type=\"hidden\" name=\"_method\" value=\"patch\" /><div class=\"form-group switch_field optional user_active\"><label class=\"control-label switch_field optional\" for=\"user_active\">Active</label><input type=\"checkbox\" name=\"user[active]\" id=\"user_active\" value=\"true\" class=\"switch_field optional switch-field\" checked=\"checked\" /></div></form>"
 
     assert_equal expected, actual
   end
