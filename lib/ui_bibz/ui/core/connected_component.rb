@@ -50,6 +50,7 @@ module UiBibz::Ui::Core
     protected
 
     def refresh_render
+      ap html_options
       content_tag :div, class: 'input-group field-refresh' do
         concat select_tag content, options[:option_tags], html_options
         concat refresh_btn_html
@@ -65,11 +66,18 @@ module UiBibz::Ui::Core
     def connect_opts
       selector = options[:refresh][:target][:selector]
       options[:refresh][:target][:selector] = selector.blank? ? "##{ content.to_s.parameterize.underscore }" : selector
-      options[:refresh]
+
+      options[:refresh].merge({
+        connect: {
+          target: options[:refresh].delete(:target),
+          event:  options[:refresh].delete(:event),
+          mode:   options[:refresh].delete(:mode)
+        }
+      })
     end
 
     def refresh_btn_html
-      content_tag(:span, UiBibz::Ui::Core::Forms::Buttons::ButtonRefresh.new('', connect: connect_opts).render, class: 'input-group-btn')
+      content_tag(:span, UiBibz::Ui::Core::Forms::Buttons::ButtonRefresh.new('', connect_opts).render, class: 'input-group-btn')
     end
 
     def connect_options

@@ -54,4 +54,7 @@ ready = ->
 
 # turbolinks:load and ready together load twice time javascript
 #$(document).on('ready turbolinks:load page:change', ready) # catch event for turbolinks and fix in ready() function
-$(document).on('turbolinks:load page:change', ready) # catch event for turbolinks and fix in ready() function
+if Turbolinks?
+  $(document).on('turbolinks:load page:change', ready) # catch event for turbolinks and fix in ready() function
+else
+  $(document).on('ready', ready) # catch event for turbolinks and fix in ready() function
