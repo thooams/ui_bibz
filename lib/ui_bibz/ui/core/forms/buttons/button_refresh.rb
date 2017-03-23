@@ -54,6 +54,11 @@ module UiBibz::Ui::Core::Forms::Buttons
       super
     end
 
+    # Render with span not a button to avoid submit form bug
+    def render
+      content_tag :span, glyph_and_content_html, html_options
+    end
+
     private
 
     def component_options
