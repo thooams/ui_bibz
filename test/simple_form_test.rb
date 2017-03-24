@@ -169,7 +169,7 @@ class SimpleFormTest < ActionView::TestCase
     end
 
      expected = "<form class=\"simple_form edit_user\" id=\"edit_user_1\" action=\"/users/1\" accept-charset=\"UTF-8\" method=\"post\"><input name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" /><input type=\"hidden\" name=\"_method\" value=\"patch\" /><div class=\"form-group select_field optional user_name_fr\"><label class=\"control-label select_field optional\" for=\"user_name_fr\">Name fr</label><div class=\"input-group field-refresh\"><select name=\"user[name_fr]\" id=\"user_name_fr\" class=\"select_field optional select-field form-control\"><option value=\"1\">test1</option>
-<option value=\"2\">test2</option></select><span class=\"input-group-btn\"><button data-connect=\"{&quot;events&quot;:&quot;click&quot;,&quot;mode&quot;:&quot;remote&quot;,&quot;target&quot;:{&quot;selector&quot;:&quot;#user_name_fr&quot;,&quot;url&quot;:&quot;&quot;,&quot;data&quot;:[]}}\" class=\"btn-primary ui-bibz-connect input-refresh-button btn\"><i class=\"glyph fa fa-refresh\"></i> </button></span></div></div></form>"
+<option value=\"2\">test2</option></select><span class=\"input-group-btn\"><span data-connect=\"{&quot;events&quot;:&quot;click&quot;,&quot;mode&quot;:&quot;remote&quot;,&quot;target&quot;:{&quot;selector&quot;:&quot;#user_name_fr&quot;,&quot;url&quot;:&quot;&quot;,&quot;data&quot;:[]}}\" class=\"btn-primary ui-bibz-connect input-refresh-button btn\"><i class=\"glyph fa fa-refresh\"></i> </span></span></div></div></form>"
 
     assert_equal expected, actual
   end

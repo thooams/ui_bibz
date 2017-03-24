@@ -25,7 +25,7 @@ class MultiSelectFieldTest < ActionView::TestCase
 
     test 'Multi select Field refresh option' do
       actual = UiBibz::Ui::Core::Forms::Selects::MultiSelectField.new('test', { refresh: { target: { url: '/'}}}).render
-      expected = "<div class=\"input-group field-refresh\"><select name=\"test[]\" id=\"test\" class=\"btn-secondary multi-select-field\" multiple=\"multiple\"></select><span class=\"input-group-btn\"><button data-connect=\"{&quot;events&quot;:&quot;click&quot;,&quot;mode&quot;:&quot;remote&quot;,&quot;target&quot;:{&quot;selector&quot;:&quot;#test&quot;,&quot;url&quot;:&quot;/&quot;,&quot;data&quot;:[]}}\" class=\"btn-primary ui-bibz-connect input-refresh-button btn\"><i class=\"glyph fa fa-refresh\"></i> </button></span></div>"
+      expected = "<div class=\"input-group field-refresh\"><select name=\"test[]\" id=\"test\" class=\"btn-secondary multi-select-field\" multiple=\"multiple\"></select><span class=\"input-group-btn\"><span data-connect=\"{&quot;events&quot;:&quot;click&quot;,&quot;mode&quot;:&quot;remote&quot;,&quot;target&quot;:{&quot;selector&quot;:&quot;&quot;,&quot;url&quot;:&quot;&quot;,&quot;data&quot;:[]}}\" class=\"btn-primary ui-bibz-connect input-refresh-button btn\"><i class=\"glyph fa fa-refresh\"></i> </span></span></div>"
 
       assert_equal expected, actual
     end

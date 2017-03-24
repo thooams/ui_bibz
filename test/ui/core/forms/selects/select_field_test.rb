@@ -14,7 +14,7 @@ class SelectFieldTest < ActionView::TestCase
 
     test "Select Field refresh" do
       actual   = UiBibz::Ui::Core::Forms::Selects::SelectField.new('example', refresh: { target: { url: '/' }}).render
-      expected = "<div class=\"input-group field-refresh\"><select name=\"example\" id=\"example\" class=\"select-field form-control\"></select><span class=\"input-group-btn\"><button data-connect=\"{&quot;events&quot;:&quot;click&quot;,&quot;mode&quot;:&quot;remote&quot;,&quot;target&quot;:{&quot;selector&quot;:&quot;#example&quot;,&quot;url&quot;:&quot;/&quot;,&quot;data&quot;:[]}}\" class=\"btn-primary ui-bibz-connect input-refresh-button btn\"><i class=\"glyph fa fa-refresh\"></i> </button></span></div>"
+      expected = "<div class=\"input-group field-refresh\"><select name=\"example\" id=\"example\" class=\"select-field form-control\"></select><span class=\"input-group-btn\"><span data-connect=\"{&quot;events&quot;:&quot;click&quot;,&quot;mode&quot;:&quot;remote&quot;,&quot;target&quot;:{&quot;selector&quot;:&quot;#example&quot;,&quot;url&quot;:&quot;/&quot;,&quot;data&quot;:[]}}\" class=\"btn-primary ui-bibz-connect input-refresh-button btn\"><i class=\"glyph fa fa-refresh\"></i> </span></span></div>"
 
       assert_equal expected, actual
     end

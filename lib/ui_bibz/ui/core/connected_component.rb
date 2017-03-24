@@ -50,7 +50,6 @@ module UiBibz::Ui::Core
     protected
 
     def refresh_render
-      ap html_options
       content_tag :div, class: 'input-group field-refresh' do
         concat select_tag content, options[:option_tags], html_options
         concat refresh_btn_html
