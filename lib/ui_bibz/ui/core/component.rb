@@ -1,6 +1,6 @@
 require 'haml'
-require 'ui_bibz/ui/core/component/klass_extension'
-require 'ui_bibz/ui/core/component/glyph_extension'
+require 'ui_bibz/ui/extensions/core/component/klass_extension'
+require 'ui_bibz/ui/extensions/core/component/glyph_extension'
 module UiBibz::Ui::Core
 
   # Creates a component of the given +name+ using options created by the set of +options+.

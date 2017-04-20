@@ -60,7 +60,7 @@ module UiBibz::Ui::Core::Forms::Dates
           concat content_tag :span, options[:prepend], class: 'input-group-addon' unless @options[:prepend].nil?
         end
       else
-        UiBibz::Ui::Core::Forms::Texts::SurroundField.new(content, options, html_options).render
+        UiBibz::Ui::Core::Forms::Texts::TextField.new(content, options, html_options).render
       end
     end
 

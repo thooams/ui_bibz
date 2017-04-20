@@ -122,12 +122,12 @@ module UiBibz::Helpers::UiCoreHelper
     UiBibz::Ui::Core::Forms::Numbers::FormulaField.new(content, options, html_options, &block).render
   end
 
-  # Surround Field Component
+  # Text Field Component
   #
   # +options+ (Hash)
   # +html_options+ (Hash)
-  def surround_field content = nil, options = nil, html_options = nil, &block
-    UiBibz::Ui::Core::Forms::Texts::SurroundField.new(content, options, html_options, &block).render
+  def text_field content = nil, options = nil, html_options = nil, &block
+    UiBibz::Ui::Core::Forms::Texts::TextField.new(content, options, html_options, &block).render
   end
 
   # Switch Field Component

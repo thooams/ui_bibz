@@ -1,3 +1,4 @@
+require 'ui_bibz/ui/extensions/core/forms/surround_extension'
 module UiBibz::Ui::Core::Forms::Texts
 
   # Create a AutoCompleteField
@@ -14,7 +15,9 @@ module UiBibz::Ui::Core::Forms::Texts
   #
   # You can add HTML attributes using the +html_options+.
   # You can pass arguments in options attribute:
-  # * option_tags - Array, Object [required]
+  # * +option_tags+ - Array, Object [required]
+  # * +append+  - String, Html
+  # * +prepend+ - String, Html
   #
   # ==== Signatures
   #
@@ -41,6 +44,7 @@ module UiBibz::Ui::Core::Forms::Texts
   #   end
   #
   class AutoCompleteField < UiBibz::Ui::Core::ConnectedComponent
+    include SurroundExtension
 
     # See UiBibz::Ui::Core::Component.initialize
     def initialize content = nil, options = nil, html_options = nil, &block
@@ -49,21 +53,19 @@ module UiBibz::Ui::Core::Forms::Texts
 
     # Render html tag
     def render
-      if options[:refresh]
-        refresh_render
-      else
-        text_field_input_tag  + data_list_render
-      end
+      surround_field auto_complete_field_input_tag
     end
 
     private
 
-    def refresh_render
-      content_tag :div, class: 'input-group field-refresh' do
-        concat text_field_input_tag
-        concat data_list_render
-        concat refresh_btn_html
-      end
+    def auto_complete_field_input_tag
+      output = [text_field_input_tag, data_list_render]
+      output << refresh_btn_html unless options[:refresh].nil?
+      output.join.html_safe
+    end
+
+    def surround_wrapper_class
+      "field-refresh" unless options[:refresh].nil?
     end
 
     def component_html_data

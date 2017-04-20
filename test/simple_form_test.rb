@@ -121,12 +121,12 @@ class SimpleFormTest < ActionView::TestCase
     assert_equal expected, actual
   end
 
-  test 'surround field input in simple form' do
+  test 'text field input in simple form' do
     actual = simple_form_for @user do |f|
-      f.input :name_fr, as: :surround_field
+      f.input :name_fr, as: :text_field
     end
 
-    expected = "<form class=\"simple_form edit_user\" id=\"edit_user_1\" action=\"/users/1\" accept-charset=\"UTF-8\" method=\"post\"><input name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" /><input type=\"hidden\" name=\"_method\" value=\"patch\" /><div class=\"form-group surround_field optional user_name_fr\"><label class=\"control-label surround_field optional\" for=\"user_name_fr\">Name fr</label><input type=\"text\" name=\"user[name_fr]\" id=\"user_name_fr\" class=\"surround_field optional form-control\" /></div></form>"
+    expected = "<form class=\"simple_form edit_user\" id=\"edit_user_1\" action=\"/users/1\" accept-charset=\"UTF-8\" method=\"post\"><input name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" /><input type=\"hidden\" name=\"_method\" value=\"patch\" /><div class=\"form-group text_field optional user_name_fr\"><label class=\"control-label text_field optional\" for=\"user_name_fr\">Name fr</label><input type=\"text\" name=\"user[name_fr]\" id=\"user_name_fr\" class=\"text_field optional form-control\" /></div></form>"
 
     assert_equal expected, actual
   end

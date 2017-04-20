@@ -58,7 +58,7 @@ module UiBibz
 
         module Texts
           autoload :AutoCompleteField,       "ui_bibz/ui/core/forms/texts/auto_complete_field"
-          autoload :SurroundField,           "ui_bibz/ui/core/forms/texts/surround_field"
+          autoload :TextField,               "ui_bibz/ui/core/forms/texts/text_field"
         end
 
         module Textareas
