@@ -54,7 +54,7 @@ module UiBibz::Ui::Core::Forms::Choices
     def render
       content_tag :div, html_options.except(:id) do
         concat check_box_tag content, options[:value], options[:checked] || false, checkbox_html_options
-        concat label_tag label_name, label_content
+        concat label_tag label_name, label_content, class: options[:label] == false ? 'fix-label' : ''
       end
     end
 
@@ -71,7 +71,14 @@ module UiBibz::Ui::Core::Forms::Choices
     end
 
     def label_content
-      options[:label] || content
+      case options[:label]
+      when nil
+        content
+      when false
+        " "
+      else
+        options[:label]
+      end
     end
 
     def status

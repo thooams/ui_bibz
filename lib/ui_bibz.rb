@@ -56,6 +56,10 @@ module UiBibz
           autoload :ButtonRefresh,           "ui_bibz/ui/core/forms/buttons/button_refresh"
         end
 
+        module Surrounds
+          autoload :SurroundField,           "ui_bibz/ui/core/forms/surrounds/surround_field"
+        end
+
         module Texts
           autoload :AutoCompleteField,       "ui_bibz/ui/core/forms/texts/auto_complete_field"
           autoload :TextField,               "ui_bibz/ui/core/forms/texts/text_field"

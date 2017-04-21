@@ -170,12 +170,20 @@ module UiBibz::Helpers::UiCoreHelper
     UiBibz::Ui::Core::Forms::Selects::DropdownSelectField.new(content, options, html_options, &block).render
   end
 
-  # Autocomplete Field Component
+  # Auto Complete Field Component
   #
   # +options+ (Hash)
   # +html_options+ (Hash)
   def auto_complete_field content = nil, options = nil, html_options = nil, &block
     UiBibz::Ui::Core::Forms::Texts::AutoCompleteField.new(content, options, html_options, &block).render
+  end
+
+  # Surround Field Component
+  #
+  # +options+ (Hash)
+  # +html_options+ (Hash)
+  def surround_field content = nil, options = nil, html_options = nil, &block
+     UiBibz::Ui::Core::Forms::Surrounds::SurroundField.new(content, options, html_options).tap(&block).render
   end
 
   # Input section end ----------------------------------------------------
