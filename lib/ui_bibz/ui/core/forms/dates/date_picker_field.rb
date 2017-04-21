@@ -51,23 +51,23 @@ module UiBibz::Ui::Core::Forms::Dates
 
     # Render html tag
     def render
-      if options[:range]
-        content_tag :div, class: join_classes('input-group', 'input-daterange', size, status) do
-          concat content_tag :span, options[:append], class: 'input-group-addon' unless @options[:append].nil?
-          concat text_field_input_tag content[0]
-          concat content_tag :span, options[:range], class: 'input-group-addon input-group-range'
-          concat text_field_input_tag content[1]
-          concat content_tag :span, options[:prepend], class: 'input-group-addon' unless @options[:prepend].nil?
-        end
-      else
-        UiBibz::Ui::Core::Forms::Texts::TextField.new(content, options, html_options).render
-      end
+      date_picker_field_html_tag
     end
 
   private
 
-    def text_field_input_tag name
-      text_field_tag name, html_options[:value], html_options
+    def date_picker_field_html_tag
+      if options[:range]
+        UiBibz::Ui::Core::Forms::Surrounds::SurroundField.new.tap do |sf|
+          sf.addon @options[:append] unless @options[:append].nil?
+          sf.text_field content[0], html_options[:value], html_options
+          sf.addon options[:range]
+          sf.text_field content[1], html_options[:value], html_options
+          sf.addon @options[:prepend] unless @options[:prepend].nil?
+        end.render
+      else
+        UiBibz::Ui::Core::Forms::Texts::TextField.new(content, options, html_options).render
+      end
     end
 
     def component_html_data

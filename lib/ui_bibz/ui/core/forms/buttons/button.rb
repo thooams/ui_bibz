@@ -58,10 +58,14 @@ module UiBibz::Ui::Core::Forms::Buttons
 
     # Render html tag
     def render
-      content_tag :button, glyph_and_content_html, html_options
+      button_html_tag
     end
 
   protected
+
+    def button_html_tag
+      content_tag :button, glyph_and_content_html, html_options
+    end
 
     def component_html_classes
       ['btn', size, type]

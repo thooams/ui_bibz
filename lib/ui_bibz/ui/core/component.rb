@@ -86,6 +86,7 @@ module UiBibz::Ui::Core
     # Override this method to add html classes
     # Accept Array or String
     def component_html_classes
+      []
     end
 
     # Override this method to add html data
@@ -102,6 +103,11 @@ module UiBibz::Ui::Core
     # Accept Hash
     def component_options
       {}
+    end
+
+    # Override this method to add html classes to wrapper
+    def component_wrapper_html_classes
+      []
     end
 
     # Add html data arguments

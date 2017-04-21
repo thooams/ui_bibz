@@ -2,8 +2,10 @@ require 'ui_bibz/ui/core/forms/surrounds/components/surround_addon'
 require 'ui_bibz/ui/core/forms/surrounds/components/surround_button'
 require 'ui_bibz/ui/core/forms/surrounds/components/surround_button_group'
 require 'ui_bibz/ui/core/forms/surrounds/components/surround_button_link'
+require 'ui_bibz/ui/core/forms/surrounds/components/surround_button_refresh'
 require 'ui_bibz/ui/core/forms/surrounds/components/surround_checkbox_field'
 require 'ui_bibz/ui/core/forms/surrounds/components/surround_radio_field'
+require 'ui_bibz/ui/core/forms/surrounds/components/surround_switch_field'
 require 'ui_bibz/ui/core/forms/surrounds/components/surround_dropdown'
 module UiBibz::Ui::Core::Forms::Surrounds
 
@@ -70,8 +72,8 @@ module UiBibz::Ui::Core::Forms::Surrounds
       @items << SurroundAddon.new(UiBibz::Ui::Core::Glyph.new(content, options, html_options, &block).render).render
     end
 
-    def addon content
-      @items << SurroundAddon.new(content).render
+    def addon content = nil, options = {}, html_options = nil, &block
+      @items << SurroundAddon.new(content, options, html_options, &block).render
     end
 
     def button content = nil, options = nil, html_options = nil, &block
@@ -86,6 +88,10 @@ module UiBibz::Ui::Core::Forms::Surrounds
       @items << SurroundButtonLink.new(content, options, html_options, &block).render
     end
 
+    def button_refresh content = nil, options = nil, html_options = nil, &block
+      @items << SurroundButtonRefresh.new(content, options, html_options, &block).render
+    end
+
     def checkbox_field content = nil, options = nil, html_options = nil, &block
       @items << SurroundCheckboxField.new(content, options, html_options, &block).render
     end
@@ -93,6 +99,35 @@ module UiBibz::Ui::Core::Forms::Surrounds
     def radio_field content = nil, options = nil, html_options = nil, &block
       @items << SurroundRadioField.new(content, options, html_options, &block).render
     end
+
+    def text_field content = nil, options = nil, html_options = nil, &block
+      @items << UiBibz::Ui::Core::Forms::Texts::TextField.new(content, options, html_options, &block).render
+    end
+
+    def date_picker_field content = nil, options = nil, html_options = nil, &block
+      @items << UiBibz::Ui::Core::Forms::Dates::DatePickerField.new(content, options, html_options, &block).render
+    end
+
+    def dropdown_select_field content = nil, options = nil, html_options = nil, &block
+      @items << UiBibz::Ui::Core::Forms::Selects::DropdownSelectField.new(content, options, html_options, &block).render
+    end
+
+    def select_field content = nil, options = nil, html_options = nil, &block
+      @items << UiBibz::Ui::Core::Forms::Selects::SelectField.new(content, options, html_options, &block).render
+    end
+
+    def multi_select_field content = nil, options = nil, html_options = nil, &block
+      @items << UiBibz::Ui::Core::Forms::Selects::MultiSelectField.new(content, options, html_options, &block).render
+    end
+
+    def auto_complete_field content = nil, options = nil, html_options = nil, &block
+      @items << UiBibz::Ui::Core::Forms::Texts::AutoCompleteField.new(content, options, html_options, &block).render
+    end
+
+    # Not correctly implemented
+    # def switch_field content = nil, options = nil, html_options = nil, &block
+    #   @items << SurroundSwitchField.new(content, options, html_options, &block).render
+    # end
 
     private
 

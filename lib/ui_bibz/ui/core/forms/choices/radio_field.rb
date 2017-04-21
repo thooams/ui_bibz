@@ -52,13 +52,17 @@ module UiBibz::Ui::Core::Forms::Choices
 
     # Render html tag
     def render
+      radio_field_html_tag
+    end
+
+  private
+
+    def radio_field_html_tag
       content_tag :div, html_options.except(:id) do
         concat radio_button_tag content, options[:value], options[:checked] || false, checkbox_html_options
         concat label_tag label_name, label_content, class: options[:label] == false ? 'fix-label' : ''
       end
     end
-
-  private
 
     def checkbox_html_options
       opts = {}

@@ -57,14 +57,18 @@ module UiBibz::Ui::Core::Forms::Selects
 
     # Render html tag
     def render
+      multi_select_field_html_tag
+    end
+
+    private
+
+    def multi_select_field_html_tag
       if options[:refresh]
         refresh_render
       else
         select_tag content, options[:option_tags], html_options
       end
     end
-
-    private
 
     def component_html_options
       opts = { include_blank: false, prompt: false, multiple: true }
@@ -73,7 +77,7 @@ module UiBibz::Ui::Core::Forms::Selects
     end
 
     def component_html_classes
-      [size, type, 'multi-select-field']
+      [size, type, status, 'multi-select-field']
     end
 
     def component_html_data

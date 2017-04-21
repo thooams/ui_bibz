@@ -45,22 +45,30 @@ module UiBibz::Ui::Core::Forms::Numbers
 
     # Render html tag
     def render
-      content_tag :div, class: join_classes('input-group', 'formula_field', status) do
-        concat text_field_formula_input_tag
-        concat formula_field_sign
-        concat text_field_input_tag
-        concat formula_field_alert
-      end
+      formula_field_html_tag
     end
 
     private
 
-    def text_field_input_tag
-      text_field_tag content, html_options.delete(:value), readonly: true, class: 'formula-field-result form-control'
+    def formula_field_html_tag
+      UiBibz::Ui::Core::Forms::Surrounds::SurroundField.new(class: join_classes('formula_field', status)).tap do |sf|
+        sf.text_field formula_field_name, text_field_formula_html_options
+        sf.addon '=', class: 'formula-field-sign'
+        sf.text_field content, text_field_input_html_options
+        sf.addon formula_field_alert_glyph, { class: 'formula-field-alert' }, { data: { toggle: 'tooltip' }}
+      end.render
     end
 
-    def text_field_formula_input_tag
-      text_field_tag formula_field_name, html_options.delete(:formula_field_value), html_options.except(:value)
+    def text_field_formula_html_options
+      @text_input_value = html_options[:value]
+      html_options[:value] = html_options.delete(:formula_field_value)
+      html_options
+    end
+
+    def text_field_input_html_options
+      html_options[:value] = @text_input_value
+      html_options = (html_options || {}).merge({ readonly: true, class: 'formula-field-result'})
+      html_options
     end
 
     def component_html_classes
@@ -71,10 +79,8 @@ module UiBibz::Ui::Core::Forms::Numbers
       options[:state] == :disabled ? { disabled: 'disabled' } : {}
     end
 
-    def formula_field_alert
-      content_tag :span, class: 'formula-field-alert input-group-addon', data: { toggle: 'tooltip' } do
-        UiBibz::Ui::Core::Glyph.new('exclamation-triangle', status: :danger ).render
-      end
+    def formula_field_alert_glyph
+      UiBibz::Ui::Core::Glyph.new('exclamation-triangle', status: :danger ).render
     end
 
     def formula_field_name
@@ -83,10 +89,6 @@ module UiBibz::Ui::Core::Forms::Numbers
 
     def content_formula_name
       content.to_s.split('').select{ |i| i == "]" }.count > 0 ? content.to_s.gsub(/]$/, "_formula]") : "#{ content }_formula"
-    end
-
-    def formula_field_sign
-      content_tag :span, '=', class: 'formula-field-sign input-group-addon'
     end
 
     def status

@@ -60,10 +60,14 @@ module UiBibz::Ui::Core::Forms::Buttons
 
     # Render html tag
     def render
-      link_to glyph_and_content_html, link_url, html_options
+      button_link_html_tag
     end
 
   private
+
+    def button_link_html_tag
+      link_to glyph_and_content_html, link_url, html_options
+    end
 
     def link_url
       options[:url] || "#"

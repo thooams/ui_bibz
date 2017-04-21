@@ -24,10 +24,13 @@
   multiSelect: ->
     # http://loudev.com/
     $('.multi-select-field').each ->
-      data = $(this).data()
+      data    = $(this).data()
+      classes = $(this)[0].classList.value
+
       delete data["multiselect"]
-      data = Object.assign({ buttonClass: 'btn btn-secondary', inheritClass: true }, data)
+      data = Object.assign({ buttonClass: "btn #{ classes }"}, data)
       $(this).multiselect(data)
+      $(this).siblings('.btn-group').addClass('input-group-btn')
 
   formula: ->
     me = this

@@ -64,13 +64,17 @@ module UiBibz::Ui::Core::Forms::Buttons
 
     # Render html tag
     def render
+      button_choice_html_tag
+    end
+
+    private
+
+    def button_choice_html_tag
       content_tag :label, html_options do
         concat tag(:input,input_options)
         concat @content
       end
     end
-
-    private
 
     def component_html_classes
       ['btn', size]

@@ -1,5 +1,5 @@
 module UiBibz::Ui::Core::Forms::Surrounds
-  class SurroundButtonGroup < UiBibz::Ui::Core::Forms::Buttons::ButtonGroup
+  class SurroundSwitchField < UiBibz::Ui::Core::Forms::Choices::SwitchField
 
     # See UiBibz::Ui::Core::Dropdown.initialize
     def initialize content, options = nil, html_options = nil, &block
@@ -8,8 +8,8 @@ module UiBibz::Ui::Core::Forms::Surrounds
 
     private
 
-    def component_html_classes
-      'input-group-btn'
+    def component_wrapper_html_classes
+      super << 'input-group'
     end
 
   end
