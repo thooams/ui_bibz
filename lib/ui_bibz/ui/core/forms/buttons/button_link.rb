@@ -73,9 +73,5 @@ module UiBibz::Ui::Core::Forms::Buttons
       options[:url] || "#"
     end
 
-    def component_html_classes
-      ['btn', size, type]
-    end
-
   end
 end

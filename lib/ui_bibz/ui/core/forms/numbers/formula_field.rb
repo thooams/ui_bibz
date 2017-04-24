@@ -71,7 +71,7 @@ module UiBibz::Ui::Core::Forms::Numbers
     end
 
     def component_html_classes
-      'formula-field form-control'
+      super << ['formula-field', 'form-control']
     end
 
     def component_html_options

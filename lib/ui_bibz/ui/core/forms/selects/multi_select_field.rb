@@ -20,6 +20,8 @@ module UiBibz::Ui::Core::Forms::Selects
   # * +collapsible_opt_group+ - Boolean
   # * +searchable+ - Boolean
   # * +select_all_option+ - Boolean
+  # * +append+ - String, Html
+  # * +prepend+ - String, Html
   # * +connect+ - Hash
   #   * +event+ - String
   #   * +mode+ - String
@@ -58,9 +60,12 @@ module UiBibz::Ui::Core::Forms::Selects
     private
 
     def component_html_options
-      opts = { include_blank: false, prompt: false, multiple: true }
-      opts = opts.merge({ disabled: true }) if options[:state] == :disabled
-      opts
+      super.merge({
+        multiple:      true,
+        disabled:      options[:state] == :disabled,
+        include_blank: false,
+        prompt:        false,
+      })
     end
 
     def component_html_classes

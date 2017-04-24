@@ -68,16 +68,19 @@ module UiBibz::Ui::Core::Forms::Buttons
     end
 
     def component_html_classes
-      ['btn', size, type]
+      super << ['btn', size, type]
     end
 
     def component_html_options
-      options[:toggle].nil? ? {} : { "data-toggle" => 'button', "aria-pressed" => false, "autocomplete" => "off" }
+      if options[:toggle].nil?
+        super
+      else
+        super.merge({ "data-toggle" => 'button', "aria-pressed" => false, "autocomplete" => "off" })
+      end
     end
 
     def status
-      s = options[:status] || :primary
-      ["btn", outline, s].compact.join('-')
+      ["btn", outline, options[:status] || :primary ].compact.join('-')
     end
 
     def outline
