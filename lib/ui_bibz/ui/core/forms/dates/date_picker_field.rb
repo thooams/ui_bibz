@@ -60,9 +60,9 @@ module UiBibz::Ui::Core::Forms::Dates
       if options[:range]
         UiBibz::Ui::Core::Forms::Surrounds::SurroundField.new(class: 'input-daterange').tap do |sf|
           sf.addon @options[:append] unless @options[:append].nil?
-          sf.text_field content[0], html_options[:value], html_options
+          sf.text_field content[0], nil, html_options
           sf.addon options[:range]
-          sf.text_field content[1], html_options[:value], html_options
+          sf.text_field content[1], nil, html_options
           sf.addon @options[:prepend] unless @options[:prepend].nil?
         end.render
       else

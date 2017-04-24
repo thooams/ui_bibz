@@ -52,23 +52,22 @@ module UiBibz::Ui::Core::Forms::Numbers
 
     def formula_field_html_tag
       UiBibz::Ui::Core::Forms::Surrounds::SurroundField.new(class: join_classes('formula_field', status)).tap do |sf|
-        sf.text_field formula_field_name, text_field_formula_html_options
+        sf.text_field formula_field_name, nil, text_field_formula_html_options
         sf.addon '=', class: 'formula-field-sign'
-        sf.text_field content, text_field_input_html_options
+        sf.text_field content, nil, text_field_input_html_options
         sf.addon formula_field_alert_glyph, { class: 'formula-field-alert' }, { data: { toggle: 'tooltip' }}
       end.render
     end
 
     def text_field_formula_html_options
-      @text_input_value = html_options[:value]
-      html_options[:value] = html_options.delete(:formula_field_value)
-      html_options
+      opts = html_options.clone || {}
+      opts[:value] = html_options.delete(:formula_field_value)
+      opts
     end
 
     def text_field_input_html_options
-      html_options[:value] = @text_input_value
-      html_options = (html_options || {}).merge({ readonly: true, class: 'formula-field-result'})
-      html_options
+      opts = html_options.clone || {}
+      opts.merge({ readonly: true, class: 'formula-field-result'})
     end
 
     def component_html_classes
