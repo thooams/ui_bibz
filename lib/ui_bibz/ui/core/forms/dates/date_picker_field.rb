@@ -58,7 +58,7 @@ module UiBibz::Ui::Core::Forms::Dates
 
     def date_picker_field_html_tag
       if options[:range]
-        UiBibz::Ui::Core::Forms::Surrounds::SurroundField.new.tap do |sf|
+        UiBibz::Ui::Core::Forms::Surrounds::SurroundField.new(class: 'input-daterange').tap do |sf|
           sf.addon @options[:append] unless @options[:append].nil?
           sf.text_field content[0], html_options[:value], html_options
           sf.addon options[:range]
@@ -83,11 +83,11 @@ module UiBibz::Ui::Core::Forms::Dates
     end
 
     def component_html_classes
-      %w(date_picker form-control)
+      super << %w(date_picker form-control)
     end
 
     def component_html_options
-      options[:state] == :disabled ? { disabled: 'disabled' } : {}
+      super.merge({ disabled: options[:state] == :disabled  })
     end
 
     def date_locale

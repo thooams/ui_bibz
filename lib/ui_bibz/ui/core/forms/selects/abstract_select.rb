@@ -1,3 +1,4 @@
+require 'ui_bibz/ui/extensions/core/forms/surround_extension'
 module UiBibz::Ui::Core::Forms::Selects
 
   # Create a SelectField
@@ -65,17 +66,33 @@ module UiBibz::Ui::Core::Forms::Selects
   #
   #   select_field(content, options = {}, html_options = {})
   #
-  class SelectField < UiBibz::Ui::Core::Forms::Selects::AbstractSelect
+  class AbstractSelect < UiBibz::Ui::Core::Component
+    include SurroundExtension
 
     # See UiBibz::Ui::Core::Component.initialize
     def initialize content = nil, options = nil, html_options = nil, &block
       super
     end
 
+    # Render html tag
+    def render
+      surround_field select_field_html_tag
+    end
+
     private
 
-    def component_html_classes
-      super << ["select-field", "form-control"]
+    def select_field_html_tag
+      select_tag content, options[:option_tags], html_options
+    end
+
+    # Try to put it on a line
+    def component_html_options
+      opts = super
+      opts = opts.merge({ multiple: true })            if options[:multiple]
+      opts = opts.merge({ disabled: true })            if options[:state] == :disabled
+      opts = opts.merge({ include_blank: true})        if options[:include_blank]
+      opts = opts.merge({ prompt: options[:prompt] })  unless options[:prompt].blank?
+      opts
     end
 
   end

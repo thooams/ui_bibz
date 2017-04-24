@@ -42,6 +42,7 @@ module UiBibz
         end
 
         module Selects
+          autoload :AbstractSelect,          "ui_bibz/ui/core/forms/selects/abstract_select"
           autoload :DropdownSelectField,     "ui_bibz/ui/core/forms/selects/dropdown_select_field"
           autoload :SelectField,             "ui_bibz/ui/core/forms/selects/select_field"
           autoload :MultiColumnField,        "ui_bibz/ui/core/forms/selects/multi_column_field"
@@ -96,7 +97,6 @@ module UiBibz
 
       # Other section
       autoload :Alert,                   "ui_bibz/ui/core/alert"
-      autoload :ConnectedComponent,      "ui_bibz/ui/core/connected_component"
       autoload :Component,               "ui_bibz/ui/core/component"
       autoload :Glyph,                   "ui_bibz/ui/core/glyph"
       autoload :Jumbotron,               "ui_bibz/ui/core/jumbotron"

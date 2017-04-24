@@ -77,7 +77,7 @@ class DropdownSelectFieldTest < ActionView::TestCase
 
     test 'dropdown_select_field refresh' do
       actual = UiBibz::Ui::Core::Forms::Selects::DropdownSelectField.new('test', { refresh: { mode: 'local', target: { data: [] }}}).render
-      expected = "<div class=\"input-group field-refresh\"><select name=\"test\" id=\"test\" class=\"dropdown-select-field\"></select><span class=\"input-group-btn\"><span data-connect=\"{&quot;events&quot;:&quot;click&quot;,&quot;mode&quot;:&quot;local&quot;,&quot;target&quot;:{&quot;selector&quot;:&quot;#test&quot;,&quot;url&quot;:&quot;&quot;,&quot;data&quot;:[]}}\" class=\"btn-primary ui-bibz-connect input-refresh-button btn\"><i class=\"glyph fa fa-refresh\"></i> </span></span></div>"
+      expected = "<div class=\"field-refresh input-group\"><select name=\"test\" id=\"test\" class=\"dropdown-select-field\"></select><div class=\"input-group-btn\"><span data-connect=\"{&quot;events&quot;:&quot;click&quot;,&quot;mode&quot;:&quot;local&quot;,&quot;target&quot;:{&quot;selector&quot;:&quot;#test&quot;,&quot;url&quot;:&quot;&quot;,&quot;data&quot;:[]}}\" class=\"btn-primary ui-bibz-connect btn input-refresh-button\"><i class=\"glyph fa fa-refresh\"></i> </span></div></div>"
 
       assert_equal expected, actual
     end

@@ -124,6 +124,10 @@ module UiBibz::Ui::Core::Forms::Surrounds
       @items << UiBibz::Ui::Core::Forms::Texts::AutoCompleteField.new(content, options, html_options, &block).render
     end
 
+    def html content
+      @items << content
+    end
+
     # Not correctly implemented
     # def switch_field content = nil, options = nil, html_options = nil, &block
     #   @items << SurroundSwitchField.new(content, options, html_options, &block).render

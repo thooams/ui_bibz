@@ -1,4 +1,6 @@
+require 'ui_bibz/ui/extensions/core/forms/connect_extension'
 module SurroundExtension
+  include ConnectExtension
 
   private
 
@@ -6,39 +8,28 @@ module SurroundExtension
     !options[:append].nil? || !options[:prepend].nil? || !options[:refresh].nil?
   end
 
-  def surround_append_tag
-    content_tag :span, options[:append], class: 'input-group-addon' unless options[:append].nil?
-  end
-
-  def surround_prepend_tag
-    content_tag :span, options[:prepend], class: 'input-group-addon' unless options[:prepend].nil?
-  end
-
-  def surround_wrapper_class
-  end
-
-  def default_wrapper_class
-    ['input-group', surround_size, surround_status]
-  end
-
   def surround_wrapper_tag ct_tag
-    content_tag :div, class: join_classes(default_wrapper_class, surround_wrapper_class) do
-      concat surround_append_tag
-      concat ct_tag
-      concat surround_prepend_tag
-    end
+    UiBibz::Ui::Core::Forms::Surrounds::SurroundField.new(class: surround_classes).tap do |sf|
+      sf.addon options[:append]           unless options[:append].nil?
+      sf.html ct_tag
+      sf.button_refresh connect_opts      unless options[:refresh].nil?
+      sf.addon options[:prepend]          unless options[:prepend].nil?
+    end.render
   end
 
-  def surround_field field_tag
+  def surround_field field_tag, options = {}
     surrounded? ? surround_wrapper_tag(field_tag) : field_tag
   end
 
-  def surround_size
-    "input-group-#{ options[:size] }" if options[:size]
+  def input_group_classes
   end
 
-  def surround_status
-    "has-#{ options[:status] }" if options[:status]
+  def surround_classes
+    [input_group_refresh, input_group_classes]
+  end
+
+  def input_group_refresh
+    "field-refresh" if options[:refresh]
   end
 
 end

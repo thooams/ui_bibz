@@ -39,69 +39,39 @@ module UiBibz::Ui::Core::Forms::Texts
   #
   # ==== Helper
   #
-  #   autocomplete_field(options = {}, html_options = {}) do
+  #   auto_complete_field(options = {}, html_options = {}) do
   #    # content
   #   end
   #
-  class AutoCompleteField < UiBibz::Ui::Core::ConnectedComponent
-    include SurroundExtension
+  class AutoCompleteField < UiBibz::Ui::Core::Forms::Texts::TextField
 
     # See UiBibz::Ui::Core::Component.initialize
     def initialize content = nil, options = nil, html_options = nil, &block
       super
     end
 
-    # Render html tag
-    def render
-      surround_field auto_complete_field_input_tag
-    end
-
     private
 
-    def auto_complete_field_input_tag
-      output = [text_field_input_tag, data_list_render]
-      output << refresh_btn_html unless options[:refresh].nil?
-      output.join.html_safe
-    end
-
-    def surround_wrapper_class
-      "field-refresh" unless options[:refresh].nil?
-    end
-
-    def component_html_data
-      connect_options
+    def text_field_input_tag
+      text_field_tag(content, html_options[:value], html_options) + data_list_render
     end
 
     def data_list_render
       content_tag :datalist, options[:option_tags], id: data_list_name
     end
 
-    def text_field_input_tag
-      text_field_tag content, html_options[:value], html_options
-    end
-
     def component_html_options
-      args = { autocomplete: true, list: data_list_name }
-      args = args.merge(options[:state] == :disabled ? { disabled: 'disabled' } : {})
-      args
+      { autocomplete: true, list: data_list_name, disabled: options[:state] }
     end
 
-    def connect_opts
-      selector = options[:refresh][:target][:selector]
-      options[:refresh][:target][:selector] = selector.blank? ? "##{ data_list_name }" : selector
-      options[:refresh]
-    end
-
-    def component_html_classes
-      'form-control'
-    end
 
     def data_list_name
       @datalist ||= "#{ html_options[:id] || content.to_s.parameterize.underscore }-datalist"
     end
 
-    def status
-      "form-control-#{ options[:status] }" if options[:status]
+    # Connect option
+    def connect_options_selector
+       data_list_name
     end
 
   end

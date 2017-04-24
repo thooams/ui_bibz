@@ -60,18 +60,20 @@ module UiBibz::Ui::Core::Forms::Choices
     def checkbox_field_html_tag
       content_tag :div, html_options.except(:id) do
         concat check_box_tag content, options[:value], options[:checked] || false, checkbox_html_options
-        concat label_tag label_name, label_content, class: options[:label] == false ? 'fix-label' : ''
+        concat label_tag label_name, label_content, label_html_options
       end
     end
 
     def checkbox_html_options
-      opts = { class: 'styled' }
-      opts = opts.merge({ disabled: true}) if options[:state] == :disabled
-      opts
+      { class: 'styled', disabled: options[:state] == :disabled }
     end
 
     def label_name
       html_options[:id] || content
+    end
+
+    def label_html_options
+      options[:label] == false ? { class: 'fix-label' } : nil
     end
 
     def label_content
@@ -102,7 +104,7 @@ module UiBibz::Ui::Core::Forms::Choices
     end
 
     def component_html_classes
-      ["checkbox", "abc-checkbox", type, indeterminate, inline]
+      super << ["checkbox", "abc-checkbox", type, indeterminate, inline]
     end
 
   end

@@ -61,20 +61,28 @@ module UiBibz::Ui::Core::Forms::Texts
     end
 
     def component_html_classes
-      'form-control'
-    end
-
-    # :lg, :sm or :xs
-    def size
-      "input-group-#{ options[:size] }" if options[:size]
-    end
-
-    def status
-      "has-#{ options[:status] }" if options[:status]
+      ['form-control', status]
     end
 
     def component_html_options
       options[:state] == :disabled ? { disabled: 'disabled' } : {}
+    end
+
+    # :lg, :sm or :xs
+    def input_group_size
+      "input-group-#{ options[:size] }" if options[:size]
+    end
+
+    def input_group_status
+      "has-#{ options[:status] }" if options[:status]
+    end
+
+    def status
+      "form-control-#{ options[:status] }" if options[:status]
+    end
+
+    def input_group_classes
+      [input_group_status, input_group_size]
     end
 
   end

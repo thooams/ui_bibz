@@ -8,5 +8,5 @@ class CheckboxFieldTest < ActionView::TestCase
       expected = "<div class=\"abc-checkbox-primary checkbox abc-checkbox abc-checkbox-circle\"><input type=\"checkbox\" name=\"John\" id=\"John\" value=\"1\" class=\"styled\" /><label for=\"John\">John</label></div>"
 
       assert_equal expected, actual
-    end              
+    end
 end

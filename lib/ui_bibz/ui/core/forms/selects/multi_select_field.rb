@@ -48,27 +48,14 @@ module UiBibz::Ui::Core::Forms::Selects
   #
   #   multi_select_field(content, options = {}, html_options = {})
   #
-  class MultiSelectField < UiBibz::Ui::Core::Forms::Buttons::Button
+  class MultiSelectField < UiBibz::Ui::Core::Forms::Selects::AbstractSelect
 
     # See UiBibz::Ui::Core::Forms::Buttons::Button.initialize
     def initialize content = nil, options = nil, html_options = nil, &block
       super
     end
 
-    # Render html tag
-    def render
-      multi_select_field_html_tag
-    end
-
     private
-
-    def multi_select_field_html_tag
-      if options[:refresh]
-        refresh_render
-      else
-        select_tag content, options[:option_tags], html_options
-      end
-    end
 
     def component_html_options
       opts = { include_blank: false, prompt: false, multiple: true }
@@ -77,7 +64,7 @@ module UiBibz::Ui::Core::Forms::Selects
     end
 
     def component_html_classes
-      [size, type, status, 'multi-select-field']
+      super << [size, type, status, 'multi-select-field']
     end
 
     def component_html_data
@@ -108,10 +95,13 @@ module UiBibz::Ui::Core::Forms::Selects
       options[:status].nil? ? 'btn-secondary' : "btn-#{ options[:status] }"
     end
 
-    def connect_opts
-      selector = options[:refresh][:target][:selector]
-      options[:refresh][:target][:selector] = selector.blank? ? "##{ content.to_s.parameterize.underscore }" : selector
-      options[:refresh]
+    def type
+      "btn-block" if options[:type] == :block
+    end
+
+    # :lg, :sm or :xs
+    def size
+      "btn-#{ options[:size] }" if options[:size]
     end
 
   end

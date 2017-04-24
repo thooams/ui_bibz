@@ -60,14 +60,16 @@ module UiBibz::Ui::Core::Forms::Choices
     def radio_field_html_tag
       content_tag :div, html_options.except(:id) do
         concat radio_button_tag content, options[:value], options[:checked] || false, checkbox_html_options
-        concat label_tag label_name, label_content, class: options[:label] == false ? 'fix-label' : ''
+        concat label_tag label_name, label_content, label_html_options
       end
     end
 
     def checkbox_html_options
-      opts = {}
-      opts = opts.merge({ disabled: true}) if options[:state] == :disabled
-      opts
+      { disabled: options[:state] == :disabled }
+    end
+
+    def label_html_options
+      options[:label] == false ? { class: 'fix-label' } : nil
     end
 
     def label_name

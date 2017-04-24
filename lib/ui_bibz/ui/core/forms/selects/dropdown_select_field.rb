@@ -1,3 +1,4 @@
+require 'ui_bibz/ui/extensions/core/forms/surround_extension'
 module UiBibz::Ui::Core::Forms::Selects
 
   # Create a DropdownSelectField
@@ -27,6 +28,8 @@ module UiBibz::Ui::Core::Forms::Selects
   # * +show_tick+ - Boolean
   # * +show_menu_arrow+ - Boolean
   # * +dropup+ - Boolean
+  # * +append+ - String, Html
+  # * +prepend+ - String, Html
   # * +connect+ - Hash
   #   * +event+ - String
   #   * +mode+ - String
@@ -62,20 +65,11 @@ module UiBibz::Ui::Core::Forms::Selects
   #
   #   dropdown_select_field(content, options = {}, html_options = {})
   #
-  class DropdownSelectField < UiBibz::Ui::Core::ConnectedComponent
+  class DropdownSelectField < UiBibz::Ui::Core::Forms::Selects::AbstractSelect
 
     # See UiBibz::Ui::Core::Component.initialize
     def initialize content = nil, options = nil, html_options = nil, &block
       super
-    end
-
-    # Render html tag
-    def render
-      if options[:refresh]
-        refresh_render
-      else
-        select_tag content, options[:option_tags], html_options
-      end
     end
 
     private
@@ -89,7 +83,7 @@ module UiBibz::Ui::Core::Forms::Selects
     end
 
     def component_html_classes
-      ['dropdown-select-field', show_tick, show_menu_arrow, dropup]
+      super << ['dropdown-select-field', show_tick, show_menu_arrow, dropup]
     end
 
     def component_html_data

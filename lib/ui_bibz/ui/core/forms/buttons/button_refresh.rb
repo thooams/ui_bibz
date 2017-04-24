@@ -1,3 +1,4 @@
+require 'ui_bibz/ui/extensions/core/forms/connect_extension'
 module UiBibz::Ui::Core::Forms::Buttons
 
   # Create a Button Refrash
@@ -48,13 +49,13 @@ module UiBibz::Ui::Core::Forms::Buttons
   #   end.render
   #
   class ButtonRefresh < UiBibz::Ui::Core::Forms::Buttons::Button
+    include ConnectExtension
 
     # See UiBibz::Ui::Core::Component.initialize
     def initialize content = nil, options = nil, html_options = nil, &block
       super
     end
 
-    # Render with span not a button to avoid submit form bug
     def render
       button_refresh_html_tag
     end
@@ -67,11 +68,11 @@ module UiBibz::Ui::Core::Forms::Buttons
 
     def component_options
       options[:connect] = cnt_opts
-      { glyph: 'refresh', status: options[:status] }
+      super.merge({ glyph: 'refresh', status: options[:status] })
     end
 
     def component_html_classes
-      ['input-refresh-button', 'btn']
+      super << 'input-refresh-button'
     end
 
     def cnt_opts

@@ -19,7 +19,7 @@ class TextFieldTest < ActionView::TestCase
 
     test 'text_field size' do
       actual = UiBibz::Ui::Core::Forms::Texts::TextField.new('test', size: :xs, append: '1', prepend: '2').render
-      expected = "<div class=\"input-group input-group-xs\"><span class=\"input-group-addon\">1</span><input type=\"text\" name=\"test\" id=\"test\" class=\"form-control\" /><span class=\"input-group-addon\">2</span></div>"
+      expected = "<div class=\"input-group-xs input-group\"><span class=\"input-group-addon\">1</span><input type=\"text\" name=\"test\" id=\"test\" class=\"form-control\" /><span class=\"input-group-addon\">2</span></div>"
 
       assert_equal expected, actual
     end
