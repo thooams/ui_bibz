@@ -64,6 +64,9 @@ module UiBibz::Ui::Core::Forms::Texts
       { autocomplete: true, list: data_list_name, disabled: options[:state] }
     end
 
+    def component_html_classes
+      super << "auto-complete-field"
+    end
 
     def data_list_name
       @datalist ||= "#{ html_options[:id] || content.to_s.parameterize.underscore }-datalist"

@@ -30,7 +30,7 @@
       delete data["multiselect"]
       data = Object.assign({ buttonClass: "btn #{ classes }"}, data)
       $(this).multiselect(data)
-      $(this).siblings('.btn-group').addClass('input-group-btn')
+      $(this).siblings('.btn-group').addClass('input-group-btn') if $(this).parent().hasClass('input-group')
 
   formula: ->
     me = this
