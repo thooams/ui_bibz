@@ -1,4 +1,4 @@
-module CustomInputs
+module UiBibzInputs
   class TextFieldInput < StringInput
     include UiBibz::Ui::Core::Forms::Texts
 

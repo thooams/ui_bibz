@@ -14,7 +14,7 @@ module UiBibz::Ui::Core::Forms::Surrounds
   private
 
     def surround_addon_html_tag
-      content_tag :span, content, html_options
+      content_tag :span, glyph_and_content_html, html_options
     end
 
     def component_html_classes

@@ -1,4 +1,4 @@
-module CustomInputs
+module UiBibzInputs
   class AutoCompleteFieldInput < CollectionInput
     include UiBibz::Ui::Core::Forms::Texts
 

@@ -65,7 +65,8 @@ module UiBibz::Ui::Core::Forms::Surrounds
       @items << SurroundDropdown.new(content, options, html_options).tap(&block).render
     end
 
-    def input
+    def input attribute_name, options = {}, &block
+      @items << @options[:form].input(attribute_name, options, &block)
     end
 
     def glyph content = nil, options = {}, html_options = nil, &block

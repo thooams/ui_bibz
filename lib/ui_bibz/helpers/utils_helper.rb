@@ -6,4 +6,9 @@ module UiBibz::Helpers::UtilsHelper
     UiBibz::Utils::Internationalization.new(translation, options).translate
   end
 
+  def ui_bibz_form_for object, *args, &block
+    options = args.extract_options!
+    simple_form_for(object, *(args << options.merge(builder: UiBibzForm::UiBibzFormBuilder)), &block)
+  end
+
 end

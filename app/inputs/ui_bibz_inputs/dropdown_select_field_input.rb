@@ -1,4 +1,4 @@
-module CustomInputs
+module UiBibzInputs
   class DropdownSelectFieldInput < CollectionInput
 
     def input(wrapper_options)

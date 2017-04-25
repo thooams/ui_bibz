@@ -1,4 +1,4 @@
-module CustomInputs
+module UiBibzInputs
   class CollectionInput < SimpleForm::Inputs::CollectionInput
     include UiBibz::Ui::Core::Forms::Selects
     include ActionView::Helpers::FormOptionsHelper

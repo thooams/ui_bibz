@@ -1,4 +1,4 @@
-module CustomInputs
+module UiBibzInputs
   class MarkdownEditorFieldInput < StringInput
     include UiBibz::Ui::Core::Forms::Textareas
 

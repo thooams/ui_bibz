@@ -1,4 +1,4 @@
-module CustomInputs
+module UiBibzInputs
   class MultiColumnFieldInput < CollectionInput
     include UiBibz::Ui::Core::Forms::Selects
 

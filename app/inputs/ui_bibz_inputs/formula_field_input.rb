@@ -1,4 +1,4 @@
-module CustomInputs
+module UiBibzInputs
   class FormulaFieldInput < StringInput
     include UiBibz::Ui::Core::Forms::Numbers
 

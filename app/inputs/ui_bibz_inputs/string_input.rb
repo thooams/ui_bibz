@@ -1,4 +1,4 @@
-module CustomInputs
+module UiBibzInputs
   class StringInput < SimpleForm::Inputs::Base
 
       enable :placeholder, :maxlength, :minlength, :pattern

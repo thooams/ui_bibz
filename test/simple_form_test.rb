@@ -4,6 +4,7 @@ require 'simple_form'
 
 include SimpleForm::ActionViewExtensions::FormHelper
 
+include UiBibz::Helpers::UtilsHelper
 class SimpleFormTest < ActionView::TestCase
 
   setup do
@@ -208,6 +209,22 @@ class SimpleFormTest < ActionView::TestCase
 
     expected = "<form class=\"simple_form edit_user\" id=\"edit_user_1\" action=\"/users/1\" accept-charset=\"UTF-8\" method=\"post\"><input name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" /><input type=\"hidden\" name=\"_method\" value=\"patch\" /><div class=\"form-group select_field optional user_name_fr\"><label class=\"control-label select_field optional\" for=\"user_name_fr\">Name fr</label><select name=\"user[name_fr]\" id=\"user_name_fr\" class=\"select_field optional select-field form-control\"><optgroup label=\"Europe\"><option selected=\"selected\" value=\"1\">France</option>
 <option value=\"2\">Deutchland</option></optgroup></select></div></form>"
+
+    assert_equal expected, actual
+  end
+
+  test 'test surround field into simple form' do
+
+    @user.name_fr = 1
+    actual = ui_bibz_form_for @user do |f|
+      f.input :name_fr, as: :auto_complete_field
+      f.surround_field do |sf|
+        sf.input :name_en, as: :text_field
+        sf.addon("€")
+      end
+    end
+
+    expected = ""
 
     assert_equal expected, actual
   end

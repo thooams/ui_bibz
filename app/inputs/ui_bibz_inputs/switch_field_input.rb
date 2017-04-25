@@ -1,4 +1,4 @@
-module CustomInputs
+module UiBibzInputs
   class SwitchFieldInput < BaseInput
     include UiBibz::Ui::Core::Forms::Choices
 

@@ -1,4 +1,4 @@
-module CustomInputs
+module UiBibzInputs
   class BaseInput < SimpleForm::Inputs::Base
 
     def input(wrapper_options)

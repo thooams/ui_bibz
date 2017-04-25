@@ -1,4 +1,4 @@
-module CustomInputs
+module UiBibzInputs
   class RadioFieldInput < SimpleForm::Inputs::CollectionRadioButtonsInput
     include UiBibz::Ui::Core::Forms::Choices
 

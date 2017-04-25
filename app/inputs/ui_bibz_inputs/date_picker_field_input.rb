@@ -1,4 +1,4 @@
-module CustomInputs
+module UiBibzInputs
   class DatePickerFieldInput < BaseInput
     include UiBibz::Ui::Core::Forms::Dates
 
