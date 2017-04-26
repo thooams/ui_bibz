@@ -6,11 +6,9 @@ module UiBibzInputs
       UiBibz::Ui::Core::Forms::Texts::AutoCompleteField.new(input_attribute_name, new_options, input_html_options).render
     end
 
-    def input_html_options
-      opts = super
-      opts = opts.merge({ disabled: options[:disabled] })           unless options[:disabled].blank?
-      opts = opts.merge({ value: @builder.object.send(attribute_name) })
-      opts
+    def new_options
+      super.merge({ value: @builder.object.send(attribute_name) })
     end
+
   end
 end

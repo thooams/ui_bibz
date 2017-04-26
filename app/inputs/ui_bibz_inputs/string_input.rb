@@ -14,6 +14,10 @@ module UiBibzInputs
         @builder.text_field(attribute_name, merged_input_options)
       end
 
+      def options
+        super.merge({ value: @builder.object.send(attribute_name) || super[:value] })
+      end
+
       private
 
       def string?

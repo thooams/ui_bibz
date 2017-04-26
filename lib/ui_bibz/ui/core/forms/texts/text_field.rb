@@ -57,7 +57,7 @@ module UiBibz::Ui::Core::Forms::Texts
 
     # Simple_form or not
     def text_field_input_tag
-      text_field_tag content, html_options[:value], html_options
+      text_field_tag content, options[:value] || html_options[:value], html_options
     end
 
     def component_html_classes

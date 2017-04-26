@@ -8,8 +8,10 @@ include UiBibz::Helpers::UtilsHelper
 class SimpleFormTest < ActionView::TestCase
 
   setup do
-    User.where(name_fr: 'test1', active: true).first_or_create
-    User.where(name_fr: 'test2', active: false).first_or_create
+    user = User.where(name_fr: 'test1', name_en: 'test1 en', active: true).first_or_create
+    user.update_attribute(:created_at, "2017-04-26 14:48:43 UTC")
+    user = User.where(name_fr: 'test2', name_en: 'test2 en', active: false).first_or_create
+    user.update_attribute(:created_at, "2017-04-26 14:48:43 UTC")
     continent = Continent.where(name: 'Europe').first_or_create
     Country.where(name: 'France', continent_id: continent.id).first_or_create
     Country.where(name: 'Deutchland', continent_id: continent.id).first_or_create
@@ -36,7 +38,7 @@ class SimpleFormTest < ActionView::TestCase
       f.input :created_at, as: :date_picker_field
     end
 
-    expected = "<form class=\"simple_form edit_user\" id=\"edit_user_1\" action=\"/users/1\" accept-charset=\"UTF-8\" method=\"post\"><input name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" /><input type=\"hidden\" name=\"_method\" value=\"patch\" /><div class=\"form-group date_picker_field optional user_created_at\"><label class=\"control-label date_picker_field optional\" for=\"user_created_at\">Created at</label><input type=\"text\" name=\"user[created_at]\" id=\"user_created_at\" class=\"date_picker_field optional date_picker form-control\" data-date-locale=\"en\" data-provide=\"datepicker\" data-date-format=\"dd/mm/yyyy\" data-date-today-btn=\"linked\" /></div></form>"
+    expected = "<form class=\"simple_form edit_user\" id=\"edit_user_1\" action=\"/users/1\" accept-charset=\"UTF-8\" method=\"post\"><input name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" /><input type=\"hidden\" name=\"_method\" value=\"patch\" /><div class=\"form-group date_picker_field optional user_created_at\"><label class=\"control-label date_picker_field optional\" for=\"user_created_at\">Created at</label><input type=\"text\" name=\"user[created_at]\" id=\"user_created_at\" value=\"2017-04-26 14:48:43 UTC\" class=\"date_picker_field optional date_picker form-control\" data-date-locale=\"en\" data-provide=\"datepicker\" data-date-format=\"yyyy-mm-dd\" data-date-today-btn=\"linked\" data-date-toggle-active=\"true\" /></div></form>"
 
     assert_equal expected, actual
   end
@@ -127,7 +129,7 @@ class SimpleFormTest < ActionView::TestCase
       f.input :name_fr, as: :text_field
     end
 
-    expected = "<form class=\"simple_form edit_user\" id=\"edit_user_1\" action=\"/users/1\" accept-charset=\"UTF-8\" method=\"post\"><input name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" /><input type=\"hidden\" name=\"_method\" value=\"patch\" /><div class=\"form-group text_field optional user_name_fr\"><label class=\"control-label text_field optional\" for=\"user_name_fr\">Name fr</label><input type=\"text\" name=\"user[name_fr]\" id=\"user_name_fr\" class=\"text_field optional form-control\" /></div></form>"
+    expected = "<form class=\"simple_form edit_user\" id=\"edit_user_1\" action=\"/users/1\" accept-charset=\"UTF-8\" method=\"post\"><input name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" /><input type=\"hidden\" name=\"_method\" value=\"patch\" /><div class=\"form-group text_field optional user_name_fr\"><label class=\"control-label text_field optional\" for=\"user_name_fr\">Name fr</label><input type=\"text\" name=\"user[name_fr]\" id=\"user_name_fr\" value=\"test1\" class=\"text_field optional form-control\" /></div></form>"
 
     assert_equal expected, actual
   end
@@ -214,17 +216,16 @@ class SimpleFormTest < ActionView::TestCase
   end
 
   test 'test surround field into simple form' do
-
-    @user.name_fr = 1
     actual = ui_bibz_form_for @user do |f|
-      f.input :name_fr, as: :auto_complete_field
-      f.surround_field do |sf|
+      concat(f.surround_field do |sf|
         sf.input :name_en, as: :text_field
         sf.addon("€")
-      end
+      end)
+      concat f.input(:name_fr, as: :auto_complete_field, collection: @users, label_method: :name_fr)
     end
 
-    expected = ""
+    expected = "<form class=\"simple_form edit_user\" id=\"edit_user_1\" action=\"/users/1\" accept-charset=\"UTF-8\" method=\"post\"><input name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" /><input type=\"hidden\" name=\"_method\" value=\"patch\" /><div><div class=\"input-group\"><input type=\"text\" name=\"user[name_en]\" id=\"user_name_en\" value=\"test1 en\" class=\"text_field optional form-control\" /><span class=\"input-group-addon\">€</span></div></div><div class=\"form-group auto_complete_field optional user_name_fr\"><label class=\"control-label auto_complete_field optional\" for=\"name_fr_Name fr\">Name fr</label><input type=\"text\" name=\"user[name_fr]\" id=\"user_name_fr\" value=\"test1\" class=\"auto_complete_field optional form-control auto-complete-field\" autocomplete=\"true\" list=\"user_name_fr-datalist\" /><datalist id=\"user_name_fr-datalist\"><option value=\"1\">test1</option>
+<option value=\"2\">test2</option></datalist></div></form>"
 
     assert_equal expected, actual
   end

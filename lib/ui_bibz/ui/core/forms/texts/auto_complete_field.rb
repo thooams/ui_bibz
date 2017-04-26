@@ -53,7 +53,7 @@ module UiBibz::Ui::Core::Forms::Texts
     private
 
     def text_field_input_tag
-      text_field_tag(content, html_options[:value], html_options) + data_list_render
+      text_field_tag(content, options[:value] || html_options[:value], html_options) + data_list_render
     end
 
     def data_list_render

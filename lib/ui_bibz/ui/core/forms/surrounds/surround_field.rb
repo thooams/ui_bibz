@@ -66,7 +66,7 @@ module UiBibz::Ui::Core::Forms::Surrounds
     end
 
     def input attribute_name, options = {}, &block
-      @items << @options[:form].input(attribute_name, options, &block)
+      @items << @options[:form].input(attribute_name, options.merge({ label: false, wrapper: false }), &block)
     end
 
     def glyph content = nil, options = {}, html_options = nil, &block

@@ -80,6 +80,10 @@ module UiBibz::Ui::Core::Forms::Dates
       calendar_weeks
       autoclose
       dates_disabled
+      toggle_active
+      days_of_week_disabled
+      days_of_week_highlighted
+      multiple
     end
 
     def component_html_classes
@@ -103,7 +107,7 @@ module UiBibz::Ui::Core::Forms::Dates
     end
 
     def picker_pattern
-      options[:format] || I18n.t('datepicker.pformat', default: 'dd/mm/yyyy')
+      options[:format] || I18n.t('datepicker.pformat', default: 'yyyy-mm-dd')
     end
 
     def today_btn
@@ -124,6 +128,22 @@ module UiBibz::Ui::Core::Forms::Dates
 
     def dates_disabled
       add_html_data("dates_disabled", [options[:dates_disabled]].flatten) if options[:dates_disabled]
+    end
+
+    def toggle_active
+      add_html_data("date_toggle_active", true)
+    end
+
+    def days_of_week_disabled
+      add_html_data("date_days_of_week_disabled", [options[:days_of_week_disabled]].flatten) if options[:days_of_week_disabled]
+    end
+
+    def days_of_week_highlighted
+      add_html_data("date_days_of_week_highlighted", [options[:days_of_week_highlighted]].flatten) if options[:days_of_week_highlighted]
+    end
+
+    def multiple
+      add_html_data("date_multidate", options[:multiple]) if options[:multiple]
     end
 
     # :lg, :sm or :xs
