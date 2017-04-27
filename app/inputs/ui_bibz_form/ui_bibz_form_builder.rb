@@ -1,6 +1,7 @@
 module UiBibzForm
   class UiBibzFormBuilder < SimpleForm::FormBuilder
-    include ActionView::Helpers
+    include ActionView::Helpers::TagHelper
+    include ActionView::Helpers::TextHelper
 
     attr_accessor :output_buffer
 

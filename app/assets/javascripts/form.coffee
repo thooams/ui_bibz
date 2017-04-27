@@ -1,12 +1,13 @@
 @UiBibzForm = class Form
 
   constructor: ->
-    @switch()         if $('input.switch-field').length > 0
-    @inputConnected() if $('.ui-bibz-connect').length > 0
-    @selectPicker()   if $('.dropdown-select-field').length > 0
-    @multiSelect()    if $('.multi-select-field').length > 0
-    @multiColumn()    if $('.multi-column-field').length > 0
-    @formula()        if $('.formula-field').length > 0
+    @switch()          if $('input.switch-field').length > 0
+    @inputConnected()  if $('.ui-bibz-connect').length > 0
+    @selectPicker()    if $('.dropdown-select-field').length > 0
+    @multiSelect()     if $('.multi-select-field').length > 0
+    @multiColumn()     if $('.multi-column-field').length > 0
+    @formula()         if $('.formula-field').length > 0
+    @autoCompleteFix() if $('.auto-complete-field').length > 0
 
   inputConnected: ->
     $('.ui-bibz-connect').inputConnected()
@@ -72,3 +73,14 @@
 
   multiColumn: ->
     $(".multi-column-field").multiSelect()
+
+  autoCompleteFix: ->
+    $(".auto-complete-field").each ->
+      parent = $(this).parent('.input-group')
+      if parent.length > 0
+        if parent.children().last().is('datalist')
+          radius = parent.children().first().css("border-bottom-left-radius")
+          $(this).css("border-bottom-right-radius", radius)
+          $(this).css("border-top-right-radius", radius)
+
+

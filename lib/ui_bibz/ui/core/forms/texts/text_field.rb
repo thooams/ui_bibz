@@ -60,6 +60,11 @@ module UiBibz::Ui::Core::Forms::Texts
       text_field_tag content, options[:value] || html_options[:value], html_options
     end
 
+    # Todo
+    def component_options
+      options[:status].nil? ? super : super.merge({ surrounded: true })
+    end
+
     def component_html_classes
       ['form-control', status]
     end
@@ -68,21 +73,8 @@ module UiBibz::Ui::Core::Forms::Texts
       options[:state] == :disabled ? { disabled: 'disabled' } : {}
     end
 
-    # :lg, :sm or :xs
-    def input_group_size
-      "input-group-#{ options[:size] }" if options[:size]
-    end
-
-    def input_group_status
-      "has-#{ options[:status] }" if options[:status]
-    end
-
     def status
-      "form-control-#{ options[:status] }" if options[:status]
-    end
-
-    def input_group_classes
-      [input_group_status, input_group_size]
+      "form-control-#{ options[:status] }" unless options[:status].nil?
     end
 
   end

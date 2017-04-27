@@ -96,6 +96,7 @@ module UiBibz::Ui::Core::Forms::Selects
       style
       header
       actions_box
+      add_status
     end
 
     ############################ Data html options
@@ -126,6 +127,10 @@ module UiBibz::Ui::Core::Forms::Selects
 
     def header
       add_html_data('header', options[:header]) if options[:header]
+    end
+
+    def add_status
+      add_html_data('style', "btn-#{ options[:status]}") if options[:status]
     end
 
     ############################# Css classes

@@ -78,5 +78,9 @@ module UiBibz::Ui::Core::Forms::Selects
       super << ["select-field", "form-control"]
     end
 
+    def component_options
+      options[:status].nil? ? super : super.merge({ surrounded: true })
+    end
+
   end
 end
