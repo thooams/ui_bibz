@@ -1,5 +1,4 @@
 require 'test_helper'
-include UiBibz::Helpers
 
 class ButtonRefreshTest < ActionView::TestCase
 

@@ -1,5 +1,4 @@
 require 'test_helper'
-include UiBibz::Helpers
 class DropdownTest < ActionView::TestCase
 
   test 'Dropdown' do

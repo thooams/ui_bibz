@@ -100,7 +100,7 @@ module UiBibz
       autoload :Component,               "ui_bibz/ui/core/component"
       autoload :Glyph,                   "ui_bibz/ui/core/glyph"
       autoload :Jumbotron,               "ui_bibz/ui/core/jumbotron"
-      autoload :Tag,                     "ui_bibz/ui/core/tag"
+      autoload :Badge,                   "ui_bibz/ui/core/badge"
       autoload :Progress,                "ui_bibz/ui/core/progress"
       autoload :Star,                    "ui_bibz/ui/core/star"
     end
@@ -121,9 +121,12 @@ module UiBibz
   end
 
   module Helpers
-    autoload :UiCoreHelper, "ui_bibz/helpers/ui_core_helper"
-    autoload :UiUxHelper,   "ui_bibz/helpers/ui_ux_helper"
-    autoload :UtilsHelper,  "ui_bibz/helpers/utils_helper"
+    module Ui
+      autoload :CoreHelper,  "ui_bibz/helpers/ui/core_helper"
+      autoload :UxHelper,    "ui_bibz/helpers/ui/ux_helper"
+      module Core end
+    end
+    autoload :UtilsHelper, "ui_bibz/helpers/utils_helper"
   end
 
   module Concerns

@@ -1,5 +1,5 @@
 require 'test_helper'
-include UiBibz::Helpers
+
 class ListGroupTest < ActionView::TestCase
 
   test 'list_group with link' do

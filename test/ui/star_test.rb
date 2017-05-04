@@ -1,6 +1,5 @@
 require 'test_helper'
 
-include UiBibz::Helpers
 class StarTest < ActionView::TestCase
 
     test "stars with 1" do

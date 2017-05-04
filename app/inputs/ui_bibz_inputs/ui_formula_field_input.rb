@@ -1,5 +1,5 @@
 module UiBibzInputs
-  class FormulaFieldInput < StringInput
+  class UiFormulaFieldInput < StringInput
     include UiBibz::Ui::Core::Forms::Numbers
 
     def input(wrapper_options)

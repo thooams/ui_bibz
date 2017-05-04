@@ -1,5 +1,5 @@
 module UiBibzInputs
-  class MarkdownEditorFieldInput < StringInput
+  class UiMarkdownEditorFieldInput < StringInput
     include UiBibz::Ui::Core::Forms::Textareas
 
     def input(wrapper_options)

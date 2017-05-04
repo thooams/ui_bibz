@@ -1,5 +1,5 @@
 module UiBibzInputs
-  class RadioFieldInput < SimpleForm::Inputs::CollectionRadioButtonsInput
+  class UiRadioFieldInput < SimpleForm::Inputs::CollectionRadioButtonsInput
     include UiBibz::Ui::Core::Forms::Choices
 
     def input(wrapper_options)

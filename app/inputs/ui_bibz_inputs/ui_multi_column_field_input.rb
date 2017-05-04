@@ -1,5 +1,5 @@
 module UiBibzInputs
-  class MultiColumnFieldInput < CollectionInput
+  class UiMultiColumnFieldInput < CollectionInput
     include UiBibz::Ui::Core::Forms::Selects
 
     def input(wrapper_options)

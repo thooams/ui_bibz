@@ -5,7 +5,7 @@ module UiBibzForm
 
     attr_accessor :output_buffer
 
-    def surround_field content = nil, opts = nil, html_options = nil, &block
+    def ui_surround_field content = nil, opts = nil, html_options = nil, &block
       content = (options || {}).merge(content || {})
       content  = content.merge(template: @template, form: self)
 

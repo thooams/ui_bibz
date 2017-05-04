@@ -1,5 +1,5 @@
 module UiBibzInputs
-  class DatePickerFieldInput < BaseInput
+  class UiDatePickerFieldInput < BaseInput
     include UiBibz::Ui::Core::Forms::Dates
 
     def input(wrapper_options)

@@ -4,7 +4,6 @@ require "ui_bibz/ui/ux/tables/extensions/paginable"
 require "ui_bibz/ui/ux/tables/extensions/searchable"
 require "ui_bibz/ui/ux/tables/extensions/sortable"
 require "ui_bibz/ui/ux/tables/extensions/actionable"
-include UiBibz::Helpers
 
 class TableTest < ActionView::TestCase
 

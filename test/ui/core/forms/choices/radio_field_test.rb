@@ -1,5 +1,4 @@
 require 'test_helper'
-include UiBibz::Helpers
 
 class RadioFieldTest < ActionView::TestCase
 
@@ -9,4 +8,4 @@ class RadioFieldTest < ActionView::TestCase
 
       assert_equal expected, actual
     end
-end              
+end

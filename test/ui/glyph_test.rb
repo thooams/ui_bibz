@@ -1,6 +1,5 @@
 require 'test_helper'
 
-include UiBibz::Helpers
 class GlyphTest < ActionView::TestCase
 
   test 'create glyph with a name' do

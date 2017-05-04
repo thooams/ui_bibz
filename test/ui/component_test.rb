@@ -1,6 +1,5 @@
 require 'test_helper'
 
-include UiBibz::Helpers
 class ComponentTest < ActionView::TestCase
 
   test 'create complex component' do

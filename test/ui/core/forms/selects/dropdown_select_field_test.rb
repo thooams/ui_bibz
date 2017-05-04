@@ -1,6 +1,5 @@
 require 'test_helper'
 
-include UiBibz::Helpers
 class DropdownSelectFieldTest < ActionView::TestCase
 
     test 'dropdown_select_field' do

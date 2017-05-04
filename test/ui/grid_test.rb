@@ -1,6 +1,5 @@
 require 'test_helper'
 
-include UiBibz::Helpers
 class GridTest < ActionView::TestCase
 
   test 'row' do

@@ -1,5 +1,4 @@
 require 'test_helper'
-include UiBibz::Helpers
 
 class MarkdownEditorFieldTest < ActionView::TestCase
 

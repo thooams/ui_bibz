@@ -1,10 +1,10 @@
 require 'test_helper'
-include UiBibz::Helpers
-include UiBibz::Helpers::UiCoreHelper
+
 class CardTest < ActionView::TestCase
+  include UiBibz::Helpers::Ui::CoreHelper
 
   test 'create card' do
-    actual = card do
+    actual = ui_card do
       'test'
     end
     expected = "<div class=\"card card-block\">test</div>"
@@ -13,7 +13,7 @@ class CardTest < ActionView::TestCase
   end
 
   test 'create card with image, list and block' do
-    actual = card(tap: true) do |c|
+    actual = ui_card(tap: true) do |c|
       c.image 'image.svg'
       c.block do
         "test"
@@ -34,7 +34,7 @@ class CardTest < ActionView::TestCase
   end
 
   test 'create card with header, block and footer' do
-    actual = card(status: :danger, tap: true, class: 'state') do |p|
+    actual = ui_card(status: :danger, tap: true, class: 'state') do |p|
       p.header 'state', glyph: 'eye'
       p.block 'state'
       p.footer 'state'
@@ -45,7 +45,7 @@ class CardTest < ActionView::TestCase
   end
 
   test 'create card group' do
-    actual = card_group do |cg|
+    actual = ui_card_group do |cg|
       cg.card 'test 1', block: true
       cg.card 'test 2', block: true
       cg.card 'test 3', block: true
@@ -56,7 +56,7 @@ class CardTest < ActionView::TestCase
   end
 
   test 'create card deck' do
-    actual = card_deck do |cg|
+    actual = ui_card_deck do |cg|
       cg.card 'test 1', block: true
       cg.card 'test 2', block: true
       cg.card 'test 3', block: true
@@ -67,7 +67,7 @@ class CardTest < ActionView::TestCase
   end
 
   test 'create card column' do
-    actual = card_column do |cg|
+    actual = ui_card_column do |cg|
       cg.card 'test 1', block: true
       cg.card 'test 2', block: true
       cg.card 'test 3', block: true
@@ -78,7 +78,7 @@ class CardTest < ActionView::TestCase
   end
 
   test 'card list group' do
-    actual = card tap: true do |c|
+    actual = ui_card tap: true do |c|
       c.list_group do |lg|
         lg.list "list 1"
         lg.list "list 2"
@@ -91,7 +91,7 @@ class CardTest < ActionView::TestCase
   end
 
   test 'card block parameters' do
-    actual = card tap: true do |c|
+    actual = ui_card tap: true do |c|
       c.block tap: true do |b|
         b.title "title"
         b.text "text"

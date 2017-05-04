@@ -78,7 +78,8 @@
     $(".auto-complete-field").each ->
       parent = $(this).parent('.input-group')
       if parent.length > 0
-        if parent.children().last().is('datalist')
+        lastChild = parent.children().last()
+        if lastChild.is('datalist') || lastChild.not('visible')
           radius = parent.children().first().css("border-bottom-left-radius")
           $(this).css("border-bottom-right-radius", radius)
           $(this).css("border-top-right-radius", radius)

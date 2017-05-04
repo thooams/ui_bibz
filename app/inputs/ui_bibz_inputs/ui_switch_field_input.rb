@@ -1,5 +1,5 @@
 module UiBibzInputs
-  class SwitchFieldInput < BaseInput
+  class UiSwitchFieldInput < BaseInput
     include UiBibz::Ui::Core::Forms::Choices
 
     def input(wrapper_options)
