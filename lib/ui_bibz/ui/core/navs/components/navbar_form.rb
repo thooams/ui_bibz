@@ -41,13 +41,18 @@ module UiBibz::Ui::Core::Navs
   #
   class NavbarForm < UiBibz::Ui::Base
     include Haml::Helpers
+    include SimpleForm::ActionViewExtensions::FormHelper
+    include UiBibz::Helpers::UtilsHelper
     include ActionView::Helpers#::FormHelper
 
     def initialize model_or_url, options = {}, &block
       init_haml_helpers
       @options = options
-      if type == :form_for
+      case type
+      when :form_for
         @form = form_for(model_or_url, new_option, &block)
+      when :ui_form_for
+        @form = ui_form_for(model_or_url, new_option, &block)
       else
         #@form = form_tag(model_or_url, class: "navbar-form form-inline #{ position }", block)
         html_options = html_options_for_form(model_or_url, new_option)
