@@ -40,7 +40,8 @@ module UiBibz::Ui::Core::Cards::Components
 
     # Render html tag
     def render
-      image_tag asset_path("assets/#{content}"), html_options
+      #image_tag asset_path("assets/#{content}"), html_options
+      image_tag content, html_options
     end
 
   private
