@@ -60,7 +60,7 @@ module UiBibz::Ui::Core::Cards::Components
   private
 
     def component_html_classes
-      "card-block"
+      "card-body"
     end
 
   end

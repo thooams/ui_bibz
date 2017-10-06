@@ -91,7 +91,7 @@ module UiBibz::Ui::Core::Cards
     # See UiBibz::Ui::Core::Component.initialize
     def initialize content = nil, options = nil, html_options = nil, &block
       super
-      @items = [@content]
+      @items = [UiBibz::Ui::Core::Cards::Components::CardBlock.new(@content).render]
     end
 
     # Add Header which is a component
@@ -131,7 +131,7 @@ module UiBibz::Ui::Core::Cards
   protected
 
     def component_html_classes
-      ["card", text, card_block, type, tab_pane]
+      ["card", text, type, tab_pane]
     end
 
     def status
