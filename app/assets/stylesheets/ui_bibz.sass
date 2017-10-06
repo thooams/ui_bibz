@@ -3,17 +3,20 @@
 @import font-awesome
 
 // Bootstrap
-@import bootstrap/_variables
 $enable-flex: true
 
 //@import bootstrap-sprockets
+//@import bootstrap/_variables
+//@import bootstrap/functions
+//@import bootstrap/variables
 @import bootstrap
 @import tether.min
 
 
-$brand-secondary: $gray-lighter
-$states_colors: (success: $brand-success, primary: $brand-primary, secondary: $brand-secondary, info: $brand-info, danger: $brand-danger, warning: $brand-warning)
+//$brand-secondary: $gray-lighter
+//$states_colors: (success: $brand-success, primary: $brand-primary, secondary: $brand-secondary, info: $brand-info, danger: $brand-danger, warning: $brand-warning, light: $brand-light, dark: $brand-dark)
 
+$states_colors: $theme-colors
 
 // ##### Bootstrap Plugins
 // date_picker_field component
@@ -25,7 +28,8 @@ $states_colors: (success: $brand-success, primary: $brand-primary, secondary: $b
 // multi_select_field component
 @import bootstrap-multiselect.min
 // dropdown_select_field component
-@import bootstrap-select.min
+//@import bootstrap-select.min
+@import bootstrap-select
 // mardown-editor component
 @import bootstrap-markdown.min
 // awesome bootstrap checkbox component
@@ -33,7 +37,7 @@ $states_colors: (success: $brand-success, primary: $brand-primary, secondary: $b
 
 // fix plugins
 @import fix-bootstrap-4
-@import fix-dropdown-select
+//@import fix-dropdown-select
 
 // Components
 @import table
