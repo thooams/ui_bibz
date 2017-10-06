@@ -63,15 +63,15 @@ module UiBibz::Ui::Core
   private
 
     def component_html_classes
-      ['tag', type]
+      ['badge', type]
     end
 
     def status
-      "tag-#{ @options[:status] || :default  }"
+      "badge-#{ @options[:status] || :default  }"
     end
 
     def type
-      "tag-pill" if @options[:type] == :pill
+      "badge-pill" if @options[:type] == :pill
     end
 
   end
