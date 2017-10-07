@@ -49,9 +49,9 @@ module UiBibz::Ui::Core::Forms::Buttons
   #
   # ==== Helper
   #
-  #   button_choice(content, options = {}, html_options = {})
+  #   ui_button_choice(content, options = {}, html_options = {})
   #
-  #   button_choice(options = {}, html_options = {}) do
+  #   ui_button_choice(options = {}, html_options = {}) do
   #     content
   #   end
   #
