@@ -1,6 +1,6 @@
 require 'ui_bibz/ui/core/cards/components/card_header'
 require 'ui_bibz/ui/core/cards/components/card_footer'
-require 'ui_bibz/ui/core/cards/components/card_block'
+require 'ui_bibz/ui/core/cards/components/card_body'
 require 'ui_bibz/ui/core/cards/components/card_image'
 require 'ui_bibz/ui/core/cards/components/card_list_group'
 module UiBibz::Ui::Core::Cards
@@ -73,9 +73,9 @@ module UiBibz::Ui::Core::Cards
   #       content
   #     end
   #
-  #     p.block(content, options = {}, html_options = {})
+  #     p.body(content, options = {}, html_options = {})
   #     # or
-  #     p.block(options = {}, html_options = {}) do
+  #     p.body(options = {}, html_options = {}) do
   #       content
   #     end
   #
@@ -91,7 +91,7 @@ module UiBibz::Ui::Core::Cards
     # See UiBibz::Ui::Core::Component.initialize
     def initialize content = nil, options = nil, html_options = nil, &block
       super
-      @items = [UiBibz::Ui::Core::Cards::Components::CardBlock.new(@content).render]
+      @items = [UiBibz::Ui::Core::Cards::Components::CardBody.new(@content).render]
     end
 
     # Add Header which is a component
@@ -99,12 +99,12 @@ module UiBibz::Ui::Core::Cards
       @items << UiBibz::Ui::Core::Cards::Components::CardHeader.new(content, options, html_options, &block).render
     end
 
-    # Add Block div which is a component
-    def block content = nil, options = nil, html_options = nil, &block
+    # Add Body div which is a component
+    def body content = nil, options = nil, html_options = nil, &block
       if is_tap(content, options)
-        @items << UiBibz::Ui::Core::Cards::Components::CardBlock.new(content, options, html_options).tap(&block).render
+        @items << UiBibz::Ui::Core::Cards::Components::CardBody.new(content, options, html_options).tap(&block).render
       else
-        @items << UiBibz::Ui::Core::Cards::Components::CardBlock.new(content, options, html_options, &block).render
+        @items << UiBibz::Ui::Core::Cards::Components::CardBody.new(content, options, html_options, &block).render
       end
     end
 

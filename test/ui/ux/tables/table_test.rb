@@ -153,7 +153,7 @@ class TableTest < ActionView::TestCase
   test 'complex table_card' do
     actual = UiBibz::Ui::Ux::Tables::TableCard.new({ store: @users, tap: true }, { class: 'state' }).tap do |pane|
       pane.header 'Test header'
-      pane.block class: 'ui' do
+      pane.body class: 'ui' do
         'Test body'
       end
     end.render
@@ -162,7 +162,7 @@ class TableTest < ActionView::TestCase
   test 'complex table_card with custom actions' do
     actual = UiBibz::Ui::Ux::Tables::TableCard.new({ store: @users, tap: true }, { class: 'state'}).tap do |pane|
       pane.header 'Test header'
-      pane.block cls: 'ui' do
+      pane.body cls: 'ui' do
         'Test body'
       end
       pane.columns do |c|
