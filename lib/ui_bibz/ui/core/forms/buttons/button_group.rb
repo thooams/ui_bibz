@@ -69,7 +69,7 @@ module UiBibz::Ui::Core::Forms::Buttons
   private
 
     def component_html_classes
-      ["btn-#{ type }", size, position]
+      super << ["btn-group", "input-group", size, position]
     end
 
     def component_html_options

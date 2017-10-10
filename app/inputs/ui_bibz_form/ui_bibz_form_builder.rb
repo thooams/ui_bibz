@@ -19,7 +19,7 @@ module UiBibzForm
       content = (options || {}).merge(content || {})
       content  = content.merge(template: @template, form: self)
 
-      content_tag :div, "form-group button_group" do
+      content_tag :div do
         concat content_tag(:label, content[:label]) unless content[:label].nil?
         concat UiBibz::Ui::Core::Forms::Buttons::ButtonGroup.new(content, opts, html_options).tap(&block).render
       end
