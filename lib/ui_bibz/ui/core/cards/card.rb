@@ -91,7 +91,7 @@ module UiBibz::Ui::Core::Cards
     # See UiBibz::Ui::Core::Component.initialize
     def initialize content = nil, options = nil, html_options = nil, &block
       super
-      @items = [UiBibz::Ui::Core::Cards::Components::CardBody.new(@content).render]
+      @items = @content.nil? ? [] : [UiBibz::Ui::Core::Cards::Components::CardBody.new(@content).render]
     end
 
     # Add Header which is a component

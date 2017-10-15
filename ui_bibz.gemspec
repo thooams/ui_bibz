@@ -32,6 +32,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'will-paginate-i18n'
   s.add_dependency 'will_paginate-bootstrap4'
   s.add_dependency 'haml'
+  s.add_dependency 'jquery-rails', '>= 3.1.0'
   s.add_dependency 'haml-rails'
   s.add_dependency 'sass-rails', '>= 5.0.0'
   s.add_dependency 'font-awesome-sass'

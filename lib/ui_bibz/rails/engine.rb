@@ -1,5 +1,7 @@
 # to load pagination in rails app
 require 'will_paginate'
+require 'jquery-rails'
+require 'popper_js'
 require 'bootstrap'
 require "font-awesome-sass"
 

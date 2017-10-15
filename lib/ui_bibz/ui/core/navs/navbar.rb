@@ -142,7 +142,7 @@ module UiBibz::Ui::Core::Navs
     end
 
     def position
-      "navbar-fixed-#{ @options[:position] }" unless @options[:position].nil?
+      "fixed-#{ @options[:position] }" unless @options[:position].nil?
     end
 
     def type

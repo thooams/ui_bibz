@@ -1,4 +1,4 @@
-#= require jquery-2.1.4.min
+#= require jquery3
 
 # multi_column_field component
 #= require jquery.quicksearch.min
@@ -7,6 +7,7 @@
 
 # Bootstrap
 #= require tether.min
+#= require popper
 #= require bootstrap
 
 # date_picker_field component
