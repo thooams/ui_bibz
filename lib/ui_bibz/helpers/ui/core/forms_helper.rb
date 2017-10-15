@@ -21,7 +21,7 @@ module UiBibz::Helpers::Ui::Core::FormsHelper
   # +options+ (Hash)
   # +html_options+ (Hash)
   def ui_button_group content = nil, options = nil, html_options = nil, &block
-    UiBibz::Ui::Core::Forms::Buttons::ButtonGroup.new(content, options, html_options, &block).render
+    UiBibz::Ui::Core::Forms::Buttons::ButtonGroup.new(content, options, html_options).tap(&block).render
   end
 
   # Button Link Component

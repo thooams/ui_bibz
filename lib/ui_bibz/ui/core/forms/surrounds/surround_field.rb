@@ -137,7 +137,7 @@ module UiBibz::Ui::Core::Forms::Surrounds
     private
 
     def component_html_classes
-      ['input-group', status, size]
+      ['input-group', status, size, 'ui_surround_field']
     end
 
     # :lg, :sm or :xs

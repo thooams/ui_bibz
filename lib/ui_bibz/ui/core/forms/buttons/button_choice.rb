@@ -49,9 +49,9 @@ module UiBibz::Ui::Core::Forms::Buttons
   #
   # ==== Helper
   #
-  #   button_choice(content, options = {}, html_options = {})
+  #   ui_button_choice(content, options = {}, html_options = {})
   #
-  #   button_choice(options = {}, html_options = {}) do
+  #   ui_button_choice(options = {}, html_options = {}) do
   #     content
   #   end
   #
@@ -81,11 +81,15 @@ module UiBibz::Ui::Core::Forms::Buttons
     end
 
     def input_options
-      { type: type, autocomplete: :off }.merge(checked).merge(name).merge(id).merge(input_html_options)
+      { type: type, autocomplete: :off }.merge(checked).merge(value).merge(name).merge(id).merge(input_html_options)
     end
 
     def checked
       @options[:state] == :active ? { checked: :checked } : {}
+    end
+
+    def value
+      @options[:value].nil? ? {} : { value: options[:value] }
     end
 
     def name

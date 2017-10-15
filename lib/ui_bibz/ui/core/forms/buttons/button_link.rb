@@ -45,9 +45,9 @@ module UiBibz::Ui::Core::Forms::Buttons
   #
   # ==== Helper
   #
-  #   button_link(content, options = {}, html_options = {})
+  #   ui_button_link(content, options = {}, html_options = {})
   #
-  #   button_link(options = {}, html_options = {}) do
+  #   ui_button_link(options = {}, html_options = {}) do
   #     content
   #   end
   #

@@ -44,9 +44,9 @@ module UiBibz::Ui::Core::Forms::Buttons
   #
   # ==== Helper
   #
-  #  button(content, options = {}, html_options = {})
+  #  ui_button(content, options = {}, html_options = {})
   #
-  #  button(options = {}, html_options = {}) do
+  #  ui_button(options = {}, html_options = {}) do
   #    content
   #  end
   class Button < UiBibz::Ui::Core::Component

@@ -37,9 +37,9 @@ module UiBibz::Ui::Core::Forms::Choices
   #
   # ==== Helper
   #
-  #   radio(content, options = {}, html_options = {})
+  #   ui_radio_field(content, options = {}, html_options = {})
   #
-  #   radio(options = {}, html_options = {}) do
+  #   ui_radio_field(options = {}, html_options = {}) do
   #     content
   #   end
   #

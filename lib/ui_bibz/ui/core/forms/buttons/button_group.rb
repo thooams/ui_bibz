@@ -23,23 +23,22 @@ module UiBibz::Ui::Core::Forms::Buttons
   #
   # ==== Signatures
   #
-  #   UiBibz::Ui::Core::Forms::Buttons::ButtonGroup.new(options = nil, html_options = nil) do
+  #   UiBibz::Ui::Core::Forms::Buttons::ButtonGroup.new(options = nil, html_options = nil) do |bg|
   #     ...
   #   end
   #
   # ==== Examples
   #
-  #   UiBibz::Ui::Core::Forms::Buttons::ButtonGroup.new(position: :vertical, size: :xs) do
-  #     UiBibz::Ui::Core::Forms::Buttons.Button.new('test').render
-  #     UiBibz::Ui::Core::Forms::Buttons.Button.new('test2').render
+  #   UiBibz::Ui::Core::Forms::Buttons::ButtonGroup.new(position: :vertical, size: :xs) do |bg|
+  #     bg.ui_button 'test'
+  #     bg.ui_button 'test2'
   #   end.render
   #
   # ==== Helper
   #
-  #   button_group(content, options = {}, html_options = {})
-  #
-  #   button_group(options = {}, html_options = {}) do
-  #     content
+  #   ui_button_group(options = {}, html_options = {}) do |bg|
+  #     bg.ui_button 'content'
+  #     bg.ui_button_link 'Link', url: '#'
   #   end
   #
   class ButtonGroup < UiBibz::Ui::Core::Component
@@ -47,21 +46,30 @@ module UiBibz::Ui::Core::Forms::Buttons
     # See UiBibz::Ui::Core::Component.initialize
     def initialize content = nil, options = nil, html_options = nil, &block
       super
+      @items = []
     end
 
     # Render html tag
     def render
-      button_group_html_tag
+      content_tag :div, @items.join.html_safe, html_options
+    end
+
+    def ui_button_choice content, options = nil, html_options = nil, &block
+      @items << ButtonChoice.new(content, options, html_options, &block).render
+    end
+
+    def ui_button content, options = nil, html_options = nil, &block
+      @items << Button.new(content, options, html_options, &block).render
+    end
+
+    def input attribute_name, options = {}, &block
+      @items << @options[:form].input(attribute_name, options.merge({ label: false, wrapper: false }), &block)
     end
 
   private
 
-    def button_group_html_tag
-      content_tag :div, content, html_options
-    end
-
     def component_html_classes
-      ["btn-#{ type }", size, position]
+      super << ["btn-group", "input-group", size, position]
     end
 
     def component_html_options

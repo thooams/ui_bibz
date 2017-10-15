@@ -103,11 +103,13 @@ select.form-control
 
 .navbar
   .simple_form
-    label
-      display: none
     input
       width: auto
     .form-control
       width: auto
     .form-group
       display: inline-block
+
+.ui_surround_field
+  select:not(:first-child):not(:last-child)
+    border-radius: 0px
