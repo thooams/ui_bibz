@@ -87,6 +87,10 @@ module UiBibz
         autoload :Navbar,                  "ui_bibz/ui/core/navs/navbar"
       end
 
+      module Notifications
+        autoload :Alert,                   "ui_bibz/ui/core/notifications/alert"
+      end
+
       module Paths
         autoload :Breadcrumb,             "ui_bibz/ui/core/paths/breadcrumb"
       end
@@ -96,7 +100,6 @@ module UiBibz
       end
 
       # Other section
-      autoload :Alert,                   "ui_bibz/ui/core/alert"
       autoload :Component,               "ui_bibz/ui/core/component"
       autoload :Glyph,                   "ui_bibz/ui/core/glyph"
       autoload :Jumbotron,               "ui_bibz/ui/core/jumbotron"

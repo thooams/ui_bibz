@@ -1,4 +1,6 @@
-module UiBibz::Ui::Core
+require 'ui_bibz/ui/core/notifications/components/alert_header'
+require 'ui_bibz/ui/core/notifications/components/alert_body'
+module UiBibz::Ui::Core::Notifications
 
   # Create an alert
   #
@@ -45,7 +47,7 @@ module UiBibz::Ui::Core
   #     content
   #   end
   #
-  class Alert < Component
+  class Alert < UiBibz::Ui::Core::Component
 
     # See UiBibz::Ui::Core::Component.initialize
     def initialize content = nil, options = nil, html_options = nil, &block
@@ -55,9 +57,26 @@ module UiBibz::Ui::Core
     # Render html tag
     def render
       content_tag :div, html_options do
-        concat glyph_and_content_html
-        concat close_html if options[:closable]
+        if options[:tap].nil?
+          concat glyph_and_content_html
+          concat close_html if options[:closable]
+        else
+          concat glyph_and_content_html @header  unless @header.nil?
+          concat close_html                      if options[:closable]
+          concat tag(:hr)
+          concat @body                           unless @body.nil?
+        end
       end
+    end
+
+    # Add Header which is a component
+    def header content = nil, options = nil, html_options = nil, &block
+      @header = UiBibz::Ui::Core::Notifications::Components::AlertHeader.new(content, options, html_options, &block).render
+    end
+
+    # Add Body which is a component
+    def body content = nil, options = nil, html_options = nil, &block
+      @body = UiBibz::Ui::Core::Notifications::Components::AlertBody.new(content, options, html_options, &block).render
     end
 
   private

@@ -10,9 +10,9 @@ class NavbarTest < ActionView::TestCase
   end
 
   test 'Navbar with options' do
-    actual = UiBibz::Ui::Core::Navs::Navbar.new(title: 'Brand', expand_size: :xs, position: :top, brand_position: :right).tap do |nb|
+    actual = UiBibz::Ui::Core::Navs::Navbar.new(title: 'Brand', expand_size: :xs, status: :primary, position: :top, brand_position: :right).tap do |nb|
     end
-    expected = "<nav class=\"navbar navbar-light fixed-top navbar-expand-xs\"><button class=\"navbar-toggler hidden-sm-up\" type=\"button\" data-toggle=\"collapse\" data-target=\"##{ actual.id }\">☰</button><a class=\"navbar-brand\" href=\"/\">Brand</a><div class=\"collapse navbar-collapse\" id=\"#{ actual.id }\"></div></nav>"
+    expected = "<nav class=\"bg-primary navbar navbar-light fixed-top navbar-expand-xs\"><button class=\"navbar-toggler hidden-sm-up\" type=\"button\" data-toggle=\"collapse\" data-target=\"##{ actual.id }\">☰</button><a class=\"navbar-brand\" href=\"/\">Brand</a><div class=\"collapse navbar-collapse\" id=\"#{ actual.id }\"></div></nav>"
 
     assert_equal expected, actual.render
   end

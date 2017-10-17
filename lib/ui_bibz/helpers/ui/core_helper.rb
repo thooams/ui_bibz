@@ -22,7 +22,11 @@ module UiBibz::Helpers::Ui::CoreHelper
   # +html_options+ (Hash)
   #
   def ui_alert content = nil, options = nil, html_options = nil, &block
-    UiBibz::Ui::Core::Alert.new(content, options, html_options, &block).render
+    if is_tap(content, options)
+      UiBibz::Ui::Core::Notifications::Alert.new(content, options, html_options).tap(&block).render
+    else
+      UiBibz::Ui::Core::Notifications::Alert.new(content, options, html_options, &block).render
+    end
   end
 
   # Glyph Component
