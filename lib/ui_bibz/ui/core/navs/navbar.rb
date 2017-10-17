@@ -75,10 +75,10 @@ module UiBibz::Ui::Core::Navs
     # Render html tag
     def render
       content_tag :nav, html_options do
-        content_tag :div, class: 'container-fluid' do
-          concat header_html
-          concat body_html
-        end
+        concat title if brand_position == :left
+        concat navbar_toggle_button_html
+        concat title if brand_position == :right
+        concat body_html
       end
     end
 
@@ -98,24 +98,22 @@ module UiBibz::Ui::Core::Navs
     # Not use !!!!!
     # Add navbar text items
     # See UiBibz::Ui::Core::NavbarText
-    #def text content = nil, options = nil, html_options = nil, &block
-      #@items << UiBibz::Ui::Core::NavbarText.new(content, options, html_options, &block).render
-    #end
+    def text content = nil, options = nil, html_options = nil, &block
+      @items << UiBibz::Ui::Core::Navs::NavbarText.new(content, options, html_options, &block).render
+    end
 
     def brand content = nil, options = nil, html_options = nil, &block
       @brand = UiBibz::Ui::Core::Navs::NavbarBrand.new(content, options, html_options, &block).render
     end
 
+    def id
+      @id ||= "navbar-id-#{ Random.new_seed }"
+    end
+
   private
 
     def component_html_classes
-      ['navbar', type, position]
-    end
-
-    def header_html
-      content_tag :div, class: 'navbar-header' do
-        concat navbar_toggle_button_html
-      end
+      ['navbar', type, position, expand_size]
     end
 
     def title
@@ -127,22 +125,25 @@ module UiBibz::Ui::Core::Navs
     end
 
     def body_html
-      content_tag :div, class: "collapse navbar-toggleable-xs", id: id do
-        concat title
+      content_tag :div, class: "collapse navbar-collapse", id: id do
         concat @items.join.html_safe
       end
-    end
-
-    def id
-      @id ||= "navbar-collapse-#{ Random.new_seed }"
     end
 
     def navbar_toggle_button_html
       content_tag :button, "☰", class: 'navbar-toggler hidden-sm-up', type: :button, data: { toggle: 'collapse', target:"##{ id }" }
     end
 
+    def expand_size
+      "navbar-expand-#{ @options[:expand_size] || :lg }" #unless @options[:expand_size].nil?
+    end
+
     def position
       "fixed-#{ @options[:position] }" unless @options[:position].nil?
+    end
+
+    def brand_position
+      @options[:brand_position] || :left
     end
 
     def type

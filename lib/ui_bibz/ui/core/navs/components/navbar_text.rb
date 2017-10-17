@@ -40,7 +40,7 @@ module UiBibz::Ui::Core::Navs
 
     # Render html tag
     def render
-      content_tag :ul, content, html_options
+      content_tag :span, content, html_options
     end
 
   private

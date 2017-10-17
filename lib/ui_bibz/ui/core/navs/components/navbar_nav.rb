@@ -45,6 +45,10 @@ module UiBibz::Ui::Core::Navs
 
   private
 
+    def component_html_classes
+      ["navbar-nav", "mr-auto"]
+    end
+
     def type
       'navbar-nav'
     end
