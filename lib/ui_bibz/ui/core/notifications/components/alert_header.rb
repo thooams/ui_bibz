@@ -37,14 +37,30 @@ module UiBibz::Ui::Core::Notifications::Components
     end
 
     def render
-       content_tag :h4, content, html_options
+      if options[:tap]
+        content_tag :h4, html_content, html_options
+      else
+        html_content
+      end
     end
-
 
   private
 
     def component_html_classes
       "alert-header"
+    end
+
+    def html_content
+      output = [glyph_and_content_html]
+      output << close_html if options[:closable]
+      output.join.html_safe
+    end
+
+    def close_html
+      content_tag :button, type: 'button', class: 'close', "data-dismiss" => "alert", "aria-label" => "Close" do
+        concat content_tag :span, "×", "aria-hidden" => true
+        concat content_tag :span, "Close", class: "sr-only"
+      end
     end
 
   end

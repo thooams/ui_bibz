@@ -52,25 +52,25 @@ module UiBibz::Ui::Core::Notifications
     # See UiBibz::Ui::Core::Component.initialize
     def initialize content = nil, options = nil, html_options = nil, &block
       super
+      header(@content) if @options[:tap].nil?
     end
 
     # Render html tag
     def render
       content_tag :div, html_options do
-        if options[:tap].nil?
-          concat glyph_and_content_html
-          concat close_html if options[:closable]
-        else
-          concat glyph_and_content_html @header  unless @header.nil?
-          concat close_html                      if options[:closable]
-          concat tag(:hr)
-          concat @body                           unless @body.nil?
-        end
+        concat @header
+        concat @body unless @body.nil?
       end
     end
 
     # Add Header which is a component
     def header content = nil, options = nil, html_options = nil, &block
+      if block.nil?
+        options = (options || {}).merge(@options)
+      else
+        content = (content || {}).merge(@options)
+      end
+
       @header = UiBibz::Ui::Core::Notifications::Components::AlertHeader.new(content, options, html_options, &block).render
     end
 
@@ -87,13 +87,6 @@ module UiBibz::Ui::Core::Notifications
 
     def component_html_options
       { role: 'alert'}
-    end
-
-    def close_html
-      content_tag :button, type: 'button', class: 'close', "data-dismiss" => "alert", "aria-label" => "Close" do
-        concat content_tag :span, "×", "aria-hidden" => true
-        concat content_tag :span, "Close", class: "sr-only"
-      end
     end
 
     def status

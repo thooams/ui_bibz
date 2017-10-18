@@ -37,7 +37,7 @@ module UiBibz::Ui::Core::Notifications::Components
     end
 
     def render
-      content_tag :p, content, html_options
+      tag(:hr) + content_tag(:p, content, html_options)
     end
 
   private
