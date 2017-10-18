@@ -22,27 +22,6 @@ class UiHelperTest < ActionView::TestCase
     assert_equal expected, actual
   end
 
-  test 'alert' do
-    actual = ui_alert 'state'
-    expected = "<div class=\"alert-info alert alert-dismissible\" role=\"alert\">state</div>"
-
-    assert_equal expected, actual
-  end
-
-  test 'badge' do
-    actual   = ui_badge 'state', status: :success, glyph: 'pencil'
-    expected = "<span class=\"badge-success badge\"><i class=\"glyph fa fa-pencil\"></i> state</span>"
-
-    assert_equal expected, actual
-  end
-
-  test 'badge pill' do
-    actual   = ui_badge 'state', status: :success, type: :pill, glyph: 'pencil'
-    expected = "<span class=\"badge-success badge badge-pill\"><i class=\"glyph fa fa-pencil\"></i> state</span>"
-
-    assert_equal expected, actual
-  end
-
   test 'jumbotron with full_width' do
     actual   = ui_jumbotron 'state', full_width: true
     expected = "<div class=\"jumbotron\">state</div>"
