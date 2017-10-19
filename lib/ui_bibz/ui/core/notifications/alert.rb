@@ -66,9 +66,9 @@ module UiBibz::Ui::Core::Notifications
     # Add Header which is a component
     def header content = nil, options = nil, html_options = nil, &block
       if block.nil?
-        options = (options || {}).merge(@options)
+        options = @options.merge(options || {})
       else
-        content = (content || {}).merge(@options)
+        content = @options.merge(content || {})
       end
 
       @header = UiBibz::Ui::Core::Notifications::Components::AlertHeader.new(content, options, html_options, &block).render

@@ -1,3 +1,4 @@
+require 'ui_bibz/ui/core/forms/buttons/components/choice'
 module UiBibz::Ui::Core::Forms::Buttons
 
   # Create a button choice
@@ -55,57 +56,32 @@ module UiBibz::Ui::Core::Forms::Buttons
   #     content
   #   end
   #
-  class ButtonChoice < UiBibz::Ui::Core::Forms::Buttons::Button
+  class ButtonChoice < UiBibz::Ui::Core::Forms::Buttons::ButtonGroup
 
     # See UiBibz::Ui::Core::Forms::Buttons::Button.initialize
     def initialize content = nil, options = nil, html_options = nil, &block
       super
     end
 
-    # Render html tag
-    def render
-      button_choice_html_tag
+    def button content = nil, options = nil, html_options = nil, &block
+      if block.nil?
+        options = @options.merge(options || {})
+      else
+        content = @options.merge(content || {})
+      end
+
+      @items << Choice.new(content, options, html_options, &block).render
     end
 
     private
 
-    def button_choice_html_tag
-      content_tag :label, html_options do
-        concat tag(:input,input_options)
-        concat @content
-      end
+    def component_html_options
+      {}
     end
 
-    def component_html_classes
-      ['btn', size]
-    end
-
-    def input_options
-      { type: type, autocomplete: :off }.merge(checked).merge(value).merge(name).merge(id).merge(input_html_options)
-    end
-
-    def checked
-      @options[:state] == :active ? { checked: :checked } : {}
-    end
-
-    def value
-      @options[:value].nil? ? {} : { value: options[:value] }
-    end
-
-    def name
-      @options[:name].nil? ? {} : { name: @options[:name] }
-    end
-
-    def id
-      @options[:id].nil? ? {} : { id: @options[:id] }
-    end
-
-    def input_html_options
-      @options[:input_html_options].nil? ? {} : @options[:input_html_options]
-    end
-
-    def type
-      @options[:type] || :checkbox
+    def component_html_data
+      super
+      add_html_data "toggle", "buttons"
     end
 
   end

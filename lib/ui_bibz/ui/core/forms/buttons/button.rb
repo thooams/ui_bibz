@@ -64,7 +64,10 @@ module UiBibz::Ui::Core::Forms::Buttons
   protected
 
     def button_html_tag
-      content_tag :button, glyph_and_content_html, html_options
+      content_tag :button, html_options do
+        concat glyph_and_content_html
+        concat badge_html unless options[:badge].nil?
+      end
     end
 
     def component_html_classes
@@ -80,7 +83,7 @@ module UiBibz::Ui::Core::Forms::Buttons
     end
 
     def status
-      ["btn", outline, options[:status] || :primary ].compact.join('-')
+      ["btn", outline, options[:status]].compact.join('-')
     end
 
     def outline
@@ -92,6 +95,10 @@ module UiBibz::Ui::Core::Forms::Buttons
 
     def type
       "btn-block" if options[:type] == :block
+    end
+
+    def badge_html
+      UiBibz::Ui::Core::Badge.new(options[:badge], status: (options[:status] || :secondary)).render
     end
 
     # :lg, :sm or :xs

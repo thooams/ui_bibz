@@ -54,10 +54,6 @@ module UiBibz::Ui::Core::Forms::Buttons
       content_tag :div, @items.join.html_safe, html_options
     end
 
-    def button_choice content, options = nil, html_options = nil, &block
-      @items << ButtonChoice.new(content, options, html_options, &block).render
-    end
-
     def button content, options = nil, html_options = nil, &block
       @items << Button.new(content, options, html_options, &block).render
     end
@@ -90,7 +86,6 @@ module UiBibz::Ui::Core::Forms::Buttons
 
     def component_html_data
       super
-      #add_html_data "toggle", "buttons"
     end
 
     def class_name
