@@ -55,13 +55,15 @@ module UiBibz::Ui::Core::Navs
   #
   # ==== Helper
   #
-  #   navbar(options = { tap: true }, html_options = {}) do |nb|
+  #   ui_navbar(options = { tap: true }, html_options = {}) do |nb|
   #     nb.nav(options = { tap: true }, html_options = {}) do |n|
   #       n.link(content, options = {}, html_options = {})
   #       n.link(options = {}, html_options = {}) do
   #         content
   #       end
   #     end
+  #     nb.brand content
+  #     nb.link 'toto', "#"
   #   end
   #
   class Navbar < UiBibz::Ui::Core::Component

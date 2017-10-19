@@ -54,12 +54,20 @@ module UiBibz::Ui::Core::Forms::Buttons
       content_tag :div, @items.join.html_safe, html_options
     end
 
-    def ui_button_choice content, options = nil, html_options = nil, &block
+    def button_choice content, options = nil, html_options = nil, &block
       @items << ButtonChoice.new(content, options, html_options, &block).render
     end
 
-    def ui_button content, options = nil, html_options = nil, &block
+    def button content, options = nil, html_options = nil, &block
       @items << Button.new(content, options, html_options, &block).render
+    end
+
+    def button_link content, options = nil, html_options = nil, &block
+      @items << ButtonLink.new(content, options, html_options, &block).render
+    end
+
+    def dropdown  content = nil, options = {}, html_options = nil, &block
+      @items << UiBibz::Ui::Core::Dropdowns::Dropdown.new(content, options, html_options).tap(&block).render
     end
 
     def input attribute_name, options = {}, &block
@@ -69,7 +77,7 @@ module UiBibz::Ui::Core::Forms::Buttons
   private
 
     def component_html_classes
-      super << ["btn-group", "input-group", size, position]
+      super << [class_name, size, position]
     end
 
     def component_html_options
@@ -82,7 +90,11 @@ module UiBibz::Ui::Core::Forms::Buttons
 
     def component_html_data
       super
-      add_html_data "toggle", "buttons"
+      #add_html_data "toggle", "buttons"
+    end
+
+    def class_name
+      "btn-group" if options[:position] != :vertical
     end
 
     def size
