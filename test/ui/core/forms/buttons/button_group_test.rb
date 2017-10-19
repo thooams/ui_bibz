@@ -23,9 +23,11 @@ class ButtonGroupTest < ActionView::TestCase
 
   test 'button group with dropdown' do
     actual = ui_button_group do |bg|
-      bg.button 'state'
+      bg.dropdown("Dropdown", type: :dropup, status: :success) do |d|
+        d.link 'Link 1', url: '#link1', glyph: 'eye'
+      end
     end
-    expected = "<div class=\"btn-group\" role=\"group\"><button class=\"btn-primary btn\">state</button></div>"
+    expected = "<div class=\"btn-group\" role=\"group\"><div class=\"dropup btn-group\"><button class=\"btn btn-success dropdown-toggle\" type=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">Dropdown <span class=\"caret\"></span></button><div class=\"dropdown-menu dropdown-menu-left\"><a class=\"dropdown-item\" href=\"#link1\"><i class=\"glyph fa fa-eye\"></i> Link 1</a></div></div></div>"
 
     assert_equal expected, actual
   end
