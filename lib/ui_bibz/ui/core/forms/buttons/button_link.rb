@@ -72,11 +72,18 @@ module UiBibz::Ui::Core::Forms::Buttons
     end
 
     def button_link_html_tag
-      link_to glyph_and_content_html, link_url, html_options
+      link_to link_url, html_options do
+        concat glyph_and_content_html
+        concat badge_html unless options[:badge].nil?
+      end
     end
 
     def link_url
       options[:url] || "#"
+    end
+
+    def status
+      "btn-#{ options[:status] || :secondary }"
     end
 
   end
