@@ -15,4 +15,18 @@ class ButtonTest < ActionView::TestCase
 
     assert_equal expected, actual
   end
+
+  test 'button disabled' do
+    actual   = UiBibz::Ui::Core::Forms::Buttons::Button.new('state', status: :success, state: :disabled).render
+    expected = "<button class=\"disabled btn-success btn\" disabled=\"disabled\">state</button>"
+
+    assert_equal expected, actual
+  end
+
+  test 'button active' do
+    actual   = UiBibz::Ui::Core::Forms::Buttons::Button.new('state', status: :success, state: :active).render
+    expected = "<button class=\"active btn-success btn\" aria-pressed=\"true\">state</button>"
+
+    assert_equal expected, actual
+  end
 end

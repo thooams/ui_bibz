@@ -76,8 +76,8 @@ module UiBibz::Ui::Core::Forms::Buttons
 
     def component_html_options
       opts = super
-      opts = opts.merge({ role: "button" })
       opts = opts.merge(toggle)                   unless options[:toggle].nil?
+      opts = opts.merge(active_html_options)      if options[:state] == :active
       opts = opts.merge({ disabled: 'disabled' }) if options[:state] == :disabled
       opts
     end
