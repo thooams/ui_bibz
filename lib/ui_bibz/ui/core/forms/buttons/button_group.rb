@@ -54,19 +54,35 @@ module UiBibz::Ui::Core::Forms::Buttons
       content_tag :div, @items.join.html_safe, html_options
     end
 
-    def button content, options = nil, html_options = nil, &block
+    def button content = nil, options = nil, html_options = nil, &block
+      if block.nil?
+        options = @options.merge(options || {})
+      else
+        content = @options.merge(content || {})
+      end
+
       @items << Button.new(content, options, html_options, &block).render
     end
 
-    def button_link content, options = nil, html_options = nil, &block
+    def button_link content = nil, options = nil, html_options = nil, &block
+      if block.nil?
+        options = @options.merge(options || {})
+      else
+        content = @options.merge(content || {})
+      end
+
       @items << ButtonLink.new(content, options, html_options, &block).render
     end
 
-    def dropdown  content = nil, options = {}, html_options = nil, &block
+    def dropdown content, options = {}, html_options = nil, &block
+      options = @options.merge(options)
+
       @items << UiBibz::Ui::Core::Dropdowns::Dropdown.new(content, options, html_options).tap(&block).render
     end
 
     def input attribute_name, options = {}, &block
+      options = @options.merge(options)
+
       @items << @options[:form].input(attribute_name, options.merge({ label: false, wrapper: false }), &block)
     end
 
