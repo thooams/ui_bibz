@@ -71,7 +71,7 @@ module UiBibz::Ui::Core::Forms::Buttons
 
     def button_choice_html_tag
       content_tag :label, html_options do
-        concat tag(:input,input_options)
+        concat tag(:input, input_options)
         concat glyph_and_content_html
       end
     end
@@ -106,6 +106,10 @@ module UiBibz::Ui::Core::Forms::Buttons
 
     def type
       @options[:type] || :checkbox
+    end
+
+    def status
+      "btn-#{ @options[:status] || :secondary }"
     end
 
   end
