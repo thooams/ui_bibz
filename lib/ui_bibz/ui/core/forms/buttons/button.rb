@@ -75,11 +75,11 @@ module UiBibz::Ui::Core::Forms::Buttons
     end
 
     def component_html_options
-      if options[:toggle].nil?
-        super
-      else
-        super.merge({ "data-toggle" => 'button', "aria-pressed" => false, "autocomplete" => "off" })
-      end
+      opts = super
+      opts = opts.merge({ role: "button" })
+      opts = opts.merge(toggle)                   unless options[:toggle].nil?
+      opts = opts.merge({ disabled: 'disabled' }) if options[:state] == :disabled
+      opts
     end
 
     def status
@@ -91,6 +91,11 @@ module UiBibz::Ui::Core::Forms::Buttons
     end
 
     def toggle
+      { "data-toggle" => 'button', "aria-pressed" => false, "autocomplete" => "off" }
+    end
+
+    def active_html_options
+      { "aria-pressed" => true }
     end
 
     def type

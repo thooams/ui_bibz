@@ -65,6 +65,12 @@ module UiBibz::Ui::Core::Forms::Buttons
 
   private
 
+    def component_html_options
+      opts = super
+      opts = opts.merge({ role: "button" })
+      opts
+    end
+
     def button_link_html_tag
       link_to glyph_and_content_html, link_url, html_options
     end
