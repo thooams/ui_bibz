@@ -55,6 +55,7 @@ module UiBibz
           autoload :ButtonGroup,             "ui_bibz/ui/core/forms/buttons/button_group"
           autoload :ButtonLink,              "ui_bibz/ui/core/forms/buttons/button_link"
           autoload :ButtonRefresh,           "ui_bibz/ui/core/forms/buttons/button_refresh"
+          autoload :ButtonToolbar,           "ui_bibz/ui/core/forms/buttons/button_toolbar"
         end
 
         module Surrounds

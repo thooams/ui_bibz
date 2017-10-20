@@ -86,7 +86,7 @@ module UiBibz::Ui::Core
 
     def size
       case @options[:size]
-      when :xs
+      when :sm
         1
       when :md
         3
