@@ -72,7 +72,7 @@ module UiBibz::Ui::Core::Forms::Buttons
     end
 
     def component_html_classes
-      super << 'input-refresh-button'
+      super << ['input-refresh-button', 'btn']
     end
 
     def cnt_opts
@@ -85,6 +85,10 @@ module UiBibz::Ui::Core::Forms::Buttons
           data:     options[:connect].try(:[], :target).try(:[], :data)     || []
         }
       }
+    end
+
+    def status
+      "btn-#{ options[:status] || :secondary }"
     end
 
   end

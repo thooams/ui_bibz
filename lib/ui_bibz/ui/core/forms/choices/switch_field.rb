@@ -93,7 +93,7 @@ module UiBibz::Ui::Core::Forms::Choices
     end
 
     def matching_size
-      { xs: 'small', md: 'normal', lg: 'large' }
+      { sm: 'small', md: 'normal', lg: 'large' }
     end
 
     # true, false => default : true
