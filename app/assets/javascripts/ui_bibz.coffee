@@ -1,4 +1,4 @@
-#= require jquery3
+#= require jquery2
 
 # multi_column_field component
 #= require jquery.quicksearch.min

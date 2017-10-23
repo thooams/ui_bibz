@@ -82,7 +82,7 @@ module UiBibz::Ui::Core::Forms::Surrounds
     end
 
     def button_group content = nil, options = nil, html_options = nil, &block
-      @items << SurroundButtonGroup.new(content, options, html_options, &block).render
+      @items << SurroundButtonGroup.new(content, options, html_options).tap(&block).render
     end
 
     def button_link content = nil, options = nil, html_options = nil, &block

@@ -29,7 +29,7 @@ $states_colors: $theme-colors
 @import bootstrap-multiselect.min
 // dropdown_select_field component
 //@import bootstrap-select.min
-@import bootstrap-select
+@import bootstrap-select.min
 // mardown-editor component
 @import bootstrap-markdown.min
 // awesome bootstrap checkbox component
@@ -111,6 +111,11 @@ select.form-control
       display: inline-block
 
 .ui_surround_field
+  input:not(:first-child):not(:last-child)
+    border-radius: 0px
+  .abc-radio.input-group-addon, .abc-checkbox.input-group-addon
+    input
+      margin-left: 17px
   select:not(:first-child):not(:last-child)
     border-radius: 0px
 
