@@ -109,7 +109,7 @@ module UiBibz::Ui::Core::Navs
     end
 
     def id
-      @id ||= "navbar-id-#{ Random.new_seed }"
+      @id ||= generate_id("navbar-id")
     end
 
   private

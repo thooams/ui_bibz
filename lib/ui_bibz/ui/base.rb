@@ -15,5 +15,9 @@ module UiBibz::Ui
     def inject_url url, record
       url.gsub(/(\/id\/?)/, "/#{ record.id }/")
     end
+
+    def generate_id name = nil
+      "#{ name || 'id' }-#{ Random.new_seed }"
+    end
   end
 end

@@ -99,10 +99,14 @@ module UiBibz::Ui::Core::Dropdowns
       @items << content
     end
 
+    def id
+      @id ||= html_options[:id] || generate_id("dropdown")
+    end
+
   protected
 
     def component_html_classes
-      [type, "btn-group", open]
+      [type, open, inline]
     end
 
     def button_content
@@ -110,19 +114,27 @@ module UiBibz::Ui::Core::Dropdowns
     end
 
     def button_html
-      content_tag :button, button_content, class: join_classes("btn", button_status, state, size, "dropdown-toggle"), type: 'button', "data-toggle" => 'dropdown', "aria-haspopup" => true, "aria-expanded" => false
+      if options[:tag] == :a
+        content_tag dropdown_tag, button_content, class: join_classes("btn", button_status, state, size, "dropdown-toggle"), href: '#', role: 'button', "data-toggle" => 'dropdown', "aria-haspopup" => true, "aria-expanded" => false, "id" => id
+      else
+        content_tag dropdown_tag, button_content, class: join_classes("btn", button_status, state, size, "dropdown-toggle"), type: 'button', "data-toggle" => 'dropdown', "aria-haspopup" => true, "aria-expanded" => false, "id" => id
+      end
     end
 
     def ul_html
-      content_tag :div, @items.join.html_safe, class: "dropdown-menu dropdown-menu-#{ position }"
+      content_tag :div, @items.join.html_safe, class: join_classes("dropdown-menu", position, open), "arial-labelledby" => id
     end
 
     def caret
       content_tag :span, '', class: 'caret'
     end
 
+    def dropdown_tag
+      options[:tag] || :button
+    end
+
     def position
-      @options[:position] || 'left'
+      "dropdown-menu-#{ @options[:position] }" unless @options[:position].nil?
     end
 
     def type
@@ -130,7 +142,11 @@ module UiBibz::Ui::Core::Dropdowns
     end
 
     def open
-      "open" if @options[:open]
+      "show" if @options[:open]
+    end
+
+    def inline
+      "btn-group" if @options[:inline]
     end
 
     def button_status
