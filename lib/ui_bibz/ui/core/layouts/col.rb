@@ -70,8 +70,16 @@ module UiBibz::Ui::Core::Layouts
       @options.each do |ke,va|
         kl << write_classes(ke, va) if %i(xs sm md lg xl).include?(ke)
       end
-      kl << write_classes(:md, @options) if kl.empty?
+      if not_col_options?
+        kl = "col"
+      else
+        kl << write_classes(:md, @options) if kl.empty?
+      end
       kl
+    end
+
+    def not_col_options?
+      (@options.keys & %i(xs sm md lg xl num offset push pull)).empty?
     end
 
     def write_classes size, opts
@@ -80,7 +88,7 @@ module UiBibz::Ui::Core::Layouts
 
     # col-md-9
     def num size, n
-      "col-#{ size }-#{ n }"
+      size == :auto ? "col" : "col-#{ size }-#{ n }"
     end
 
     # col-md-offset-9

@@ -10,6 +10,12 @@ module UiBibz::Ui::Core::Layouts
   # * +options+ - Options of element
   # * +html_options+ - Html Options of element
   #
+  # ==== Options
+  #
+  # You can add HTML attributes using the +html_options+.
+  # You can pass arguments in options attribute:
+  # * +type+ - Symbol | :form
+  #
   # ==== Signatures
   #
   #   UiBibz::Ui::Core::Layouts::Row.new(content, options = {}, html_options = {})
@@ -41,7 +47,7 @@ module UiBibz::Ui::Core::Layouts
   private
 
     def component_html_classes
-      'row'
+      options[:type] == :form ? 'form-row' : 'row'
     end
 
   end

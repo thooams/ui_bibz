@@ -12,4 +12,13 @@ class RowTest < ActionView::TestCase
     assert_equal expected, actual
   end
 
+  test 'row form' do
+    actual = ui_row(type: :form) do
+      'test'
+    end
+    expected = "<div class=\"form-row\">test</div>"
+
+    assert_equal expected, actual
+  end
+
 end

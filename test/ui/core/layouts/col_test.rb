@@ -3,7 +3,7 @@ require 'test_helper'
 class ColTest < ActionView::TestCase
   include UiBibz::Helpers::Ui::CoreHelper
 
-  test "col" do
+  test "col with options" do
     actual   = ui_col('test', { num: 1, push: 2, offset: 3, pull: 4 }, { class: 'test' })
     expected = "<div class=\"test col-md-1 col-md-push-2 offset-md-3 col-md-pull-4\">test</div>"
 
@@ -15,6 +15,15 @@ class ColTest < ActionView::TestCase
       "test"
     end
     expected = "<div class=\"test col-md-1 col-md-push-2 col-md-pull-4 col-xl-6 offset-xl-5\">test</div>"
+
+    assert_equal expected, actual
+  end
+
+  test "col" do
+    actual   = ui_col do
+      "test"
+    end
+    expected = "<div class=\"col\">test</div>"
 
     assert_equal expected, actual
   end

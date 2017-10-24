@@ -8,7 +8,7 @@ module UiBibz::Helpers::UtilsHelper
 
   def ui_form_for object, *args, &block
     options = args.extract_options!
-    puts options.inspect
+    ap options
     simple_form_for(object, *(args << options.merge(builder: UiBibzForm::UiBibzFormBuilder)), &block)
   end
 
