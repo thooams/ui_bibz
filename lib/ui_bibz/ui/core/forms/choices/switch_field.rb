@@ -68,7 +68,7 @@ module UiBibz::Ui::Core::Forms::Choices
     end
 
     def component_wrapper_html_classes
-      ['switch-field-container']
+      join_classes('switch-field-container', inline)
     end
 
     def component_html_classes
@@ -129,6 +129,10 @@ module UiBibz::Ui::Core::Forms::Choices
     # String => default : '&nbsp;'
     def middle_text
       add_html_data('label_text', options[:middle_text]) unless options[:middle_text].nil?
+    end
+
+    def inline
+      "btn-group" unless options[:inline].nil?
     end
 
   end
