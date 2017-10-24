@@ -75,6 +75,10 @@ module UiBibz::Ui::Core::Forms::Buttons
 
     private
 
+    def component_html_classes
+      super << ['button-choice']
+    end
+
     def component_html_options
       {}
     end
