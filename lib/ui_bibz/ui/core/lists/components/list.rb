@@ -25,7 +25,7 @@ module UiBibz::Ui::Core::Lists::Components
   # * +glyph+ - Add glyph with name or hash options
   #   * +name+ - String
   #   * +size+ - Integer
-  #   * +type+ - Symbol
+  #   * +tag+ - Symbol (+:a+, +:button+, +:li+)
   #
   # ==== Signatures
   #
@@ -86,7 +86,7 @@ module UiBibz::Ui::Core::Lists::Components
   private
 
     def component_html_classes
-      'list-group-item'
+      ['list-group-item', tag_type_class]
     end
 
     def header_html
@@ -107,13 +107,17 @@ module UiBibz::Ui::Core::Lists::Components
       end
     end
 
+    def tag_type_class
+      "list-group-item-action" if is_button_type?
+    end
+
     def is_link_type?
       @html_options[:href] = @options[:url] if @options[:url]
-      @options[:type] == :link || @html_options[:type] == :link
+      @options[:tag] == :a || @html_options[:tag] == :a
     end
 
     def is_button_type?
-      @options[:type] == :button || @html_options[:type] == :button
+      @options[:tag] == :button || @html_options[:tag] == :button
     end
 
     def status

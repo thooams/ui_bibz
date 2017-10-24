@@ -14,7 +14,7 @@ module UiBibzInputs
 
     def new_options
       label_method, value_method = detect_collection_methods
-      new_value = ActiveSupport::JSON.decode(@builder.object.send(attribute_name).to_s)
+      new_value = @builder.object.send(attribute_name).blank? ? @builder.object.send(attribute_name) : ActiveSupport::JSON.decode(@builder.object.send(attribute_name).to_s)
 
       if options[:grouped] == true
         options.merge({ option_tags: option_groups_from_collection_for_select(
