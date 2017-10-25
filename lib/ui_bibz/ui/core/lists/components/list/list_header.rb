@@ -23,13 +23,16 @@ module UiBibz::Ui::Core::Lists::Components
 
     # Render html tag
     def render
-      content_tag :h4, content, html_options
+      content_tag :div, html_options do
+        concat content_tag(:h5, content, class: 'mb-1')
+        concat content_tag(:small, options[:extra])
+      end
     end
 
   private
 
     def component_html_classes
-      'list-group-item-heading'
+      super << ["d-flex", "w-100", "justify-content-between"]
     end
 
   end

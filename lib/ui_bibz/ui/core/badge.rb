@@ -22,7 +22,7 @@ module UiBibz::Ui::Core
   #   * +size+ - Integer
   #   * +type+ - Symbol
   # * +type+ - Symbol
-  #   (+pill+)
+  #   (+:pill+, +:square+)
   #
   # ==== Signatures
   #
