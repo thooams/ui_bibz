@@ -39,8 +39,8 @@ module UiBibz::Ui::Core::Windows::Components
     # Render html tag
     def render
       content_tag :div, html_options do
+        concat content_tag :h5, glyph_and_content_html, class: 'modal-title'
         concat close_button_html
-        concat content_tag :h4, glyph_and_content_html, class: 'modal-title'
       end
     end
 
