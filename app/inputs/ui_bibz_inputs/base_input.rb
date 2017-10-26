@@ -6,7 +6,7 @@ module UiBibzInputs
     end
 
     def options
-      super.merge({ value: @builder.object.send(attribute_name)})
+      super.merge({ value: @builder.object.send(attribute_name)}).merge(@builder.options[:input_html] || {})
     end
 
     private

@@ -68,7 +68,7 @@ module UiBibz::Ui::Core::Navs
   private
 
     def new_option
-      (@options || {}).merge({ class: "navbar-form form-inline #{ position }" })
+      (@options || {}).merge({ class: "navbar-form form-inline #{ position } my-2 my-lg-0" })
     end
 
     def protect_against_forgery?

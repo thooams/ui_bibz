@@ -1,8 +1,7 @@
 module KlassExtension
 
   def join_classes *classes
-    klasses = [*classes].flatten.compact.uniq.reject(&:blank?)
-    klasses.empty? ? nil : klasses
+    UiBibz::Utils::Screwdriver.join_classes classes
   end
 
   # Override this method to add a status class
