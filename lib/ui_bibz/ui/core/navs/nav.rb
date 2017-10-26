@@ -73,7 +73,7 @@ module UiBibz::Ui::Core::Navs
 
     # Render html tag
     def render
-      content_tag tag_type, @items.join.html_safe, html_options
+      content_tag tag, @items.join.html_safe, html_options
     end
 
     # Add nav link items
@@ -118,7 +118,7 @@ module UiBibz::Ui::Core::Navs
 
     def justify
       if @options[:justify]
-        if @options[:tag] == :a
+        if type == "nav-links"
           "nav-justified"
         else
           "nav-fill"
@@ -134,8 +134,8 @@ module UiBibz::Ui::Core::Navs
       "flex-column" if @options[:stacked]
     end
 
-    def tag_type
-      @options[:tag] == :a ? :nav : :ul
+    def tag
+      type == "nav-links" ? :nav : :ul
     end
 
   end
