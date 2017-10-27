@@ -1,7 +1,7 @@
 require 'ui_bibz/ui/core/navs/components/pagination_link'
 module UiBibz::Ui::Core::Navs
 
-  # Create a nav
+  # Create a Pagination
   #
   # This element is an extend of UiBibz::Ui::Core::Component.
   #
@@ -15,21 +15,16 @@ module UiBibz::Ui::Core::Navs
   #
   # You can add HTML attributes using the +html_options+.
   # You can pass arguments in options attribute:
-  # * +type+ - Symbol
-  #   (+:pills+, +:tab+)
   # * +position+ - Symbol
   #   (+:left+, +:right+, +:center+)
-  # * +stacked+ - Boolean
-  # * +tag+ - Symbol
-  #   (+:a+, +:li)
-  # * +justify+ - Boolean
-  # * +fill+ - Boolean
+  # * +size+
+  #   (+:sm+, +:lg+)
   #
   # ==== Signatures
   #
-  #   UiBibz::Ui::Core::Navs::Nav.new(content, options = nil, html_options = nil)
+  #   UiBibz::Ui::Core::Navs::Pagination.new(content, options = nil, html_options = nil)
   #
-  #   UiBibz::Ui::Core::Navs::Nav.new(options = nil, html_options = nil).tap do |n|
+  #   UiBibz::Ui::Core::Navs::Pagination.new(options = nil, html_options = nil).tap do |n|
   #     ...
   #     n.link content = nil, options = nil, html_options = nil, block
   #     n.link content = nil, options = nil, html_options = nil, block
@@ -39,7 +34,7 @@ module UiBibz::Ui::Core::Navs
   #
   # ==== Examples
   #
-  #   UiBibz::Ui::Core::Navs::Nav.new(type: :pills).tap do |n|
+  #   UiBibz::Ui::Core::Navs::Pagination.new(type: :pills).tap do |n|
   #     n.link 'Test', url: '#test'
   #     n.link 'Test2', url: '#test2', state: :active
   #     n.dropdown('Action') do |d|
@@ -49,16 +44,10 @@ module UiBibz::Ui::Core::Navs
   #
   # ==== Helper
   #
-  #   nav(options = { tap: true }, html_options = {}) do |n|
+  #   ui_pagination(options = { tap: true }, html_options = {}) do |n|
   #     n.link(content, options = {}, html_options = {})
   #     n.link(options = {}, html_options = {}) do
   #       content
-  #     end
-  #     n.dropdown(name, options = {}, html_options = {}) do |d|
-  #       d.list(content, options = {}, html_options = {})
-  #       d.list(options = {}, html_options = {}) do
-  #         content
-  #       end
   #     end
   #   end
   #
