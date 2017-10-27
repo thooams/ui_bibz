@@ -86,6 +86,7 @@ module UiBibz
       module Navs
         autoload :Nav,                     "ui_bibz/ui/core/navs/nav"
         autoload :Navbar,                  "ui_bibz/ui/core/navs/navbar"
+        autoload :Pagination,              "ui_bibz/ui/core/navs/pagination"
       end
 
       module Notifications
