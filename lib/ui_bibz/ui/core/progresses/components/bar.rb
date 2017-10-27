@@ -1,6 +1,6 @@
-module UiBibz::Ui::Core
+module UiBibz::Ui::Core::Progresses::Components
 
-  # Create a progress bar
+  # Create a bar
   #
   # This element is an extend of UiBibz::Ui::Core::Component.
   #
@@ -17,69 +17,62 @@ module UiBibz::Ui::Core
   # * +status+ - status of élement with symbol value:
   #   (+:secondary+, +:primary+, +:info+, +:warning+, +:danger+)
   # * +max+ - Max value (default: 100)
+  # * +min+ - Min value (default: 0)
   # * +value+ - Value of percentage (default: content)
   # * +animated+ - Boolean
   # * +striped+ - Boolean
   #
-  #
   # ==== Signatures
   #
-  #   UiBibz::Ui::Core::Progress.new(percentage, options = nil, html_options = nil)
+  #   UiBibz::Ui::Core::Bar.new(percentage, options = nil, html_options = nil)
   #
-  #   UiBibz::Ui::Core::Progress.new(options = nil, html_options = nil) do
+  #   UiBibz::Ui::Core::Bar.new(options = nil, html_options = nil) do
   #     percentage
   #   end
   #
   # ==== Examples
   #
-  #   UiBibz::Ui::Core::Progress.new(50%, { value: 50})
+  #   UiBibz::Ui::Core::Bar.new(50%, { value: 50})
   #   # or
-  #   UiBibz::Ui::Core::Progress.new(10%, { value: 10, status: :success },{ class: 'test' }).render
+  #   UiBibz::Ui::Core::Bar.new(10%, { value: 10, status: :success },{ class: 'test' }).render
   #   # or
-  #   UiBibz::Ui::Core::Progress.new({ value: 10, status: :success},{ class: 'test' }) do
+  #   UiBibz::Ui::Core::Bar.new({ value: 10, status: :success},{ class: 'test' }) do
   #     10%
   #   end.render
   #
-  # ==== Helper
-  #
-  #   progress(integer, options = {}, html_options = {})
-  #
-  #   progress(options = { tap: true }, html_options = {}) do |pb|
-  #     pb.bar(integer, options = {}, html_options = {})
-  #     pb.bar(options = {}, html_options = {}) do
-  #       integer
-  #     end
-  #   end
-  #
-  class Progress < Component
+  class Bar < UiBibz::Ui::Core::Component
 
     # See UiBibz::Ui::Core::Component.initialize
     def initialize content = nil, options = nil, html_options = nil, &block
       super
-      @bars = []
     end
 
     # Render html tag
     def render
-      content_tag :progress, content, html_options
+      content_tag :div, '', html_options
     end
 
   private
 
     def component_html_classes
-      ['progress', striped, animated]
+      ['progress-bar', striped, animated]
     end
 
     def component_html_options
-      { max: max, value: value }
+      { "aria-valuenow": value, "aria-valuemin": min, "aria-valuemax": max, style: "width: #{ value }%", role: 'progressbar' }
     end
 
     def striped
-      'progress-striped' unless options[:striped].nil?
+      'progress-bar-striped' unless options[:striped].nil?
     end
 
     def animated
-      'progress-animated' unless options[:animated].nil?
+      'progress-bar-animated' unless options[:animated].nil?
+    end
+
+
+    def min
+      options[:min] || 0
     end
 
     def max
@@ -87,11 +80,11 @@ module UiBibz::Ui::Core
     end
 
     def value
-      options[:value] || content.to_i
+      options[:value] || content.to_f
     end
 
     def status
-      "progress-#{ options[:status] }" unless options[:status].nil?
+      "bg-#{ options[:status] }" unless options[:status].nil?
     end
 
   end

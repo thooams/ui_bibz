@@ -60,12 +60,16 @@ module UiBibz::Helpers::Ui::CoreHelper
     UiBibz::Ui::Core::Badge.new(content, options, html_options, &block).render
   end
 
-  # Progress Component
+  # ProgressBar Component
   #
   # +options+ (Hash)
   # +html_options+ (Hash)
-  def ui_progress percentage = nil, options = nil, html_options = nil, &block
-    UiBibz::Ui::Core::Progress.new(percentage, options, html_options, &block).render
+  def ui_progress_bar percentage = nil, options = nil, html_options = nil, &block
+    if is_tap(percentage, options)
+      UiBibz::Ui::Core::Progresses::ProgressBar.new(percentage, options, html_options).tap(&block).render
+    else
+      UiBibz::Ui::Core::Progresses::ProgressBar.new(percentage, options, html_options, &block).render
+    end
   end
 
   # Stars Component

@@ -96,6 +96,10 @@ module UiBibz
         autoload :Breadcrumb,             "ui_bibz/ui/core/paths/breadcrumb"
       end
 
+      module Progresses
+        autoload :ProgressBar,            "ui_bibz/ui/core/progresses/progress_bar"
+      end
+
       module Windows
         autoload :Modal,                  "ui_bibz/ui/core/windows/modal"
       end
