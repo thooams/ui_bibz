@@ -72,10 +72,6 @@ module UiBibz::Ui::Core
       glyph_and_content_html
     end
 
-    def tag_html
-      UiBibz::Ui::Core::Tag.new(options[:tag], class: 'pull-right', type: :pill, status: (options[:tag_status] || :default)).render
-    end
-
     # Know if component is tapped or not
     def is_tap content, options
       (content[:tap] if content.kind_of?(Hash)) || (options[:tap] unless options.nil?)

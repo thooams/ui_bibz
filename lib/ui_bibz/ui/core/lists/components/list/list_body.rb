@@ -23,13 +23,15 @@ module UiBibz::Ui::Core::Lists::Components
 
     # Render html tag
     def render
-      content_tag :p, content, html_options
+      output = [content_tag(:p, content, html_options)]
+      output << content_tag(:small, options[:extra])
+      output.join.html_safe
     end
 
   private
 
     def component_html_classes
-      'list-group-item-text'
+      'mb-1'
     end
 
   end

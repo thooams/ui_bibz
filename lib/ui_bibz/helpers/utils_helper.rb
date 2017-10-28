@@ -8,8 +8,22 @@ module UiBibz::Helpers::UtilsHelper
 
   def ui_form_for object, *args, &block
     options = args.extract_options!
-    ap options
-    simple_form_for(object, *(args << options.merge(builder: UiBibzForm::UiBibzFormBuilder)), &block)
+    simple_form_for(object, *(args << new_options(options)), &block)
+  end
+
+  private
+
+  def new_options options
+    if options[:html].nil?
+      options[:html] = { class: options[:class] }
+    else
+      if options[:html][:class].nil?
+        options[:html] = options[:html].merge({ class: options[:class] })
+      else
+        options[:html][:class] = options[:html][:class] + (options[:class] || "")
+      end
+    end
+    options.merge(builder: UiBibzForm::UiBibzFormBuilder)
   end
 
 

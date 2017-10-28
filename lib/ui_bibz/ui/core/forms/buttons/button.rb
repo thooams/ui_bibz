@@ -107,7 +107,13 @@ module UiBibz::Ui::Core::Forms::Buttons
     end
 
     def badge_html
-      UiBibz::Ui::Core::Badge.new(options[:badge], status: (options[:status] || :secondary)).render
+      if options[:badge].kind_of? Hash
+        options[:badge][:status] = options[:status] || :secondary
+        UiBibz::Ui::Core::Badge.new(options[:badge].delete(:content), options[:badge]).render
+
+      else
+        UiBibz::Ui::Core::Badge.new(options[:badge], status: (options[:status] || :secondary)).render
+      end
     end
 
     # :lg, :sm or :xs

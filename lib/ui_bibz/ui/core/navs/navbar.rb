@@ -25,6 +25,8 @@ module UiBibz::Ui::Core::Navs
   #   (+:secondary+, +:primary+, +:info+, +:warning+, +:danger+, +inverse+)
   # * +position+ - Symbol
   #   (+:top+, +:bottom+)
+  # * +position_type+ - Symbol
+  #   (+:fixed+, +:sticky+)
   # * +title+ - String
   #
   # ==== Signatures
@@ -141,11 +143,16 @@ module UiBibz::Ui::Core::Navs
     end
 
     def position
-      "fixed-#{ @options[:position] }" unless @options[:position].nil?
+      "#{ position_type }-#{ @options[:position] }" unless @options[:position].nil?
     end
 
     def brand_position
       @options[:brand_position] || :left
+    end
+
+    # fixed || sticky
+    def position_type
+      @options[:position_type] || "fixed"
     end
 
     def type

@@ -78,14 +78,14 @@ module UiBibz::Ui::Core::Lists
 
     # Render html tag
     def render
-      content_tag type, @lists.join().html_safe, html_options
+      content_tag tag_type, @lists.join().html_safe, html_options
     end
 
     # Add group list
     # See UiBibz::Ui::Core::List
     def list content = nil, options = {} , html_options = nil, &block
       is_tap  = (content[:tap] if content.kind_of?(Hash)) || (options[:tap] unless options.nil?)
-      options = options.merge({ type: @options[:type] }) unless @options[:type].nil?
+      options = options.merge({ tag: @options[:tag] }) unless @options[:tag].nil?
 
       if is_tap
         @lists << UiBibz::Ui::Core::Lists::Components::List.new(content, options, html_options).tap(&block).render
@@ -100,8 +100,8 @@ module UiBibz::Ui::Core::Lists
       "list-group"
     end
 
-    def type
-      [:link, :button].include?(@options[:type]) ? :div : :ul
+    def tag_type
+      [:a, :button].include?(options[:tag]) ? :div : :ul
     end
 
   end

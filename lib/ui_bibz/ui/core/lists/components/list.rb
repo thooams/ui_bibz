@@ -68,10 +68,9 @@ module UiBibz::Ui::Core::Lists::Components
         concat glyph_and_content_html if @content
         concat header_html if @body
         concat body_html   if @body
-        concat tag_html    if @options[:tag]
+        concat badge_html  if @options[:badge]
       end
     end
-
 
     # Add header which is a component
     def header content = nil, options = nil, html_options = nil, &block
@@ -86,7 +85,7 @@ module UiBibz::Ui::Core::Lists::Components
   private
 
     def component_html_classes
-      ['list-group-item', tag_type_class]
+      super << ['list-group-item', tag_type_class, badge_classes, header_classes]
     end
 
     def header_html
@@ -95,6 +94,31 @@ module UiBibz::Ui::Core::Lists::Components
 
     def body_html
       @body.render
+    end
+
+    def badge_classes
+      "d-flex justify-content-between align-items-center" unless options[:badge].nil?
+    end
+
+    def status
+      "list-group-item-#{ @options[:status] }" unless @options[:status].nil?
+    end
+
+    def header_classes
+      "flex-column align-items-start" unless options[:tap].nil?
+    end
+
+    def tag_type_class
+      "list-group-item-action" if is_button_type? || is_link_type?
+    end
+
+    def is_link_type?
+      @html_options[:href] = @options[:url] if @options[:url]
+      @options[:tag] == :a || @html_options[:tag] == :a
+    end
+
+    def is_button_type?
+      @options[:tag] == :button || @html_options[:tag] == :button
     end
 
     def tag_type
@@ -107,21 +131,14 @@ module UiBibz::Ui::Core::Lists::Components
       end
     end
 
-    def tag_type_class
-      "list-group-item-action" if is_button_type?
-    end
+    def badge_html
+      if options[:badge].kind_of? Hash
+        options[:badge][:status] = options[:status] || :secondary
+        UiBibz::Ui::Core::Badge.new(options[:badge].delete(:content), options[:badge]).render
 
-    def is_link_type?
-      @html_options[:href] = @options[:url] if @options[:url]
-      @options[:tag] == :a || @html_options[:tag] == :a
-    end
-
-    def is_button_type?
-      @options[:tag] == :button || @html_options[:tag] == :button
-    end
-
-    def status
-      "list-group-item-#{ @options[:status] }" unless @options[:status].nil?
+      else
+        UiBibz::Ui::Core::Badge.new(options[:badge], type: :pill, status: (options[:status] || :secondary)).render
+      end
     end
 
   end

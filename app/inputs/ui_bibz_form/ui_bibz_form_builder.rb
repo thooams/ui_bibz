@@ -9,7 +9,10 @@ module UiBibzForm
       content = (options || {}).merge(content || {})
       content  = content.merge(template: @template, form: self)
 
-      content_tag :div, "form-group surround_field" do
+      input_classes = UiBibz::Utils::Screwdriver.join_classes('form-group', 'surround_field', options[:input_html].try(:[], :class))
+      wrapper_html = (options[:input_html] || {}).merge({ class: input_classes })
+
+      content_tag :div, wrapper_html do
         concat content_tag(:label, content[:label]) unless content[:label].nil?
         concat UiBibz::Ui::Core::Forms::Surrounds::SurroundField.new(content, opts, html_options).tap(&block).render
       end
@@ -19,7 +22,10 @@ module UiBibzForm
       content = (options || {}).merge(content || {})
       content  = content.merge(template: @template, form: self)
 
-      content_tag :div do
+      input_classes = UiBibz::Utils::Screwdriver.join_classes('button_group', options[:input_html].try(:[], :class))
+      wrapper_html = (options[:input_html] || {}).merge({ class: input_classes })
+
+      content_tag :div, wrapper_html do
         concat content_tag(:label, content[:label]) unless content[:label].nil?
         concat UiBibz::Ui::Core::Forms::Buttons::ButtonGroup.new(content, opts, html_options).tap(&block).render
       end

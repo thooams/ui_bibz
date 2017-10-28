@@ -18,6 +18,13 @@ module UiBibz::Ui::Core::Navs
   # You can pass arguments in options attribute:
   # * +type+ - Symbol
   #   (+:pills+, +:tab+)
+  # * +position+ - Symbol
+  #   (+:left+, +:right+, +:center+)
+  # * +stacked+ - Boolean
+  # * +tag+ - Symbol
+  #   (+:a+, +:li)
+  # * +justify+ - Boolean
+  # * +fill+ - Boolean
   #
   # ==== Signatures
   #
@@ -90,7 +97,7 @@ module UiBibz::Ui::Core::Navs
   private
 
     def component_html_classes
-      ["nav", type, position, stacked]
+      ["nav", type, position, stacked, justify, fill]
     end
 
     # tabs or pills
@@ -99,11 +106,32 @@ module UiBibz::Ui::Core::Navs
     end
 
     def position
-      "pull-#{ @options[:position] }" unless @options[:position].nil?
+      case @options[:position]
+      when :center
+        "justify-content-center"
+      when :right
+        "justify-content-end"
+      else
+        nil
+      end
+    end
+
+    def justify
+      if @options[:justify]
+        if type == "nav-links"
+          "nav-justified"
+        else
+          "nav-fill"
+        end
+      end
+    end
+
+    def fill
+      "nav-fill" if @options[:fill]
     end
 
     def stacked
-      "nav-stacked" unless @options[:stacked].nil?
+      "flex-column" if @options[:stacked]
     end
 
     def tag
