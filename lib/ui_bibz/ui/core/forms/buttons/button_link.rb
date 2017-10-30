@@ -83,7 +83,7 @@ module UiBibz::Ui::Core::Forms::Buttons
     end
 
     def status
-      "btn-#{ options[:status] || :secondary }"
+      ["btn", outline, options[:status] || :secondary].compact.join('-')
     end
 
   end
