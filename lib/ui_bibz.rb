@@ -6,6 +6,10 @@ module UiBibz
 
   mattr_accessor :app_root
 
+  module Utils
+    autoload :Screwdriver,             "ui_bibz/utils/screwdriver"
+  end
+
   module Ui
     # Base
     autoload :Base,                    "ui_bibz/ui/base"
