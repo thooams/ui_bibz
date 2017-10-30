@@ -96,11 +96,13 @@ module UiBibz::Ui::Core::Cards
 
     # Add Header which is a component
     def header content = nil, options = nil, html_options = nil, &block
-      @items << UiBibz::Ui::Core::Cards::Components::CardHeader.new(content, options, html_options, &block).render
+      options, content = inherit_options(content, options, block)
+      @header = UiBibz::Ui::Core::Cards::Components::CardHeader.new(content, options, html_options, &block).render
     end
 
     # Add Body div which is a component
     def body content = nil, options = nil, html_options = nil, &block
+      options, content = inherit_options(content, options, block)
       if is_tap(content, options)
         @items << UiBibz::Ui::Core::Cards::Components::CardBody.new(content, options, html_options).tap(&block).render
       else
@@ -110,7 +112,8 @@ module UiBibz::Ui::Core::Cards
 
     # Add Footer which is a component
     def footer content = nil, options = nil, html_options = nil, &block
-      @items << UiBibz::Ui::Core::Cards::Components::CardFooter.new(content, options, html_options, &block).render
+      options, content = inherit_options(content, options, block)
+      @footer = UiBibz::Ui::Core::Cards::Components::CardFooter.new(content, options, html_options, &block).render
     end
 
     # Add List group which is a component
@@ -125,17 +128,34 @@ module UiBibz::Ui::Core::Cards
 
     # Render html tag
     def render
-      content_tag :div, @items.join.html_safe, html_options
+      content_tag :div, html_structure, html_options
     end
 
   protected
 
+    def html_structure
+      [@header, @items.join, @footer].compact.join.html_safe
+    end
+
+    def inherit_options content, options, block
+      if block.nil?
+        options = (options || {}).merge({ outline: @options[:outline] , status: @options[:status] })
+      else
+        content = (content || {}).merge({ outline: @options[:outline], status: @options[:status] })
+      end
+      [options, content]
+    end
+
     def component_html_classes
-      ["card", text, type, tab_pane]
+      ["card", text, type, tab_pane, outline]
     end
 
     def status
-      "card-#{ @options[:status] }" unless @options[:status].nil?
+      unless @options[:status].nil?
+        output = @options[:outline] ? ["border-#{ @options[:status] }"] : ["bg-#{ @options[:status] }"]
+        output << "text-white" if @options[:status] != :light && @options[:status] != :warning
+        output.join(' ')
+      end
     end
 
     def text
@@ -152,6 +172,10 @@ module UiBibz::Ui::Core::Cards
 
     def tab_pane
       "tab-pane" if @options[:tab]
+    end
+
+    def outline
+      "bg-transparent" if @options[:outline]
     end
 
   end

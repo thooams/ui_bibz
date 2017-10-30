@@ -51,7 +51,7 @@ module UiBibz::Ui::Core::Cards::Components
     end
 
     def position
-      "card-img-#{ @options[:position] }" unless @options[:position].nil?
+      "card-img-#{ @options[:position] || :top }"
     end
 
   end

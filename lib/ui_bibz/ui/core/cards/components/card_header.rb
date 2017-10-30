@@ -44,7 +44,11 @@ module UiBibz::Ui::Core::Cards::Components
   private
 
     def component_html_classes
-      "card-header"
+      ["card-header", outline]
+    end
+
+    def outline
+      "text-#{ @options[:status] } border-#{ @options[:status] } bg-transparent" if @options[:outline]
     end
 
   end

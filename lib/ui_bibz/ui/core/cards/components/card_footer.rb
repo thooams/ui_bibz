@@ -48,7 +48,11 @@ module UiBibz::Ui::Core::Cards::Components
     end
 
     def component_html_classes
-      ["card-footer", muted]
+      ["card-footer", muted, outline]
+    end
+
+    def outline
+      "text-#{ @options[:status] } border-#{ @options[:status] } bg-transparent" if @options[:outline]
     end
 
   end

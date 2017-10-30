@@ -60,7 +60,11 @@ module UiBibz::Ui::Core::Cards::Components
   private
 
     def component_html_classes
-      "card-body"
+      ["card-body", outline]
+    end
+
+    def outline
+      "text-#{ @options[:status] }" if @options[:outline]
     end
 
   end
