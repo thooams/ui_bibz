@@ -1,7 +1,7 @@
 # encoding: UTF-8
 require 'test_helper'
 
-class UiHelperTest < ActionView::TestCase
+class JumbotronTest < ActionView::TestCase
   include UiBibz::Helpers::Ui::CoreHelper
 
   test 'jumbotron with full_width' do

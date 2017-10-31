@@ -8,7 +8,7 @@ class ButtonChoiceTest < ActionView::TestCase
       bc.button 'Checkbox 1'
       bc.button 'Checkbox 2', state: :active
     end
-    expected = "<div data-toggle=\"buttons\" class=\"btn-group\"><label class=\"btn-secondary btn\"><input type=\"checkbox\" autocomplete=\"off\" />Checkbox 1</label><label class=\"active btn-secondary btn\" aria-pressed=\"true\"><input type=\"checkbox\" autocomplete=\"off\" checked=\"checked\" />Checkbox 2</label></div>"
+    expected = "<div data-toggle=\"buttons\" class=\"btn-group button-choice\"><label class=\"btn-secondary btn\"><input type=\"checkbox\" autocomplete=\"off\" />Checkbox 1</label><label class=\"active btn-secondary btn\" aria-pressed=\"true\"><input type=\"checkbox\" autocomplete=\"off\" checked=\"checked\" />Checkbox 2</label></div>"
 
     assert_equal expected, actual
   end
@@ -18,7 +18,7 @@ class ButtonChoiceTest < ActionView::TestCase
       bc.button 'Radio 1'
       bc.button 'Radio 2', state: :active
     end
-    expected = "<div data-toggle=\"buttons\" class=\"btn-group\"><label class=\"btn-secondary btn\"><input type=\"radio\" autocomplete=\"off\" />Radio 1</label><label class=\"active btn-secondary btn\" aria-pressed=\"true\"><input type=\"radio\" autocomplete=\"off\" checked=\"checked\" />Radio 2</label></div>"
+    expected = "<div data-toggle=\"buttons\" class=\"btn-group button-choice\"><label class=\"btn-secondary btn\"><input type=\"radio\" autocomplete=\"off\" />Radio 1</label><label class=\"active btn-secondary btn\" aria-pressed=\"true\"><input type=\"radio\" autocomplete=\"off\" checked=\"checked\" />Radio 2</label></div>"
 
     assert_equal expected, actual
   end
@@ -28,7 +28,7 @@ class ButtonChoiceTest < ActionView::TestCase
       bc.button 'Radio 1', glyph: 'diamond', status: :primary
       bc.button 'Radio 2', state: :active
     end
-    expected = "<div data-toggle=\"buttons\" class=\"btn-group btn-group-lg\"><label class=\"btn-primary btn btn-lg\"><input type=\"radio\" autocomplete=\"off\" /><i class=\"glyph fa fa-diamond\"></i> Radio 1</label><label class=\"active btn-secondary btn btn-lg\" aria-pressed=\"true\"><input type=\"radio\" autocomplete=\"off\" checked=\"checked\" />Radio 2</label></div>"
+    expected = "<div data-toggle=\"buttons\" class=\"btn-group btn-group-lg button-choice\"><label class=\"btn-primary btn btn-lg\"><input type=\"radio\" autocomplete=\"off\" /><i class=\"glyph fa fa-diamond\"></i> Radio 1</label><label class=\"active btn-secondary btn btn-lg\" aria-pressed=\"true\"><input type=\"radio\" autocomplete=\"off\" checked=\"checked\" />Radio 2</label></div>"
 
     assert_equal expected, actual
   end

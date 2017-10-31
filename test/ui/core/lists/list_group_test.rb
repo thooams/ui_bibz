@@ -11,7 +11,7 @@ class ListGroupTest < ActionView::TestCase
         l.body   'My body'
       end
     end
-    expected = "<div class=\"list-group\"><a class=\"list-group-item-success list-group-item\" href=\"#momo\">Momo</a><a type=\"link\" class=\"list-group-item\" href=\"#state\"><h4 class=\"list-group-item-heading\">My title</h4><p class=\"list-group-item-text\">My body</p></a></div>"
+    expected = "<ul class=\"list-group\"><li href=\"#momo\" class=\"list-group-item-success list-group-item\">Momo</li><li href=\"#state\" class=\"list-group-item flex-column align-items-start\"><div class=\"d-flex w-100 justify-content-between\"><h5 class=\"mb-1\">My title</h5><small></small></div><p class=\"mb-1\">My body</p><small></small></li></ul>"
 
     assert_equal expected, actual
   end
@@ -20,7 +20,7 @@ class ListGroupTest < ActionView::TestCase
     actual = ui_list_group(type: :link) do |lg|
       lg.list 'Lulu'
       lg.list 'state'
-    end.render
+    end
     expected = "<ul class=\"list-group\"><li class=\"list-group-item\">Lulu</li><li class=\"list-group-item\">state</li></ul>"
 
     assert_equal expected, actual

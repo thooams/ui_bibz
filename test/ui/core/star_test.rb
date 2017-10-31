@@ -1,6 +1,7 @@
 require 'test_helper'
 
 class StarTest < ActionView::TestCase
+  include UiBibz::Helpers::Ui::CoreHelper
 
     test "stars with 1" do
       actual   = ui_star(1)
@@ -27,7 +28,7 @@ class StarTest < ActionView::TestCase
     end
 
     test "stars with 5" do
-      actual   = ui_star.new(5)
+      actual   = ui_star(5)
       expected = "<span class=\"stars-notation\"><i class=\"glyph fa fa-star\"></i> <i class=\"glyph fa fa-star\"></i> <i class=\"glyph fa fa-star\"></i> <i class=\"glyph fa fa-star\"></i> <i class=\"glyph fa fa-star\"></i></span>"
       assert_equal expected, actual
     end

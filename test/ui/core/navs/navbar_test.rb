@@ -31,7 +31,19 @@ class NavbarTest < ActionView::TestCase
       end
       nb.text 'test'
     end
-    expected = "<nav class=\"navbar navbar-light navbar-expand-lg\"><a class=\"navbar-brand\" href=\"/\">Brand</a><button class=\"navbar-toggler hidden-sm-up\" type=\"button\" data-toggle=\"collapse\" data-target=\"##{ actual.id }\">☰</button><div class=\"collapse navbar-collapse\" id=\"#{ actual.id }\"><ul class=\"navbar-nav mr-auto\"><li class=\"nav-item\"><a class=\"active nav-link\" href=\"#Home\">Home</a></li><li class=\"nav-item\"><a class=\"nav-link\" href=\"#profile\">Profile</a></li><li class=\"nav-item\"><a class=\"nav-link\" href=\"#messages\">Messages</a></li></ul><form type=\"form_tag\" position=\"right\" class=\"navbar-form form-inline pull-right\" action=\"#\" accept-charset=\"UTF-8\" method=\"post\"><input name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" /><button class=\"btn-primary btn\">Search</button></form><span class=\"navbar-text\">test</span></div></nav>"
+    expected = "<nav class=\"navbar navbar-light navbar-expand-lg\"><a class=\"navbar-brand\" href=\"/\">Brand</a><button class=\"navbar-toggler hidden-sm-up\" type=\"button\" data-toggle=\"collapse\" data-target=\"##{ actual.id }\">☰</button><div class=\"collapse navbar-collapse\" id=\"#{ actual.id }\"><ul class=\"navbar-nav\"><li class=\"nav-item\"><a class=\"active nav-link\" href=\"#Home\">Home</a></li><li class=\"nav-item\"><a class=\"nav-link\" href=\"#profile\">Profile</a></li><li class=\"nav-item\"><a class=\"nav-link\" href=\"#messages\">Messages</a></li></ul><form type=\"form_tag\" position=\"right\" class=\"navbar-form form-inline pull-right my-2 my-lg-0\" action=\"#\" accept-charset=\"UTF-8\" method=\"post\"><input name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" /><button class=\"btn\">Search</button></form><span class=\"navbar-text\">test</span></div></nav>"
+
+    assert_equal expected, actual.render
+  end
+
+  test 'status' do
+    actual = UiBibz::Ui::Core::Navs::Navbar.new(type: :dark, status: :dark).tap do |nb|
+      nb.brand image_tag 'ruby-white'
+      nb.nav do |n|
+        n.link 'Link', url: '#link'
+      end
+    end
+    expected = "<nav class=\"bg-dark navbar navbar-dark navbar-expand-lg\"><a class=\"navbar-brand\" href=\"/\"><img src=\"/images/ruby-white\" alt=\"Ruby white\" /></a><button class=\"navbar-toggler hidden-sm-up\" type=\"button\" data-toggle=\"collapse\" data-target=\"##{ actual.id }\">☰</button><div class=\"collapse navbar-collapse\" id=\"#{ actual.id }\"><ul class=\"navbar-nav\"><li class=\"nav-item\"><a class=\"nav-link\" href=\"#link\">Link</a></li></ul></div></nav>"
 
     assert_equal expected, actual.render
   end

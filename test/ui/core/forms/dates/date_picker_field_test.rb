@@ -4,7 +4,7 @@ class DatePickerFieldTest < ActionView::TestCase
 
     test "Date Picker Field" do
       actual   = UiBibz::Ui::Core::Forms::Dates::DatePickerField.new(['date_1', 'date_2'], { append: 'a', prepend: 'b', range: 'u' }, { class: 'datepicker-test' }).render
-      expected = "<div class=\"input-daterange input-group\"><span class=\"input-group-addon\">a</span><input type=\"text\" name=\"date_1\" id=\"date_1\" class=\"datepicker-test date_picker form-control\" data-date-locale=\"en\" data-provide=\"datepicker\" data-date-format=\"yyyy-mm-dd\" data-date-today-btn=\"linked\" data-date-toggle-active=\"true\" /><span class=\"input-group-addon\">u</span><input type=\"text\" name=\"date_2\" id=\"date_2\" class=\"datepicker-test date_picker form-control\" data-date-locale=\"en\" data-provide=\"datepicker\" data-date-format=\"yyyy-mm-dd\" data-date-today-btn=\"linked\" data-date-toggle-active=\"true\" /><span class=\"input-group-addon\">b</span></div>"
+      expected = "<div class=\"input-daterange input-group ui_surround_field\"><span class=\"input-group-addon\">a</span><input type=\"text\" name=\"date_1\" id=\"date_1\" class=\"datepicker-test date_picker form-control\" data-date-locale=\"en\" data-provide=\"datepicker\" data-date-format=\"yyyy-mm-dd\" data-date-today-btn=\"linked\" data-date-toggle-active=\"true\" /><span class=\"input-group-addon\">u</span><input type=\"text\" name=\"date_2\" id=\"date_2\" class=\"datepicker-test date_picker form-control\" data-date-locale=\"en\" data-provide=\"datepicker\" data-date-format=\"yyyy-mm-dd\" data-date-today-btn=\"linked\" data-date-toggle-active=\"true\" /><span class=\"input-group-addon\">b</span></div>"
 
       assert_equal expected, actual
     end

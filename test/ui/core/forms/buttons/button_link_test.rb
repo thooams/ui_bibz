@@ -26,7 +26,7 @@ class ButtonLinkTest < ActionView::TestCase
 
   test 'button_link outline' do
     actual   = ui_button_link('state', status: :success, outline: true)
-    expected = "<a class=\"btn-success btn\" role=\"button\" href=\"#\">state</a>"
+    expected = "<a class=\"btn-outline-success btn\" role=\"button\" href=\"#\">state</a>"
 
     assert_equal expected, actual
   end
