@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    ui_bibz (2.0.0.beta2.2)
+    ui_bibz (2.0.0.beta2.3)
       bootstrap (= 4.0.0.beta2)
       font-awesome-sass
       haml
