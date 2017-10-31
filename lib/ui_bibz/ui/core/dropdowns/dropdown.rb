@@ -149,8 +149,12 @@ module UiBibz::Ui::Core::Dropdowns
       "btn-group" if @options[:inline]
     end
 
+    def outline
+      "outline" if @options[:outline]
+    end
+
     def button_status
-      "btn-#{ @status || :primary }"
+      ["btn", outline, @status || :secondary].compact.join('-')
     end
 
     # :lg, :sm or :xs
