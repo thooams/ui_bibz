@@ -26,7 +26,7 @@ class SimpleFormTest < ActionView::TestCase
       f.input :name_fr, as: :ui_auto_complete_field, collection: @users, label_method: :name_fr
     end
 
-    expected = "<form class=\"simple_form edit_user\" id=\"edit_user_1\" action=\"/users/1\" accept-charset=\"UTF-8\" method=\"post\"><input name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" /><input type=\"hidden\" name=\"_method\" value=\"patch\" /><div class=\"form-group ui_auto_complete_field optional user_name_fr\"><label class=\"control-label ui_auto_complete_field optional\" for=\"user_name_fr\">Name fr</label><input type=\"text\" name=\"user[name_fr]\" id=\"user_name_fr\" value=\"test1\" class=\"ui_auto_complete_field optional form-control auto-complete-field\" autocomplete=\"true\" list=\"user_name_fr-datalist\" /><datalist id=\"user_name_fr-datalist\"><option value=\"1\">test1</option>
+    expected = "<form class=\"simple_form edit_user\" id=\"edit_user_1\" action=\"/users/1\" accept-charset=\"UTF-8\" method=\"post\"><input name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" /><input type=\"hidden\" name=\"_method\" value=\"patch\" /><div class=\"form-group ui_auto_complete_field optional user_name_fr\"><label class=\"control-label ui_auto_complete_field optional\" for=\"user_name_fr\">Name fr</label><input type=\"text\" name=\"user[name_fr]\" id=\"user_name_fr\" value=\"test1\" class=\"form-control auto-complete-field\" autocomplete=\"true\" list=\"user_name_fr-datalist\" /><datalist id=\"user_name_fr-datalist\"><option value=\"1\">test1</option>
 <option value=\"2\">test2</option></datalist></div></form>"
 
     assert_equal expected, actual
@@ -47,7 +47,7 @@ class SimpleFormTest < ActionView::TestCase
       f.input :name_fr, as: :ui_dropdown_select_field, collection: @users, label_method: :name_fr
     end
 
-    expected = "<form class=\"simple_form edit_user\" id=\"edit_user_1\" action=\"/users/1\" accept-charset=\"UTF-8\" method=\"post\"><input name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" /><input type=\"hidden\" name=\"_method\" value=\"patch\" /><div class=\"form-group ui_dropdown_select_field optional user_name_fr\"><label class=\"control-label ui_dropdown_select_field optional\" for=\"user_name_fr\">Name fr</label><select name=\"user[name_fr]\" id=\"user_name_fr\" class=\"ui_dropdown_select_field optional dropdown-select-field\"><option value=\"1\">test1</option>
+    expected = "<form class=\"simple_form edit_user\" id=\"edit_user_1\" action=\"/users/1\" accept-charset=\"UTF-8\" method=\"post\"><input name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" /><input type=\"hidden\" name=\"_method\" value=\"patch\" /><div class=\"form-group ui_dropdown_select_field optional user_name_fr\"><label class=\"control-label ui_dropdown_select_field optional\" for=\"user_name_fr\">Name fr</label><select name=\"user[name_fr]\" id=\"user_name_fr\" class=\"dropdown-select-field\"><option value=\"1\">test1</option>
 <option value=\"2\">test2</option></select></div></form>"
 
     assert_equal expected, actual
@@ -59,7 +59,7 @@ class SimpleFormTest < ActionView::TestCase
       f.input :name_fr, as: :ui_dropdown_select_field, collection: @continents, toto: 'lala', grouped: true, group_method: :countries
     end
 
-    expected = "<form class=\"simple_form edit_user\" id=\"edit_user_1\" action=\"/users/1\" accept-charset=\"UTF-8\" method=\"post\"><input name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" /><input type=\"hidden\" name=\"_method\" value=\"patch\" /><div class=\"form-group ui_dropdown_select_field optional user_name_fr\"><label class=\"control-label ui_dropdown_select_field optional\" for=\"user_name_fr\">Name fr</label><select name=\"user[name_fr]\" id=\"user_name_fr\" class=\"ui_dropdown_select_field optional dropdown-select-field\"><optgroup label=\"Europe\"><option value=\"1\">France</option>
+    expected = "<form class=\"simple_form edit_user\" id=\"edit_user_1\" action=\"/users/1\" accept-charset=\"UTF-8\" method=\"post\"><input name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" /><input type=\"hidden\" name=\"_method\" value=\"patch\" /><div class=\"form-group ui_dropdown_select_field optional user_name_fr\"><label class=\"control-label ui_dropdown_select_field optional\" for=\"user_name_fr\">Name fr</label><select name=\"user[name_fr]\" id=\"user_name_fr\" class=\"dropdown-select-field\"><optgroup label=\"Europe\"><option value=\"1\">France</option>
 <option value=\"2\">Deutchland</option></optgroup></select></div></form>"
 
     assert_equal expected, actual
@@ -73,7 +73,7 @@ class SimpleFormTest < ActionView::TestCase
       f.input :price, as: :ui_formula_field
     end
 
-    expected = "<form class=\"simple_form edit_user\" id=\"edit_user_1\" action=\"/users/1\" accept-charset=\"UTF-8\" method=\"post\"><input name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" /><input type=\"hidden\" name=\"_method\" value=\"patch\" /><div class=\"form-group ui_formula_field optional user_price\"><label class=\"control-label ui_formula_field optional\" for=\"user_price\">Price</label><div class=\"formula_field input-group\"><input type=\"text\" name=\"user[price_formula]\" id=\"user_price_formula\" value=\"1+2\" class=\"ui_formula_field optional formula-field form-control\" formula_field_value=\"1+2\" /><span class=\"formula-field-sign input-group-addon\">=</span><input type=\"text\" name=\"user[price]\" id=\"user_price\" value=\"3.0\" class=\"formula-field-result form-control\" readonly=\"readonly\" /><span data-toggle=\"tooltip\" class=\"formula-field-alert input-group-addon\"><i class=\"glyph-danger glyph fa fa-exclamation-triangle\"></i></span></div></div></form>"
+    expected = "<form class=\"simple_form edit_user\" id=\"edit_user_1\" action=\"/users/1\" accept-charset=\"UTF-8\" method=\"post\"><input name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" /><input type=\"hidden\" name=\"_method\" value=\"patch\" /><div class=\"form-group ui_formula_field optional user_price\"><label class=\"control-label ui_formula_field optional\" for=\"user_price\">Price</label><div class=\"formula_field input-group ui_surround_field\"><input type=\"text\" name=\"user[price_formula]\" id=\"user_price_formula\" value=\"1+2\" class=\"ui_formula_field optional formula-field form-control\" formula_field_value=\"1+2\" /><span class=\"formula-field-sign input-group-addon\">=</span><input type=\"text\" name=\"user[price]\" id=\"user_price\" value=\"3.0\" class=\"formula-field-result form-control\" readonly=\"readonly\" /><span data-toggle=\"tooltip\" class=\"formula-field-alert input-group-addon\"><i class=\"glyph-danger glyph fa fa-exclamation-triangle\"></i></span></div></div></form>"
 
     assert_equal expected, actual
   end
@@ -94,7 +94,7 @@ class SimpleFormTest < ActionView::TestCase
       f.input :name_fr, as: :ui_multi_column_field, collection: @users, label_method: :name_fr
     end
 
-    expected = "<form class=\"simple_form edit_user\" id=\"edit_user_1\" action=\"/users/1\" accept-charset=\"UTF-8\" method=\"post\"><input name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" /><input type=\"hidden\" name=\"_method\" value=\"patch\" /><div class=\"form-group ui_multi_column_field optional user_name_fr\"><label class=\"control-label ui_multi_column_field optional\" for=\"user_name_fr\">Name fr</label><select name=\"name_fr[]\" id=\"name_fr\" class=\"ui_multi_column_field optional multi-column-field\" multiple=\"multiple\"><option value=\"1\">test1</option>
+    expected = "<form class=\"simple_form edit_user\" id=\"edit_user_1\" action=\"/users/1\" accept-charset=\"UTF-8\" method=\"post\"><input name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" /><input type=\"hidden\" name=\"_method\" value=\"patch\" /><div class=\"form-group ui_multi_column_field optional user_name_fr\"><label class=\"control-label ui_multi_column_field optional\" for=\"user_name_fr\">Name fr</label><select name=\"name_fr[]\" id=\"name_fr\" class=\"multi-column-field\" multiple=\"multiple\"><option value=\"1\">test1</option>
 <option value=\"2\">test2</option></select></div></form>"
 
     assert_equal expected, actual
@@ -105,7 +105,7 @@ class SimpleFormTest < ActionView::TestCase
       f.input :name_fr, as: :ui_multi_select_field, collection: @users, label_method: :name_fr
     end
 
-    expected = "<form class=\"simple_form edit_user\" id=\"edit_user_1\" action=\"/users/1\" accept-charset=\"UTF-8\" method=\"post\"><input name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" /><input type=\"hidden\" name=\"_method\" value=\"patch\" /><div class=\"form-group ui_multi_select_field optional user_name_fr\"><label class=\"control-label ui_multi_select_field optional\" for=\"user_name_fr\">Name fr</label><select name=\"name_fr[]\" id=\"name_fr\" class=\"ui_multi_select_field optional btn-secondary multi-select-field\" multiple=\"multiple\"><option value=\"1\">test1</option>
+    expected = "<form class=\"simple_form edit_user\" id=\"edit_user_1\" action=\"/users/1\" accept-charset=\"UTF-8\" method=\"post\"><input name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" /><input type=\"hidden\" name=\"_method\" value=\"patch\" /><div class=\"form-group ui_multi_select_field optional user_name_fr\"><label class=\"control-label ui_multi_select_field optional\" for=\"user_name_fr\">Name fr</label><select name=\"user[name_fr][]\" id=\"user_name_fr\" class=\"btn-secondary multi-select-field\" multiple=\"multiple\"><option value=\"1\">test1</option>
 <option value=\"2\">test2</option></select></div></form>"
 
     assert_equal expected, actual
@@ -117,7 +117,7 @@ class SimpleFormTest < ActionView::TestCase
       f.input :name_fr, as: :ui_multi_select_field, collection: @continents, toto: 'lala', grouped: true, group_method: :countries
     end
 
-    expected = "<form class=\"simple_form edit_user\" id=\"edit_user_1\" action=\"/users/1\" accept-charset=\"UTF-8\" method=\"post\"><input name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" /><input type=\"hidden\" name=\"_method\" value=\"patch\" /><div class=\"form-group ui_multi_select_field optional user_name_fr\"><label class=\"control-label ui_multi_select_field optional\" for=\"user_name_fr\">Name fr</label><select name=\"name_fr[]\" id=\"name_fr\" class=\"ui_multi_select_field optional btn-secondary multi-select-field\" multiple=\"multiple\"><optgroup label=\"Europe\"><option value=\"1\">France</option>
+    expected = "<form class=\"simple_form edit_user\" id=\"edit_user_1\" action=\"/users/1\" accept-charset=\"UTF-8\" method=\"post\"><input name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" /><input type=\"hidden\" name=\"_method\" value=\"patch\" /><div class=\"form-group ui_multi_select_field optional user_name_fr\"><label class=\"control-label ui_multi_select_field optional\" for=\"user_name_fr\">Name fr</label><select name=\"user[name_fr][]\" id=\"user_name_fr\" class=\"btn-secondary multi-select-field\" multiple=\"multiple\"><optgroup label=\"Europe\"><option value=\"1\">France</option>
 <option value=\"2\">Deutchland</option></optgroup></select></div></form>"
 
     assert_equal expected, actual
@@ -159,7 +159,7 @@ class SimpleFormTest < ActionView::TestCase
       f.input :name_fr, as: :ui_select_field, collection: @users, label_method: :name_fr
     end
 
-     expected = "<form class=\"simple_form edit_user\" id=\"edit_user_1\" action=\"/users/1\" accept-charset=\"UTF-8\" method=\"post\"><input name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" /><input type=\"hidden\" name=\"_method\" value=\"patch\" /><div class=\"form-group ui_select_field optional user_name_fr\"><label class=\"control-label ui_select_field optional\" for=\"user_name_fr\">Name fr</label><select name=\"user[name_fr]\" id=\"user_name_fr\" class=\"ui_select_field optional select-field form-control\"><option value=\"1\">test1</option>
+    expected = "<form class=\"simple_form edit_user\" id=\"edit_user_1\" action=\"/users/1\" accept-charset=\"UTF-8\" method=\"post\"><input name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" /><input type=\"hidden\" name=\"_method\" value=\"patch\" /><div class=\"form-group ui_select_field optional user_name_fr\"><label class=\"control-label ui_select_field optional\" for=\"user_name_fr\">Name fr</label><select name=\"user[name_fr]\" id=\"user_name_fr\" class=\"select-field form-control\"><option value=\"1\">test1</option>
 <option value=\"2\">test2</option></select></div></form>"
 
     assert_equal expected, actual
@@ -170,8 +170,8 @@ class SimpleFormTest < ActionView::TestCase
       f.input :name_fr, as: :ui_select_field, refresh: { target: { data: [] }}, collection: @users, label_method: :name_fr
     end
 
-     expected = "<form class=\"simple_form edit_user\" id=\"edit_user_1\" action=\"/users/1\" accept-charset=\"UTF-8\" method=\"post\"><input name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" /><input type=\"hidden\" name=\"_method\" value=\"patch\" /><div class=\"form-group ui_select_field optional user_name_fr\"><label class=\"control-label ui_select_field optional\" for=\"user_name_fr\">Name fr</label><div class=\"field-refresh input-group\"><select name=\"user[name_fr]\" id=\"user_name_fr\" class=\"ui_select_field optional select-field form-control\"><option value=\"1\">test1</option>
-<option value=\"2\">test2</option></select><div class=\"input-group-btn\"><span data-connect=\"{&quot;events&quot;:&quot;click&quot;,&quot;mode&quot;:&quot;remote&quot;,&quot;target&quot;:{&quot;selector&quot;:&quot;#user_name_fr&quot;,&quot;url&quot;:&quot;&quot;,&quot;data&quot;:[]}}\" class=\"btn-primary ui-bibz-connect btn input-refresh-button\"><i class=\"glyph fa fa-refresh\"></i> </span></div></div></div></form>"
+    expected = "<form class=\"simple_form edit_user\" id=\"edit_user_1\" action=\"/users/1\" accept-charset=\"UTF-8\" method=\"post\"><input name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" /><input type=\"hidden\" name=\"_method\" value=\"patch\" /><div class=\"form-group ui_select_field optional user_name_fr\"><label class=\"control-label ui_select_field optional\" for=\"user_name_fr\">Name fr</label><div class=\"field-refresh input-group ui_surround_field\"><select name=\"user[name_fr]\" id=\"user_name_fr\" class=\"select-field form-control\"><option value=\"1\">test1</option>
+<option value=\"2\">test2</option></select><div class=\"input-group-btn\"><span data-connect=\"{&quot;events&quot;:&quot;click&quot;,&quot;mode&quot;:&quot;remote&quot;,&quot;target&quot;:{&quot;selector&quot;:&quot;#user_name_fr&quot;,&quot;url&quot;:&quot;&quot;,&quot;data&quot;:[]}}\" class=\"btn-secondary ui-bibz-connect btn input-refresh-button\"><i class=\"glyph fa fa-refresh\"></i> </span></div></div></div></form>"
 
     assert_equal expected, actual
   end
@@ -182,7 +182,7 @@ class SimpleFormTest < ActionView::TestCase
       f.input :name_fr, as: :ui_select_field, collection: @continents, toto: 'lala', grouped: true, group_method: :countries
     end
 
-    expected = "<form class=\"simple_form edit_user\" id=\"edit_user_1\" action=\"/users/1\" accept-charset=\"UTF-8\" method=\"post\"><input name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" /><input type=\"hidden\" name=\"_method\" value=\"patch\" /><div class=\"form-group ui_select_field optional user_name_fr\"><label class=\"control-label ui_select_field optional\" for=\"user_name_fr\">Name fr</label><select name=\"user[name_fr]\" id=\"user_name_fr\" class=\"ui_select_field optional select-field form-control\"><optgroup label=\"Europe\"><option value=\"1\">France</option>
+    expected = "<form class=\"simple_form edit_user\" id=\"edit_user_1\" action=\"/users/1\" accept-charset=\"UTF-8\" method=\"post\"><input name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" /><input type=\"hidden\" name=\"_method\" value=\"patch\" /><div class=\"form-group ui_select_field optional user_name_fr\"><label class=\"control-label ui_select_field optional\" for=\"user_name_fr\">Name fr</label><select name=\"user[name_fr]\" id=\"user_name_fr\" class=\"select-field form-control\"><optgroup label=\"Europe\"><option value=\"1\">France</option>
 <option value=\"2\">Deutchland</option></optgroup></select></div></form>"
 
     assert_equal expected, actual
@@ -195,7 +195,7 @@ class SimpleFormTest < ActionView::TestCase
       f.input :name_fr, as: :ui_select_field, collection: @countries
     end
 
-    expected = "<form class=\"simple_form edit_user\" id=\"edit_user_1\" action=\"/users/1\" accept-charset=\"UTF-8\" method=\"post\"><input name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" /><input type=\"hidden\" name=\"_method\" value=\"patch\" /><div class=\"form-group ui_select_field optional user_name_fr\"><label class=\"control-label ui_select_field optional\" for=\"user_name_fr\">Name fr</label><select name=\"user[name_fr]\" id=\"user_name_fr\" class=\"ui_select_field optional select-field form-control\"><option selected=\"selected\" value=\"1\">France</option>
+    expected = "<form class=\"simple_form edit_user\" id=\"edit_user_1\" action=\"/users/1\" accept-charset=\"UTF-8\" method=\"post\"><input name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" /><input type=\"hidden\" name=\"_method\" value=\"patch\" /><div class=\"form-group ui_select_field optional user_name_fr\"><label class=\"control-label ui_select_field optional\" for=\"user_name_fr\">Name fr</label><select name=\"user[name_fr]\" id=\"user_name_fr\" class=\"select-field form-control\"><option value=\"1\">France</option>
 <option value=\"2\">Deutchland</option></select></div></form>"
 
     assert_equal expected, actual
@@ -208,7 +208,7 @@ class SimpleFormTest < ActionView::TestCase
       f.input :name_fr, as: :ui_select_field, collection: @continents, toto: 'lala', grouped: true, group_method: :countries
     end
 
-    expected = "<form class=\"simple_form edit_user\" id=\"edit_user_1\" action=\"/users/1\" accept-charset=\"UTF-8\" method=\"post\"><input name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" /><input type=\"hidden\" name=\"_method\" value=\"patch\" /><div class=\"form-group ui_select_field optional user_name_fr\"><label class=\"control-label ui_select_field optional\" for=\"user_name_fr\">Name fr</label><select name=\"user[name_fr]\" id=\"user_name_fr\" class=\"ui_select_field optional select-field form-control\"><optgroup label=\"Europe\"><option selected=\"selected\" value=\"1\">France</option>
+    expected = "<form class=\"simple_form edit_user\" id=\"edit_user_1\" action=\"/users/1\" accept-charset=\"UTF-8\" method=\"post\"><input name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" /><input type=\"hidden\" name=\"_method\" value=\"patch\" /><div class=\"form-group ui_select_field optional user_name_fr\"><label class=\"control-label ui_select_field optional\" for=\"user_name_fr\">Name fr</label><select name=\"user[name_fr]\" id=\"user_name_fr\" class=\"select-field form-control\"><optgroup label=\"Europe\"><option value=\"1\">France</option>
 <option value=\"2\">Deutchland</option></optgroup></select></div></form>"
 
     assert_equal expected, actual
