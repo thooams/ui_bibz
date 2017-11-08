@@ -16,7 +16,6 @@ module UiBibzInputs
 
     def new_options
       label_method, value_method = detect_collection_methods
-      new_value =
 
       if options[:grouped] == true
         options.merge({ option_tags: option_groups_from_collection_for_select(

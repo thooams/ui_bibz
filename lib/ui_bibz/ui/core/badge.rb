@@ -16,7 +16,7 @@ module UiBibz::Ui::Core
   # You can add HTML attributes using the +html_options+.
   # You can pass arguments in options attribute:
   # * +status+ - status of élement with symbol value:
-  #   (+:default+, +:primary+, +:info+, +:warning+, +:danger+)
+  #   (+:primary+, +:secondary+, +:success+, +:danger+, +:warning+, +:info+, +:light+, +:dark+)
   # * +glyph+ - Add glyph with name or hash options
   #   * +name+ - String
   #   * +size+ - Integer

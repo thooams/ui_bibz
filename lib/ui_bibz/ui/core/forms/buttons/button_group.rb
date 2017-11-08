@@ -1,3 +1,4 @@
+require 'ui_bibz/ui/core/forms/buttons/components/button_group_dropdown'
 module UiBibz::Ui::Core::Forms::Buttons
 
   # Create a button group
@@ -76,8 +77,7 @@ module UiBibz::Ui::Core::Forms::Buttons
 
     def dropdown content, options = {}, html_options = nil, &block
       options = @options.merge(options)
-
-      @items << UiBibz::Ui::Core::Dropdowns::Dropdown.new(content, options, html_options).tap(&block).render
+      @items << ButtonGroupDropdown.new(content, options, html_options).tap(&block).render
     end
 
     def input attribute_name, options = {}, &block
