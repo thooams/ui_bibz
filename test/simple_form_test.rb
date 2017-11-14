@@ -195,7 +195,7 @@ class SimpleFormTest < ActionView::TestCase
       f.input :name_fr, as: :ui_select_field, collection: @countries
     end
 
-    expected = "<form class=\"simple_form edit_user\" id=\"edit_user_1\" action=\"/users/1\" accept-charset=\"UTF-8\" method=\"post\"><input name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" /><input type=\"hidden\" name=\"_method\" value=\"patch\" /><div class=\"form-group ui_select_field optional user_name_fr\"><label class=\"control-label ui_select_field optional\" for=\"user_name_fr\">Name fr</label><select name=\"user[name_fr]\" id=\"user_name_fr\" class=\"select-field form-control\"><option value=\"1\">France</option>
+    expected = "<form class=\"simple_form edit_user\" id=\"edit_user_1\" action=\"/users/1\" accept-charset=\"UTF-8\" method=\"post\"><input name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" /><input type=\"hidden\" name=\"_method\" value=\"patch\" /><div class=\"form-group ui_select_field optional user_name_fr\"><label class=\"control-label ui_select_field optional\" for=\"user_name_fr\">Name fr</label><select name=\"user[name_fr]\" id=\"user_name_fr\" class=\"select-field form-control\"><option selected=\"selected\" value=\"1\">France</option>
 <option value=\"2\">Deutchland</option></select></div></form>"
 
     assert_equal expected, actual
@@ -208,7 +208,7 @@ class SimpleFormTest < ActionView::TestCase
       f.input :name_fr, as: :ui_select_field, collection: @continents, toto: 'lala', grouped: true, group_method: :countries
     end
 
-    expected = "<form class=\"simple_form edit_user\" id=\"edit_user_1\" action=\"/users/1\" accept-charset=\"UTF-8\" method=\"post\"><input name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" /><input type=\"hidden\" name=\"_method\" value=\"patch\" /><div class=\"form-group ui_select_field optional user_name_fr\"><label class=\"control-label ui_select_field optional\" for=\"user_name_fr\">Name fr</label><select name=\"user[name_fr]\" id=\"user_name_fr\" class=\"select-field form-control\"><optgroup label=\"Europe\"><option value=\"1\">France</option>
+    expected = "<form class=\"simple_form edit_user\" id=\"edit_user_1\" action=\"/users/1\" accept-charset=\"UTF-8\" method=\"post\"><input name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" /><input type=\"hidden\" name=\"_method\" value=\"patch\" /><div class=\"form-group ui_select_field optional user_name_fr\"><label class=\"control-label ui_select_field optional\" for=\"user_name_fr\">Name fr</label><select name=\"user[name_fr]\" id=\"user_name_fr\" class=\"select-field form-control\"><optgroup label=\"Europe\"><option selected=\"selected\" value=\"1\">France</option>
 <option value=\"2\">Deutchland</option></optgroup></select></div></form>"
 
     assert_equal expected, actual
