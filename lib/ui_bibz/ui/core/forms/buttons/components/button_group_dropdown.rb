@@ -55,7 +55,7 @@ module UiBibz::Ui::Core::Forms::Buttons
   #     content
   #   end
   #
-  class ButtonGroupDropdown < UiBibz::Ui::Core::Dropdowns::Dropdown
+  class ButtonGroupDropdown < UiBibz::Ui::Core::Forms::Dropdowns::Dropdown
 
     # See UiBibz::Ui::Core::Forms::Buttons::Button.initialize
     def initialize content = nil, options = nil, html_options = nil, &block

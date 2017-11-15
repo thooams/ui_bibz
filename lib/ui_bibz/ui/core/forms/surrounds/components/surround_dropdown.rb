@@ -1,5 +1,5 @@
 module UiBibz::Ui::Core::Forms::Surrounds
-  class SurroundDropdown < UiBibz::Ui::Core::Dropdowns::Dropdown
+  class SurroundDropdown < UiBibz::Ui::Core::Forms::Dropdowns::Dropdown
 
     # See UiBibz::Ui::Core::Dropdown.initialize
     def initialize content, options = nil, html_options  = nil, &block

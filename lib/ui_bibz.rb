@@ -25,12 +25,12 @@ module UiBibz
         autoload :Jumbotron,               "ui_bibz/ui/core/boxes/jumbotron"
       end
 
-      module Dropdowns
-        autoload :Dropdown,                "ui_bibz/ui/core/dropdowns/dropdown"
-        autoload :SplitDropdown,           "ui_bibz/ui/core/dropdowns/split_dropdown"
-      end
-
       module Forms
+
+        module Dropdowns
+          autoload :Dropdown,                "ui_bibz/ui/core/forms/dropdowns/dropdown"
+          autoload :SplitDropdown,           "ui_bibz/ui/core/forms/dropdowns/split_dropdown"
+        end
 
         module Dates
           autoload :DatePickerField,         "ui_bibz/ui/core/forms/dates/date_picker_field"

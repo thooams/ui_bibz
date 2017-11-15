@@ -1,5 +1,4 @@
 require 'ui_bibz/helpers/ui/core/boxes_helper'
-require 'ui_bibz/helpers/ui/core/dropdowns_helper'
 require 'ui_bibz/helpers/ui/core/forms_helper'
 require 'ui_bibz/helpers/ui/core/layouts_helper'
 require 'ui_bibz/helpers/ui/core/icons_helper'
@@ -9,7 +8,6 @@ require 'ui_bibz/helpers/ui/core/navigations_helper'
 require 'ui_bibz/helpers/ui/core/windows_helper'
 module UiBibz::Helpers::Ui::CoreHelper
   include UiBibz::Helpers::Ui::Core::BoxesHelper
-  include UiBibz::Helpers::Ui::Core::DropdownsHelper
   include UiBibz::Helpers::Ui::Core::FormsHelper
   include UiBibz::Helpers::Ui::Core::LayoutsHelper
   include UiBibz::Helpers::Ui::Core::IconsHelper

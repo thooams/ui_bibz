@@ -1,4 +1,4 @@
-module UiBibz::Ui::Core::Dropdowns::Components
+module UiBibz::Ui::Core::Forms::Dropdowns::Components
 
   # Create DropdownHeader
   #
@@ -17,17 +17,17 @@ module UiBibz::Ui::Core::Dropdowns::Components
   #
   # ==== Signatures
   #
-  #   UiBibz::Ui::Core::DropdownHeader.new(content, options = nil, html_options = nil)
+  #   UiBibz::Ui::Core::Forms::DropdownHeader.new(content, options = nil, html_options = nil)
   #
-  #   UiBibz::Ui::Core::DropdownHeader.new(options = nil, html_options = nil) do
+  #   UiBibz::Ui::Core::Forms::DropdownHeader.new(options = nil, html_options = nil) do
   #     content
   #   end
   #
   # ==== Examples
   #
-  #   UiBibz::Ui::Core::DropdownHeader.new('Home',{ class: 'test' }).render
+  #   UiBibz::Ui::Core::Forms::DropdownHeader.new('Home',{ class: 'test' }).render
   #
-  #   UiBibz::Ui::Core::DropdownHeader.new({ class: 'test' }) do
+  #   UiBibz::Ui::Core::Forms::DropdownHeader.new({ class: 'test' }) do
   #     'Home'
   #   end.render
   #

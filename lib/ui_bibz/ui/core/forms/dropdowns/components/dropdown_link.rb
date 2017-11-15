@@ -1,4 +1,4 @@
-module UiBibz::Ui::Core::Dropdowns::Components
+module UiBibz::Ui::Core::Forms::Dropdowns::Components
 
   # Create DropdownLink
   #
@@ -25,17 +25,17 @@ module UiBibz::Ui::Core::Dropdowns::Components
   #
   # ==== Signatures
   #
-  #   UiBibz::Ui::Core::DropdownLink.new(content, options = nil, html_options = nil)
+  #   UiBibz::Ui::Core::Forms::DropdownLink.new(content, options = nil, html_options = nil)
   #
-  #   UiBibz::Ui::Core::DropdownLink.new(options = nil, html_options = nil) do
+  #   UiBibz::Ui::Core::Forms::DropdownLink.new(options = nil, html_options = nil) do
   #     content
   #   end
   #
   # ==== Examples
   #
-  #   UiBibz::Ui::Core::DropdownLink.new('Home', { glyph: 'home', state: :active, url: '#home', link_html_options: { class: 'link1' }},{ class: 'test' }).render
+  #   UiBibz::Ui::Core::Forms::DropdownLink.new('Home', { glyph: 'home', state: :active, url: '#home', link_html_options: { class: 'link1' }},{ class: 'test' }).render
   #
-  #   UiBibz::Ui::Core::DropdownLink.new({ glyph: { name: 'eye', size: 3 }, url: '#home' }, { class: 'test' }) do
+  #   UiBibz::Ui::Core::Forms::DropdownLink.new({ glyph: { name: 'eye', size: 3 }, url: '#home' }, { class: 'test' }) do
   #     'Home'
   #   end.render
   #

@@ -1,8 +1,8 @@
-module UiBibz::Ui::Core::Dropdowns
+module UiBibz::Ui::Core::Forms::Dropdowns
 
   # Create a button dropdown
   #
-  # This element is an extend of UiBibz::Ui::Core::Dropdowns::Dropdown.
+  # This element is an extend of UiBibz::Ui::Core::Forms::Dropdowns::Dropdown.
   #
   # ==== Attributes
   #
@@ -28,7 +28,7 @@ module UiBibz::Ui::Core::Dropdowns
   #
   # ==== Signatures
   #
-  #   UiBibz::Ui::Core::Dropdowns::SplitDropdown.new(options = nil, html_options = nil).tap do |d|
+  #   UiBibz::Ui::Core::Forms::Dropdowns::SplitDropdown.new(options = nil, html_options = nil).tap do |d|
   #     d.list content = nil, options = nil, html_options = nil, &block
   #     d.list content = nil, options = nil, html_options = nil, &block
   #     d.list content = nil, options = nil, html_options = nil, &block
@@ -37,7 +37,7 @@ module UiBibz::Ui::Core::Dropdowns
   #
   # ==== Examples
   #
-  #   UiBibz::Ui::Core::Dropdowns::SplitDropdown.new(name, status: :success).tap do |d|
+  #   UiBibz::Ui::Core::Forms::Dropdowns::SplitDropdown.new(name, status: :success).tap do |d|
   #     d.list link_to('test', '#')
   #     d.list('---')
   #     d.list('Header 1', { type: :header })
@@ -53,9 +53,9 @@ module UiBibz::Ui::Core::Dropdowns
   #     end
   #   end
   #
-  class SplitDropdown < UiBibz::Ui::Core::Dropdowns::Dropdown
+  class SplitDropdown < UiBibz::Ui::Core::Forms::Dropdowns::Dropdown
 
-    # See UiBibz::Ui::Core::Dropdown.initialize
+    # See UiBibz::Ui::Core::Forms::Dropdowns::Dropdown.initialize
     def initialize name, options = nil, html_options = nil, &block
       super
     end

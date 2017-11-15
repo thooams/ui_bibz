@@ -3,7 +3,7 @@ class DropdownTest < ActionView::TestCase
   include UiBibz::Helpers::Ui::CoreHelper
 
   test 'Dropdown' do
-    actual = UiBibz::Ui::Core::Dropdowns::Dropdown.new("Dropdown").tap do |d|
+    actual = UiBibz::Ui::Core::Forms::Dropdowns::Dropdown.new("Dropdown").tap do |d|
       d.link 'link'
     end
     expected = "<div class=\"dropdown\"><button class=\"btn btn-secondary dropdown-toggle\" type=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\" id=\"#{ actual.id }\">Dropdown <span class=\"caret\"></span></button><div class=\"dropdown-menu\" arial-labelledby=\"#{ actual.id }\"><a class=\"dropdown-item\" href=\"#\">link</a></div></div>"
@@ -12,7 +12,7 @@ class DropdownTest < ActionView::TestCase
   end
 
   test 'Dropdown status' do
-    actual = UiBibz::Ui::Core::Dropdowns::Dropdown.new("Dropdown", status: :primary).tap do |d|
+    actual = UiBibz::Ui::Core::Forms::Dropdowns::Dropdown.new("Dropdown", status: :primary).tap do |d|
       d.link 'link'
     end
     expected = "<div class=\"dropdown\"><button class=\"btn btn-primary dropdown-toggle\" type=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\" id=\"#{ actual.id }\">Dropdown <span class=\"caret\"></span></button><div class=\"dropdown-menu\" arial-labelledby=\"#{ actual.id }\"><a class=\"dropdown-item\" href=\"#\">link</a></div></div>"
@@ -21,7 +21,7 @@ class DropdownTest < ActionView::TestCase
   end
 
   test 'Dropdown outline' do
-    actual = UiBibz::Ui::Core::Dropdowns::Dropdown.new("Dropdown", status: :primary, outline: true).tap do |d|
+    actual = UiBibz::Ui::Core::Forms::Dropdowns::Dropdown.new("Dropdown", status: :primary, outline: true).tap do |d|
       d.link 'link'
     end
     expected = "<div class=\"dropdown\"><button class=\"btn btn-outline-primary dropdown-toggle\" type=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\" id=\"#{ actual.id }\">Dropdown <span class=\"caret\"></span></button><div class=\"dropdown-menu\" arial-labelledby=\"#{ actual.id }\"><a class=\"dropdown-item\" href=\"#\">link</a></div></div>"
@@ -30,7 +30,7 @@ class DropdownTest < ActionView::TestCase
   end
 
   test 'Dropdown options' do
-    actual =  UiBibz::Ui::Core::Dropdowns::Dropdown.new("Dropdown", type: :dropup, status: :success, glyph: 'diamond').tap do |d|
+    actual =  UiBibz::Ui::Core::Forms::Dropdowns::Dropdown.new("Dropdown", type: :dropup, status: :success, glyph: 'diamond').tap do |d|
       d.link 'Link 1', url: '#link1', glyph: 'eye'
       d.header 'header'
       d.link 'Link 2', url: '#link2'
@@ -43,7 +43,7 @@ class DropdownTest < ActionView::TestCase
   end
 
   test 'Split Dropdown' do
-    actual = UiBibz::Ui::Core::Dropdowns::Dropdown.new("Split Dropdown").tap do |d|
+    actual = UiBibz::Ui::Core::Forms::Dropdowns::Dropdown.new("Split Dropdown").tap do |d|
       d.link 'state'
     end
     expected = "<div class=\"dropdown\"><button class=\"btn btn-secondary dropdown-toggle\" type=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\" id=\"#{ actual.id }\">Split Dropdown <span class=\"caret\"></span></button><div class=\"dropdown-menu\" arial-labelledby=\"#{ actual.id }\"><a class=\"dropdown-item\" href=\"#\">state</a></div></div>"
