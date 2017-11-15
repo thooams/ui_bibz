@@ -1,5 +1,5 @@
-require 'ui_bibz/ui/core/breadcrumb/components/breadcrumb_link'
-module UiBibz::Ui::Core
+require 'ui_bibz/ui/core/navigations/components/breadcrumb_link'
+module UiBibz::Ui::Core::Navigations
 
   # Breadcrumb
   #
@@ -17,24 +17,20 @@ module UiBibz::Ui::Core
   #
   # ==== Components
   #
-  # +link+ is UiBibz::Ui::Core::BreadCrumb::Components::BreadcrumbLink component
+  # +link+ is UiBibz::Ui::Core::Navigations::BreadCrumb::Components::BreadcrumbLink component
   #
   # ==== Signatures
   #
-  #   UiBibz::Ui::Core::Breadcrumb.new().tap do |b|
+  #   UiBibz::Ui::Core::Navigations::Breadcrumb.new().tap do |b|
   #     b.link content = nil, options = nil, html_options = nil, &block
   #     b.link content = nil, options = nil, html_options = nil, &block
   #     b.link content = nil, options = nil, html_options = nil, &block
   #     ...
   #   end
   #
-  #   UiBibz::Ui::Core::Alert.new(options = nil, html_options = nil) do
-  #     content
-  #   end
-  #
   # ==== Examples
   #
-  #   UiBibz::Ui::Core::Breadcrumb.new().tap do |b|
+  #   UiBibz::Ui::Core::Navigations::Breadcrumb.new().tap do |b|
   #     b.link 'Home', url: '#home'
   #     b.link url: '#level-1' do
   #       'Level 1'
@@ -70,7 +66,7 @@ module UiBibz::Ui::Core
     # Add breadcrumb link items
     # See UiBibz::Ui::Core::BreadcrumbLink
     def link content = nil, options = nil, html_options = nil, &block
-      @links << UiBibz::Ui::Core::Breadcrumbs::Components::BreadcrumbLink.new(content, options, html_options, &block).render
+      @links << UiBibz::Ui::Core::Navigations::Components::BreadcrumbLink.new(content, options, html_options, &block).render
     end
 
     private
@@ -98,9 +94,9 @@ module UiBibz::Ui::Core
     def generate_links
       @options[:store].each do |item|
         if item == @options[:store].last
-          @links << UiBibz::Ui::Core::Breadcrumb::Components::BreadcrumbLink.new(item.send(link_label), status: :disabled).render
+          @links << UiBibz::Ui::Core::Navigations::Components::BreadcrumbLink.new(item.send(link_label), status: :disabled).render
         else
-          @links << UiBibz::Ui::Core::Breadcrumb::Components::BreadcrumbLink.new(item.send(link_label), url: inject_url(link_url, item)).render
+          @links << UiBibz::Ui::Core::Navigations::Components::BreadcrumbLink.new(item.send(link_label), url: inject_url(link_url, item)).render
         end
       end
     end

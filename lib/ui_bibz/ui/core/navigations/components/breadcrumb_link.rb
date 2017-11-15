@@ -1,4 +1,4 @@
-module UiBibz::Ui::Core::Paths::Components
+module UiBibz::Ui::Core::Navigations::Components
 
   # Create a BreadcrumbLink
   #
@@ -24,17 +24,17 @@ module UiBibz::Ui::Core::Paths::Components
   #
   # ==== Signatures
   #
-  #   UiBibz::Ui::Core::Breadcrumb::Components::BreadcrumbLink.new(content, options = nil, html_options = nil)
+  #   UiBibz::Ui::Core::Navigations::Breadcrumb::Components::BreadcrumbLink.new(content, options = nil, html_options = nil)
   #
-  #   UiBibz::Ui::Core::Breadcrumb::Components::BreadcrumbLink.new(options = nil, html_options = nil) do
+  #   UiBibz::Ui::Core::Navigations::Breadcrumb::Components::BreadcrumbLink.new(options = nil, html_options = nil) do
   #     content
   #   end
   #
   # ==== Examples
   #
-  #   UiBibz::Ui::Core::Breadcrumb::Components::BreadcrumbLink.new('Home', { glyph: 'home', state: :active },{ class: 'test' }).render
+  #   UiBibz::Ui::Core::Navigations::Breadcrumb::Components::BreadcrumbLink.new('Home', { glyph: 'home', state: :active },{ class: 'test' }).render
   #
-  #   UiBibz::Ui::Core::Breadcrumb::Components::BreadcrumbLink.new({glyph: { name: 'eye', size: 3}, { class: 'test' }) do
+  #   UiBibz::Ui::Core::Navigations::Breadcrumb::Components::BreadcrumbLink.new({glyph: { name: 'eye', size: 3}, { class: 'test' }) do
   #     'Home'
   #   end.render
   #

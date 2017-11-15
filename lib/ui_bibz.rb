@@ -93,6 +93,7 @@ module UiBibz
       end
 
       module Navigations
+        autoload :Breadcrumb,              "ui_bibz/ui/core/navigations/breadcrumb"
         autoload :Nav,                     "ui_bibz/ui/core/navigations/nav"
         autoload :Navbar,                  "ui_bibz/ui/core/navigations/navbar"
         autoload :Pagination,              "ui_bibz/ui/core/navigations/pagination"
@@ -103,10 +104,6 @@ module UiBibz
         autoload :Alert,                   "ui_bibz/ui/core/notifications/alert"
         autoload :Badge,                   "ui_bibz/ui/core/notifications/badge"
         autoload :ProgressBar,             "ui_bibz/ui/core/notifications/progress_bar"
-      end
-
-      module Paths
-        autoload :Breadcrumb,             "ui_bibz/ui/core/paths/breadcrumb"
       end
 
       module Windows
