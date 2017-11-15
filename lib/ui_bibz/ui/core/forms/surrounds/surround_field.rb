@@ -70,7 +70,7 @@ module UiBibz::Ui::Core::Forms::Surrounds
     end
 
     def glyph content = nil, options = {}, html_options = nil, &block
-      @items << SurroundAddon.new(UiBibz::Ui::Core::Glyph.new(content, options, html_options, &block).render).render
+      @items << SurroundAddon.new(UiBibz::Ui::Core::Icons::Glyph.new(content, options, html_options, &block).render).render
     end
 
     def addon content = nil, options = {}, html_options = nil, &block

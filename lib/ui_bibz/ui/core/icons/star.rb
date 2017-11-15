@@ -1,4 +1,4 @@
-module UiBibz::Ui::Core
+module UiBibz::Ui::Core::Icons
 
   # Create star notation
   #
@@ -20,17 +20,17 @@ module UiBibz::Ui::Core
   #
   # ==== Signatures
   #
-  #   UiBibz::Ui::Core::Star.new(content, options = nil, html_options = nil)
+  #   UiBibz::Ui::Core::Icons::Star.new(content, options = nil, html_options = nil)
   #
-  #   UiBibz::Ui::Core::Star.new(options = nil, html_options = nil) do
+  #   UiBibz::Ui::Core::Icons::Star.new(options = nil, html_options = nil) do
   #     content
   #   end
   #
   # ==== Examples
   #
-  #   UiBibz::Ui::Core::Star.new(content, status: :success).render
+  #   UiBibz::Ui::Core::Icons::Star.new(content, status: :success).render
   #
-  #   UiBibz::Ui::Core::Star.new({ num: 10 }) do
+  #   UiBibz::Ui::Core::Icons::Star.new({ num: 10 }) do
   #     #content
   #   end.render
   #
@@ -70,7 +70,7 @@ module UiBibz::Ui::Core
       number.times do |star|
         star += 1
         name = star_name(star)
-        stars << UiBibz::Ui::Core::Glyph.new(name, glyph_opts).render
+        stars << UiBibz::Ui::Core::Icons::Glyph.new(name, glyph_opts).render
       end
       stars
     end

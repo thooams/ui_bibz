@@ -42,7 +42,7 @@ module UiBibz::Ui::Ux::Tables
     end
 
     def table_glyph
-      UiBibz::Ui::Core::Glyph.new(@options[:glyph]).render unless @options[:glyph].nil?
+      UiBibz::Ui::Core::Icons::Glyph.new(@options[:glyph]).render unless @options[:glyph].nil?
     end
 
   end

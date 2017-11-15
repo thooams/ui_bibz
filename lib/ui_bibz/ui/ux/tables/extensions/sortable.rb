@@ -77,7 +77,7 @@ module UiBibz::Ui::Ux::Tables
     end
 
     def caret
-      UiBibz::Ui::Core::Glyph.new("caret-#{ direction == 'desc' ? 'up' : 'down' }").render
+      UiBibz::Ui::Core::Icons::Glyph.new("caret-#{ direction == 'desc' ? 'up' : 'down' }").render
     end
 
     def cls

@@ -77,6 +77,11 @@ module UiBibz
 
       end
 
+      module Icons
+        autoload :Glyph,                   "ui_bibz/ui/core/icons/glyph"
+        autoload :Star,                    "ui_bibz/ui/core/icons/star"
+      end
+
       module Layouts
         autoload :Row,                     "ui_bibz/ui/core/layouts/row"
         autoload :Col,                     "ui_bibz/ui/core/layouts/col"
@@ -104,21 +109,14 @@ module UiBibz
         autoload :Breadcrumb,             "ui_bibz/ui/core/paths/breadcrumb"
       end
 
-      #module Progresses
-        #autoload :ProgressBar,            "ui_bibz/ui/core/progresses/progress_bar"
-      #end
-
       module Windows
         autoload :Modal,                  "ui_bibz/ui/core/windows/modal"
       end
 
       # Other section
       autoload :Component,               "ui_bibz/ui/core/component"
-      autoload :Glyph,                   "ui_bibz/ui/core/glyph"
       autoload :Jumbotron,               "ui_bibz/ui/core/jumbotron"
-      #autoload :Badge,                   "ui_bibz/ui/core/badge"
       autoload :Progress,                "ui_bibz/ui/core/progress"
-      autoload :Star,                    "ui_bibz/ui/core/star"
     end
 
     # Ux

@@ -27,9 +27,9 @@ module UiBibz::Ui::Ux::Tables
 
     def boolean_render
       if @content == true
-        glyph = UiBibz::Ui::Core::Glyph.new('check-circle', status: :success)
+        glyph = UiBibz::Ui::Core::Icons::Glyph.new('check-circle', status: :success)
       else
-        glyph = UiBibz::Ui::Core::Glyph.new('minus-circle', status: :danger)
+        glyph = UiBibz::Ui::Core::Icons::Glyph.new('minus-circle', status: :danger)
       end
       glyph.render
     end

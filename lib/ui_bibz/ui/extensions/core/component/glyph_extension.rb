@@ -13,7 +13,7 @@ module GlyphExtension
   # Render glyph html
   def glyph
     glyph_info = options[:glyph] if options.kind_of?(Hash)
-    UiBibz::Ui::Core::Glyph.new(glyph_info).render unless glyph_info.nil?
+    UiBibz::Ui::Core::Icons::Glyph.new(glyph_info).render unless glyph_info.nil?
   end
 
 end

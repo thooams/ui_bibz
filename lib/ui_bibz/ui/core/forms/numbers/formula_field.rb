@@ -79,7 +79,7 @@ module UiBibz::Ui::Core::Forms::Numbers
     end
 
     def formula_field_alert_glyph
-      UiBibz::Ui::Core::Glyph.new('exclamation-triangle', status: :danger ).render
+      UiBibz::Ui::Core::Icons::Glyph.new('exclamation-triangle', status: :danger ).render
     end
 
     def formula_field_name

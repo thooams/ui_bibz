@@ -1,4 +1,4 @@
-module UiBibz::Ui::Core
+module UiBibz::Ui::Core::Icons
 
   # Create a glyph
   #
@@ -23,28 +23,28 @@ module UiBibz::Ui::Core
   #
   # ==== Signatures
   #
-  #   UiBibz::Ui::Core::Glyph.new content = nil, options = nil, html_options = nil,
+  #   UiBibz::Ui::Core::Icons::Glyph.new content = nil, options = nil, html_options = nil,
   #   &block
   #
-  #   UiBibz::Ui::Core::Glyph.new(options = nil, html_options = nil) do
+  #   UiBibz::Ui::Core::Icons::Glyph.new(options = nil, html_options = nil) do
   #     content
   #   end
   #
-  #   UiBibz::Ui::Core::Glyph.new content = {}
+  #   UiBibz::Ui::Core::Icons::Glyph.new content = {}
   #
-  #   UiBibz::Ui::Core::Glyph.new content, options = {}, html_options = {}
+  #   UiBibz::Ui::Core::Icons::Glyph.new content, options = {}, html_options = {}
   #
   # ==== Exemples
   #
-  #   UiBibz::Ui::Core::Glyph.new('eye').render
+  #   UiBibz::Ui::Core::Icons::Glyph.new('eye').render
   #
-  #   UiBibz::Ui::Core::Glyph.new() do
+  #   UiBibz::Ui::Core::Icons::Glyph.new() do
   #     name
   #   end.render
   #
-  #   UiBibz::Ui::Core::Glyph.new('eye', { size: 3, type: 'fw' }).render
+  #   UiBibz::Ui::Core::Icons::Glyph.new('eye', { size: 3, type: 'fw' }).render
   #
-  #   UiBibz::Ui::Core::Glyph.new({ name: 'eye', size: 3, type: 'fw' }).render
+  #   UiBibz::Ui::Core::Icons::Glyph.new({ name: 'eye', size: 3, type: 'fw' }).render
   #
   # ==== Helper
   #
@@ -55,7 +55,7 @@ module UiBibz::Ui::Core
   #   glyph(options = {}, html_options = {}) do
   #     name
   #   end
-  class Glyph < Component
+  class Glyph < UiBibz::Ui::Core::Component
 
     # See UiBibz::Ui::Core::Component.initialize
     def initialize content, options = nil, html_options = nil, &block
