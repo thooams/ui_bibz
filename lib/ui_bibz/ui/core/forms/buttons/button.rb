@@ -112,7 +112,7 @@ module UiBibz::Ui::Core::Forms::Buttons
         UiBibz::Ui::Core::Badge.new(options[:badge].delete(:content), options[:badge]).render
 
       else
-        UiBibz::Ui::Core::Badge.new(options[:badge], status: (options[:status] || :secondary)).render
+        UiBibz::Ui::Core::Notifications::Badge.new(options[:badge], status: (options[:status] || :secondary)).render
       end
     end
 

@@ -17,13 +17,6 @@ module UiBibz
     # Core
     module Core
 
-      module Navigations
-        autoload :Nav,                     "ui_bibz/ui/core/navigations/nav"
-        autoload :Navbar,                  "ui_bibz/ui/core/navigations/navbar"
-        autoload :Pagination,              "ui_bibz/ui/core/navigations/pagination"
-        autoload :Toolbar,                 "ui_bibz/ui/core/navigations/toolbar"
-      end
-
       module Cards
         autoload :Card,                    "ui_bibz/ui/core/cards/card"
         autoload :CardColumn,              "ui_bibz/ui/core/cards/card_column"
@@ -94,23 +87,26 @@ module UiBibz
         autoload :ListGroup,              "ui_bibz/ui/core/lists/list_group"
       end
 
-      # module Navs
-      #   autoload :Nav,                     "ui_bibz/ui/core/navs/nav"
-      #   autoload :Navbar,                  "ui_bibz/ui/core/navs/navbar"
-      #   autoload :Pagination,              "ui_bibz/ui/core/navs/pagination"
-      # end
+      module Navigations
+        autoload :Nav,                     "ui_bibz/ui/core/navigations/nav"
+        autoload :Navbar,                  "ui_bibz/ui/core/navigations/navbar"
+        autoload :Pagination,              "ui_bibz/ui/core/navigations/pagination"
+        autoload :Toolbar,                 "ui_bibz/ui/core/navigations/toolbar"
+      end
 
       module Notifications
         autoload :Alert,                   "ui_bibz/ui/core/notifications/alert"
+        autoload :Badge,                   "ui_bibz/ui/core/notifications/badge"
+        autoload :ProgressBar,             "ui_bibz/ui/core/notifications/progress_bar"
       end
 
       module Paths
         autoload :Breadcrumb,             "ui_bibz/ui/core/paths/breadcrumb"
       end
 
-      module Progresses
-        autoload :ProgressBar,            "ui_bibz/ui/core/progresses/progress_bar"
-      end
+      #module Progresses
+        #autoload :ProgressBar,            "ui_bibz/ui/core/progresses/progress_bar"
+      #end
 
       module Windows
         autoload :Modal,                  "ui_bibz/ui/core/windows/modal"
@@ -120,7 +116,7 @@ module UiBibz
       autoload :Component,               "ui_bibz/ui/core/component"
       autoload :Glyph,                   "ui_bibz/ui/core/glyph"
       autoload :Jumbotron,               "ui_bibz/ui/core/jumbotron"
-      autoload :Badge,                   "ui_bibz/ui/core/badge"
+      #autoload :Badge,                   "ui_bibz/ui/core/badge"
       autoload :Progress,                "ui_bibz/ui/core/progress"
       autoload :Star,                    "ui_bibz/ui/core/star"
     end

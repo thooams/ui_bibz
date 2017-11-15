@@ -3,6 +3,7 @@ require 'ui_bibz/helpers/ui/core/dropdowns_helper'
 require 'ui_bibz/helpers/ui/core/forms_helper'
 require 'ui_bibz/helpers/ui/core/layouts_helper'
 require 'ui_bibz/helpers/ui/core/lists_helper'
+require 'ui_bibz/helpers/ui/core/notifications_helper'
 require 'ui_bibz/helpers/ui/core/navigations_helper'
 require 'ui_bibz/helpers/ui/core/paths_helper'
 require 'ui_bibz/helpers/ui/core/windows_helper'
@@ -13,21 +14,10 @@ module UiBibz::Helpers::Ui::CoreHelper
   include UiBibz::Helpers::Ui::Core::LayoutsHelper
   include UiBibz::Helpers::Ui::Core::ListsHelper
   include UiBibz::Helpers::Ui::Core::NavigationsHelper
+  include UiBibz::Helpers::Ui::Core::NotificationsHelper
   include UiBibz::Helpers::Ui::Core::PathsHelper
   include UiBibz::Helpers::Ui::Core::WindowsHelper
 
-  # Alert Component
-  #
-  # +options+ (Hash)
-  # +html_options+ (Hash)
-  #
-  def ui_alert content = nil, options = nil, html_options = nil, &block
-    if is_tap(content, options)
-      UiBibz::Ui::Core::Notifications::Alert.new(content, options, html_options).tap(&block).render
-    else
-      UiBibz::Ui::Core::Notifications::Alert.new(content, options, html_options, &block).render
-    end
-  end
 
   # Glyph Component
   #
@@ -51,26 +41,6 @@ module UiBibz::Helpers::Ui::CoreHelper
     UiBibz::Ui::Core::Jumbotron.new(content, options, html_options, &block).render
   end
 
-  # Badge (Label) Component
-  #
-  # +options+ (Hash)
-  # +html_options+ (Hash)
-  #
-  def ui_badge content = nil, options = nil, html_options = nil, &block
-    UiBibz::Ui::Core::Badge.new(content, options, html_options, &block).render
-  end
-
-  # ProgressBar Component
-  #
-  # +options+ (Hash)
-  # +html_options+ (Hash)
-  def ui_progress_bar percentage = nil, options = nil, html_options = nil, &block
-    if is_tap(percentage, options)
-      UiBibz::Ui::Core::Progresses::ProgressBar.new(percentage, options, html_options).tap(&block).render
-    else
-      UiBibz::Ui::Core::Progresses::ProgressBar.new(percentage, options, html_options, &block).render
-    end
-  end
 
   # Stars Component
   #
