@@ -1,8 +1,8 @@
-module UiBibz::Ui::Core::Navs
+module UiBibz::Ui::Core::Navigations
 
   # Create a dropdown
   #
-  # This element is an extend of UiBibz::Ui::Core::Navs::Component.
+  # This element is an extend of UiBibz::Ui::Core::Navigations::Component.
   # You can use tap method to add list items.
   #
   # ==== Attributes
@@ -26,7 +26,7 @@ module UiBibz::Ui::Core::Navs
   #
   # ==== Signatures
   #
-  #   UiBibz::Ui::Core::Navs::NavDropdown.new(options = nil, html_options = nil).tap do |d|
+  #   UiBibz::Ui::Core::Navigations::NavDropdown.new(options = nil, html_options = nil).tap do |d|
   #     ...
   #     d.list content = nil, options = nil, html_options = nil, &block
   #     d.list content = nil, options = nil, html_options = nil, &block
@@ -36,7 +36,7 @@ module UiBibz::Ui::Core::Navs
   #
   # ==== Examples
   #
-  #   UiBibz::Ui::Core::Navs::NavDropdown.new(name, status: :success).tap do |d|
+  #   UiBibz::Ui::Core::Navigations::NavDropdown.new(name, status: :success).tap do |d|
   #     d.list link_to('test', '#')
   #     d.list link_to('test2', '#')
   #   end.render

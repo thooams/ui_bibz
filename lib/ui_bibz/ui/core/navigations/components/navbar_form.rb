@@ -1,5 +1,5 @@
 require 'haml'
-module UiBibz::Ui::Core::Navs
+module UiBibz::Ui::Core::Navigations
 
   # Create a NavbarForm
   #
@@ -22,19 +22,19 @@ module UiBibz::Ui::Core::Navs
   #
   # ==== Signatures
   #
-  #   UiBibz::Ui::Core::Navs::NavbarForm.new(options = nil, html_options = nil) do |f|
+  #   UiBibz::Ui::Core::Navigations::NavbarForm.new(options = nil, html_options = nil) do |f|
   #     f.text_field :field
   #     f.submit 'Submit'
   #   end
   #
   # ==== Examples
   #
-  #   UiBibz::Ui::Core::Navs::NavbarForm.new(position: :right) do |f|
+  #   UiBibz::Ui::Core::Navigations::NavbarForm.new(position: :right) do |f|
   #     f.text_field :field
   #     f.submit 'Submit'
   #   end.render
   #
-  #   UiBibz::Ui::Core::Navs::NavbarForm.new('/search', type: :form_tag) do
+  #   UiBibz::Ui::Core::Navigations::NavbarForm.new('/search', type: :form_tag) do
   #     text_field_tag :field
   #     submit_tag 'Submit'
   #   end.render

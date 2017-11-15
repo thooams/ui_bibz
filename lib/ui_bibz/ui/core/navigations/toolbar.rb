@@ -1,6 +1,6 @@
-module UiBibz::Ui::Core::Forms::Buttons
+module UiBibz::Ui::Core::Navigations
 
-  # Create a button toolbar
+  # Create a toolbar
   #
   # This element is an extend of UiBibz::Ui::Core::Component.
   #
@@ -23,13 +23,13 @@ module UiBibz::Ui::Core::Forms::Buttons
   #
   # ==== Signatures
   #
-  #   UiBibz::Ui::Core::Forms::Buttons::ButtonToolbar.new(options = nil, html_options = nil) do |bt|
+  #   UiBibz::Ui::Core::Navigations::Toolbar.new(options = nil, html_options = nil) do |bt|
   #     ...
   #   end
   #
   # ==== Examples
   #
-  #   UiBibz::Ui::Core::Forms::Buttons::ButtonToolbar.new(status: :primary, size: :xs) do |bt|
+  #   UiBibz::Ui::Core::Navigations::Toolbar.new(status: :primary, size: :xs) do |bt|
   #     bt.button_group do |bg|
   #       bg.ui_button 'test 1'
   #       bg.ui_button 'test 2'
@@ -49,7 +49,7 @@ module UiBibz::Ui::Core::Forms::Buttons
   #     end
   #   end
   #
-  class ButtonToolbar < UiBibz::Ui::Core::Component
+  class Toolbar < UiBibz::Ui::Core::Component
 
     # See UiBibz::Ui::Core::Component.initialize
     def initialize content = nil, options = nil, html_options = nil, &block
@@ -69,7 +69,7 @@ module UiBibz::Ui::Core::Forms::Buttons
         content = @options.merge(content || {})
       end
 
-      @items << ButtonGroup.new(content, options, html_options).tap(&block).render
+      @items << UiBibz::Ui::Core::Forms::Buttons::ButtonGroup.new(content, options, html_options).tap(&block).render
     end
 
   private

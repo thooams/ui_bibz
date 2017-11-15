@@ -1,4 +1,4 @@
-module UiBibz::Ui::Core::Navs
+module UiBibz::Ui::Core::Navigations
 
   # Create a Navbar
   #

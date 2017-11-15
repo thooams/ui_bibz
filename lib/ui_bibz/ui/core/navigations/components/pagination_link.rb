@@ -1,8 +1,8 @@
-module UiBibz::Ui::Core::Navs
+module UiBibz::Ui::Core::Navigations
 
   # Create a PageLink
   #
-  # This element is an extend of UiBibz::Ui::Core::Navs::Component.
+  # This element is an extend of UiBibz::Ui::Core::Navigations::Component.
   #
   # ==== Attributes
   #
@@ -22,17 +22,17 @@ module UiBibz::Ui::Core::Navs
   #
   # ==== Signatures
   #
-  #   UiBibz::Ui::Core::Navs::PageLink.new(content, options = nil, html_options = nil)
+  #   UiBibz::Ui::Core::Navigations::PageLink.new(content, options = nil, html_options = nil)
   #
-  #   UiBibz::Ui::Core::Navs::PageLink.new(options = nil, html_options = nil) do
+  #   UiBibz::Ui::Core::Navigations::PageLink.new(options = nil, html_options = nil) do
   #     content
   #   end
   #
   # ==== Examples
   #
-  #   UiBibz::Ui::Core::Navs::PageLink.new(content, { badge: 15, url: '/', state: :active, link_html_options: { class: 'link1' }},{ class: 'test' }).render
+  #   UiBibz::Ui::Core::Navigations::PageLink.new(content, { badge: 15, url: '/', state: :active, link_html_options: { class: 'link1' }},{ class: 'test' }).render
   #
-  #   UiBibz::Ui::Core::Navs::PageLink.new({glyph: { name: 'eye', size: 3 }, { class: 'test' }) do
+  #   UiBibz::Ui::Core::Navigations::PageLink.new({glyph: { name: 'eye', size: 3 }, { class: 'test' }) do
   #     'Home'
   #   end.render
   #

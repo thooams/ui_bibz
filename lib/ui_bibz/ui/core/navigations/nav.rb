@@ -1,6 +1,6 @@
-require 'ui_bibz/ui/core/navs/components/nav_link'
-require 'ui_bibz/ui/core/navs/components/nav_dropdown'
-module UiBibz::Ui::Core::Navs
+require 'ui_bibz/ui/core/navigations/components/nav_link'
+require 'ui_bibz/ui/core/navigations/components/nav_dropdown'
+module UiBibz::Ui::Core::Navigations
 
   # Create a nav
   #
@@ -28,9 +28,9 @@ module UiBibz::Ui::Core::Navs
   #
   # ==== Signatures
   #
-  #   UiBibz::Ui::Core::Navs::Nav.new(content, options = nil, html_options = nil)
+  #   UiBibz::Ui::Core::Navigations::Nav.new(content, options = nil, html_options = nil)
   #
-  #   UiBibz::Ui::Core::Navs::Nav.new(options = nil, html_options = nil).tap do |n|
+  #   UiBibz::Ui::Core::Navigations::Nav.new(options = nil, html_options = nil).tap do |n|
   #     ...
   #     n.link content = nil, options = nil, html_options = nil, block
   #     n.link content = nil, options = nil, html_options = nil, block
@@ -40,7 +40,7 @@ module UiBibz::Ui::Core::Navs
   #
   # ==== Examples
   #
-  #   UiBibz::Ui::Core::Navs::Nav.new(type: :pills).tap do |n|
+  #   UiBibz::Ui::Core::Navigations::Nav.new(type: :pills).tap do |n|
   #     n.link 'Test', url: '#test'
   #     n.link 'Test2', url: '#test2', state: :active
   #     n.dropdown('Action') do |d|
@@ -77,7 +77,7 @@ module UiBibz::Ui::Core::Navs
     end
 
     # Add nav link items
-    # See UiBibz::Ui::Core::Navs::NavLink
+    # See UiBibz::Ui::Core::Navigations::NavLink
     def link content = nil, options = {}, html_options = nil, &block
       block_given? ? content.merge!({ nav_type: type }) : options.merge!({ nav_type: type })
       @items << NavLink.new(content, options, html_options, &block).render
@@ -89,7 +89,7 @@ module UiBibz::Ui::Core::Navs
     end
 
     # Add nav dropdown items
-    # See UiBibz::Ui::Core::Navs::NavDropdown
+    # See UiBibz::Ui::Core::Navigations::NavDropdown
     def dropdown content = nil, options = {}, html_options = nil, &block
       @items << NavDropdown.new(content, options, html_options).tap(&block).render
     end

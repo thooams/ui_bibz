@@ -1,4 +1,4 @@
-module UiBibz::Ui::Core::Navs
+module UiBibz::Ui::Core::Navigations
 
   # Create a NavbarText
   #
@@ -17,17 +17,17 @@ module UiBibz::Ui::Core::Navs
   #
   # ==== Signatures
   #
-  #   UiBibz::Ui::Core::Navs::NavbarText.new(content, options = nil, html_options = nil)
+  #   UiBibz::Ui::Core::Navigations::NavbarText.new(content, options = nil, html_options = nil)
   #
-  #   UiBibz::Ui::Core::Navs::NavbarText.new(options = nil, html_options = nil) do
+  #   UiBibz::Ui::Core::Navigations::NavbarText.new(options = nil, html_options = nil) do
   #     content
   #   end
   #
   # ==== Examples
   #
-  #   UiBibz::Ui::Core::Navs::NavbarText.new('Exemple).render
+  #   UiBibz::Ui::Core::Navigations::NavbarText.new('Exemple).render
   #
-  #   UiBibz::Ui::Core::Navs::NavbarText.new(position: :right) do
+  #   UiBibz::Ui::Core::Navigations::NavbarText.new(position: :right) do
   #     'Exemple'
   #   end.render
   #

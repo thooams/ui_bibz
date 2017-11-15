@@ -1,5 +1,5 @@
-require 'ui_bibz/ui/core/navs/components/pagination_link'
-module UiBibz::Ui::Core::Navs
+require 'ui_bibz/ui/core/navigations/components/pagination_link'
+module UiBibz::Ui::Core::Navigations
 
   # Create a Pagination
   #
@@ -22,9 +22,9 @@ module UiBibz::Ui::Core::Navs
   #
   # ==== Signatures
   #
-  #   UiBibz::Ui::Core::Navs::Pagination.new(content, options = nil, html_options = nil)
+  #   UiBibz::Ui::Core::Navigations::Pagination.new(content, options = nil, html_options = nil)
   #
-  #   UiBibz::Ui::Core::Navs::Pagination.new(options = nil, html_options = nil).tap do |n|
+  #   UiBibz::Ui::Core::Navigations::Pagination.new(options = nil, html_options = nil).tap do |n|
   #     ...
   #     n.link content = nil, options = nil, html_options = nil, block
   #     n.link content = nil, options = nil, html_options = nil, block
@@ -34,7 +34,7 @@ module UiBibz::Ui::Core::Navs
   #
   # ==== Examples
   #
-  #   UiBibz::Ui::Core::Navs::Pagination.new(type: :pills).tap do |n|
+  #   UiBibz::Ui::Core::Navigations::Pagination.new(type: :pills).tap do |n|
   #     n.link 'Test', url: '#test'
   #     n.link 'Test2', url: '#test2', state: :active
   #     n.dropdown('Action') do |d|
@@ -67,7 +67,7 @@ module UiBibz::Ui::Core::Navs
     end
 
     # Add nav link items
-    # See UiBibz::Ui::Core::Navs::NavLink
+    # See UiBibz::Ui::Core::Navigations::NavLink
     def link content = nil, options = {}, html_options = nil, &block
       @items << PaginationLink.new(content, options, html_options, &block).render
     end

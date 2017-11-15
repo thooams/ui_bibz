@@ -2,7 +2,7 @@ require 'test_helper'
 class NavbarTest < ActionView::TestCase
 
   test 'Navbar' do
-    actual = UiBibz::Ui::Core::Navs::Navbar.new.tap do |nb|
+    actual = UiBibz::Ui::Core::Navigations::Navbar.new.tap do |nb|
     end
     expected = "<nav class=\"navbar navbar-light navbar-expand-lg\"><button class=\"navbar-toggler hidden-sm-up\" type=\"button\" data-toggle=\"collapse\" data-target=\"##{ actual.id }\">☰</button><div class=\"collapse navbar-collapse\" id=\"#{ actual.id }\"></div></nav>"
 
@@ -10,7 +10,7 @@ class NavbarTest < ActionView::TestCase
   end
 
   test 'Navbar with options' do
-    actual = UiBibz::Ui::Core::Navs::Navbar.new(title: 'Brand', expand_size: :xs, status: :primary, position: :top, brand_position: :right).tap do |nb|
+    actual = UiBibz::Ui::Core::Navigations::Navbar.new(title: 'Brand', expand_size: :xs, status: :primary, position: :top, brand_position: :right).tap do |nb|
     end
     expected = "<nav class=\"bg-primary navbar navbar-light fixed-top navbar-expand-xs\"><button class=\"navbar-toggler hidden-sm-up\" type=\"button\" data-toggle=\"collapse\" data-target=\"##{ actual.id }\">☰</button><a class=\"navbar-brand\" href=\"/\">Brand</a><div class=\"collapse navbar-collapse\" id=\"#{ actual.id }\"></div></nav>"
 
@@ -18,7 +18,7 @@ class NavbarTest < ActionView::TestCase
   end
 
   test 'Navbar with brand, nav, form and text' do
-    actual = UiBibz::Ui::Core::Navs::Navbar.new.tap do |nb|
+    actual = UiBibz::Ui::Core::Navigations::Navbar.new.tap do |nb|
       nb.brand "Brand"
       nb.nav do |n|
         n.link 'Home', state: :active, url: "#Home", selector: 'home'
@@ -37,7 +37,7 @@ class NavbarTest < ActionView::TestCase
   end
 
   test 'status' do
-    actual = UiBibz::Ui::Core::Navs::Navbar.new(type: :dark, status: :dark).tap do |nb|
+    actual = UiBibz::Ui::Core::Navigations::Navbar.new(type: :dark, status: :dark).tap do |nb|
       nb.brand image_tag 'ruby-white'
       nb.nav do |n|
         n.link 'Link', url: '#link'

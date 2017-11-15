@@ -1,10 +1,10 @@
-require 'ui_bibz/ui/core/navs/components/nav_link_link'
-require 'ui_bibz/ui/core/navs/components/nav_link_list'
-module UiBibz::Ui::Core::Navs
+require 'ui_bibz/ui/core/navigations/components/nav_link_link'
+require 'ui_bibz/ui/core/navigations/components/nav_link_list'
+module UiBibz::Ui::Core::Navigations
 
   # Create a NavLink
   #
-  # This element is an extend of UiBibz::Ui::Core::Navs::Component.
+  # This element is an extend of UiBibz::Ui::Core::Navigations::Component.
   #
   # ==== Attributes
   #
@@ -24,17 +24,17 @@ module UiBibz::Ui::Core::Navs
   #
   # ==== Signatures
   #
-  #   UiBibz::Ui::Core::Navs::NavLink.new(content, options = nil, html_options = nil)
+  #   UiBibz::Ui::Core::Navigations::NavLink.new(content, options = nil, html_options = nil)
   #
-  #   UiBibz::Ui::Core::Navs::NavLink.new(options = nil, html_options = nil) do
+  #   UiBibz::Ui::Core::Navigations::NavLink.new(options = nil, html_options = nil) do
   #     content
   #   end
   #
   # ==== Examples
   #
-  #   UiBibz::Ui::Core::Navs::NavLink.new(content, { badge: 15, url: '/', state: :active, link_html_options: { class: 'link1' }},{ class: 'test' }).render
+  #   UiBibz::Ui::Core::Navigations::NavLink.new(content, { badge: 15, url: '/', state: :active, link_html_options: { class: 'link1' }},{ class: 'test' }).render
   #
-  #   UiBibz::Ui::Core::Navs::NavLink.new({glyph: { name: 'eye', size: 3 }, { class: 'test' }) do
+  #   UiBibz::Ui::Core::Navigations::NavLink.new({glyph: { name: 'eye', size: 3 }, { class: 'test' }) do
   #     'Home'
   #   end.render
   #
@@ -47,12 +47,12 @@ module UiBibz::Ui::Core::Navs
 
     # Render html tag
     def render
-      content_htm = UiBibz::Ui::Core::Navs::NavLinkLink.new(content, options, html_options).render
+      content_htm = UiBibz::Ui::Core::Navigations::NavLinkLink.new(content, options, html_options).render
       if options[:nav_type] == "nav-links"
         content_htm
       else
         options.delete(:state)
-        UiBibz::Ui::Core::Navs::NavLinkList.new(content_htm, options).render
+        UiBibz::Ui::Core::Navigations::NavLinkList.new(content_htm, options).render
       end
     end
 

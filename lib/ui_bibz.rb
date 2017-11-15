@@ -17,6 +17,13 @@ module UiBibz
     # Core
     module Core
 
+      module Navigations
+        autoload :Nav,                     "ui_bibz/ui/core/navigations/nav"
+        autoload :Navbar,                  "ui_bibz/ui/core/navigations/navbar"
+        autoload :Pagination,              "ui_bibz/ui/core/navigations/pagination"
+        autoload :Toolbar,                 "ui_bibz/ui/core/navigations/toolbar"
+      end
+
       module Cards
         autoload :Card,                    "ui_bibz/ui/core/cards/card"
         autoload :CardColumn,              "ui_bibz/ui/core/cards/card_column"
@@ -87,11 +94,11 @@ module UiBibz
         autoload :ListGroup,              "ui_bibz/ui/core/lists/list_group"
       end
 
-      module Navs
-        autoload :Nav,                     "ui_bibz/ui/core/navs/nav"
-        autoload :Navbar,                  "ui_bibz/ui/core/navs/navbar"
-        autoload :Pagination,              "ui_bibz/ui/core/navs/pagination"
-      end
+      # module Navs
+      #   autoload :Nav,                     "ui_bibz/ui/core/navs/nav"
+      #   autoload :Navbar,                  "ui_bibz/ui/core/navs/navbar"
+      #   autoload :Pagination,              "ui_bibz/ui/core/navs/pagination"
+      # end
 
       module Notifications
         autoload :Alert,                   "ui_bibz/ui/core/notifications/alert"

@@ -1,8 +1,8 @@
-module UiBibz::Ui::Core::Navs
+module UiBibz::Ui::Core::Navigations
 
   # Create a NavbarNav
   #
-  # This element is an extend of UiBibz::Ui::Core::Navs::Nav.
+  # This element is an extend of UiBibz::Ui::Core::Navigations::Nav.
   #
   # ==== Attributes
   #
@@ -21,9 +21,9 @@ module UiBibz::Ui::Core::Navs
   #
   # ==== Signatures
   #
-  #   UiBibz::Ui::Core::Navs::NavbarNav.new(content, options = nil, html_options = nil)
+  #   UiBibz::Ui::Core::Navigations::NavbarNav.new(content, options = nil, html_options = nil)
   #
-  #   UiBibz::Ui::Core::Navs::NavbarNav.new(options = nil, html_options = nil).tap do |n|
+  #   UiBibz::Ui::Core::Navigations::NavbarNav.new(options = nil, html_options = nil).tap do |n|
   #     ...
   #     n.link content = nil, options = nil, html_options = nil, block
   #     ...
@@ -31,14 +31,14 @@ module UiBibz::Ui::Core::Navs
   #
   # ==== Examples
   #
-  #   UiBibz::Ui::Core::Navs::NavbarNav.new().tap do |n|
+  #   UiBibz::Ui::Core::Navigations::NavbarNav.new().tap do |n|
   #     n.link 'Test', url: '#test'
   #     n.link 'Test2', url: '#test2', state: :active
   #   end.render
   #
-  class NavbarNav < UiBibz::Ui::Core::Navs::Nav
+  class NavbarNav < UiBibz::Ui::Core::Navigations::Nav
 
-    # See UiBibz::Ui::Core::Navs::Nav.initialize
+    # See UiBibz::Ui::Core::Navigations::Nav.initialize
     def initialize content = nil, options = nil, html_options = nil, &block
       super
     end

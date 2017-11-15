@@ -3,7 +3,7 @@ require 'ui_bibz/helpers/ui/core/dropdowns_helper'
 require 'ui_bibz/helpers/ui/core/forms_helper'
 require 'ui_bibz/helpers/ui/core/layouts_helper'
 require 'ui_bibz/helpers/ui/core/lists_helper'
-require 'ui_bibz/helpers/ui/core/navs_helper'
+require 'ui_bibz/helpers/ui/core/navigations_helper'
 require 'ui_bibz/helpers/ui/core/paths_helper'
 require 'ui_bibz/helpers/ui/core/windows_helper'
 module UiBibz::Helpers::Ui::CoreHelper
@@ -12,7 +12,7 @@ module UiBibz::Helpers::Ui::CoreHelper
   include UiBibz::Helpers::Ui::Core::FormsHelper
   include UiBibz::Helpers::Ui::Core::LayoutsHelper
   include UiBibz::Helpers::Ui::Core::ListsHelper
-  include UiBibz::Helpers::Ui::Core::NavsHelper
+  include UiBibz::Helpers::Ui::Core::NavigationsHelper
   include UiBibz::Helpers::Ui::Core::PathsHelper
   include UiBibz::Helpers::Ui::Core::WindowsHelper
 

@@ -32,14 +32,6 @@ module UiBibz::Helpers::Ui::Core::FormsHelper
     UiBibz::Ui::Core::Forms::Buttons::ButtonLink.new(content, options, html_options, &block).render
   end
 
-  # Button Toolbar Component
-  #
-  # +options+ (Hash)
-  # +html_options+ (Hash)
-  def ui_button_toolbar content = nil, options = nil, html_options = nil, &block
-    UiBibz::Ui::Core::Forms::Buttons::ButtonToolbar.new(content, options, html_options).tap(&block).render
-  end
-
   # Date Picker Field Component
   #
   # +options+ (Hash)

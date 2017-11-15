@@ -1,8 +1,8 @@
-require 'ui_bibz/ui/core/navs/components/navbar_nav'
-require 'ui_bibz/ui/core/navs/components/navbar_text'
-require 'ui_bibz/ui/core/navs/components/navbar_form'
-require 'ui_bibz/ui/core/navs/components/navbar_brand'
-module UiBibz::Ui::Core::Navs
+require 'ui_bibz/ui/core/navigations/components/navbar_nav'
+require 'ui_bibz/ui/core/navigations/components/navbar_text'
+require 'ui_bibz/ui/core/navigations/components/navbar_form'
+require 'ui_bibz/ui/core/navigations/components/navbar_brand'
+module UiBibz::Ui::Core::Navigations
 
   # Create a Navbar
   #
@@ -90,24 +90,24 @@ module UiBibz::Ui::Core::Navs
     # See UiBibz::Ui::Core::NavbarNav
     def nav content = nil, options = nil, html_options = nil, &block
       options = options || {}
-      @items << UiBibz::Ui::Core::Navs::NavbarNav.new(content, options, html_options).tap(&block).render
+      @items << UiBibz::Ui::Core::Navigations::NavbarNav.new(content, options, html_options).tap(&block).render
     end
 
     # Add navbar form items
     # See UiBibz::Ui::Core::NavbarForm
     def form model_or_url, options = {}, &block
-      @items << UiBibz::Ui::Core::Navs::NavbarForm.new(model_or_url, options, &block).render
+      @items << UiBibz::Ui::Core::Navigations::NavbarForm.new(model_or_url, options, &block).render
     end
 
     # Not use !!!!!
     # Add navbar text items
     # See UiBibz::Ui::Core::NavbarText
     def text content = nil, options = nil, html_options = nil, &block
-      @items << UiBibz::Ui::Core::Navs::NavbarText.new(content, options, html_options, &block).render
+      @items << UiBibz::Ui::Core::Navigations::NavbarText.new(content, options, html_options, &block).render
     end
 
     def brand content = nil, options = nil, html_options = nil, &block
-      @brand = UiBibz::Ui::Core::Navs::NavbarBrand.new(content, options, html_options, &block).render
+      @brand = UiBibz::Ui::Core::Navigations::NavbarBrand.new(content, options, html_options, &block).render
     end
 
     def id
