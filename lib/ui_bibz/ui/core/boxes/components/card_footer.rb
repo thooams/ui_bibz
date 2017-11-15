@@ -1,4 +1,4 @@
-module UiBibz::Ui::Core::Cards::Components
+module UiBibz::Ui::Core::Boxes::Components
 
   # Create a card footer
   #
@@ -15,17 +15,17 @@ module UiBibz::Ui::Core::Cards::Components
   #
   # ==== Signatures
   #
-  #   UiBibz::Ui::Core::Cards::CardFooter.new(content, options = nil, html_options = nil)
+  #   UiBibz::Ui::Core::Boxes::CardFooter.new(content, options = nil, html_options = nil)
   #
-  #   UiBibz::Ui::Core::Cards::CardFooter.new(options = nil, html_options = nil) do
+  #   UiBibz::Ui::Core::Boxes::CardFooter.new(options = nil, html_options = nil) do
   #     content
   #   end
   #
   # ==== Examples
   #
-  #   UiBibz::Ui::Core::Cards::CardFooter.new.render
+  #   UiBibz::Ui::Core::Boxes::CardFooter.new.render
   #
-  #   UiBibz::Ui::Core::Cards::CardFooter.new do
+  #   UiBibz::Ui::Core::Boxes::CardFooter.new do
   #     'Exemple'
   #   end.render
   #

@@ -1,9 +1,9 @@
-require 'ui_bibz/ui/core/cards/components/card_header'
-require 'ui_bibz/ui/core/cards/components/card_footer'
-require 'ui_bibz/ui/core/cards/components/card_body'
-require 'ui_bibz/ui/core/cards/components/card_image'
-require 'ui_bibz/ui/core/cards/components/card_list_group'
-module UiBibz::Ui::Core::Cards
+require 'ui_bibz/ui/core/boxes/components/card_header'
+require 'ui_bibz/ui/core/boxes/components/card_footer'
+require 'ui_bibz/ui/core/boxes/components/card_body'
+require 'ui_bibz/ui/core/boxes/components/card_image'
+require 'ui_bibz/ui/core/boxes/components/card_list_group'
+module UiBibz::Ui::Core::Boxes
 
   # Create a card
   #
@@ -30,13 +30,13 @@ module UiBibz::Ui::Core::Cards
   #
   # ==== Signatures
   #
-  #   UiBibz::Ui::Core::Cards::Card.new(content, options = nil, html_options = nil)
+  #   UiBibz::Ui::Core::Boxes::Card.new(content, options = nil, html_options = nil)
   #
-  #   UiBibz::Ui::Core::Cards::Card.new(options = nil, html_options = nil) do
+  #   UiBibz::Ui::Core::Boxes::Card.new(options = nil, html_options = nil) do
   #     content
   #   end
   #
-  #   UiBibz::Ui::Core::Cards::Card.new(options = nil, html_options = nil).tap do |p|
+  #   UiBibz::Ui::Core::Boxes::Card.new(options = nil, html_options = nil).tap do |p|
   #     p.header content = nil, options = nil, html_options = nil, &block
   #     p.block content = nil, options = nil, html_options = nil, &block
   #     p.footer content = nil, options = nil, html_options = nil, &block
@@ -44,13 +44,13 @@ module UiBibz::Ui::Core::Cards
   #
   # ==== Examples
   #
-  #   UiBibz::Ui::Core::Cards::Card('test').render
+  #   UiBibz::Ui::Core::Boxes::Card('test').render
   #
-  #   UiBibz::Ui::Core::Cards::Card(status: :primary) do |d|
+  #   UiBibz::Ui::Core::Boxes::Card(status: :primary) do |d|
   #     'test'
   #   end.render
   #
-  #   UiBibz::Ui::Core::Cards::Card.new().tap do |p|
+  #   UiBibz::Ui::Core::Boxes::Card.new().tap do |p|
   #     p.header 'header', glyph: 'eye', class: 'header-test'
   #     p.block do
   #       'body'
@@ -91,39 +91,39 @@ module UiBibz::Ui::Core::Cards
     # See UiBibz::Ui::Core::Component.initialize
     def initialize content = nil, options = nil, html_options = nil, &block
       super
-      @items = @content.nil? ? [] : [UiBibz::Ui::Core::Cards::Components::CardBody.new(@content).render]
+      @items = @content.nil? ? [] : [UiBibz::Ui::Core::Boxes::Components::CardBody.new(@content).render]
     end
 
     # Add Header which is a component
     def header content = nil, options = nil, html_options = nil, &block
       options, content = inherit_options(content, options, block)
-      @header = UiBibz::Ui::Core::Cards::Components::CardHeader.new(content, options, html_options, &block).render
+      @header = UiBibz::Ui::Core::Boxes::Components::CardHeader.new(content, options, html_options, &block).render
     end
 
     # Add Body div which is a component
     def body content = nil, options = nil, html_options = nil, &block
       options, content = inherit_options(content, options, block)
       if is_tap(content, options)
-        @items << UiBibz::Ui::Core::Cards::Components::CardBody.new(content, options, html_options).tap(&block).render
+        @items << UiBibz::Ui::Core::Boxes::Components::CardBody.new(content, options, html_options).tap(&block).render
       else
-        @items << UiBibz::Ui::Core::Cards::Components::CardBody.new(content, options, html_options, &block).render
+        @items << UiBibz::Ui::Core::Boxes::Components::CardBody.new(content, options, html_options, &block).render
       end
     end
 
     # Add Footer which is a component
     def footer content = nil, options = nil, html_options = nil, &block
       options, content = inherit_options(content, options, block)
-      @footer = UiBibz::Ui::Core::Cards::Components::CardFooter.new(content, options, html_options, &block).render
+      @footer = UiBibz::Ui::Core::Boxes::Components::CardFooter.new(content, options, html_options, &block).render
     end
 
     # Add List group which is a component
     def list_group content = nil, options = nil, html_options = nil, &block
-      @items << UiBibz::Ui::Core::Cards::Components::CardListGroup.new(content, options, html_options).tap(&block).render
+      @items << UiBibz::Ui::Core::Boxes::Components::CardListGroup.new(content, options, html_options).tap(&block).render
     end
 
     # Add Image which is a component
     def image content = nil, options = nil, html_options = nil, &block
-      @items << UiBibz::Ui::Core::Cards::Components::CardImage.new(content, options, html_options, &block).render
+      @items << UiBibz::Ui::Core::Boxes::Components::CardImage.new(content, options, html_options, &block).render
     end
 
     # Render html tag

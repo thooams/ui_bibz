@@ -17,11 +17,12 @@ module UiBibz
     # Core
     module Core
 
-      module Cards
-        autoload :Card,                    "ui_bibz/ui/core/cards/card"
-        autoload :CardColumn,              "ui_bibz/ui/core/cards/card_column"
-        autoload :CardDeck,                "ui_bibz/ui/core/cards/card_deck"
-        autoload :CardGroup,               "ui_bibz/ui/core/cards/card_group"
+      module Boxes
+        autoload :Card,                    "ui_bibz/ui/core/boxes/card"
+        autoload :CardColumn,              "ui_bibz/ui/core/boxes/card_column"
+        autoload :CardDeck,                "ui_bibz/ui/core/boxes/card_deck"
+        autoload :CardGroup,               "ui_bibz/ui/core/boxes/card_group"
+        autoload :Jumbotron,               "ui_bibz/ui/core/boxes/jumbotron"
       end
 
       module Dropdowns
@@ -112,8 +113,6 @@ module UiBibz
 
       # Other section
       autoload :Component,               "ui_bibz/ui/core/component"
-      autoload :Jumbotron,               "ui_bibz/ui/core/jumbotron"
-      autoload :Progress,                "ui_bibz/ui/core/progress"
     end
 
     # Ux

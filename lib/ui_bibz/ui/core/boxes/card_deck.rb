@@ -1,4 +1,4 @@
-module UiBibz::Ui::Core::Cards
+module UiBibz::Ui::Core::Boxes
 
   # Create a card deck
   #
@@ -15,15 +15,15 @@ module UiBibz::Ui::Core::Cards
   #
   # ==== Signatures
   #
-  #   UiBibz::Ui::Core::Cards::CardDeck.new(content, options = nil, html_options = nil)
+  #   UiBibz::Ui::Core::Boxes::CardDeck.new(content, options = nil, html_options = nil)
   #
-  #   UiBibz::Ui::Core::Cards::CardDeck.new(options = nil, html_options = nil) do
+  #   UiBibz::Ui::Core::Boxes::CardDeck.new(options = nil, html_options = nil) do
   #     cg.card content, options, html_options, &block
   #   end
   #
   # ==== Examples
   #
-  #   UiBibz::Ui::Core::Cards::CardDeck.new do |cg|
+  #   UiBibz::Ui::Core::Boxes::CardDeck.new do |cg|
   #     cg.card 'Exemple 1'
   #     cg.card 'Exemple 2'
   #     cg.card 'Exemple 3'
@@ -46,9 +46,9 @@ module UiBibz::Ui::Core::Cards
 
     def card content = nil, options = nil, html_options = nil, &block
       if is_tap content, options
-        @items << UiBibz::Ui::Core::Cards::Card.new(content, options, html_options).tap(&block).render
+        @items << UiBibz::Ui::Core::Boxes::Card.new(content, options, html_options).tap(&block).render
       else
-        @items << UiBibz::Ui::Core::Cards::Card.new(content, options, html_options, &block).render
+        @items << UiBibz::Ui::Core::Boxes::Card.new(content, options, html_options, &block).render
       end
     end
 

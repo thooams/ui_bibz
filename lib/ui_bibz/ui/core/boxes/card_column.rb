@@ -1,6 +1,6 @@
-module UiBibz::Ui::Core::Cards
+module UiBibz::Ui::Core::Boxes
 
-  # Create a card group
+  # Create a card column
   #
   # ==== Attributes
   #
@@ -15,21 +15,21 @@ module UiBibz::Ui::Core::Cards
   #
   # ==== Signatures
   #
-  #   UiBibz::Ui::Core::Cards::CardGroup.new(content, options = nil, html_options = nil)
+  #   UiBibz::Ui::Core::Boxes::CardColumn.new(content, options = nil, html_options = nil)
   #
-  #   UiBibz::Ui::Core::Cards::CardGroup.new(options = nil, html_options = nil) do
+  #   UiBibz::Ui::Core::Boxes::CardColumn.new(options = nil, html_options = nil) do |cg|
   #     cg.card content, options, html_options, &block
   #   end
   #
   # ==== Examples
   #
-  #   UiBibz::Ui::Core::Cards::CardGroup.new do |cg|
+  #   UiBibz::Ui::Core::Boxes::CardColumn.new do |cg|
   #     cg.card 'Exemple 1'
   #     cg.card 'Exemple 2'
   #     cg.card 'Exemple 3'
   #   end.render
   #
-  class CardGroup < UiBibz::Ui::Core::Component
+  class CardColumn < UiBibz::Ui::Core::Component
 
     # See UiBibz::Ui::Core::Component.initialize
     def initialize content = nil, options = nil, html_options = nil, &block
@@ -44,16 +44,16 @@ module UiBibz::Ui::Core::Cards
 
     def card content = nil, options = nil, html_options = nil, &block
       if is_tap content, options
-        @items << UiBibz::Ui::Core::Cards::Card.new(content, options, html_options).tap(&block).render
+        @items << UiBibz::Ui::Core::Boxes::Card.new(content, options, html_options).tap(&block).render
       else
-        @items << UiBibz::Ui::Core::Cards::Card.new(content, options, html_options, &block).render
+        @items << UiBibz::Ui::Core::Boxes::Card.new(content, options, html_options, &block).render
       end
     end
 
   private
 
     def component_html_classes
-      "card-group"
+      "card-columns"
     end
 
   end

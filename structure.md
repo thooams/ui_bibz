@@ -10,18 +10,16 @@
     * Notifications
       * alert
       * badge
-      * progresses
-        * progress_bar
+      * progress_bar
     * Icons
       * glyph
       * star
-    * Containers
+    * Boxes
       * jumbotron
-      * cards
-        * card
-        * card_deck
-        * card_column
-        * card_group
+      * card
+      * card_deck
+      * card_column
+      * card_group
     * Lists
       * list_group
     * Layouts

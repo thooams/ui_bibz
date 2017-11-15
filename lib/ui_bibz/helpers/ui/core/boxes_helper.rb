@@ -1,4 +1,4 @@
-module UiBibz::Helpers::Ui::Core::CardsHelper
+module UiBibz::Helpers::Ui::Core::BoxesHelper
 
   # Card Component
   #
@@ -9,9 +9,9 @@ module UiBibz::Helpers::Ui::Core::CardsHelper
   # +footer+.
   def ui_card content = nil, options = nil, html_options = nil, &block
     if is_tap(content, options)
-      UiBibz::Ui::Core::Cards::Card.new(content, options, html_options).tap(&block).render
+      UiBibz::Ui::Core::Boxes::Card.new(content, options, html_options).tap(&block).render
     else
-      UiBibz::Ui::Core::Cards::Card.new(content, options, html_options, &block).render
+      UiBibz::Ui::Core::Boxes::Card.new(content, options, html_options, &block).render
     end
   end
 
@@ -20,7 +20,7 @@ module UiBibz::Helpers::Ui::Core::CardsHelper
   # +options+ (Hash)
   # +html_options+ (Hash)
   def ui_card_group content = nil, options = nil, html_options = nil, &block
-    UiBibz::Ui::Core::Cards::CardGroup.new(content, options, html_options).tap(&block).render
+    UiBibz::Ui::Core::Boxes::CardGroup.new(content, options, html_options).tap(&block).render
   end
 
   # Card Deck Component
@@ -28,7 +28,7 @@ module UiBibz::Helpers::Ui::Core::CardsHelper
   # +options+ (Hash)
   # +html_options+ (Hash)
   def ui_card_deck content = nil, options = nil, html_options = nil, &block
-    UiBibz::Ui::Core::Cards::CardDeck.new(content, options, html_options).tap(&block).render
+    UiBibz::Ui::Core::Boxes::CardDeck.new(content, options, html_options).tap(&block).render
   end
 
   # Card Column Component
@@ -36,7 +36,15 @@ module UiBibz::Helpers::Ui::Core::CardsHelper
   # +options+ (Hash)
   # +html_options+ (Hash)
   def ui_card_column content = nil, options = nil, html_options = nil, &block
-    UiBibz::Ui::Core::Cards::CardColumn.new(content, options, html_options).tap(&block).render
+    UiBibz::Ui::Core::Boxes::CardColumn.new(content, options, html_options).tap(&block).render
+  end
+
+  # Jumbotron Component
+  #
+  # +options+ (Hash)
+  # +html_options+ (Hash)
+  def ui_jumbotron content = nil, options = nil, html_options = nil, &block
+    UiBibz::Ui::Core::Boxes::Jumbotron.new(content, options, html_options, &block).render
   end
 
 end

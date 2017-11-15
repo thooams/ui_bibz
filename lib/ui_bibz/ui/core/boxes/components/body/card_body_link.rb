@@ -1,6 +1,6 @@
-module UiBibz::Ui::Core::Cards::Components
+module UiBibz::Ui::Core::Boxes::Components::Body
 
-  # Create a card list_group
+  # Create a card block title
   #
   # ==== Attributes
   #
@@ -15,32 +15,36 @@ module UiBibz::Ui::Core::Cards::Components
   #
   # ==== Signatures
   #
-  #   UiBibz::Ui::Core::Cards::CardListGroup.new(content, options = nil, html_options = nil)
+  #   UiBibz::Ui::Core::Boxes::CardBodyLink.new(content, options = nil, html_options = nil)
   #
-  #   UiBibz::Ui::Core::Cards::CardListGroup.new(options = nil, html_options = nil) do
+  #   UiBibz::Ui::Core::Boxes::CardBodyLink.new(options = nil, html_options = nil) do
   #     content
   #   end
   #
   # ==== Examples
   #
-  #   UiBibz::Ui::Core::Cards::CardListGroup.new.render
+  #   UiBibz::Ui::Core::Boxes::CardBodyLink.new.render
   #
-  #   UiBibz::Ui::Core::Cards::CardListGroup.new do
+  #   UiBibz::Ui::Core::Boxes::CardBodyLink.new do
   #     'Exemple'
   #   end.render
   #
-  class CardListGroup < UiBibz::Ui::Core::Lists::ListGroup
+  class CardBodyLink < UiBibz::Ui::Core::Component
 
     # See UiBibz::Ui::Core::Component.initialize
     def initialize content = nil, options = nil, html_options = nil, &block
       super
-      @lists = []
     end
 
-    protected
+    # Render html tag
+    def render
+      link_to content, options[:url], html_options
+    end
+
+  private
 
     def component_html_classes
-      ["list-group-flush", "list-group"]
+      "card-link"
     end
 
   end

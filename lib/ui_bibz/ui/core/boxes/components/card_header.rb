@@ -1,6 +1,6 @@
-module UiBibz::Ui::Core::Cards::Components::Body
+module UiBibz::Ui::Core::Boxes::Components
 
-  # Create a card block title
+  # Create a card header
   #
   # ==== Attributes
   #
@@ -15,21 +15,21 @@ module UiBibz::Ui::Core::Cards::Components::Body
   #
   # ==== Signatures
   #
-  #   UiBibz::Ui::Core::Cards::CardBodyTitle.new(content, options = nil, html_options = nil)
+  #   UiBibz::Ui::Core::Boxes::CardHeader.new(content, options = nil, html_options = nil)
   #
-  #   UiBibz::Ui::Core::Cards::CardBodyTitle.new(options = nil, html_options = nil) do
+  #   UiBibz::Ui::Core::Boxes::CarHeader.new(options = nil, html_options = nil) do
   #     content
   #   end
   #
   # ==== Examples
   #
-  #   UiBibz::Ui::Core::Cards::CardBodyTitle.new.render
+  #   UiBibz::Ui::Core::Boxes::CardHeader.new.render
   #
-  #   UiBibz::Ui::Core::Cards::CardBodyTitle.new do
+  #   UiBibz::Ui::Core::Boxes::CardHeader.new do
   #     'Exemple'
   #   end.render
   #
-  class CardBodyTitle < UiBibz::Ui::Core::Component
+  class CardHeader < UiBibz::Ui::Core::Component
 
     # See UiBibz::Ui::Core::Component.initialize
     def initialize content = nil, options = nil, html_options = nil, &block
@@ -38,13 +38,17 @@ module UiBibz::Ui::Core::Cards::Components::Body
 
     # Render html tag
     def render
-      content_tag :h4, content, html_options
+      content_tag :div, glyph_and_content_html, html_options
     end
 
   private
 
     def component_html_classes
-      "card-title"
+      ["card-header", outline]
+    end
+
+    def outline
+      "text-#{ @options[:status] } border-#{ @options[:status] } bg-transparent" if @options[:outline]
     end
 
   end

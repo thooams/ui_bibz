@@ -1,4 +1,4 @@
-module UiBibz::Ui::Core::Cards::Components
+module UiBibz::Ui::Core::Boxes::Components
 
   # Create a card image
   #
@@ -17,17 +17,17 @@ module UiBibz::Ui::Core::Cards::Components
   #
   # ==== Signatures
   #
-  #   UiBibz::Ui::Core::Cards::CardImage.new(content, options = nil, html_options = nil)
+  #   UiBibz::Ui::Core::Boxes::CardImage.new(content, options = nil, html_options = nil)
   #
-  #   UiBibz::Ui::Core::Cards::CardImage.new(options = nil, html_options = nil) do
+  #   UiBibz::Ui::Core::Boxes::CardImage.new(options = nil, html_options = nil) do
   #     content
   #   end
   #
   # ==== Examples
   #
-  #   UiBibz::Ui::Core::Cards::CardImage.new.render
+  #   UiBibz::Ui::Core::Boxes::CardImage.new.render
   #
-  #   UiBibz::Ui::Core::Cards::CardImage.new do
+  #   UiBibz::Ui::Core::Boxes::CardImage.new do
   #     "/assets/images/test.png"
   #   end.render
   #

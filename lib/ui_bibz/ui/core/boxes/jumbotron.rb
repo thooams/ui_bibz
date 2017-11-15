@@ -1,4 +1,4 @@
-module UiBibz::Ui::Core
+module UiBibz::Ui::Core::Boxes
 
   # Create a jumbotron
   #
@@ -18,17 +18,17 @@ module UiBibz::Ui::Core
   #
   # ==== Signatures
   #
-  #   UiBibz::Ui::Core::Jumbotron.new(content, options = nil, html_options = nil)
+  #   UiBibz::Ui::Core::Boxes::Jumbotron.new(content, options = nil, html_options = nil)
   #
-  #   UiBibz::Ui::Core::Jumbotron.new(options = nil, html_options = nil) do
+  #   UiBibz::Ui::Core::Boxes::Jumbotron.new(options = nil, html_options = nil) do
   #     content
   #   end
   #
   # ==== Examples
   #
-  #   UiBibz::Ui::Core::Jumbotron.new(content, full_width: true).render
+  #   UiBibz::Ui::Core::Boxes::Jumbotron.new(content, full_width: true).render
   #
-  #   UiBibz::Ui::Core::Jumbotron.new() do
+  #   UiBibz::Ui::Core::Boxes::Jumbotron.new() do
   #     #content
   #   end.render
   #
@@ -42,7 +42,7 @@ module UiBibz::Ui::Core
   #
   class Jumbotron < UiBibz::Ui::Core::Component
 
-    # See UiBibz::Ui::Core::Component.initialize
+    # See UiBibz::Ui::Core::Boxes::Component.initialize
     def initialize content = nil, options = nil, html_options = nil, &block
       super
     end

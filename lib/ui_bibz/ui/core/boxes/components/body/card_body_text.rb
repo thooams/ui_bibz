@@ -1,4 +1,4 @@
-module UiBibz::Ui::Core::Cards::Components::Body
+module UiBibz::Ui::Core::Boxes::Components::Body
 
   # Create a card block title
   #
@@ -15,21 +15,21 @@ module UiBibz::Ui::Core::Cards::Components::Body
   #
   # ==== Signatures
   #
-  #   UiBibz::Ui::Core::Cards::CardBodyLink.new(content, options = nil, html_options = nil)
+  #   UiBibz::Ui::Core::Boxes::CardBodyText.new(content, options = nil, html_options = nil)
   #
-  #   UiBibz::Ui::Core::Cards::CardBodyLink.new(options = nil, html_options = nil) do
+  #   UiBibz::Ui::Core::Boxes::CardBodyText.new(options = nil, html_options = nil) do
   #     content
   #   end
   #
   # ==== Examples
   #
-  #   UiBibz::Ui::Core::Cards::CardBodyLink.new.render
+  #   UiBibz::Ui::Core::Boxes::CardBodyText.new.render
   #
-  #   UiBibz::Ui::Core::Cards::CardBodyLink.new do
+  #   UiBibz::Ui::Core::Boxes::CardBodyText.new do
   #     'Exemple'
   #   end.render
   #
-  class CardBodyLink < UiBibz::Ui::Core::Component
+  class CardBodyText < UiBibz::Ui::Core::Component
 
     # See UiBibz::Ui::Core::Component.initialize
     def initialize content = nil, options = nil, html_options = nil, &block
@@ -38,13 +38,13 @@ module UiBibz::Ui::Core::Cards::Components::Body
 
     # Render html tag
     def render
-      link_to content, options[:url], html_options
+      content_tag :p, content.html_safe, html_options
     end
 
   private
 
     def component_html_classes
-      "card-link"
+      "card-text"
     end
 
   end

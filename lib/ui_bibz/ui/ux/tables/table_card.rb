@@ -3,7 +3,7 @@ module UiBibz::Ui::Ux::Tables
 
   # Create a TableCard
   #
-  # This element is an extend of UiBibz::Ui::Core::Cards::card.
+  # This element is an extend of UiBibz::Ui::Core::Boxes::card.
   #
   # ==== Attributes
   #
@@ -103,11 +103,11 @@ module UiBibz::Ui::Ux::Tables
   #       content
   #     end
   #   end
-  class TableCard < UiBibz::Ui::Core::Cards::Card
+  class TableCard < UiBibz::Ui::Core::Boxes::Card
 
     attr_accessor :columns
 
-    # See UiBibz::Ui::Core::Cards::Card.initialize
+    # See UiBibz::Ui::Core::Boxes::Card.initialize
     def initialize content = nil, options = nil, html_options = nil, &block
       super
       table_options = (@options[:table_options] || {}).merge({ store: store })

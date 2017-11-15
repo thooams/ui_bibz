@@ -1,7 +1,7 @@
-require 'ui_bibz/ui/core/cards/components/body/card_body_text'
-require 'ui_bibz/ui/core/cards/components/body/card_body_title'
-require 'ui_bibz/ui/core/cards/components/body/card_body_link'
-module UiBibz::Ui::Core::Cards::Components
+require 'ui_bibz/ui/core/boxes/components/body/card_body_text'
+require 'ui_bibz/ui/core/boxes/components/body/card_body_title'
+require 'ui_bibz/ui/core/boxes/components/body/card_body_link'
+module UiBibz::Ui::Core::Boxes::Components
 
   # Create a card body
   #
@@ -18,17 +18,17 @@ module UiBibz::Ui::Core::Cards::Components
   #
   # ==== Signatures
   #
-  #   UiBibz::Ui::Core::Cards::CardBody.new(content, options = nil, html_options = nil)
+  #   UiBibz::Ui::Core::Boxes::CardBody.new(content, options = nil, html_options = nil)
   #
-  #   UiBibz::Ui::Core::Cards::CardBody.new(options = nil, html_options = nil) do
+  #   UiBibz::Ui::Core::Boxes::CardBody.new(options = nil, html_options = nil) do
   #     content
   #   end
   #
   # ==== Examples
   #
-  #   UiBibz::Ui::Core::Cards::CardBody.new.render
+  #   UiBibz::Ui::Core::Boxes::CardBody.new.render
   #
-  #   UiBibz::Ui::Core::Cards::CardBody.new do
+  #   UiBibz::Ui::Core::Boxes::CardBody.new do
   #     'Exemple'
   #   end.render
   #
@@ -46,15 +46,15 @@ module UiBibz::Ui::Core::Cards::Components
     end
 
     def title content = nil, options = nil, html_options = nil, &block
-      @items << UiBibz::Ui::Core::Cards::Components::Body::CardBodyTitle.new(content, options, html_options, &block).render
+      @items << UiBibz::Ui::Core::Boxes::Components::Body::CardBodyTitle.new(content, options, html_options, &block).render
     end
 
     def link content = nil, options = nil, html_options = nil, &block
-      @items << UiBibz::Ui::Core::Cards::Components::Body::CardBodyLink.new(content, options, html_options, &block).render
+      @items << UiBibz::Ui::Core::Boxes::Components::Body::CardBodyLink.new(content, options, html_options, &block).render
     end
 
     def text content = nil, options = nil, html_options = nil, &block
-      @items << UiBibz::Ui::Core::Cards::Components::Body::CardBodyText.new(content, options, html_options, &block).render
+      @items << UiBibz::Ui::Core::Boxes::Components::Body::CardBodyText.new(content, options, html_options, &block).render
     end
 
   private
