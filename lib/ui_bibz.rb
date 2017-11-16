@@ -98,6 +98,7 @@ module UiBibz
         autoload :Nav,                     "ui_bibz/ui/core/navigations/nav"
         autoload :Navbar,                  "ui_bibz/ui/core/navigations/navbar"
         autoload :Pagination,              "ui_bibz/ui/core/navigations/pagination"
+        autoload :TabGroup,                "ui_bibz/ui/core/navigations/tab_group"
         autoload :Toolbar,                 "ui_bibz/ui/core/navigations/toolbar"
       end
 

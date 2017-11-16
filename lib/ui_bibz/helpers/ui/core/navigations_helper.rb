@@ -8,6 +8,14 @@ module UiBibz::Helpers::Ui::Core::NavigationsHelper
     UiBibz::Ui::Core::Navigations::Nav.new(content, options, html_options).tap(&block).render
   end
 
+  # TabGroup Component
+  #
+  # +options+ (Hash)
+  # +html_options+ (Hash)
+  def ui_tab_group content = nil, options = nil, html_options = nil, &block
+    UiBibz::Ui::Core::Navigations::TabGroup.new(content, options, html_options).tap(&block).render
+  end
+
   # Navbar Component
   #
   # +options+ (Hash)
