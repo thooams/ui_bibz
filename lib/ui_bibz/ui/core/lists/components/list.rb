@@ -134,10 +134,10 @@ module UiBibz::Ui::Core::Lists::Components
     def badge_html
       if options[:badge].kind_of? Hash
         options[:badge][:status] = options[:status] || :secondary
-        UiBibz::Ui::Core::Badge.new(options[:badge].delete(:content), options[:badge]).render
+        UiBibz::Ui::Core::Notifications::Badge.new(options[:badge].delete(:content), options[:badge]).render
 
       else
-        UiBibz::Ui::Core::Badge.new(options[:badge], type: :pill, status: (options[:status] || :secondary)).render
+        UiBibz::Ui::Core::Notifications::Badge.new(options[:badge], type: :pill, status: (options[:status] || :secondary)).render
       end
     end
 

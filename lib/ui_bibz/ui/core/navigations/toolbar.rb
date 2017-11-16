@@ -42,7 +42,7 @@ module UiBibz::Ui::Core::Navigations
   #
   # ==== Helper
   #
-  #   ui_button_toolbar(options = {}, html_options = {}) do |bt|
+  #   ui_toolbar(options = {}, html_options = {}) do |bt|
   #     bt.button_group do |bg|
   #       bg.ui_button 'content'
   #       bg.ui_button_link 'Link', url: '#'
