@@ -1,4 +1,5 @@
 require 'ui_bibz/ui/core/navigations/components/nav_link'
+require 'ui_bibz/ui/core/navigations/components/nav_text'
 require 'ui_bibz/ui/core/navigations/components/nav_dropdown'
 module UiBibz::Ui::Core::Navigations
 
@@ -81,6 +82,11 @@ module UiBibz::Ui::Core::Navigations
     def link content = nil, options = {}, html_options = nil, &block
       block_given? ? content.merge!({ nav_type: type }) : options.merge!({ nav_type: type })
       @items << NavLink.new(content, options, html_options, &block).render
+    end
+
+    def text content = nil, options = {}, html_options = nil, &block
+      block_given? ? content.merge!({ nav_type: type }) : options.merge!({ nav_type: type })
+      @items << NavText.new(content, options, html_options, &block).render
     end
 
     # Add nav in nav
