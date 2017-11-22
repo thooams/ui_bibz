@@ -74,30 +74,35 @@ module UiBibz::Ui::Core::Navigations
 
     # Render html tag
     def render
-      content_tag tag, @items.join.html_safe, html_options
+      content_tag tag, @items.map(&:render).join.html_safe, html_options
     end
 
     # Add nav link items
     # See UiBibz::Ui::Core::Navigations::NavLink
     def link content = nil, options = {}, html_options = nil, &block
       block_given? ? content.merge!({ nav_type: type }) : options.merge!({ nav_type: type })
-      @items << NavLink.new(content, options, html_options, &block).render
+      @items << NavLink.new(content, options, html_options, &block)
     end
 
     def text content = nil, options = {}, html_options = nil, &block
       block_given? ? content.merge!({ nav_type: type }) : options.merge!({ nav_type: type })
-      @items << NavText.new(content, options, html_options, &block).render
+      @items << NavText.new(content, options, html_options, &block)
     end
 
     # Add nav in nav
     def nav content = nil, options = {}, html_options = nil, &block
-      @items << content_tag(:li, Nav.new(content, options, html_options).tap(&block).render, class: 'nav-item')
+      @items << UiBibz::Ui::Core::Component.new(Nav.new(content, options).tap(&block).render, {}, html_options)
     end
 
     # Add nav dropdown items
     # See UiBibz::Ui::Core::Navigations::NavDropdown
     def dropdown content = nil, options = {}, html_options = nil, &block
-      @items << NavDropdown.new(content, options, html_options).tap(&block).render
+      @items << NavDropdown.new(content, options, html_options).tap(&block)
+    end
+
+    def spacer num = "auto"
+      kls = " mr-#{ num }"
+      @items.last.html_options[:class].nil? ? @items.last.html_options[:class] = kls : @items.last.html_options[:class] << kls
     end
 
   protected

@@ -47,12 +47,11 @@ module UiBibz::Ui::Core::Navigations
 
     # Render html tag
     def render
-      content_htm = UiBibz::Ui::Core::Navigations::NavLinkLink.new(content, options, html_options).render
       if options[:nav_type] == "nav-links"
-        content_htm
+        UiBibz::Ui::Core::Navigations::NavLinkLink.new(content, options, html_options).render
       else
-        options.delete(:state)
-        UiBibz::Ui::Core::Navigations::NavLinkList.new(content_htm, options).render
+        cont = UiBibz::Ui::Core::Navigations::NavLinkLink.new(content, options).render
+        UiBibz::Ui::Core::Navigations::NavLinkList.new(cont, options, html_options).render
       end
     end
 

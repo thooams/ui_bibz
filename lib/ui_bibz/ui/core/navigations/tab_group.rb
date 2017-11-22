@@ -65,22 +65,11 @@ module UiBibz::Ui::Core::Navigations
       super
     end
 
-    # Render html tag
-    def render
-      content_tag tag, @items.join.html_safe, html_options
-    end
-
     # Add nav link items
     # See UiBibz::Ui::Core::Navigations::NavLink
     def tab content = nil, options = {}, html_options = nil, &block
       block_given? ? content.merge!({ nav_type: type }) : options.merge!({ nav_type: type })
-      @items << NavLink.new(content, options, html_options, &block).render
-    end
-
-    # Add nav dropdown items
-    # See UiBibz::Ui::Core::Navigations::NavDropdown
-    def dropdown content = nil, options = {}, html_options = nil, &block
-      @items << NavDropdown.new(content, options, html_options).tap(&block).render
+      @items << NavLink.new(content, options, html_options, &block)
     end
 
   private

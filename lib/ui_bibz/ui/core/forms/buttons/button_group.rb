@@ -89,7 +89,7 @@ module UiBibz::Ui::Core::Forms::Buttons
   private
 
     def component_html_classes
-      super << [class_name, size, position, space]
+      super << [class_name, size, position]
     end
 
     def component_html_options
@@ -114,11 +114,6 @@ module UiBibz::Ui::Core::Forms::Buttons
 
     def position
       "btn-group-#{ options[:position] }" if options[:position]
-    end
-
-    # 1 to 5
-    def space
-      "mr-#{ options[:space] }" if options[:space]
     end
 
   end

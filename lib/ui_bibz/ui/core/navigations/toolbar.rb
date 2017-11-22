@@ -59,7 +59,7 @@ module UiBibz::Ui::Core::Navigations
 
     # Render html tag
     def render
-      content_tag :div, @items.join.html_safe, html_options
+      content_tag :div, @items.map(&:render).join.html_safe, html_options
     end
 
     def button_group content = nil, options = nil, html_options = nil, &block
@@ -68,8 +68,12 @@ module UiBibz::Ui::Core::Navigations
       else
         content = @options.merge(content || {})
       end
+      @items << UiBibz::Ui::Core::Forms::Buttons::ButtonGroup.new(content, options, html_options).tap(&block)
+    end
 
-      @items << UiBibz::Ui::Core::Forms::Buttons::ButtonGroup.new(content, options, html_options).tap(&block).render
+    def spacer num = "auto"
+      kls = " mr-#{ num }"
+      @items.last.html_options[:class].nil? ? @items.last.html_options[:class] = kls : @items.last.html_options[:class] << kls
     end
 
   private
