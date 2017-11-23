@@ -40,6 +40,7 @@ module UiBibz
           autoload :SwitchField,             "ui_bibz/ui/core/forms/choices/switch_field"
           autoload :CheckboxField,           "ui_bibz/ui/core/forms/choices/checkbox_field"
           autoload :RadioField,              "ui_bibz/ui/core/forms/choices/radio_field"
+          autoload :ChoiceGroup,             "ui_bibz/ui/core/forms/choices/choice_group"
         end
 
         module Numbers
@@ -56,11 +57,9 @@ module UiBibz
 
         module Buttons
           autoload :Button,                  "ui_bibz/ui/core/forms/buttons/button"
-          autoload :ButtonChoice,            "ui_bibz/ui/core/forms/buttons/button_choice"
           autoload :ButtonGroup,             "ui_bibz/ui/core/forms/buttons/button_group"
           autoload :ButtonLink,              "ui_bibz/ui/core/forms/buttons/button_link"
           autoload :ButtonRefresh,           "ui_bibz/ui/core/forms/buttons/button_refresh"
-          autoload :ButtonToolbar,           "ui_bibz/ui/core/forms/buttons/button_toolbar"
         end
 
         module Surrounds

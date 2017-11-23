@@ -12,7 +12,7 @@
       $(this).tab('show')
 
   tooltip: ->
-    $('[data-toggle="tooltip"], .without-text').tooltip()
+    $('[data-toggle="tooltip"], [title]').tooltip()
 
   dropdown: ->
     $('.dropdown-toggle').dropdown()

@@ -77,7 +77,8 @@ module UiBibz::Ui::Core::Forms::Selects
       clickable_opt_group
       collapsible_opt_group
       searchable
-      select_all_option
+      select_all_options
+      number_displayed
     end
 
     def clickable_opt_group
@@ -92,8 +93,12 @@ module UiBibz::Ui::Core::Forms::Selects
       add_html_data('enable_filtering') if options[:searchable]
     end
 
-    def select_all_option
-      add_html_data('include_select_all_option') if options[:select_all_option]
+    def number_displayed
+      add_html_data('number_displayed') if options[:number_displayed]
+    end
+
+    def select_all_options
+      add_html_data('include_select_all_option') if options[:select_all_options]
     end
 
     def status

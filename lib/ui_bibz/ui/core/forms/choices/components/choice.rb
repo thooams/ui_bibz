@@ -1,8 +1,8 @@
-module UiBibz::Ui::Core::Forms::Buttons
+module UiBibz::Ui::Core::Forms::Choices
 
-  # Create a button choice
+  # Create a choice
   #
-  # This element is an extend of UiBibz::Ui::Core::Forms::Buttons::Button
+  # This element is an extend of UiBibz::Ui::Core::Forms::Choices::Button
   #
   # ==== Attributes
   #
@@ -14,12 +14,8 @@ module UiBibz::Ui::Core::Forms::Buttons
   #
   # You can add HTML attributes using the +html_options+.
   # You can pass arguments in options attribute:
-  # * +type+ - Symbol (+:checkbox+, +:radio+)
   # * +status+ - status of élement with symbol value:
   #   (+:primary+, +:secondary+, +:info+, +:warning+, +:danger+)
-  # * +size+
-  #   (+:xs+, +:sm+, +:lg+)
-  # * +url+ - String url
   # * +outline+ - Boolean
   # * +state+ - Symbol (+:active+, +:disabled)
   # * +type+ - Symbol (+:block)
@@ -33,17 +29,17 @@ module UiBibz::Ui::Core::Forms::Buttons
   #
   # ==== Signatures
   #
-  #   UiBibz::Ui::Core::Forms::Buttons::Choice.new(content, options = nil, html_options = nil)
+  #   UiBibz::Ui::Core::Forms::Choices::Choice.new(content, options = nil, html_options = nil)
   #
-  #   UiBibz::Ui::Core::Forms::Buttons::Choice.new(options = nil, html_options = nil) do
+  #   UiBibz::Ui::Core::Forms::Choices::Choice.new(options = nil, html_options = nil) do
   #     content
   #   end
   #
   # ==== Examples
   #
-  #   UiBibz::Ui::Core::Forms::Buttons::Choice.new('test', state: :active)
+  #   UiBibz::Ui::Core::Forms::Choices::Choice.new('test', state: :active)
   #
-  #   UiBibz::Ui::Core::Forms::Buttons::Choice.new({id: 'state', input_html_options: { class: 'state'}}, { class: 'lable-class'}) do
+  #   UiBibz::Ui::Core::Forms::Choices::Choice.new({id: 'state', input_html_options: { class: 'state'}}, { class: 'lable-class'}) do
   #     test
   #   end.render
   #
@@ -57,7 +53,7 @@ module UiBibz::Ui::Core::Forms::Buttons
   #
   class Choice < UiBibz::Ui::Core::Forms::Buttons::Button
 
-    # See UiBibz::Ui::Core::Forms::Buttons::Button.initialize
+    # See UiBibz::Ui::Core::Forms::Choices::Button.initialize
     def initialize content = nil, options = nil, html_options = nil, &block
       super
     end
@@ -72,12 +68,9 @@ module UiBibz::Ui::Core::Forms::Buttons
     def button_choice_html_tag
       content_tag :label, html_options do
         concat tag(:input, input_options)
-        concat glyph_and_content_html
+        concat glyph_and_content_html(options[:text].nil? ? @content : ' ')
+        concat badge_html unless options[:badge].nil?
       end
-    end
-
-    def component_html_classes
-      ['btn', size]
     end
 
     def input_options
@@ -109,7 +102,7 @@ module UiBibz::Ui::Core::Forms::Buttons
     end
 
     def status
-      "btn-#{ @options[:status] || :secondary }"
+      ["btn", outline, options[:status] || :secondary].compact.join('-')
     end
 
   end

@@ -15,9 +15,10 @@ class ToolbarTest < ActionView::TestCase
 
   test 'Toolbar justify' do
     actual = ui_toolbar justify: true do |t|
-      t.button_group space: 2 do |bg|
+      t.button_group do |bg|
         bg.button 'Home'
       end
+      t.spacer 2
       t.button_group do |bg|
         bg.button 'Home 2'
       end

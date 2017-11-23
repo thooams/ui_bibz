@@ -63,14 +63,14 @@ module UiBibz::Ui::Core::Forms::Buttons
       super
     end
 
-    def button content = nil, options = nil, html_options = nil, &block
+    def button content = nil, opts = nil, html_options = nil, &block
       if block.nil?
-        options = @options.merge(options || {})
+        opts    = @options.merge(opts || {})
       else
         content = @options.merge(content || {})
       end
 
-      @items << Choice.new(content, options, html_options, &block).render
+      @items << Choice.new(content, opts, html_options, &block).render
     end
 
     private

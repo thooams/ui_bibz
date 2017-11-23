@@ -72,8 +72,8 @@ module UiBibz::Ui::Core::Navigations
     end
 
     def spacer num = "auto"
-      kls = " mr-#{ num }"
-      @items.last.html_options[:class].nil? ? @items.last.html_options[:class] = kls : @items.last.html_options[:class] << kls
+      kls = "mr-#{ num }"
+      @items.last.html_options[:class] = @items.last.html_options[:class].nil? ? kls : join_classes(@items.last.html_options[:class], kls)
     end
 
   private

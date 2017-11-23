@@ -113,7 +113,7 @@ module UiBibz::Ui::Core::Forms::Buttons
 
     def badge_html
       if options[:badge].kind_of? Hash
-        options[:badge][:status] = options[:status] || :secondary
+        options[:badge][:status] = options[:badge][:status] || options[:status] || :secondary
         UiBibz::Ui::Core::Notifications::Badge.new(options[:badge].delete(:content), options[:badge]).render
 
       else
