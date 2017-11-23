@@ -90,6 +90,7 @@ module UiBibz
 
       module Lists
         autoload :ListGroup,              "ui_bibz/ui/core/lists/list_group"
+        autoload :List,                   "ui_bibz/ui/core/lists/components/list"
       end
 
       module Navigations
