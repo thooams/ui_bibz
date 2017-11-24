@@ -51,8 +51,17 @@ module UiBibz::Ui::Core::Navigations
         UiBibz::Ui::Core::Navigations::NavLinkLink.new(content, options, html_options).render
       else
         cont = UiBibz::Ui::Core::Navigations::NavLinkLink.new(content, options).render
+        #html_options[:class] = remove_class(html_options[:class])
+        remove_classes
         UiBibz::Ui::Core::Navigations::NavLinkList.new(cont, options, html_options).render
       end
+    end
+
+    private
+
+    def remove_classes
+      exclude_classes_in_html_options %w(active disabled)
+      options.delete(:state)
     end
 
   end
