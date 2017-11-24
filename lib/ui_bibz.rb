@@ -95,6 +95,7 @@ module UiBibz
 
       module Navigations
         autoload :Breadcrumb,              "ui_bibz/ui/core/navigations/breadcrumb"
+        autoload :Link,                    "ui_bibz/ui/core/navigations/link"
         autoload :Nav,                     "ui_bibz/ui/core/navigations/nav"
         autoload :Navbar,                  "ui_bibz/ui/core/navigations/navbar"
         autoload :Pagination,              "ui_bibz/ui/core/navigations/pagination"

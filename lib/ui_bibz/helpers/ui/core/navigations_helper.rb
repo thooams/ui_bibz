@@ -40,6 +40,14 @@ module UiBibz::Helpers::Ui::Core::NavigationsHelper
     UiBibz::Ui::Core::Navigations::Toolbar.new(content, options, html_options).tap(&block).render
   end
 
+  # Link Component
+  #
+  # +options+ (Hash)
+  # +html_options+ (Hash)
+  def ui_link content = nil, options = nil, html_options = nil, &block
+    UiBibz::Ui::Core::Navigations::Link.new(content, options, html_options, &block).render
+  end
+
   # Breadcrumb Component
   #
   # +options+ (Hash)
