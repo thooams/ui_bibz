@@ -40,96 +40,16 @@ $states_colors: $theme-colors
 //@import fix-dropdown-select
 
 // Components
-@import table
+@import containers
+@import tables
+@import forms
+@import navigations
+@import notifications
+@import boxes
 
-// Custom css
-@each $key, $value in $states_colors
-  .card-#{$key}
-    .card-header
-      background-color: $value
-
-// Glyph section
-@each $key, $value in $states_colors
-  .glyph-#{$key}
-    color: $value
+.panel, .card
+  background-color: red  !important
 
 // Other section
 .ui-bibz-clear
   clear: both
-
-.stars-notation
-  white-space: nowrap
-
-
-.multiselect-container
-  .filter
-    margin: 5px
-
-.formula_field
-  input
-    border-bottom-right-radius: 0.25rem !important
-    border-top-right-radius: 0.25rem !important
-  .fix-border-right
-    border-bottom-right-radius: 0 !important
-    border-top-right-radius: 0 !important
-  width: 100%
-  .form-control[readonly]
-    background-color: white
-  .formula-field_alert, .formula-field-result, .formula-field-sign
-    display: none
-
-.formula-field-alert
-  padding-top: 10px
-
-.select-field-refresh
-  .btn
-    padding: 10px 16px
-
-.input-group-addon.abc-checkbox label, .input-group-addon.abc-radio label
-  margin-bottom: 0
-
-.checkbox-inline, .radio-inline
-  display: inline-block
-  margin-right: 10px
-
-.input-group-btn
-  .input-refresh-button
-    padding: 10px 16px
-
-.input-group-btn
-  label.btn
-    margin: 0
-
-.fix-label
-  margin-right: -11px
-
-.date_picker
-  min-width: 104px
-
-.navbar
-  .simple_form
-    input
-      width: auto
-    .form-control
-      width: auto
-    .form-group
-      display: inline-block
-
-.ui_surround_field
-  select
-    -webkit-appearance: none
-  .mr-sm-2
-    margin-right: 0px !important
-  input:not(:first-child):not(:last-child)
-    border-radius: 0px
-  .abc-radio.input-group-addon, .abc-checkbox.input-group-addon
-    input
-      margin-left: 17px
-  select:not(:first-child):not(:last-child)
-    border-radius: 0px
-
-.btn.without-text
-  padding-right: 3px
-
-.progress-bar-line
-  height: 1px

@@ -129,6 +129,10 @@ module UiBibz
         autoload :TablePaginationPerPage,  "ui_bibz/ui/ux/tables/table_pagination_per_page"
       end
 
+      module Containers
+        autoload :Panel,  "ui_bibz/ui/ux/containers/panel"
+      end
+
     end
   end
 
