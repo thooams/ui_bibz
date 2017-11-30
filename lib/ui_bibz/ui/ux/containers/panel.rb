@@ -1,3 +1,4 @@
+require 'ui_bibz/ui/ux/containers/components/panel_header'
 module UiBibz::Ui::Ux::Containers
 
   # Create a Panel
@@ -39,6 +40,16 @@ module UiBibz::Ui::Ux::Containers
     def toolbar content = nil, options = nil, html_options = nil, &block
       @items << content_tag(:div, class: 'panel-toolbar') do
         UiBibz::Ui::Core::Navigations::Toolbar.new(content, options, html_options).tap(&block).render
+      end
+    end
+
+    # Add Header which is a component
+    def header content = nil, options = nil, html_options = nil, &block
+      options, content = inherit_options(content, options, block)
+      if is_tap(content, options)
+        @header = UiBibz::Ui::Ux::Containers::Components::PanelHeader.new(content, options, html_options).tap(&block).render
+      else
+        @header = UiBibz::Ui::Ux::Containers::Components::PanelHeader.new(content, options, html_options, &block).render
       end
     end
 
