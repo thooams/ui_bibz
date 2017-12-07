@@ -2,7 +2,7 @@ module GlyphExtension
 
   # Render glyph and content html
   def glyph_and_content_html content_html = nil
-    [glyph_with_space, content_html || content].compact.join.html_safe
+    [glyph_with_space, content_html || content].compact.join(' ').html_safe
   end
 
   # Render glyph with space html

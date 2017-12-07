@@ -45,7 +45,7 @@ class ButtonGroupTest < ActionView::TestCase
         d.link 'Link 1', url: '#link1', glyph: 'eye'
       end
     end
-    expected = "<div class=\"btn-group\" role=\"group\"><div id=\"dropdown-test\" class=\"dropup btn-group\"><button class=\"btn btn-success dropdown-toggle\" type=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\" id=\"dropdown-test\">Dropdown <span class=\"caret\"></span></button><div class=\"dropdown-menu\" arial-labelledby=\"dropdown-test\"><a class=\"dropdown-item\" href=\"#link1\"><i class=\"glyph fa fa-eye\"></i> Link 1</a></div></div></div>"
+    expected = "<div class=\"btn-group\" role=\"group\"><div id=\"dropdown-test\" class=\"dropup btn-group\"><button class=\"btn btn-success dropdown-toggle\" type=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\" id=\"dropdown-test\">Dropdown <span class=\"caret\"></span></button><div class=\"dropdown-menu\" arial-labelledby=\"dropdown-test\"><a class=\"dropdown-item\" href=\"#link1\"><i class=\"glyph fa fa-eye\"></i>  Link 1</a></div></div></div>"
 
     assert_equal expected, actual
   end

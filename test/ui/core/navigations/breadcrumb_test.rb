@@ -8,7 +8,7 @@ class BreadcrumbTest < ActionView::TestCase
       b.link 'Home', url: '#home', glyph: 'home'
       b.link 'state', { url: '#state', state: :active }
     end
-    expected = "<ol class=\"breadcrumb\"><li class=\"breadcrumb-item\"><a href=\"#home\"><i class=\"glyph fa fa-home\"></i> Home</a></li><li class=\"active breadcrumb-item\"><a href=\"#state\">state</a></li></ol>"
+    expected = "<ol class=\"breadcrumb\"><li class=\"breadcrumb-item\"><a href=\"#home\"><i class=\"glyph fa fa-home\"></i>  Home</a></li><li class=\"active breadcrumb-item\"><a href=\"#state\">state</a></li></ol>"
 
     assert_equal expected, actual
   end

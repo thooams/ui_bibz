@@ -4,7 +4,7 @@ class ComponentTest < ActionView::TestCase
 
   test 'create complex component' do
     actual = UiBibz::Ui::Core::Component.new('New component', { state: :active, glyph: 'add' }, { class: 'new-class' }).render
-    expected = '<i class="glyph fa fa-add"></i> New component'
+    expected = '<i class="glyph fa fa-add"></i>  New component'
 
     assert_equal expected, actual
   end

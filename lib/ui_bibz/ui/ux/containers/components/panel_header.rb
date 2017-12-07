@@ -15,7 +15,7 @@ module UiBibz::Ui::Ux::Containers::Components
   #
   # ==== Signatures
   #
-  #   UiBibz::Ui::Core::Boxes::CardHeader.new(content, options = nil, html_options = nil)
+  #   UiBibz::Ui::Core::Boxes::PanelHeader.new(content, options = nil, html_options = nil)
   #
   #   UiBibz::Ui::Core::Boxes::CarHeader.new(options = nil, html_options = nil) do
   #     content
@@ -23,13 +23,13 @@ module UiBibz::Ui::Ux::Containers::Components
   #
   # ==== Examples
   #
-  #   UiBibz::Ui::Core::Boxes::CardHeader.new.render
+  #   UiBibz::Ui::Core::Boxes::PanelHeader.new.render
   #
-  #   UiBibz::Ui::Core::Boxes::CardHeader.new do
+  #   UiBibz::Ui::Core::Boxes::PanelHeader.new do
   #     'Exemple'
   #   end.render
   #
-  class PanelHeader < UiBibz::Ui::Core::Boxes::Components::CardHeader
+  class PanelHeader < UiBibz::Ui::Core::Component
 
     # See UiBibz::Ui::Core::Component.initialize
     def initialize content = nil, options = nil, html_options = nil, &block

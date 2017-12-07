@@ -41,34 +41,40 @@ module UiBibz::Ui::Core::Navigations
   #
   class NavbarForm < UiBibz::Ui::Base
     include Haml::Helpers
-    include SimpleForm::ActionViewExtensions::FormHelper
+    include SimpleForm::ActionViewExtensions::FormHelper if defined?(SimpleForm)
     include UiBibz::Helpers::UtilsHelper
     include ActionView::Helpers#::FormHelper
 
+    attr_accessor :html_options
+
     def initialize model_or_url, options = {}, &block
       init_haml_helpers
-      @options = options
-      case type
-      when :form_for
-        @form = form_for(model_or_url, new_option, &block)
-      when :ui_form_for
-        @form = ui_form_for(model_or_url, new_option, &block)
-      else
-        #@form = form_tag(model_or_url, class: "navbar-form form-inline #{ position }", block)
-        html_options = html_options_for_form(model_or_url, new_option)
-        @form = form_tag_with_body(html_options, capture(&block))
-      end
+      @content      = block
+      @model_or_url = model_or_url
+      @options      = options
+      @html_options = !%i(form_for ui_form_for).include?(type) ? html_options_for_form(@model_or_url, new_option)  : new_option
     end
 
     # Render html tag
     def render
-      @form
+      case type
+      when :form_for
+        @form = form_for(@model_or_url, html_options, &@content)
+      when :ui_form_for
+        begin
+          @form = ui_form_for(@model_or_url, html_options, &@content)
+        rescue
+          raise 'You must install simple form to use ui_form_for.'
+        end
+      else
+        @form = form_tag_with_body(html_options, capture(&@content))
+      end
     end
 
   private
 
     def new_option
-      (@options || {}).merge({ class: "navbar-form form-inline #{ position } my-2 my-lg-0" })
+      (@options || {}).merge({ class: UiBibz::Utils::Screwdriver.join_classes("navbar-form", "form-inline", @options[:class]) })
     end
 
     def protect_against_forgery?
@@ -81,10 +87,6 @@ module UiBibz::Ui::Core::Navigations
 
     def type
       @options[:type] || :form_for
-    end
-
-    def position
-      "pull-#{ @options[:position] }" unless @options[:position].nil?
     end
 
   end

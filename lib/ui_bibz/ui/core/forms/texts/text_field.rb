@@ -66,7 +66,7 @@ module UiBibz::Ui::Core::Forms::Texts
     end
 
     def component_html_classes
-      ['form-control', status]
+      super << ['form-control', status, size]
     end
 
     def component_html_options
@@ -75,6 +75,10 @@ module UiBibz::Ui::Core::Forms::Texts
 
     def status
       "form-control-#{ options[:status] }" unless options[:status].nil?
+    end
+
+    def size
+      "form-control-#{ options[:size] }" unless options[:size].nil?
     end
 
   end

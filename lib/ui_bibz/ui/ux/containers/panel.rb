@@ -1,4 +1,10 @@
 require 'ui_bibz/ui/ux/containers/components/panel_header'
+require 'ui_bibz/ui/ux/containers/components/panel_body'
+require 'ui_bibz/ui/ux/containers/components/panel_footer'
+require 'ui_bibz/ui/ux/containers/components/panel_toolbar'
+require 'ui_bibz/ui/ux/containers/components/panel_deck'
+require 'ui_bibz/ui/ux/containers/components/panel_group'
+require 'ui_bibz/ui/ux/containers/components/panel_column'
 module UiBibz::Ui::Ux::Containers
 
   # Create a Panel
@@ -31,21 +37,39 @@ module UiBibz::Ui::Ux::Containers
   #     p.footer 'footer'
   #   end
   #
-  class Panel < UiBibz::Ui::Core::Boxes::Card
+  class Panel < UiBibz::Ui::Core::Component
 
     def initialize content = nil, options = nil, html_options = nil, &block
       super
+      @items = []
+    end
+
+    def render
+      content_tag :div, html_structure, html_options
     end
 
     def toolbar content = nil, options = nil, html_options = nil, &block
-      @items << content_tag(:div, class: 'panel-toolbar') do
-        UiBibz::Ui::Core::Navigations::Toolbar.new(content, options, html_options).tap(&block).render
-      end
+      @items << UiBibz::Ui::Ux::Containers::Components::PanelToolbar.new(content, options, html_options).tap(&block).render
+    end
+
+    def deck content = nil, options = nil, html_options = nil, &block
+      @items << UiBibz::Ui::Ux::Containers::Components::PanelDeck.new(content, options, html_options).tap(&block).render
+    end
+
+    def column content = nil, options = nil, html_options = nil, &block
+      @items << UiBibz::Ui::Ux::Containers::Components::PanelColumn.new(content, options, html_options).tap(&block).render
+    end
+
+    def group content = nil, options = nil, html_options = nil, &block
+      @items << UiBibz::Ui::Ux::Containers::Components::PanelGroup.new(content, options, html_options).tap(&block).render
+    end
+
+    def body content = nil, options = nil, html_options = nil, &block
+      @items << UiBibz::Ui::Ux::Containers::Components::PanelBody.new(content, options, html_options, &block).render
     end
 
     # Add Header which is a component
     def header content = nil, options = nil, html_options = nil, &block
-      options, content = inherit_options(content, options, block)
       if is_tap(content, options)
         @header = UiBibz::Ui::Ux::Containers::Components::PanelHeader.new(content, options, html_options).tap(&block).render
       else
@@ -53,7 +77,20 @@ module UiBibz::Ui::Ux::Containers
       end
     end
 
+    # Add Header which is a component
+    def footer content = nil, options = nil, html_options = nil, &block
+      if is_tap(content, options)
+        @footer = UiBibz::Ui::Ux::Containers::Components::PanelFooter.new(content, options, html_options).tap(&block).render
+      else
+        @footer = UiBibz::Ui::Ux::Containers::Components::PanelFooter.new(content, options, html_options, &block).render
+      end
+    end
+
     private
+
+    def html_structure
+      [@header, @items.join, @footer].compact.join.html_safe
+    end
 
     def component_html_classes
       super << 'panel'

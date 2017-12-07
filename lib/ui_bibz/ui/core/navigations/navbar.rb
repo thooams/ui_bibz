@@ -90,24 +90,32 @@ module UiBibz::Ui::Core::Navigations
     # See UiBibz::Ui::Core::NavbarNav
     def nav content = nil, options = nil, html_options = nil, &block
       options = options || {}
-      @items << UiBibz::Ui::Core::Navigations::NavbarNav.new(content, options, html_options).tap(&block).render
+      @items << UiBibz::Ui::Core::Navigations::NavbarNav.new(content, options, html_options).tap(&block)
     end
 
     # Add navbar form items
     # See UiBibz::Ui::Core::NavbarForm
     def form model_or_url, options = {}, &block
-      @items << UiBibz::Ui::Core::Navigations::NavbarForm.new(model_or_url, options, &block).render
+      @items << UiBibz::Ui::Core::Navigations::NavbarForm.new(model_or_url, options, &block)
     end
 
     # Not use !!!!!
     # Add navbar text items
     # See UiBibz::Ui::Core::NavbarText
     def text content = nil, options = nil, html_options = nil, &block
-      @items << UiBibz::Ui::Core::Navigations::NavbarText.new(content, options, html_options, &block).render
+      @items << UiBibz::Ui::Core::Navigations::NavbarText.new(content, options, html_options, &block)
     end
 
     def brand content = nil, options = nil, html_options = nil, &block
       @brand = UiBibz::Ui::Core::Navigations::NavbarBrand.new(content, options, html_options, &block).render
+    end
+
+    def spacer num = "auto"
+      kls = " mr-#{ num }"
+      ap @items.last.html_options
+      ap @items.last.html_options[:class]
+      @items.last.html_options[:class].nil? ? @items.last.html_options[:class] = kls : @items.last.html_options[:class] << kls
+      ap @items.last.html_options[:class]
     end
 
     def id
@@ -130,7 +138,7 @@ module UiBibz::Ui::Core::Navigations
 
     def body_html
       content_tag :div, class: "collapse navbar-collapse", id: id do
-        concat @items.join.html_safe
+        concat @items.map(&:render).join.html_safe
       end
     end
 

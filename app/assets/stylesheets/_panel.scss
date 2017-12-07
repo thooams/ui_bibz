@@ -1,0 +1,312 @@
+//
+// Base styles
+//
+
+.panel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: $panel-bg;
+  background-clip: border-box;
+  border: $panel-border-width solid $panel-border-color;
+  @include border-radius($panel-border-radius);
+
+  > hr {
+    margin-right: 0;
+    margin-left: 0;
+  }
+
+  > .list-group:first-child {
+    .list-group-item:first-child {
+      @include border-top-radius($panel-border-radius);
+    }
+  }
+
+  > .list-group:last-child {
+    .list-group-item:last-child {
+      @include border-bottom-radius($panel-border-radius);
+    }
+  }
+
+  // Select all panel toolbar except the first
+  > .panel-toolbar ~ .panel-toolbar {
+    border-top: $panel-border-width solid $panel-border-color;
+    border-bottom: $panel-border-width solid $panel-border-color;
+  }
+
+  // Select first panel-toolbar
+  > .panel-toolbar {
+    border-top: none;
+    padding: $panel-spacer;
+    background-color: rgba($black, .015);
+    border-bottom: $panel-border-width solid $panel-border-color;
+  }
+
+  // Select last panel-toolbar
+  > .panel-toolbar:nth-last-child(2), .panel-toolbar:nth-last-child(1){
+    border-bottom: none;
+  }
+}
+
+.panel-body {
+  // Enable `flex-grow: 1` for decks and groups so that panel blocks take up
+  // as much space as possible, ensuring footers are aligned to the bottom.
+  flex: 1 1 auto;
+  padding: $panel-spacer;
+}
+
+.panel-title {
+  margin-bottom: $panel-spacer-y;
+}
+
+.panel-subtitle {
+  margin-top: -($panel-spacer-y / 2);
+  margin-bottom: 0;
+}
+
+.panel-text:last-child {
+  margin-bottom: 0;
+}
+
+.panel-link {
+  @include hover {
+    text-decoration: none;
+  }
+
+  + .panel-link {
+    margin-left: $panel-spacer-x;
+  }
+}
+
+//
+// Optional textual caps
+//
+
+.panel-header {
+  padding: $panel-spacer;
+  margin-bottom: 0; // Removes the default margin-bottom of <hN>
+  background-color: $panel-cap-bg;
+  border-bottom: $panel-border-width solid $panel-border-color;
+  display: flex;
+
+  div {
+    position: relative;
+    display: inline-flex;
+    vertical-align: middle;
+  }
+
+  &:first-child {
+    @include border-radius($panel-inner-border-radius $panel-inner-border-radius 0 0);
+  }
+
+  + .list-group {
+    .list-group-item:first-child {
+      border-top: 0;
+    }
+  }
+
+  .panel-title {
+    padding: 0;
+    margin: 0;
+  }
+}
+
+
+.panel-footer {
+  padding: $panel-spacer-y;
+  background-color: $panel-cap-bg;
+  border-top: $panel-border-width solid $panel-border-color;
+
+  &:last-child {
+    @include border-radius(0 0 $panel-inner-border-radius $panel-inner-border-radius);
+  }
+}
+
+.panel-toolbar .btn-toolbar{
+  margin: 0;
+}
+
+//
+// Header navs
+//
+
+.panel-header-tabs {
+  margin-right: -($panel-spacer-x / 2);
+  margin-bottom: -$panel-spacer-y;
+  margin-left: -($panel-spacer-x / 2);
+  border-bottom: 0;
+}
+
+.panel-header-pills {
+  margin-right: -($panel-spacer-x / 2);
+  margin-left: -($panel-spacer-x / 2);
+}
+
+// panel image
+.panel-img-overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: $panel-img-overlay-padding;
+}
+
+.panel-img {
+  width: 100%; // Required because we use flexbox and this inherently applies align-self: stretch
+  @include border-radius($panel-inner-border-radius);
+}
+
+// panel image caps
+.panel-img-top {
+  width: 100%; // Required because we use flexbox and this inherently applies align-self: stretch
+  @include border-top-radius($panel-inner-border-radius);
+}
+
+.panel-img-bottom {
+  width: 100%; // Required because we use flexbox and this inherently applies align-self: stretch
+  @include border-bottom-radius($panel-inner-border-radius);
+}
+
+
+// panel deck
+
+.panel-deck {
+  display: flex;
+  padding: $panel-spacer;
+  flex-direction: column;
+
+  .panel {
+    margin-bottom: $panel-deck-margin;
+  }
+
+  @include media-breakpoint-up(sm) {
+    flex-flow: row wrap;
+    margin-right: -$panel-deck-margin;
+    margin-left: -$panel-deck-margin;
+
+    .panel {
+      display: flex;
+      // Flexbugs #4: https://github.com/philipwalton/flexbugs#4-flex-shorthand-declarations-with-unitless-flex-basis-values-are-ignored
+      flex: 1 0 0%;
+      flex-direction: column;
+      margin-right: $panel-deck-margin;
+      margin-bottom: 0; // Override the default
+      margin-left: $panel-deck-margin;
+    }
+  }
+}
+
+
+//
+// panel groups
+//
+
+.panel-group {
+  display: flex;
+  flex-direction: column;
+
+  .panel {
+    border-radius: 0;
+    border: none;
+    border-right: $panel-border-width solid $panel-border-color;
+    margin-bottom: $panel-group-margin;
+  }
+
+  .panel:last-child {
+    border-right: none;
+  }
+
+  @include media-breakpoint-up(sm) {
+    flex-flow: row wrap;
+
+    .panel {
+      // Flexbugs #4: https://github.com/philipwalton/flexbugs#4-flex-shorthand-declarations-with-unitless-flex-basis-values-are-ignored
+      flex: 1 0 0%;
+      margin-bottom: 0;
+
+      + .panel {
+        margin-left: 0;
+        border-left: 0;
+      }
+
+
+      // Handle rounded corners
+      @if $enable-rounded {
+        &:first-child {
+          @include border-right-radius(0);
+
+          .panel-img-top,
+          .panel-header {
+            border-top-right-radius: 0;
+          }
+          .panel-img-bottom,
+          .panel-footer {
+            border-bottom-right-radius: 0;
+          }
+        }
+
+        &:last-child {
+          @include border-left-radius(0);
+
+          .panel-img-top,
+          .panel-header {
+            border-top-left-radius: 0;
+          }
+          .panel-img-bottom,
+          .panel-footer {
+            border-bottom-left-radius: 0;
+          }
+        }
+
+        &:only-child {
+          @include border-radius($panel-border-radius);
+
+          .panel-img-top,
+          .panel-header {
+            @include border-top-radius($panel-border-radius);
+          }
+          .panel-img-bottom,
+          .panel-footer {
+            @include border-bottom-radius($panel-border-radius);
+          }
+        }
+
+        &:not(:first-child):not(:last-child):not(:only-child) {
+          @include border-radius(0);
+
+          .panel-img-top,
+          .panel-img-bottom,
+          .panel-header,
+          .panel-footer {
+            @include border-radius(0);
+          }
+        }
+      }
+    }
+  }
+}
+
+
+//
+// Columns
+//
+
+.panel-columns {
+  padding: $panel-spacer;
+  .panel {
+    margin-bottom: $panel-columns-margin;
+  }
+
+  @include media-breakpoint-up(sm) {
+    column-count: $panel-columns-count;
+    column-gap: $panel-columns-gap;
+
+    .panel {
+      display: inline-block; // Don't let them vertically span multiple columns
+      width: 100%; // Don't let their width change
+    }
+  }
+}
