@@ -86,6 +86,10 @@ module UiBibz::Ui::Core::Forms::Buttons
       @items << @options[:form].input(attribute_name, options.merge({ label: false, wrapper: false }), &block)
     end
 
+    def html content = nil, options = nil, html_options = nil, &block
+      @items << UiBibz::Ui::Core::Component.new(content, options, html_options, &block).render
+    end
+
   private
 
     def component_html_classes

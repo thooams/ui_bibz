@@ -64,6 +64,10 @@ module UiBibz::Ui::Ux::Containers
       @items << UiBibz::Ui::Ux::Containers::Components::PanelGroup.new(content, options, html_options).tap(&block).render
     end
 
+    def panel content = nil, options = nil, html_options = nil, &block
+      @items << UiBibz::Ui::Ux::Containers::Panel.new(content, options, html_options).tap(&block).render
+    end
+
     def body content = nil, options = nil, html_options = nil, &block
       @items << UiBibz::Ui::Ux::Containers::Components::PanelBody.new(content, options, html_options, &block).render
     end

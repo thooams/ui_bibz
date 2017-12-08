@@ -3,6 +3,8 @@
 //
 
 .panel {
+  margin: 0;
+  padding: 0;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -135,7 +137,7 @@
 .panel-header-tabs {
   margin-right: -($panel-spacer-x / 2);
   margin-bottom: -$panel-spacer-y;
-  margin-left: -($panel-spacer-x / 2);
+  margin-left: 0;
   border-bottom: 0;
 }
 
@@ -178,7 +180,7 @@
   padding: $panel-spacer;
   flex-direction: column;
 
-  .panel {
+  & > .panel {
     margin-bottom: $panel-deck-margin;
   }
 
@@ -187,7 +189,7 @@
     margin-right: -$panel-deck-margin;
     margin-left: -$panel-deck-margin;
 
-    .panel {
+    & > .panel {
       display: flex;
       // Flexbugs #4: https://github.com/philipwalton/flexbugs#4-flex-shorthand-declarations-with-unitless-flex-basis-values-are-ignored
       flex: 1 0 0%;
