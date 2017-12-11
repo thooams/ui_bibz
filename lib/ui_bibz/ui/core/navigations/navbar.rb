@@ -112,10 +112,7 @@ module UiBibz::Ui::Core::Navigations
 
     def spacer num = "auto"
       kls = " mr-#{ num }"
-      ap @items.last.html_options
-      ap @items.last.html_options[:class]
       @items.last.html_options[:class].nil? ? @items.last.html_options[:class] = kls : @items.last.html_options[:class] << kls
-      ap @items.last.html_options[:class]
     end
 
     def id
