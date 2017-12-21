@@ -1,4 +1,4 @@
-if defined?(SimpleForm)
+unless defined?(SimpleForm).nil?
   SimpleForm.setup do |config|
     # Namespaces where SimpleForm should look for custom input classes that
     # override default inputs.

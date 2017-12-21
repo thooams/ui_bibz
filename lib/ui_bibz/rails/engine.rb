@@ -5,15 +5,6 @@ require 'popper_js'
 require 'bootstrap'
 require "font-awesome-sass"
 
-# Javascript requires
-#require 'rails-assets-tether'
-#require 'rails-assets-bootstrap-datepicker'
-#require 'rails-assets-bootstrap-select'
-#
-# not compatible with boostrap 4
-#require 'rails-assets-bootstrap-switch'
-#require 'rails-assets-bootstrap-multiselect'
-
 module UiBibz
   module Rails
     class Engine < ::Rails::Engine
@@ -25,6 +16,8 @@ module UiBibz
         ActionView::Base.send :include, UiBibz::Helpers::Ui::CoreHelper
         ActionView::Base.send :include, UiBibz::Helpers::Ui::UxHelper
       end
+
+      config.autoload_paths += Dir["#{config.root}/lib/ui_bibz/inputs/**/"] if defined?(SimpleForm)
 
     end
   end

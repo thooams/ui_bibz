@@ -1,12 +1,5 @@
 source 'https://rubygems.org'
 
-# To fix errors with precompile assets
-#source 'https://rails-assets.org/' do
-#  gem 'rails-assets-tether'
-#  gem 'rails-assets-bootstrap-select'
-#  gem 'rails-assets-bootstrap-datepicker'
-#end
-
 # Declare your gem's dependencies in ui_bibz.gemspec.
 # Bundler will treat runtime dependencies like base dependencies, and
 # development dependencies will be added by default to the :development group.
