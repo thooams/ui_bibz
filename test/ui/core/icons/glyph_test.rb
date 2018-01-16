@@ -1,5 +1,6 @@
 require 'test_helper'
 
+
 class GlyphTest < ActionView::TestCase
   include UiBibz::Helpers::Ui::CoreHelper
 
@@ -26,4 +27,5 @@ class GlyphTest < ActionView::TestCase
     expected = "<i class=\"glyph fa fa-add\"></i> Example"
     assert_equal expected, actual
   end
+
 end

@@ -26,7 +26,6 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib", "vendor"]
 
   # Rails gems
-  #s.add_dependency 'bundler', '>= 1.8.4'
   s.add_dependency 'rails', '>= 4.2.0'
   s.add_dependency 'will_paginate', '~> 3.1.0'
   s.add_dependency 'will-paginate-i18n'
@@ -38,19 +37,11 @@ Gem::Specification.new do |s|
   s.add_dependency 'font-awesome-sass'
   s.add_dependency 'bootstrap', '4.0.0.beta3'
 
-  # Javascript gems (rails-assets.org)
-  #s.add_dependency 'rails-assets-tether', '>= 1.1.0'
-  #s.add_dependency 'rails-assets-bootstrap-select', '>= 1.10.0'
-  #s.add_dependency 'rails-assets-bootstrap-datepicker', '>= 1.6.0'
-
-  # not compatible with bootstrap 4
-  #s.add_dependency 'rails-assets-bootstrap-switch', '>= 3.3.2'
-  #s.add_dependency 'rails-assets-bootstrap-multiselect', '>= 0.9.13'
-
   # Development gems
+  s.add_development_dependency "simple_form"
   s.add_development_dependency "minitest"
   s.add_development_dependency "sqlite3"
-  s.add_development_dependency "factory_girl_rails", "~> 4.0"
+  s.add_development_dependency "factory_bot_rails", "~> 4.0"
   s.add_development_dependency "simplecov"
   s.add_development_dependency "codeclimate-test-reporter"
 end

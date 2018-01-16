@@ -1,8 +1,12 @@
 # encoding: UTF-8
 require 'test_helper'
+require 'simple_form'
 
 class SimpleFormTest < ActionView::TestCase
 
+  ap SimpleForm
+
+  include SimpleForm
   include SimpleForm::ActionViewExtensions::FormHelper
   include UiBibz::Helpers::UtilsHelper
 

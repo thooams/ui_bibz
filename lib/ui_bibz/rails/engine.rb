@@ -4,6 +4,7 @@ require 'jquery-rails'
 require 'popper_js'
 require 'bootstrap'
 require "font-awesome-sass"
+require 'simple_form' if ENV["RAILS_ENV"]
 
 module UiBibz
   module Rails
@@ -17,7 +18,7 @@ module UiBibz
         ActionView::Base.send :include, UiBibz::Helpers::Ui::UxHelper
       end
 
-      config.autoload_paths += Dir["#{config.root}/lib/ui_bibz/inputs/**/"] if defined?(SimpleForm)
+      config.autoload_paths += Dir["#{config.root}/lib/ui_bibz/inputs/**/"] if defined?(::SimpleForm)
 
     end
   end

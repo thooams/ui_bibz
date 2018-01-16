@@ -78,7 +78,6 @@ module UiBibz::Ui::Core::Forms::Buttons
       opts = super
       opts = opts.merge(toggle)                   unless options[:toggle].nil?
       opts = opts.merge(active_html_options)      if options[:state] == :active
-      opts = opts.merge(html_title)               if options[:text] == false
       opts = opts.merge({ disabled: 'disabled' }) if options[:state] == :disabled
       opts
     end
@@ -89,10 +88,6 @@ module UiBibz::Ui::Core::Forms::Buttons
 
     def outline
       "outline" unless options[:outline].nil?
-    end
-
-    def html_title
-      { title: content }
     end
 
     def toggle

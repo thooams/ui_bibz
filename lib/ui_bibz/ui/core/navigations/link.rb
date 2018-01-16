@@ -47,7 +47,13 @@ module UiBibz::Ui::Core::Navigations
 
     # Render html tag
     def render
-      link_to content, options[:url] || '#', html_options
+      link_to glyph_and_content_html, options[:url] || '#', html_options
+    end
+
+    private
+
+    def text
+      @options[:text].nil? ? true : @options[:text]
     end
 
   end

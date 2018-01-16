@@ -38,7 +38,7 @@ module UiBibz::Ui::Core::Navigations::Components
   #     'Home'
   #   end.render
   #
-  class BreadcrumbLink < UiBibz::Ui::Core::Component
+  class BreadcrumbLink < UiBibz::Ui::Core::Navigations::Link
 
     # See UiBibz::Ui::Core::Component.initialize
     def initialize content = nil, options = nil, html_options = nil, &block
@@ -58,7 +58,7 @@ module UiBibz::Ui::Core::Navigations::Components
 
     def link_html
       if options[:url]
-        link_to glyph_and_content_html, options[:url], options[:link_html_options]
+        link_to glyph_and_content_html, options[:url] || '#'
       else
         glyph_and_content_html
       end
