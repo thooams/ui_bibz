@@ -4,7 +4,7 @@ require 'jquery-rails'
 require 'popper_js'
 require 'bootstrap'
 require "font-awesome-sass"
-require 'simple_form' if ENV["RAILS_ENV"]
+require 'simple_form' if system('gem list -i simple_form')
 
 module UiBibz
   module Rails
