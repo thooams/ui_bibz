@@ -82,6 +82,11 @@ module UiBibz::Ui::Core::Forms::Buttons
       opts
     end
 
+    def component_html_data
+      super
+      action
+    end
+
     def status
       ["btn", outline, options[:status]].compact.join('-')
     end
@@ -104,6 +109,10 @@ module UiBibz::Ui::Core::Forms::Buttons
 
     def without_text
       "without-text" unless options[:text].nil?
+    end
+
+    def action
+      add_html_data('action', options[:action]) unless options[:action].nil?
     end
 
     def badge_html
