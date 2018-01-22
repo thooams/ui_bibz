@@ -69,7 +69,7 @@ module UiBibz::Ui::Core
 
     # Render html tag with or without cache
     def render
-      render_with_or_without_cache pre_render
+      render_with_or_without_cache
     end
 
     # Render without cache
@@ -120,9 +120,14 @@ module UiBibz::Ui::Core
 
   private
 
-    def render_with_or_without_cache pre_render
+    def render_with_or_without_cache
       if options[:cache]
-        cache options[:cache] do
+        cache      = Rails.cache
+        read_cache = cache.read(options[:cache])
+        if read_cache
+          read_cache
+        else
+          cache.write(options[:cache], pre_render)
           pre_render
         end
       else
