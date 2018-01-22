@@ -62,7 +62,7 @@ module UiBibz::Ui::Core::Notifications
     end
 
     # Render html tag
-    def render
+    def pre_render
       content_tag :div, bars.join.html_safe, html_options
     end
 

@@ -44,7 +44,7 @@ module UiBibz::Ui::Ux::Containers
       @items = []
     end
 
-    def render
+    def pre_render
       content_tag :div, html_structure, html_options
     end
 

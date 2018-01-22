@@ -46,7 +46,7 @@ module UiBibz::Ui::Core::Navigations::Components
     end
 
     # Render html tag
-    def render
+    def pre_render
       content_tag :li, link_html, html_options
     end
 

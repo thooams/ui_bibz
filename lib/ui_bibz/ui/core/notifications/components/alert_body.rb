@@ -36,7 +36,7 @@ module UiBibz::Ui::Core::Notifications::Components
       super
     end
 
-    def render
+    def pre_render
       tag(:hr) + content_tag(:p, content, html_options)
     end
 

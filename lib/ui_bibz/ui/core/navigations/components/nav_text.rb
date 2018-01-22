@@ -25,7 +25,7 @@ module UiBibz::Ui::Core::Navigations
     end
 
     # Render html tag
-    def render
+    def pre_render
       options[:nav_type] == "nav-links" ? content_html : content_tag(:li, content_html, class: 'nav-item nav-text')
     end
 

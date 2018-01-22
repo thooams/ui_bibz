@@ -63,7 +63,7 @@ module UiBibz::Ui::Core::Lists::Components
     end
 
     # Render html tag
-    def render
+    def pre_render
       content_tag tag_type, html_options do
         concat glyph_and_content_html if @content
         concat header_html if @body

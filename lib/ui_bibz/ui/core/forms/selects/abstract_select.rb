@@ -75,7 +75,7 @@ module UiBibz::Ui::Core::Forms::Selects
     end
 
     # Render html tag
-    def render
+    def pre_render
       surround_field select_field_html_tag
     end
 

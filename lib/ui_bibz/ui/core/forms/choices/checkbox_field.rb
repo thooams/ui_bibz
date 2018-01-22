@@ -51,7 +51,7 @@ module UiBibz::Ui::Core::Forms::Choices
     end
 
     # Render html tag
-    def render
+    def pre_render
       checkbox_field_html_tag
     end
 

@@ -6,7 +6,7 @@ module UiBibz::Ui::Core::Forms::Surrounds
       super
     end
 
-    def render
+    def pre_render
       content_tag :div, class: 'input-group-btn' do
         button_html_tag
       end

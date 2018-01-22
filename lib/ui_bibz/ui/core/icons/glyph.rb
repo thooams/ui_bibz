@@ -63,7 +63,7 @@ module UiBibz::Ui::Core::Icons
     end
 
     # Render html tag
-    def render
+    def pre_render
       [content_tag(:i, '', html_options), options[:label]].compact.join(' ').html_safe
     end
 

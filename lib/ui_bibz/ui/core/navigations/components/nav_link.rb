@@ -46,7 +46,7 @@ module UiBibz::Ui::Core::Navigations
     end
 
     # Render html tag
-    def render
+    def pre_render
       if options[:nav_type] == "nav-links"
         UiBibz::Ui::Core::Navigations::NavLinkLink.new(content, options, html_options).render
       else

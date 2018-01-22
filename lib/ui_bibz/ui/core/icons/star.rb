@@ -50,7 +50,7 @@ module UiBibz::Ui::Core::Icons
     end
 
     # Render html tag
-    def render
+    def pre_render
       content_tag :span, star_notation.join(' ').html_safe, html_options
     end
 

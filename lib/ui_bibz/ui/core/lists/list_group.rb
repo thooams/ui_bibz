@@ -77,7 +77,7 @@ module UiBibz::Ui::Core::Lists
     end
 
     # Render html tag
-    def render
+    def pre_render
       content_tag tag_type, @lists.join().html_safe, html_options
     end
 

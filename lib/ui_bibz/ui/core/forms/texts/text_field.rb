@@ -49,7 +49,7 @@ module UiBibz::Ui::Core::Forms::Texts
     end
 
     # Render html tag
-    def render
+    def pre_render
       surround_field text_field_input_tag
     end
 

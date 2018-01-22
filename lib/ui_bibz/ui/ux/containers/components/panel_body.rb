@@ -37,7 +37,7 @@ module UiBibz::Ui::Ux::Containers::Components
     end
 
     # Render html tag
-    def render
+    def pre_render
       content_tag :div, glyph_and_content_html, html_options
     end
 

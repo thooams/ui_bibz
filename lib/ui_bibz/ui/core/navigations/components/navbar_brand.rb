@@ -22,7 +22,7 @@ module UiBibz::Ui::Core::Navigations
     end
 
     # Render html tag
-    def render
+    def pre_render
       link_to content, brand_url, html_options
     end
 

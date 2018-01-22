@@ -127,7 +127,7 @@ module UiBibz::Ui::Core::Boxes
     end
 
     # Render html tag
-    def render
+    def pre_render
       content_tag :div, html_structure, html_options
     end
 

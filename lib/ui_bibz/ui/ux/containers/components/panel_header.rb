@@ -37,7 +37,7 @@ module UiBibz::Ui::Ux::Containers::Components
     end
 
     # Render html tag
-    def render
+    def pre_render
       content_tag :div, html_options do
         concat glyph_and_content_html
         concat @actions unless @actions.nil?

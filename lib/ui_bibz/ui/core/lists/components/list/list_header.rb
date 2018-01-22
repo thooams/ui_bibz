@@ -22,7 +22,7 @@ module UiBibz::Ui::Core::Lists::Components
     end
 
     # Render html tag
-    def render
+    def pre_render
       content_tag :div, html_options do
         concat content_tag(:h5, content, class: 'mb-1')
         concat content_tag(:small, options[:extra])

@@ -115,7 +115,7 @@ module UiBibz::Ui::Ux::Tables
     end
 
     # Render html tag
-    def render
+    def pre_render
       init_components
 
       content_tag :div, html_options do

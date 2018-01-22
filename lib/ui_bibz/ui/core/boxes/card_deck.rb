@@ -38,7 +38,7 @@ module UiBibz::Ui::Core::Boxes
     end
 
     # Render html tag
-    def render
+    def pre_render
       content_tag :div, html_options do
         content_tag :div, @items.join.html_safe, class: 'card-deck'
       end

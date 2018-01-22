@@ -12,7 +12,7 @@ module UiBibz::Ui::Ux::Tables
     end
 
     # Render html tag
-    def render
+    def pre_render
       if options[:wrap_form] != false
         form_tag(url_for(url_parameters), method: :get, class: 'form-table-search-field') do
           search_field_html_in_wrap

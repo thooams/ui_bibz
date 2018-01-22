@@ -67,8 +67,13 @@ module UiBibz::Ui::Core
       init_component_html_options
     end
 
-    # Render html tag
+    # Render html tag with or without cache
     def render
+      render_with_or_without_cache pre_render
+    end
+
+    # Render without cache
+    def pre_render
       glyph_and_content_html
     end
 
@@ -114,6 +119,16 @@ module UiBibz::Ui::Core
     end
 
   private
+
+    def render_with_or_without_cache pre_render
+      if options[:cache]
+        cache options[:cache] do
+          pre_render
+        end
+      else
+        pre_render
+      end
+    end
 
     def init_options
       @options = component_options.merge(@options)

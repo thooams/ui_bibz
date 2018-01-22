@@ -50,7 +50,7 @@ module UiBibz::Ui::Core::Forms::Dates
     end
 
     # Render html tag
-    def render
+    def pre_render
       date_picker_field_html_tag
     end
 

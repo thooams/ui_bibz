@@ -56,7 +56,7 @@ module UiBibz::Ui::Core::Forms::Buttons
       super
     end
 
-    def render
+    def pre_render
       button_refresh_html_tag
     end
 

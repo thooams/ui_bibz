@@ -60,7 +60,7 @@ module UiBibz::Ui::Core::Windows
     end
 
     # Render html tag
-    def render
+    def pre_render
       content_tag :div, html_options do
         content_tag :div, class: "modal-dialog #{ size }", role: 'document' do
           content_tag :div, class: 'modal-content' do

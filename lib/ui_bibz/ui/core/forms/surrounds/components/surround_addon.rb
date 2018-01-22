@@ -7,7 +7,7 @@ module UiBibz::Ui::Core::Forms::Surrounds
     end
 
     # Render html tag
-    def render
+    def pre_render
       surround_addon_html_tag
     end
 

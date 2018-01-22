@@ -48,7 +48,7 @@ module UiBibz::Ui::Core::Boxes
     end
 
     # Render html tag
-    def render
+    def pre_render
       content_tag :div, html_options do
         if fluid
           UiBibz::Ui::Core::Layouts::Container.new(content).render

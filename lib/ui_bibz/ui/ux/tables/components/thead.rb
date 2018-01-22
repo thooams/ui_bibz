@@ -37,7 +37,7 @@ module UiBibz::Ui::Ux::Tables
     end
 
     # Render html tag
-    def render
+    def pre_render
       content_tag :thead, content, html_options
     end
 

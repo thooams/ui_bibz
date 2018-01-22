@@ -58,7 +58,7 @@ module UiBibz::Ui::Core::Navigations
     end
 
     # Render html tag
-    def render
+    def pre_render
       generate_links unless store.nil?
       content_tag :ol, @links.join.html_safe, html_options
     end

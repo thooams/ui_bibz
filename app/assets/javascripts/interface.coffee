@@ -5,11 +5,15 @@
     @tooltip()
     @dropdown()
     @checkbox()
+    @popover()
 
   nav: ->
     $('.nav-tabs a').click (e) ->
       e.preventDefault()
       $(this).tab('show')
+
+  popover: ->
+    $('[data-toggle="popover"]').popover({ html: true })
 
   tooltip: ->
     #$('[data-toggle="tooltip"], [title]').tooltip()

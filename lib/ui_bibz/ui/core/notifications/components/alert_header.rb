@@ -36,7 +36,7 @@ module UiBibz::Ui::Core::Notifications::Components
       super
     end
 
-    def render
+    def pre_render
       if options[:tap]
         content_tag :h4, html_content, html_options
       else

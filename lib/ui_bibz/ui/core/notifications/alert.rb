@@ -56,7 +56,7 @@ module UiBibz::Ui::Core::Notifications
     end
 
     # Render html tag
-    def render
+    def pre_render
       content_tag :div, html_options do
         concat @header
         concat @body unless @body.nil?

@@ -55,7 +55,7 @@ module UiBibz::Ui::Core::Layouts
     end
 
     # Render html tag
-    def render
+    def pre_render
       content_tag :div, content, html_options
     end
 

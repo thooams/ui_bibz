@@ -58,7 +58,7 @@ module UiBibz::Ui::Core::Navigations
     end
 
     # Render html tag
-    def render
+    def pre_render
       content_tag :div, @items.map(&:render).join.html_safe, html_options
     end
 

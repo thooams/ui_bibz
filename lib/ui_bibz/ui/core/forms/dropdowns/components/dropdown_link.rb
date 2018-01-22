@@ -48,7 +48,7 @@ module UiBibz::Ui::Core::Forms::Dropdowns::Components
     end
 
     # Render html tag
-    def render
+    def pre_render
       link_to glyph_and_content_html, link_url, html_options
     end
 

@@ -77,7 +77,7 @@ module UiBibz::Ui::Core::Navigations
     end
 
     # Render html tag
-    def render
+    def pre_render
       content_tag :nav, html_options do
         concat title if brand_position == :left
         concat navbar_toggle_button_html

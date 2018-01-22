@@ -49,7 +49,7 @@ module UiBibz::Ui::Core::Navigations
     end
 
     # Render html tag
-    def render
+    def pre_render
       content_tag :li, html_options do
         concat link_html
         concat ul_html

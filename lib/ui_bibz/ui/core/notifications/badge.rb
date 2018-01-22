@@ -55,7 +55,7 @@ module UiBibz::Ui::Core::Notifications
     end
 
     # Render html tag
-    def render
+    def pre_render
       content_tag :span, glyph_and_content_html, html_options
     end
 
