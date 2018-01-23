@@ -52,8 +52,13 @@ module UiBibz::Ui::Core
     def initialize content = nil, options = nil, html_options = nil, &block
       if !block.nil?
         @html_options, @options = options, content
-        context  = eval("self", block.binding)
-        @content = context.capture(&block)
+        read_cache = Rails.cache.read(@options.try(:[], :cache))
+        if read_cache.nil?
+          context  = eval("self", block.binding)
+          @content = context.capture(&block)
+        else
+          @content = read_cache
+        end
       else
         if content.kind_of?(Hash)
           @html_options, @options = options, content
