@@ -68,7 +68,7 @@ module UiBibz::Ui::Core::Forms::Buttons
 
     def component_options
       options[:connect] = cnt_opts
-      super.merge({ glyph: 'refresh', status: options[:status] })
+      super.merge({ glyph: 'sync-alt', status: options[:status] })
     end
 
     def component_html_classes
