@@ -72,7 +72,7 @@ module UiBibz::Ui::Core::Forms::Texts
     def component_html_options
       options[:state] == :disabled ? { disabled: 'disabled' } : {}
     end
-
+                                             62+9
     def status
       "form-control-#{ options[:status] }" unless options[:status].nil?
     end

@@ -75,11 +75,15 @@ module UiBibz::Ui::Core::Forms::Selects
     private
 
     def component_html_classes
-      super << ["select-field", "form-control"]
+      super << ["select-field", "form-control", size]
     end
 
     def component_options
       options[:status].nil? ? super : super.merge({ surrounded: true })
+    end
+
+    def size
+      "form-control-#{ options[:size] }" unless options[:size].nil?
     end
 
   end

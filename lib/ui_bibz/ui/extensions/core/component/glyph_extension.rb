@@ -22,7 +22,7 @@ module GlyphExtension
   def glyph
     if options.kind_of?(Hash)
       if options[:glyph].kind_of?(Hash)
-        glyph_name = options[:glyph].try(:name)
+        glyph_name = options[:glyph].try(:[], :name)
         glyph_opts = options[:glyph]
       else
         glyph_name = options[:glyph]
@@ -30,7 +30,6 @@ module GlyphExtension
       end
       glyph_html_opts = options[:text].nil? ? {} : (options[:text] ? {} : { title: content })
     end
-
 
     UiBibz::Ui::Core::Icons::Glyph.new(glyph_name, glyph_opts, glyph_html_opts).render unless glyph_name.nil?
   end

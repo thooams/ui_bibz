@@ -97,6 +97,12 @@ module UiBibz::Ui::Core
 
     # Override this method to add html data
     def component_html_data
+      # To stimulusjs
+      add_html_data :target, options.try(:delete, :target)
+      add_html_data :controller, options.try(:delete, :controller)
+      add_html_data :action, options.try(:delete, :action)
+      # To turbolinks
+      add_html_data :turbolinks, options.try(:delete, :turbolinks)
     end
 
     # Override this method to add html Options

@@ -51,7 +51,7 @@ module UiBibz::Ui::Core::Forms::Numbers
     private
 
     def formula_field_html_tag
-      UiBibz::Ui::Core::Forms::Surrounds::SurroundField.new(class: join_classes('formula_field', status)).tap do |sf|
+      UiBibz::Ui::Core::Forms::Surrounds::SurroundField.new(class: join_classes('formula_field', status, size)).tap do |sf|
         sf.text_field formula_field_name, nil, text_field_formula_html_options
         sf.addon '=', class: 'formula-field-sign'
         sf.text_field content, nil, text_field_input_html_options
@@ -92,6 +92,11 @@ module UiBibz::Ui::Core::Forms::Numbers
 
     def status
       "has-#{ options[:status] }" if options[:status]
+    end
+
+    # :lg, :sm or :xs
+    def size
+      "input-group-#{ options[:size] }" if options[:size]
     end
 
   end

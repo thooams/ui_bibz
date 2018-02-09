@@ -74,7 +74,7 @@ module UiBibz::Ui::Core::Icons
     end
 
     def classes
-      cls = ["glyph", "fa", "fa-#{ content }"]
+      cls = ["glyph", style, "fa-#{ content }"]
       cls << "fa-#{ size }x"         unless size.nil?
       cls << "fa-rotate-#{ rotate }" unless rotate.nil?
       cls << "fa-flip-#{ flip }"     unless flip.nil?
@@ -95,6 +95,10 @@ module UiBibz::Ui::Core::Icons
       else
         @options[:size]
       end
+    end
+
+    def style
+      match_style[@options[:style] || :solid]
     end
 
     def stack
@@ -123,6 +127,10 @@ module UiBibz::Ui::Core::Icons
 
     def status
       "glyph-#{ @options[:status] }" unless @options[:status].nil?
+    end
+
+    def match_style
+      {solid: 'fas', regular: 'far', light: 'fal', brands: 'fab'}
     end
 
   end

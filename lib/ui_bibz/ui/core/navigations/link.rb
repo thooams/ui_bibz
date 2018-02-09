@@ -50,10 +50,19 @@ module UiBibz::Ui::Core::Navigations
       link_to glyph_and_content_html, options[:url] || '#', html_options
     end
 
+    def component_html_data
+      super
+      action
+    end
+
     private
 
     def text
       @options[:text].nil? ? true : @options[:text]
+    end
+
+    def action
+      add_html_data('action', options[:action]) unless options[:action].nil?
     end
 
   end

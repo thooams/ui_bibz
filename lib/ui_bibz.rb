@@ -45,6 +45,7 @@ module UiBibz
 
         module Numbers
           autoload :FormulaField,            "ui_bibz/ui/core/forms/numbers/formula_field"
+          autoload :NumberField,             "ui_bibz/ui/core/forms/numbers/number_field"
         end
 
         module Selects
