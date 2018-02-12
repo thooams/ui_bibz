@@ -75,7 +75,7 @@ class ButtonLinkTest < ActionView::TestCase
 
   test 'button_link glyph' do
     actual   = ui_button_link('state', glyph: 'diamond')
-    expected = "<a class=\"btn-secondary btn\" role=\"button\" href=\"#\"><i class=\"glyph fa fa-diamond\"></i>  state</a>"
+    expected = "<a class=\"btn-secondary btn\" role=\"button\" href=\"#\"><i class=\"glyph fas fa-diamond\"></i>  state</a>"
 
     assert_equal expected, actual
   end

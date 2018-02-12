@@ -24,7 +24,7 @@ class TableTest < ActionView::TestCase
 
   test 'table search field' do
     actual   = UiBibz::Ui::Ux::Tables::TableSearchField.new({ store: @users}).render
-    expected = "<form class=\"form-table-search-field\" action=\"/users?direction=asc&amp;page=1&amp;per_page=2&amp;search=Name+fr&amp;sort=users.name_fr\" accept-charset=\"UTF-8\" method=\"get\"><input name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" /><div class=\"input-group input-group-sm table-search-field\"><span class=\"input-group-addon\"><i class=\"glyph fa fa-search\"></i></span><input type=\"hidden\" name=\"sort\" value=\"users.name_fr\" /><input type=\"hidden\" name=\"direction\" value=\"asc\" /><input type=\"hidden\" name=\"per_page\" value=\"2\" /><input type=\"hidden\" name=\"page\" value=\"1\" /><input type=\"hidden\" name=\"link_type\" value=\"search\" /><input type=\"search\" value=\"Name fr\" name=\"search\" class=\"form-control\" placeholder=\"Search by Name fr and Name en...\" /><span class=\"input-group-btn clear-search-btn\"><button type=\"button\" class=\"btn btn-secondary\"><i class=\"glyph fa fa-times-circle\"></i></button></span></div></form>"
+    expected = "<form class=\"form-table-search-field\" action=\"/users?direction=asc&amp;page=1&amp;per_page=2&amp;search=Name+fr&amp;sort=users.name_fr\" accept-charset=\"UTF-8\" method=\"get\"><input name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" /><div class=\"input-group input-group-sm table-search-field\"><span class=\"input-group-addon\"><i class=\"glyph fas fa-search\"></i></span><input type=\"hidden\" name=\"sort\" value=\"users.name_fr\" /><input type=\"hidden\" name=\"direction\" value=\"asc\" /><input type=\"hidden\" name=\"per_page\" value=\"2\" /><input type=\"hidden\" name=\"page\" value=\"1\" /><input type=\"hidden\" name=\"link_type\" value=\"search\" /><input type=\"search\" value=\"Name fr\" name=\"search\" class=\"form-control\" placeholder=\"Search by Name fr and Name en...\" /><span class=\"input-group-btn clear-search-btn\"><button type=\"button\" class=\"btn btn-secondary\"><i class=\"glyph fas fa-times-circle\"></i></button></span></div></form>"
 
     assert_equal expected, actual
   end
@@ -88,7 +88,7 @@ class TableTest < ActionView::TestCase
   test 'table non searchable with a title and glyph' do
     options  = { searchable: false, glyph: 'state', title: 'Title list' }
     actual   = UiBibz::Ui::Ux::Tables::Searchable.new(@store, options).render
-    expected = "<div><div class=\"title\"><i class=\"glyph fa fa-state\"></i>Title list</div><br class=\"ui-bibz-clear\" /></div>"
+    expected = "<div><div class=\"title\"><i class=\"glyph fas fa-state\"></i>Title list</div><br class=\"ui-bibz-clear\" /></div>"
 
     assert_equal expected, actual
   end
@@ -96,7 +96,7 @@ class TableTest < ActionView::TestCase
   test 'table searchable' do
     options  = { searchable: true }
     actual   = UiBibz::Ui::Ux::Tables::Searchable.new(@store, options).render
-    expected = "<div><div class=\"title\">Users list</div><form class=\"form-table-search-field\" action=\"/users?direction=asc&amp;page=1&amp;per_page=2&amp;search=Name+fr&amp;sort=users.name_fr\" accept-charset=\"UTF-8\" method=\"get\"><input name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" /><div class=\"input-group input-group-sm table-search-field\"><span class=\"input-group-addon\"><i class=\"glyph fa fa-search\"></i></span><input type=\"hidden\" name=\"sort\" value=\"users.name_fr\" /><input type=\"hidden\" name=\"direction\" value=\"asc\" /><input type=\"hidden\" name=\"per_page\" value=\"2\" /><input type=\"hidden\" name=\"page\" value=\"1\" /><input type=\"hidden\" name=\"link_type\" value=\"search\" /><input type=\"search\" value=\"Name fr\" name=\"search\" class=\"form-control\" placeholder=\"Search by Name fr and Name en...\" /><span class=\"input-group-btn clear-search-btn\"><button type=\"button\" class=\"btn btn-secondary\"><i class=\"glyph fa fa-times-circle\"></i></button></span></div></form><br class=\"ui-bibz-clear\" /></div>"
+    expected = "<div><div class=\"title\">Users list</div><form class=\"form-table-search-field\" action=\"/users?direction=asc&amp;page=1&amp;per_page=2&amp;search=Name+fr&amp;sort=users.name_fr\" accept-charset=\"UTF-8\" method=\"get\"><input name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" /><div class=\"input-group input-group-sm table-search-field\"><span class=\"input-group-addon\"><i class=\"glyph fas fa-search\"></i></span><input type=\"hidden\" name=\"sort\" value=\"users.name_fr\" /><input type=\"hidden\" name=\"direction\" value=\"asc\" /><input type=\"hidden\" name=\"per_page\" value=\"2\" /><input type=\"hidden\" name=\"page\" value=\"1\" /><input type=\"hidden\" name=\"link_type\" value=\"search\" /><input type=\"search\" value=\"Name fr\" name=\"search\" class=\"form-control\" placeholder=\"Search by Name fr and Name en...\" /><span class=\"input-group-btn clear-search-btn\"><button type=\"button\" class=\"btn btn-secondary\"><i class=\"glyph fas fa-times-circle\"></i></button></span></div></form><br class=\"ui-bibz-clear\" /></div>"
 
     assert_equal expected, actual
   end

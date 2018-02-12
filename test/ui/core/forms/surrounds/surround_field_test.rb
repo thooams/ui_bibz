@@ -6,7 +6,7 @@ class SurroundFieldTest < ActionView::TestCase
       actual = UiBibz::Ui::Core::Forms::Surrounds::SurroundField.new.tap do |sf|
         sf.glyph 'pencil'
       end.render
-      expected = "<div class=\"input-group ui_surround_field\"><span class=\"input-group-addon\"><i class=\"glyph fa fa-pencil\"></i></span></div>"
+      expected = "<div class=\"input-group ui_surround_field\"><span class=\"input-group-addon\"><i class=\"glyph fas fa-pencil\"></i></span></div>"
 
       assert_equal expected, actual
     end
@@ -30,7 +30,7 @@ class SurroundFieldTest < ActionView::TestCase
           d.link 'Link3', url: '#link3'
         end
       end.render
-      expected = "<div class=\"input-group ui_surround_field\"><div id=\"dropdown-test\" class=\"dropdown input-group-btn\"><button class=\"btn btn-secondary dropdown-toggle\" type=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\" id=\"dropdown-test\">Dropdown <span class=\"caret\"></span></button><div class=\"dropdown-menu\" arial-labelledby=\"dropdown-test\"><a class=\"dropdown-item\" href=\"#link1\"><i class=\"glyph fa fa-eye\"></i>  Link 1</a><h6 class=\"dropdown-header\" role=\"presentation\">header</h6><a class=\"dropdown-item\" href=\"#link2\">Link 2</a><div class=\"dropdown-divider\"></div><a class=\"dropdown-item\" href=\"#link3\">Link3</a></div></div></div>"
+      expected = "<div class=\"input-group ui_surround_field\"><div id=\"dropdown-test\" class=\"dropdown input-group-btn\"><button class=\"btn btn-secondary dropdown-toggle\" type=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\" id=\"dropdown-test\">Dropdown <span class=\"caret\"></span></button><div class=\"dropdown-menu\" arial-labelledby=\"dropdown-test\"><a class=\"dropdown-item\" href=\"#link1\"><i class=\"glyph fas fa-eye\"></i>  Link 1</a><h6 class=\"dropdown-header\" role=\"presentation\">header</h6><a class=\"dropdown-item\" href=\"#link2\">Link 2</a><div class=\"dropdown-divider\"></div><a class=\"dropdown-item\" href=\"#link3\">Link3</a></div></div></div>"
 
       assert_equal expected, actual
     end
@@ -50,7 +50,7 @@ class SurroundFieldTest < ActionView::TestCase
         sf.addon '€'
         sf.glyph 'pencil'
       end.render
-      expected = "<div class=\"input-group ui_surround_field\"><div class=\"input-group-btn\"><button class=\"btn\">Submit</button></div><span class=\"input-group-addon\">€</span><span class=\"input-group-addon\"><i class=\"glyph fa fa-pencil\"></i></span></div>"
+      expected = "<div class=\"input-group ui_surround_field\"><div class=\"input-group-btn\"><button class=\"btn\">Submit</button></div><span class=\"input-group-addon\">€</span><span class=\"input-group-addon\"><i class=\"glyph fas fa-pencil\"></i></span></div>"
 
       assert_equal expected, actual
     end

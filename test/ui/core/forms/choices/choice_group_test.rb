@@ -28,7 +28,7 @@ class ChoiceGroupTest < ActionView::TestCase
       bc.choice 'Radio 1', glyph: 'diamond', status: :primary
       bc.choice 'Radio 2', state: :active
     end
-    expected = "<div data-toggle=\"buttons\" class=\"btn-group btn-group-lg button-choice\"><label class=\"btn-outline-primary btn btn-lg radio\"><input type=\"radio\" autocomplete=\"off\" /><i class=\"glyph fa fa-diamond\"></i>  Radio 1</label><label class=\"active btn-outline-secondary btn btn-lg radio\" aria-pressed=\"true\"><input type=\"radio\" autocomplete=\"off\" checked=\"checked\" />Radio 2</label></div>"
+    expected = "<div data-toggle=\"buttons\" class=\"btn-group btn-group-lg button-choice\"><label class=\"btn-outline-primary btn btn-lg radio\"><input type=\"radio\" autocomplete=\"off\" /><i class=\"glyph fas fa-diamond\"></i>  Radio 1</label><label class=\"active btn-outline-secondary btn btn-lg radio\" aria-pressed=\"true\"><input type=\"radio\" autocomplete=\"off\" checked=\"checked\" />Radio 2</label></div>"
 
     assert_equal expected, actual
   end
