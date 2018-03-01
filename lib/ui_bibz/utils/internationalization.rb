@@ -1,3 +1,6 @@
+# Transalte with array of translation
+#
+#   => UiBibz::Utils::Internationalization.new("ui_bibz.table.actions.#{ @store.model.to_s.underscore }.show", default: defaults).translate
 module UiBibz::Utils
   class Internationalization
 
