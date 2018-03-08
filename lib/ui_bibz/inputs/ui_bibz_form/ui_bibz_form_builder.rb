@@ -11,12 +11,17 @@ module UiBibzForm
         content = (options || {}).merge(content || {})
         content  = content.merge(template: @template, form: self)
 
-        input_classes = UiBibz::Utils::Screwdriver.join_classes('form-group', 'surround_field', options[:input_html].try(:[], :class))
-        wrapper_html = (options[:input_html] || {}).merge({ class: input_classes })
+        input_classes  = UiBibz::Utils::Screwdriver.join_classes('form-group', 'surround_field', options[:input_html].try(:[], :class))
+        wrapper_html   = (options[:input_html] || {}).merge({ class: input_classes })
+        surround_field =  UiBibz::Ui::Core::Forms::Surrounds::SurroundField.new(content, opts, html_options).tap(&block)
+        errors_text    = surround_field.errors.flatten.to_sentence
+        wrapper_classes = UiBibz::Utils::Screwdriver.join_classes(("has-error" unless errors_text.blank?), wrapper_html.try(:[], :class))
+        wrapper_html[:class] = wrapper_classes
 
         content_tag :div, wrapper_html do
           concat content_tag(:label, content[:label]) unless content[:label].nil?
-          concat UiBibz::Ui::Core::Forms::Surrounds::SurroundField.new(content, opts, html_options).tap(&block).render
+          concat surround_field.render
+          concat content_tag(:span, errors_text || content[:hint], class: 'help-block') if !errors_text.blank? || !content[:hint].nil?
         end
       end
 

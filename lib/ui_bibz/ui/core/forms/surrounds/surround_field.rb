@@ -50,10 +50,13 @@ module UiBibz::Ui::Core::Forms::Surrounds
   #
   class SurroundField < UiBibz::Ui::Core::Component
 
+    attr_reader :errors
+
     # See UiBibz::Ui::Core::Component.initialize
     def initialize content = nil, options = nil, html_options = nil, &block
       super
       @items = []
+      @errors = []
     end
 
     # Render html tag
@@ -66,7 +69,8 @@ module UiBibz::Ui::Core::Forms::Surrounds
     end
 
     def input attribute_name, options = {}, &block
-      @items << @options[:form].input(attribute_name, options.merge({ label: false, wrapper: false }), &block)
+      @items  << @options[:form].input(attribute_name, options.merge({ label: false, wrapper: false, error: false }), &block)
+      @errors << @options[:form].object.errors[attribute_name] unless  @options[:form].object.errors[attribute_name].empty?
     end
 
     def glyph content = nil, options = {}, html_options = nil, &block
