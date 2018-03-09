@@ -15,11 +15,15 @@ module UiBibzForm
         wrapper_html   = (options[:input_html] || {}).merge({ class: input_classes })
         surround_field =  UiBibz::Ui::Core::Forms::Surrounds::SurroundField.new(content, opts, html_options).tap(&block)
         errors_text    = surround_field.errors.flatten.to_sentence
+        required       = surround_field.required_fields.any?{ |u| u == true }
         wrapper_classes = UiBibz::Utils::Screwdriver.join_classes(("has-error" unless errors_text.blank?), wrapper_html.try(:[], :class))
+        label_classes = UiBibz::Utils::Screwdriver.join_classes(("required" if required), 'control-label')
+        abbr_html     = content_tag("abbr", I18n.t(:"simple_form.required.mark", default: '*'), title: I18n.t(:"simple_form.required.text", default: 'required')) if required
+
         wrapper_html[:class] = wrapper_classes
 
         content_tag :div, wrapper_html do
-          concat content_tag(:label, content[:label]) unless content[:label].nil?
+          concat content_tag(:label, "#{ abbr_html } #{ content[:label] }".html_safe, class: label_classes) if content[:label]
           concat surround_field.render
           concat content_tag(:span, errors_text || content[:hint], class: 'help-block') if !errors_text.blank? || !content[:hint].nil?
         end

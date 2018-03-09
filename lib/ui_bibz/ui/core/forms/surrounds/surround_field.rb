@@ -50,13 +50,14 @@ module UiBibz::Ui::Core::Forms::Surrounds
   #
   class SurroundField < UiBibz::Ui::Core::Component
 
-    attr_reader :errors
+    attr_reader :errors, :required_fields
 
     # See UiBibz::Ui::Core::Component.initialize
     def initialize content = nil, options = nil, html_options = nil, &block
       super
       @items = []
       @errors = []
+      @required_fields = []
     end
 
     # Render html tag
@@ -69,8 +70,10 @@ module UiBibz::Ui::Core::Forms::Surrounds
     end
 
     def input attribute_name, options = {}, &block
-      @items  << @options[:form].input(attribute_name, options.merge({ label: false, wrapper: false, error: false }), &block)
-      @errors << @options[:form].object.errors[attribute_name] unless  @options[:form].object.errors[attribute_name].empty?
+      @items << @options[:form].input(attribute_name, options.merge({ label: false, wrapper: false, error: false }), &block)
+      obj = @options[:form].object
+      @errors << obj.errors[attribute_name] unless obj.errors[attribute_name].empty?
+      @required_fields << (obj._validators[attribute_name].try(:first).class.to_s == "ActiveRecord::Validations::PresenceValidator")
     end
 
     def glyph content = nil, options = {}, html_options = nil, &block
