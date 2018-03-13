@@ -40,8 +40,8 @@ module UiBibz::Ui::Core::Boxes::Components
 
     # Render html tag
     def pre_render
-      #image_tag asset_path("assets/#{content}"), html_options
-      image_tag content, html_options
+      #image_tag content, html_options
+      image_tag asset_path("assets/#{content}"), html_options
     end
 
   private

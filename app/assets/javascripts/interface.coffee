@@ -1,7 +1,7 @@
 @UiBibzInterface = class Interface
 
   constructor: ->
-    @nav()
+    @nav() if window.stimulus != true
     @tooltip()
     @dropdown()
     @checkbox()
