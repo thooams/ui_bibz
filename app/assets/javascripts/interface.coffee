@@ -1,16 +1,14 @@
 @UiBibzInterface = class Interface
 
   constructor: ->
-    @nav() if window.stimulus != true
+    @nav()
     @tooltip()
     @dropdown()
     @checkbox()
     @popover()
 
   nav: ->
-    $('.nav-tabs a').click (e) ->
-      e.preventDefault()
-      $(this).tab('show')
+    $('.nav-tabs nav-link').tab('show')
 
   popover: ->
     $('[data-toggle="popover"]').popover({ html: true })

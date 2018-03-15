@@ -1,5 +1,6 @@
 require 'ui_bibz/ui/core/navigations/components/nav_link_link'
 require 'ui_bibz/ui/core/navigations/components/nav_link_list'
+require 'ui_bibz/ui/core/navigations/components/nav_link_span'
 module UiBibz::Ui::Core::Navigations
 
   # Create a NavLink
@@ -43,6 +44,7 @@ module UiBibz::Ui::Core::Navigations
     # See UiBibz::Ui::Core::Component.initialize
     def initialize content = nil, options = nil, html_options = nil, &block
       super
+      @old_options = options
     end
 
     # Render html tag
@@ -50,7 +52,11 @@ module UiBibz::Ui::Core::Navigations
       if options[:nav_type] == "nav-links"
         UiBibz::Ui::Core::Navigations::NavLinkLink.new(content, options, html_options).render
       else
-        cont = UiBibz::Ui::Core::Navigations::NavLinkLink.new(content, options).render
+        if options[:tag_type] == "span"
+          cont = UiBibz::Ui::Core::Navigations::NavLinkSpan.new(content, @old_options).render
+        else
+          cont = UiBibz::Ui::Core::Navigations::NavLinkLink.new(content, options).render
+        end
         #html_options[:class] = remove_class(html_options[:class])
         remove_classes
         UiBibz::Ui::Core::Navigations::NavLinkList.new(cont, options, html_options).render

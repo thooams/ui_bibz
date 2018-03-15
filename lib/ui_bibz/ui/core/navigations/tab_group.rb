@@ -68,7 +68,7 @@ module UiBibz::Ui::Core::Navigations
     # Add nav link items
     # See UiBibz::Ui::Core::Navigations::NavLink
     def tab content = nil, options = {}, html_options = nil, &block
-      block_given? ? content.merge!({ nav_type: type }) : options.merge!({ nav_type: type })
+      block_given? ? content.merge!({ nav_type: type, tag_type: @options[:tag_type] }) : options.merge!({ nav_type: type, tag_type: @options[:tag_type] })
       @items << NavLink.new(content, options, html_options, &block)
     end
 

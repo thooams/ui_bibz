@@ -12,7 +12,7 @@ module UiBibzInputs
     private
 
     def input_attribute_name
-      "#{ @builder.object.class.to_s.underscore }[#{ attribute_name }]"
+      "#{ @builder.object.class.name.gsub('::', "").underscore }[#{ attribute_name }]"
     end
 
   end
