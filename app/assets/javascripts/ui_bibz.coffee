@@ -39,24 +39,21 @@
 
 @UiBibz = class UiBibz
 
-  constructor: ->
-    @table     = new window.UiBibzTable()
-    @form      = new window.UiBibzForm()
-    @interface = new window.UiBibzInterface()
-    @formula   = new window.UiBibzFormula()
-    #delete window.UiBibzTable
-    #delete window.UiBibzForm
-    #delete window.UiBibzInterface
+  constructor: (args = {}) ->
+    @turbolinks = args.turbolinks
+    return this
 
-ready = ->
-  new UiBibz
-  # Fix for turbolinks
-  $( "textarea[data-provide*='markdown']" ).markdown() # fix markdown js if turbolinks exists
+  load: ->
+    new window.UiBibzTable()
+    new window.UiBibzForm()
+    new window.UiBibzInterface()
+    new window.UiBibzFormula()
+    $( "textarea[data-provide*='markdown']" ).markdown() # fix markdown js if turbolinks exists
+    return false
 
-# turbolinks:load and ready together load twice time javascript
-#$(document).on('ready turbolinks:load page:change', ready) # catch event for turbolinks and fix in ready() function
-if Turbolinks?
-  ready()
-  $(document).on('turbolinks:load page:change', ready) # catch event for turbolinks and fix in ready() function
-else
-  $(document).on('ready', ready) # catch event for turbolinks and fix in ready() function
+  ready: ->
+    me = this
+    if @turbolinks?
+      $(document).on('turbolinks:load', me.load) # catch event for turbolinks and fix in ready() function
+    else
+      $(document).on('ready', me.load)

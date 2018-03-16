@@ -1,5 +1,5 @@
 module UiBibzInputs
-  class StringInput < SimpleForm::Inputs::Base
+  class StringInput < BaseInput
 
       enable :placeholder, :maxlength, :minlength, :pattern
 
@@ -22,12 +22,6 @@ module UiBibzInputs
 
       def string?
         input_type == :string
-      end
-
-      protected
-
-      def input_attribute_name
-        "#{ @builder.object.class.name.gsub('::', "").underscore }[#{ attribute_name }]"
       end
 
   end
