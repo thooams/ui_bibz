@@ -22,6 +22,8 @@
     componentTarget.multiSelect('refresh')  if componentTarget.hasClass('multi-column-field')
     componentTarget.selectpicker('refresh') if componentTarget.hasClass('dropdown-select-field')
     componentTarget.multiselect('rebuild')  if componentTarget.hasClass('multi-select-field')
+    componentTarget.attr("disabled", false)
+    componentTarget.removeClass("disabled")
     componentTarget.change()
 
   updateTargetRefreshButton = (componentTarget, component) ->
