@@ -18,7 +18,6 @@ Gem::Specification.new do |s|
   s.license     = "MIT"
 
   s.required_ruby_version = '>= 2.0'
-  s.post_install_message  = 'Thanks for installing Ui Bibz!'
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")

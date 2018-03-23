@@ -42,7 +42,7 @@
   > .panel-toolbar {
     border-top: none;
     padding: $panel-spacer;
-    background-color: rgba($black, .015);
+    background-color: $panel-cap-bg;
     border-bottom: $panel-border-width solid $panel-border-color;
   }
 
