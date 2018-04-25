@@ -46,7 +46,7 @@ class CardTest < ActionView::TestCase
         link_to "Card link", '#', class: "card-link"
       end
     end
-    expected = "<div class=\"card\"><img class=\"card-img-top\" src=\"/images/image.svg\" alt=\"Image\" /><div class=\"card-body\">test</div><ul class=\"list-group-flush list-group\"><li class=\"list-group-item\">Cras justo odio</li><li class=\"list-group-item\">Dapibas ac facilisis in</li><li class=\"list-group-item\">vestibulum at eros</li></ul><div class=\"card-body\"><a class=\"card-link\" href=\"#\">Card link</a></div></div>"
+    expected = "<div class=\"card\"><img class=\"card-img-top\" src=\"/assets/image.svg\" /><div class=\"card-body\">test</div><ul class=\"list-group-flush list-group\"><li class=\"list-group-item\">Cras justo odio</li><li class=\"list-group-item\">Dapibas ac facilisis in</li><li class=\"list-group-item\">vestibulum at eros</li></ul><div class=\"card-body\"><a class=\"card-link\" href=\"#\">Card link</a></div></div>"
 
     assert_equal expected, actual
   end

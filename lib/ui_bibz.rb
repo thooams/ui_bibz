@@ -2,6 +2,33 @@ require 'action_view'
 require 'will_paginate'
 require 'will-paginate-i18n'
 
+module UiBibzForm
+
+  autoload :UiBibzFormBuilder, "ui_bibz/inputs/ui_bibz_form/ui_bibz_form_builder"
+
+end
+
+module UiBibzInputs
+
+  autoload :BaseInput,                  "ui_bibz/inputs/ui_bibz_inputs/base_input"
+  autoload :CollectionInput,            "ui_bibz/inputs/ui_bibz_inputs/collection_input"
+  autoload :StringInput,                "ui_bibz/inputs/ui_bibz_inputs/string_input"
+  autoload :UiAutoCompleteFieldInput,   "ui_bibz/inputs/ui_bibz_inputs/ui_auto_complete_field_input"
+  autoload :UiChoiceGroupInput,         "ui_bibz/inputs/ui_bibz_inputs/ui_choice_group_input"
+  autoload :UiDatePickerFieldInput,     "ui_bibz/inputs/ui_bibz_inputs/ui_date_picker_field_input"
+  autoload :UiDropdownSelectFieldInput, "ui_bibz/inputs/ui_bibz_inputs/ui_dropdown_select_field_input"
+  autoload :UiFormulaFieldInput,        "ui_bibz/inputs/ui_bibz_inputs/ui_formula_field_input"
+  autoload :UiMarkdownEditorFieldInput, "ui_bibz/inputs/ui_bibz_inputs/ui_markdown_editor_field_input"
+  autoload :UiMultiColumnFieldInput,    "ui_bibz/inputs/ui_bibz_inputs/ui_multi_column_field_input"
+  autoload :UiMultiSelectFieldInput,    "ui_bibz/inputs/ui_bibz_inputs/ui_multi_select_field_input"
+  autoload :UiNumberFieldInput,         "ui_bibz/inputs/ui_bibz_inputs/ui_number_field_input"
+  autoload :UiRadioFieldInput,          "ui_bibz/inputs/ui_bibz_inputs/ui_radio_field_input"
+  autoload :UiSelectFieldInput,         "ui_bibz/inputs/ui_bibz_inputs/ui_select_field_input"
+  autoload :UiSwitchFieldInput,         "ui_bibz/inputs/ui_bibz_inputs/ui_switch_field_input"
+  autoload :UiTextFieldInput,           "ui_bibz/inputs/ui_bibz_inputs/ui_text_field_input"
+
+end
+
 module UiBibz
 
   mattr_accessor :app_root

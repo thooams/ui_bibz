@@ -22,6 +22,7 @@ module UiBibz::Ui::Core::Notifications
   #   * +name+ - String
   #   * +size+ - Integer
   #   * +type+ - Symbol
+  #   *+timeout+ - Integer
   #
   # ==== Signatures
   #
@@ -80,6 +81,11 @@ module UiBibz::Ui::Core::Notifications
     end
 
   private
+
+    def component_html_data
+      super
+      add_html_data "timeout", options[:timeout] if options[:timeout]
+    end
 
     def component_html_classes
       ['alert', 'alert-dismissible']

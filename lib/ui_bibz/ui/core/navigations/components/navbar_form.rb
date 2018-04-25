@@ -63,8 +63,8 @@ module UiBibz::Ui::Core::Navigations
       when :ui_form_for
         begin
           @form = ui_form_for(@model_or_url, html_options, &@content)
-        rescue
-          raise 'You must install simple form to use ui_form_for.'
+        ## rescue
+          ## raise 'You must install simple form to use ui_form_for.'
         end
       else
         @form = form_tag_with_body(html_options, capture(&@content))

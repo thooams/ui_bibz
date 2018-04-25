@@ -17,7 +17,7 @@ module UiBibz::Ui::Ux::Tables
   private
 
     def sortable_link
-      link_to title.html_safe, url_options, { class: cls }
+      link_to title.html_safe, url_for(url_options_o), { class: cls }
     end
 
     def header_name name
@@ -41,17 +41,17 @@ module UiBibz::Ui::Ux::Tables
       "activerecord.attributes.#{ @store.model.to_s.underscore }.#{ @column.data_index }"
     end
 
-    def url_options
+    def url_options_o
       args =  {
         controller:  @store.controller,
-        id:          @store.param_id,
         action:      @store.action,
         search:      @store.search,
         sort:        sort_name,
         column_id:   @column.id,
         direction:   direction,
-        only_path: true
+        only_path:   true
       }
+      args = args.merge({ id: @store.param_id }) if @store.param_id
       args = args.merge({ custom_sort: true, column_name: @column.data_index }) if @column.custom_sort
       args = args.merge({ parent: true }) if @column.parent
       args = args.merge({ store_id: @store.id }) unless @store.id.nil?

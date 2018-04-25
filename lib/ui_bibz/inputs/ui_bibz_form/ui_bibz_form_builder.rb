@@ -1,5 +1,5 @@
 module UiBibzForm
-  if defined?(SimpleForm)
+  #if defined?(SimpleForm)
     class UiBibzFormBuilder < SimpleForm::FormBuilder
       include ActionView::Helpers::TagHelper
       include ActionView::Helpers::TextHelper
@@ -43,5 +43,5 @@ module UiBibzForm
       end
 
     end
-  end
+  #end
 end

@@ -43,7 +43,7 @@ class NavbarTest < ActionView::TestCase
         n.link 'Link', url: '#link'
       end
     end
-    expected = "<nav class=\"bg-dark navbar navbar-dark navbar-expand-lg\"><a class=\"navbar-brand\" href=\"/\"><img src=\"/images/ruby-white\" alt=\"Ruby white\" /></a><button class=\"navbar-toggler hidden-sm-up\" type=\"button\" data-toggle=\"collapse\" data-target=\"##{ actual.id }\">☰</button><div class=\"collapse navbar-collapse\" id=\"#{ actual.id }\"><ul class=\"navbar-nav\"><li class=\"nav-item\"><a class=\"nav-link\" href=\"#link\">Link</a></li></ul></div></nav>"
+    expected = "<nav class=\"bg-dark navbar navbar-dark navbar-expand-lg\"><a class=\"navbar-brand\" href=\"/\"><img src=\"/images/ruby-white\" /></a><button class=\"navbar-toggler hidden-sm-up\" type=\"button\" data-toggle=\"collapse\" data-target=\"##{ actual.id }\">☰</button><div class=\"collapse navbar-collapse\" id=\"#{ actual.id }\"><ul class=\"navbar-nav\"><li class=\"nav-item\"><a class=\"nav-link\" href=\"#link\">Link</a></li></ul></div></nav>"
 
     assert_equal expected, actual.render
   end

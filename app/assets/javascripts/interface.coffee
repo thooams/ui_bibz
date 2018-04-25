@@ -6,6 +6,7 @@
     @dropdown()
     @checkbox()
     @popover()
+    @notify()
 
   nav: ->
     $('.nav-tabs nav-link').tab('show')
@@ -19,6 +20,16 @@
 
   dropdown: ->
     $('.dropdown-toggle').dropdown()
+
+  notify: ->
+    $('.alert').each ->
+      timeoutValue = $(this).data('timeout')
+      if timeoutValue?
+        me = $(this)
+        setTimeout ->
+          me.addClass('fade')
+        , timeoutValue
+
 
   checkbox: ->
     $('.abc-checkbox.indeterminate input[type=checkbox]').on 'click', ->

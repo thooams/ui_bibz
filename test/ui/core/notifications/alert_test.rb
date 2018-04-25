@@ -19,4 +19,11 @@ class AlertTest < ActionView::TestCase
     assert_equal expected, actual
   end
 
+  test 'alert with timeout' do
+    actual = ui_alert 'timeout', timeout: 500
+    expected = "<div data-timeout=\"500\" class=\"alert-info alert alert-dismissible\" role=\"alert\">timeout</div>"
+
+    assert_equal expected, actual
+  end
+
 end
