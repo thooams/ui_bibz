@@ -18,11 +18,9 @@ module UiBibz::Ui::Core::Notifications
   # You can pass arguments in options attribute:
   # * +status+ - status of élement with symbol value:
   #   (+:default+, +:primary+, +:info+, +:warning+, +:danger+)
-  # * +glyph+ - Add glyph with name or hash options
-  #   * +name+ - String
-  #   * +size+ - Integer
-  #   * +type+ - Symbol
-  #   *+timeout+ - Integer
+  # * +glyph+ - [String | Hash] Add glyph with name or hash options
+  #   * +name+ - [String]
+  #   *+timeout+ - [Integer]
   #
   # ==== Signatures
   #

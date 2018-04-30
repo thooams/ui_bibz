@@ -16,11 +16,10 @@ module UiBibz::Ui::Core::Notifications
   # You can pass arguments in options attribute:
   # * +status+ - status of élement with symbol value:
   #   (+:primary+, +:secondary+, +:success+, +:danger+, +:warning+, +:info+, +:light+, +:dark+)
-  # * +glyph+ - Add glyph with name or hash options
-  #   * +name+ - String
-  #   * +size+ - Integer
-  #   * +type+ - Symbol
-  # * +type+ - Symbol
+  # * +glyph+ - [String | Hash] Add glyph with name or hash options
+  #   * +name+ - [String]
+  #   * +url+ - [String] Transform span to link
+  # * +type+ - [Symbol]
   #   (+:pill+, +:square+)
   #
   # ==== Signatures
@@ -56,10 +55,14 @@ module UiBibz::Ui::Core::Notifications
 
     # Render html tag
     def pre_render
-      content_tag :span, glyph_and_content_html, html_options
+      content_tag options[:url].nil? ? :span : :a, glyph_and_content_html, html_options
     end
 
   private
+
+    def component_html_options
+      super.merge(options[:url].nil? ? {} : { href: options[:url] })
+    end
 
     def component_html_classes
       ['badge', type]

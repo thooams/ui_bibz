@@ -15,6 +15,13 @@ module UiBibz::Ui::Core::Navigations
   # * +options+ - Options of element
   # * +html_options+ - Html Options of element
   #
+  # ==== Options
+  #
+  # You can add HTML attributes using the +html_options+.
+  # You can pass arguments in options attribute:
+  # * +link_label+ - [Symbol | String] Display label of link with store
+  # * +link_url+   - [String] Display url of link with store
+  #
   # ==== Components
   #
   # +link+ is UiBibz::Ui::Core::Navigations::BreadCrumb::Components::BreadcrumbLink component
@@ -28,6 +35,9 @@ module UiBibz::Ui::Core::Navigations
   #     ...
   #   end
   #
+  #   UiBibz::Ui::Core::Navigations::Breadcrumb.new(@store)
+  #
+  #
   # ==== Examples
   #
   #   UiBibz::Ui::Core::Navigations::Breadcrumb.new().tap do |b|
@@ -38,16 +48,24 @@ module UiBibz::Ui::Core::Navigations
   #     b.link 'Level 2', state: :active
   #   end.render
   #
+  #   # or
+  #
+  #   @users = User.all
+  #   UiBibz::Ui::Core::Navigations::Breadcrumb.new(@users).render
+  #
   # ==== Helper
   #
-  #   breadcrumb({tap: true}) do |b|
+  #   ui_breadcrumb({tap: true}) do |b|
   #     b.link(content, options = {}, html_options = {})
   #     b.link(options = {}, html_options = {}) do
   #       content
   #     end
   #   end
   #
-  #   breadcrumb({store: @users, link_label: name, link_url: user_path(:id)})
+  #   # or
+  #
+  #   @users = User.all
+  #   ui_breadcrumb(@users, { link_label: name, link_url: user_path(:id) })
   #
   class Breadcrumb < UiBibz::Ui::Core::Component
 
@@ -55,12 +73,14 @@ module UiBibz::Ui::Core::Navigations
     def initialize content = nil, options = nil, html_options = nil, &block
       super
       @links = []
+      generate_links unless @content.nil?
     end
 
     # Render html tag
     def pre_render
-      generate_links unless store.nil?
-      content_tag :ol, @links.join.html_safe, html_options
+      content_tag :nav, html_options do
+        content_tag :ol, @links.join.html_safe, class: 'breadcrumb'
+      end
     end
 
     # Add breadcrumb link items
@@ -71,16 +91,12 @@ module UiBibz::Ui::Core::Navigations
 
     private
 
-    def component_html_classes
-      'breadcrumb'
-    end
-
-    def store
-      @options[:store]
+    def component_html_options
+      super.merge({ "arial-label": "breadcrumb" })
     end
 
     def model_name
-      store.class.to_s
+      content.class.to_s
     end
 
     def link_label
@@ -92,13 +108,13 @@ module UiBibz::Ui::Core::Navigations
     end
 
     def generate_links
-      @options[:store].each do |item|
-        if item == @options[:store].last
-          @links << UiBibz::Ui::Core::Navigations::Components::BreadcrumbLink.new(item.send(link_label), status: :disabled).render
-        else
-          @links << UiBibz::Ui::Core::Navigations::Components::BreadcrumbLink.new(item.send(link_label), url: inject_url(link_url, item)).render
-        end
+      content.each do |item|
+        @links << UiBibz::Ui::Core::Navigations::Components::BreadcrumbLink.new(item.send(link_label), url: inject_url(link_url, item), current: item == last_item).render
       end
+    end
+
+    def last_item
+      content.last
     end
 
   end

@@ -52,15 +52,23 @@ module UiBibz::Ui::Core::Navigations::Components
 
   private
 
+    def component_html_options
+      super.merge(options[:current] ? { "aria-current": "page" } : {})
+    end
+
     def component_html_classes
       "breadcrumb-item"
     end
 
+    def component_options
+      super.merge(options[:current] ? { status: :disabled } : {})
+    end
+
     def link_html
-      if options[:url]
-        link_to glyph_and_content_html, options[:url] || '#'
-      else
+      if options[:current]
         glyph_and_content_html
+      else
+        link_to glyph_and_content_html, options[:url] || '#'
       end
     end
 

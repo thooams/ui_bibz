@@ -34,7 +34,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'haml-rails'
   s.add_dependency 'sass-rails', '>= 5.0.0'
   s.add_dependency 'font-awesome-sass'
-  s.add_dependency 'bootstrap', '4.0.0'
+  s.add_dependency 'bootstrap', '4.1.0'
 
   # Development gems
   s.add_development_dependency "simple_form"
