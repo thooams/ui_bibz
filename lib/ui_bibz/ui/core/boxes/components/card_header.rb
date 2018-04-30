@@ -1,3 +1,4 @@
+require 'ui_bibz/ui/core/boxes/components/card_tab_group'
 module UiBibz::Ui::Core::Boxes::Components
 
   # Create a card header
@@ -29,6 +30,13 @@ module UiBibz::Ui::Core::Boxes::Components
   #     'Exemple'
   #   end.render
   #
+  #   UiBibz::Ui::Core::Boxes::CardHeader.new(tap: true) do |h|
+  #     h.tab_group do |tg|
+  #       tg.tab 'link', url: '#link"
+  #       tg.tab 'link', url: '#link"
+  #     end
+  #   end.render
+  #
   class CardHeader < UiBibz::Ui::Core::Component
 
     # See UiBibz::Ui::Core::Component.initialize
@@ -39,6 +47,14 @@ module UiBibz::Ui::Core::Boxes::Components
     # Render html tag
     def pre_render
       content_tag :div, glyph_and_content_html, html_options
+    end
+
+    def tab_group content = nil, options = nil, html_options = nil, &block
+      if is_tap(content, options)
+        @content = CardTabGroup.new(content, options, html_options).tap(&block).render
+      else
+        @content = CardTabGroup.new(content, options, html_options, &block).render
+      end
     end
 
   private

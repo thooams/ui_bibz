@@ -16,8 +16,8 @@ module UiBibz::Ui::Core::Navigations
   # You can pass arguments in options attribute:
   # * +position+ - Symbol
   #   (+:left+, +:right+, +:center+)
-  # * +tag+ - Symbol
-  #   (+:a+, +:li)
+  # * +tag_type+ - Symbol
+  #   (+:a+, +:span)
   # * +justify+ - Boolean
   # * +fill+ - Boolean
   #

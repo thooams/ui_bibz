@@ -46,7 +46,7 @@ class CardTest < ActionView::TestCase
         link_to "Card link", '#', class: "card-link"
       end
     end
-    expected = "<div class=\"card\"><img class=\"card-img-top\" src=\"/assets/image.svg\" /><div class=\"card-body\">test</div><ul class=\"list-group-flush list-group\"><li class=\"list-group-item\">Cras justo odio</li><li class=\"list-group-item\">Dapibas ac facilisis in</li><li class=\"list-group-item\">vestibulum at eros</li></ul><div class=\"card-body\"><a class=\"card-link\" href=\"#\">Card link</a></div></div>"
+    expected = "<div class=\"card\"><img class=\"card-img-top\" src=\"/images/image.svg\" /><div class=\"card-body\">test</div><ul class=\"list-group-flush list-group\"><li class=\"list-group-item\">Cras justo odio</li><li class=\"list-group-item\">Dapibas ac facilisis in</li><li class=\"list-group-item\">vestibulum at eros</li></ul><div class=\"card-body\"><a class=\"card-link\" href=\"#\">Card link</a></div></div>"
 
     assert_equal expected, actual
   end
@@ -133,4 +133,17 @@ class CardTest < ActionView::TestCase
     assert_equal expected, actual
   end
 
+  test 'card header tab group' do
+    actual = ui_card tap: true do |c|
+      c.header tap: true do |h|
+        h.tab_group tap: true do |cg|
+          cg.tab 'link1', url: '#link1'
+          cg.tab 'link2', url: '#link2'
+        end
+      end
+    end
+    expected = "<div class=\"card\"><div class=\"card-header\"><ul class=\"nav nav-tabs card-header-tabs\"><li class=\"nav-item\"><a class=\"nav-link\" href=\"#link1\">link1</a></li><li class=\"nav-item\"><a class=\"nav-link\" href=\"#link2\">link2</a></li></ul></div></div>"
+
+    assert_equal expected, actual
+  end
 end

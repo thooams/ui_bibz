@@ -97,7 +97,11 @@ module UiBibz::Ui::Core::Boxes
     # Add Header which is a component
     def header content = nil, options = nil, html_options = nil, &block
       options, content = inherit_options(content, options, block)
-      @header = UiBibz::Ui::Core::Boxes::Components::CardHeader.new(content, options, html_options, &block).render
+      if is_tap(content, options)
+        @header = UiBibz::Ui::Core::Boxes::Components::CardHeader.new(content, options, html_options).tap(&block).render
+      else
+        @header = UiBibz::Ui::Core::Boxes::Components::CardHeader.new(content, options, html_options, &block).render
+      end
     end
 
     # Add Body div which is a component
