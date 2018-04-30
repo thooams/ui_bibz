@@ -6,4 +6,5 @@ unless defined?(SimpleForm).nil?
   end
 end
 
-Rails.application.config.autoload_paths += Dir[File.join(Rails.root, "app", "ui", "**", "*.rb")].each {|l| require l }
+# no "require" in file in ui directory
+#Rails.application.config.eager_load_paths += Dir[Rails.root.join("app", "ui", "**")]

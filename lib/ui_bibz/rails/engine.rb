@@ -19,14 +19,13 @@ module UiBibz
         ActionView::Base.send :include, UiBibz::Helpers::Ui::UxHelper
       end
 
-
       config.autoload_paths += Dir["#{config.root}/lib/ui_bibz/inputs/**/"] if defined?(::SimpleForm)
+
       initializer "ui_bibz.helpers.form" do
         ActionView::Base.send :include, UiBibzForm
-        #Dir["#{config.root}/lib/ui_bibz/inputs/**/**"].each{ |b| require b } if defined?(::SimpleForm)
       end
-
 
     end
   end
 end
+

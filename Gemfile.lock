@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    ui_bibz (2.0.1)
+    ui_bibz (2.0.2)
       bootstrap (= 4.0.0)
       font-awesome-sass
       haml
@@ -58,7 +58,7 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
     arel (9.0.0)
-    autoprefixer-rails (8.3.0)
+    autoprefixer-rails (8.4.1)
       execjs
     awesome_print (1.8.0)
     bootstrap (4.0.0)
