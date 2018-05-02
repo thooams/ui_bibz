@@ -78,5 +78,9 @@ module UiBibz::Ui::Core::Navigations
       ["nav", "nav-tabs", position, justify, fill]
     end
 
+    def type
+      "nav-tabs"
+    end
+
   end
 end

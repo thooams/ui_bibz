@@ -9,7 +9,7 @@
     @notify()
 
   nav: ->
-    $('.nav-tabs nav-link').tab('show')
+    #$('.nav-tabs .nav-item .nav-link').tab('show')
 
   popover: ->
     $('[data-toggle="popover"]').popover({ html: true })
