@@ -15,8 +15,9 @@ module UiBibz::Ui::Core::Lists
   #
   # You can add HTML attributes using the +html_options+.
   # You can pass arguments in options attribute:
-  # * +type+ - Type of list (default: :list)
-  #   (+:link+, +:list+)
+  # * +flush+ - Boolean
+  # * +tag_type+ - Type of list (default: :li)
+  #   (+:a+, +:button+, +:li+)
   #
   # ==== Signatures
   #
@@ -33,7 +34,7 @@ module UiBibz::Ui::Core::Lists
   #     d.list 'Test2', status: :primary
   #   end.render
   #
-  #   UiBibz::Ui::Core::ListGroup.new(type: :link).tap do |d|
+  #   UiBibz::Ui::Core::ListGroup.new(tag_type: :li).tap do |d|
   #     d.list 'Test', status: :success, url: '#test'
   #     d.list(status: :primary) do
   #       'Test 2'
@@ -84,10 +85,9 @@ module UiBibz::Ui::Core::Lists
     # Add group list
     # See UiBibz::Ui::Core::List
     def list content = nil, options = {} , html_options = nil, &block
-      is_tap  = (content[:tap] if content.kind_of?(Hash)) || (options[:tap] unless options.nil?)
-      options = options.merge({ tag: @options[:tag] }) unless @options[:tag].nil?
+      options = options.merge({ tag_type: @options[:tag_type] }) unless @options[:tag_type].nil?
 
-      if is_tap
+      if is_tap(content, options)
         @lists << UiBibz::Ui::Core::Lists::Components::List.new(content, options, html_options).tap(&block).render
       else
         @lists << UiBibz::Ui::Core::Lists::Components::List.new(content, options, html_options, &block).render
@@ -97,11 +97,15 @@ module UiBibz::Ui::Core::Lists
   private
 
     def component_html_classes
-      "list-group"
+      super << ["list-group", flush]
+    end
+
+    def flush
+      "list-group-flush" if options[:flush]
     end
 
     def tag_type
-      [:a, :button].include?(options[:tag]) ? :div : :ul
+      [:a, :button].include?(options[:tag_type]) ? :div : :ul
     end
 
   end

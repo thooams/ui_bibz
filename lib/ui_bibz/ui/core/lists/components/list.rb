@@ -114,11 +114,11 @@ module UiBibz::Ui::Core::Lists::Components
 
     def is_link_type?
       @html_options[:href] = @options[:url] if @options[:url]
-      @options[:tag] == :a || @html_options[:tag] == :a
+      @options[:tag_type] == :a || @html_options.delete(:tag_type) == :a
     end
 
     def is_button_type?
-      @options[:tag] == :button || @html_options[:tag] == :button
+      @options[:tag_type] == :button || @html_options.delete(:tag_type) == :button
     end
 
     def tag_type
