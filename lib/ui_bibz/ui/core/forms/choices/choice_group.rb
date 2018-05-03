@@ -65,7 +65,7 @@ module UiBibz::Ui::Core::Forms::Choices
     private
 
     def component_html_classes
-      super << ['button-choice']
+      super << ['button-choice', "btn-group-toggle"]
     end
 
     def component_html_options
