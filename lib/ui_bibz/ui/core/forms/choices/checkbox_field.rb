@@ -65,7 +65,7 @@ module UiBibz::Ui::Core::Forms::Choices
     end
 
     def checkbox_html_options
-      { class: 'styled', disabled: options[:state] == :disabled }
+      { class: 'form-check-input', disabled: options[:state] == :disabled }
     end
 
     def label_name
@@ -73,7 +73,7 @@ module UiBibz::Ui::Core::Forms::Choices
     end
 
     def label_html_options
-      options[:label] == false ? { class: 'fix-label' } : nil
+      { class: join_classes("form-check-label", ("fix-label" if options[:label] == false)) }
     end
 
     def label_content
@@ -104,7 +104,7 @@ module UiBibz::Ui::Core::Forms::Choices
     end
 
     def component_html_classes
-      super << ["checkbox", "abc-checkbox", type, indeterminate, inline]
+      super << ["form-check", "abc-checkbox", type, indeterminate, inline]
     end
 
   end
