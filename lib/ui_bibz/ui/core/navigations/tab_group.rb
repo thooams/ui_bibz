@@ -35,7 +35,7 @@ module UiBibz::Ui::Core::Navigations
   #
   # ==== Examples
   #
-  #   UiBibz::Ui::Core::Navigations::TabGroup.new(type: :pills).tap do |n|
+  #   UiBibz::Ui::Core::Navigations::TabGroup.new(tag_type: :span).tap do |n|
   #     n.tab 'Test', url: '#test'
   #     n.tab 'Test2', url: '#test2', state: :active
   #     n.dropdown('Action') do |d|

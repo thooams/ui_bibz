@@ -52,7 +52,7 @@ module UiBibz::Ui::Core::Navigations
       if options[:nav_type] == "nav-links"
         UiBibz::Ui::Core::Navigations::NavLinkLink.new(content, options, html_options).render
       else
-        if options[:tag_type] == "span"
+        if options[:tag_type] == :span
           cont = UiBibz::Ui::Core::Navigations::NavLinkSpan.new(content, @old_options).render
         else
           cont = UiBibz::Ui::Core::Navigations::NavLinkLink.new(content, options).render
