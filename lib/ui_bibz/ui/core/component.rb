@@ -42,6 +42,10 @@ module UiBibz::Ui::Core
     include KlassExtension
     include GlyphExtension
 
+    # Constants
+    STATUSES = %i(primary secondary success danger warning info light dark)
+    SIZES    = %i(lg md sm)
+
     attr_accessor :content, :html_options, :options
 
     # Use link_to system in rails

@@ -1,7 +1,7 @@
 $:.push File.expand_path("../lib", __FILE__)
 
 # Maintain your gem's version:
-require "ui_bibz/version"
+require "ui_bibz/infos"
 
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
@@ -33,8 +33,8 @@ Gem::Specification.new do |s|
   s.add_dependency 'jquery-rails', '>= 3.1.0'
   s.add_dependency 'haml-rails'
   s.add_dependency 'sass-rails', '>= 5.0.0'
-  s.add_dependency 'font-awesome-sass'
-  s.add_dependency 'bootstrap', '~> 4.1.0'
+  s.add_dependency 'font-awesome-sass', UiBibz::FONTAWESOME_VERSION
+  s.add_dependency 'bootstrap', UiBibz::BOOTSTRAP_VERSION
 
   # Development gems
   s.add_development_dependency "simple_form"

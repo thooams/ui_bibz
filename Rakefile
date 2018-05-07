@@ -6,7 +6,7 @@ end
 
 require 'rdoc/task'
 # Maintain your gem's version:
-require "ui_bibz/version"
+require "ui_bibz/infos"
 RDoc::Task.new(:rdoc) do |rdoc|
   rdoc.main      = 'README.md'
   rdoc.rdoc_dir  = "rdoc-v#{ UiBibz::VERSION }"

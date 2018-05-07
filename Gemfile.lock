@@ -1,9 +1,9 @@
 PATH
   remote: .
   specs:
-    ui_bibz (2.0.3)
-      bootstrap (~> 4.1.0)
-      font-awesome-sass
+    ui_bibz (2.0.4)
+      bootstrap (= 4.1.1)
+      font-awesome-sass (= 5.0.9)
       haml
       haml-rails
       jquery-rails (>= 3.1.0)
