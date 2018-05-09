@@ -1,31 +1,35 @@
 * Ui
   * Core
+    * Boxes
+      * card
+      * card_column
+      * card_deck
+      * card_group
+      * jumbotron
+    * Containers
+      * Panel
+    * Icons
+      * glyph
+      * star
+    * Layouts
+      * col
+      * container
+      * row
+    * Lists
+      * list
+      * list_group
     * Navigations
-      * navbar
-      * tabs
-      * nav
       * breadcrumb
+      * link
+      * nav
+      * navbar
       * pagination
+      * tab group
       * toolbar
     * Notifications
       * alert
       * badge
       * progress_bar
-    * Icons
-      * glyph
-      * star
-    * Boxes
-      * jumbotron
-      * card
-      * card_deck
-      * card_column
-      * card_group
-    * Lists
-      * list_group
-    * Layouts
-      * container
-      * row
-      * col
     * Forms
       * buttons
         * button
