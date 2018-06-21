@@ -1,5 +1,6 @@
 #= require jquery2
 #= require jquery-ui.min
+#= require fontawesome-all.min
 
 # multi_column_field component
 #= require jquery.quicksearch.min

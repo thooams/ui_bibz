@@ -85,7 +85,17 @@ module UiBibz::Ui::Core::Icons
     private
 
     def component_html_classes
-      super << ["fa-layers", "fa-fw"]
+      super << ["fa-layers", "fa-fw", size]
+    end
+
+    def size
+      if options[:size]
+        if options[:size].kind_of?(Integer)
+          "fa-#{ options[:size] }x"
+        else
+          "fa-#{ options[:size] }"
+        end
+      end
     end
 
   end
