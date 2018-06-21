@@ -14,6 +14,16 @@ module UiBibz::Helpers::Ui::Core::IconsHelper
     UiBibz::Ui::Core::Icons::Glyph.new(content, options, html_options, &block).render
   end
 
+  # Glyph Group Component
+  #
+  # + content+ (String || Hash) [Required]
+  # +options+ (Hash)
+  # +html_options+ (Hash)
+  #
+  def ui_glyph_group content = nil, options = nil, html_options = nil, &block
+    UiBibz::Ui::Core::Icons::GlyphGroup.new(content, options, html_options).tap(&block).render
+  end
+
   # Stars Component
   #
   # +options+ (Hash)

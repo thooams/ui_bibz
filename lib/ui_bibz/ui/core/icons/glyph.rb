@@ -73,6 +73,11 @@ module UiBibz::Ui::Core::Icons
       join_classes(classes)
     end
 
+    def component_html_data
+      super
+      transform
+    end
+
     def classes
       cls = ["glyph", style, "fa-#{ content }"]
       cls << "fa-#{ size }x"         unless size.nil?
@@ -121,6 +126,10 @@ module UiBibz::Ui::Core::Icons
       @options[:type]
     end
 
+    def transform
+      add_html_data "fa_transform", options[:transform] if options[:transform]
+    end
+
     def content
       @options[:name] || @content
     end
@@ -130,7 +139,7 @@ module UiBibz::Ui::Core::Icons
     end
 
     def match_style
-      {solid: 'fas', regular: 'far', light: 'fal', brands: 'fab'}
+      { solid: 'fas', regular: 'far', light: 'fal', brands: 'fab' }
     end
 
   end

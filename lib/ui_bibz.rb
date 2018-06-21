@@ -107,6 +107,7 @@ module UiBibz
 
       module Icons
         autoload :Glyph,                   "ui_bibz/ui/core/icons/glyph"
+        autoload :GlyphGroup,              "ui_bibz/ui/core/icons/glyph_group"
         autoload :Star,                    "ui_bibz/ui/core/icons/star"
       end
 
