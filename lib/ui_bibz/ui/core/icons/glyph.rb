@@ -79,7 +79,7 @@ module UiBibz::Ui::Core::Icons
     end
 
     def classes
-      cls = ["glyph", style, "fa-#{ content }"]
+      cls = ["glyph", style, "fa-#{ content }"]#, "fa-fw"]
       cls << "fa-#{ size }x"         unless size.nil?
       cls << "fa-rotate-#{ rotate }" unless rotate.nil?
       cls << "fa-flip-#{ flip }"     unless flip.nil?

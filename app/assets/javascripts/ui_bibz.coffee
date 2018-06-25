@@ -1,6 +1,6 @@
 #= require jquery2
 #= require jquery-ui.min
-#= require fontawesome-all.min
+#= require all
 
 # multi_column_field component
 #= require jquery.quicksearch.min
@@ -45,6 +45,11 @@
     return this
 
   load: ->
+    # https://github.com/tomkra/font_awesome5_rails/issues/17
+    FontAwesome.config =
+      observeMutations: false
+    FontAwesome.dom.i2svg()
+
     new window.UiBibzTable()
     new window.UiBibzForm()
     new window.UiBibzInterface()
