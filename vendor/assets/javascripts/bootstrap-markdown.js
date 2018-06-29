@@ -18,13 +18,13 @@
  * ========================================================== */
 (function(factory) {
   if (typeof define === "function" && define.amd) {
-    //RequireJS
+    // RequireJS
     define(["jquery"], factory);
   } else if (typeof exports === 'object') {
-    //Backbone.js
+    // Backbone.js
     factory(require('jquery'));
   } else {
-    //Jquery plugin
+    // jQuery plugin
     factory(jQuery);
   }
 }(function($) {
@@ -113,7 +113,7 @@
             var button = buttons[z],
               buttonContainer, buttonIconContainer,
               buttonHandler = ns + '-' + button.name,
-              buttonIcon = this.__getIcon(button.icon),
+              buttonIcon = this.__getIcon(button),
               btnText = button.btnText ? button.btnText : '',
               btnClass = button.btnClass ? button.btnClass : 'btn',
               tabIndex = button.tabIndex ? button.tabIndex : '-1',
@@ -149,7 +149,7 @@
             callback.push(button.callback);
           }
 
-          // Attach the button group into container dom
+          // Attach the button group into container DOM
           container.append(btnGroupContainer);
         }
       }
@@ -167,6 +167,10 @@
         this.$textarea.css('resize', this.$options.resize);
       }
 
+      // Re-attach markdown data
+      this.$textarea.data('markdown', this);
+    },
+    __setEventListeners: function() {
       this.$textarea.on({
         'focus': $.proxy(this.focus, this),
         'keyup': $.proxy(this.keyup, this),
@@ -181,9 +185,6 @@
       if (this.eventSupported('keypress')) {
         this.$textarea.on('keypress', $.proxy(this.keypress, this));
       }
-
-      // Re-attach markdown data
-      this.$textarea.data('markdown', this);
     },
     __handle: function(e) {
       var target = $(e.currentTarget),
@@ -222,7 +223,14 @@
       return string;
     },
     __getIcon: function(src) {
-      return typeof src == 'object' ? src[this.$options.iconlibrary] : src;
+      if(typeof src == 'object'){
+        var customIcon = this.$options.customIcons[src.name];
+        console.log(customIcon)
+        console.log(this.$options)
+        return typeof customIcon == 'undefined' ? src.icon[this.$options.iconlibrary] : customIcon;
+      } else {
+        return src;
+      }
     },
     setFullscreen: function(mode) {
       var $editor = this.$editor,
@@ -276,12 +284,12 @@
           // iterate the additional button groups
           $.each(options.additionalButtons[0], function(idx, buttonGroup) {
 
-            // see if the group name of the addional group matches an existing group
+            // see if the group name of the additional group matches an existing group
             var matchingGroups = $.grep(allBtnGroups, function(allButtonGroup, allIdx) {
               return allButtonGroup.name === buttonGroup.name;
             });
 
-            // if it matches add the addional buttons to that group, if not just add it to the all buttons group
+            // if it matches add the additional buttons to that group, if not just add it to the all buttons group
             if (matchingGroups.length > 0) {
               matchingGroups[0].data = matchingGroups[0].data.concat(buttonGroup.data);
             } else {
@@ -346,7 +354,7 @@
             editable.attrValues.push(this.nodeValue);
           });
 
-          // Set editor to blocked the original container
+          // Set editor to block the original container
           container.replaceWith(editor);
         }
 
@@ -413,6 +421,7 @@
         this.$oldContent = this.getContent();
 
         this.__setListener();
+        this.__setEventListeners();
 
         // Set editor attributes, data short-hand API and listener
         this.$editor.attr('id', (new Date()).getTime());
@@ -471,24 +480,49 @@
       // enable dropZone if available and configured
       if (options.dropZoneOptions) {
         if (this.$editor.dropzone) {
-          options.dropZoneOptions.init = function() {
-            var caretPos = 0;
-            this.on('drop', function(e) {
-              caretPos = textarea.prop('selectionStart');
-            });
-            this.on('success', function(file, path) {
-              var text = textarea.val();
-              textarea.val(text.substring(0, caretPos) + '\n![description](' + path + ')\n' + text.substring(caretPos));
-            });
-            this.on('error', function(file, error, xhr) {
-              console.log('Error:', error);
-            });
-          };
-          this.$textarea.addClass('dropzone');
+          if(!options.dropZoneOptions.init) {
+            options.dropZoneOptions.init = function() {
+              var caretPos = 0;
+              this.on('drop', function(e) {
+                  caretPos = textarea.prop('selectionStart');
+                  });
+              this.on('success', function(file, path) {
+                  var text = textarea.val();
+                  textarea.val(text.substring(0, caretPos) + '\n![description](' + path + ')\n' + text.substring(caretPos));
+                  });
+              this.on('error', function(file, error, xhr) {
+                  console.log('Error:', error);
+                  });
+            };
+          }
+          this.$editor.addClass('dropzone');
           this.$editor.dropzone(options.dropZoneOptions);
         } else {
           console.log('dropZoneOptions was configured, but DropZone was not detected.');
         }
+      }
+
+      // enable data-uris via drag and drop
+      if (options.enableDropDataUri === true) {
+        this.$editor.on('drop', function(e) {
+          var caretPos = textarea.prop('selectionStart');
+          e.stopPropagation();
+          e.preventDefault();
+          $.each(e.originalEvent.dataTransfer.files, function(index, file){
+            var fileReader = new FileReader();
+              fileReader.onload = (function(file) {
+                 var type = file.type.split('/')[0];
+                 return function(e) {
+                    var text = textarea.val();
+                    if (type === 'image')
+                      textarea.val(text.substring(0, caretPos) + '\n<img src="'+ e.target.result  +'" />\n' + text.substring(caretPos) );
+                    else
+                      textarea.val(text.substring(0, caretPos) + '\n<a href="'+ e.target.result  +'">Download ' + file.name + '</a>\n' + text.substring(caretPos) );
+                 };
+              })(file);
+            fileReader.readAsDataURL(file);
+          });
+        });
       }
 
       // Trigger the onShow hook
@@ -526,19 +560,19 @@
         callbackContent;
 
       if (this.$isPreview === true) {
-        // Avoid sequenced element creation on missused scenario
+        // Avoid sequenced element creation on misused scenario
         // @see https://github.com/toopay/bootstrap-markdown/issues/170
         return this;
       }
 
-      // Give flag that tell the editor enter preview mode
+      // Give flag that tells the editor to enter preview mode
       this.$isPreview = true;
       // Disable all buttons
       this.disableButtons('all').enableButtons('cmdPreview');
 
       // Try to get the content from callback
-      callbackContent = options.onPreview(this);
-      // Set the content based from the callback content if string otherwise parse value from textarea
+      callbackContent = options.onPreview(this, replacementContainer);
+      // Set the content based on the callback content if string, otherwise parse value from textarea
       content = typeof callbackContent == 'string' ? callbackContent : this.parseContent();
 
       // Build preview element
@@ -554,8 +588,9 @@
 
       // Set the preview element dimensions
       replacementContainer.css({
-        width: container.outerWidth() + 'px',
-        height: container.outerHeight() + 'px'
+        "width": container.outerWidth() + 'px',
+        "min-height": container.outerHeight() + 'px',
+        "height": "auto"
       });
 
       if (this.$options.resize) {
@@ -576,7 +611,7 @@
       return this;
     },
     hidePreview: function() {
-      // Give flag that tell the editor quit preview mode
+      // Give flag that tells the editor to quit preview mode
       this.$isPreview = false;
 
       // Obtain the preview container
@@ -589,6 +624,9 @@
       this.enableButtons('all');
       // Disable configured disabled buttons
       this.disableButtons(this.$options.disabledButtons);
+
+      // Perform any callbacks
+      this.$options.onPreviewEnd(this);
 
       // Back to the editor
       this.$textarea.show();
@@ -807,12 +845,12 @@
 
             blocked = true;
           } else {
-            // The next tab memory contains nothing...
+            // The next tab's memory contains nothing...
             // check the cursor position to determine tab action
             var cursor = this.getSelection();
 
             if (cursor.start == cursor.end && cursor.end == this.getContent().length) {
-              // The cursor already reach the end of the content
+              // The cursor has reached the end of the content
               blocked = false;
             } else {
               // Put the cursor to the end
@@ -826,7 +864,29 @@
 
         case 13: // enter
           blocked = false;
+          var chars = this.getContent().split('');
+          var enterIndex = this.getSelection().start;
+          var priorNewlineIndex = -1; // initial line break at before index 0
+
+          // traverse backwards through chars to check if last line break was num/bullet item
+          for (var i = enterIndex - 2; i >= 0; i--) {
+            if (chars[i] === '\n') {
+              priorNewlineIndex = i;
+              break;
+            }
+          }
+
+          var charFollowingLastLineBreak = chars[priorNewlineIndex + 1];
+          if (charFollowingLastLineBreak === '-') {
+            this.addBullet(enterIndex);
+          } else if ($.isNumeric(charFollowingLastLineBreak)) {
+              var numBullet = this.getBulletNumber(priorNewlineIndex + 1);
+              if (numBullet) {
+                this.addNumberedBullet(enterIndex, numBullet);
+              }
+          }
           break;
+
         case 27: // escape
           if (this.$isFullscreen) this.setFullscreen(false);
           blocked = false;
@@ -842,6 +902,26 @@
       }
 
       this.$options.onChange(this);
+    },
+    insertContent: function(index, content) {
+      var firstHalf = this.getContent().slice(0, index);
+      var secondHalf = this.getContent().slice(index + 1);
+      this.setContent(firstHalf.concat(content).concat(secondHalf));
+    },
+    addBullet: function(index) {
+      this.insertContent(index, '- \n');
+      this.setSelection(index + 2, index + 2); // Put the cursor after the bullet
+    },
+    addNumberedBullet: function(index, num) {
+      var numBullet = (num + 1) + '. \n';
+      this.insertContent(index, numBullet);
+
+      var prefixLength = num.toString().length + 2;
+      this.setSelection(index + prefixLength, index + prefixLength); // Put the cursor after the number
+    },
+    getBulletNumber: function(startIndex) {
+      var bulletNum = this.getContent().slice(startIndex).split('.')[0];
+      return $.isNumeric(bulletNum) ? parseInt(bulletNum) : null;
     },
     change: function(e) {
       this.$options.onChange(this);
@@ -948,6 +1028,7 @@
     initialstate: 'editor',
     parser: null,
     dropZoneOptions: null,
+    enableDropDataUri: false,
 
     /* Buttons Properties */
     buttons: [
@@ -959,8 +1040,9 @@
           title: 'Bold',
           icon: {
             glyph: 'glyphicon glyphicon-bold',
-            fa: 'fas fa-bold',
+            fa: 'fa fa-bold',
             'fa-3': 'icon-bold',
+            'fa-5': 'fas fa-bold',
             octicons: 'octicon octicon-bold'
           },
           callback: function(e) {
@@ -995,8 +1077,9 @@
           hotkey: 'Ctrl+I',
           icon: {
             glyph: 'glyphicon glyphicon-italic',
-            fa: 'fas fa-italic',
+            fa: 'fa fa-italic',
             'fa-3': 'icon-italic',
+            'fa-5': 'fas fa-italic',
             octicons: 'octicon octicon-italic'
           },
           callback: function(e) {
@@ -1031,8 +1114,9 @@
           hotkey: 'Ctrl+H',
           icon: {
             glyph: 'glyphicon glyphicon-header',
-            fa: 'fas fa-header',
+            fa: 'fa fa-header',
             'fa-3': 'icon-font',
+            'fa-5': 'fas fa-heading',
             octicons: 'octicon octicon-text-size'
           },
           callback: function(e) {
@@ -1075,8 +1159,9 @@
           hotkey: 'Ctrl+L',
           icon: {
             glyph: 'glyphicon glyphicon-link',
-            fa: 'fas fa-link',
+            fa: 'fa fa-link',
             'fa-3': 'icon-link',
+            'fa-5': 'fas fa-link',
             octicons: 'octicon octicon-link'
           },
           callback: function(e) {
@@ -1112,8 +1197,9 @@
           hotkey: 'Ctrl+G',
           icon: {
             glyph: 'glyphicon glyphicon-picture',
-            fa: 'fas fa-picture-o',
+            fa: 'fa fa-picture-o',
             'fa-3': 'icon-picture',
+            'fa-5': 'far fa-image',
             octicons: 'octicon octicon-file-media'
           },
           callback: function(e) {
@@ -1155,8 +1241,9 @@
           title: 'Unordered List',
           icon: {
             glyph: 'glyphicon glyphicon-list',
-            fa: 'fas fa-list',
+            fa: 'fa fa-list',
             'fa-3': 'icon-list-ul',
+            'fa-5': 'fas fa-list-ul',
             octicons: 'octicon octicon-list-unordered'
           },
           callback: function(e) {
@@ -1206,8 +1293,9 @@
           title: 'Ordered List',
           icon: {
             glyph: 'glyphicon glyphicon-th-list',
-            fa: 'fas fa-list-ol',
+            fa: 'fa fa-list-ol',
             'fa-3': 'icon-list-ol',
+            'fa-5': 'fas fa-list-ol',
             octicons: 'octicon octicon-list-ordered'
           },
           callback: function(e) {
@@ -1232,13 +1320,15 @@
                 // Set the cursor
                 cursor = selected.start + 3;
               } else {
+                var i = 1;
                 var list = [];
 
                 list = selected.text.split('\n');
                 chunk = list[0];
 
                 $.each(list, function(k, v) {
-                  list[k] = '1. ' + v;
+                  list[k] = i + '. ' + v;
+                  i++;
                 });
 
                 e.replaceSelection('\n\n' + list.join('\n'));
@@ -1256,9 +1346,10 @@
           hotkey: 'Ctrl+K',
           title: 'Code',
           icon: {
-            glyph: 'glyphicon glyphicon-asterisk',
-            fa: 'fas fa-code',
+            glyph: 'glyphicon glyphicon-console',
+            fa: 'fa fa-code',
             'fa-3': 'icon-code',
+            'fa-5': 'fas fa-code',
             octicons: 'octicon octicon-code'
           },
           callback: function(e) {
@@ -1301,8 +1392,9 @@
           title: 'Quote',
           icon: {
             glyph: 'glyphicon glyphicon-comment',
-            fa: 'fas fa-quote-left',
+            fa: 'fa fa-quote-left',
             'fa-3': 'icon-quote-left',
+            'fa-5': 'fas fa-quote-left',
             octicons: 'octicon octicon-quote'
           },
           callback: function(e) {
@@ -1359,8 +1451,9 @@
           btnClass: 'btn btn-primary btn-sm',
           icon: {
             glyph: 'glyphicon glyphicon-search',
-            fa: 'fas fa-search',
+            fa: 'fa fa-search',
             'fa-3': 'icon-search',
+            'fa-5': 'fas fa-search',
             octicons: 'octicon octicon-search'
           },
           callback: function(e) {
@@ -1369,7 +1462,7 @@
               content;
 
             if (isPreview === false) {
-              // Give flag that tell the editor enter preview mode
+              // Give flag that tells the editor to enter preview mode
               e.showPreview();
             } else {
               e.hidePreview();
@@ -1378,6 +1471,7 @@
         }]
       }]
     ],
+    customIcons: {},
     additionalButtons: [], // Place to hook more buttons by code
     reorderButtonGroups: [],
     hiddenButtons: [], // Default hidden buttons
@@ -1387,16 +1481,24 @@
       enable: true,
       icons: {
         fullscreenOn: {
-          fa: 'fas fa-expand',
-          glyph: 'glyphicon glyphicon-fullscreen',
-          'fa-3': 'icon-resize-full',
-          octicons: 'octicon octicon-link-external'
+          name: "fullscreenOn",
+          icon: {
+            fa: 'fa fa-expand',
+            glyph: 'glyphicon glyphicon-fullscreen',
+            'fa-3': 'icon-resize-full',
+            'fa-5': 'fas fa-expand-arrows-alt',
+            octicons: 'octicon octicon-link-external'
+          }
         },
         fullscreenOff: {
-          fa: 'fas fa-compress',
-          glyph: 'glyphicon glyphicon-fullscreen',
-          'fa-3': 'icon-resize-small',
-          octicons: 'octicon octicon-browser'
+          name: "fullscreenOff",
+          icon: {
+            fa: 'fa fa-compress',
+            glyph: 'glyphicon glyphicon-fullscreen',
+            'fa-3': 'icon-resize-small',
+            'fa-5': 'fas fa-compress',
+            octicons: 'octicon octicon-browser'
+          }
         }
       }
     },
@@ -1404,6 +1506,7 @@
     /* Events hook */
     onShow: function(e) {},
     onPreview: function(e) {},
+    onPreviewEnd: function(e) {},
     onSave: function(e) {},
     onBlur: function(e) {},
     onFocus: function(e) {},
