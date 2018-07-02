@@ -20,6 +20,7 @@ module GlyphExtension
 
   # Render glyph html
   def glyph
+    options[:content] = content if options[:text] == false
     UiBibz::Utils::GlyphChanger.new(options[:glyph], options).render
   end
 

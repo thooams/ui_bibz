@@ -19,7 +19,7 @@ module UiBibz::Utils
     def format_opts
       glyph_name      = @glyph_options.try(:[], :name)
       glyph_opts      = @glyph_options
-      glyph_html_opts = @options[:text].nil? ? {} : (@options[:text] ? {} : { title: @options[:label] })
+      glyph_html_opts = @options[:text].nil? ? {} : (@options[:text] ? {} : { title: @options[:content] })
       glyph_items     = @glyph_options.try(:[], :items) || []
 
       [glyph_name, glyph_opts, glyph_html_opts, glyph_items]
@@ -31,7 +31,7 @@ module UiBibz::Utils
       else
         glyph_name      = @glyph_options
         glyph_opts      = @options
-        glyph_html_opts = {}
+        glyph_html_opts = @options[:text].nil? ? {} : (@options[:text] ? {} : { title: @options[:content] })
       end
 
       UiBibz::Ui::Core::Icons::Glyph.new(glyph_name, glyph_opts, glyph_html_opts).render unless glyph_name.nil?
