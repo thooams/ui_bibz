@@ -58,7 +58,7 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
     arel (9.0.0)
-    autoprefixer-rails (8.6.4)
+    autoprefixer-rails (8.6.5)
       execjs
     awesome_print (1.8.0)
     bootstrap (4.1.1)
@@ -119,7 +119,7 @@ GEM
     mini_portile2 (2.3.0)
     minitest (5.11.3)
     nio4r (2.3.1)
-    nokogiri (1.8.3)
+    nokogiri (1.8.4)
       mini_portile2 (~> 2.3.0)
     popper_js (1.12.9)
     rack (2.0.5)
@@ -166,8 +166,7 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
-    sassc (1.11.4)
-      bundler
+    sassc (1.12.1)
       ffi (~> 1.9.6)
       sass (>= 3.3.0)
     sexp_processor (4.11.0)
