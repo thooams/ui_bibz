@@ -21,6 +21,7 @@ module GlyphExtension
   # Render glyph html
   def glyph
     options[:content] = content if options[:text] == false
+    options.delete(:status)
     UiBibz::Utils::GlyphChanger.new(options[:glyph], options).render
   end
 
