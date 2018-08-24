@@ -49,7 +49,7 @@ module UiBibz::Ui::Core::Notifications::Components
 
     # Render html tag
     def pre_render
-      content_tag :div, '', html_options
+      content_tag :div, text, html_options
     end
 
   private
@@ -70,7 +70,6 @@ module UiBibz::Ui::Core::Notifications::Components
       'progress-bar-animated' unless options[:animated].nil?
     end
 
-
     def min
       options[:min] || 0
     end
@@ -85,6 +84,16 @@ module UiBibz::Ui::Core::Notifications::Components
 
     def status
       "bg-#{ options[:status] }" unless options[:status].nil?
+    end
+
+    def text
+      if options[:label].nil?
+        "#{ value }%"
+      elsif options[:label] == false
+        ""
+      else
+        options[:label]
+      end
     end
 
   end

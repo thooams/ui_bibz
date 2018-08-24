@@ -41,7 +41,8 @@
 @UiBibz = class UiBibz
 
   constructor: (args = {}) ->
-    @turbolinks = args.turbolinks
+    @turbolinks    = args.turbolinks
+    @fontawesomejs = args.fontawesomejs || true
     return this
 
   load: ->
@@ -63,3 +64,4 @@
       $(document).on('turbolinks:load', me.load) # catch event for turbolinks and fix in ready() function
     else
       $(document).on('ready', me.load)
+
