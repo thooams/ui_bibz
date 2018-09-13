@@ -40,7 +40,7 @@ module UiBibz::Ui::Core::Forms::Dropdowns::Components
 
     # Render html tag
     def pre_render
-      content_tag :h6, content, html_options
+      content_tag :h6, glyph_and_content_html, html_options
     end
 
   private

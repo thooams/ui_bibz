@@ -1,6 +1,6 @@
 #= require jquery2
 #= require jquery-ui.min
-#= require fontawesome-all.min
+#= require all
 
 # multi_column_field component
 #= require jquery.quicksearch.min
@@ -41,10 +41,16 @@
 @UiBibz = class UiBibz
 
   constructor: (args = {}) ->
-    @turbolinks = args.turbolinks
+    @turbolinks    = args.turbolinks
+    @fontawesomejs = args.fontawesomejs || true
     return this
 
   load: ->
+    # https://github.com/tomkra/font_awesome5_rails/issues/17
+    FontAwesome.config =
+      observeMutations: false
+    FontAwesome.dom.i2svg()
+
     new window.UiBibzTable()
     new window.UiBibzForm()
     new window.UiBibzInterface()
@@ -58,3 +64,4 @@
       $(document).on('turbolinks:load', me.load) # catch event for turbolinks and fix in ready() function
     else
       $(document).on('ready', me.load)
+

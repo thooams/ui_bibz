@@ -24,6 +24,14 @@ module UiBibz::Helpers::Ui::Core::IconsHelper
     UiBibz::Ui::Core::Icons::GlyphGroup.new(content, options, html_options).tap(&block).render
   end
 
+  # Glyph Changer
+  #
+  # +options+ (Hash)
+  #
+  def ui_glyph_or_glyph_group glyph_options, options = {}
+    UiBibz::Utils::GlyphChanger.new(glyph_options, options).render
+  end
+
   # Stars Component
   #
   # +options+ (Hash)
@@ -31,4 +39,5 @@ module UiBibz::Helpers::Ui::Core::IconsHelper
   def ui_star content = nil, options = nil, html_options = nil, &block
     UiBibz::Ui::Core::Icons::Star.new(content, options, html_options, &block).render
   end
+
 end

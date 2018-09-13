@@ -3,7 +3,7 @@ require 'will_paginate'
 require 'jquery-rails'
 require 'popper_js'
 require 'bootstrap'
-require 'simple_form' if system('gem list -i simple_form')
+require 'simple_form' if system('gem list -i simple_form', :out => File::NULL)
 
 module UiBibz
   module Rails
@@ -22,6 +22,10 @@ module UiBibz
 
       initializer "ui_bibz.helpers.form" do
         ActionView::Base.send :include, UiBibzForm
+      end
+
+      initializer 'font-awesome-sass.assets.precompile', group: :all do |app|
+        config.assets.precompile << /\.(?:svg|eot|woff|woff2|ttf)\z/
       end
 
     end

@@ -35,6 +35,7 @@ module UiBibz
 
   module Utils
     autoload :Screwdriver,             "ui_bibz/utils/screwdriver"
+    autoload :GlyphChanger,            "ui_bibz/utils/glyph_changer"
   end
 
   module Ui

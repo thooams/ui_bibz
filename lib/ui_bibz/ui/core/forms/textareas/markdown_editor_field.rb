@@ -86,7 +86,7 @@ module UiBibz::Ui::Core::Forms::Textareas
     end
 
     def icon_library
-      add_html_data('iconlibrary', 'fa')
+      add_html_data('iconlibrary', 'fa-5')
     end
 
     def hidden_buttons

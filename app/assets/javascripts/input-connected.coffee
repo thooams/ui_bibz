@@ -1,6 +1,7 @@
 (($) ->
 
   updateOptionsHtml = (data, componentTarget) ->
+    console.log data
     componentTarget.children('option:not([value=""])').remove()
 
     if Array.isArray(data)
@@ -14,7 +15,7 @@
 
   appendToElement = (data, element) ->
     data.forEach (opt) ->
-      element.append($("<option></option>").attr("value", opt.value).text(opt.text))
+      element.append($("<option></option>").attr("value", opt.value || opt[1]).text(opt.text || opt[0]))
 
   updateTargetComponent = (data, componentTarget, component) ->
     updateOptionsHtml(data, componentTarget)
