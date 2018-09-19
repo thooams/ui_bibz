@@ -68,7 +68,7 @@ module UiBibz::Ui::Core::Layouts
     def col_classes
       kl = []
       @options.each do |ke,va|
-        kl << write_classes(ke, va) if %i(xs sm md lg xl).include?(ke)
+        kl << write_classes(ke, va) if %w(xs sm md lg xl).include?(ke)
       end
       if not_col_options?
         kl = "col"
@@ -79,11 +79,11 @@ module UiBibz::Ui::Core::Layouts
     end
 
     def not_col_options?
-      (@options.keys & %i(xs sm md lg xl num offset push pull)).empty?
+      (@options.keys & %w(xs sm md lg xl num offset push pull)).empty?
     end
 
     def write_classes size, opts
-      opts.map{ |k, v| send(k, size.to_sym, v) if %i(num offset push pull).include?(k) }.join(' ')
+      opts.map{ |k, v| send(k, size.to_sym, v) if %w(num offset push pull).include?(k) }.join(' ')
     end
 
     # col-md-9

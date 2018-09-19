@@ -151,7 +151,7 @@ module UiBibz::Ui::Core
     end
 
     def init_options
-      @options = component_options.merge(@options)
+      @options = component_options.merge(@options).with_indifferent_access
     end
 
     def initialize_component_html_data
