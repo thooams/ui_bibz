@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    ui_bibz (2.0.10)
+    ui_bibz (2.1.1)
       bootstrap (= 4.1.1)
       haml
       haml-rails
