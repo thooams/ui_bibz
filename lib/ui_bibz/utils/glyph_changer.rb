@@ -1,3 +1,6 @@
+# Glyph changer
+#
+#  => ui_link 'My link', url: '#', glyph: { type: :group, items: [{ name: 'circle', stataus: :danger },{ name: 'times', inverse: true, transform:'shrink-6'}] }
 module UiBibz::Utils
   class GlyphChanger
 
