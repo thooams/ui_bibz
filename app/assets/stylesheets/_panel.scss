@@ -47,7 +47,7 @@
   }
 
   // Select last panel-toolbar
-  > .panel-toolbar:nth-last-child(2), .panel-toolbar:nth-last-child(1){
+  > .panel-toolbar:nth-last-child{
     border-bottom: none;
   }
 }
@@ -93,7 +93,7 @@
   border-bottom: $panel-border-width solid $panel-border-color;
   display: flex;
 
-  div {
+  > div:not(.dropdown) {
     position: relative;
     display: inline-flex;
     vertical-align: middle;

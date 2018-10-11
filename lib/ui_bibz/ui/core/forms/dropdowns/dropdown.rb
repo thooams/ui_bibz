@@ -110,7 +110,7 @@ module UiBibz::Ui::Core::Forms::Dropdowns
     end
 
     def button_content
-      [glyph_with_space, @content, ' ', caret].compact.join.html_safe
+      [glyph_and_content_html(options[:text].nil? ? @content : ''), ' ', caret].compact.join.html_safe
     end
 
     def button_html

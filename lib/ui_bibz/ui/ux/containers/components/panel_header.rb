@@ -1,3 +1,4 @@
+require 'ui_bibz/ui/ux/containers/components/panel_tab_group'
 module UiBibz::Ui::Ux::Containers::Components
 
   # Create a panel header
@@ -50,6 +51,14 @@ module UiBibz::Ui::Ux::Containers::Components
 
     def actions content = nil, options = nil, html_options = nil, &block
       @actions = UiBibz::Ui::Core::Forms::Buttons::ButtonGroup.new(content, options, html_options).tap(&block).render
+    end
+
+    def tab_group content = nil, options = nil, html_options = nil, &block
+      if is_tap(content, options)
+        @content = PanelTabGroup.new(content, options, html_options).tap(&block).render
+      else
+        @content = PanelTabGroup.new(content, options, html_options, &block).render
+      end
     end
 
     private
