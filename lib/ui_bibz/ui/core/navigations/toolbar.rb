@@ -1,3 +1,4 @@
+require 'ui_bibz/ui/core/navigations/components/toolbar_form'
 module UiBibz::Ui::Core::Navigations
 
   # Create a toolbar
@@ -70,7 +71,13 @@ module UiBibz::Ui::Core::Navigations
 
     def spacer num = "auto"
       kls = "mr-#{ num }"
-      @items.last.html_options[:class] = @items.last.html_options[:class].nil? ? kls : join_classes(@items.last.html_options[:class], kls)
+      @items.last.html_options["class"] = join_classes(@items.last.html_options.delete(:class), @items.last.html_options[:class], kls)
+    end
+
+    # Add navbar form items
+    # See UiBibz::Ui::Core::ToolbarForm
+    def form model_or_url, options = {}, &block
+      @items << UiBibz::Ui::Core::Navigations::ToolbarForm.new(model_or_url, options, &block)
     end
 
   private

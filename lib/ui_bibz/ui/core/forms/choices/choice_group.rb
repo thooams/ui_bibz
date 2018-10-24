@@ -65,7 +65,7 @@ module UiBibz::Ui::Core::Forms::Choices
     private
 
     def component_html_classes
-      super << ['button-choice', "btn-group-toggle"]
+      super << ['button-choice', "btn-group-toggle", options.delete(:class)]
     end
 
     def component_html_options

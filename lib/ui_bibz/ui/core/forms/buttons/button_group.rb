@@ -92,6 +92,10 @@ module UiBibz::Ui::Core::Forms::Buttons
       @items << UiBibz::Ui::Core::Component.new(content, options, html_options, &block).render
     end
 
+    def choice_group content = nil, options = nil, html_options = nil, &block
+      @items << UiBibz::Ui::Core::Forms::Choices::ChoiceGroup.new(content, options, html_options).tap(&block).render
+    end
+
   private
 
     def component_html_classes

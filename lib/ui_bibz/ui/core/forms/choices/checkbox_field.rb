@@ -58,14 +58,15 @@ module UiBibz::Ui::Core::Forms::Choices
   private
 
     def checkbox_field_html_tag
-      content_tag :div, html_options.except(:id) do
+      options[:action] = html_options[:data].delete(:action)
+      content_tag :div, html_options.except(:id, "data-action") do
         concat check_box_tag content, options[:value], options[:checked] || false, checkbox_html_options
         concat label_tag label_name, label_content, label_html_options
       end
     end
 
     def checkbox_html_options
-      { class: 'form-check-input', disabled: options[:state] == :disabled }
+      { class: 'form-check-input', disabled: options[:state] == :disabled, "data-action": options[:action] }
     end
 
     def label_name
