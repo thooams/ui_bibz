@@ -69,8 +69,8 @@ module UiBibz::Ui::Core::Icons
       stars = []
       number.times do |star|
         star += 1
-        name = star_name(star)
-        stars << UiBibz::Ui::Core::Icons::Glyph.new(name, glyph_opts).render
+        star_options = star_name(star).merge(glyph_opts)
+        stars << UiBibz::Ui::Core::Icons::Glyph.new(star_options).render
       end
       stars
     end
@@ -84,11 +84,11 @@ module UiBibz::Ui::Core::Icons
 
     def star_name star
       if star <= content
-        'star'
+        { name: 'star', style: :solid }
       elsif star > content && !content.is_a?(Integer) && star < content + 1
-        'star-half-o'
+        { name: 'star-half-alt', style: :solid }
       else
-        'star-o'
+        { name: 'star', style: :regular }
       end
     end
 
