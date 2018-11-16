@@ -34,7 +34,8 @@ module UiBibz::Utils
       else
         glyph_name      = @glyph_options
         glyph_opts      = @options
-        glyph_html_opts = @options[:text].nil? ? {} : (@options[:text] ? {} : { title: @options[:content] })
+        title           = [(@options[:content] unless @options[:text]), ("<kbd>#{ @options[:shortcut] }</kbd>" unless @options[:shortcut].nil?)].compact.join(" ")
+        glyph_html_opts = title.blank? ? {} : { title: title.html_safe }
       end
 
       UiBibz::Ui::Core::Icons::Glyph.new(glyph_name, glyph_opts, glyph_html_opts).render unless glyph_name.nil?
