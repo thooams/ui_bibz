@@ -28,7 +28,14 @@ module UiBibz
         config.assets.precompile << /\.(?:svg|eot|woff|woff2|ttf)\z/
       end
 
+      config.after_initialize do
+        unless UiBibz.configured?
+          warn '[Ui Bibz] Ui Bibz is not configured in the application and will use the default values.' + ' Use `rails generate ui_bibz:install` to generate the Ui Bibz configuration.'
+        end
+      end
+
     end
+
   end
 end
 
