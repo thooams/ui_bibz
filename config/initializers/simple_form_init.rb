@@ -5,6 +5,3 @@ unless defined?(SimpleForm).nil?
     config.custom_inputs_namespaces << "UiBibzInputs"
   end
 end
-
-# no "require" in file in ui directory
-#Rails.application.config.eager_load_paths += Dir[Rails.root.join("app", "ui", "**")]

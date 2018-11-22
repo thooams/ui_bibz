@@ -31,8 +31,34 @@ end
 
 module UiBibz
 
+  @@configured = false
+
+  # Configuration of Ui Bibz
+  class << self
+    attr_accessor :configuration
+  end
+
+  def self.configured? #:nodoc:
+    @@configured
+  end
+
+  def self.configure
+    self.configuration ||= Configuration.new
+    @@configured = true
+    yield(configuration)
+  end
+
+  class Configuration
+    attr_accessor :fontawesomejs
+
+    def initialize
+      @fontawesomejs = true
+    end
+  end
+
   mattr_accessor :app_root
 
+  # Add modules
   module Utils
     autoload :Screwdriver,             "ui_bibz/utils/screwdriver"
     autoload :GlyphChanger,            "ui_bibz/utils/glyph_changer"
