@@ -1,6 +1,6 @@
 # Code climate
 require 'simplecov'
-SimpleCov.start
+SimpleCov.start 'rails'
 
 # Configure Rails Environment
 ENV["RAILS_ENV"] = "test"
