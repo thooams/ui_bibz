@@ -46,10 +46,11 @@
     border-bottom: $panel-border-width solid $panel-border-color;
   }
 
-  // Select last panel-toolbar
-  > .panel-toolbar:nth-last-child{
-    border-bottom: none;
+  > .panel-toolbar ~ .panel-toolbar {
+    border-bottom: none !important;
   }
+  // Select last panel-toolbar
+
 }
 
 .panel-body {
