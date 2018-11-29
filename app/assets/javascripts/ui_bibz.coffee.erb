@@ -60,8 +60,12 @@
 
   ready: ->
     me = this
+    console.log "ready"
     if @turbolinks?
-      $(document).on('turbolinks:load', me.initial()) # catch event for turbolinks and fix in ready() function
+      $(document).on 'turbolinks:load', ->
+        me.initial() # catch event for turbolinks and fix in ready() function
     else
-      $(document).on('ready', me.initial())
+      $ ->
+        me.initial()
+    return false
 
