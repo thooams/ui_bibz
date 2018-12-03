@@ -106,11 +106,11 @@ module UiBibz::Ui::Core::Forms::Dropdowns
   protected
 
     def component_html_classes
-      [type, open, inline]
+      [type, open, inline, without_caret]
     end
 
     def button_content
-      [glyph_and_content_html(options[:text].nil? ? @content : ''), ' ', caret].compact.join.html_safe
+      glyph_and_content_html(options[:text].nil? ? @content : '').html_safe
     end
 
     def button_html
@@ -122,11 +122,7 @@ module UiBibz::Ui::Core::Forms::Dropdowns
     end
 
     def ul_html
-      content_tag :div, @items.join.html_safe, class: join_classes("dropdown-menu", position, open), "arial-labelledby" => id
-    end
-
-    def caret
-      content_tag :span, '', class: 'caret'
+      content_tag :div, @items.join.html_safe, class: join_classes("dropdown-menu", position, open, ), "arial-labelledby" => id
     end
 
     def dropdown_tag
@@ -147,6 +143,10 @@ module UiBibz::Ui::Core::Forms::Dropdowns
 
     def inline
       "btn-group" if @options[:inline]
+    end
+
+    def without_caret
+      "without-caret" if @options[:caret] == false
     end
 
     def outline

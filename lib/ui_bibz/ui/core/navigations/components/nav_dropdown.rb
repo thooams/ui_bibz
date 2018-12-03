@@ -59,7 +59,7 @@ module UiBibz::Ui::Core::Navigations
   private
 
     def component_html_classes
-      [type, 'nav-item']
+      [type, 'nav-item', without_caret]
     end
 
     def link_html
