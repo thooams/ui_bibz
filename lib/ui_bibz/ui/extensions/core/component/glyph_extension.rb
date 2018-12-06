@@ -30,9 +30,10 @@ module GlyphExtension
       {}
     end
 
-    glyph_options[:text]     = options[:text] unless options[:text].nil?
-    glyph_options[:content]  = options[:content] unless options[:content].nil?
-    glyph_options[:shortcut] = options[:shortcut] unless options[:shortcut].nil?
+    glyph_options[:text]       = options[:text] unless options[:text].nil?
+    glyph_options[:content]    = options[:content] unless options[:content].nil?
+    glyph_options[:shortcut]   = options[:shortcut] unless options[:shortcut].nil?
+    glyph_options[:html_options] = options[:html_options]  unless options[:html_options].nil?
 
     UiBibz::Utils::GlyphChanger.new(glyph_options[:name], glyph_options).render unless glyph_options[:name].nil?
   end
