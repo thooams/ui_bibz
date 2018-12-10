@@ -6,7 +6,7 @@ class DropdownTest < ActionView::TestCase
     actual = UiBibz::Ui::Core::Forms::Dropdowns::Dropdown.new("Dropdown").tap do |d|
       d.link 'link'
     end
-    expected = "<div class=\"dropdown\"><button class=\"btn btn-secondary dropdown-toggle\" type=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\" id=\"#{ actual.id }\">Dropdown <span class=\"caret\"></span></button><div class=\"dropdown-menu\" arial-labelledby=\"#{ actual.id }\"><a class=\"dropdown-item\" href=\"#\">link</a></div></div>"
+    expected = "<div class=\"dropdown\"><button class=\"btn btn-secondary dropdown-toggle\" type=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\" id=\"#{ actual.id }\">Dropdown</button><div class=\"dropdown-menu\" arial-labelledby=\"#{ actual.id }\"><a class=\"dropdown-item\" href=\"#\">link</a></div></div>"
 
     assert_equal expected, actual.render
   end
@@ -15,7 +15,7 @@ class DropdownTest < ActionView::TestCase
     actual = UiBibz::Ui::Core::Forms::Dropdowns::Dropdown.new("Dropdown", status: :primary).tap do |d|
       d.link 'link'
     end
-    expected = "<div class=\"dropdown\"><button class=\"btn btn-primary dropdown-toggle\" type=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\" id=\"#{ actual.id }\">Dropdown <span class=\"caret\"></span></button><div class=\"dropdown-menu\" arial-labelledby=\"#{ actual.id }\"><a class=\"dropdown-item\" href=\"#\">link</a></div></div>"
+    expected = "<div class=\"dropdown\"><button class=\"btn btn-primary dropdown-toggle\" type=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\" id=\"#{ actual.id }\">Dropdown</button><div class=\"dropdown-menu\" arial-labelledby=\"#{ actual.id }\"><a class=\"dropdown-item\" href=\"#\">link</a></div></div>"
 
     assert_equal expected, actual.render
   end
@@ -24,7 +24,7 @@ class DropdownTest < ActionView::TestCase
     actual = UiBibz::Ui::Core::Forms::Dropdowns::Dropdown.new("Dropdown", status: :primary, outline: true).tap do |d|
       d.link 'link'
     end
-    expected = "<div class=\"dropdown\"><button class=\"btn btn-outline-primary dropdown-toggle\" type=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\" id=\"#{ actual.id }\">Dropdown <span class=\"caret\"></span></button><div class=\"dropdown-menu\" arial-labelledby=\"#{ actual.id }\"><a class=\"dropdown-item\" href=\"#\">link</a></div></div>"
+    expected = "<div class=\"dropdown\"><button class=\"btn btn-outline-primary dropdown-toggle\" type=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\" id=\"#{ actual.id }\">Dropdown</button><div class=\"dropdown-menu\" arial-labelledby=\"#{ actual.id }\"><a class=\"dropdown-item\" href=\"#\">link</a></div></div>"
 
     assert_equal expected, actual.render
   end
@@ -37,7 +37,7 @@ class DropdownTest < ActionView::TestCase
       d.divider
       d.link 'Link3', url: '#link3'
     end
-    expected = "<div class=\"dropup\"><button class=\"btn btn-success dropdown-toggle\" type=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\" id=\"#{ actual.id }\"><i class=\"glyph fas fa-diamond\"></i>  Dropdown <span class=\"caret\"></span></button><div class=\"dropdown-menu\" arial-labelledby=\"#{ actual.id }\"><a class=\"dropdown-item\" href=\"#link1\"><i class=\"glyph fas fa-eye\"></i>  Link 1</a><h6 class=\"dropdown-header\" role=\"presentation\">header</h6><a class=\"dropdown-item\" href=\"#link2\">Link 2</a><div class=\"dropdown-divider\"></div><a class=\"dropdown-item\" href=\"#link3\">Link3</a></div></div>"
+    expected = "<div class=\"dropup\"><button class=\"btn btn-success dropdown-toggle\" type=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\" id=\"#{ actual.id }\"><i class=\"glyph fas fa-diamond\"></i>  Dropdown</button><div class=\"dropdown-menu\" arial-labelledby=\"#{ actual.id }\"><a class=\"dropdown-item\" href=\"#link1\"><i class=\"glyph fas fa-eye\"></i>  Link 1</a><h6 class=\"dropdown-header\" role=\"presentation\">header</h6><a class=\"dropdown-item\" href=\"#link2\">Link 2</a><div class=\"dropdown-divider\"></div><a class=\"dropdown-item\" href=\"#link3\">Link3</a></div></div>"
 
     assert_equal expected, actual.render
   end
@@ -46,7 +46,7 @@ class DropdownTest < ActionView::TestCase
     actual = UiBibz::Ui::Core::Forms::Dropdowns::Dropdown.new("Split Dropdown").tap do |d|
       d.link 'state'
     end
-    expected = "<div class=\"dropdown\"><button class=\"btn btn-secondary dropdown-toggle\" type=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\" id=\"#{ actual.id }\">Split Dropdown <span class=\"caret\"></span></button><div class=\"dropdown-menu\" arial-labelledby=\"#{ actual.id }\"><a class=\"dropdown-item\" href=\"#\">state</a></div></div>"
+    expected = "<div class=\"dropdown\"><button class=\"btn btn-secondary dropdown-toggle\" type=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\" id=\"#{ actual.id }\">Split Dropdown</button><div class=\"dropdown-menu\" arial-labelledby=\"#{ actual.id }\"><a class=\"dropdown-item\" href=\"#\">state</a></div></div>"
 
     assert_equal expected, actual.render
   end
