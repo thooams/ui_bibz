@@ -91,9 +91,5 @@ module UiBibz::Ui::Core::Forms::Dropdowns
       content_tag :span, "Toggle Dropdown", class: "sr-only"
     end
 
-    def button_content
-      [glyph_with_space, content].compact.join.html_safe
-    end
-
   end
 end

@@ -1,4 +1,5 @@
 require 'ui_bibz/ui/core/forms/buttons/components/button_group_dropdown'
+require 'ui_bibz/ui/core/forms/buttons/components/button_group_split_dropdown'
 module UiBibz::Ui::Core::Forms::Buttons
 
   # Create a button group
@@ -80,6 +81,11 @@ module UiBibz::Ui::Core::Forms::Buttons
     def dropdown content, options = {}, html_options = nil, &block
       options = @options.merge(options)
       @items << ButtonGroupDropdown.new(content, options, html_options).tap(&block).render
+    end
+
+    def split_dropdown content, options = {}, html_options = nil, &block
+      options = @options.merge(options)
+      @items << ButtonGroupSplitDropdown.new(content, options, html_options).tap(&block).render
     end
 
     def input attribute_name, options = {}, &block
