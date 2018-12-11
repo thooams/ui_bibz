@@ -1,5 +1,6 @@
 module UiBibzInputs
   class BaseInput < SimpleForm::Inputs::Base
+    include ActionView::Helpers::FormTagHelper
 
     def input(wrapper_options)
       super
@@ -12,7 +13,9 @@ module UiBibzInputs
     private
 
     def input_attribute_name
-      "#{ @builder.object.class.name.gsub('::', "").underscore }[#{ attribute_name }]"
+      new_attribute_name = "#{ @builder.lookup_model_names.first }"
+      new_attribute_name += "[#{ @builder.lookup_model_names.second }_attributes]" if @builder.lookup_model_names.second
+      new_attribute_name += "[#{ attribute_name }]"
     end
 
   end

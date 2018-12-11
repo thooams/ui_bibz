@@ -6,8 +6,5 @@ module UiBibzInputs
       UiBibz::Ui::Core::Forms::Texts::TextField.new(input_attribute_name, options, input_html_options).render
     end
 
-    def input_attribute_name
-      "#{ @builder.object.class.name.gsub('::', "").underscore }[#{ attribute_name }]"
-    end
   end
 end
