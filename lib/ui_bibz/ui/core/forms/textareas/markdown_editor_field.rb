@@ -53,7 +53,7 @@ module UiBibz::Ui::Core::Forms::Textareas
 
     # Render html tag
     def pre_render
-      text_area_tag content, html_options[:value], html_options
+      text_area_tag content, options[:value] || html_options[:value], html_options
     end
 
     private
