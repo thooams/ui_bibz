@@ -1,6 +1,7 @@
 require 'haml'
 require 'ui_bibz/ui/extensions/core/component/klass_extension'
 require 'ui_bibz/ui/extensions/core/component/glyph_extension'
+require 'ui_bibz/ui/extensions/core/component/popover_extension'
 module UiBibz::Ui::Core
 
   # Creates a component of the given +name+ using options created by the set of +options+.
@@ -41,6 +42,7 @@ module UiBibz::Ui::Core
   class Component < UiBibz::Ui::Base
     include KlassExtension
     include GlyphExtension
+    include PopoverExtension
 
     # Constants
     STATUSES = %i(primary secondary success danger warning info light dark)
@@ -156,6 +158,7 @@ module UiBibz::Ui::Core
 
     def initialize_component_html_data
       component_html_data
+      popover_data_html
     end
 
     def initialize_component_html_options

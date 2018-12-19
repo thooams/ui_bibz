@@ -95,8 +95,12 @@ module UiBibz::Ui::Core::Forms::Dropdowns
     end
 
     # Add html component
-    def html content
-      @items << content
+    def html &content
+      if block_given?
+        @items <<  yield
+      else
+        @item << content
+      end
     end
 
     def id

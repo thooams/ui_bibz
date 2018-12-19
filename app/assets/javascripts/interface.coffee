@@ -12,7 +12,7 @@
     #$('.nav-tabs .nav-item .nav-link').tab('show')
 
   popover: ->
-    $('[data-toggle="popover"]').popover({ html: true })
+    $('[data-toggle="popover"]').popover()
 
   tooltip: ->
     #$('[data-toggle="tooltip"], [title]').tooltip()
