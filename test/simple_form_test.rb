@@ -84,7 +84,7 @@ class SimpleFormTest < ActionView::TestCase
     end
 
     expected = "<form class=\"simple_form edit_user\" id=\"edit_user_1\" action=\"/users/1\" accept-charset=\"UTF-8\" method=\"post\"><input name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" /><input type=\"hidden\" name=\"_method\" value=\"patch\" /><div class=\"form-group ui_markdown_editor_field optional user_name_fr\"><label class=\"control-label ui_markdown_editor_field optional\" for=\"user_name_fr\">Name fr</label><textarea name=\"user[name_fr]\" id=\"user_name_fr\" class=\"ui_markdown_editor_field optional\" data-provide=\"markdown\" data-iconlibrary=\"fa-5\">
-</textarea></div></form>"
+test1</textarea></div></form>"
 
     assert_equal expected, actual
   end

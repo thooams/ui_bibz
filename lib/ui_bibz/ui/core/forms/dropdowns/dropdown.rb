@@ -95,11 +95,12 @@ module UiBibz::Ui::Core::Forms::Dropdowns
     end
 
     # Add html component
-    def html &content
-      if block_given?
-        @items <<  yield
+    def html content = nil, &block
+      if !block.nil?
+        context  = eval("self", block.binding)
+        @items << context.capture(&block)
       else
-        @item << content
+        @items << content
       end
     end
 
