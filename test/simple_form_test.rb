@@ -136,10 +136,10 @@ test1</textarea></div></form>"
   test 'switch field input in simple form' do
     @user.active = true
     actual = simple_form_for @user do |f|
-      f.input :active, as: :ui_switch_field, collection: @users, label_method: :name_fr
+      f.input :active, as: :ui_box_switch_field, collection: @users, label_method: :name_fr
     end
 
-    expected = "<form class=\"simple_form edit_user\" id=\"edit_user_1\" action=\"/users/1\" accept-charset=\"UTF-8\" method=\"post\"><input name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" /><input type=\"hidden\" name=\"_method\" value=\"patch\" /><div class=\"form-group ui_switch_field optional user_active\"><label class=\"control-label ui_switch_field optional\" for=\"user_active\">Active</label><div class=\"switch-field-container\"><input type=\"hidden\" name=\"user[active]\" id=\"user_active\" value=\"0\" /><input type=\"checkbox\" name=\"user[active]\" id=\"user_active\" value=\"1\" class=\"ui_switch_field optional switch-field\" checked=\"checked\" /></div></div></form>"
+    expected = "<form class=\"simple_form edit_user\" id=\"edit_user_1\" action=\"/users/1\" accept-charset=\"UTF-8\" method=\"post\"><input name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" /><input type=\"hidden\" name=\"_method\" value=\"patch\" /><div class=\"form-group ui_box_switch_field optional user_active\"><label class=\"control-label ui_box_switch_field optional\" for=\"user_active\">Active</label><div class=\"switch-field-container\"><input type=\"hidden\" name=\"user[active]\" id=\"user_active\" value=\"0\" /><input type=\"checkbox\" name=\"user[active]\" id=\"user_active\" value=\"1\" class=\"ui_box_switch_field optional switch-field\" checked=\"checked\" /></div></div></form>"
 
     assert_equal expected, actual
   end
@@ -210,6 +210,26 @@ test1</textarea></div></form>"
 
     expected = "<form class=\"simple_form edit_user\" id=\"edit_user_1\" action=\"/users/1\" accept-charset=\"UTF-8\" method=\"post\"><input name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" /><input type=\"hidden\" name=\"_method\" value=\"patch\" /><div class=\"form-group ui_select_field optional user_name_fr\"><label class=\"control-label ui_select_field optional\" for=\"user_name_fr\">Name fr</label><select name=\"user[name_fr]\" id=\"user_name_fr\" class=\"select-field form-control\"><optgroup label=\"Europe\"><option selected=\"selected\" value=\"1\">France</option>
 <option value=\"2\">Deutchland</option></optgroup></select></div></form>"
+
+    assert_equal expected, actual
+  end
+
+  test 'number field' do
+    actual = simple_form_for @user do |f|
+      f.input :name_fr, as: :ui_number_field
+    end
+
+    expected = "<form class=\"simple_form edit_user\" id=\"edit_user_1\" action=\"/users/1\" accept-charset=\"UTF-8\" method=\"post\"><input name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" /><input type=\"hidden\" name=\"_method\" value=\"patch\" /><div class=\"form-group ui_number_field optional user_name_fr\"><label class=\"control-label ui_number_field optional\" for=\"user_name_fr\">Name fr</label><input type=\"number\" name=\"user[name_fr]\" id=\"user_name_fr\" value=\"test1\" class=\"ui_number_field optional form-control\" /></div></form>"
+
+    assert_equal expected, actual
+  end
+
+  test 'range field' do
+    actual = simple_form_for @user do |f|
+      f.input :name_fr, as: :ui_range_field
+    end
+
+    expected = "<form class=\"simple_form edit_user\" id=\"edit_user_1\" action=\"/users/1\" accept-charset=\"UTF-8\" method=\"post\"><input name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" /><input type=\"hidden\" name=\"_method\" value=\"patch\" /><div class=\"form-group ui_range_field optional user_name_fr\"><label class=\"control-label ui_range_field optional\" for=\"user_name_fr\">Name fr</label><input type=\"range\" name=\"user[name_fr]\" id=\"user_name_fr\" value=\"test1\" class=\"ui_range_field optional custom-range\" /></div></form>"
 
     assert_equal expected, actual
   end

@@ -15,9 +15,6 @@ module UiBibz::Ui::Core::Forms::Choices
   # You can add HTML attributes using the +html_options+.
   # You can pass arguments in options attribute:
   # * +value+ - String, Integer, Boolean [required]
-  # * +status+ - status of élement with symbol value:
-  #   (+:default+, +:primary+, +:success+, +:info+, +:warning+, +:danger+)
-  # * +type+ - Symbol (:radio, :checkbox)
   #
   # ==== Signatures
   #
@@ -43,7 +40,7 @@ module UiBibz::Ui::Core::Forms::Choices
   #     content
   #   end
   #
-  class RadioField < UiBibz::Ui::Core::Component
+  class RadioField < UiBibz::Ui::Core::Forms::Choices::CheckboxField
 
     # See UiBibz::Ui::Core::Component.initialize
     def initialize content = nil, options = nil, html_options = nil, &block
@@ -60,51 +57,24 @@ module UiBibz::Ui::Core::Forms::Choices
     def radio_field_html_tag
       content_tag :div, html_options.except(:id) do
         concat radio_button_tag content, options[:value], options[:checked] || false, checkbox_html_options
-        concat label_tag label_name, label_content, label_html_options
+        concat label_tag label_name, label_content, class: 'custom-control-label'
       end
     end
 
     def checkbox_html_options
-      { disabled: options[:state] == :disabled }
-    end
-
-    def label_html_options
-      options[:label] == false ? { class: 'fix-label' } : nil
+      {
+        disabled: options[:state] == :disabled,
+        "data-action": options[:action],
+        class: 'custom-control-input'
+      }
     end
 
     def label_name
       "#{ content }_#{ options[:value] }"
     end
 
-    def label_content
-      case options[:label]
-      when nil
-        content
-      when false
-        " "
-      else
-        options[:label]
-      end
-    end
-
-    def status
-      "abc-#{ type }-#{ options[:status] || :default  }"
-    end
-
-    def type
-      if !options[:type].nil? && options[:type] == :square
-        :checkbox
-      else
-        :radio
-      end
-    end
-
-    def inline
-      "#{ type }-inline" unless options[:inline].nil?
-    end
-
     def component_html_classes
-      [type, "abc-#{ type }", inline]
+      ["custom-control", "custom-radio", inline]
     end
 
   end

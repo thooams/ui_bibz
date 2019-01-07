@@ -17,6 +17,11 @@ module UiBibz::Ui::Core::Forms::Numbers
   # You can pass arguments in options attribute:
   # * +prepend+ - String, Html
   # * +append+ - String, Html
+  # * +max+ - [Float, Integer]
+  # * +min+ - [Float, Integer]
+  # * +step+ - [Float, Integer]
+  # * +in+ - Array
+  # * +within+ - Array
   #
   # ==== Signatures
   #
@@ -57,6 +62,16 @@ module UiBibz::Ui::Core::Forms::Numbers
     # Simple_form or not
     def number_field_input_tag
       number_field_tag content, options[:value] || html_options[:value], html_options
+    end
+
+    def component_html_options
+      {
+        min: options[:min],
+        max: options[:max],
+        step: options[:step],
+        in: options[:in],
+        within: options[:within]
+      }
     end
 
   end
