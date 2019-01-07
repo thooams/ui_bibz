@@ -84,6 +84,9 @@ module UiBibz::Ui::Core::Forms::Dates
       days_of_week_disabled
       days_of_week_highlighted
       multiple
+      display_mode
+      display_mode_min
+      display_mode_max
     end
 
     def component_html_classes
@@ -134,6 +137,18 @@ module UiBibz::Ui::Core::Forms::Dates
       add_html_data("date_toggle_active", true)
     end
 
+    def display_mode
+      add_html_data("date_start_view", views[options[:display_mode]]) if options[:display_mode]
+    end
+
+    def display_mode_min
+      add_html_data("date_min_view_mode", views[options[:display_mode_min]]) if options[:display_mode_min]
+    end
+
+    def display_mode_max
+      add_html_data("date_max_view_mode", views[options[:display_mode_max]]) if options[:display_mode_max]
+    end
+
     def days_of_week_disabled
       add_html_data("date_days_of_week_disabled", [options[:days_of_week_disabled]].flatten) if options[:days_of_week_disabled]
     end
@@ -153,6 +168,16 @@ module UiBibz::Ui::Core::Forms::Dates
 
     def status
       "has-#{ options[:status] }" if options[:status]
+    end
+
+    def views
+      {
+        days: 0,
+        months: 1,
+        years: 2,
+        decades:  3,
+        centuries: 4
+      }
     end
 
   end

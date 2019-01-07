@@ -69,7 +69,7 @@ module UiBibz::Ui::Core::Forms::Selects
     end
 
     def component_html_classes
-      super << [size, type, status, 'multi-select-field']
+      super << [size, type, status, button_outline, 'multi-select-field']
     end
 
     def component_html_data
@@ -112,6 +112,14 @@ module UiBibz::Ui::Core::Forms::Selects
     # :lg, :sm or :xs
     def size
       "btn-#{ options[:size] }" if options[:size]
+    end
+
+    def button_outline
+      ["btn", outline, @status || :secondary].compact.join('-')
+    end
+
+    def outline
+      "outline" if @options[:outline]
     end
 
   end

@@ -20,6 +20,10 @@
 
   dropdown: ->
     $('.dropdown-toggle').dropdown()
+    # $('.dropdown-toggle').on 'click', ->
+    #   $(this).next().toggle()
+    # $('.dropdown-menu.keep-open').on 'click', (e) ->
+    #   e.stopPropagation()
 
   notify: ->
     $('.alert').each ->

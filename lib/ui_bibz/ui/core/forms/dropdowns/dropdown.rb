@@ -111,7 +111,7 @@ module UiBibz::Ui::Core::Forms::Dropdowns
   protected
 
     def component_html_classes
-      [type, open, inline, without_caret]
+      [type, open, inline, without_caret, keep_open]
     end
 
     def button_content
@@ -144,6 +144,10 @@ module UiBibz::Ui::Core::Forms::Dropdowns
 
     def open
       "show" if @options[:open]
+    end
+
+    def keep_open
+      "keep-open" if @options[:keep_open]
     end
 
     def inline
