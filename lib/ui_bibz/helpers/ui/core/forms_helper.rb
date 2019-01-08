@@ -84,7 +84,7 @@ module UiBibz::Helpers::Ui::Core::FormsHelper
   #
   # +options+ (Hash)
   # +html_options+ (Hash)
-  def box_ui_switch_field content = nil, options = nil, html_options = nil, &block
+  def ui_box_switch_field content = nil, options = nil, html_options = nil, &block
     UiBibz::Ui::Core::Forms::Choices::BoxSwitchField.new(content, options, html_options, &block).render
   end
 
@@ -178,6 +178,15 @@ module UiBibz::Helpers::Ui::Core::FormsHelper
   # +html_options+ (Hash)
   def ui_range_field name, options = nil, html_options = nil, &block
     UiBibz::Ui::Core::Forms::Numbers::RangeField.new(name, options, html_options, &block).render
+  end
+
+  # File Component
+  #
+  # +name+ (String) [Required]
+  # +options+ (Hash)
+  # +html_options+ (Hash)
+  def ui_file_field name, options = nil, html_options = nil, &block
+    UiBibz::Ui::Core::Forms::Files::FileField.new(name, options, html_options, &block).render
   end
 end
 

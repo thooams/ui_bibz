@@ -14,10 +14,12 @@ module UiBibz::Ui::Core::Forms::Choices
   #
   # You can add HTML attributes using the +html_options+.
   # You can pass arguments in options attribute:
-  # * +value+ - String, Integer, Boolean [required]
-  # * +status+ - status of élement with symbol value:
-  #   (+:default+, +:primary+, +:success+, +:info+, +:warning+, +:danger+)
-  # * +type+ - Symbol (:circle)
+  # * +state+ - Symbol
+  #   (+:active+, +:disabled+)
+  # * +inline+ - Boolean
+  # * +checked+ - Boolean
+  # * +action+ - String Stimulus Option
+  # * +label+ - String
   #
   # ==== Signatures
   #
@@ -37,9 +39,9 @@ module UiBibz::Ui::Core::Forms::Choices
   #
   # ==== Helper
   #
-  #   checkbox(content, options = {}, html_options = {})
+  #   ui_checkbox_field(content, options = {}, html_options = {})
   #
-  #   checkbox(options = {}, html_options = {}) do
+  #   ui_checkbox_field(options = {}, html_options = {}) do
   #     content
   #   end
   #
@@ -68,7 +70,7 @@ module UiBibz::Ui::Core::Forms::Choices
 
     def checkbox_html_options
       {
-        disabled: options[:state] == :disabled,
+        disabled: is_disabled?,
         indeterminate: options[:indeterminate],
         "data-action": options[:action],
         class: 'custom-control-input'

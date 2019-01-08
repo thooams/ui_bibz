@@ -149,7 +149,7 @@ test1</textarea></div></form>"
       f.input :name_fr, as: :ui_radio_field, collection: @users, label_method: :name_fr
     end
 
-    expected = "<form class=\"simple_form edit_user\" id=\"edit_user_1\" action=\"/users/1\" accept-charset=\"UTF-8\" method=\"post\"><input name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" /><input type=\"hidden\" name=\"_method\" value=\"patch\" /><div class=\"form-group ui_radio_field optional user_name_fr\"><label class=\"control-label ui_radio_field optional\">Name fr</label><input type=\"hidden\" name=\"user[name_fr]\" value=\"\" /><div class=\"radio ui_radio_field optional abc-radio-default radio abc-radio\"><input class=\"ui_radio_field optional abc-radio-default radio abc-radio\" type=\"radio\" value=\"1\" name=\"user[name_fr]\" id=\"user_name_fr_1\" /><label class=\"collection_radio_buttons\" for=\"user_name_fr_1\">test1</label></div><div class=\"radio ui_radio_field optional abc-radio-default radio abc-radio\"><input class=\"ui_radio_field optional abc-radio-default radio abc-radio\" type=\"radio\" value=\"2\" name=\"user[name_fr]\" id=\"user_name_fr_2\" /><label class=\"collection_radio_buttons\" for=\"user_name_fr_2\">test2</label></div></div></form>"
+    expected = "<form class=\"simple_form edit_user\" id=\"edit_user_1\" action=\"/users/1\" accept-charset=\"UTF-8\" method=\"post\"><input name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" /><input type=\"hidden\" name=\"_method\" value=\"patch\" /><div class=\"form-group ui_radio_field optional user_name_fr\"><label class=\"control-label ui_radio_field optional\">Name fr</label><input type=\"hidden\" name=\"user[name_fr]\" value=\"\" /><div class=\"radio ui_radio_field optional custom-control custom-radio\"><input class=\"ui_radio_field optional custom-control custom-radio\" type=\"radio\" value=\"1\" name=\"user[name_fr]\" id=\"user_name_fr_1\" /><label class=\"collection_radio_buttons\" for=\"user_name_fr_1\">test1</label></div><div class=\"radio ui_radio_field optional custom-control custom-radio\"><input class=\"ui_radio_field optional custom-control custom-radio\" type=\"radio\" value=\"2\" name=\"user[name_fr]\" id=\"user_name_fr_2\" /><label class=\"collection_radio_buttons\" for=\"user_name_fr_2\">test2</label></div></div></form>"
 
     assert_equal expected, actual
   end
@@ -221,6 +221,15 @@ test1</textarea></div></form>"
 
     expected = "<form class=\"simple_form edit_user\" id=\"edit_user_1\" action=\"/users/1\" accept-charset=\"UTF-8\" method=\"post\"><input name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" /><input type=\"hidden\" name=\"_method\" value=\"patch\" /><div class=\"form-group ui_number_field optional user_name_fr\"><label class=\"control-label ui_number_field optional\" for=\"user_name_fr\">Name fr</label><input type=\"number\" name=\"user[name_fr]\" id=\"user_name_fr\" value=\"test1\" class=\"ui_number_field optional form-control\" /></div></form>"
 
+    assert_equal expected, actual
+  end
+
+  test 'file field' do
+    actual = simple_form_for @user do |f|
+      f.input :name_fr, as: :ui_file_field
+    end
+
+    expected = "<form class=\"simple_form edit_user\" id=\"edit_user_1\" action=\"/users/1\" accept-charset=\"UTF-8\" method=\"post\"><input name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" /><input type=\"hidden\" name=\"_method\" value=\"patch\" /><div class=\"form-group ui_file_field optional user_name_fr\"><label class=\"control-label ui_file_field optional\" for=\"user_name_fr\">Name fr</label><div class=\"ui_file_field optional custom-file\"><input type=\"file\" name=\"user[name_fr]\" id=\"user_name_fr\" class=\"custom-file-input\" /><label class=\"custom-file-label\" for=\"user_name_fr\">user[name_fr]</label></div></div></form>"
     assert_equal expected, actual
   end
 

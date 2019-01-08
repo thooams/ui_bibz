@@ -15,6 +15,11 @@ module UiBibz::Ui::Core::Forms::Choices
   # You can add HTML attributes using the +html_options+.
   # You can pass arguments in options attribute:
   # * +value+ - String, Integer, Boolean [required]
+  # * +state+ - Symbol
+  #   (+:active+, +:disabled+)
+  # * +inline+ - Boolean
+  # * +action+ - String Stimulus Option
+  # * +label+ - String
   #
   # ==== Signatures
   #
@@ -26,9 +31,9 @@ module UiBibz::Ui::Core::Forms::Choices
   #
   # ==== Examples
   #
-  #   UiBibz::Ui::Core::Forms::RadioField.new(content, { status: :success, type: :circle },{ class: 'test' }).render
+  #   UiBibz::Ui::Core::Forms::RadioField.new(content, { inline: true },{ class: 'test' }).render
   #
-  #   UiBibz::Ui::Core::Forms::RadioField.new({ status: :primary }, { class: 'test' }) do
+  #   UiBibz::Ui::Core::Forms::RadioField.new({ label: "My Radio" }, { class: 'test' }) do
   #     content
   #   end.render
   #

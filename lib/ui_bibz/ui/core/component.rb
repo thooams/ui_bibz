@@ -135,6 +135,10 @@ module UiBibz::Ui::Core
       html_options[:data].update(Hash[name, value])
     end
 
+    def is_disabled?
+      options[:state] == :disabled || html_options[:disabled]
+    end
+
   private
 
     def render_with_or_without_cache

@@ -14,6 +14,12 @@ module UiBibz::Ui::Core::Forms::Choices
   #
   # You can add HTML attributes using the +html_options+.
   # You can pass arguments in options attribute:
+  # * +state+ - Symbol
+  #   (+:active+, +:disabled+)
+  # * +inline+ - Boolean
+  # * +checked+ - Boolean
+  # * +action+ - String Stimulus Option
+  # * +label+ - String
   #
   # ==== Signatures
   #
@@ -25,17 +31,16 @@ module UiBibz::Ui::Core::Forms::Choices
   #
   # ==== Examples
   #
-  #   box_switch_field 'name', { on_color: :primary }, { readonly: true }
+  #   ui_switch_field 'name', checked: true
   #
   # ==== Helper
   #
-  #   box_switch_field(options = {}, html_options = {}) do
+  #   ui_switch_field(options = {}, html_options = {}) do
   #    # content
   #   end
   #
   class SwitchField < UiBibz::Ui::Core::Forms::Choices::CheckboxField
 
-    # See UiBibz::Ui::Core::Component.initialize
     def initialize content = nil, options = nil, html_options = nil, &block
       super
     end
@@ -43,7 +48,7 @@ module UiBibz::Ui::Core::Forms::Choices
     private
 
     def component_html_classes
-      %w(custom-control custom-switch)
+      ["custom-control", "custom-switch", inline]
     end
 
   end
