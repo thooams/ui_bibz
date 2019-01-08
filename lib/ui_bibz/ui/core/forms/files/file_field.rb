@@ -49,7 +49,7 @@ module UiBibz::Ui::Core::Forms::Files
     # Render html tag
     def pre_render
       content_tag :div, html_options do
-        concat file_field_tag content, class: "custom-file-input"
+        concat file_field_tag content, class: "custom-file-input" , multiple: options[:multiple], disabled: is_disabled?
         concat label_tag label_name, label_content, class: 'custom-file-label'
       end
     end
@@ -61,14 +61,7 @@ module UiBibz::Ui::Core::Forms::Files
     end
 
     def label_content
-      case options[:label]
-      when nil
-        content
-      when false
-        " "
-      else
-        options[:label]
-      end
+      options[:value] || ''
     end
 
     def component_html_classes

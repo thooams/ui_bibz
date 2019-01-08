@@ -229,7 +229,8 @@ test1</textarea></div></form>"
       f.input :name_fr, as: :ui_file_field
     end
 
-    expected = "<form class=\"simple_form edit_user\" id=\"edit_user_1\" action=\"/users/1\" accept-charset=\"UTF-8\" method=\"post\"><input name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" /><input type=\"hidden\" name=\"_method\" value=\"patch\" /><div class=\"form-group ui_file_field optional user_name_fr\"><label class=\"control-label ui_file_field optional\" for=\"user_name_fr\">Name fr</label><div class=\"ui_file_field optional custom-file\"><input type=\"file\" name=\"user[name_fr]\" id=\"user_name_fr\" class=\"custom-file-input\" /><label class=\"custom-file-label\" for=\"user_name_fr\">user[name_fr]</label></div></div></form>"
+    expected = "<form class=\"simple_form edit_user\" id=\"edit_user_1\" action=\"/users/1\" accept-charset=\"UTF-8\" method=\"post\"><input name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" /><input type=\"hidden\" name=\"_method\" value=\"patch\" /><div class=\"form-group ui_file_field optional user_name_fr\"><label class=\"control-label ui_file_field optional\" for=\"user_name_fr\">Name fr</label><div class=\"ui_file_field optional custom-file\"><input type=\"file\" name=\"user[name_fr]\" id=\"user_name_fr\" class=\"custom-file-input\" /><label class=\"custom-file-label\" for=\"user_name_fr\">test1</label></div></div></form>"
+
     assert_equal expected, actual
   end
 
