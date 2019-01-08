@@ -7,9 +7,13 @@
     @checkbox()
     @popover()
     @notify()
+    @fileInputBrowser()
 
   nav: ->
     #$('.nav-tabs .nav-item .nav-link').tab('show')
+
+  fileInputBrowser: ->
+    bsCustomFileInput.init()
 
   popover: ->
     $('[data-toggle="popover"]').popover()

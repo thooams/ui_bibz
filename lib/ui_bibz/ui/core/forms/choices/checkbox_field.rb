@@ -14,10 +14,12 @@ module UiBibz::Ui::Core::Forms::Choices
   #
   # You can add HTML attributes using the +html_options+.
   # You can pass arguments in options attribute:
-  # * +value+ - String, Integer, Boolean [required]
-  # * +status+ - status of élement with symbol value:
-  #   (+:default+, +:primary+, +:success+, +:info+, +:warning+, +:danger+)
-  # * +type+ - Symbol (:circle)
+  # * +state+ - Symbol
+  #   (+:active+, +:disabled+)
+  # * +inline+ - Boolean
+  # * +checked+ - Boolean
+  # * +action+ - String Stimulus Option
+  # * +label+ - String
   #
   # ==== Signatures
   #
@@ -37,9 +39,9 @@ module UiBibz::Ui::Core::Forms::Choices
   #
   # ==== Helper
   #
-  #   checkbox(content, options = {}, html_options = {})
+  #   ui_checkbox_field(content, options = {}, html_options = {})
   #
-  #   checkbox(options = {}, html_options = {}) do
+  #   ui_checkbox_field(options = {}, html_options = {}) do
   #     content
   #   end
   #
@@ -62,20 +64,21 @@ module UiBibz::Ui::Core::Forms::Choices
       content_tag(:div, html_options.except(:id, "data-action")) do
         concat hidden_field_tag content, '0', id: "#{ content }-hidden"
         concat check_box_tag content, options[:value] || '1', options[:checked] || html_options[:checked], checkbox_html_options
-        concat label_tag label_name, label_content, label_html_options
+        concat label_tag label_name, label_content, class: 'custom-control-label'
       end
     end
 
     def checkbox_html_options
-      { class: 'form-check-input', disabled: options[:state] == :disabled, "data-action": options[:action] }
+      {
+        disabled: is_disabled?,
+        indeterminate: options[:indeterminate],
+        "data-action": options[:action],
+        class: 'custom-control-input'
+      }
     end
 
     def label_name
       html_options[:id] || content
-    end
-
-    def label_html_options
-      { class: join_classes("form-check-label", ("fix-label" if options[:label] == false)) }
     end
 
     def label_content
@@ -89,24 +92,12 @@ module UiBibz::Ui::Core::Forms::Choices
       end
     end
 
-    def status
-      "abc-checkbox-#{ options[:status] || :default  }"
-    end
-
-    def type
-      "abc-checkbox-circle" unless options[:type].nil?
-    end
-
-    def indeterminate
-      "indeterminate" unless options[:indeterminate].nil?
+    def component_html_classes
+      super << ["custom-control", "custom-checkbox", inline]
     end
 
     def inline
-      "checkbox-inline" unless options[:inline].nil?
-    end
-
-    def component_html_classes
-      super << ["form-check", "abc-checkbox", type, indeterminate, inline]
+      "custom-control-inline" if options[:inline]
     end
 
   end

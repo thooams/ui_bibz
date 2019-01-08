@@ -14,125 +14,41 @@ module UiBibz::Ui::Core::Forms::Choices
   #
   # You can add HTML attributes using the +html_options+.
   # You can pass arguments in options attribute:
-  # * +state+ - String
-  # * +animate+ - Boolean
-  # * +on_color+ - String
-  # * +off_color+ - String
-  # * +on_text+ - String
-  # * +off_text+ - String
-  # * +label_text+ - String
-  # * +readonly+ - Boolean
+  # * +state+ - Symbol
+  #   (+:active+, +:disabled+)
+  # * +inline+ - Boolean
   # * +checked+ - Boolean
+  # * +action+ - String Stimulus Option
+  # * +label+ - String
   #
   # ==== Signatures
   #
-  #   UiBibz::Ui::Core::Forms::SwitchField.new(content, options = {}, html_options = {}).render
+  #   UiBibz::Ui::Core::Forms::SwithField.new(content, options = {}, html_options = {}).render
   #
-  #   UiBibz::Ui::Core::Forms::SwitchField.new(options = {}, html_options = {}) do
+  #   UiBibz::Ui::Core::Forms::SwithField.new(options = {}, html_options = {}) do
   #     content
   #   end.render
   #
   # ==== Examples
   #
-  #   switch_field 'name', { on_color: :primary }, { readonly: true }
+  #   ui_switch_field 'name', checked: true
   #
   # ==== Helper
   #
-  #   switch_field(options = {}, html_options = {}) do
+  #   ui_switch_field(options = {}, html_options = {}) do
   #    # content
   #   end
   #
-  class SwitchField < UiBibz::Ui::Core::Component
+  class SwitchField < UiBibz::Ui::Core::Forms::Choices::CheckboxField
 
-    # See UiBibz::Ui::Core::Component.initialize
     def initialize content = nil, options = nil, html_options = nil, &block
       super
     end
 
-    # Render html tag
-    def pre_render
-      switch_field_html_tag
-    end
-
     private
 
-    def switch_field_html_tag
-      content_tag :div, class: component_wrapper_html_classes do
-        concat hidden_field_tag content, '0'
-        concat check_box_tag content, '1', html_options[:checked], html_options
-      end
-    end
-
-    def value
-      options[:value]
-    end
-
-    def component_wrapper_html_classes
-      join_classes('switch-field-container', inline)
-    end
-
     def component_html_classes
-      super << "switch-field"
-    end
-
-    def component_html_data
-      super
-      size
-      state
-      animate
-      left_color
-      right_color
-      left_text
-      right_text
-      middle_text
-    end
-
-    # '', 'mini', 'small', 'normal', 'large'
-    def size
-      add_html_data('size', matching_size[options[:size]]) unless options[:size].nil?
-    end
-
-    def matching_size
-      { sm: 'small', md: 'normal', lg: 'large' }
-    end
-
-    # true, false => default : true
-    def animate
-      add_html_data('animate', options.delete(:animate)) unless options[:animate].nil?
-    end
-
-    # active, disabled => default : active
-    def state
-      html_options[:disabled] = true if options[:state] == 'disabled'
-    end
-
-    # 'primary', 'info', 'success', 'warning', 'danger', 'default' => default : default
-    def left_color
-      add_html_data('on_color', options[:left_color]) unless options[:left_color].nil?
-    end
-
-    # 'primary', 'info', 'success', 'warning', 'danger', 'default' => default : default
-    def right_color
-      add_html_data('off_color', options[:right_color]) unless options[:right_color].nil?
-    end
-
-    # String => default : "ON"
-    def left_text
-      add_html_data('on_text', options[:left_text]) unless options[:left_text].nil?
-    end
-
-    # String => default : "OFF"
-    def right_text
-      add_html_data('off_text', options[:right_text]) unless options[:right_text].nil?
-    end
-
-    # String => default : '&nbsp;'
-    def middle_text
-      add_html_data('label_text', options[:middle_text]) unless options[:middle_text].nil?
-    end
-
-    def inline
-      "btn-group" unless options[:inline].nil?
+      ["custom-control", "custom-switch", inline]
     end
 
   end

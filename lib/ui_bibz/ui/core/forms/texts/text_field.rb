@@ -17,6 +17,9 @@ module UiBibz::Ui::Core::Forms::Texts
   # You can pass arguments in options attribute:
   # * +prepend+ - String, Html
   # * +append+ - String, Html
+  # * +state+ - Symbol
+  #   (+:active+, +:disabled+)
+  # String, Html
   #
   # ==== Signatures
   #

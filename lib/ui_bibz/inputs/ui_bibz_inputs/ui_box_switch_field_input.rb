@@ -1,9 +1,9 @@
 module UiBibzInputs
-  class UiSwitchFieldInput < BaseInput
+  class UiBoxSwitchFieldInput < BaseInput
     include UiBibz::Ui::Core::Forms::Choices
 
     def input(wrapper_options)
-      UiBibz::Ui::Core::Forms::Choices::SwitchField.new(input_attribute_name, new_options, new_input_html_options).render
+      UiBibz::Ui::Core::Forms::Choices::BoxSwitchField.new(input_attribute_name, options, new_input_html_options).render
     end
 
     def new_input_html_options
@@ -12,10 +12,6 @@ module UiBibzInputs
 
     def value
       @value ||= @builder.object.send(attribute_name)
-    end
-
-    def new_options
-      options.merge({ label: attribute_name.to_s.titleize })
     end
 
   end

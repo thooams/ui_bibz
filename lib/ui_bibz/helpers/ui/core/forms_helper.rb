@@ -80,6 +80,14 @@ module UiBibz::Helpers::Ui::Core::FormsHelper
     UiBibz::Ui::Core::Forms::Texts::TextField.new(content, options, html_options, &block).render
   end
 
+  # Box Switch Field Component
+  #
+  # +options+ (Hash)
+  # +html_options+ (Hash)
+  def ui_box_switch_field content = nil, options = nil, html_options = nil, &block
+    UiBibz::Ui::Core::Forms::Choices::BoxSwitchField.new(content, options, html_options, &block).render
+  end
+
   # Switch Field Component
   #
   # +options+ (Hash)
@@ -152,6 +160,33 @@ module UiBibz::Helpers::Ui::Core::FormsHelper
   # +html_options+ (Hash)
   def ui_split_dropdown name, options = nil, html_options = nil, &block
     UiBibz::Ui::Core::Forms::Dropdowns::SplitDropdown.new(name, options, html_options).tap(&block).render
+  end
+
+  # Number Component
+  #
+  # +name+ (String) [Required]
+  # +options+ (Hash)
+  # +html_options+ (Hash)
+  def ui_number_field name, options = nil, html_options = nil, &block
+    UiBibz::Ui::Core::Forms::Numbers::NumberField.new(name, options, html_options, &block).render
+  end
+
+  # Range Component
+  #
+  # +name+ (String) [Required]
+  # +options+ (Hash)
+  # +html_options+ (Hash)
+  def ui_range_field name, options = nil, html_options = nil, &block
+    UiBibz::Ui::Core::Forms::Numbers::RangeField.new(name, options, html_options, &block).render
+  end
+
+  # File Component
+  #
+  # +name+ (String) [Required]
+  # +options+ (Hash)
+  # +html_options+ (Hash)
+  def ui_file_field name, options = nil, html_options = nil, &block
+    UiBibz::Ui::Core::Forms::Files::FileField.new(name, options, html_options, &block).render
   end
 end
 

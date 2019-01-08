@@ -24,8 +24,10 @@ module UiBibzInputs
   autoload :UiNumberFieldInput,         "ui_bibz/inputs/ui_bibz_inputs/ui_number_field_input"
   autoload :UiRadioFieldInput,          "ui_bibz/inputs/ui_bibz_inputs/ui_radio_field_input"
   autoload :UiSelectFieldInput,         "ui_bibz/inputs/ui_bibz_inputs/ui_select_field_input"
+  autoload :UiBoxSwitchFieldInput,      "ui_bibz/inputs/ui_bibz_inputs/ui_box_switch_field_input"
   autoload :UiSwitchFieldInput,         "ui_bibz/inputs/ui_bibz_inputs/ui_switch_field_input"
   autoload :UiTextFieldInput,           "ui_bibz/inputs/ui_bibz_inputs/ui_text_field_input"
+  autoload :UiFileFieldInput,           "ui_bibz/inputs/ui_bibz_inputs/ui_file_field_input"
 
 end
 
@@ -92,14 +94,20 @@ module UiBibz
 
         module Choices
           autoload :SwitchField,             "ui_bibz/ui/core/forms/choices/switch_field"
+          autoload :BoxSwitchField,          "ui_bibz/ui/core/forms/choices/box_switch_field"
           autoload :CheckboxField,           "ui_bibz/ui/core/forms/choices/checkbox_field"
           autoload :RadioField,              "ui_bibz/ui/core/forms/choices/radio_field"
           autoload :ChoiceGroup,             "ui_bibz/ui/core/forms/choices/choice_group"
         end
 
+        module Files
+          autoload :FileField,               "ui_bibz/ui/core/forms/files/file_field"
+        end
+
         module Numbers
           autoload :FormulaField,            "ui_bibz/ui/core/forms/numbers/formula_field"
           autoload :NumberField,             "ui_bibz/ui/core/forms/numbers/number_field"
+          autoload :RangeField,              "ui_bibz/ui/core/forms/numbers/range_field"
         end
 
         module Selects
