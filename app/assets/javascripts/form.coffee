@@ -16,7 +16,7 @@
     $('select.dropdown-select-field').selectpicker
       iconBase: 'fa'
       tickIcon: 'fa-check'
-      style:    'btn-secondary'
+      #style:    'btn-secondary'
       showTick: false
 
   switch: ->

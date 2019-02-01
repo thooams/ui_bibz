@@ -28,6 +28,7 @@ module UiBibzInputs
   autoload :UiSwitchFieldInput,         "ui_bibz/inputs/ui_bibz_inputs/ui_switch_field_input"
   autoload :UiTextFieldInput,           "ui_bibz/inputs/ui_bibz_inputs/ui_text_field_input"
   autoload :UiFileFieldInput,           "ui_bibz/inputs/ui_bibz_inputs/ui_file_field_input"
+  autoload :UiRangeFieldInput,          "ui_bibz/inputs/ui_bibz_inputs/ui_range_field_input"
 
 end
 
