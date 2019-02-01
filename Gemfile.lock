@@ -1,11 +1,12 @@
 PATH
   remote: .
   specs:
-    ui_bibz (2.2.0)
+    ui_bibz (2.2.1)
       bootstrap (= 4.2.1)
       haml
       haml-rails
       jquery-rails (>= 3.1.0)
+      popper_js
       rails (>= 4.2.0)
       sass-rails (>= 5.0.0)
       will-paginate-i18n

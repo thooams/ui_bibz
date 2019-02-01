@@ -9,7 +9,7 @@
 # Bootstrap
 #= require tether.min
 #= require popper
-#= require bootstrap
+#= require bootstrap.min
 
 # date_picker_field component
 #= require bootstrap-datepicker.min
@@ -39,6 +39,8 @@
 #= require formula
 #= require form
 #= require fix_bootstrap
+
+$.fn.selectpicker.Constructor.BootstrapVersion = '4'
 
 <%= require_asset 'all.min' if UiBibz.configuration.fontawesomejs %>
 
