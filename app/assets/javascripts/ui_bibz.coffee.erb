@@ -70,7 +70,7 @@ $.fn.selectpicker.Constructor.BootstrapVersion = '4'
       $(document).on 'turbolinks:load', ->
         me.initial() # catch event for turbolinks and fix in ready() function
     else
-      $ ->
+      $(document).ready ->
         me.initial()
     return false
 
