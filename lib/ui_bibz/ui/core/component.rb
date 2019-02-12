@@ -104,11 +104,18 @@ module UiBibz::Ui::Core
     # Override this method to add html data
     def component_html_data
       # To stimulusjs
-      add_html_data :target, html_options.try(:[], :data).try(:[], :target) || options.try(:delete, :target)
-      add_html_data :controller, html_options.try(:[], :data).try(:[], :controller) || options.try(:delete, :controller)
-      add_html_data :action, html_options.try(:[], :data).try(:[], :action) || options.try(:delete, :action)
+      data_target = html_options.try(:[], :data).try(:[], :target) || options.try(:delete, :target)
+      add_html_data(:target, data_target) unless data_target.nil?
+
+      data_controller = html_options.try(:[], :data).try(:[], :controller) || options.try(:delete, :controller)
+      add_html_data(:controller, data_controller) unless data_controller.nil?
+
+      data_action = html_options.try(:[], :data).try(:[], :action) || options.try(:delete, :action)
+      add_html_data(:action, data_action) unless data_action.nil?
+
       # To turbolinks
-      add_html_data :turbolinks, html_options.try(:[], :data).try(:[], :turbolinks) || options.try(:delete, :turbolinks)
+      data_turbolinks = html_options.try(:[], :data).try(:[], :turbolinks) || options.try(:delete, :turbolinks)
+      add_html_data(:turbolinks, data_turbolinks) unless data_turbolinks.nil?
     end
 
     # Override this method to add html Options
