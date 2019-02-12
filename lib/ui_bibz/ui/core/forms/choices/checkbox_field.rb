@@ -60,7 +60,6 @@ module UiBibz::Ui::Core::Forms::Choices
   private
 
     def checkbox_field_html_tag
-      options[:action] = html_options[:data].delete(:action)
       content_tag(:div, html_options.except(:id, "data-action")) do
         concat hidden_field_tag content, '0', id: "#{ content }-hidden"
         concat check_box_tag content, options[:value] || '1', options[:checked] || html_options[:checked], checkbox_html_options

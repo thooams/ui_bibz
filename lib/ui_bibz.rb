@@ -172,6 +172,7 @@ module UiBibz
         autoload :Alert,                   "ui_bibz/ui/core/notifications/alert"
         autoload :Badge,                   "ui_bibz/ui/core/notifications/badge"
         autoload :ProgressBar,             "ui_bibz/ui/core/notifications/progress_bar"
+        autoload :Toast,                   "ui_bibz/ui/core/notifications/toast"
       end
 
       module Windows

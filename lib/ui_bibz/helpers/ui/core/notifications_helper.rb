@@ -34,6 +34,14 @@ module UiBibz::Helpers::Ui::Core::NotificationsHelper
     end
   end
 
+  # Toast Component
+  #
+  # +options+ (Hash)
+  # +html_options+ (Hash)
+  def ui_toast content = nil, options = nil, html_options = nil, &block
+    UiBibz::Ui::Core::Notifications::Toast.new(content, options, html_options).tap(&block).render
+  end
+
   private
 
   def is_tap content, options

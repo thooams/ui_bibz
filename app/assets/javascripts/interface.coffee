@@ -8,6 +8,7 @@
     @popover()
     @notify()
     @fileInputBrowser()
+    @toast()
 
   nav: ->
     #$('.nav-tabs .nav-item .nav-link').tab('show')
@@ -48,3 +49,6 @@
       else if (!el.is(':checked'))
         el.prop('readonly', true)
         el.prop('indeterminate', true)
+
+  toast: ->
+    $('.toast').toast()
