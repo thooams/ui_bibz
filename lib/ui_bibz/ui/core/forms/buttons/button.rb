@@ -77,14 +77,16 @@ module UiBibz::Ui::Core::Forms::Buttons
     def component_html_options
       opts = super
       opts = opts.merge(toggle)                   unless options[:toggle].nil?
+      opts = opts.merge(collapse)                 unless options[:collapse].nil?
       opts = opts.merge(active_html_options)      if options[:state] == :active
       opts = opts.merge({ disabled: 'disabled' }) if options[:state] == :disabled
       opts
     end
 
-    def component_html_data
-      super
-      action
+    def collapse
+      attrs = { "data-toggle": "collapse", "data-target": "##{ options[:collapse] }" }
+      attrs = attrs.merge({ "aria-expanded": true }) if options[:active_collapse]
+      attrs
     end
 
     def status

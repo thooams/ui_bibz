@@ -42,7 +42,13 @@ module UiBibz::Ui::Core::Boxes::Components
 
     # Render html tag
     def pre_render
-      content_tag :div, @items.join.html_safe, html_options
+      if options[:collapse]
+        content_tag :div, class: join_classes("collapse", show), id: options[:collapse], "data-parent": "##{ options[:parent_collapse] }" do
+          content_tag :div, @items.join.html_safe, html_options
+        end
+      else
+        content_tag :div, @items.join.html_safe, html_options
+      end
     end
 
     def title content = nil, options = nil, html_options = nil, &block
@@ -65,6 +71,11 @@ module UiBibz::Ui::Core::Boxes::Components
 
     def outline
       "text-#{ @options[:status] }" if @options[:outline]
+    end
+
+    def show
+      ap @options[:show]
+      "show" if @options[:show]
     end
 
   end

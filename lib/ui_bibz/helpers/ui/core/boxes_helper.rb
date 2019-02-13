@@ -15,6 +15,15 @@ module UiBibz::Helpers::Ui::Core::BoxesHelper
     end
   end
 
+  # Card Accordion
+  #
+  # +options+ (Hash)
+  # +html_options+ (Hash)
+  #
+  def ui_card_accordion content = nil, options = nil, html_options = nil, &block
+    UiBibz::Ui::Core::Boxes::CardAccordion.new(content, options, html_options).tap(&block).render
+  end
+
   # Card Group Component
   #
   # +options+ (Hash)

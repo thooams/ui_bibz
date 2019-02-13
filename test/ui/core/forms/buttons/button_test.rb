@@ -79,4 +79,11 @@ class ButtonTest < ActionView::TestCase
 
     assert_equal expected, actual
   end
+
+  test 'button with collapse' do
+    actual   = ui_button('state', collapse: 'collapse-id')
+    expected = "<button class=\"btn\" data-toggle=\"collapse\" data-target=\"collapse-id\">state</button>"
+
+    assert_equal expected, actual
+  end
 end

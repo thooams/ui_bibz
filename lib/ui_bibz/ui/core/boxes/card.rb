@@ -108,8 +108,10 @@ module UiBibz::Ui::Core::Boxes
     def body content = nil, options = nil, html_options = nil, &block
       options, content = inherit_options(content, options, block)
       if is_tap(content, options)
+        content = (content || {}).merge(collapse: options.try(:[], :collapse), parent_collapse: @options[:parent_collapse] )
         @items << UiBibz::Ui::Core::Boxes::Components::CardBody.new(content, options, html_options).tap(&block).render
       else
+        options = (options || {}).merge(collapse: options.try(:[], :collapse), parent_collapse: @options[:parent_collapse] )
         @items << UiBibz::Ui::Core::Boxes::Components::CardBody.new(content, options, html_options, &block).render
       end
     end

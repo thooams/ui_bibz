@@ -17,7 +17,7 @@ module UiBibz::Ui
     end
 
     def generate_id name = nil
-      "#{ name || 'id' }-#{ Random.new_seed }"
+      "#{ name || 'id' }-#{ Random.rand(99999) }"
     end
   end
 end

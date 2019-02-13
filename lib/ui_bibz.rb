@@ -76,6 +76,7 @@ module UiBibz
 
       module Boxes
         autoload :Card,                    "ui_bibz/ui/core/boxes/card"
+        autoload :CardAccordion,           "ui_bibz/ui/core/boxes/card_accordion"
         autoload :CardColumn,              "ui_bibz/ui/core/boxes/card_column"
         autoload :CardDeck,                "ui_bibz/ui/core/boxes/card_deck"
         autoload :CardGroup,               "ui_bibz/ui/core/boxes/card_group"

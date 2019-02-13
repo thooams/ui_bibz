@@ -9,6 +9,7 @@
     @notify()
     @fileInputBrowser()
     @toast()
+    @collapse()
 
   nav: ->
     #$('.nav-tabs .nav-item .nav-link').tab('show')
@@ -52,3 +53,6 @@
 
   toast: ->
     $('.toast').toast()
+
+  collapse: ->
+    $('.collapse').collapse()

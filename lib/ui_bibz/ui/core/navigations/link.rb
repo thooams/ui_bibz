@@ -52,6 +52,18 @@ module UiBibz::Ui::Core::Navigations
 
     private
 
+    def component_html_options
+      opts = super
+      opts = opts.merge(collapse) unless options[:collapse].nil?
+      opts
+    end
+
+   def collapse
+      attrs = { role: "button", "data-toggle": "collapse", "data-target": "##{ options[:collapse] }" }
+      attrs = attrs.merge({ "aria-expanded": true }) if options[:active_collapse]
+      attrs
+    end
+
     def text
       @options[:text].nil? ? true : @options[:text]
     end
