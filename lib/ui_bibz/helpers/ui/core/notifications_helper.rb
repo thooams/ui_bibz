@@ -42,6 +42,15 @@ module UiBibz::Helpers::Ui::Core::NotificationsHelper
     UiBibz::Ui::Core::Notifications::Toast.new(content, options, html_options).tap(&block).render
   end
 
+  # Spinner Component
+  #
+  # +options+ (Hash)
+  # +html_options+ (Hash)
+  #
+  def ui_spinner content = nil, options = nil, html_options = nil, &block
+    UiBibz::Ui::Core::Notifications::Spinner.new(content, options, html_options, &block).render
+  end
+
   private
 
   def is_tap content, options

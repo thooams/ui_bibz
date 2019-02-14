@@ -173,6 +173,7 @@ module UiBibz
         autoload :Alert,                   "ui_bibz/ui/core/notifications/alert"
         autoload :Badge,                   "ui_bibz/ui/core/notifications/badge"
         autoload :ProgressBar,             "ui_bibz/ui/core/notifications/progress_bar"
+        autoload :Spinner,                 "ui_bibz/ui/core/notifications/spinner"
         autoload :Toast,                   "ui_bibz/ui/core/notifications/toast"
       end
 
