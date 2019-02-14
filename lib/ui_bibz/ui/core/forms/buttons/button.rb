@@ -90,7 +90,7 @@ module UiBibz::Ui::Core::Forms::Buttons
     end
 
     def status
-      ["btn", outline, options[:status]].compact.join('-')
+      ["btn", outline, options[:status] || "secondary"].compact.join('-')
     end
 
     def outline

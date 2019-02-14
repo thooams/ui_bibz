@@ -18,15 +18,8 @@ module UiBibz::Ui::Core::Forms::Selects
   # * +status+ - status of élement with symbol value:
   #   (+:primary+, +:secondary+, +:info+, +:warning+, +:danger+, +:link+)
   # * +option_tags+ - Array, Object [required]
-  # * +searchable+ - Boolean
-  # * +max_options+ - Integer
-  # * +selected_text_format+ - String
-  # * +menu_size+ - Integer
-  # * +header+ - String
-  # * +actions_box+ - Boolean
-  # * +show_tick+ - Boolean
-  # * +show_menu_arrow+ - Boolean
-  # * +dropup+ - Boolean
+  # * +size+
+  #   (+:xs+, +:sm+, +:lg+)
   # * +append+ - String, Html
   # * +prepend+ - String, Html
   # * +connect+ - Hash
@@ -55,11 +48,11 @@ module UiBibz::Ui::Core::Forms::Selects
   #
   # ==== Examples
   #
-  #   UiBibz::Ui::Core::Forms::Selects::SelectField.new('fruits', { option_tags: list_of_fruits, searchable: true }, { class: 'test' })
+  #   UiBibz::Ui::Core::Forms::Selects::SelectField.new('fruits', { option_tags: list_of_fruits }, { class: 'test' }).render
   #
-  #   UiBibz::Ui::Core::Forms::Selects::SelectField.new({ option_tags: list_of_fruits, actions_box: true }, { class: 'test' }) do
+  #   UiBibz::Ui::Core::Forms::Selects::SelectField.new({ option_tags: list_of_fruits }, { class: 'test' }) do
   #     'fruits'
-  #   end
+  #   end.render
   #
   # ==== Helper
   #
@@ -75,7 +68,7 @@ module UiBibz::Ui::Core::Forms::Selects
     private
 
     def component_html_classes
-      super << ["select-field", "form-control", size]
+      super << ["select-field", "form-control", "custom-select", size]
     end
 
     def component_options
@@ -83,7 +76,7 @@ module UiBibz::Ui::Core::Forms::Selects
     end
 
     def size
-      "form-control-#{ options[:size] }" unless options[:size].nil?
+      "custom-select-#{ options[:size] }" unless options[:size].nil?
     end
 
   end

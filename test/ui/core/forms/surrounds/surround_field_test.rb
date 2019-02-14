@@ -39,7 +39,7 @@ class SurroundFieldTest < ActionView::TestCase
       actual = UiBibz::Ui::Core::Forms::Surrounds::SurroundField.new.tap do |sf|
         sf.button 'Submit'
       end.render
-      expected = "<div class=\"input-group ui_surround_field\"><div class=\"input-group-btn\"><button class=\"btn\">Submit</button></div></div>"
+      expected = "<div class=\"input-group ui_surround_field\"><div class=\"input-group-btn\"><button class=\"btn-secondary btn\">Submit</button></div></div>"
 
       assert_equal expected, actual
     end
@@ -50,7 +50,7 @@ class SurroundFieldTest < ActionView::TestCase
         sf.addon '€'
         sf.glyph 'pencil'
       end.render
-      expected = "<div class=\"input-group ui_surround_field\"><div class=\"input-group-btn\"><button class=\"btn\">Submit</button></div><span class=\"input-group-addon\">€</span><span class=\"input-group-addon\"><i class=\"glyph fas fa-pencil\"></i></span></div>"
+      expected = "<div class=\"input-group ui_surround_field\"><div class=\"input-group-btn\"><button class=\"btn-secondary btn\">Submit</button></div><span class=\"input-group-addon\">€</span><span class=\"input-group-addon\"><i class=\"glyph fas fa-pencil\"></i></span></div>"
 
       assert_equal expected, actual
     end

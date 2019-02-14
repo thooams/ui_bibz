@@ -18,7 +18,7 @@ class LinkTest < ActionView::TestCase
 
   test "Link with collapse option" do
     actual = ui_link 'My link', url: "#link", collapse: 'collapse-id'
-    expected = "<a data-toggle=\"collapse\" data-target=\"collapse-id\" href=\"#link\">My link</a>"
+    expected = "<a role=\"button\" data-toggle=\"collapse\" data-target=\"#collapse-id\" href=\"#link\">My link</a>"
 
     assert_equal expected, actual
   end

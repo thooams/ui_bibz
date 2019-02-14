@@ -7,7 +7,7 @@ class ButtonGroupTest < ActionView::TestCase
     actual = ui_button_group do |bg|
       bg.button 'state'
     end
-    expected = "<div class=\"btn-group\" role=\"group\"><button class=\"btn\">state</button></div>"
+    expected = "<div class=\"btn-group\" role=\"group\"><button class=\"btn-secondary btn\">state</button></div>"
 
     assert_equal expected, actual
   end
@@ -16,7 +16,7 @@ class ButtonGroupTest < ActionView::TestCase
     actual = ui_button_group(position: :vertical) do |bg|
       bg.button 'state'
     end
-    expected = "<div class=\"btn-group-vertical\" role=\"group\"><button class=\"btn\">state</button></div>"
+    expected = "<div class=\"btn-group-vertical\" role=\"group\"><button class=\"btn-secondary btn\">state</button></div>"
 
     assert_equal expected, actual
   end
@@ -34,7 +34,7 @@ class ButtonGroupTest < ActionView::TestCase
     actual = ui_button_group(size: :sm) do |bg|
       bg.button 'state'
     end
-    expected = "<div class=\"btn-group btn-group-sm\" role=\"group\"><button class=\"btn btn-sm\">state</button></div>"
+    expected = "<div class=\"btn-group btn-group-sm\" role=\"group\"><button class=\"btn-secondary btn btn-sm\">state</button></div>"
 
     assert_equal expected, actual
   end
