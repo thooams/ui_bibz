@@ -65,6 +65,7 @@ module UiBibz::Ui::Core::Forms::Buttons
 
     def button_html_tag
       content_tag :button, html_options do
+        concat spinner_html unless options[:spinner].nil?
         concat glyph_and_content_html(options[:text].nil? ? @content : '')
         concat badge_html unless options[:badge].nil?
       end
@@ -125,6 +126,13 @@ module UiBibz::Ui::Core::Forms::Buttons
       else
         UiBibz::Ui::Core::Notifications::Badge.new(options[:badge], status: (options[:status] || :secondary)).render
       end
+    end
+
+    def spinner_html
+      opts = { size: :sm, tag: :span, class: options[:text] == false ? nil : 'mr-2' }
+      opts = opts.merge(options[:spinner]) if options[:spinner].kind_of? Hash
+
+      UiBibz::Ui::Core::Notifications::Spinner.new(nil, opts).render
     end
 
     # :lg, :sm or :xs

@@ -54,7 +54,7 @@ module UiBibz::Ui::Core::Notifications
 
     # Render html tag
     def pre_render
-      content_tag :div, html_options do
+      content_tag tag_html, html_options do
         content_tag :span, @content || "Loading...", class: "sr-only"
       end
     end
@@ -70,7 +70,7 @@ module UiBibz::Ui::Core::Notifications
     end
 
     def status
-      "text-#{ @options[:status] || :secondary }"
+      "text-#{ @options[:status] || :secondary }" if options[:status]
     end
 
     def type
@@ -79,6 +79,10 @@ module UiBibz::Ui::Core::Notifications
 
     def size
       "spinner-#{ type }-#{ options[:size] }" if options[:size]
+    end
+
+    def tag_html
+      options[:tag] || :div
     end
 
   end
