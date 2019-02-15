@@ -75,16 +75,17 @@ module UiBibz::Ui::Core::Forms::Selects
     private
 
     def component_html_options
-      super.merge({
-        multiple:      false,
-        disabled:      options[:state] == :disabled,
-        include_blank: options[:include_blank],
-        prompt:        options[:prompt]
-      })
+      super.merge({}.tap do |h|
+        h[:multiple] = true if options[:multiple]
+        h[:disabled] = options[:state] == :disabled
+        h[:include_blank] = options[:include_blank]
+        h[:prompt] = options[:prompt]
+        h[:title] = options[:placeholder] unless options[:placeholder].nil?
+      end)
     end
 
     def component_html_classes
-      super << ['dropdown-select-field', show_tick, show_menu_arrow, dropup]
+      super << ['dropdown-select-field', show_tick, dropup]
     end
 
     def component_html_data
@@ -114,7 +115,7 @@ module UiBibz::Ui::Core::Forms::Selects
     end
 
     def style
-      add_html_data('style', "btn-#{ options[:status]}") if options[:style]
+      add_html_data('style', "btn-#{ options[:status] || :secondary }")
     end
 
     def menu_size
@@ -137,10 +138,6 @@ module UiBibz::Ui::Core::Forms::Selects
 
     def show_tick
       'show-tick' if options[:show_tick]
-    end
-
-    def show_menu_arrow
-      'show-menu-arrow' if options[:show_menu_arrow]
     end
 
     def dropup

@@ -13,11 +13,7 @@
     $('.ui-bibz-connect').inputConnected()
 
   selectPicker: ->
-    $('select.dropdown-select-field').selectpicker
-      iconBase: 'fa'
-      tickIcon: 'fa-check'
-      #style:    'btn-secondary'
-      showTick: false
+    $('select.dropdown-select-field').selectpicker()
 
   switch: ->
     $('input.switch-field').bootstrapSwitch({ size: 'large' })
