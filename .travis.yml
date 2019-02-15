@@ -13,7 +13,7 @@ script:
 after_script:
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
 rvm:
-  - 2.2.3
+  - 2.5.1
 branches:
   only:
     - master
