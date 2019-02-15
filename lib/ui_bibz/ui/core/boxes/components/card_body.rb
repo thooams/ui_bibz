@@ -74,7 +74,6 @@ module UiBibz::Ui::Core::Boxes::Components
     end
 
     def show
-      ap @options[:show]
       "show" if @options[:show]
     end
 
