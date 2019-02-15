@@ -79,8 +79,7 @@ module UiBibz::Ui::Core::Forms::Selects
         h[:multiple] = true if options[:multiple]
         h[:disabled] = options[:state] == :disabled
         h[:include_blank] = options[:include_blank]
-        h[:prompt] = options[:prompt]
-        h[:title] = options[:placeholder] unless options[:placeholder].nil?
+        h[:title] = h.delete(:prompt) unless options[:prompt].nil?
       end)
     end
 
