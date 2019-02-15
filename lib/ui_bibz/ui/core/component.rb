@@ -170,6 +170,7 @@ module UiBibz::Ui::Core
     def initialize_component_html_data
       component_html_data
       popover_data_html
+      tooltip_data_html
     end
 
     def initialize_component_html_options
