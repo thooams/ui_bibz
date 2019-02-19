@@ -31,8 +31,10 @@
   display: inline-block
   margin-right: 10px
 
-.input-group-btn
-  .input-refresh-button
+.input-refresh-button
+  border-width: 0px !important
+  svg
+    margin: 0.28rem 0.25rem !important
     //padding: 10px 16px
 
 .input-group-btn
@@ -46,12 +48,20 @@
   min-width: 104px
 
 .ui_surround_field
+  .custom-control
+    .custom-control-label
+      margin-left: 0px !important
+      padding-right: 10px
+      margin-right: 0
+    .custom-control-label:after, .custom-control-label:before
+      right: 0
+      left: 0
+
   flex-wrap: nowrap
   .mr-sm-2
     margin-right: 0px !important
   input:not(:first-child):not(:last-child)
     border-radius: 0px
-  .abc-radio.input-group-addon, .abc-checkbox.input-group-addon
     input
       margin-left: 0.5rem
   select:not(:first-child):not(:last-child)
