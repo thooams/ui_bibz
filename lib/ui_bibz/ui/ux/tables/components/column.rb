@@ -20,7 +20,7 @@ module UiBibz::Ui::Ux::Tables
       @class         = @options[:class]
       @hidden        = @options[:hidden]
       @input_options = @options[:input_options]
-      @input_options = @options[:progress_options] || {}
+      @progress_options = @options[:progress_options] || {}
     end
 
     def linkable?
