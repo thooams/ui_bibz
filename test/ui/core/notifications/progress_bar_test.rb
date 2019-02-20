@@ -49,4 +49,25 @@ class ProgressBarTest < ActionView::TestCase
     assert_equal expected, actual
   end
 
+  test 'progress bar with statuses and 20%' do
+    actual = ui_progress_bar 20, statuses: true
+    expected = "<div class=\"progress\"><div class=\"bg-primary progress-bar\" aria-valuenow=\"20.0\" aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"width: 20.0%\" role=\"progressbar\">20.0%</div></div>"
+
+    assert_equal expected, actual
+  end
+
+  test 'progress bar with statuses and 80%' do
+    actual = ui_progress_bar 80, statuses: true
+    expected = "<div class=\"progress\"><div class=\"bg-danger progress-bar\" aria-valuenow=\"80.0\" aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"width: 80.0%\" role=\"progressbar\">80.0%</div></div>"
+
+    assert_equal expected, actual
+  end
+
+  test 'progress bar with custom statuses' do
+    actual = ui_progress_bar 80, statuses: [:info, :warning]
+    expected = "<div class=\"progress\"><div class=\"bg-warning progress-bar\" aria-valuenow=\"80.0\" aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"width: 80.0%\" role=\"progressbar\">80.0%</div></div>"
+
+    assert_equal expected, actual
+  end
+
 end

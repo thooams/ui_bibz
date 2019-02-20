@@ -166,9 +166,11 @@ module UiBibz::Concerns::Models::Searchable
 
     # => searchable_attributes :name, :address
     # or
-    # => searchable_attributes user: { :name, :address }
+    # => searchable_attributes user: :name
     # or
-    # => search_attribtues :name, as: [:mybuildcolumn1, :mybuild_column2]
+    # => searchable_attributes user: [:name, :address]
+    # or
+    # => search_attributes :name, as: [:mybuildcolumn1, :mybuild_column2]
     #
     def searchable_attributes *args
       @searchable_attributes ||= args

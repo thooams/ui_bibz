@@ -55,7 +55,7 @@ module UiBibz::Ui::Core::Notifications::Components
   private
 
     def component_html_classes
-      ['progress-bar', striped, animated]
+      ['progress-bar', striped, animated, status]
     end
 
     def component_html_options
@@ -83,7 +83,11 @@ module UiBibz::Ui::Core::Notifications::Components
     end
 
     def status
-      "bg-#{ options[:status] }" unless options[:status].nil?
+      if options[:statuses]
+        "bg-#{ statuses.fetch(statuses.size*value/100, statuses.last) }"
+      else
+        "bg-#{ options[:status] }" unless options[:status].nil?
+      end
     end
 
     def text
@@ -94,6 +98,10 @@ module UiBibz::Ui::Core::Notifications::Components
       else
         options[:label]
       end
+    end
+
+    def statuses
+      options[:statuses] == true ? %i(success primary info warning danger) : options[:statuses]
     end
 
   end

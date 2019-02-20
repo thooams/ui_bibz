@@ -35,7 +35,7 @@ module UiBibz::Ui::Ux::Tables
     end
 
     def progress_render
-      UiBibz::Ui::Core::Progress.new(@content, status: (@col.status || :primary)).render
+      UiBibz::Ui::Core::Progress.new(@content, @col.progress_options).render
     end
 
   end
