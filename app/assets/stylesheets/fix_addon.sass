@@ -70,6 +70,16 @@ $input-group-btn-border-color: $input-border-color
 .input-group-sm > .input-group-btn > .btn
   @extend .form-control-sm
 
+.input-group > .form-control,
+.input-group > .input-group-addon,
+.input-group > .input-group-btn > .btn
+  padding: $input-btn-padding-y $input-btn-padding-x
+  @include border-radius($input-border-radius)
+
+  svg
+    //font-size: 1.4em
+    margin-top: 0.1rem
+
 
 //
 // Text input groups
@@ -104,8 +114,13 @@ $input-group-btn-border-color: $input-border-color
     font-size: $font-size-lg
     @include border-radius($input-border-radius-lg)
 
+    svg
+      font-size: 1.5rem
+      margin-top: 0.1rem
+
   svg
     font-size: 1.3rem
+    margin-top: 0.1rem
 
 
   // scss-lint:disable QualifyingElement
@@ -127,6 +142,7 @@ $input-group-btn-border-color: $input-border-color
 .input-group-btn:not(:last-child) > .btn,
 .input-group-btn:not(:last-child) > .btn-group > .btn,
 .input-group-btn:not(:last-child) > .dropdown-toggle,
+.input-group .bootstrap-select:not(:last-child) > .dropdown-toggle,
 .input-group-btn:not(:first-child) > .btn:not(:last-child):not(.dropdown-toggle),
 .input-group-btn:not(:first-child) > .btn-group:not(:last-child) > .btn
   @include border-right-radius(0)
@@ -139,6 +155,7 @@ $input-group-btn-border-color: $input-border-color
 .input-group-btn:not(:first-child) > .btn,
 .input-group-btn:not(:first-child) > .btn-group > .btn,
 .input-group-btn:not(:first-child) > .dropdown-toggle,
+.input-group .bootstrap-select:not(:first-child) > .dropdown-toggle,
 .input-group-btn:not(:last-child) > .btn:not(:first-child),
 .input-group-btn:not(:last-child) > .btn-group:not(:first-child) > .btn
   @include border-left-radius(0)
