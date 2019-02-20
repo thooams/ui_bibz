@@ -124,8 +124,14 @@ module UiBibz::Concerns::Models::Searchable
             sql_subquery << "lower(#{ key_name }.#{ attribute.values.first }) LIKE :#{ key_name }_#{ attribute.values.first }_#{ i }"
             sql_attributes = sql_attributes.merge(Hash["#{ key_name }_#{ attribute.values.first }_#{ i }".to_sym, "%#{ pattern }%"])
           else
-            sql_subquery << "lower(#{ self.to_s.underscore.pluralize.split('/').last }.#{ attribute }) LIKE :#{ attribute }_#{ i }"
-            sql_attributes = sql_attributes.merge(Hash["#{ attribute }_#{ i }".to_sym, "%#{ pattern }%"])
+            if attribute.to_s[0] == "_"
+              attribute = attribute[1..-1]
+              sql_subquery << "lower(#{ attribute }) LIKE :#{ attribute }_#{ i }"
+              sql_attributes = sql_attributes.merge(Hash["#{ attribute }_#{ i }".to_sym, "%#{ pattern }%"])
+            else
+              sql_subquery << "lower(#{ self.to_s.underscore.pluralize.split('/').last }.#{ attribute }) LIKE :#{ attribute }_#{ i }"
+              sql_attributes = sql_attributes.merge(Hash["#{ attribute }_#{ i }".to_sym, "%#{ pattern }%"])
+            end
           end
         end
         sql_query << "(" + sql_subquery.join(' OR ') + ")"
