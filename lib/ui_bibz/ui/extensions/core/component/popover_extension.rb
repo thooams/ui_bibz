@@ -18,11 +18,15 @@ module PopoverExtension
   end
 
   def tooltip_data_html
-    add_html_data :toggle, "tooltip" unless options[:tooltip].nil?
+    unless options[:tooltip].nil?
+      add_html_data :toggle, "tooltip"
 
-    if options[:tooltip].kind_of?(Hash)
-      TOOLTIP_METHODS.each{ |mth| add_html_data(mth, options[:tooltip].try(:[], mth)) unless options[:tooltip].try(:[], mth).nil? }
-      add_html_data :placement, options[:tooltip].try(:[], :position)  unless options[:tooltip].try(:[], :position).nil?
+      if options[:tooltip].kind_of?(Hash)
+        TOOLTIP_METHODS.each{ |mth| add_html_data(mth, options[:tooltip].try(:[], mth)) unless options[:tooltip].try(:[], mth).nil? }
+        add_html_data :placement, options[:tooltip].try(:[], :position)  unless options[:tooltip].try(:[], :position).nil?
+      else
+        add_html_data :title, options[:tooltip]
+      end
     end
   end
 

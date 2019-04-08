@@ -23,7 +23,7 @@ module UiBibz::Utils
       glyph_name      = @glyph_options.try(:[], :name)
       glyph_opts      = @glyph_options
       glyph_html_opts = @options[:html_options] || {}
-      glyph_html_opts = glyph_html_opts.merge(@options[:text] ? {} : { title: @options[:content] })
+      #glyph_html_opts = glyph_html_opts.merge(@options[:text] ? {} : { title: @options[:content] })
       glyph_items     = @glyph_options.try(:[], :items) || []
 
       [glyph_name, glyph_opts, glyph_html_opts, glyph_items]
@@ -35,9 +35,9 @@ module UiBibz::Utils
       else
         glyph_name      = @glyph_options
         glyph_opts      = @options
-        title           = [(@options[:content] unless @options[:text]), ("<kbd>#{ @options[:shortcut] }</kbd>" unless @options[:shortcut].nil?)].compact.join(" ")
+        #title           = [(@options[:content] unless @options[:text]), ("<kbd>#{ @options[:shortcut] }</kbd>" unless @options[:shortcut].nil?)].compact.join(" ")
         glyph_html_opts = @options[:html_options] || {}
-        glyph_html_opts = glyph_html_opts.merge(title.blank? ? {} : { title: title.html_safe })
+       # glyph_html_opts = glyph_html_opts.merge(title.blank? ? {} : { title: title.html_safe })
       end
 
       UiBibz::Ui::Core::Icons::Glyph.new(glyph_name, glyph_opts, glyph_html_opts).render unless glyph_name.nil?
