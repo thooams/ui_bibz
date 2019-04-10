@@ -53,11 +53,6 @@ module UiBibz::Ui::Core::Forms::Buttons
   #
   class ButtonLink < UiBibz::Ui::Core::Forms::Buttons::Button
 
-    # See UiBibz::Ui::Core::Forms::Buttons::Button
-    def initialize content = nil, options = nil, html_options = nil, &block
-      super
-    end
-
     # Render html tag
     def pre_render
       button_link_html_tag
@@ -65,25 +60,29 @@ module UiBibz::Ui::Core::Forms::Buttons
 
   private
 
-    def component_html_options
-      opts = super
-      opts = opts.merge({ role: "button" })
-      opts
-    end
-
     def button_link_html_tag
       link_to link_url, html_options do
-        concat glyph_and_content_html
+        concat spinner_html unless options[:spinner].nil?
+        concat glyph_and_content_html(options[:text].nil? ? @content : '')
         concat badge_html unless options[:badge].nil?
       end
     end
 
     def link_url
-      options[:url] || "#"
+      options[:url] || "##{ options[:collapse] }"
     end
 
-    def status
-      ["btn", outline, options[:status] || :secondary].compact.join('-')
+    def component_html_options
+      super.merge({ role: :button })
+    end
+
+    def collapse
+      # Must be flat hash not deep hash
+      {
+        "data-toggle": :collapse,
+        "aria-controls": options[:collapse],
+        "aria-expanded": options[:expand_collaspe].nil? ? false : options[:expand_collaspe]
+      }
     end
 
   end

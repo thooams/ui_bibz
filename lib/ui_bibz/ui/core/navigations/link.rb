@@ -47,7 +47,7 @@ module UiBibz::Ui::Core::Navigations
 
     # Render html tag
     def pre_render
-      link_to glyph_and_content_html, options[:url] || '#', html_options
+      link_to glyph_and_content_html, options[:url] || "##{ options[:collapse] }", html_options
     end
 
     private
@@ -58,10 +58,15 @@ module UiBibz::Ui::Core::Navigations
       opts
     end
 
-   def collapse
-      attrs = { role: "button", "data-toggle": "collapse", "data-target": "##{ options[:collapse] }" }
-      attrs = attrs.merge({ "aria-expanded": true }) if options[:active_collapse]
-      attrs
+    def collapse
+      {
+        role: "button",
+        data: { toggle: :collapse },
+        aria: {
+          controls: options[:collapse],
+          expanded: options[:active_collapse].nil? ? false : options[:active_collapse]
+        }
+      }
     end
 
     def text

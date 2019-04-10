@@ -23,7 +23,11 @@ module UiBibz::Ui::Core::Navigations
 
     # Render html tag
     def pre_render
-      link_to content, brand_url, html_options
+      if options[:url]
+        link_to content, brand_url, html_options
+      else
+        content_tag :span, content, html_options
+      end
     end
 
   private

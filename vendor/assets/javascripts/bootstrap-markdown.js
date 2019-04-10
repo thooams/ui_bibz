@@ -225,8 +225,8 @@
     __getIcon: function(src) {
       if(typeof src == 'object'){
         var customIcon = this.$options.customIcons[src.name];
-        console.log(customIcon)
-        console.log(this.$options)
+        // console.log(customIcon)
+        // console.log(this.$options)
         return typeof customIcon == 'undefined' ? src.icon[this.$options.iconlibrary] : customIcon;
       } else {
         return src;

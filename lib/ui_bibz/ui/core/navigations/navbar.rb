@@ -134,7 +134,7 @@ module UiBibz::Ui::Core::Navigations
     end
 
     def body_html
-      content_tag :div, class: "collapse navbar-collapse", id: id do
+      content_tag :div, class: "navbar-collapse", id: id do
         concat @items.map(&:render).join.html_safe
       end
     end

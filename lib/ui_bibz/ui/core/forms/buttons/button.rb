@@ -21,6 +21,8 @@ module UiBibz::Ui::Core::Forms::Buttons
   # * +outline+ - Boolean
   # * +state+ - Symbol (+:active+, +:disabled)
   # * +type+ - Symbol (+:outline)
+  # * +collapse+ - String
+  # * +expand_collaspe+ - Boolean
   # * +glyph+ - Add glyph with name or hash options
   #   * +name+ - String
   #   * +size+ - Integer
@@ -51,11 +53,6 @@ module UiBibz::Ui::Core::Forms::Buttons
   #  end
   class Button < UiBibz::Ui::Core::Component
 
-    # See UiBibz::Ui::Core::Component.initialize
-    def initialize content = nil, options = nil, html_options = nil, &block
-      super
-    end
-
     # Render html tag
     def pre_render
       button_html_tag
@@ -85,9 +82,13 @@ module UiBibz::Ui::Core::Forms::Buttons
     end
 
     def collapse
-      attrs = { "data-toggle": "collapse", "data-target": "##{ options[:collapse] }" }
-      attrs = attrs.merge({ "aria-expanded": true }) if options[:active_collapse]
-      attrs
+      # Must be flat hash not deep hash
+      {
+        "data-toggle": :collapse,
+        "data-target": "##{ options[:collapse] }",
+        "aria-controls": options[:collapse],
+        "aria-expanded": options[:expand_collapse].nil? ? false : options[:expand_collapse]
+      }
     end
 
     def status

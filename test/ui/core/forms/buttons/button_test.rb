@@ -75,14 +75,14 @@ class ButtonTest < ActionView::TestCase
 
   test 'button glyph without text' do
     actual   = ui_button('state', glyph: 'diamond', text: false)
-    expected = "<button class=\"btn-secondary btn without-text\"><i title=\"state\" class=\"glyph fas fa-diamond\"></i></button>"
+    expected = "<button class=\"btn-secondary btn without-text\"><i class=\"glyph fas fa-diamond\"></i></button>"
 
     assert_equal expected, actual
   end
 
   test 'button with collapse' do
     actual   = ui_button('state', collapse: 'collapse-id')
-    expected = "<button class=\"btn-secondary btn\" data-toggle=\"collapse\" data-target=\"#collapse-id\">state</button>"
+    expected = "<button class=\"btn-secondary btn\" data-toggle=\"collapse\" data-target=\"#collapse-id\" aria-controls=\"collapse-id\" aria-expanded=\"false\">state</button>"
 
     assert_equal expected, actual
   end
@@ -102,8 +102,8 @@ class ButtonTest < ActionView::TestCase
   end
 
   test "button with simple tooltip" do
-    actual = ui_button('My Button', { tooltip: true }, { title: 'My tooltip' })
-    expected = "<button title=\"My tooltip\" data-toggle=\"tooltip\" class=\"btn-secondary btn\">My Button</button>"
+    actual = ui_button('My Button', { tooltip: "My Button" }, { title: 'My tooltip' })
+    expected = "<button title=\"My tooltip\" data-toggle=\"tooltip\" data-title=\"My Button\" class=\"btn-secondary btn\">My Button</button>"
 
     assert_equal expected, actual
   end

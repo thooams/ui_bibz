@@ -20,7 +20,7 @@ class ComponentTest < ActionView::TestCase
 
   test 'create component without text and glyph' do
     actual = UiBibz::Ui::Core::Component.new('My text', { glyph: 'diamond', text: false }).render
-    expected = "<i title=\"My text\" class=\"glyph fas fa-diamond\"></i>"
+    expected = "<i class=\"glyph fas fa-diamond\"></i>"
 
     assert_equal expected, actual
   end
