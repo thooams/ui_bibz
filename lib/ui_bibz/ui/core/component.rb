@@ -72,8 +72,8 @@ module UiBibz::Ui::Core
           @html_options, @options, @content = html_options, options, content
         end
       end
-      @html_options = @html_options || {}
-      @options      = @options || {}
+      @html_options = (@html_options || {}).with_indifferent_access
+      @options      = (@options || {}).with_indifferent_access
       init_options
       init_component_html_options
     end
