@@ -80,7 +80,7 @@ module UiBibz::Ui::Core::Navigations
     # Add nav link items
     # See UiBibz::Ui::Core::Navigations::NavLink
     def link content = nil, options = {}, html_options = nil, &block
-      block_given? ? content.merge!({ nav_type: type }) : options.merge!({ nav_type: type })
+      block_given? ? content.merge!({ nav_type: type, nav_tags: nav_tags }) : options.merge!({ nav_type: type, nav_tags: nav_tags })
       @items << NavLink.new(content, options, html_options, &block)
     end
 
@@ -146,7 +146,15 @@ module UiBibz::Ui::Core::Navigations
     end
 
     def tag
-      type == "nav-links" ? :nav : :ul
+      if options[:tag]
+        options[:tag]
+      else
+        type == "nav-links" ? :nav : :ul
+      end
+    end
+
+    def nav_tags
+      @options[:nav_tags]
     end
 
   end
