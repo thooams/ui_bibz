@@ -1,3 +1,3 @@
-class Country < ActiveRecord::Base
+class Country < ApplicationRecord
   belongs_to :continent
 end

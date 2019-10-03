@@ -1,4 +1,4 @@
-class User < ActiveRecord::Base
+class User < ApplicationRecord
   include UiBibz::Concerns::Models::Searchable
 
   attr_accessor :name_fr_formula

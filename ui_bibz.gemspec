@@ -39,7 +39,7 @@ Gem::Specification.new do |s|
   # Development gems
   s.add_development_dependency "simple_form"
   s.add_development_dependency "minitest"
-  s.add_development_dependency "sqlite3", "1.3.13" # Bug with v 1.4.0
+  s.add_development_dependency "sqlite3"#, "1.3.13" # Bug with v 1.4.0
   s.add_development_dependency "factory_bot_rails", "~> 4.0"
   s.add_development_dependency "simplecov"
   s.add_development_dependency "codeclimate-test-reporter"
