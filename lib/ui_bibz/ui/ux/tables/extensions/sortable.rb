@@ -9,7 +9,13 @@ module UiBibz::Ui::Ux::Tables
     # header use i18n
     def header column, name = nil
       @column  = column
-      defaults = [translate_headers_by_defaults, translate_headers_by_defaults_active_record, translate_headers_by_active_record, header_name(name)]
+      defaults = [
+        header_name(name),
+        translate_headers_by_defaults,
+        translate_headers_by_defaults_active_record,
+        translate_headers_by_active_record,
+        default_header_name(name)
+      ].compact
       @name    = UiBibz::Utils::Internationalization.new(translate_headers_by_model, default: defaults).translate
       sortable? ? sortable_link : title
     end
@@ -21,7 +27,10 @@ module UiBibz::Ui::Ux::Tables
     end
 
     def header_name name
-      name = name || @column.name
+      name || @column.name
+    end
+
+    def default_header_name name
       name || @column.data_index.to_s.try('titleize')
     end
 
