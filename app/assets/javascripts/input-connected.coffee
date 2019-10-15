@@ -56,17 +56,20 @@
     return this.each ->
       component = $(this)
       connect   = component.data().connect
-      connect.target = connect.target || {}
+
+      if ! connect.targets?
+        connect.target          = connect.target          || {}
+        connect.target.url      = connect.target.url      || settings.target.url
+        connect.target.data     = connect.target.data     || settings.target.data
+        connect.target.selector = connect.target.selector || settings.target.selector
+
+      connect.targets = connect.targets || []
+      connect.targets.push(connect.target) if connect.target?
+
       return unless connect?
 
-      mode        = connect.mode   || settings.mode
+      connectMode = connect.mode   || settings.mode
       events      = connect.events || settings.events
-      target      =
-        url:       connect.target.url       || settings.target.url
-        data:      connect.target.data      || settings.target.data
-        selector:  connect.target.selector  || settings.target.selector
-
-      componentTarget = $("#{ target.selector }")
 
       component.on events, (e) ->
         e.preventDefault()
@@ -77,17 +80,22 @@
         name = if name? then name else "id"
         #name = if Array.isArray(values) then "#{ name }s" else name
 
-        if mode == "remote"
-          params = { "#{ name }": values }
-          $.ajax({ url: target.url, data: params }).done (data) ->
+        connect.targets.forEach (target) ->
+          componentTarget = $("#{ target.selector }")
+
+          mode = target.mode || connectMode
+
+          if mode == "remote"
+            params = { "#{ name }": values }
+            $.ajax({ url: target.url, data: params }).done (data) ->
+              updateTargetComponent(data, componentTarget, component)
+
+          if mode == "local"
+            data = target.data || settings.target.data
+            data = data.filter (value) ->
+              values = [].concat.apply([], [values]) # flatten
+              return values.includes(String(value.connect_option_id))
+
             updateTargetComponent(data, componentTarget, component)
-
-        if mode == "local"
-          data = target.data || settings.target.data
-          data = data.filter (value) ->
-            values = [].concat.apply([], [values]) # flatten
-            return values.includes(String(value.connect_option_id))
-
-          updateTargetComponent(data, componentTarget, component)
 
 )(jQuery)
