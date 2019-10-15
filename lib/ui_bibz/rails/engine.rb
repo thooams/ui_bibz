@@ -25,7 +25,11 @@ module UiBibz
       end
 
       initializer 'font-awesome-sass.assets.precompile', group: :all do |app|
-        config.assets.precompile << /\.(?:svg|eot|woff|woff2|ttf)\z/
+        %w[eot svg ttf woff woff2].each do |ext|
+          app.config.assets.precompile << "fonts/fa-brands-400.#{ext}"
+          app.config.assets.precompile << "fonts/fa-regular-400.#{ext}"
+          app.config.assets.precompile << "fonts/fa-solid-900.#{ext}"
+        end
       end
 
       config.after_initialize do
