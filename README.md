@@ -1,4 +1,4 @@
-![Ui Bibz logo](https://raw.githubusercontent.com/thooams/Ui-Bibz/gh-pages/ui-bibz-logo-without-border.gif)
+![Ui Bibz logo](https://repository-images.githubusercontent.com/29547689/3b149e00-a3f6-11e9-9144-e96702055f08)
 
 [![Gem Version](https://badge.fury.io/rb/ui_bibz.svg)](http://badge.fury.io/rb/ui_bibz)
 [![Build Status](https://travis-ci.org/thooams/Ui-Bibz.svg)](https://travis-ci.org/thooams/Ui-Bibz)
