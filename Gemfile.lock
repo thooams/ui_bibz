@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    ui_bibz (2.3.14)
+    ui_bibz (2.3.15)
       bootstrap (= 4.3.1)
       haml
       haml-rails
@@ -80,7 +80,7 @@ GEM
     factory_bot_rails (4.11.1)
       factory_bot (~> 4.11.1)
       railties (>= 3.0.0)
-    ffi (1.12.1)
+    ffi (1.12.2)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     haml (5.1.2)
@@ -148,7 +148,7 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.19.0, < 2.0)
     rake (13.0.1)
-    ruby_parser (3.14.1)
+    ruby_parser (3.14.2)
       sexp_processor (~> 4.9)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
@@ -160,7 +160,7 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    sexp_processor (4.13.0)
+    sexp_processor (4.14.1)
     simple_form (5.0.1)
       actionpack (>= 5.0)
       activemodel (>= 5.0)
@@ -207,4 +207,4 @@ DEPENDENCIES
   ui_bibz!
 
 BUNDLED WITH
-   1.17.3
+   2.1.2
