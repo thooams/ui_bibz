@@ -49,7 +49,7 @@ module UiBibz::Ui::Ux::Tables
       raise 'Store is nil!' if @per_page_field.options[:store].nil?
       raise 'Store can be created only with "table_search_pagination" method!' if @per_page_field.options[:store].try(:records).nil?
 
-      @store ||= Store.new @per_page_field.options.delete :store
+      @store ||= Store.new @per_page_field.options[:store]
     end
 
     def url_parameters

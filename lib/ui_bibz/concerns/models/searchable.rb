@@ -50,7 +50,7 @@ module UiBibz::Concerns::Models::Searchable
 
     def self.search
       sql         = all
-      column_args = column_args
+      column_args = fetch_column_args
 
       # Add joins
       sql = joins(column_args[:joins]) if column_args[:joins]
@@ -92,7 +92,7 @@ module UiBibz::Concerns::Models::Searchable
       sql.select("#{table_name}2.*, #{@tmp_params[:sort]} AS parent_name").from("#{table_name} #{table_name}2").joins("LEFT OUTER JOIN #{table_name} ON #{table_name}2.parent_id = #{table_name}.id")
     end
 
-    def self.column_args
+    def self.fetch_column_args
       column_args = {}
       column_args = [@arguments[:sortable]].flatten.detect { |f| f[:column] = @params[:column_name] } || {} if !@arguments[:sortable].nil? && @params[:custom_sort]
       column_args

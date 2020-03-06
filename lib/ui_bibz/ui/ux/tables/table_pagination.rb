@@ -56,7 +56,7 @@ module UiBibz::Ui::Ux::Tables
       raise 'Store is nil!' if @pagination.options[:store].nil?
       raise 'Store can be created only with "table_search_pagination" method!' if @pagination.options[:store].try(:records).nil?
 
-      @store ||= Store.new @pagination.options.delete :store
+      @store ||= Store.new @pagination.options[:store]
     end
   end
 end

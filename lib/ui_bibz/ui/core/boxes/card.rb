@@ -97,7 +97,7 @@ module UiBibz::Ui::Core::Boxes
     # Add Header which is a component
     def header(content = nil, options = nil, html_options = nil, &block)
       options, content = inherit_options(content, options, block)
-      @header = if is_tap(content, options)
+      @header = if tap?(content, options)
                   UiBibz::Ui::Core::Boxes::Components::CardHeader.new(content, options, html_options).tap(&block).render
                 else
                   UiBibz::Ui::Core::Boxes::Components::CardHeader.new(content, options, html_options, &block).render
@@ -107,7 +107,7 @@ module UiBibz::Ui::Core::Boxes
     # Add Body div which is a component
     def body(content = nil, options = nil, html_options = nil, &block)
       options, content = inherit_options(content, options, block)
-      if is_tap(content, options)
+      if tap?(content, options)
         content = (content || {}).merge(collapse: options.try(:[], :collapse), parent_collapse: @options[:parent_collapse])
         @items << UiBibz::Ui::Core::Boxes::Components::CardBody.new(content, options, html_options).tap(&block).render
       else

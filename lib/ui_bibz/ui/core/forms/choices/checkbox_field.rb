@@ -69,7 +69,7 @@ module UiBibz::Ui::Core::Forms::Choices
 
     def checkbox_html_options
       {
-        disabled: is_disabled?,
+        disabled: disabled?,
         indeterminate: options[:indeterminate],
         "data-action": options[:action],
         class: 'custom-control-input'

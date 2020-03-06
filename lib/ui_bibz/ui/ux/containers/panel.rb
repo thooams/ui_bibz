@@ -74,7 +74,7 @@ module UiBibz::Ui::Ux::Containers
 
     # Add Header which is a component
     def header(content = nil, options = nil, html_options = nil, &block)
-      @header = if is_tap(content, options)
+      @header = if tap?(content, options)
                   UiBibz::Ui::Ux::Containers::Components::PanelHeader.new(content, options, html_options).tap(&block).render
                 else
                   UiBibz::Ui::Ux::Containers::Components::PanelHeader.new(content, options, html_options, &block).render
@@ -83,7 +83,7 @@ module UiBibz::Ui::Ux::Containers
 
     # Add Header which is a component
     def footer(content = nil, options = nil, html_options = nil, &block)
-      @footer = if is_tap(content, options)
+      @footer = if tap?(content, options)
                   UiBibz::Ui::Ux::Containers::Components::PanelFooter.new(content, options, html_options).tap(&block).render
                 else
                   UiBibz::Ui::Ux::Containers::Components::PanelFooter.new(content, options, html_options, &block).render

@@ -29,7 +29,7 @@ module UiBibz::Ui::Ux::Tables
       raise 'Store is nil!' if @search_field.options[:store].nil?
       raise 'Store can be created only with "table_search_pagination" method!' if @search_field.options[:store].try(:records).nil?
 
-      @store ||= Store.new @search_field.options.delete :store
+      @store ||= Store.new @search_field.options[:store]
     end
   end
 end
