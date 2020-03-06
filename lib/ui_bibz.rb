@@ -31,7 +31,7 @@ module UiBibzInputs
 end
 
 module UiBibz
-  @@configured = false
+  @@configured = false # rubocop:disable Style/ClassVars
 
   # Configuration of Ui Bibz
   class << self
@@ -44,7 +44,7 @@ module UiBibz
 
   def self.configure
     self.configuration ||= Configuration.new
-    @@configured = true
+    @@configured = true # rubocop:disable Style/ClassVars
     yield(configuration)
   end
 

@@ -98,7 +98,7 @@ module UiBibz::Ui::Core::Forms::Dropdowns
     # Add html component
     def html(content = nil, &block)
       if !block.nil?
-        context = eval('self', block.binding)
+        context = eval('self', block.binding) # rubocop:disable Style/EvalWithLocation
         @items << context.capture(&block)
       else
         @items << content

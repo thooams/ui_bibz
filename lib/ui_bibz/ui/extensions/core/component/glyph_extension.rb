@@ -27,7 +27,7 @@ module GlyphExtension
                       { name: options[:glyph] }
                     else
                       {}
-    end
+                    end
 
     glyph_options[:text]       = options[:text] unless options[:text].nil?
     glyph_options[:content]    = options[:content] unless options[:content].nil?

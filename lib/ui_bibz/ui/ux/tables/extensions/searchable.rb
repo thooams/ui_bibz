@@ -28,10 +28,10 @@ module UiBibz::Ui::Ux::Tables
     end
 
     def table_title
-      if @options[:title] != false
-        title = @options[:title] || "#{@store.controller.humanize} list"
-        UiBibz::Utils::Internationalization.new("ui_bibz.table.title.#{model_name}", default: ['ui_bibz.table.title.defaults', title]).translate
-      end
+      return unless @options[:title] != false
+
+      title = @options[:title] || "#{@store.controller.humanize} list"
+      UiBibz::Utils::Internationalization.new("ui_bibz.table.title.#{model_name}", default: ['ui_bibz.table.title.defaults', title]).translate
     end
 
     def model_name

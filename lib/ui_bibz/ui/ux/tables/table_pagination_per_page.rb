@@ -46,13 +46,10 @@ module UiBibz::Ui::Ux::Tables
     private
 
     def store
-      @store ||= if @per_page_field.options[:store].nil?
-                   raise 'Store is nil!'
-                 elsif @per_page_field.options[:store].try(:records).nil?
-                   raise 'Store can be created only with "table_search_pagination" method!'
-                 else
-                   Store.new @per_page_field.options.delete :store
-      end
+      raise 'Store is nil!' if @per_page_field.options[:store].nil?
+      raise 'Store can be created only with "table_search_pagination" method!' if @per_page_field.options[:store].try(:records).nil?
+
+      @store ||= Store.new @per_page_field.options.delete :store
     end
 
     def url_parameters
@@ -91,8 +88,8 @@ module UiBibz::Ui::Ux::Tables
       store.limit_value * store.current_page
     end
 
-    def default_parameters?(k)
-      %w[store_id search controller action page link_type utf8].include?(k)
+    def default_parameters?(key)
+      %w[store_id search controller action page link_type utf8].include?(key)
     end
   end
 end

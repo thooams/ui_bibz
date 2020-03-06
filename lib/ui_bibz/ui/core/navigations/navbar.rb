@@ -130,7 +130,7 @@ module UiBibz::Ui::Core::Navigations
                    brand(@options[:title]) unless @options[:title].nil?
                  else
                    @brand
-      end
+                 end
     end
 
     def body_html

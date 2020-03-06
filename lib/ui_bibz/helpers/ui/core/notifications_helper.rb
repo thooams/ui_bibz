@@ -7,7 +7,7 @@ module UiBibz::Helpers::Ui::Core::NotificationsHelper
   # +html_options+ (Hash)
   #
   def ui_alert(content = nil, options = nil, html_options = nil, &block)
-    if is_tap(content, options)
+    if tap?(content, options)
       UiBibz::Ui::Core::Notifications::Alert.new(content, options, html_options).tap(&block).render
     else
       UiBibz::Ui::Core::Notifications::Alert.new(content, options, html_options, &block).render
@@ -28,7 +28,7 @@ module UiBibz::Helpers::Ui::Core::NotificationsHelper
   # +options+ (Hash)
   # +html_options+ (Hash)
   def ui_progress_bar(percentage = nil, options = nil, html_options = nil, &block)
-    if is_tap(percentage, options)
+    if tap?(percentage, options)
       UiBibz::Ui::Core::Notifications::ProgressBar.new(percentage, options, html_options).tap(&block).render
     else
       UiBibz::Ui::Core::Notifications::ProgressBar.new(percentage, options, html_options, &block).render
@@ -54,7 +54,7 @@ module UiBibz::Helpers::Ui::Core::NotificationsHelper
 
   private
 
-  def is_tap(content, options)
+  def tap?(content, options)
     (content[:tap] if content.is_a?(Hash)) || (options[:tap] unless options.nil?)
   end
 end

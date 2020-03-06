@@ -72,8 +72,8 @@ module UiBibz::Ui::Core::Layouts
       end
       if not_col_options?
         kl = 'col'
-      else
-        kl << write_classes(:md, @options) if kl.empty?
+      elsif kl.empty?
+        kl << write_classes(:md, @options)
       end
       kl
     end
@@ -87,23 +87,23 @@ module UiBibz::Ui::Core::Layouts
     end
 
     # col-md-9
-    def num(size, n)
-      size == :auto ? 'col' : "col-#{size}-#{n}"
+    def num(size, number)
+      size == :auto ? 'col' : "col-#{size}-#{number}"
     end
 
     # col-md-offset-9
-    def offset(size, n)
-      "offset-#{size}-#{n}"
+    def offset(size, number)
+      "offset-#{size}-#{number}"
     end
 
     # col-md-push-9
-    def push(size, n)
-      "col-#{size}-push-#{n}"
+    def push(size, number)
+      "col-#{size}-push-#{number}"
     end
 
     # col-md-pull-9
-    def pull(size, n)
-      "col-#{size}-pull-#{n}"
+    def pull(size, number)
+      "col-#{size}-pull-#{number}"
     end
   end
 end

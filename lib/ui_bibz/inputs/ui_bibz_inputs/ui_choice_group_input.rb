@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module UiBibzInputs
-  class UiChoiceGroupInput < CollectionInput #::Inputs::CollectionRadioButtonsInput
+  class UiChoiceGroupInput < CollectionInput
     include UiBibz::Ui::Core::Forms::Choices
 
     def input(wrapper_options = nil)

@@ -89,12 +89,12 @@ module UiBibz::Ui::Core::Icons
     end
 
     def size
-      if options[:size]
-        if options[:size].is_a?(Integer)
-          "fa-#{options[:size]}x"
-        else
-          "fa-#{options[:size]}"
-        end
+      return unless options[:size]
+
+      if options[:size].is_a?(Integer)
+        "fa-#{options[:size]}x"
+      else
+        "fa-#{options[:size]}"
       end
     end
   end

@@ -157,11 +157,11 @@ module UiBibz::Ui::Core::Boxes
     end
 
     def status
-      unless @options[:status].nil?
-        output = @options[:outline] ? ["border-#{@options[:status]}"] : ["bg-#{@options[:status]}"]
-        output << 'text-white' if @options[:status] != :light && @options[:status] != :warning
-        output.join(' ')
-      end
+      return if @options[:status].nil?
+
+      output = @options[:outline] ? ["border-#{@options[:status]}"] : ["bg-#{@options[:status]}"]
+      output << 'text-white' if @options[:status] != :light && @options[:status] != :warning
+      output.join(' ')
     end
 
     def text

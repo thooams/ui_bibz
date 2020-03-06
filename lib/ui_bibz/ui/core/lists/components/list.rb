@@ -109,22 +109,22 @@ module UiBibz::Ui::Core::Lists::Components
     end
 
     def tag_type_class
-      'list-group-item-action' if is_button_type? || is_link_type?
+      'list-group-item-action' if button_type? || link_type?
     end
 
-    def is_link_type?
+    def link_type?
       @html_options[:href] = @options[:url] if @options[:url]
       @options[:tag_type] == :a || @html_options.delete(:tag_type) == :a
     end
 
-    def is_button_type?
+    def button_type?
       @options[:tag_type] == :button || @html_options.delete(:tag_type) == :button
     end
 
     def tag_type
-      if is_link_type?
+      if link_type?
         :a
-      elsif is_button_type?
+      elsif button_type?
         :button
       else
         :li

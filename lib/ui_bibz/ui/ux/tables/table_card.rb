@@ -105,8 +105,6 @@ module UiBibz::Ui::Ux::Tables
   #     end
   #   end
   class TableCard < UiBibz::Ui::Core::Boxes::Card
-    attr_accessor :columns
-
     # See UiBibz::Ui::Core::Boxes::Card.initialize
     def initialize(content = nil, options = nil, html_options = nil, &block)
       super
@@ -131,12 +129,12 @@ module UiBibz::Ui::Ux::Tables
 
     # Add table columns item
     def columns(&block)
-      @table.columns &block
+      @table.columns(&block)
     end
 
     # Add table actions item
     def actions(&block)
-      @table.actions &block
+      @table.actions(&block)
     end
 
     # for test
@@ -151,13 +149,10 @@ module UiBibz::Ui::Ux::Tables
     end
 
     def store
-      @store ||= if @options[:store].nil?
-                   raise 'Store is nil!'
-                 elsif @options[:store].try(:records).nil?
-                   raise 'Store can be created only with "table_search_pagination" method!'
-                 else
-                   Store.new @options.delete(:store) if @options[:store]
-      end
+      raise 'Store is nil!' if @options[:store].nil?
+      raise 'Store can be created only with "table_search_pagination" method!' if @options[:store].try(:records).nil?
+
+      @store ||= Store.new @options&.delete(:store)
     end
 
     def init_components
@@ -166,8 +161,8 @@ module UiBibz::Ui::Ux::Tables
       @items << pagination.render if pagination.paginable?
     end
 
-    def default_parameters?(k)
-      %w[store_id per_page page search utf8 search controller action link_type].include?(k)
+    def default_parameters?(key)
+      %w[store_id per_page page search utf8 search controller action link_type].include?(key)
     end
 
     def url_parameters

@@ -29,18 +29,19 @@ module UiBibz::Ui::Ux::Tables
     end
 
     def dropdown_action(record)
-      unless @actions.nil?
-        @actions.format_action&.call(record)
-        unless default_actions? != true && @actions.raw_list.empty?
-          UiBibz::Ui::Core::Forms::Dropdowns::Dropdown.new(dropdown_action_name, { position: :right, size: :sm, glyph: actions_glyph }, { class: 'dropdown-action' }).tap do |d|
-            actions_links(record).each do |l|
-              d.html l.to_s.html_safe
-            end
-            # Maybe remove this line
-            @actions.reset unless @actions.format_action.nil?
-          end.render
+      return if @action.nil?
+
+      @actions.format_action&.call(record)
+
+      return if default_actions? != true && @actions.raw_list.empty?
+
+      UiBibz::Ui::Core::Forms::Dropdowns::Dropdown.new(dropdown_action_name, { position: :right, size: :sm, glyph: actions_glyph }, { class: 'dropdown-action' }).tap do |d|
+        actions_links(record).each do |l|
+          d.html l.to_s.html_safe
         end
-      end
+        # Maybe remove this line
+        @actions.reset unless @actions.format_action.nil?
+      end.render
     end
 
     def actions_glyph

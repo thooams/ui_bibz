@@ -23,8 +23,6 @@ module SurroundExtension
     surrounded? ? surround_wrapper_tag(field_tag) : field_tag
   end
 
-  def input_group_classes; end
-
   def surround_classes
     [input_group_refresh, input_group_classes]
   end

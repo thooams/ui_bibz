@@ -126,13 +126,9 @@ module UiBibz::Ui::Core::Navigations
     end
 
     def justify
-      if @options[:justify]
-        if type == 'nav-links'
-          'nav-justified'
-        else
-          'nav-fill'
-        end
-      end
+      return unless @options[:justify]
+
+      type == 'nav-links' ? 'nav-justified' : 'nav-fill'
     end
 
     def fill

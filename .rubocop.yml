@@ -11,21 +11,17 @@ Lint/UselessAssignment:
   Exclude:
     - 'test/ui/ux/tables/table_test.rb'
 
-Metrics/BlockLength:
-  Enabled: true
-  Exclude:
-    - 'test/**/**/**/**/*'
-    - 'ui_bibz.gemspec'
-
 Style/AsciiComments:
   Enabled: true
   Exclude:
     - 'test/**/**/**/**/*'
 
 Metrics/ClassLength:
-  Enabled: true
+  Enabled: false
+
+Style/FormatString:
   Exclude:
-    - 'test/**/**/**/**/*'
+    - 'config/initializers/will_paginate.rb'
 
 Style/ClassAndModuleChildren:
   Enabled: false
@@ -38,3 +34,19 @@ Style/HashTransformKeys:
 
 Style/HashTransformValues:
   Enabled: true
+
+Style/Documentation:
+  Enabled: false
+
+Metrics/MethodLength:
+  Enabled: false
+
+Metrics/BlockLength:
+  Enabled: false
+
+Metrics/ModuleLength:
+  Enabled: false
+
+# SupportedStyles: annotated, template, unannotated
+Style/FormatStringToken:
+  EnforcedStyle: unannotated

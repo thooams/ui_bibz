@@ -54,7 +54,7 @@ module UiBibz::Ui::Ux::Tables
     end
 
     def columns
-      @columns ||= Columns.new model.new.attributes.keys.map { |record| Column.new(record, { name: record.humanize }) }
+      @columns ||= Columns.new(model.new.attributes.keys.map { |record| Column.new(record, { name: record.humanize }) })
     end
 
     attr_reader :model

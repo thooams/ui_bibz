@@ -14,8 +14,6 @@ module UiBibz::Concerns::Models::Searchable
       OpenStruct.new(generate_parameters)
     end
 
-    private
-
     def self.generate_parameters
       {
         controller: @params[:controller],
@@ -39,21 +37,20 @@ module UiBibz::Concerns::Models::Searchable
 
     # If there is more one table in html page
     def self.initialize_params
-      @tmp_params = {}
-      if is_good_store_id?
-        @tmp_params = {
-          search: @params[:search],
-          per_page: @params[:per_page],
-          page: new_search? ? nil : @params[:page],
-          sort: @params[:sort],
-          direction: @params[:direction]
-        }
-      end
+      return unless good_store_id?
+
+      @tmp_params = {
+        search: @params[:search],
+        per_page: @params[:per_page],
+        page: new_search? ? nil : @params[:page],
+        sort: @params[:sort],
+        direction: @params[:direction]
+      }
     end
 
     def self.search
       sql         = all
-      column_args = get_column_args
+      column_args = column_args
 
       # Add joins
       sql = joins(column_args[:joins]) if column_args[:joins]
@@ -75,7 +72,7 @@ module UiBibz::Concerns::Models::Searchable
     end
 
     def self.generate_default_sql(sql)
-      if is_sorting?
+      if sorting?
         sql.paginate(page: @tmp_params[:page], per_page: @session[:per_page])
       else
         sql.reorder(order_sql).paginate(page: @tmp_params[:page], per_page: @session[:per_page])
@@ -95,13 +92,13 @@ module UiBibz::Concerns::Models::Searchable
       sql.select("#{table_name}2.*, #{@tmp_params[:sort]} AS parent_name").from("#{table_name} #{table_name}2").joins("LEFT OUTER JOIN #{table_name} ON #{table_name}2.parent_id = #{table_name}.id")
     end
 
-    def self.get_column_args
+    def self.column_args
       column_args = {}
       column_args = [@arguments[:sortable]].flatten.detect { |f| f[:column] = @params[:column_name] } || {} if !@arguments[:sortable].nil? && @params[:custom_sort]
       column_args
     end
 
-    def self.is_sorting?
+    def self.sorting?
       @tmp_params[:sort].nil? || @tmp_params[:direction].nil?
     end
 
@@ -144,7 +141,7 @@ module UiBibz::Concerns::Models::Searchable
     end
 
     def self.order_sql
-      is_sorting? ? "#{table_name}.id asc" : "#{@tmp_params[:sort]} #{@tmp_params[:direction]}"
+      sorting? ? "#{table_name}.id asc" : "#{@tmp_params[:sort]} #{@tmp_params[:direction]}"
     end
 
     def self.search_sort_paginate
@@ -153,7 +150,7 @@ module UiBibz::Concerns::Models::Searchable
     end
 
     # If there's several table in the same page
-    def self.is_good_store_id?
+    def self.good_store_id?
       @arguments[:store_id] == @params[:store_id]
     end
 

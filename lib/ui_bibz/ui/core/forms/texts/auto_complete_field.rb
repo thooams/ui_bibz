@@ -69,7 +69,7 @@ module UiBibz::Ui::Core::Forms::Texts
     end
 
     def data_list_name
-      @datalist ||= "#{html_options[:id] || content.to_s.parameterize.underscore}-datalist"
+      @data_list_name ||= "#{html_options[:id] || content.to_s.parameterize.underscore}-datalist"
     end
 
     # Connect option

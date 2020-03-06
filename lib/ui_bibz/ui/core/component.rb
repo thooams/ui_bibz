@@ -62,20 +62,18 @@ module UiBibz::Ui::Core
         @options = content
         read_cache = Rails.cache.read(@options.try(:[], :cache))
         if read_cache.nil?
-          context  = eval('self', block.binding)
+          context  = eval('self', block.binding) # rubocop:disable Style/EvalWithLocation
           @content = context.capture(&block)
         else
           @content = read_cache
         end
+      elsif content.is_a?(Hash)
+        @html_options = options
+        @options = content
       else
-        if content.is_a?(Hash)
-          @html_options = options
-          @options = content
-        else
-          @html_options = html_options
-          @options = options
-          @content = content
-        end
+        @html_options = html_options
+        @options = options
+        @content = content
       end
       @html_options = (@html_options || {}).with_indifferent_access
       @options      = (@options || {}).with_indifferent_access
@@ -94,7 +92,7 @@ module UiBibz::Ui::Core
     end
 
     # Know if component is tapped or not
-    def is_tap(content, options)
+    def tap?(content, options)
       (content[:tap] if content.is_a?(Hash)) || (options[:tap] unless options.nil?)
     end
 
@@ -147,7 +145,7 @@ module UiBibz::Ui::Core
       html_options[:data].update(Hash[name, value])
     end
 
-    def is_disabled?
+    def disabled?
       options[:state] == :disabled || html_options[:disabled]
     end
 

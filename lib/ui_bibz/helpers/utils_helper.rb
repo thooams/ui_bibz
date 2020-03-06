@@ -17,12 +17,10 @@ module UiBibz::Helpers::UtilsHelper
   def new_options(options)
     if options[:html].nil?
       options[:html] = { class: options[:class] }
+    elsif options[:html][:class].nil?
+      options[:html] = options[:html].merge({ class: options[:class] })
     else
-      if options[:html][:class].nil?
-        options[:html] = options[:html].merge({ class: options[:class] })
-      else
-        options[:html][:class] = options[:html][:class] + (options[:class] || '')
-      end
+      options[:html][:class] = options[:html][:class] + (options[:class] || '')
     end
     options.merge(builder: UiBibzForm::UiBibzFormBuilder)
   end

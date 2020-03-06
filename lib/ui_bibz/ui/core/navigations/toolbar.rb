@@ -63,10 +63,10 @@ module UiBibz::Ui::Core::Navigations
       content_tag :div, @items.map(&:render).join.html_safe, html_options
     end
 
-    def button_group(c = nil, o = nil, ho = nil, &block)
-      c = @options.merge(c || {})
-      (c || {}).delete(:class)
-      @items << UiBibz::Ui::Core::Forms::Buttons::ButtonGroup.new(c, o, ho).tap(&block)
+    def button_group(cont = nil, opt = nil, hopt = nil, &block)
+      cont = @options.merge(cont || {})
+      (cont || {}).delete(:class)
+      @items << UiBibz::Ui::Core::Forms::Buttons::ButtonGroup.new(cont, opt, hopt).tap(&block)
     end
 
     def spacer(num = 'auto')
