@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'ui_bibz/helpers/ui/core/boxes_helper'
 require 'ui_bibz/helpers/ui/core/forms_helper'
 require 'ui_bibz/helpers/ui/core/layouts_helper'

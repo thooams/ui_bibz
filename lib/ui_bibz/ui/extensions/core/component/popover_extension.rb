@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module PopoverExtension
 
   TOOLTIP_METHODS = %i(animation container delay html placement selector template title trigger

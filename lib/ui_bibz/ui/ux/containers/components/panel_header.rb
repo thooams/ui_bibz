@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'ui_bibz/ui/ux/containers/components/panel_tab_group'
 module UiBibz::Ui::Ux::Containers::Components
 

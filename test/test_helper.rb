@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Code climate
 require 'simplecov'
 SimpleCov.start 'rails'

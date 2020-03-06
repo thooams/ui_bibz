@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'ui_bibz/ui/ux/containers/components/panel_header'
 require 'ui_bibz/ui/ux/containers/components/panel_body'
 require 'ui_bibz/ui/ux/containers/components/panel_footer'

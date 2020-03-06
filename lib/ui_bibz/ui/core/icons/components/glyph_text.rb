@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module UiBibz::Ui::Core::Icons::Components
 
   class GlyphText < UiBibz::Ui::Core::Component

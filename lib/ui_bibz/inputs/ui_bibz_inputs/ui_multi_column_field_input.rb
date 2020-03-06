@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module UiBibzInputs
   class UiMultiColumnFieldInput < CollectionInput
     include UiBibz::Ui::Core::Forms::Selects

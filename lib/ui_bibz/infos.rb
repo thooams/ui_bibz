@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module UiBibz
   NAME                = "Ui Bibz"
   VERSION             = "2.4.0"

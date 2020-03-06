@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'ui_bibz/ui/core/boxes/components/card_header'
 require 'ui_bibz/ui/core/boxes/components/card_footer'
 require 'ui_bibz/ui/core/boxes/components/card_body'

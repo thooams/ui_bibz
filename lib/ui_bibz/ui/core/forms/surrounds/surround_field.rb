@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'ui_bibz/ui/core/forms/surrounds/components/surround_addon'
 require 'ui_bibz/ui/core/forms/surrounds/components/surround_button'
 require 'ui_bibz/ui/core/forms/surrounds/components/surround_button_group'

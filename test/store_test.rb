@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 require "ui_bibz/ui/ux/tables/components/store"
 require 'will_paginate'

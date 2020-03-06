@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module UiBibzInputs
   class UiNumberFieldInput < UiTextFieldInput
     include UiBibz::Ui::Core::Forms::Numbers

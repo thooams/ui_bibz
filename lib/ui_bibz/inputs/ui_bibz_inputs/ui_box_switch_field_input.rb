@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module UiBibzInputs
   class UiBoxSwitchFieldInput < BaseInput
     include UiBibz::Ui::Core::Forms::Choices

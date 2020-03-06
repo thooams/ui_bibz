@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'ui_bibz/ui/core/navigations/components/nav_link'
 require 'ui_bibz/ui/core/navigations/components/nav_text'
 require 'ui_bibz/ui/core/navigations/components/nav_dropdown'

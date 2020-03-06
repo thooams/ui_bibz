@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module UiBibz::Helpers::Ui::Core::BoxesHelper
 
   # Card Component

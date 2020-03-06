@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'ui_bibz/ui/ux/tables/components/columns'
 require 'ui_bibz/ui/ux/tables/components/column'
 module UiBibz::Ui::Ux::Tables

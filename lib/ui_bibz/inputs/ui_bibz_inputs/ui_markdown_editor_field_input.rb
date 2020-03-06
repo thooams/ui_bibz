@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module UiBibzInputs
   class UiMarkdownEditorFieldInput < StringInput
     include UiBibz::Ui::Core::Forms::Textareas

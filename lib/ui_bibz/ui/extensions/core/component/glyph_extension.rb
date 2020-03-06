@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module GlyphExtension
 
   # Render glyph and content html

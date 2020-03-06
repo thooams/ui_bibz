@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'ui_bibz/utils/internationalization'
 module UiBibz::Ui
   class Base

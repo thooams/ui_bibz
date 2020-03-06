@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module UiBibz::Utils
   class Screwdriver
     include Singleton

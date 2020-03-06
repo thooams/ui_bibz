@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'action_view'
 require 'will_paginate'
 require 'will-paginate-i18n'

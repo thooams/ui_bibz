@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 class PaginationTest < ActionView::TestCase
   include UiBibz::Helpers::Ui::CoreHelper

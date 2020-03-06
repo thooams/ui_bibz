@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'ui_bibz/ui/core/navigations/components/breadcrumb_link'
 module UiBibz::Ui::Core::Navigations
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'haml'
 require 'ui_bibz/ui/extensions/core/component/klass_extension'
 require 'ui_bibz/ui/extensions/core/component/glyph_extension'

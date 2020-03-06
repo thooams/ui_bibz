@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module UiBibzInputs
   class CollectionInput < SimpleForm::Inputs::CollectionInput
     include UiBibz::Ui::Core::Forms::Selects

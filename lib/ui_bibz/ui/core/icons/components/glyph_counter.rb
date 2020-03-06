@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module UiBibz::Ui::Core::Icons::Components
 
   class GlyphCounter < UiBibz::Ui::Core::Icons::Components::GlyphText

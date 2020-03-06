@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "ui_bibz/ui/core/lists/components/list"
 module UiBibz::Ui::Core::Lists
 

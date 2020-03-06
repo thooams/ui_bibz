@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module UiBibzInputs
   class UiFileFieldInput < StringInput
     include UiBibz::Ui::Core::Forms::Texts

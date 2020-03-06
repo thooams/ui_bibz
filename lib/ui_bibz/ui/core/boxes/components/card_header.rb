@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'ui_bibz/ui/core/boxes/components/card_tab_group'
 module UiBibz::Ui::Core::Boxes::Components
 

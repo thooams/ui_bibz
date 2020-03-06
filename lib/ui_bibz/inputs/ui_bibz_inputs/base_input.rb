@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module UiBibzInputs
   class BaseInput < SimpleForm::Inputs::Base
     include ActionView::Helpers::FormTagHelper

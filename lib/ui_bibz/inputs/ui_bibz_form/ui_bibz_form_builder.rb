@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module UiBibzForm
   #if defined?(SimpleForm)
     class UiBibzFormBuilder < SimpleForm::FormBuilder

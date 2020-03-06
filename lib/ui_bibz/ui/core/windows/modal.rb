@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'ui_bibz/ui/core/windows/components/modal_header'
 require 'ui_bibz/ui/core/windows/components/modal_body'
 require 'ui_bibz/ui/core/windows/components/modal_footer'

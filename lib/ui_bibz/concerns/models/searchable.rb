@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module UiBibz::Concerns::Models::Searchable
   extend ActiveSupport::Concern
 

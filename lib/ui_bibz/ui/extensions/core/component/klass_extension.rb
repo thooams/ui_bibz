@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module KlassExtension
 
   def join_classes *classes

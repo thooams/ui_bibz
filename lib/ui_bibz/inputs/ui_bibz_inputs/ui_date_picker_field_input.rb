@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module UiBibzInputs
   class UiDatePickerFieldInput < BaseInput
     include UiBibz::Ui::Core::Forms::Dates

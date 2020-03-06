@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'ui_bibz/ui/extensions/core/forms/connect_extension'
 module SurroundExtension
   include ConnectExtension

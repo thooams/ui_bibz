@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'ui_bibz/ui/core/notifications/components/alert_header'
 require 'ui_bibz/ui/core/notifications/components/alert_body'
 module UiBibz::Ui::Core::Notifications

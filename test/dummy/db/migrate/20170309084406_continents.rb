@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Continents < ActiveRecord::Migration[5.0]
   def change
     create_table :continents do |t|

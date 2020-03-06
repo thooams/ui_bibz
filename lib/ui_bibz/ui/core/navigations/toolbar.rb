@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'ui_bibz/ui/core/navigations/components/toolbar_form'
 module UiBibz::Ui::Core::Navigations
 

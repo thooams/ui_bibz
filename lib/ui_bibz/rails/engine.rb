@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # to load pagination in rails app
 require 'will_paginate'
 require 'jquery-rails'

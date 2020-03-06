@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'ui_bibz/ui/core/forms/buttons/components/button_group_dropdown'
 require 'ui_bibz/ui/core/forms/buttons/components/button_group_split_dropdown'
 module UiBibz::Ui::Core::Forms::Buttons

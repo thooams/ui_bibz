@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module UiBibz::Ui::Ux::Containers::Components
 
   # Create a panel toolbar

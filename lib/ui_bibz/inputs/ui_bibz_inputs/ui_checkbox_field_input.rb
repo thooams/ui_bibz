@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module UiBibzInputs
   class UiCheckboxFieldInput < BaseInput
     include UiBibz::Ui::Core::Forms::Choices

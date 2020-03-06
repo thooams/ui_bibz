@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module UiBibzInputs
   class UiAutoCompleteFieldInput < CollectionInput
     include UiBibz::Ui::Core::Forms::Texts
