@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 module UiBibz::Ui::Core::Forms::Dropdowns
-
   # Create a button dropdown
   #
   # This element is an extend of UiBibz::Ui::Core::Forms::Dropdowns::Dropdown.
@@ -16,7 +15,7 @@ module UiBibz::Ui::Core::Forms::Dropdowns
   #
   # You can add HTML attributes using the +html_options+.
   # You can pass arguments in options attribute:
-  # * +status+ - status of élement with symbol value:
+  # * +status+ - status of element with symbol value:
   #   (+:primary+, +:secondary+, +:info+, +:warning+, +:danger+)
   # * +size+
   #   (+:xs+, +:sm+, +:lg+)
@@ -56,9 +55,8 @@ module UiBibz::Ui::Core::Forms::Dropdowns
   #   end
   #
   class SplitDropdown < UiBibz::Ui::Core::Forms::Dropdowns::Dropdown
-
     # See UiBibz::Ui::Core::Forms::Dropdowns::Dropdown.initialize
-    def initialize name, options = nil, html_options = nil, &block
+    def initialize(name, options = nil, html_options = nil, &block)
       super
     end
 
@@ -71,18 +69,18 @@ module UiBibz::Ui::Core::Forms::Dropdowns
       end
     end
 
-  private
+    private
 
     def component_html_classes
       ['btn-group', type]
     end
 
     def button_html
-      content_tag :button, button_content, class: join_classes("btn", button_status, size)
+      content_tag :button, button_content, class: join_classes('btn', button_status, size)
     end
 
     def split_html
-      content_tag :button, split_content, class: join_classes("btn", button_status, size, "dropdown-toggle", "dropdown-toggle-split"), type: 'button', "data-toggle" => 'dropdown', "aria-haspopup" => true, "aria-expanded" => false
+      content_tag :button, split_content, class: join_classes('btn', button_status, size, 'dropdown-toggle', 'dropdown-toggle-split'), type: 'button', 'data-toggle' => 'dropdown', 'aria-haspopup' => true, 'aria-expanded' => false
     end
 
     def split_content
@@ -90,8 +88,7 @@ module UiBibz::Ui::Core::Forms::Dropdowns
     end
 
     def src_only
-      content_tag :span, "Toggle Dropdown", class: "sr-only"
+      content_tag :span, 'Toggle Dropdown', class: 'sr-only'
     end
-
   end
 end

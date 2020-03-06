@@ -5,7 +5,6 @@ require 'ui_bibz/ui/core/navigations/components/navbar_text'
 require 'ui_bibz/ui/core/navigations/components/navbar_form'
 require 'ui_bibz/ui/core/navigations/components/navbar_brand'
 module UiBibz::Ui::Core::Navigations
-
   # Create a Navbar
   #
   # This element is an extend of UiBibz::Ui::Core::Component.
@@ -71,9 +70,8 @@ module UiBibz::Ui::Core::Navigations
   #   end
   #
   class Navbar < UiBibz::Ui::Core::Component
-
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize content = nil, options = nil, html_options = nil, &block
+    def initialize(content = nil, options = nil, html_options = nil, &block)
       super
       @items = []
     end
@@ -90,38 +88,38 @@ module UiBibz::Ui::Core::Navigations
 
     # Add navbar nav items
     # See UiBibz::Ui::Core::NavbarNav
-    def nav content = nil, options = nil, html_options = nil, &block
-      options = options || {}
+    def nav(content = nil, options = nil, html_options = nil, &block)
+      options ||= {}
       @items << UiBibz::Ui::Core::Navigations::NavbarNav.new(content, options, html_options).tap(&block)
     end
 
     # Add navbar form items
     # See UiBibz::Ui::Core::NavbarForm
-    def form model_or_url, options = {}, &block
+    def form(model_or_url, options = {}, &block)
       @items << UiBibz::Ui::Core::Navigations::NavbarForm.new(model_or_url, options, &block)
     end
 
     # Not use !!!!!
     # Add navbar text items
     # See UiBibz::Ui::Core::NavbarText
-    def text content = nil, options = nil, html_options = nil, &block
+    def text(content = nil, options = nil, html_options = nil, &block)
       @items << UiBibz::Ui::Core::Navigations::NavbarText.new(content, options, html_options, &block)
     end
 
-    def brand content = nil, options = nil, html_options = nil, &block
+    def brand(content = nil, options = nil, html_options = nil, &block)
       @brand = UiBibz::Ui::Core::Navigations::NavbarBrand.new(content, options, html_options, &block).render
     end
 
-    def spacer num = "auto"
-      kls = " mr-#{ num }"
+    def spacer(num = 'auto')
+      kls = " mr-#{num}"
       @items.last.html_options[:class].nil? ? @items.last.html_options[:class] = kls : @items.last.html_options[:class] << kls
     end
 
     def id
-      @id ||= generate_id("navbar-id")
+      @id ||= generate_id('navbar-id')
     end
 
-  private
+    private
 
     def component_html_classes
       ['navbar', type, position, expand_size]
@@ -129,28 +127,28 @@ module UiBibz::Ui::Core::Navigations
 
     def title
       @title ||= if @brand.nil?
-         brand(@options[:title]) unless @options[:title].nil?
-      else
-        @brand
+                   brand(@options[:title]) unless @options[:title].nil?
+                 else
+                   @brand
       end
     end
 
     def body_html
-      content_tag :div, class: "navbar-collapse", id: id do
+      content_tag :div, class: 'navbar-collapse', id: id do
         concat @items.map(&:render).join.html_safe
       end
     end
 
     def navbar_toggle_button_html
-      content_tag :button, "☰", class: 'navbar-toggler hidden-sm-up', type: :button, data: { toggle: 'collapse', target:"##{ id }" }
+      content_tag :button, '☰', class: 'navbar-toggler hidden-sm-up', type: :button, data: { toggle: 'collapse', target: "##{id}" }
     end
 
     def expand_size
-      "navbar-expand-#{ @options[:expand_size] || :lg }" #unless @options[:expand_size].nil?
+      "navbar-expand-#{@options[:expand_size] || :lg}" # unless @options[:expand_size].nil?
     end
 
     def position
-      "#{ position_type }-#{ @options[:position] }" unless @options[:position].nil?
+      "#{position_type}-#{@options[:position]}" unless @options[:position].nil?
     end
 
     def brand_position
@@ -159,16 +157,15 @@ module UiBibz::Ui::Core::Navigations
 
     # fixed || sticky
     def position_type
-      @options[:position_type] || "fixed"
+      @options[:position_type] || 'fixed'
     end
 
     def type
-      "navbar-#{ @options[:type] || 'light' }"
+      "navbar-#{@options[:type] || 'light'}"
     end
 
     def status
-      "bg-#{ @options[:status] }" unless @options[:status].nil?
+      "bg-#{@options[:status]}" unless @options[:status].nil?
     end
-
   end
 end

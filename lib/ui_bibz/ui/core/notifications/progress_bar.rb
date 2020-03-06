@@ -2,7 +2,6 @@
 
 require 'ui_bibz/ui/core/notifications/components/bar'
 module UiBibz::Ui::Core::Notifications
-
   # Create a progress bar
   #
   # This element is an extend of UiBibz::Ui::Core::Component.
@@ -17,7 +16,7 @@ module UiBibz::Ui::Core::Notifications
   #
   # You can add HTML attributes using the +html_options+.
   # You can pass arguments in options attribute:
-  # * +status+ - status of élement with symbol value:
+  # * +status+ - status of element with symbol value:
   #   (+:secondary+, +:primary+, +:info+, +:warning+, +:danger+)
   # * +value+ - Value of percentage (default: content)
   # * +animated+ - Boolean
@@ -56,9 +55,8 @@ module UiBibz::Ui::Core::Notifications
   #   end
   #
   class ProgressBar < UiBibz::Ui::Core::Component
-
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize content = nil, options = nil, html_options = nil, &block
+    def initialize(content = nil, options = nil, html_options = nil, &block)
       super
       @bars = []
     end
@@ -68,18 +66,18 @@ module UiBibz::Ui::Core::Notifications
       content_tag :div, bars.join.html_safe, html_options
     end
 
-    def bar content = nil, options = nil, html_options = nil, &block
+    def bar(content = nil, options = nil, html_options = nil, &block)
       @bars << UiBibz::Ui::Core::Notifications::Components::Bar.new(content, options, html_options, &block).render
     end
 
-  private
+    private
 
     def component_html_classes
       ['progress', line]
     end
 
     def bars
-      if @bars.size > 0
+      if !@bars.empty?
         @bars
       elsif options[:stacked]
         stacked_bars
@@ -89,15 +87,15 @@ module UiBibz::Ui::Core::Notifications
     end
 
     def line
-      "progress-bar-line" if options[:line]
+      'progress-bar-line' if options[:line]
     end
 
     def stacked_bars
       percentages = [7.4, 15.3, 21.1, 25.9, 30.3, 100]
       stacked_colors.map.with_index do |color, i|
         if percentages[0, i].sum <= content.to_f
-          if content.to_f.between?(percentages[0, i].sum , percentages[0, i+1].sum)
-            UiBibz::Ui::Core::Notifications::Components::Bar.new((content.to_f*percentages[i]/100), min: 0, striped: options[:striped], animated: options[:animated], max: 100, status: color).render
+          if content.to_f.between?(percentages[0, i].sum, percentages[0, i + 1].sum)
+            UiBibz::Ui::Core::Notifications::Components::Bar.new((content.to_f * percentages[i] / 100), min: 0, striped: options[:striped], animated: options[:animated], max: 100, status: color).render
           else
             UiBibz::Ui::Core::Notifications::Components::Bar.new(percentages[i], min: 0, striped: options[:striped], animated: options[:animated], max: 100, status: color).render
           end
@@ -107,11 +105,10 @@ module UiBibz::Ui::Core::Notifications
 
     def stacked_colors
       if options[:inverse]
-        %i(success primary info warning danger).reverse
+        %i[success primary info warning danger].reverse
       else
-        %i(success primary info warning danger)
+        %i[success primary info warning danger]
       end
     end
-
   end
 end

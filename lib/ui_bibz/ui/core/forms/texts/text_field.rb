@@ -2,7 +2,6 @@
 
 require 'ui_bibz/ui/extensions/core/forms/surround_extension'
 module UiBibz::Ui::Core::Forms::Texts
-
   # Create a TextField
   #
   # This element is an extend of UiBibz::Ui::Core::Component.
@@ -49,7 +48,7 @@ module UiBibz::Ui::Core::Forms::Texts
     include SurroundExtension
 
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize content = nil, options = nil, html_options = nil, &block
+    def initialize(content = nil, options = nil, html_options = nil, &block)
       super
     end
 
@@ -77,14 +76,13 @@ module UiBibz::Ui::Core::Forms::Texts
     def component_html_options
       options[:state] == :disabled ? { disabled: 'disabled' } : {}
     end
-                                             62+9
+    62 + 9
     def status
-      "form-control-#{ options[:status] }" unless options[:status].nil?
+      "form-control-#{options[:status]}" unless options[:status].nil?
     end
 
     def size
-      "form-control-#{ options[:size] }" unless options[:size].nil?
+      "form-control-#{options[:size]}" unless options[:size].nil?
     end
-
   end
 end

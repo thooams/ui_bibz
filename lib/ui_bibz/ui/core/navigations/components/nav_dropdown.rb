@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 module UiBibz::Ui::Core::Navigations
-
   # Create a dropdown
   #
   # This element is an extend of UiBibz::Ui::Core::Navigations::Component.
@@ -17,7 +16,7 @@ module UiBibz::Ui::Core::Navigations
   #
   # You can add HTML attributes using the +html_options+.
   # You can pass arguments in options attribute:
-  # * +status+ - status of élement with symbol value:
+  # * +status+ - status of element with symbol value:
   #   (+:default+, +:primary+, +:info+, +:warning+, +:danger+)
   # * +size+
   #   (+:xs+, +:sm+, +:lg+)
@@ -44,9 +43,8 @@ module UiBibz::Ui::Core::Navigations
   #   end.render
   #
   class NavDropdown < UiBibz::Ui::Core::Forms::Dropdowns::Dropdown
-
     # See UiBibz::Ui::Core::Dropdown.initialize
-    def initialize content, options = nil, html_options  = nil, &block
+    def initialize(content, options = nil, html_options = nil, &block)
       super
     end
 
@@ -58,15 +56,14 @@ module UiBibz::Ui::Core::Navigations
       end
     end
 
-  private
+    private
 
     def component_html_classes
       [type, 'nav-item', without_caret]
     end
 
     def link_html
-      link_to button_content, "#", class: join_classes(size, "dropdown-toggle", 'nav-link'), "data-toggle" => 'dropdown', "aria-expanded" => false
+      link_to button_content, '#', class: join_classes(size, 'dropdown-toggle', 'nav-link'), 'data-toggle' => 'dropdown', 'aria-expanded' => false
     end
-
   end
 end

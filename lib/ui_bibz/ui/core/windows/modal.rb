@@ -4,7 +4,6 @@ require 'ui_bibz/ui/core/windows/components/modal_header'
 require 'ui_bibz/ui/core/windows/components/modal_body'
 require 'ui_bibz/ui/core/windows/components/modal_footer'
 module UiBibz::Ui::Core::Windows
-
   # Create an modal
   #
   # This element is an extend of UiBibz::Ui::Core::Component.
@@ -55,16 +54,15 @@ module UiBibz::Ui::Core::Windows
   #   end
   #
   class Modal < UiBibz::Ui::Core::Component
-
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize content = nil, options = nil, html_options = nil, &block
+    def initialize(content = nil, options = nil, html_options = nil, &block)
       super
     end
 
     # Render html tag
     def pre_render
       content_tag :div, html_options do
-        content_tag :div, class: "modal-dialog #{ size }", role: 'document' do
+        content_tag :div, class: "modal-dialog #{size}", role: 'document' do
           content_tag :div, class: 'modal-content' do
             concat @header
             concat @body
@@ -74,15 +72,15 @@ module UiBibz::Ui::Core::Windows
       end
     end
 
-    def header content = nil, options = nil, html_options = nil, &block
+    def header(content = nil, options = nil, html_options = nil, &block)
       @header = UiBibz::Ui::Core::Windows::Components::ModalHeader.new(content, options, html_options, &block).render
     end
 
-    def footer content = nil, options = nil, html_options = nil, &block
+    def footer(content = nil, options = nil, html_options = nil, &block)
       @footer = UiBibz::Ui::Core::Windows::Components::ModalFooter.new(content, options, html_options, &block).render
     end
 
-    def body content = nil, options = nil, html_options = nil, &block
+    def body(content = nil, options = nil, html_options = nil, &block)
       @body = UiBibz::Ui::Core::Windows::Components::ModalBody.new(content, options, html_options, &block).render
     end
 
@@ -94,12 +92,11 @@ module UiBibz::Ui::Core::Windows
 
     # :lg, :sm or :xs
     def size
-      "modal-#{ @options[:size] }" if @options[:size]
+      "modal-#{@options[:size]}" if @options[:size]
     end
 
     def effect
       @options[:effect] unless @options[:effect].nil?
     end
-
   end
 end

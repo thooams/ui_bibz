@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 module UiBibz::Ui::Core::Navigations
-
   # Create a NavbarNav
   #
   # This element is an extend of UiBibz::Ui::Core::Navigations::Nav.
@@ -39,16 +38,15 @@ module UiBibz::Ui::Core::Navigations
   #   end.render
   #
   class NavbarNav < UiBibz::Ui::Core::Navigations::Nav
-
     # See UiBibz::Ui::Core::Navigations::Nav.initialize
-    def initialize content = nil, options = nil, html_options = nil, &block
+    def initialize(content = nil, options = nil, html_options = nil, &block)
       super
     end
 
-  private
+    private
 
     def component_html_classes
-      ["navbar-nav"]
+      ['navbar-nav']
     end
 
     def type
@@ -56,8 +54,7 @@ module UiBibz::Ui::Core::Navigations
     end
 
     def position
-      "pull-#{ @options[:position] }" unless @options[:position].nil?
+      "pull-#{@options[:position]}" unless @options[:position].nil?
     end
-
   end
 end

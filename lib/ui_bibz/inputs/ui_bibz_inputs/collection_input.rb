@@ -26,11 +26,11 @@ module UiBibzInputs
             group_method, group_label_method,
             value_method, label_method,
             new_value
-          )})
+          ) })
         else
           options.merge({ option_tags: options_from_collection_for_select(
             collection, value_method, label_method, new_value
-          )})
+          ) })
         end
       else
         options
@@ -43,7 +43,7 @@ module UiBibzInputs
       else
         begin
           ActiveSupport::JSON.decode(@builder.object.send(attribute_name).to_s)
-        rescue
+        rescue StandardError
           @builder.object.send(attribute_name)
         end
       end
@@ -57,9 +57,9 @@ module UiBibzInputs
     end
 
     def input_attribute_name
-      new_attribute_name = "#{ @builder.lookup_model_names.first }"
-      new_attribute_name += "[#{ @builder.lookup_model_names.second }_attributes]" if @builder.lookup_model_names.second
-      new_attribute_name += "[#{ attribute_name }]"
+      new_attribute_name = @builder.lookup_model_names.first.to_s
+      new_attribute_name += "[#{@builder.lookup_model_names.second}_attributes]" if @builder.lookup_model_names.second
+      new_attribute_name + "[#{attribute_name}]"
     end
 
     def collection

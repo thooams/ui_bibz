@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 module UiBibz::Ui::Core::Navigations
-
   # Create a tab_group
   #
   # This element is an extend of UiBibz::Ui::Core::Component.
@@ -61,28 +60,26 @@ module UiBibz::Ui::Core::Navigations
   #   end
   #
   class TabGroup < UiBibz::Ui::Core::Navigations::Nav
-
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize content = nil, options = nil, html_options = nil, &block
+    def initialize(content = nil, options = nil, html_options = nil, &block)
       super
     end
 
     # Add nav link items
     # See UiBibz::Ui::Core::Navigations::NavLink
-    def tab content = nil, options = {}, html_options = nil, &block
+    def tab(content = nil, options = {}, html_options = nil, &block)
       block_given? ? content.merge!({ nav_type: type, tag_type: @options[:tag_type] }) : options.merge!({ nav_type: type, tag_type: @options[:tag_type] })
       @items << NavLink.new(content, options, html_options, &block)
     end
 
-  private
+    private
 
     def component_html_classes
-      ["nav", "nav-tabs", position, justify, fill]
+      ['nav', 'nav-tabs', position, justify, fill]
     end
 
     def type
-      "nav-tabs"
+      'nav-tabs'
     end
-
   end
 end

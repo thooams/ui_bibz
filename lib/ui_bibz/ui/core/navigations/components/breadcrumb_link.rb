@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 module UiBibz::Ui::Core::Navigations::Components
-
   # Create a BreadcrumbLink
   #
   # This element is an extend of UiBibz::Ui::Core::Component.
@@ -16,7 +15,7 @@ module UiBibz::Ui::Core::Navigations::Components
   #
   # You can add HTML attributes using the +html_options+.
   # You can pass arguments in options attribute:
-  # * +state+ - status of élement with symbol value:
+  # * +state+ - status of element with symbol value:
   #   (+:active+)
   # * +url+ - String
   # * +glyph+ - Add glyph with name or hash options
@@ -41,9 +40,8 @@ module UiBibz::Ui::Core::Navigations::Components
   #   end.render
   #
   class BreadcrumbLink < UiBibz::Ui::Core::Navigations::Link
-
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize content = nil, options = nil, html_options = nil, &block
+    def initialize(content = nil, options = nil, html_options = nil, &block)
       super
     end
 
@@ -52,14 +50,14 @@ module UiBibz::Ui::Core::Navigations::Components
       content_tag :li, link_html, html_options
     end
 
-  private
+    private
 
     def component_html_options
-      super.merge(options[:current] ? { "aria-current": "page" } : {})
+      super.merge(options[:current] ? { "aria-current": 'page' } : {})
     end
 
     def component_html_classes
-      "breadcrumb-item"
+      'breadcrumb-item'
     end
 
     def component_options
@@ -73,6 +71,5 @@ module UiBibz::Ui::Core::Navigations::Components
         link_to glyph_and_content_html, options[:url] || '#'
       end
     end
-
   end
 end

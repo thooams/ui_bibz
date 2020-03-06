@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 module UiBibz::Ui::Core::Forms::Numbers
-
   # Create a FormulaField
   #
   # This element is an extend of UiBibz::Ui::Core::Component.
@@ -39,9 +38,8 @@ module UiBibz::Ui::Core::Forms::Numbers
   #   formula_field(value, options = {}, html_options = {})
   #
   class FormulaField < UiBibz::Ui::Core::Component
-
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize content = nil, options = nil, html_options = nil, &block
+    def initialize(content = nil, options = nil, html_options = nil, &block)
       super
     end
 
@@ -57,7 +55,7 @@ module UiBibz::Ui::Core::Forms::Numbers
         sf.text_field formula_field_name, nil, text_field_formula_html_options
         sf.addon '=', class: 'formula-field-sign'
         sf.text_field content, nil, text_field_input_html_options
-        sf.addon formula_field_alert_glyph, { class: 'formula-field-alert' }, { data: { toggle: 'tooltip' }}
+        sf.addon formula_field_alert_glyph, { class: 'formula-field-alert' }, { data: { toggle: 'tooltip' } }
       end.render
     end
 
@@ -69,11 +67,11 @@ module UiBibz::Ui::Core::Forms::Numbers
 
     def text_field_input_html_options
       opts = html_options.clone || {}
-      opts.merge({ readonly: true, class: 'formula-field-result'})
+      opts.merge({ readonly: true, class: 'formula-field-result' })
     end
 
     def component_html_classes
-      super << ['formula-field', 'form-control']
+      super << %w[formula-field form-control]
     end
 
     def component_html_options
@@ -81,7 +79,7 @@ module UiBibz::Ui::Core::Forms::Numbers
     end
 
     def formula_field_alert_glyph
-      UiBibz::Ui::Core::Icons::Glyph.new('exclamation-triangle', status: :danger ).render
+      UiBibz::Ui::Core::Icons::Glyph.new('exclamation-triangle', status: :danger).render
     end
 
     def formula_field_name
@@ -89,17 +87,16 @@ module UiBibz::Ui::Core::Forms::Numbers
     end
 
     def content_formula_name
-      content.to_s.split('').select{ |i| i == "]" }.count > 0 ? content.to_s.gsub(/]$/, "_formula]") : "#{ content }_formula"
+      content.to_s.split('').select { |i| i == ']' }.count > 0 ? content.to_s.gsub(/]$/, '_formula]') : "#{content}_formula"
     end
 
     def status
-      "has-#{ options[:status] }" if options[:status]
+      "has-#{options[:status]}" if options[:status]
     end
 
     # :lg, :sm or :xs
     def size
-      "input-group-#{ options[:size] }" if options[:size]
+      "input-group-#{options[:size]}" if options[:size]
     end
-
   end
 end

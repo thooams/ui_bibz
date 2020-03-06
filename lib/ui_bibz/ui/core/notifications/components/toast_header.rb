@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 module UiBibz::Ui::Core::Notifications::Components
-
   # Create a alert body
   #
   # ==== Attributes
@@ -32,9 +31,8 @@ module UiBibz::Ui::Core::Notifications::Components
   #   end.render
   #
   class ToastHeader < UiBibz::Ui::Core::Component
-
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize content = nil, options = nil, html_options = nil, &block
+    def initialize(content = nil, options = nil, html_options = nil, &block)
       super
     end
 
@@ -48,17 +46,16 @@ module UiBibz::Ui::Core::Notifications::Components
       end
     end
 
-  private
+    private
 
     def close_button
-      content_tag :button, class: 'ml-2 mb-1 close', "data-dismiss": "toast", "aria-label": "Close" do
-        content_tag(:span, "×", "aria-hidden": true).html_safe
+      content_tag :button, class: 'ml-2 mb-1 close', "data-dismiss": 'toast', "aria-label": 'Close' do
+        content_tag(:span, '×', "aria-hidden": true).html_safe
       end
     end
 
     def component_html_classes
-      "toast-header"
+      'toast-header'
     end
-
   end
 end

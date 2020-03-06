@@ -2,7 +2,6 @@
 
 require 'haml'
 module UiBibz::Ui::Core::Navigations
-
   # Create a NavbarForm
   #
   # This element is an extend of ActionView::Helpers::FormHelper::FormFor to Rails
@@ -45,16 +44,16 @@ module UiBibz::Ui::Core::Navigations
     include Haml::Helpers
     include SimpleForm::ActionViewExtensions::FormHelper if defined?(SimpleForm)
     include UiBibz::Helpers::UtilsHelper
-    include ActionView::Helpers#::FormHelper
+    include ActionView::Helpers #::FormHelper
 
     attr_accessor :html_options
 
-    def initialize model_or_url, options = {}, &block
+    def initialize(model_or_url, options = {}, &block)
       init_haml_helpers
       @content      = block
       @model_or_url = model_or_url
       @options      = options
-      @html_options = !%i(form_for ui_form_for).include?(type) ? html_options_for_form(@model_or_url, new_option)  : new_option
+      @html_options = !%i[form_for ui_form_for].include?(type) ? html_options_for_form(@model_or_url, new_option) : new_option
     end
 
     # Render html tag
@@ -65,7 +64,7 @@ module UiBibz::Ui::Core::Navigations
       when :ui_form_for
         begin
           @form = ui_form_for(@model_or_url, html_options, &@content)
-        ## rescue
+          ## rescue
           ## raise 'You must install simple form to use ui_form_for.'
         end
       else
@@ -73,10 +72,10 @@ module UiBibz::Ui::Core::Navigations
       end
     end
 
-  private
+    private
 
     def new_option
-      (@options || {}).merge({ class: UiBibz::Utils::Screwdriver.join_classes("navbar-form", "form-inline", "my-lg-0", "my-2", @options[:class]) })
+      (@options || {}).merge({ class: UiBibz::Utils::Screwdriver.join_classes('navbar-form', 'form-inline', 'my-lg-0', 'my-2', @options[:class]) })
     end
 
     def protect_against_forgery?
@@ -90,6 +89,5 @@ module UiBibz::Ui::Core::Navigations
     def type
       @options[:type] || :form_for
     end
-
   end
 end

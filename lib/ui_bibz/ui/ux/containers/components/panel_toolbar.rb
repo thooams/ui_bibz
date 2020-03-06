@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 module UiBibz::Ui::Ux::Containers::Components
-
   # Create a panel toolbar
   #
   # ==== Attributes
@@ -24,17 +23,15 @@ module UiBibz::Ui::Ux::Containers::Components
   #   end
   #
   class PanelToolbar < UiBibz::Ui::Core::Navigations::Toolbar
-
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize content = nil, options = nil, html_options = nil, &block
+    def initialize(content = nil, options = nil, html_options = nil, &block)
       super
     end
 
-  private
+    private
 
     def component_html_classes
-      super << ["panel-toolbar"]
+      super << ['panel-toolbar']
     end
-
   end
 end

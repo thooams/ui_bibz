@@ -1,0 +1,40 @@
+inherit_from: .rubocop_todo.yml
+
+Layout/LineLength:
+  Enabled: false
+
+AllCops:
+  TargetRubyVersion: 2.3
+
+Lint/UselessAssignment:
+  Enabled: true
+  Exclude:
+    - 'test/ui/ux/tables/table_test.rb'
+
+Metrics/BlockLength:
+  Enabled: true
+  Exclude:
+    - 'test/**/**/**/**/*'
+    - 'ui_bibz.gemspec'
+
+Style/AsciiComments:
+  Enabled: true
+  Exclude:
+    - 'test/**/**/**/**/*'
+
+Metrics/ClassLength:
+  Enabled: true
+  Exclude:
+    - 'test/**/**/**/**/*'
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/HashEachMethods:
+  Enabled: true
+
+Style/HashTransformKeys:
+  Enabled: true
+
+Style/HashTransformValues:
+  Enabled: true

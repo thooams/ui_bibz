@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 module UiBibz::Ui::Core::Notifications::Components
-
   # Create a alert body
   #
   # ==== Attributes
@@ -32,9 +31,8 @@ module UiBibz::Ui::Core::Notifications::Components
   #   end.render
   #
   class AlertBody < UiBibz::Ui::Core::Component
-
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize content = nil, options = nil, html_options = nil, &block
+    def initialize(content = nil, options = nil, html_options = nil, &block)
       super
     end
 
@@ -42,11 +40,10 @@ module UiBibz::Ui::Core::Notifications::Components
       tag(:hr) + content_tag(:p, content, html_options)
     end
 
-  private
+    private
 
     def component_html_classes
-      "alert-body mb-0"
+      'alert-body mb-0'
     end
-
   end
 end

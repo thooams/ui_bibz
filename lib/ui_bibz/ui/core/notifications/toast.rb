@@ -3,7 +3,6 @@
 require 'ui_bibz/ui/core/notifications/components/toast_header'
 require 'ui_bibz/ui/core/notifications/components/toast_body'
 module UiBibz::Ui::Core::Notifications
-
   # Create an alert
   #
   # This element is an extend of UiBibz::Ui::Core::Component.
@@ -18,7 +17,7 @@ module UiBibz::Ui::Core::Notifications
   #
   # You can add HTML attributes using the +html_options+.
   # You can pass arguments in options attribute:
-  # * +status+ - status of élement with symbol value:
+  # * +status+ - status of element with symbol value:
   #   (+:default+, +:primary+, +:info+, +:warning+, +:danger+)
   # * +glyph+ - [String | Hash] Add glyph with name or hash options
   #   * +name+ - [String]
@@ -56,9 +55,8 @@ module UiBibz::Ui::Core::Notifications
   #   end
   #
   class Toast < UiBibz::Ui::Core::Component
-
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize content = nil, options = nil, html_options = nil, &block
+    def initialize(content = nil, options = nil, html_options = nil, &block)
       super
     end
 
@@ -71,29 +69,28 @@ module UiBibz::Ui::Core::Notifications
     end
 
     # Add Header which is a component
-    def header content = nil, options = nil, html_options = nil, &block
+    def header(content = nil, options = nil, html_options = nil, &block)
       @header = UiBibz::Ui::Core::Notifications::Components::ToastHeader.new(content, options, html_options, &block).render
     end
 
     # Add Body which is a component
-    def body content = nil, options = nil, html_options = nil, &block
+    def body(content = nil, options = nil, html_options = nil, &block)
       @body = UiBibz::Ui::Core::Notifications::Components::ToastBody.new(content, options, html_options, &block).render
     end
 
-  private
+    private
 
     def component_html_classes
       super << 'toast'
     end
 
     def component_html_options
-      { role: 'alert', "aria-live": "assertive", "aria-atomic": true }
+      { role: 'alert', "aria-live": 'assertive', "aria-atomic": true }
     end
 
     def component_html_data
       super
-      add_html_data "autohide", options[:auto_hide] if options[:auto_hide]
+      add_html_data 'autohide', options[:auto_hide] if options[:auto_hide]
     end
-
   end
 end

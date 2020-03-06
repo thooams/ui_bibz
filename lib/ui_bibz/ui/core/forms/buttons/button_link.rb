@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 module UiBibz::Ui::Core::Forms::Buttons
-
   # Create a button link
   #
   # This element is an extend of UiBibz::Ui::Core::Forms::Buttons::Button.
@@ -16,7 +15,7 @@ module UiBibz::Ui::Core::Forms::Buttons
   #
   # You can add HTML attributes using the +html_options+.
   # You can pass arguments in options attribute:
-  # * +status+ - status of élement with symbol value:
+  # * +status+ - status of element with symbol value:
   #   (+:primary+, +:secondary+, +:info+, +:warning+, +:danger+)
   # * +size+
   #   (+:xs+, +:sm+, +:lg+)
@@ -54,13 +53,12 @@ module UiBibz::Ui::Core::Forms::Buttons
   #   end
   #
   class ButtonLink < UiBibz::Ui::Core::Forms::Buttons::Button
-
     # Render html tag
     def pre_render
       button_link_html_tag
     end
 
-  private
+    private
 
     def button_link_html_tag
       link_to link_url, html_options do
@@ -71,7 +69,7 @@ module UiBibz::Ui::Core::Forms::Buttons
     end
 
     def link_url
-      options[:url] || "##{ options[:collapse] }"
+      options[:url] || "##{options[:collapse]}"
     end
 
     def component_html_options
@@ -86,6 +84,5 @@ module UiBibz::Ui::Core::Forms::Buttons
         "aria-expanded": options[:expand_collaspe].nil? ? false : options[:expand_collaspe]
       }
     end
-
   end
 end

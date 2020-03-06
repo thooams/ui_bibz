@@ -10,7 +10,6 @@ require 'ui_bibz/ui/core/forms/surrounds/components/surround_radio_field'
 require 'ui_bibz/ui/core/forms/surrounds/components/surround_switch_field'
 require 'ui_bibz/ui/core/forms/surrounds/components/surround_dropdown'
 module UiBibz::Ui::Core::Forms::Surrounds
-
   # Create a TextField
   #
   # This element is an extend of UiBibz::Ui::Core::Component.
@@ -51,11 +50,10 @@ module UiBibz::Ui::Core::Forms::Surrounds
   #   end
   #
   class SurroundField < UiBibz::Ui::Core::Component
-
     attr_reader :errors, :required_fields
 
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize content = nil, options = nil, html_options = nil, &block
+    def initialize(content = nil, options = nil, html_options = nil, &block)
       super
       @items = []
       @errors = []
@@ -67,78 +65,78 @@ module UiBibz::Ui::Core::Forms::Surrounds
       content_tag :div, @items.join.html_safe, html_options
     end
 
-    def dropdown content, options = nil, html_options = nil, &block
+    def dropdown(content, options = nil, html_options = nil, &block)
       @items << SurroundDropdown.new(content, options, html_options).tap(&block).render
     end
 
-    def input attribute_name, options = {}, &block
+    def input(attribute_name, options = {}, &block)
       @items << @options[:form].input(attribute_name, options.merge({ label: false, wrapper: false, error: false }), &block)
       obj = @options[:form].object
       @errors << obj.errors[attribute_name] unless obj.errors[attribute_name].empty?
-      @required_fields << (obj._validators[attribute_name].try(:first).class.to_s == "ActiveRecord::Validations::PresenceValidator")
+      @required_fields << (obj._validators[attribute_name].try(:first).class.to_s == 'ActiveRecord::Validations::PresenceValidator')
     end
 
-    def glyph content = nil, options = {}, html_options = nil, &block
+    def glyph(content = nil, options = {}, html_options = nil, &block)
       @items << SurroundAddon.new(UiBibz::Ui::Core::Icons::Glyph.new(content, options, html_options, &block).render).render
     end
 
-    def addon content = nil, options = {}, html_options = nil, &block
+    def addon(content = nil, options = {}, html_options = nil, &block)
       @items << SurroundAddon.new(content, options, html_options, &block).render
     end
 
-    def button content = nil, options = nil, html_options = nil, &block
+    def button(content = nil, options = nil, html_options = nil, &block)
       @items << SurroundButton.new(content, options, html_options, &block).render
     end
 
-    def button_group content = nil, options = nil, html_options = nil, &block
+    def button_group(content = nil, options = nil, html_options = nil, &block)
       @items << SurroundButtonGroup.new(content, options, html_options).tap(&block).render
     end
 
-    def button_link content = nil, options = nil, html_options = nil, &block
+    def button_link(content = nil, options = nil, html_options = nil, &block)
       @items << SurroundButtonLink.new(content, options, html_options, &block).render
     end
 
-    def button_refresh content = nil, options = nil, html_options = nil, &block
+    def button_refresh(content = nil, options = nil, html_options = nil, &block)
       @items << SurroundButtonRefresh.new(content, options, html_options, &block).render
     end
 
-    def checkbox_field content = nil, options = nil, html_options = nil, &block
+    def checkbox_field(content = nil, options = nil, html_options = nil, &block)
       @items << SurroundCheckboxField.new(content, options, html_options, &block).render
     end
 
-    def radio_field content = nil, options = nil, html_options = nil, &block
+    def radio_field(content = nil, options = nil, html_options = nil, &block)
       @items << SurroundRadioField.new(content, options, html_options, &block).render
     end
 
-    def text_field content = nil, options = nil, html_options = nil, &block
+    def text_field(content = nil, options = nil, html_options = nil, &block)
       @items << UiBibz::Ui::Core::Forms::Texts::TextField.new(content, options, html_options, &block).render
     end
 
-    def date_picker_field content = nil, options = nil, html_options = nil, &block
+    def date_picker_field(content = nil, options = nil, html_options = nil, &block)
       @items << UiBibz::Ui::Core::Forms::Dates::DatePickerField.new(content, options, html_options, &block).render
     end
 
-    def dropdown_select_field content = nil, options = nil, html_options = nil, &block
+    def dropdown_select_field(content = nil, options = nil, html_options = nil, &block)
       @items << UiBibz::Ui::Core::Forms::Selects::DropdownSelectField.new(content, options, html_options, &block).render
     end
 
-    def select_field content = nil, options = nil, html_options = nil, &block
+    def select_field(content = nil, options = nil, html_options = nil, &block)
       @items << UiBibz::Ui::Core::Forms::Selects::SelectField.new(content, options, html_options, &block).render
     end
 
-    def multi_select_field content = nil, options = nil, html_options = nil, &block
+    def multi_select_field(content = nil, options = nil, html_options = nil, &block)
       @items << UiBibz::Ui::Core::Forms::Selects::MultiSelectField.new(content, options, html_options, &block).render
     end
 
-    def auto_complete_field content = nil, options = nil, html_options = nil, &block
+    def auto_complete_field(content = nil, options = nil, html_options = nil, &block)
       @items << UiBibz::Ui::Core::Forms::Texts::AutoCompleteField.new(content, options, html_options, &block).render
     end
 
-    def html content
+    def html(content)
       @items << content
     end
 
-    # Not correctly implemented
+    # Not correctly implemented
     # def switch_field content = nil, options = nil, html_options = nil, &block
     #   @items << SurroundSwitchField.new(content, options, html_options, &block).render
     # end
@@ -151,12 +149,11 @@ module UiBibz::Ui::Core::Forms::Surrounds
 
     # :lg, :sm or :xs
     def size
-      "input-group-#{ options[:size] }" if options[:size]
+      "input-group-#{options[:size]}" if options[:size]
     end
 
     def status
-      "has-#{ options[:status] }" if options[:status]
+      "has-#{options[:status]}" if options[:status]
     end
-
   end
 end

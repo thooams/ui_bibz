@@ -6,7 +6,7 @@ class AlertTest < ActionView::TestCase
 
   test 'alert' do
     actual = ui_alert 'state'
-    expected = "<div class=\"alert-info alert alert-dismissible\" role=\"alert\">state</div>"
+    expected = '<div class="alert-info alert alert-dismissible" role="alert">state</div>'
 
     assert_equal expected, actual
   end
@@ -16,16 +16,15 @@ class AlertTest < ActionView::TestCase
       a.header 'Information'
       a.body 'Body text'
     end
-    expected = "<div class=\"alert-success alert alert-dismissible\" role=\"alert\"><h4 class=\"alert-header\"><i class=\"glyph fas fa-thumbs-o-up\"></i>  Information<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">×</span><span class=\"sr-only\">Close</span></button></h4><hr /><p class=\"alert-body mb-0\">Body text</p></div>"
+    expected = '<div class="alert-success alert alert-dismissible" role="alert"><h4 class="alert-header"><i class="glyph fas fa-thumbs-o-up"></i>  Information<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button></h4><hr /><p class="alert-body mb-0">Body text</p></div>'
 
     assert_equal expected, actual
   end
 
   test 'alert with timeout' do
     actual = ui_alert 'timeout', timeout: 500
-    expected = "<div data-timeout=\"500\" class=\"alert-info alert alert-dismissible\" role=\"alert\">timeout</div>"
+    expected = '<div data-timeout="500" class="alert-info alert alert-dismissible" role="alert">timeout</div>'
 
     assert_equal expected, actual
   end
-
 end

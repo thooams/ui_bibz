@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 module UiBibz::Ui::Core::Notifications
-
   # Create a spinner
   #
   # This element is an extend of UiBibz::Ui::Core::Component.
@@ -16,7 +15,7 @@ module UiBibz::Ui::Core::Notifications
   #
   # You can add HTML attributes using the +html_options+.
   # You can pass arguments in options attribute:
-  # * +status+ - status of élement with symbol value:
+  # * +status+ - status of element with symbol value:
   #   (+:primary+, +:secondary+, +:success+, +:danger+, +:warning+, +:info+, +:light+, +:dark+)
   # * +size+
   #   (+:xs+, +:sm+, +:lg+)
@@ -48,44 +47,42 @@ module UiBibz::Ui::Core::Notifications
   #   end
   #
   class Spinner < UiBibz::Ui::Core::Component
-
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize content = nil, options = nil, html_options = nil, &block
+    def initialize(content = nil, options = nil, html_options = nil, &block)
       super
     end
 
     # Render html tag
     def pre_render
       content_tag tag_html, html_options do
-        content_tag :span, @content || "Loading...", class: "sr-only"
+        content_tag :span, @content || 'Loading...', class: 'sr-only'
       end
     end
 
-  private
+    private
 
     def component_html_options
-      super.merge({ role: "status" })
+      super.merge({ role: 'status' })
     end
 
     def component_html_classes
-      ["spinner-#{ type }", status, size]
+      ["spinner-#{type}", status, size]
     end
 
     def status
-      "text-#{ @options[:status] || :secondary }" if options[:status]
+      "text-#{@options[:status] || :secondary}" if options[:status]
     end
 
     def type
-      @options[:type] || "border"
+      @options[:type] || 'border'
     end
 
     def size
-      "spinner-#{ type }-#{ options[:size] }" if options[:size]
+      "spinner-#{type}-#{options[:size]}" if options[:size]
     end
 
     def tag_html
       options[:tag] || :div
     end
-
   end
 end

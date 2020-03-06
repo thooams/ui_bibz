@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 module UiBibz::Ui::Core::Forms::Selects
-
   # Create a SelectField
   #
   # This element is an extend of UiBibz::Ui::Core::Component.
@@ -17,7 +16,7 @@ module UiBibz::Ui::Core::Forms::Selects
   #
   # You can add HTML attributes using the +html_options+.
   # You can pass arguments in options attribute:
-  # * +status+ - status of élement with symbol value:
+  # * +status+ - status of element with symbol value:
   #   (+:primary+, +:secondary+, +:info+, +:warning+, +:danger+, +:link+)
   # * +option_tags+ - Array, Object [required]
   # * +size+
@@ -61,16 +60,15 @@ module UiBibz::Ui::Core::Forms::Selects
   #   select_field(content, options = {}, html_options = {})
   #
   class SelectField < UiBibz::Ui::Core::Forms::Selects::AbstractSelect
-
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize content = nil, options = nil, html_options = nil, &block
+    def initialize(content = nil, options = nil, html_options = nil, &block)
       super
     end
 
     private
 
     def component_html_classes
-      super << ["select-field", "form-control", "custom-select", size]
+      super << ['select-field', 'form-control', 'custom-select', size]
     end
 
     def component_options
@@ -78,8 +76,7 @@ module UiBibz::Ui::Core::Forms::Selects
     end
 
     def size
-      "custom-select-#{ options[:size] }" unless options[:size].nil?
+      "custom-select-#{options[:size]}" unless options[:size].nil?
     end
-
   end
 end

@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
-require "ui_bibz/ui/core/lists/components/list"
+require 'ui_bibz/ui/core/lists/components/list'
 module UiBibz::Ui::Core::Lists
-
   # Create a list group
   #
   # This element is an extend of UiBibz::Ui::Core::Component.
@@ -72,43 +71,41 @@ module UiBibz::Ui::Core::Lists
   #   end
   #
   class ListGroup < UiBibz::Ui::Core::Component
-
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize content = nil, options = nil, html_options = nil, &block
+    def initialize(content = nil, options = nil, html_options = nil, &block)
       super
       @lists = []
     end
 
     # Render html tag
     def pre_render
-      content_tag tag_type, @lists.join().html_safe, html_options
+      content_tag tag_type, @lists.join.html_safe, html_options
     end
 
     # Add group list
     # See UiBibz::Ui::Core::List
-    def list content = nil, options = {} , html_options = nil, &block
+    def list(content = nil, options = {}, html_options = nil, &block)
       options = options.merge({ tag_type: @options[:tag_type] }) unless @options[:tag_type].nil?
 
-      if is_tap(content, options)
-        @lists << UiBibz::Ui::Core::Lists::Components::List.new(content, options, html_options).tap(&block).render
-      else
-        @lists << UiBibz::Ui::Core::Lists::Components::List.new(content, options, html_options, &block).render
-      end
+      @lists << if is_tap(content, options)
+                  UiBibz::Ui::Core::Lists::Components::List.new(content, options, html_options).tap(&block).render
+                else
+                  UiBibz::Ui::Core::Lists::Components::List.new(content, options, html_options, &block).render
+                end
     end
 
-  private
+    private
 
     def component_html_classes
-      super << ["list-group", flush]
+      super << ['list-group', flush]
     end
 
     def flush
-      "list-group-flush" if options[:flush]
+      'list-group-flush' if options[:flush]
     end
 
     def tag_type
-      [:a, :button].include?(options[:tag_type]) ? :div : :ul
+      %i[a button].include?(options[:tag_type]) ? :div : :ul
     end
-
   end
 end

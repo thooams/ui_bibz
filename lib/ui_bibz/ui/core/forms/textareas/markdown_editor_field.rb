@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 module UiBibz::Ui::Core::Forms::Textareas
-
   # Create a MarkdownEditorField
   #
   # This element is an extend of UiBibz::Ui::Core::Component.
@@ -47,9 +46,8 @@ module UiBibz::Ui::Core::Forms::Textareas
   #   end
   #
   class MarkdownEditorField < UiBibz::Ui::Core::Component
-
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize content = nil, options = nil, html_options = nil, &block
+    def initialize(content = nil, options = nil, html_options = nil, &block)
       super
     end
 
@@ -100,12 +98,11 @@ module UiBibz::Ui::Core::Forms::Textareas
     end
 
     def status
-      "has-#{ options[:status] }" if options[:status]
+      "has-#{options[:status]}" if options[:status]
     end
 
     def component_html_options
       options[:state] == :disabled ? { disabled: 'disabled' } : {}
     end
-
   end
 end

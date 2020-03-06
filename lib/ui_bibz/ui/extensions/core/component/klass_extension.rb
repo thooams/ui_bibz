@@ -1,20 +1,18 @@
 # frozen_string_literal: true
 
 module KlassExtension
-
-  def join_classes *classes
+  def join_classes(*classes)
     UiBibz::Utils::Screwdriver.join_classes classes
   end
 
-  def exclude_classes arr, *classes
+  def exclude_classes(arr, *classes)
     UiBibz::Utils::Screwdriver.exclude_classes arr, classes
   end
 
   # Override this method to add a status class
-  def status
-  end
+  def status; end
 
-  def exclude_classes_in_html_options *classes
+  def exclude_classes_in_html_options(*classes)
     html_options[:class] = exclude_classes html_options[:class], classes
   end
 
@@ -50,11 +48,10 @@ module KlassExtension
   end
 
   def connect
-    "ui-bibz-connect" unless options[:connect].nil?
+    'ui-bibz-connect' unless options[:connect].nil?
   end
 
-  def transform_classes_to_array classes
-    UiBibz::Utils::Screwdriver.uniq_word_in_string(classes.kind_of?(String) ? classes : classes.join(' ')) unless classes.nil?
+  def transform_classes_to_array(classes)
+    UiBibz::Utils::Screwdriver.uniq_word_in_string(classes.is_a?(String) ? classes : classes.join(' ')) unless classes.nil?
   end
-
 end

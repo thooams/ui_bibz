@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 module UiBibz::Ui::Core::Forms::Selects
-
   # Create a MultiSelectField
   #
   # This element is an extend of UiBibz::Ui::Core::Forms::Buttons::Button
@@ -53,9 +52,8 @@ module UiBibz::Ui::Core::Forms::Selects
   #   multi_select_field(content, options = {}, html_options = {})
   #
   class MultiSelectField < UiBibz::Ui::Core::Forms::Selects::AbstractSelect
-
     # See UiBibz::Ui::Core::Forms::Buttons::Button.initialize
-    def initialize content = nil, options = nil, html_options = nil, &block
+    def initialize(content = nil, options = nil, html_options = nil, &block)
       super
     end
 
@@ -63,11 +61,11 @@ module UiBibz::Ui::Core::Forms::Selects
 
     def component_html_options
       super.merge({
-        multiple:      true,
-        disabled:      options[:state] == :disabled,
-        include_blank: false,
-        prompt:        false,
-      })
+                    multiple: true,
+                    disabled: options[:state] == :disabled,
+                    include_blank: false,
+                    prompt: false
+                  })
     end
 
     def component_html_classes
@@ -104,25 +102,24 @@ module UiBibz::Ui::Core::Forms::Selects
     end
 
     def status
-      options[:status].nil? ? 'btn-secondary' : "btn-#{ options[:status] }"
+      options[:status].nil? ? 'btn-secondary' : "btn-#{options[:status]}"
     end
 
     def type
-      "btn-block" if options[:type] == :block
+      'btn-block' if options[:type] == :block
     end
 
     # :lg, :sm or :xs
     def size
-      "btn-#{ options[:size] }" if options[:size]
+      "btn-#{options[:size]}" if options[:size]
     end
 
     def button_outline
-      ["btn", outline, @status || :secondary].compact.join('-')
+      ['btn', outline, @status || :secondary].compact.join('-')
     end
 
     def outline
-      "outline" if @options[:outline]
+      'outline' if @options[:outline]
     end
-
   end
 end

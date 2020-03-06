@@ -3,7 +3,6 @@
 require 'ui_bibz/ui/core/forms/buttons/components/button_group_dropdown'
 require 'ui_bibz/ui/core/forms/buttons/components/button_group_split_dropdown'
 module UiBibz::Ui::Core::Forms::Buttons
-
   # Create a button group
   #
   # This element is an extend of UiBibz::Ui::Core::Component.
@@ -48,9 +47,8 @@ module UiBibz::Ui::Core::Forms::Buttons
   #   end
   #
   class ButtonGroup < UiBibz::Ui::Core::Component
-
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize content = nil, options = nil, html_options = nil, &block
+    def initialize(content = nil, options = nil, html_options = nil, &block)
       super
       @items = []
     end
@@ -60,7 +58,7 @@ module UiBibz::Ui::Core::Forms::Buttons
       content_tag :div, @items.join.html_safe, html_options
     end
 
-    def button content = nil, options = nil, html_options = nil, &block
+    def button(content = nil, options = nil, html_options = nil, &block)
       if block.nil?
         options = @options.merge(options || {})
       else
@@ -70,7 +68,7 @@ module UiBibz::Ui::Core::Forms::Buttons
       @items << Button.new(content, options, html_options, &block).render
     end
 
-    def button_link content = nil, options = nil, html_options = nil, &block
+    def button_link(content = nil, options = nil, html_options = nil, &block)
       if block.nil?
         options = @options.merge(options || {})
       else
@@ -80,31 +78,31 @@ module UiBibz::Ui::Core::Forms::Buttons
       @items << ButtonLink.new(content, options, html_options, &block).render
     end
 
-    def dropdown content, options = {}, html_options = nil, &block
+    def dropdown(content, options = {}, html_options = nil, &block)
       options = @options.merge(options)
       @items << ButtonGroupDropdown.new(content, options, html_options).tap(&block).render
     end
 
-    def split_dropdown content, options = {}, html_options = nil, &block
+    def split_dropdown(content, options = {}, html_options = nil, &block)
       options = @options.merge(options)
       @items << ButtonGroupSplitDropdown.new(content, options, html_options).tap(&block).render
     end
 
-    def input attribute_name, options = {}, &block
+    def input(attribute_name, options = {}, &block)
       options = @options.merge(options)
 
       @items << @options[:form].input(attribute_name, options.merge({ label: false, wrapper: false }), &block)
     end
 
-    def html content = nil, options = nil, html_options = nil, &block
+    def html(content = nil, options = nil, html_options = nil, &block)
       @items << UiBibz::Ui::Core::Component.new(content, options, html_options, &block).render
     end
 
-    def choice_group content = nil, options = nil, html_options = nil, &block
+    def choice_group(content = nil, options = nil, html_options = nil, &block)
       @items << UiBibz::Ui::Core::Forms::Choices::ChoiceGroup.new(content, options, html_options).tap(&block).render
     end
 
-  private
+    private
 
     def component_html_classes
       super << [class_name, size, position]
@@ -123,16 +121,15 @@ module UiBibz::Ui::Core::Forms::Buttons
     end
 
     def class_name
-      "btn-group" if options[:position] != :vertical
+      'btn-group' if options[:position] != :vertical
     end
 
     def size
-      "btn-group-#{ options[:size] }" if options[:size]
+      "btn-group-#{options[:size]}" if options[:size]
     end
 
     def position
-      "btn-group-#{ options[:position] }" if options[:position]
+      "btn-group-#{options[:position]}" if options[:position]
     end
-
   end
 end

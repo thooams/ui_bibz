@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 module UiBibz::Ui::Core::Boxes
-
   # Create a card accordion
   #
   # ==== Attributes
@@ -32,9 +31,8 @@ module UiBibz::Ui::Core::Boxes
   #   end.render
   #
   class CardAccordion < UiBibz::Ui::Core::Component
-
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize content = nil, options = nil, html_options = nil, &block
+    def initialize(content = nil, options = nil, html_options = nil, &block)
       super
       @items = []
     end
@@ -44,24 +42,23 @@ module UiBibz::Ui::Core::Boxes
       content_tag :div, @items.join.html_safe, html_options
     end
 
-    def card content = nil, options = nil, html_options = nil, &block
+    def card(content = nil, options = nil, html_options = nil, &block)
       content = (content || {}).merge({ parent_collapse: id })
       @items << UiBibz::Ui::Core::Boxes::Card.new(content, options, html_options).tap(&block).render
     end
 
-  private
+    private
 
     def id
-      @id ||= generate_id("card-accordion-id")
+      @id ||= generate_id('card-accordion-id')
     end
 
     def component_html_classes
-      "accordion"
+      'accordion'
     end
 
     def component_html_options
       { id: id }
     end
-
   end
 end

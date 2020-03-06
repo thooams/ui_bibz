@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 module UiBibz::Ui::Core::Layouts
-
   # Create a col
   #
   # This element is an extend of UiBibz::Ui::Core::Component.
@@ -50,9 +49,8 @@ module UiBibz::Ui::Core::Layouts
   #   end
   #
   class Col < UiBibz::Ui::Core::Component
-
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize content = nil, options = nil, html_options = nil, &block
+    def initialize(content = nil, options = nil, html_options = nil, &block)
       super
     end
 
@@ -61,7 +59,7 @@ module UiBibz::Ui::Core::Layouts
       content_tag :div, content, html_options
     end
 
-  private
+    private
 
     def component_html_classes
       col_classes
@@ -69,11 +67,11 @@ module UiBibz::Ui::Core::Layouts
 
     def col_classes
       kl = []
-      @options.each do |ke,va|
-        kl << write_classes(ke, va) if %w(xs sm md lg xl).include?(ke)
+      @options.each do |ke, va|
+        kl << write_classes(ke, va) if %w[xs sm md lg xl].include?(ke)
       end
       if not_col_options?
-        kl = "col"
+        kl = 'col'
       else
         kl << write_classes(:md, @options) if kl.empty?
       end
@@ -81,32 +79,31 @@ module UiBibz::Ui::Core::Layouts
     end
 
     def not_col_options?
-      (@options.keys & %w(xs sm md lg xl num offset push pull)).empty?
+      (@options.keys & %w[xs sm md lg xl num offset push pull]).empty?
     end
 
-    def write_classes size, opts
-      opts.map{ |k, v| send(k, size.to_sym, v) if %w(num offset push pull).include?(k) }.join(' ')
+    def write_classes(size, opts)
+      opts.map { |k, v| send(k, size.to_sym, v) if %w[num offset push pull].include?(k) }.join(' ')
     end
 
     # col-md-9
-    def num size, n
-      size == :auto ? "col" : "col-#{ size }-#{ n }"
+    def num(size, n)
+      size == :auto ? 'col' : "col-#{size}-#{n}"
     end
 
     # col-md-offset-9
-    def offset size, n
-      "offset-#{ size }-#{ n }"
+    def offset(size, n)
+      "offset-#{size}-#{n}"
     end
 
     # col-md-push-9
-    def push size, n
-      "col-#{ size }-push-#{ n }"
+    def push(size, n)
+      "col-#{size}-push-#{n}"
     end
 
     # col-md-pull-9
-    def pull size, n
-      "col-#{ size }-pull-#{ n }"
+    def pull(size, n)
+      "col-#{size}-pull-#{n}"
     end
-
   end
 end

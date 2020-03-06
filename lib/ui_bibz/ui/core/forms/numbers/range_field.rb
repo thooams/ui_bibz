@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 module UiBibz::Ui::Core::Forms::Numbers
-
   # Create a RangeField
   #
   # This element is an extend of UiBibz::Ui::Core::Component.
@@ -47,9 +46,8 @@ module UiBibz::Ui::Core::Forms::Numbers
   #   end
   #
   class RangeField < UiBibz::Ui::Core::Forms::Numbers::NumberField
-
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize content = nil, options = nil, html_options = nil, &block
+    def initialize(content = nil, options = nil, html_options = nil, &block)
       super
     end
 
@@ -63,6 +61,5 @@ module UiBibz::Ui::Core::Forms::Numbers
     def component_html_classes
       'custom-range'
     end
-
   end
 end

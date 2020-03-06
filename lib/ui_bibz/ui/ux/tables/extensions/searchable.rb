@@ -2,8 +2,7 @@
 
 module UiBibz::Ui::Ux::Tables
   class Searchable < UiBibz::Ui::Base
-
-    def initialize store, options, html_options = nil
+    def initialize(store, options, html_options = nil)
       @store        = store
       @options      = options
       @html_options = html_options
@@ -22,16 +21,16 @@ module UiBibz::Ui::Ux::Tables
       @options[:searchable].nil? ? true : @options[:searchable]
     end
 
-  private
+    private
 
-    def translate_searchable_attributes_by_active_record attr
+    def translate_searchable_attributes_by_active_record(attr)
       @store.model.human_attribute_name(attr)
     end
 
     def table_title
       if @options[:title] != false
-        title = @options[:title] || "#{ @store.controller.humanize } list"
-        UiBibz::Utils::Internationalization.new("ui_bibz.table.title.#{ model_name }", default: ["ui_bibz.table.title.defaults", title]).translate
+        title = @options[:title] || "#{@store.controller.humanize} list"
+        UiBibz::Utils::Internationalization.new("ui_bibz.table.title.#{model_name}", default: ['ui_bibz.table.title.defaults', title]).translate
       end
     end
 
@@ -46,6 +45,5 @@ module UiBibz::Ui::Ux::Tables
     def table_glyph
       UiBibz::Ui::Core::Icons::Glyph.new(@options[:glyph]).render unless @options[:glyph].nil?
     end
-
   end
 end

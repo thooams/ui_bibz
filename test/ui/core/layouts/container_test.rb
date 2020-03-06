@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# encoding: UTF-8
 require 'test_helper'
 
 class UiHelperTest < ActionView::TestCase
@@ -8,7 +7,7 @@ class UiHelperTest < ActionView::TestCase
 
   test 'container' do
     actual   = ui_container type: :fluid
-    expected = "<div class=\"container-fluid\"></div>"
+    expected = '<div class="container-fluid"></div>'
 
     assert_equal expected, actual
   end

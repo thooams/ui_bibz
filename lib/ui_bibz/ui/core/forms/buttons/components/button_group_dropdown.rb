@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 module UiBibz::Ui::Core::Forms::Buttons
-
   # Create a button choice
   #
   # This element is an extend of UiBibz::Ui::Core::Forms::Buttons::Button
@@ -17,7 +16,7 @@ module UiBibz::Ui::Core::Forms::Buttons
   # You can add HTML attributes using the +html_options+.
   # You can pass arguments in options attribute:
   # * +type+ - Symbol (+:checkbox+, +:radio+)
-  # * +status+ - status of élement with symbol value:
+  # * +status+ - status of element with symbol value:
   #   (+:primary+, +:secondary+, +:info+, +:warning+, +:danger+)
   # * +size+
   #   (+:xs+, +:sm+, +:lg+)
@@ -58,17 +57,15 @@ module UiBibz::Ui::Core::Forms::Buttons
   #   end
   #
   class ButtonGroupDropdown < UiBibz::Ui::Core::Forms::Dropdowns::Dropdown
-
     # See UiBibz::Ui::Core::Forms::Buttons::Button.initialize
-    def initialize content = nil, options = nil, html_options = nil, &block
+    def initialize(content = nil, options = nil, html_options = nil, &block)
       super
     end
 
     private
 
     def component_html_classes
-      super << "btn-group"
+      super << 'btn-group'
     end
-
   end
 end

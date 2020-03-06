@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 module UiBibz::Ui::Core::Forms::Dropdowns::Components
-
   # Create DropdownLink
   #
   # This element is an extend of UiBibz::Ui::Core::Component.
@@ -16,7 +15,7 @@ module UiBibz::Ui::Core::Forms::Dropdowns::Components
   #
   # You can add HTML attributes using the +html_options+.
   # You can pass arguments in options attribute:
-  # * +state+ - status of élement with symbol value:
+  # * +state+ - status of element with symbol value:
   #   (+:active+)
   # * +url+ - String
   # * +glyph+ - Add glyph with name or hash options
@@ -41,10 +40,9 @@ module UiBibz::Ui::Core::Forms::Dropdowns::Components
   #     'Home'
   #   end.render
   #
-  class DropdownLink <  UiBibz::Ui::Core::Component
-
+  class DropdownLink < UiBibz::Ui::Core::Component
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize content = nil, options = nil, html_options = nil, &block
+    def initialize(content = nil, options = nil, html_options = nil, &block)
       super
       @html_options = @html_options.merge(link_html_options)
     end
@@ -61,12 +59,11 @@ module UiBibz::Ui::Core::Forms::Dropdowns::Components
     end
 
     def link_url
-      options[:url] || "#"
+      options[:url] || '#'
     end
 
     def link_html_options
       @options[:link_html_options].nil? ? {} : @options[:link_html_options]
     end
-
   end
 end

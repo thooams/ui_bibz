@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 module UiBibz::Ui::Core::Navigations
-
   # Create a NavbarText
   #
   # ==== Attributes
@@ -34,9 +33,8 @@ module UiBibz::Ui::Core::Navigations
   #   end.render
   #
   class NavbarText < UiBibz::Ui::Core::Component
-
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize content = nil, options = nil, html_options = nil, &block
+    def initialize(content = nil, options = nil, html_options = nil, &block)
       super
     end
 
@@ -45,15 +43,14 @@ module UiBibz::Ui::Core::Navigations
       content_tag :span, content, html_options
     end
 
-  private
+    private
 
     def component_html_classes
-      ["navbar-text", position]
+      ['navbar-text', position]
     end
 
     def position
-      "navbar-#{ options[:position] }" unless options[:position].nil?
+      "navbar-#{options[:position]}" unless options[:position].nil?
     end
-
   end
 end

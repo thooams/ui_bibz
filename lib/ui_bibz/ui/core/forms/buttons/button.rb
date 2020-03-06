@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 module UiBibz::Ui::Core::Forms::Buttons
-
   # Create a button
   #
   # This element is an extend of UiBibz::Ui::Core::Component.
@@ -16,7 +15,7 @@ module UiBibz::Ui::Core::Forms::Buttons
   #
   # You can add HTML attributes using the +html_options+.
   # You can pass arguments in options attribute:
-  # * +status+ - status of élement with symbol value:
+  # * +status+ - status of element with symbol value:
   #   (+:primary+, +:secondary+, +:info+, +:warning+, +:danger+, +:link+)
   # * +size+
   #   (+:xs+, +:sm+, +:lg+)
@@ -54,13 +53,12 @@ module UiBibz::Ui::Core::Forms::Buttons
   #    content
   #  end
   class Button < UiBibz::Ui::Core::Component
-
     # Render html tag
     def pre_render
       button_html_tag
     end
 
-  protected
+    protected
 
     def button_html_tag
       content_tag :button, html_options do
@@ -87,34 +85,34 @@ module UiBibz::Ui::Core::Forms::Buttons
       # Must be flat hash not deep hash
       {
         "data-toggle": :collapse,
-        "data-target": "##{ options[:collapse] }",
+        "data-target": "##{options[:collapse]}",
         "aria-controls": options[:collapse],
         "aria-expanded": options[:expand_collapse].nil? ? false : options[:expand_collapse]
       }
     end
 
     def status
-      ["btn", outline, options[:status] || "secondary"].compact.join('-')
+      ['btn', outline, options[:status] || 'secondary'].compact.join('-')
     end
 
     def outline
-      "outline" unless options[:outline].nil?
+      'outline' unless options[:outline].nil?
     end
 
     def toggle
-      { "data-toggle" => 'button', "aria-pressed" => false, "autocomplete" => "off" }
+      { 'data-toggle' => 'button', 'aria-pressed' => false, 'autocomplete' => 'off' }
     end
 
     def active_html_options
-      { "aria-pressed" => true }
+      { 'aria-pressed' => true }
     end
 
     def type
-      "btn-block" if options[:type] == :block
+      'btn-block' if options[:type] == :block
     end
 
     def without_text
-      "without-text" unless options[:text].nil?
+      'without-text' unless options[:text].nil?
     end
 
     def action
@@ -122,7 +120,7 @@ module UiBibz::Ui::Core::Forms::Buttons
     end
 
     def badge_html
-      if options[:badge].kind_of? Hash
+      if options[:badge].is_a? Hash
         options[:badge][:status] = options[:badge][:status] || options[:status] || :secondary
         UiBibz::Ui::Core::Notifications::Badge.new(options[:badge].delete(:content), options[:badge]).render
 
@@ -133,15 +131,14 @@ module UiBibz::Ui::Core::Forms::Buttons
 
     def spinner_html
       opts = { size: :sm, tag: :span, class: options[:text] == false ? nil : 'mr-2' }
-      opts = opts.merge(options[:spinner]) if options[:spinner].kind_of? Hash
+      opts = opts.merge(options[:spinner]) if options[:spinner].is_a? Hash
 
       UiBibz::Ui::Core::Notifications::Spinner.new(nil, opts).render
     end
 
     # :lg, :sm or :xs
     def size
-      "btn-#{ options[:size] }" if options[:size]
+      "btn-#{options[:size]}" if options[:size]
     end
-
   end
 end

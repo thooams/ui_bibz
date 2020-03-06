@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 module UiBibz::Ui::Core::Windows::Components
-
   # Create a modal header
   #
   # ==== Attributes
@@ -32,9 +31,8 @@ module UiBibz::Ui::Core::Windows::Components
   #   end.render
   #
   class ModalHeader < UiBibz::Ui::Core::Component
-
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize content = nil, options = nil, html_options = nil, &block
+    def initialize(content = nil, options = nil, html_options = nil, &block)
       super
     end
 
@@ -53,11 +51,10 @@ module UiBibz::Ui::Core::Windows::Components
     end
 
     def close_button_html
-      content_tag :button, class: 'close', "data-dismiss" => 'modal', "aria-label" => "Close" do
-        concat content_tag :span, "×", "aria-hidden" => true
-        concat content_tag :span, "Close", class: 'sr-only'
+      content_tag :button, class: 'close', 'data-dismiss' => 'modal', 'aria-label' => 'Close' do
+        concat content_tag :span, '×', 'aria-hidden' => true
+        concat content_tag :span, 'Close', class: 'sr-only'
       end
     end
-
   end
 end

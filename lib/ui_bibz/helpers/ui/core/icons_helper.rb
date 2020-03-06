@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 module UiBibz::Helpers::Ui::Core::IconsHelper
-
   # Glyph Component
   #
   # + content+ (String || Hash) [Required]
@@ -12,7 +11,7 @@ module UiBibz::Helpers::Ui::Core::IconsHelper
   # => glyph 'calendar', size: :xs
   # or
   # => glyph { name: 'calendar', size: :xs }
-  def ui_glyph content, options = nil, html_options = nil, &block
+  def ui_glyph(content, options = nil, html_options = nil, &block)
     UiBibz::Ui::Core::Icons::Glyph.new(content, options, html_options, &block).render
   end
 
@@ -22,7 +21,7 @@ module UiBibz::Helpers::Ui::Core::IconsHelper
   # +options+ (Hash)
   # +html_options+ (Hash)
   #
-  def ui_glyph_group content = nil, options = nil, html_options = nil, &block
+  def ui_glyph_group(content = nil, options = nil, html_options = nil, &block)
     UiBibz::Ui::Core::Icons::GlyphGroup.new(content, options, html_options).tap(&block).render
   end
 
@@ -30,7 +29,7 @@ module UiBibz::Helpers::Ui::Core::IconsHelper
   #
   # +options+ (Hash)
   #
-  def ui_glyph_or_glyph_group glyph_options, options = {}
+  def ui_glyph_or_glyph_group(glyph_options, options = {})
     UiBibz::Utils::GlyphChanger.new(glyph_options, options).render
   end
 
@@ -38,8 +37,7 @@ module UiBibz::Helpers::Ui::Core::IconsHelper
   #
   # +options+ (Hash)
   # +html_options+ (Hash)
-  def ui_star content = nil, options = nil, html_options = nil, &block
+  def ui_star(content = nil, options = nil, html_options = nil, &block)
     UiBibz::Ui::Core::Icons::Star.new(content, options, html_options, &block).render
   end
-
 end

@@ -5,7 +5,7 @@ module UiBibz::Concerns::Models::Searchable
 
   included do
     # Maybe create a class to put all methods of table_search_pagination
-    def self.table_search_pagination params, session, args = {}
+    def self.table_search_pagination(params, session, args = {})
       @params           = params.permit!
       @session          = session
       @arguments        = args
@@ -14,22 +14,22 @@ module UiBibz::Concerns::Models::Searchable
       OpenStruct.new(generate_parameters)
     end
 
-  private
+    private
 
     def self.generate_parameters
       {
-        controller:            @params[:controller],
-        param_id:              @params[:id],
-        params:                @params,
-        direction:             @params[:direction],
-        search:                @params[:search],
-        sort:                  @params[:sort],
-        action:                @params[:action],
-        column_id:             @params[:column_id],
-        id:                    @arguments[:store_id],
-        records:               search_sort_paginate,
+        controller: @params[:controller],
+        param_id: @params[:id],
+        params: @params,
+        direction: @params[:direction],
+        search: @params[:search],
+        sort: @params[:sort],
+        action: @params[:action],
+        column_id: @params[:column_id],
+        id: @arguments[:store_id],
+        records: search_sort_paginate,
         searchable_attributes: @searchable_attributes,
-        model:                 create_model
+        model: create_model
       }
     end
 
@@ -40,17 +40,16 @@ module UiBibz::Concerns::Models::Searchable
     # If there is more one table in html page
     def self.initialize_params
       @tmp_params = {}
-      if self.is_good_store_id?
+      if is_good_store_id?
         @tmp_params = {
-          search:    @params[:search],
-          per_page:  @params[:per_page],
-          page:      self.new_search? ? nil : @params[:page],
-          sort:      @params[:sort],
+          search: @params[:search],
+          per_page: @params[:per_page],
+          page: new_search? ? nil : @params[:page],
+          sort: @params[:sort],
           direction: @params[:direction]
         }
       end
     end
-
 
     def self.search
       sql         = all
@@ -71,36 +70,34 @@ module UiBibz::Concerns::Models::Searchable
       generate_sql sql, column_args
     end
 
-    def self.generate_sql sql, column_args
+    def self.generate_sql(sql, column_args)
       column_args[:count].nil? ? generate_default_sql(sql) : generate_count_sql(sql)
     end
 
-    def self.generate_default_sql sql
+    def self.generate_default_sql(sql)
       if is_sorting?
-        sql.paginate(:page => @tmp_params[:page], per_page: @session[:per_page])
+        sql.paginate(page: @tmp_params[:page], per_page: @session[:per_page])
       else
-        sql.reorder(order_sql).paginate(:page => @tmp_params[:page], per_page: @session[:per_page])
+        sql.reorder(order_sql).paginate(page: @tmp_params[:page], per_page: @session[:per_page])
       end
     end
 
-    def self.generate_count_sql sql
-      sq = "SELECT * FROM (#{ sql.group(table_name + '.id').to_sql }) countable ORDER BY countable.count #{ @tmp_params[:direction] || asc }"
-      self.paginate_by_sql(sq, :page => @tmp_params[:page], per_page: @session[:per_page])
+    def self.generate_count_sql(sql)
+      sq = "SELECT * FROM (#{sql.group(table_name + '.id').to_sql}) countable ORDER BY countable.count #{@tmp_params[:direction] || asc}"
+      paginate_by_sql(sq, page: @tmp_params[:page], per_page: @session[:per_page])
     end
 
-    def self.generate_select_count_sort_query sql, column_args
-      sql.select("#{ table_name }.*, count(#{ column_args[:column] }.*)")
+    def self.generate_select_count_sort_query(sql, column_args)
+      sql.select("#{table_name}.*, count(#{column_args[:column]}.*)")
     end
 
-    def self.generate_parent_sort_query sql
-      sql.select("#{ table_name }2.*, #{ @tmp_params[:sort] } AS parent_name").from("#{ table_name } #{ table_name }2").joins("LEFT OUTER JOIN #{ table_name } ON #{ table_name }2.parent_id = #{ table_name }.id")
+    def self.generate_parent_sort_query(sql)
+      sql.select("#{table_name}2.*, #{@tmp_params[:sort]} AS parent_name").from("#{table_name} #{table_name}2").joins("LEFT OUTER JOIN #{table_name} ON #{table_name}2.parent_id = #{table_name}.id")
     end
 
     def self.get_column_args
       column_args = {}
-      if !@arguments[:sortable].nil? && @params[:custom_sort]
-        column_args = [@arguments[:sortable]].flatten.detect{|f| f[:column] = @params[:column_name] } || {}
-      end
+      column_args = [@arguments[:sortable]].flatten.detect { |f| f[:column] = @params[:column_name] } || {} if !@arguments[:sortable].nil? && @params[:custom_sort]
       column_args
     end
 
@@ -108,50 +105,51 @@ module UiBibz::Concerns::Models::Searchable
       @tmp_params[:sort].nil? || @tmp_params[:direction].nil?
     end
 
-    def self.search_by_query sql
+    def self.search_by_query(sql)
       raise 'Add searchable_attributes method in Model' if @searchable_attributes.nil?
+
       sql_query       = []
       sql_attributes  = {}
       search_patterns = @tmp_params[:search].strip.gsub(/(?<=[\\s])\\s*|^\\s+|\\s+$/, '').downcase
 
       search_patterns_tmp = search_patterns.scan(/"(.*?)"/).flatten
       search_patterns     = search_patterns.gsub(/"(.*?)"/, '').split(' ')
-      search_patterns     << search_patterns_tmp
+      search_patterns << search_patterns_tmp
 
       search_patterns.flatten.each_with_index do |pattern, i|
         sql_subquery = []
         @searchable_attributes.each do |attribute|
-          if attribute.kind_of?(Hash)
+          if attribute.is_a?(Hash)
             if attribute == :as
-              attribute.values.each do |value|
-                sql_subquery << "lower(#{ value }) LIKE :#{ value }_#{ i }"
-                sql_attributes = sql_attributes.merge(Hash["#{ value }_#{ i }".to_sym, "%#{ pattern }%"])
+              attribute.each_value do |value|
+                sql_subquery << "lower(#{value}) LIKE :#{value}_#{i}"
+                sql_attributes = sql_attributes.merge(Hash["#{value}_#{i}".to_sym, "%#{pattern}%"])
               end
             else
               key_name = attribute.keys.first.to_s.pluralize
-              attribute.values.each do |value|
-                sql_subquery << "lower(#{ key_name }.#{ value }) LIKE :#{ key_name }_#{ value }_#{ i }"
-                sql_attributes = sql_attributes.merge(Hash["#{ key_name }_#{ value }_#{ i }".to_sym, "%#{ pattern }%"])
+              attribute.each_value do |value|
+                sql_subquery << "lower(#{key_name}.#{value}) LIKE :#{key_name}_#{value}_#{i}"
+                sql_attributes = sql_attributes.merge(Hash["#{key_name}_#{value}_#{i}".to_sym, "%#{pattern}%"])
               end
             end
           else
-            sql_subquery << "lower(#{ self.to_s.underscore.pluralize.split('/').last }.#{ attribute }) LIKE :#{ attribute }_#{ i }"
-            sql_attributes = sql_attributes.merge(Hash["#{ attribute }_#{ i }".to_sym, "%#{ pattern }%"])
+            sql_subquery << "lower(#{to_s.underscore.pluralize.split('/').last}.#{attribute}) LIKE :#{attribute}_#{i}"
+            sql_attributes = sql_attributes.merge(Hash["#{attribute}_#{i}".to_sym, "%#{pattern}%"])
           end
         end
-        sql_query << "(" + sql_subquery.join(' OR ') + ")"
+        sql_query << '(' + sql_subquery.join(' OR ') + ')'
       end
 
       sql.where([sql_query.join(' AND '), sql_attributes])
     end
 
     def self.order_sql
-      self.is_sorting? ? "#{ self.table_name }.id asc" : "#{ @tmp_params[:sort]} #{ @tmp_params[:direction] }"
+      is_sorting? ? "#{table_name}.id asc" : "#{@tmp_params[:sort]} #{@tmp_params[:direction]}"
     end
 
     def self.search_sort_paginate
       @session[:per_page] = @tmp_params[:per_page] unless @tmp_params[:per_page].nil?
-      self.search
+      search
     end
 
     # If there's several table in the same page
@@ -165,7 +163,6 @@ module UiBibz::Concerns::Models::Searchable
   end
 
   module ClassMethods
-
     # => searchable_attributes :name, :address
     # or
     # => searchable_attributes user: :name
@@ -174,9 +171,8 @@ module UiBibz::Concerns::Models::Searchable
     # or
     # => search_attributes :name, as: [:mybuildcolumn1, :mybuild_column2]
     #
-    def searchable_attributes *args
+    def searchable_attributes(*args)
       @searchable_attributes ||= args
     end
   end
-
 end

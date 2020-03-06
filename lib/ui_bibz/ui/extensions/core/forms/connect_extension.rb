@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 module ConnectExtension
-
   private
 
   def component_html_data
@@ -15,19 +14,18 @@ module ConnectExtension
 
   def connect_opts
     selector = options[:refresh][:target][:selector]
-    options[:refresh][:target][:selector] = selector.blank? ? "##{ connect_options_selector }" : selector
+    options[:refresh][:target][:selector] = selector.blank? ? "##{connect_options_selector}" : selector
 
     options[:refresh].merge({
-      connect: {
-        target: options[:refresh].delete(:target),
-        event:  options[:refresh].delete(:event),
-        mode:   options[:refresh].delete(:mode)
-      }
-    })
+                              connect: {
+                                target: options[:refresh].delete(:target),
+                                event: options[:refresh].delete(:event),
+                                mode: options[:refresh].delete(:mode)
+                              }
+                            })
   end
 
   def connect_options
     add_html_data('connect', options[:connect]) if options[:connect]
   end
-
 end

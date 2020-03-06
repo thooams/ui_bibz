@@ -5,7 +5,10 @@ require 'will_paginate/view_helpers/action_view'
 module WillPaginate
   module ActionView
     def will_paginate(collection = nil, options = {})
-      options, collection = collection, nil if collection.is_a? Hash
+      if collection.is_a? Hash
+        options = collection
+        collection = nil
+      end
       collection ||= infer_collection_from_controller
 
       options = options.symbolize_keys
@@ -23,10 +26,10 @@ module WillPaginate
       def to_html
         list_items = pagination.map do |item|
           case item
-            when Integer
-              page_number(item)
-            else
-              send(item)
+          when Integer
+            page_number(item)
+          else
+            send(item)
           end
         end.join(@options[:link_separator])
 
@@ -35,7 +38,7 @@ module WillPaginate
       end
 
       def container_attributes
-        super.except(*[:link_options])
+        super.except(:link_options)
       end
 
       protected

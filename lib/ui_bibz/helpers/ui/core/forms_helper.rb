@@ -1,12 +1,11 @@
 # frozen_string_literal: true
 
 module UiBibz::Helpers::Ui::Core::FormsHelper
-
   # Button Component
   #
   # +options+ (Hash)
   # +html_options+ (Hash)
-  def ui_button content = nil, options = nil, html_options = nil, &block
+  def ui_button(content = nil, options = nil, html_options = nil, &block)
     UiBibz::Ui::Core::Forms::Buttons::Button.new(content, options, html_options, &block).render
   end
 
@@ -14,7 +13,7 @@ module UiBibz::Helpers::Ui::Core::FormsHelper
   #
   # +options+ (Hash)
   # +html_options+ (Hash)
-  def ui_choice_group content = nil, options = nil, html_options = nil, &block
+  def ui_choice_group(content = nil, options = nil, html_options = nil, &block)
     UiBibz::Ui::Core::Forms::Choices::ChoiceGroup.new(content, options, html_options).tap(&block).render
   end
 
@@ -22,7 +21,7 @@ module UiBibz::Helpers::Ui::Core::FormsHelper
   #
   # +options+ (Hash)
   # +html_options+ (Hash)
-  def ui_button_group content = nil, options = nil, html_options = nil, &block
+  def ui_button_group(content = nil, options = nil, html_options = nil, &block)
     UiBibz::Ui::Core::Forms::Buttons::ButtonGroup.new(content, options, html_options).tap(&block).render
   end
 
@@ -30,7 +29,7 @@ module UiBibz::Helpers::Ui::Core::FormsHelper
   #
   # +options+ (Hash)
   # +html_options+ (Hash)
-  def ui_button_link content = nil, options = nil, html_options = nil, &block
+  def ui_button_link(content = nil, options = nil, html_options = nil, &block)
     UiBibz::Ui::Core::Forms::Buttons::ButtonLink.new(content, options, html_options, &block).render
   end
 
@@ -38,7 +37,7 @@ module UiBibz::Helpers::Ui::Core::FormsHelper
   #
   # +options+ (Hash)
   # +html_options+ (Hash)
-  def ui_date_picker_field content = nil, options = nil, html_options = nil, &block
+  def ui_date_picker_field(content = nil, options = nil, html_options = nil, &block)
     UiBibz::Ui::Core::Forms::Dates::DatePickerField.new(content, options, html_options, &block).render
   end
 
@@ -46,7 +45,7 @@ module UiBibz::Helpers::Ui::Core::FormsHelper
   #
   # +options+ (Hash)
   # +html_options+ (Hash)
-  def ui_markdown_editor_field content = nil, options = nil, html_options = nil, &block
+  def ui_markdown_editor_field(content = nil, options = nil, html_options = nil, &block)
     UiBibz::Ui::Core::Forms::Textareas::MarkdownEditorField.new(content, options, html_options, &block).render
   end
 
@@ -54,7 +53,7 @@ module UiBibz::Helpers::Ui::Core::FormsHelper
   #
   # +options+ (Hash)
   # +html_options+ (Hash)
-  def ui_multi_column_field content = nil, options = nil, html_options = nil, &block
+  def ui_multi_column_field(content = nil, options = nil, html_options = nil, &block)
     UiBibz::Ui::Core::Forms::Selects::MultiColumnField.new(content, options, html_options, &block).render
   end
 
@@ -62,7 +61,7 @@ module UiBibz::Helpers::Ui::Core::FormsHelper
   #
   # +options+ (Hash)
   # +html_options+ (Hash)
-  def ui_multi_select_field content = nil, options = nil, html_options = nil, &block
+  def ui_multi_select_field(content = nil, options = nil, html_options = nil, &block)
     UiBibz::Ui::Core::Forms::Selects::MultiSelectField.new(content, options, html_options, &block).render
   end
 
@@ -70,7 +69,7 @@ module UiBibz::Helpers::Ui::Core::FormsHelper
   #
   # +options+ (Hash)
   # +html_options+ (Hash)
-  def ui_formula_field content = nil, options = nil, html_options = nil, &block
+  def ui_formula_field(content = nil, options = nil, html_options = nil, &block)
     UiBibz::Ui::Core::Forms::Numbers::FormulaField.new(content, options, html_options, &block).render
   end
 
@@ -78,7 +77,7 @@ module UiBibz::Helpers::Ui::Core::FormsHelper
   #
   # +options+ (Hash)
   # +html_options+ (Hash)
-  def ui_text_field content = nil, options = nil, html_options = nil, &block
+  def ui_text_field(content = nil, options = nil, html_options = nil, &block)
     UiBibz::Ui::Core::Forms::Texts::TextField.new(content, options, html_options, &block).render
   end
 
@@ -86,7 +85,7 @@ module UiBibz::Helpers::Ui::Core::FormsHelper
   #
   # +options+ (Hash)
   # +html_options+ (Hash)
-  def ui_box_switch_field content = nil, options = nil, html_options = nil, &block
+  def ui_box_switch_field(content = nil, options = nil, html_options = nil, &block)
     UiBibz::Ui::Core::Forms::Choices::BoxSwitchField.new(content, options, html_options, &block).render
   end
 
@@ -94,7 +93,7 @@ module UiBibz::Helpers::Ui::Core::FormsHelper
   #
   # +options+ (Hash)
   # +html_options+ (Hash)
-  def ui_switch_field content = nil, options = nil, html_options = nil, &block
+  def ui_switch_field(content = nil, options = nil, html_options = nil, &block)
     UiBibz::Ui::Core::Forms::Choices::SwitchField.new(content, options, html_options, &block).render
   end
 
@@ -102,7 +101,7 @@ module UiBibz::Helpers::Ui::Core::FormsHelper
   #
   # +options+ (Hash)
   # +html_options+ (Hash)
-  def ui_checkbox_field content = nil, options = nil, html_options = nil, &block
+  def ui_checkbox_field(content = nil, options = nil, html_options = nil, &block)
     UiBibz::Ui::Core::Forms::Choices::CheckboxField.new(content, options, html_options, &block).render
   end
 
@@ -110,7 +109,7 @@ module UiBibz::Helpers::Ui::Core::FormsHelper
   #
   # +options+ (Hash)
   # +html_options+ (Hash)
-  def ui_radio_field content = nil, options = nil, html_options = nil, &block
+  def ui_radio_field(content = nil, options = nil, html_options = nil, &block)
     UiBibz::Ui::Core::Forms::Choices::RadioField.new(content, options, html_options, &block).render
   end
 
@@ -118,7 +117,7 @@ module UiBibz::Helpers::Ui::Core::FormsHelper
   #
   # +options+ (Hash)
   # +html_options+ (Hash)
-  def ui_select_field content = nil, options = nil, html_options = nil, &block
+  def ui_select_field(content = nil, options = nil, html_options = nil, &block)
     UiBibz::Ui::Core::Forms::Selects::SelectField.new(content, options, html_options, &block).render
   end
 
@@ -126,7 +125,7 @@ module UiBibz::Helpers::Ui::Core::FormsHelper
   #
   # +options+ (Hash)
   # +html_options+ (Hash)
-  def ui_dropdown_select_field content = nil, options = nil, html_options = nil, &block
+  def ui_dropdown_select_field(content = nil, options = nil, html_options = nil, &block)
     UiBibz::Ui::Core::Forms::Selects::DropdownSelectField.new(content, options, html_options, &block).render
   end
 
@@ -134,7 +133,7 @@ module UiBibz::Helpers::Ui::Core::FormsHelper
   #
   # +options+ (Hash)
   # +html_options+ (Hash)
-  def ui_auto_complete_field content = nil, options = nil, html_options = nil, &block
+  def ui_auto_complete_field(content = nil, options = nil, html_options = nil, &block)
     UiBibz::Ui::Core::Forms::Texts::AutoCompleteField.new(content, options, html_options, &block).render
   end
 
@@ -142,8 +141,8 @@ module UiBibz::Helpers::Ui::Core::FormsHelper
   #
   # +options+ (Hash)
   # +html_options+ (Hash)
-  def ui_surround_field content = nil, options = nil, html_options = nil, &block
-     UiBibz::Ui::Core::Forms::Surrounds::SurroundField.new(content, options, html_options).tap(&block).render
+  def ui_surround_field(content = nil, options = nil, html_options = nil, &block)
+    UiBibz::Ui::Core::Forms::Surrounds::SurroundField.new(content, options, html_options).tap(&block).render
   end
 
   # Dropdown Component
@@ -151,7 +150,7 @@ module UiBibz::Helpers::Ui::Core::FormsHelper
   # +name+ (String) [Required]
   # +options+ (Hash)
   # +html_options+ (Hash)
-  def ui_dropdown name, options = nil, html_options = nil, &block
+  def ui_dropdown(name, options = nil, html_options = nil, &block)
     UiBibz::Ui::Core::Forms::Dropdowns::Dropdown.new(name, options, html_options).tap(&block).render
   end
 
@@ -160,7 +159,7 @@ module UiBibz::Helpers::Ui::Core::FormsHelper
   # +name+ (String) [Required]
   # +options+ (Hash)
   # +html_options+ (Hash)
-  def ui_split_dropdown name, options = nil, html_options = nil, &block
+  def ui_split_dropdown(name, options = nil, html_options = nil, &block)
     UiBibz::Ui::Core::Forms::Dropdowns::SplitDropdown.new(name, options, html_options).tap(&block).render
   end
 
@@ -169,7 +168,7 @@ module UiBibz::Helpers::Ui::Core::FormsHelper
   # +name+ (String) [Required]
   # +options+ (Hash)
   # +html_options+ (Hash)
-  def ui_number_field name, options = nil, html_options = nil, &block
+  def ui_number_field(name, options = nil, html_options = nil, &block)
     UiBibz::Ui::Core::Forms::Numbers::NumberField.new(name, options, html_options, &block).render
   end
 
@@ -178,7 +177,7 @@ module UiBibz::Helpers::Ui::Core::FormsHelper
   # +name+ (String) [Required]
   # +options+ (Hash)
   # +html_options+ (Hash)
-  def ui_range_field name, options = nil, html_options = nil, &block
+  def ui_range_field(name, options = nil, html_options = nil, &block)
     UiBibz::Ui::Core::Forms::Numbers::RangeField.new(name, options, html_options, &block).render
   end
 
@@ -187,8 +186,7 @@ module UiBibz::Helpers::Ui::Core::FormsHelper
   # +name+ (String) [Required]
   # +options+ (Hash)
   # +html_options+ (Hash)
-  def ui_file_field name, options = nil, html_options = nil, &block
+  def ui_file_field(name, options = nil, html_options = nil, &block)
     UiBibz::Ui::Core::Forms::Files::FileField.new(name, options, html_options, &block).render
   end
 end
-

@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 module UiBibz::Ui::Core::Boxes::Components
-
   # Create a card image
   #
   # ==== Attributes
@@ -34,27 +33,25 @@ module UiBibz::Ui::Core::Boxes::Components
   #   end.render
   #
   class CardImage < UiBibz::Ui::Core::Component
-
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize content = nil, options = nil, html_options = nil, &block
+    def initialize(content = nil, options = nil, html_options = nil, &block)
       super
     end
 
     # Render html tag
     def pre_render
-      #image_tag content, html_options
+      # image_tag content, html_options
       image_tag content, html_options
     end
 
-  private
+    private
 
     def component_html_classes
       position
     end
 
     def position
-      "card-img-#{ @options[:position] || :top }"
+      "card-img-#{@options[:position] || :top}"
     end
-
   end
 end

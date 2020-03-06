@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 module UiBibz::Ui::Core::Notifications::Components
-
   # Create a alert body
   #
   # ==== Attributes
@@ -32,9 +31,8 @@ module UiBibz::Ui::Core::Notifications::Components
   #   end.render
   #
   class AlertHeader < UiBibz::Ui::Core::Component
-
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize content = nil, options = nil, html_options = nil, &block
+    def initialize(content = nil, options = nil, html_options = nil, &block)
       super
     end
 
@@ -46,10 +44,10 @@ module UiBibz::Ui::Core::Notifications::Components
       end
     end
 
-  private
+    private
 
     def component_html_classes
-      "alert-header"
+      'alert-header'
     end
 
     def html_content
@@ -59,11 +57,10 @@ module UiBibz::Ui::Core::Notifications::Components
     end
 
     def close_html
-      content_tag :button, type: 'button', class: 'close', "data-dismiss" => "alert", "aria-label" => "Close" do
-        concat content_tag :span, "×", "aria-hidden" => true
-        concat content_tag :span, "Close", class: "sr-only"
+      content_tag :button, type: 'button', class: 'close', 'data-dismiss' => 'alert', 'aria-label' => 'Close' do
+        concat content_tag :span, '×', 'aria-hidden' => true
+        concat content_tag :span, 'Close', class: 'sr-only'
       end
     end
-
   end
 end

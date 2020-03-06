@@ -13,7 +13,7 @@ gemspec
 # your gem to rubygems.org.
 
 # To use a debugger
-gem 'byebug',        group: [:development, :test]
-gem 'simple_form',   group: [:test, :development]
-gem 'awesome_print', group: [:test, :development]
+gem 'awesome_print', group: %i[test development]
+gem 'byebug',        group: %i[development test]
 gem 'jquery-rails', '>= 3.1.0'
+# gem 'simple_form', group: %i[test development]

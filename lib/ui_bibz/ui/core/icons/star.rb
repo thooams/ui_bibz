@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 module UiBibz::Ui::Core::Icons
-
   # Create star notation
   #
   # This element is an extend of UiBibz::Ui::Core::Component.
@@ -16,7 +15,7 @@ module UiBibz::Ui::Core::Icons
   #
   # You can add HTML attributes using the +html_options+.
   # You can pass arguments in options attribute:
-  # * +status+ - status of élement with symbol value:
+  # * +status+ - status of element with symbol value:
   #   (+:default+, +:primary+, +:info+, +:warning+, +:danger+)
   # * +num+ - Integer, number of star
   #
@@ -45,9 +44,8 @@ module UiBibz::Ui::Core::Icons
   #   end
   #
   class Star < UiBibz::Ui::Core::Component
-
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize content = nil, options = nil, html_options = nil, &block
+    def initialize(content = nil, options = nil, html_options = nil, &block)
       super
     end
 
@@ -56,8 +54,7 @@ module UiBibz::Ui::Core::Icons
       content_tag :span, star_notation.join(' ').html_safe, html_options
     end
 
-  private
-
+    private
 
     def component_html_classes
       'stars-notation'
@@ -80,11 +77,11 @@ module UiBibz::Ui::Core::Icons
     def glyph_opts
       opts = {}
       opts = opts.merge({ status: options[:status] }) unless options[:status].nil?
-      opts = opts.merge({ size: options[:size] })   unless options[:size].nil?
+      opts = opts.merge({ size: options[:size] }) unless options[:size].nil?
       opts
     end
 
-    def star_name star
+    def star_name(star)
       if star <= content
         { name: 'star', style: :solid }
       elsif star > content && !content.is_a?(Integer) && star < content + 1
@@ -93,6 +90,5 @@ module UiBibz::Ui::Core::Icons
         { name: 'star', style: :regular }
       end
     end
-
   end
 end

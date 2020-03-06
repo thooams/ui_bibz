@@ -1,12 +1,10 @@
 # frozen_string_literal: true
 
 module UiBibz::Ui::Ux::Tables
-
   # As
   #
   class As
-
-    def initialize col, record, content, table_options
+    def initialize(col, record, content, table_options)
       @col     = col
       @record  = record
       @content = content
@@ -28,17 +26,16 @@ module UiBibz::Ui::Ux::Tables
     private
 
     def boolean_render
-      if @content == true
-        glyph = UiBibz::Ui::Core::Icons::Glyph.new('check-circle', status: :success)
-      else
-        glyph = UiBibz::Ui::Core::Icons::Glyph.new('minus-circle', status: :danger)
-      end
+      glyph = if @content == true
+                UiBibz::Ui::Core::Icons::Glyph.new('check-circle', status: :success)
+              else
+                UiBibz::Ui::Core::Icons::Glyph.new('minus-circle', status: :danger)
+              end
       glyph.render
     end
 
     def progress_render
       UiBibz::Ui::Core::Notifications::ProgressBar.new(@content, @col.progress_options).render
     end
-
   end
 end

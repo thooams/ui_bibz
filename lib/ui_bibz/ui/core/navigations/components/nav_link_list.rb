@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 module UiBibz::Ui::Core::Navigations
-
   # Create a NavLinkList
   #
   # This element is an extend of UiBibz::Ui::Core::Component.
@@ -17,8 +16,7 @@ module UiBibz::Ui::Core::Navigations
   # You can add HTML attributes using the +html_options+.
   # You can pass arguments in options attribute:
   class NavLinkList < UiBibz::Ui::Core::Component
-
-    def initialize content = nil, options = nil, html_options = nil, &block
+    def initialize(content = nil, options = nil, html_options = nil, &block)
       super
     end
 
@@ -27,11 +25,10 @@ module UiBibz::Ui::Core::Navigations
       content_tag :li, content, html_options
     end
 
-  private
+    private
 
     def component_html_classes
       'nav-item'
     end
-
   end
 end

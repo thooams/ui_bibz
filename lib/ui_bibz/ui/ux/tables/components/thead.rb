@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 module UiBibz::Ui::Ux::Tables
-
   # Create a Thead
   #
   # This element is an extend of UiBibz::Ui::Core::Component.
@@ -16,7 +15,7 @@ module UiBibz::Ui::Ux::Tables
   #
   # You can add HTML attributes using the +html_options+.
   # You can pass arguments in options attribute:
-  # * +status+ - status of élement with symbol value:
+  # * +status+ - status of element with symbol value:
   #   (+:inverse+, +:default+)
   #
   # ==== Signatures
@@ -32,9 +31,8 @@ module UiBibz::Ui::Ux::Tables
   #   UiBibz::Ui::Ux::Thead.new(content, { status: :inverse }).render
   #
   class Thead < UiBibz::Ui::Core::Component
-
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize content = nil, options = nil, html_options = nil, &block
+    def initialize(content = nil, options = nil, html_options = nil, &block)
       super
     end
 
@@ -46,8 +44,7 @@ module UiBibz::Ui::Ux::Tables
     private
 
     def status
-      "thead-#{ @options[:status] }" unless @options[:status].nil?
+      "thead-#{@options[:status]}" unless @options[:status].nil?
     end
-
   end
 end

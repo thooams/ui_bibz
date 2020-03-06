@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 module UiBibz::Ui::Core::Forms::Choices
-
   # Create a SurroundField
   #
   # This element is an extend of UiBibz::Ui::Core::Component.
@@ -42,16 +41,14 @@ module UiBibz::Ui::Core::Forms::Choices
   #   end
   #
   class SwitchField < UiBibz::Ui::Core::Forms::Choices::CheckboxField
-
-    def initialize content = nil, options = nil, html_options = nil, &block
+    def initialize(content = nil, options = nil, html_options = nil, &block)
       super
     end
 
     private
 
     def component_html_classes
-      ["custom-control", "custom-switch", inline]
+      ['custom-control', 'custom-switch', inline]
     end
-
   end
 end

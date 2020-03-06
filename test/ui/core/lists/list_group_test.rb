@@ -13,7 +13,7 @@ class ListGroupTest < ActionView::TestCase
         l.body   'My body'
       end
     end
-    expected = "<div class=\"list-group\"><a href=\"#momo\" class=\"list-group-item-success list-group-item list-group-item-action\">Momo</a><li href=\"#state\" class=\"list-group-item flex-column align-items-start\"><div class=\"d-flex w-100 justify-content-between\"><h5 class=\"mb-1\">My title</h5><small></small></div><p class=\"mb-1\">My body</p><small></small></li></div>"
+    expected = '<div class="list-group"><a href="#momo" class="list-group-item-success list-group-item list-group-item-action">Momo</a><li href="#state" class="list-group-item flex-column align-items-start"><div class="d-flex w-100 justify-content-between"><h5 class="mb-1">My title</h5><small></small></div><p class="mb-1">My body</p><small></small></li></div>'
 
     assert_equal expected, actual
   end
@@ -23,7 +23,7 @@ class ListGroupTest < ActionView::TestCase
       lg.list 'Lulu'
       lg.list 'state'
     end
-    expected = "<ul class=\"list-group\"><li class=\"list-group-item\">Lulu</li><li class=\"list-group-item\">state</li></ul>"
+    expected = '<ul class="list-group"><li class="list-group-item">Lulu</li><li class="list-group-item">state</li></ul>'
 
     assert_equal expected, actual
   end
@@ -33,7 +33,7 @@ class ListGroupTest < ActionView::TestCase
       lg.list 'Lulu'
       lg.list 'state'
     end
-    expected = "<div class=\"list-group\"><a class=\"list-group-item list-group-item-action\">Lulu</a><a class=\"list-group-item list-group-item-action\">state</a></div>"
+    expected = '<div class="list-group"><a class="list-group-item list-group-item-action">Lulu</a><a class="list-group-item list-group-item-action">state</a></div>'
 
     assert_equal expected, actual
   end
@@ -43,7 +43,7 @@ class ListGroupTest < ActionView::TestCase
       lg.list 'Lulu'
       lg.list 'state'
     end
-    expected = "<ul class=\"list-group\"><li class=\"list-group-item\">Lulu</li><li class=\"list-group-item\">state</li></ul>"
+    expected = '<ul class="list-group"><li class="list-group-item">Lulu</li><li class="list-group-item">state</li></ul>'
 
     assert_equal expected, actual
   end
@@ -53,9 +53,8 @@ class ListGroupTest < ActionView::TestCase
       lg.list 'Lulu'
       lg.list 'state'
     end
-    expected = "<div class=\"list-group\"><button class=\"list-group-item list-group-item-action\">Lulu</button><button class=\"list-group-item list-group-item-action\">state</button></div>"
+    expected = '<div class="list-group"><button class="list-group-item list-group-item-action">Lulu</button><button class="list-group-item list-group-item-action">state</button></div>'
 
     assert_equal expected, actual
   end
-
 end

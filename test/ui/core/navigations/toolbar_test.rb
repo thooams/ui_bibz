@@ -10,7 +10,7 @@ class ToolbarTest < ActionView::TestCase
         bg.button 'Home'
       end
     end
-    expected = "<div class=\"btn-toolbar\" role=\"toolbar\"><div class=\"btn-group\" role=\"group\"><button class=\"btn-secondary btn\">Home</button></div></div>"
+    expected = '<div class="btn-toolbar" role="toolbar"><div class="btn-group" role="group"><button class="btn-secondary btn">Home</button></div></div>'
 
     assert_equal expected, actual
   end
@@ -25,9 +25,8 @@ class ToolbarTest < ActionView::TestCase
         bg.button 'Home 2'
       end
     end
-    expected = "<div class=\"btn-toolbar justify-content-between\" role=\"toolbar\"><div role=\"group\" class=\"btn-group mr-2\"><button class=\"btn-secondary btn\">Home</button></div><div class=\"btn-group\" role=\"group\"><button class=\"btn-secondary btn\">Home 2</button></div></div>"
+    expected = '<div class="btn-toolbar justify-content-between" role="toolbar"><div role="group" class="btn-group mr-2"><button class="btn-secondary btn">Home</button></div><div class="btn-group" role="group"><button class="btn-secondary btn">Home 2</button></div></div>'
 
     assert_equal expected, actual
   end
-
 end

@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 module UiBibz::Ui::Core::Boxes::Components
-
   # Create a card footer
   #
   # ==== Attributes
@@ -32,9 +31,8 @@ module UiBibz::Ui::Core::Boxes::Components
   #   end.render
   #
   class CardFooter < UiBibz::Ui::Core::Component
-
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize content = nil, options = nil, html_options = nil, &block
+    def initialize(content = nil, options = nil, html_options = nil, &block)
       super
     end
 
@@ -43,19 +41,18 @@ module UiBibz::Ui::Core::Boxes::Components
       content_tag :div, glyph_and_content_html, html_options
     end
 
-  private
+    private
 
     def muted
-      "text-muted" unless @options[:muted].nil?
+      'text-muted' unless @options[:muted].nil?
     end
 
     def component_html_classes
-      ["card-footer", muted, outline]
+      ['card-footer', muted, outline]
     end
 
     def outline
-      "text-#{ @options[:status] } border-#{ @options[:status] } bg-transparent" if @options[:outline]
+      "text-#{@options[:status]} border-#{@options[:status]} bg-transparent" if @options[:outline]
     end
-
   end
 end

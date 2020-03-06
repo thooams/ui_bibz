@@ -6,7 +6,6 @@ require 'ui_bibz/ui/core/boxes/components/card_body'
 require 'ui_bibz/ui/core/boxes/components/card_image'
 require 'ui_bibz/ui/core/boxes/components/card_list_group'
 module UiBibz::Ui::Core::Boxes
-
   # Create a card
   #
   # This element is an extend of UiBibz::Ui::Core::Component.
@@ -22,7 +21,7 @@ module UiBibz::Ui::Core::Boxes
   #
   # You can add HTML attributes using the +html_options+.
   # You can pass arguments in options attribute:
-  # * +status+ - status of élement with symbol value:
+  # * +status+ - status of element with symbol value:
   #   (+:primary+, +:secondary+, +:info+, +:warning+, +:danger+)
   # * text - Hash (+:size+, +:position+)
   #   (+:left+, +:right+, +:center+)
@@ -89,48 +88,47 @@ module UiBibz::Ui::Core::Boxes
   #   end
   #
   class Card < UiBibz::Ui::Core::Component
-
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize content = nil, options = nil, html_options = nil, &block
+    def initialize(content = nil, options = nil, html_options = nil, &block)
       super
       @items = @content.nil? ? [] : [UiBibz::Ui::Core::Boxes::Components::CardBody.new(@content).render]
     end
 
     # Add Header which is a component
-    def header content = nil, options = nil, html_options = nil, &block
+    def header(content = nil, options = nil, html_options = nil, &block)
       options, content = inherit_options(content, options, block)
-      if is_tap(content, options)
-        @header = UiBibz::Ui::Core::Boxes::Components::CardHeader.new(content, options, html_options).tap(&block).render
-      else
-        @header = UiBibz::Ui::Core::Boxes::Components::CardHeader.new(content, options, html_options, &block).render
-      end
+      @header = if is_tap(content, options)
+                  UiBibz::Ui::Core::Boxes::Components::CardHeader.new(content, options, html_options).tap(&block).render
+                else
+                  UiBibz::Ui::Core::Boxes::Components::CardHeader.new(content, options, html_options, &block).render
+                end
     end
 
     # Add Body div which is a component
-    def body content = nil, options = nil, html_options = nil, &block
+    def body(content = nil, options = nil, html_options = nil, &block)
       options, content = inherit_options(content, options, block)
       if is_tap(content, options)
-        content = (content || {}).merge(collapse: options.try(:[], :collapse), parent_collapse: @options[:parent_collapse] )
+        content = (content || {}).merge(collapse: options.try(:[], :collapse), parent_collapse: @options[:parent_collapse])
         @items << UiBibz::Ui::Core::Boxes::Components::CardBody.new(content, options, html_options).tap(&block).render
       else
-        options = (options || {}).merge(collapse: options.try(:[], :collapse), parent_collapse: @options[:parent_collapse] )
+        options = (options || {}).merge(collapse: options.try(:[], :collapse), parent_collapse: @options[:parent_collapse])
         @items << UiBibz::Ui::Core::Boxes::Components::CardBody.new(content, options, html_options, &block).render
       end
     end
 
     # Add Footer which is a component
-    def footer content = nil, options = nil, html_options = nil, &block
+    def footer(content = nil, options = nil, html_options = nil, &block)
       options, content = inherit_options(content, options, block)
       @footer = UiBibz::Ui::Core::Boxes::Components::CardFooter.new(content, options, html_options, &block).render
     end
 
     # Add List group which is a component
-    def list_group content = nil, options = nil, html_options = nil, &block
+    def list_group(content = nil, options = nil, html_options = nil, &block)
       @items << UiBibz::Ui::Core::Boxes::Components::CardListGroup.new(content, options, html_options).tap(&block).render
     end
 
     # Add Image which is a component
-    def image content = nil, options = nil, html_options = nil, &block
+    def image(content = nil, options = nil, html_options = nil, &block)
       @items << UiBibz::Ui::Core::Boxes::Components::CardImage.new(content, options, html_options, &block).render
     end
 
@@ -139,15 +137,15 @@ module UiBibz::Ui::Core::Boxes
       content_tag :div, html_structure, html_options
     end
 
-  protected
+    protected
 
     def html_structure
       [@header, @items.join, @footer].compact.join.html_safe
     end
 
-    def inherit_options content, options, block
+    def inherit_options(content, options, block)
       if block.nil?
-        options = (options || {}).merge({ outline: @options[:outline] , status: @options[:status] })
+        options = (options || {}).merge({ outline: @options[:outline], status: @options[:status] })
       else
         content = (content || {}).merge({ outline: @options[:outline], status: @options[:status] })
       end
@@ -155,36 +153,35 @@ module UiBibz::Ui::Core::Boxes
     end
 
     def component_html_classes
-      ["card", text, type, tab_pane, outline]
+      ['card', text, type, tab_pane, outline]
     end
 
     def status
       unless @options[:status].nil?
-        output = @options[:outline] ? ["border-#{ @options[:status] }"] : ["bg-#{ @options[:status] }"]
-        output << "text-white" if @options[:status] != :light && @options[:status] != :warning
+        output = @options[:outline] ? ["border-#{@options[:status]}"] : ["bg-#{@options[:status]}"]
+        output << 'text-white' if @options[:status] != :light && @options[:status] != :warning
         output.join(' ')
       end
     end
 
     def text
-      "text-#{ @options[:text][:size] || :md }-#{ @options[:text][:position] || :left }" unless @options[:text].nil?
+      "text-#{@options[:text][:size] || :md}-#{@options[:text][:position] || :left}" unless @options[:text].nil?
     end
 
     def card_block
-      "card-block" if !@options[:block].nil? || @options[:tap].nil?
+      'card-block' if !@options[:block].nil? || @options[:tap].nil?
     end
 
     def type
-      "card-#{ @options[:type] }" unless @options[:type].nil?
+      "card-#{@options[:type]}" unless @options[:type].nil?
     end
 
     def tab_pane
-      "tab-pane" if @options[:tab]
+      'tab-pane' if @options[:tab]
     end
 
     def outline
-      "bg-transparent" if @options[:outline]
+      'bg-transparent' if @options[:outline]
     end
-
   end
 end

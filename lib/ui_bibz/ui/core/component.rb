@@ -5,7 +5,6 @@ require 'ui_bibz/ui/extensions/core/component/klass_extension'
 require 'ui_bibz/ui/extensions/core/component/glyph_extension'
 require 'ui_bibz/ui/extensions/core/component/popover_extension'
 module UiBibz::Ui::Core
-
   # Creates a component of the given +name+ using options created by the set of +options+.
   #
   # ==== Attributes
@@ -18,7 +17,7 @@ module UiBibz::Ui::Core
   #
   # You can add HTML attributes using the +html_options+.
   # You can pass arguments in options attribute:
-  # * +status+ - status of élement with symbol value:
+  # * +status+ - status of element with symbol value:
   #   (+:default+, +:primary+, +:info+, +:warning+, +:danger+)
   # * +glyph+ - Add glyph with name or hash options
   #   * +name+ - String
@@ -47,8 +46,8 @@ module UiBibz::Ui::Core
     include PopoverExtension
 
     # Constants
-    STATUSES = %i(primary secondary success danger warning info light dark)
-    SIZES    = %i(lg md sm)
+    STATUSES = %i[primary secondary success danger warning info light dark].freeze
+    SIZES    = %i[lg md sm].freeze
 
     attr_accessor :content, :html_options, :options
 
@@ -57,21 +56,25 @@ module UiBibz::Ui::Core
     #   if a block is sent, variable 'content' does not exit.
     # * Options of component is defined in hash options
     # * Html options is defined in hash html_options
-    def initialize content = nil, options = nil, html_options = nil, &block
+    def initialize(content = nil, options = nil, html_options = nil, &block)
       if !block.nil?
-        @html_options, @options = options, content
+        @html_options = options
+        @options = content
         read_cache = Rails.cache.read(@options.try(:[], :cache))
         if read_cache.nil?
-          context  = eval("self", block.binding)
+          context  = eval('self', block.binding)
           @content = context.capture(&block)
         else
           @content = read_cache
         end
       else
-        if content.kind_of?(Hash)
-          @html_options, @options = options, content
+        if content.is_a?(Hash)
+          @html_options = options
+          @options = content
         else
-          @html_options, @options, @content = html_options, options, content
+          @html_options = html_options
+          @options = options
+          @content = content
         end
       end
       @html_options = (@html_options || {}).with_indifferent_access
@@ -91,11 +94,11 @@ module UiBibz::Ui::Core
     end
 
     # Know if component is tapped or not
-    def is_tap content, options
-      (content[:tap] if content.kind_of?(Hash)) || (options[:tap] unless options.nil?)
+    def is_tap(content, options)
+      (content[:tap] if content.is_a?(Hash)) || (options[:tap] unless options.nil?)
     end
 
-  protected
+    protected
 
     # Override this method to add html classes
     # Accept Array or String
@@ -138,9 +141,9 @@ module UiBibz::Ui::Core
     end
 
     # Add html data arguments
-    def add_html_data name, value = true
+    def add_html_data(name, value = true)
       html_options[:data] = {} if html_options[:data].nil?
-      value = value.kind_of?(String) ? value.strip : value
+      value = value.is_a?(String) ? value.strip : value
       html_options[:data].update(Hash[name, value])
     end
 
@@ -148,7 +151,7 @@ module UiBibz::Ui::Core
       options[:state] == :disabled || html_options[:disabled]
     end
 
-  private
+    private
 
     def render_with_or_without_cache
       if options[:cache]
@@ -184,6 +187,5 @@ module UiBibz::Ui::Core
       initialize_component_html_classes
       initialize_component_html_options
     end
-
   end
 end

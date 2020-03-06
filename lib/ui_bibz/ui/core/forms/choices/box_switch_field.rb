@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 module UiBibz::Ui::Core::Forms::Choices
-
   # Create a SurroundField
   #
   # This element is an extend of UiBibz::Ui::Core::Component.
@@ -47,9 +46,8 @@ module UiBibz::Ui::Core::Forms::Choices
   #   end
   #
   class BoxSwitchField < UiBibz::Ui::Core::Component
-
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize content = nil, options = nil, html_options = nil, &block
+    def initialize(content = nil, options = nil, html_options = nil, &block)
       super
     end
 
@@ -76,7 +74,7 @@ module UiBibz::Ui::Core::Forms::Choices
     end
 
     def component_html_classes
-      super << "switch-field"
+      super << 'switch-field'
     end
 
     def component_html_data
@@ -136,8 +134,7 @@ module UiBibz::Ui::Core::Forms::Choices
     end
 
     def inline
-      "btn-group" unless options[:inline].nil?
+      'btn-group' unless options[:inline].nil?
     end
-
   end
 end

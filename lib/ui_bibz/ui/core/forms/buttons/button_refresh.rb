@@ -2,7 +2,6 @@
 
 require 'ui_bibz/ui/extensions/core/forms/connect_extension'
 module UiBibz::Ui::Core::Forms::Buttons
-
   # Create a Button Refrash
   #
   # ==== Attributes
@@ -15,7 +14,7 @@ module UiBibz::Ui::Core::Forms::Buttons
   #
   # You can add HTML attributes using the +html_options+.
   # You can pass arguments in options attribute:
-  # * +status+ - status of élement with symbol value:
+  # * +status+ - status of element with symbol value:
   #   (+:primary+, +:secondary+, +:info+, +:warning+, +:danger+, +:link+)
   # * +size+
   #   (+:xs+, +:sm+, +:lg+)
@@ -54,7 +53,7 @@ module UiBibz::Ui::Core::Forms::Buttons
     include ConnectExtension
 
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize content = nil, options = nil, html_options = nil, &block
+    def initialize(content = nil, options = nil, html_options = nil, &block)
       super
     end
 
@@ -74,24 +73,23 @@ module UiBibz::Ui::Core::Forms::Buttons
     end
 
     def component_html_classes
-      super << ['input-refresh-button', 'btn']
+      super << %w[input-refresh-button btn]
     end
 
     def cnt_opts
       {
-        events: options[:connect].try(:[], :events) || "click",
-        mode:   options[:connect].try(:[], :mode)   || "remote",
+        events: options[:connect].try(:[], :events) || 'click',
+        mode: options[:connect].try(:[], :mode) || 'remote',
         target: {
-          selector: options[:connect].try(:[], :target).try(:[], :selector) || "",
-          url:      options[:connect].try(:[], :target).try(:[], :url)      || "",
-          data:     options[:connect].try(:[], :target).try(:[], :data)     || []
+          selector: options[:connect].try(:[], :target).try(:[], :selector) || '',
+          url: options[:connect].try(:[], :target).try(:[], :url) || '',
+          data: options[:connect].try(:[], :target).try(:[], :data) || []
         }
       }
     end
 
     def status
-      "btn-#{ options[:status] || :secondary }"
+      "btn-#{options[:status] || :secondary}"
     end
-
   end
 end

@@ -2,7 +2,6 @@
 
 require 'ui_bibz/ui/core/navigations/components/breadcrumb_link'
 module UiBibz::Ui::Core::Navigations
-
   # Breadcrumb
   #
   # Indicate the current page's location within a navigational hierarchy.
@@ -70,9 +69,8 @@ module UiBibz::Ui::Core::Navigations
   #   ui_breadcrumb(@users, { link_label: name, link_url: user_path(:id) })
   #
   class Breadcrumb < UiBibz::Ui::Core::Component
-
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize content = nil, options = nil, html_options = nil, &block
+    def initialize(content = nil, options = nil, html_options = nil, &block)
       super
       @links = []
       generate_links unless @content.nil?
@@ -87,14 +85,14 @@ module UiBibz::Ui::Core::Navigations
 
     # Add breadcrumb link items
     # See UiBibz::Ui::Core::BreadcrumbLink
-    def link content = nil, options = nil, html_options = nil, &block
+    def link(content = nil, options = nil, html_options = nil, &block)
       @links << UiBibz::Ui::Core::Navigations::Components::BreadcrumbLink.new(content, options, html_options, &block).render
     end
 
     private
 
     def component_html_options
-      super.merge({ "arial-label": "breadcrumb" })
+      super.merge({ "arial-label": 'breadcrumb' })
     end
 
     def model_name
@@ -118,6 +116,5 @@ module UiBibz::Ui::Core::Navigations
     def last_item
       content.last
     end
-
   end
 end

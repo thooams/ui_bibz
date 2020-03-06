@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 module UiBibz::Ui::Core::Boxes::Components
-
   # Create a card list_group
   #
   # ==== Attributes
@@ -32,9 +31,8 @@ module UiBibz::Ui::Core::Boxes::Components
   #   end.render
   #
   class CardListGroup < UiBibz::Ui::Core::Lists::ListGroup
-
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize content = nil, options = nil, html_options = nil, &block
+    def initialize(content = nil, options = nil, html_options = nil, &block)
       super
       @lists = []
     end
@@ -42,8 +40,7 @@ module UiBibz::Ui::Core::Boxes::Components
     protected
 
     def component_html_classes
-      ["list-group-flush", "list-group"]
+      %w[list-group-flush list-group]
     end
-
   end
 end

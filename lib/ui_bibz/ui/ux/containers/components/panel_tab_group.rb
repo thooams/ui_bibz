@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 module UiBibz::Ui::Ux::Containers::Components
-
   # Create a card body
   #
   # ==== Attributes
@@ -32,16 +31,14 @@ module UiBibz::Ui::Ux::Containers::Components
   #   end.render
   #
   class PanelTabGroup < UiBibz::Ui::Core::Navigations::TabGroup
-
-    def initialize content = nil, options = nil, html_options = nil, &block
+    def initialize(content = nil, options = nil, html_options = nil, &block)
       super
     end
 
-  private
+    private
 
     def component_html_classes
-      super << "panel-header-tabs"
+      super << 'panel-header-tabs'
     end
-
   end
 end

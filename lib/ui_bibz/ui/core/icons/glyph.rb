@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 module UiBibz::Ui::Core::Icons
-
   # Create a glyph
   #
   # This element is an extend of UiBibz::Ui::Core::Component.
@@ -58,9 +57,8 @@ module UiBibz::Ui::Core::Icons
   #     name
   #   end
   class Glyph < UiBibz::Ui::Core::Component
-
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize content, options = nil, html_options = nil, &block
+    def initialize(content, options = nil, html_options = nil, &block)
       super
     end
 
@@ -69,7 +67,7 @@ module UiBibz::Ui::Core::Icons
       [content_tag(:i, '', html_options), options[:label]].compact.join(' ').html_safe
     end
 
-  private
+    private
 
     def component_html_classes
       join_classes(classes)
@@ -81,13 +79,13 @@ module UiBibz::Ui::Core::Icons
     end
 
     def classes
-      cls = ["glyph", style, "fa-#{ content }"]#, "fa-fw"]
-      cls << "fa-#{ size }x"         unless size.nil?
-      cls << "fa-rotate-#{ rotate }" unless rotate.nil?
-      cls << "fa-flip-#{ flip }"     unless flip.nil?
-      cls << "fa-inverse"            unless inverse.nil?
-      cls << "fa-stack-#{ stack }x"  unless stack.nil?
-      cls << "fa-#{ type }"          unless type.nil?
+      cls = ['glyph', style, "fa-#{content}"] # , "fa-fw"]
+      cls << "fa-#{size}x"         unless size.nil?
+      cls << "fa-rotate-#{rotate}" unless rotate.nil?
+      cls << "fa-flip-#{flip}"     unless flip.nil?
+      cls << 'fa-inverse' unless inverse.nil?
+      cls << "fa-stack-#{stack}x"  unless stack.nil?
+      cls << "fa-#{type}"          unless type.nil?
       cls
     end
 
@@ -129,7 +127,7 @@ module UiBibz::Ui::Core::Icons
     end
 
     def transform
-      add_html_data "fa_transform", options[:transform] if options[:transform]
+      add_html_data 'fa_transform', options[:transform] if options[:transform]
     end
 
     def content
@@ -137,12 +135,11 @@ module UiBibz::Ui::Core::Icons
     end
 
     def status
-      "glyph-#{ @options[:status] }" unless @options[:status].nil?
+      "glyph-#{@options[:status]}" unless @options[:status].nil?
     end
 
     def match_style
       { solid: 'fas', regular: 'far', light: 'fal', brands: 'fab' }
     end
-
   end
 end

@@ -9,7 +9,7 @@ class RowTest < ActionView::TestCase
     actual = ui_row(class: 'test') do
       'test'
     end
-    expected = "<div class=\"test row\">test</div>"
+    expected = '<div class="test row">test</div>'
 
     assert_equal expected, actual
   end
@@ -18,9 +18,8 @@ class RowTest < ActionView::TestCase
     actual = ui_row(type: :form) do
       'test'
     end
-    expected = "<div class=\"form-row\">test</div>"
+    expected = '<div class="form-row">test</div>'
 
     assert_equal expected, actual
   end
-
 end

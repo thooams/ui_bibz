@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 module UiBibz::Ui::Core::Boxes
-
   # Create a jumbotron
   #
   # This element is an extend of UiBibz::Ui::Core::Component.
@@ -43,9 +42,8 @@ module UiBibz::Ui::Core::Boxes
   #   end
   #
   class Jumbotron < UiBibz::Ui::Core::Component
-
     # See UiBibz::Ui::Core::Boxes::Component.initialize
-    def initialize content = nil, options = nil, html_options = nil, &block
+    def initialize(content = nil, options = nil, html_options = nil, &block)
       super
     end
 
@@ -60,15 +58,14 @@ module UiBibz::Ui::Core::Boxes
       end
     end
 
-  private
+    private
 
     def component_html_classes
       ['jumbotron', fluid]
     end
 
     def fluid
-      "jumbotron-fluid" unless options[:fluid].nil?
+      'jumbotron-fluid' unless options[:fluid].nil?
     end
-
   end
 end

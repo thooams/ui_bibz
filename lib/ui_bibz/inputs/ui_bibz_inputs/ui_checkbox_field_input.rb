@@ -4,7 +4,7 @@ module UiBibzInputs
   class UiCheckboxFieldInput < BaseInput
     include UiBibz::Ui::Core::Forms::Choices
 
-    def input(wrapper_options)
+    def input(_wrapper_options)
       UiBibz::Ui::Core::Forms::Choices::CheckboxField.new(input_attribute_name, new_options, new_input_html_options).render
     end
 
@@ -19,6 +19,5 @@ module UiBibzInputs
     def new_options
       options.merge({ label: attribute_name.to_s.titleize })
     end
-
   end
 end

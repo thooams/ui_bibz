@@ -12,31 +12,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170309084453) do
-
-  create_table "continents", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+ActiveRecord::Schema.define(version: 20_170_309_084_453) do
+  create_table 'continents', force: :cascade do |t|
+    t.string   'name'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
 
-  create_table "countries", force: :cascade do |t|
-    t.string   "name"
-    t.integer  "continent_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+  create_table 'countries', force: :cascade do |t|
+    t.string   'name'
+    t.integer  'continent_id'
+    t.datetime 'created_at',   null: false
+    t.datetime 'updated_at',   null: false
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string   "name_fr"
-    t.string   "name_en"
-    t.string   "body_fr"
-    t.string   "body_en"
-    t.boolean  "active"
-    t.float    "price"
-    t.string   "price_formula"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+  create_table 'users', force: :cascade do |t|
+    t.string   'name_fr'
+    t.string   'name_en'
+    t.string   'body_fr'
+    t.string   'body_en'
+    t.boolean  'active'
+    t.float    'price'
+    t.string   'price_formula'
+    t.datetime 'created_at',    null: false
+    t.datetime 'updated_at',    null: false
   end
-
 end

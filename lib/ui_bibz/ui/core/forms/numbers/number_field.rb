@@ -2,7 +2,6 @@
 
 require 'ui_bibz/ui/extensions/core/forms/surround_extension'
 module UiBibz::Ui::Core::Forms::Numbers
-
   # Create a NumberField
   #
   # This element is an extend of UiBibz::Ui::Core::Component.
@@ -48,9 +47,8 @@ module UiBibz::Ui::Core::Forms::Numbers
   #   end
   #
   class NumberField < UiBibz::Ui::Core::Forms::Texts::TextField
-
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize content = nil, options = nil, html_options = nil, &block
+    def initialize(content = nil, options = nil, html_options = nil, &block)
       super
     end
 
@@ -75,6 +73,5 @@ module UiBibz::Ui::Core::Forms::Numbers
         within: options[:within]
       }
     end
-
   end
 end

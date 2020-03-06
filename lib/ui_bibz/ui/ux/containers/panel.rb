@@ -8,7 +8,6 @@ require 'ui_bibz/ui/ux/containers/components/panel_deck'
 require 'ui_bibz/ui/ux/containers/components/panel_group'
 require 'ui_bibz/ui/ux/containers/components/panel_column'
 module UiBibz::Ui::Ux::Containers
-
   # Create a Panel
   #
   # This element is an extend of UiBibz::Ui::Core::Boxes::Card
@@ -40,8 +39,7 @@ module UiBibz::Ui::Ux::Containers
   #   end
   #
   class Panel < UiBibz::Ui::Core::Component
-
-    def initialize content = nil, options = nil, html_options = nil, &block
+    def initialize(content = nil, options = nil, html_options = nil, &block)
       super
       @items = []
     end
@@ -50,46 +48,46 @@ module UiBibz::Ui::Ux::Containers
       content_tag :div, html_structure, html_options
     end
 
-    def toolbar content = nil, options = nil, html_options = nil, &block
+    def toolbar(content = nil, options = nil, html_options = nil, &block)
       @items << UiBibz::Ui::Ux::Containers::Components::PanelToolbar.new(content, options, html_options).tap(&block).render
     end
 
-    def deck content = nil, options = nil, html_options = nil, &block
+    def deck(content = nil, options = nil, html_options = nil, &block)
       @items << UiBibz::Ui::Ux::Containers::Components::PanelDeck.new(content, options, html_options).tap(&block).render
     end
 
-    def column content = nil, options = nil, html_options = nil, &block
+    def column(content = nil, options = nil, html_options = nil, &block)
       @items << UiBibz::Ui::Ux::Containers::Components::PanelColumn.new(content, options, html_options).tap(&block).render
     end
 
-    def group content = nil, options = nil, html_options = nil, &block
+    def group(content = nil, options = nil, html_options = nil, &block)
       @items << UiBibz::Ui::Ux::Containers::Components::PanelGroup.new(content, options, html_options).tap(&block).render
     end
 
-    def panel content = nil, options = nil, html_options = nil, &block
+    def panel(content = nil, options = nil, html_options = nil, &block)
       @items << UiBibz::Ui::Ux::Containers::Panel.new(content, options, html_options).tap(&block).render
     end
 
-    def body content = nil, options = nil, html_options = nil, &block
+    def body(content = nil, options = nil, html_options = nil, &block)
       @items << UiBibz::Ui::Ux::Containers::Components::PanelBody.new(content, options, html_options, &block).render
     end
 
     # Add Header which is a component
-    def header content = nil, options = nil, html_options = nil, &block
-      if is_tap(content, options)
-        @header = UiBibz::Ui::Ux::Containers::Components::PanelHeader.new(content, options, html_options).tap(&block).render
-      else
-        @header = UiBibz::Ui::Ux::Containers::Components::PanelHeader.new(content, options, html_options, &block).render
-      end
+    def header(content = nil, options = nil, html_options = nil, &block)
+      @header = if is_tap(content, options)
+                  UiBibz::Ui::Ux::Containers::Components::PanelHeader.new(content, options, html_options).tap(&block).render
+                else
+                  UiBibz::Ui::Ux::Containers::Components::PanelHeader.new(content, options, html_options, &block).render
+                end
     end
 
     # Add Header which is a component
-    def footer content = nil, options = nil, html_options = nil, &block
-      if is_tap(content, options)
-        @footer = UiBibz::Ui::Ux::Containers::Components::PanelFooter.new(content, options, html_options).tap(&block).render
-      else
-        @footer = UiBibz::Ui::Ux::Containers::Components::PanelFooter.new(content, options, html_options, &block).render
-      end
+    def footer(content = nil, options = nil, html_options = nil, &block)
+      @footer = if is_tap(content, options)
+                  UiBibz::Ui::Ux::Containers::Components::PanelFooter.new(content, options, html_options).tap(&block).render
+                else
+                  UiBibz::Ui::Ux::Containers::Components::PanelFooter.new(content, options, html_options, &block).render
+                end
     end
 
     private
@@ -101,6 +99,5 @@ module UiBibz::Ui::Ux::Containers
     def component_html_classes
       super << 'panel'
     end
-
   end
 end

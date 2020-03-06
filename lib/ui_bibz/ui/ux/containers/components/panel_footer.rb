@@ -2,7 +2,6 @@
 
 require 'ui_bibz/ui/core/boxes/components/card_footer'
 module UiBibz::Ui::Ux::Containers::Components
-
   # Create a panel footer
   #
   # ==== Attributes
@@ -33,9 +32,8 @@ module UiBibz::Ui::Ux::Containers::Components
   #   end.render
   #
   class PanelFooter < UiBibz::Ui::Core::Component
-
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize content = nil, options = nil, html_options = nil, &block
+    def initialize(content = nil, options = nil, html_options = nil, &block)
       super
     end
 
@@ -44,11 +42,10 @@ module UiBibz::Ui::Ux::Containers::Components
       content_tag :div, glyph_and_content_html, html_options
     end
 
-  private
+    private
 
     def component_html_classes
-      super << ["panel-footer"]
+      super << ['panel-footer']
     end
-
   end
 end

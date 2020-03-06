@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 module UiBibz::Ui::Core::Windows::Components
-
   # Create a modal body
   #
   # ==== Attributes
@@ -32,9 +31,8 @@ module UiBibz::Ui::Core::Windows::Components
   #   end.render
   #
   class ModalBody < UiBibz::Ui::Core::Component
-
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize content = nil, options = nil, html_options = nil, &block
+    def initialize(content = nil, options = nil, html_options = nil, &block)
       super
     end
 
@@ -43,11 +41,10 @@ module UiBibz::Ui::Core::Windows::Components
       content_tag :div, content, html_options
     end
 
-  private
+    private
 
     def component_html_classes
       'modal-body'
     end
-
   end
 end

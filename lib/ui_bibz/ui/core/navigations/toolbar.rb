@@ -2,7 +2,6 @@
 
 require 'ui_bibz/ui/core/navigations/components/toolbar_form'
 module UiBibz::Ui::Core::Navigations
-
   # Create a toolbar
   #
   # This element is an extend of UiBibz::Ui::Core::Component.
@@ -53,9 +52,8 @@ module UiBibz::Ui::Core::Navigations
   #   end
   #
   class Toolbar < UiBibz::Ui::Core::Component
-
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize content = nil, options = nil, html_options = nil, &block
+    def initialize(content = nil, options = nil, html_options = nil, &block)
       super
       @items = []
     end
@@ -65,27 +63,27 @@ module UiBibz::Ui::Core::Navigations
       content_tag :div, @items.map(&:render).join.html_safe, html_options
     end
 
-    def button_group c = nil, o = nil, ho = nil, &block
+    def button_group(c = nil, o = nil, ho = nil, &block)
       c = @options.merge(c || {})
       (c || {}).delete(:class)
       @items << UiBibz::Ui::Core::Forms::Buttons::ButtonGroup.new(c, o, ho).tap(&block)
     end
 
-    def spacer num = "auto"
-      kls = "mr-#{ num }"
-      @items.last.html_options["class"] = join_classes(@items.last.html_options.delete(:class), @items.last.html_options[:class], kls)
+    def spacer(num = 'auto')
+      kls = "mr-#{num}"
+      @items.last.html_options['class'] = join_classes(@items.last.html_options.delete(:class), @items.last.html_options[:class], kls)
     end
 
     # Add navbar form items
     # See UiBibz::Ui::Core::ToolbarForm
-    def form model_or_url, options = {}, &block
+    def form(model_or_url, options = {}, &block)
       @items << UiBibz::Ui::Core::Navigations::ToolbarForm.new(model_or_url, options, &block)
     end
 
-  private
+    private
 
     def component_html_classes
-      super << ["btn-toolbar", justify]
+      super << ['btn-toolbar', justify]
     end
 
     def component_html_options
@@ -93,8 +91,7 @@ module UiBibz::Ui::Core::Navigations
     end
 
     def justify
-      "justify-content-between" if options[:justify]
+      'justify-content-between' if options[:justify]
     end
-
   end
 end

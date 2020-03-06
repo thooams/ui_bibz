@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 module UiBibz::Ui::Core::Forms::Dates
-
   # Create a DatePickerField
   #
   # This element is an extend of UiBibz::Ui::Core::Component.
@@ -45,9 +44,8 @@ module UiBibz::Ui::Core::Forms::Dates
   #   date_picker_field(content, options = {}, html_options = {})
   #
   class DatePickerField < UiBibz::Ui::Core::Component
-
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize content = nil, options = nil, html_options = nil, &block
+    def initialize(content = nil, options = nil, html_options = nil, &block)
       super
     end
 
@@ -56,7 +54,7 @@ module UiBibz::Ui::Core::Forms::Dates
       date_picker_field_html_tag
     end
 
-  private
+    private
 
     def date_picker_field_html_tag
       if options[:range]
@@ -92,23 +90,23 @@ module UiBibz::Ui::Core::Forms::Dates
     end
 
     def component_html_classes
-      super << %w(date_picker form-control)
+      super << %w[date_picker form-control]
     end
 
     def component_html_options
-      super.merge({ disabled: options[:state] == :disabled  })
+      super.merge({ disabled: options[:state] == :disabled })
     end
 
     def date_locale
-      add_html_data "date_locale", I18n.locale.to_s
+      add_html_data 'date_locale', I18n.locale.to_s
     end
 
     def provide
-      add_html_data "provide", 'datepicker'
+      add_html_data 'provide', 'datepicker'
     end
 
     def format
-      add_html_data "date_format", picker_pattern
+      add_html_data 'date_format', picker_pattern
     end
 
     def picker_pattern
@@ -124,52 +122,52 @@ module UiBibz::Ui::Core::Forms::Dates
     end
 
     def calendar_weeks
-      add_html_data("date_calendar_weeks") if options[:calendar_weeks]
+      add_html_data('date_calendar_weeks') if options[:calendar_weeks]
     end
 
     def autoclose
-      add_html_data("date_autoclose") if options[:autoclose]
+      add_html_data('date_autoclose') if options[:autoclose]
     end
 
     def dates_disabled
-      add_html_data("dates_disabled", [options[:dates_disabled]].flatten) if options[:dates_disabled]
+      add_html_data('dates_disabled', [options[:dates_disabled]].flatten) if options[:dates_disabled]
     end
 
     def toggle_active
-      add_html_data("date_toggle_active", true)
+      add_html_data('date_toggle_active', true)
     end
 
     def display_mode
-      add_html_data("date_start_view", views[options[:display_mode]]) if options[:display_mode]
+      add_html_data('date_start_view', views[options[:display_mode]]) if options[:display_mode]
     end
 
     def display_mode_min
-      add_html_data("date_min_view_mode", views[options[:display_mode_min]]) if options[:display_mode_min]
+      add_html_data('date_min_view_mode', views[options[:display_mode_min]]) if options[:display_mode_min]
     end
 
     def display_mode_max
-      add_html_data("date_max_view_mode", views[options[:display_mode_max]]) if options[:display_mode_max]
+      add_html_data('date_max_view_mode', views[options[:display_mode_max]]) if options[:display_mode_max]
     end
 
     def days_of_week_disabled
-      add_html_data("date_days_of_week_disabled", [options[:days_of_week_disabled]].flatten) if options[:days_of_week_disabled]
+      add_html_data('date_days_of_week_disabled', [options[:days_of_week_disabled]].flatten) if options[:days_of_week_disabled]
     end
 
     def days_of_week_highlighted
-      add_html_data("date_days_of_week_highlighted", [options[:days_of_week_highlighted]].flatten) if options[:days_of_week_highlighted]
+      add_html_data('date_days_of_week_highlighted', [options[:days_of_week_highlighted]].flatten) if options[:days_of_week_highlighted]
     end
 
     def multiple
-      add_html_data("date_multidate", options[:multiple]) if options[:multiple]
+      add_html_data('date_multidate', options[:multiple]) if options[:multiple]
     end
 
     # :lg, :sm or :xs
     def size
-      "input-group-#{ options[:size] }" if options[:size]
+      "input-group-#{options[:size]}" if options[:size]
     end
 
     def status
-      "has-#{ options[:status] }" if options[:status]
+      "has-#{options[:status]}" if options[:status]
     end
 
     def views
@@ -177,10 +175,9 @@ module UiBibz::Ui::Core::Forms::Dates
         days: 0,
         months: 1,
         years: 2,
-        decades:  3,
+        decades: 3,
         centuries: 4
       }
     end
-
   end
 end

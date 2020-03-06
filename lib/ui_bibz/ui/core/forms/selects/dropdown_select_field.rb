@@ -2,7 +2,6 @@
 
 require 'ui_bibz/ui/extensions/core/forms/surround_extension'
 module UiBibz::Ui::Core::Forms::Selects
-
   # Create a DropdownSelectField
   #
   # This element is an extend of UiBibz::Ui::Core::Component.
@@ -18,7 +17,7 @@ module UiBibz::Ui::Core::Forms::Selects
   #
   # You can add HTML attributes using the +html_options+.
   # You can pass arguments in options attribute:
-  # * +status+ - status of élement with symbol value:
+  # * +status+ - status of element with symbol value:
   #   (+:primary+, +:secondary+, +:info+, +:warning+, +:danger+, +:link+)
   # * +option_tags+ - Array, Object [required]
   # * +searchable+ - Boolean
@@ -68,9 +67,8 @@ module UiBibz::Ui::Core::Forms::Selects
   #   dropdown_select_field(content, options = {}, html_options = {})
   #
   class DropdownSelectField < UiBibz::Ui::Core::Forms::Selects::AbstractSelect
-
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize content = nil, options = nil, html_options = nil, &block
+    def initialize(content = nil, options = nil, html_options = nil, &block)
       super
     end
 
@@ -116,7 +114,7 @@ module UiBibz::Ui::Core::Forms::Selects
     end
 
     def style
-      add_html_data('style', "btn-#{ options[:status] || :secondary }")
+      add_html_data('style', "btn-#{options[:status] || :secondary}")
     end
 
     def menu_size
@@ -132,7 +130,7 @@ module UiBibz::Ui::Core::Forms::Selects
     end
 
     def add_status
-      add_html_data('style', "btn-#{ options[:status]}") if options[:status]
+      add_html_data('style', "btn-#{options[:status]}") if options[:status]
     end
 
     ############################# Css classes
@@ -144,6 +142,5 @@ module UiBibz::Ui::Core::Forms::Selects
     def dropup
       'dropup' if options[:dropup]
     end
-
   end
 end

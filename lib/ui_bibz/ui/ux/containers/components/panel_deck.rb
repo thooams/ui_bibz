@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 module UiBibz::Ui::Ux::Containers::Components
-
   # Create a panel deck
   #
   # ==== Attributes
@@ -24,9 +23,8 @@ module UiBibz::Ui::Ux::Containers::Components
   #   end.render
   #
   class PanelDeck < UiBibz::Ui::Core::Component
-
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize content = nil, options = nil, html_options = nil, &block
+    def initialize(content = nil, options = nil, html_options = nil, &block)
       super
       @items = []
     end
@@ -38,15 +36,14 @@ module UiBibz::Ui::Ux::Containers::Components
       end
     end
 
-    def panel content = nil, options = nil, html_options = nil, &block
+    def panel(content = nil, options = nil, html_options = nil, &block)
       @items << UiBibz::Ui::Ux::Containers::Panel.new(content, options, html_options).tap(&block).render
     end
 
-  private
+    private
 
     def component_html_classes
-      "panel-deck-wrapper"
+      'panel-deck-wrapper'
     end
-
   end
 end

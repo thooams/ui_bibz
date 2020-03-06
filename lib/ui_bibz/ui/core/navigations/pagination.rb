@@ -2,7 +2,6 @@
 
 require 'ui_bibz/ui/core/navigations/components/pagination_link'
 module UiBibz::Ui::Core::Navigations
-
   # Create a Pagination
   #
   # This element is an extend of UiBibz::Ui::Core::Component.
@@ -54,9 +53,8 @@ module UiBibz::Ui::Core::Navigations
   #   end
   #
   class Pagination < UiBibz::Ui::Core::Component
-
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize content = nil, options = nil, html_options = nil, &block
+    def initialize(content = nil, options = nil, html_options = nil, &block)
       super
       @items = []
     end
@@ -70,30 +68,27 @@ module UiBibz::Ui::Core::Navigations
 
     # Add nav link items
     # See UiBibz::Ui::Core::Navigations::NavLink
-    def link content = nil, options = {}, html_options = nil, &block
+    def link(content = nil, options = {}, html_options = nil, &block)
       @items << PaginationLink.new(content, options, html_options, &block).render
     end
 
-  private
+    private
 
     def component_html_classes
-      ["pagination", position, size]
+      ['pagination', position, size]
     end
 
     def position
       case @options[:position]
       when :center
-        "justify-content-center"
+        'justify-content-center'
       when :right
-        "justify-content-end"
-      else
-        nil
+        'justify-content-end'
       end
     end
 
     def size
-      "pagination-#{ @options[:size] }" if @options[:size]
+      "pagination-#{@options[:size]}" if @options[:size]
     end
-
   end
 end

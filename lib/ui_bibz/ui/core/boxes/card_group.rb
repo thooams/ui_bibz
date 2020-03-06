@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 module UiBibz::Ui::Core::Boxes
-
   # Create a card group
   #
   # ==== Attributes
@@ -32,9 +31,8 @@ module UiBibz::Ui::Core::Boxes
   #   end.render
   #
   class CardGroup < UiBibz::Ui::Core::Component
-
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize content = nil, options = nil, html_options = nil, &block
+    def initialize(content = nil, options = nil, html_options = nil, &block)
       super
       @items = []
     end
@@ -44,19 +42,18 @@ module UiBibz::Ui::Core::Boxes
       content_tag :div, @items.join.html_safe, html_options
     end
 
-    def card content = nil, options = nil, html_options = nil, &block
-      if is_tap content, options
-        @items << UiBibz::Ui::Core::Boxes::Card.new(content, options, html_options).tap(&block).render
-      else
-        @items << UiBibz::Ui::Core::Boxes::Card.new(content, options, html_options, &block).render
-      end
+    def card(content = nil, options = nil, html_options = nil, &block)
+      @items << if is_tap content, options
+                  UiBibz::Ui::Core::Boxes::Card.new(content, options, html_options).tap(&block).render
+                else
+                  UiBibz::Ui::Core::Boxes::Card.new(content, options, html_options, &block).render
+                end
     end
 
-  private
+    private
 
     def component_html_classes
-      "card-group"
+      'card-group'
     end
-
   end
 end

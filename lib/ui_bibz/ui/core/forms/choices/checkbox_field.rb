@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 module UiBibz::Ui::Core::Forms::Choices
-
   # Create a checkbox
   #
   # This element is an extend of UiBibz::Ui::Core::Component.
@@ -48,9 +47,8 @@ module UiBibz::Ui::Core::Forms::Choices
   #   end
   #
   class CheckboxField < UiBibz::Ui::Core::Component
-
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize content = nil, options = nil, html_options = nil, &block
+    def initialize(content = nil, options = nil, html_options = nil, &block)
       super
     end
 
@@ -59,11 +57,11 @@ module UiBibz::Ui::Core::Forms::Choices
       checkbox_field_html_tag
     end
 
-  private
+    private
 
     def checkbox_field_html_tag
-      content_tag(:div, html_options.except(:id, "data-action")) do
-        concat hidden_field_tag content, '0', id: "#{ content }-hidden"
+      content_tag(:div, html_options.except(:id, 'data-action')) do
+        concat hidden_field_tag content, '0', id: "#{content}-hidden"
         concat check_box_tag content, options[:value] || '1', options[:checked] || html_options[:checked], checkbox_html_options
         concat label_tag label_name, label_content, class: 'custom-control-label'
       end
@@ -87,19 +85,18 @@ module UiBibz::Ui::Core::Forms::Choices
       when nil
         content
       when false
-        " "
+        ' '
       else
         options[:label]
       end
     end
 
     def component_html_classes
-      super << ["custom-control", "custom-checkbox", inline]
+      super << ['custom-control', 'custom-checkbox', inline]
     end
 
     def inline
-      "custom-control-inline" if options[:inline]
+      'custom-control-inline' if options[:inline]
     end
-
   end
 end

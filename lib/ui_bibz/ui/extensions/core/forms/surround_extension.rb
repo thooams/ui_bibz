@@ -10,28 +10,27 @@ module SurroundExtension
     !options[:append].nil? || !options[:prepend].nil? || !options[:refresh].nil? || !options[:surrounded].nil?
   end
 
-  def surround_wrapper_tag ct_tag
+  def surround_wrapper_tag(ct_tag)
     UiBibz::Ui::Core::Forms::Surrounds::SurroundField.new(class: surround_classes).tap do |sf|
-      sf.addon options[:append]           unless options[:append].nil?
+      sf.addon options[:append] unless options[:append].nil?
       sf.html ct_tag
       sf.button_refresh connect_opts      unless options[:refresh].nil?
       sf.addon options[:prepend]          unless options[:prepend].nil?
     end.render
   end
 
-  def surround_field field_tag, options = {}
+  def surround_field(field_tag, _options = {})
     surrounded? ? surround_wrapper_tag(field_tag) : field_tag
   end
 
-  def input_group_classes
-  end
+  def input_group_classes; end
 
   def surround_classes
     [input_group_refresh, input_group_classes]
   end
 
   def input_group_refresh
-    "field-refresh" unless options[:refresh].nil?
+    'field-refresh' unless options[:refresh].nil?
   end
 
   def input_group_classes
@@ -40,11 +39,10 @@ module SurroundExtension
 
   # :lg, :sm or :xs
   def input_group_size
-    "input-group-#{ options[:size] }" unless options[:size].nil?
+    "input-group-#{options[:size]}" unless options[:size].nil?
   end
 
   def input_group_status
-    "has-#{ options[:status] }" unless options[:status].nil?
+    "has-#{options[:status]}" unless options[:status].nil?
   end
-
 end

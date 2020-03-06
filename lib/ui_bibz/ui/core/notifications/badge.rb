@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 module UiBibz::Ui::Core::Notifications
-
   # Create a badge
   #
   # This element is an extend of UiBibz::Ui::Core::Component.
@@ -16,7 +15,7 @@ module UiBibz::Ui::Core::Notifications
   #
   # You can add HTML attributes using the +html_options+.
   # You can pass arguments in options attribute:
-  # * +status+ - status of élement with symbol value:
+  # * +status+ - status of element with symbol value:
   #   (+:primary+, +:secondary+, +:success+, +:danger+, +:warning+, +:info+, +:light+, +:dark+)
   # * +glyph+ - [String | Hash] Add glyph with name or hash options
   #   * +name+ - [String]
@@ -49,9 +48,8 @@ module UiBibz::Ui::Core::Notifications
   #   end
   #
   class Badge < UiBibz::Ui::Core::Component
-
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize content = nil, options = nil, html_options = nil, &block
+    def initialize(content = nil, options = nil, html_options = nil, &block)
       super
     end
 
@@ -60,7 +58,7 @@ module UiBibz::Ui::Core::Notifications
       content_tag options[:url].nil? ? :span : :a, glyph_and_content_html, html_options
     end
 
-  private
+    private
 
     def component_html_options
       super.merge(options[:url].nil? ? {} : { href: options[:url] })
@@ -71,12 +69,11 @@ module UiBibz::Ui::Core::Notifications
     end
 
     def status
-      "badge-#{ @options[:status] || :default  }"
+      "badge-#{@options[:status] || :default}"
     end
 
     def type
-      "badge-pill" if @options[:type] == :pill
+      'badge-pill' if @options[:type] == :pill
     end
-
   end
 end

@@ -1,9 +1,8 @@
 # frozen_string_literal: true
 
-require "ui_bibz/ui/core/lists/components/list/list_header"
-require "ui_bibz/ui/core/lists/components/list/list_body"
+require 'ui_bibz/ui/core/lists/components/list/list_header'
+require 'ui_bibz/ui/core/lists/components/list/list_body'
 module UiBibz::Ui::Core::Lists::Components
-
   # Create a list
   #
   # This element is an extend of UiBibz::Ui::Core::Component.
@@ -18,11 +17,11 @@ module UiBibz::Ui::Core::Lists::Components
   #
   # You can add HTML attributes using the +html_options+.
   # You can pass arguments in options attribute:
-  # * +state+ - status of élement with symbol value:
+  # * +state+ - status of element with symbol value:
   #   (+:active+, +:disabled+)
   # * +url+
   # * +tap+ - Boolean to add header and body
-  # * +status+ - status of élement with symbol value:
+  # * +status+ - status of element with symbol value:
   #   (+:default+, +:primary+, +:info+, +:warning+, +:danger+)
   # * +glyph+ - Add glyph with name or hash options
   #   * +name+ - String
@@ -58,9 +57,8 @@ module UiBibz::Ui::Core::Lists::Components
   #   end.render
   #
   class List < UiBibz::Ui::Core::Component
-
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize content = nil, options = nil, html_options = nil, &block
+    def initialize(content = nil, options = nil, html_options = nil, &block)
       super
     end
 
@@ -75,16 +73,16 @@ module UiBibz::Ui::Core::Lists::Components
     end
 
     # Add header which is a component
-    def header content = nil, options = nil, html_options = nil, &block
+    def header(content = nil, options = nil, html_options = nil, &block)
       @header = UiBibz::Ui::Core::Lists::Components::ListHeader.new content, options, html_options, &block
     end
 
     # Add body which is a component
-    def body content = nil, options = nil, html_options = nil, &block
+    def body(content = nil, options = nil, html_options = nil, &block)
       @body = UiBibz::Ui::Core::Lists::Components::ListBody.new content, options, html_options, &block
     end
 
-  private
+    private
 
     def component_html_classes
       super << ['list-group-item', tag_type_class, badge_classes, header_classes]
@@ -99,19 +97,19 @@ module UiBibz::Ui::Core::Lists::Components
     end
 
     def badge_classes
-      "d-flex justify-content-between align-items-center" unless options[:badge].nil?
+      'd-flex justify-content-between align-items-center' unless options[:badge].nil?
     end
 
     def status
-      "list-group-item-#{ @options[:status] }" unless @options[:status].nil?
+      "list-group-item-#{@options[:status]}" unless @options[:status].nil?
     end
 
     def header_classes
-      "flex-column align-items-start" unless options[:tap].nil?
+      'flex-column align-items-start' unless options[:tap].nil?
     end
 
     def tag_type_class
-      "list-group-item-action" if is_button_type? || is_link_type?
+      'list-group-item-action' if is_button_type? || is_link_type?
     end
 
     def is_link_type?
@@ -134,7 +132,7 @@ module UiBibz::Ui::Core::Lists::Components
     end
 
     def badge_html
-      if options[:badge].kind_of? Hash
+      if options[:badge].is_a? Hash
         options[:badge][:status] = options[:status] || :secondary
         UiBibz::Ui::Core::Notifications::Badge.new(options[:badge].delete(:content), options[:badge]).render
 
@@ -142,6 +140,5 @@ module UiBibz::Ui::Core::Lists::Components
         UiBibz::Ui::Core::Notifications::Badge.new(options[:badge], type: :pill, status: (options[:status] || :secondary)).render
       end
     end
-
   end
 end

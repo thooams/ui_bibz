@@ -1,9 +1,8 @@
 # frozen_string_literal: true
 
-require "ui_bibz/ui/core/icons/components/glyph_text"
-require "ui_bibz/ui/core/icons/components/glyph_counter"
+require 'ui_bibz/ui/core/icons/components/glyph_text'
+require 'ui_bibz/ui/core/icons/components/glyph_counter'
 module UiBibz::Ui::Core::Icons
-
   # Create a glyph group
   #
   # This element is an extend of UiBibz::Ui::Core::Component.
@@ -60,45 +59,43 @@ module UiBibz::Ui::Core::Icons
   #     name
   #   end
   class GlyphGroup < UiBibz::Ui::Core::Component
-
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize content, options = nil, html_options = nil, &block
+    def initialize(content, options = nil, html_options = nil, &block)
       super
       @items = []
     end
 
     # Render html tag
     def pre_render
-      content_tag :span, @items.join().html_safe, html_options
+      content_tag :span, @items.join.html_safe, html_options
     end
 
-    def glyph content = nil, options = {} , html_options = nil, &block
+    def glyph(content = nil, options = {}, html_options = nil, &block)
       @items << UiBibz::Ui::Core::Icons::Glyph.new(content, options, html_options, &block).render
     end
 
-    def text content = nil, options = {} , html_options = nil, &block
+    def text(content = nil, options = {}, html_options = nil, &block)
       @items << UiBibz::Ui::Core::Icons::Components::GlyphText.new(content, options, html_options, &block).render
     end
 
-    def counter content = nil, options = {} , html_options = nil, &block
+    def counter(content = nil, options = {}, html_options = nil, &block)
       @items << UiBibz::Ui::Core::Icons::Components::GlyphCounter.new(content, options, html_options, &block).render
     end
 
     private
 
     def component_html_classes
-      super << ["fa-layers", "fa-fw", size]
+      super << ['fa-layers', 'fa-fw', size]
     end
 
     def size
       if options[:size]
-        if options[:size].kind_of?(Integer)
-          "fa-#{ options[:size] }x"
+        if options[:size].is_a?(Integer)
+          "fa-#{options[:size]}x"
         else
-          "fa-#{ options[:size] }"
+          "fa-#{options[:size]}"
         end
       end
     end
-
   end
 end

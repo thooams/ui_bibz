@@ -1,5 +1,5 @@
 PreCommit:
   Rubocop:
-    enable: true
+    enabled: true
     command: ['bundle', 'exec', 'rubocop']
 

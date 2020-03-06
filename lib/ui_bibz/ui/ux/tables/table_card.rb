@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
-require "ui_bibz/ui/ux/tables/components/store"
+require 'ui_bibz/ui/ux/tables/components/store'
 module UiBibz::Ui::Ux::Tables
-
   # Create a TableCard
   #
   # This element is an extend of UiBibz::Ui::Core::Boxes::card.
@@ -106,11 +105,10 @@ module UiBibz::Ui::Ux::Tables
   #     end
   #   end
   class TableCard < UiBibz::Ui::Core::Boxes::Card
-
     attr_accessor :columns
 
     # See UiBibz::Ui::Core::Boxes::Card.initialize
-    def initialize content = nil, options = nil, html_options = nil, &block
+    def initialize(content = nil, options = nil, html_options = nil, &block)
       super
       table_options = (@options[:table_options] || {}).merge({ store: store })
       @table        = UiBibz::Ui::Ux::Tables::Table.new(table_options, @options[:table_html_options])
@@ -122,7 +120,7 @@ module UiBibz::Ui::Ux::Tables
 
       content_tag :div, html_options do
         form_tag(url_for(url_parameters), method: :get) do
-          store.parameters.with_indifferent_access.reject{ |k,v|  default_parameters?(k) || v.blank? }.each do |k,v|
+          store.parameters.with_indifferent_access.reject { |k, v| default_parameters?(k) || v.blank? }.each do |k, v|
             concat tag(:input, type: 'hidden', name: k, value: v)
           end
           concat tag(:input, type: 'hidden', name: 'store_id', value: store.id) unless store.id.nil? # if there is more one table in html page
@@ -132,12 +130,12 @@ module UiBibz::Ui::Ux::Tables
     end
 
     # Add table columns item
-    def columns &block
+    def columns(&block)
       @table.columns &block
     end
 
     # Add table actions item
-    def actions &block
+    def actions(&block)
       @table.actions &block
     end
 
@@ -146,19 +144,19 @@ module UiBibz::Ui::Ux::Tables
       @table.actions_list
     end
 
-  private
+    private
 
     def component_html_classes
-      %w(card table-card)
+      %w[card table-card]
     end
 
     def store
       @store ||= if @options[:store].nil?
-        raise 'Store is nil!'
-      elsif @options[:store].try(:records).nil?
-        raise 'Store can be created only with "table_search_pagination" method!'
-      else
-        Store.new @options.delete(:store) if @options[:store]
+                   raise 'Store is nil!'
+                 elsif @options[:store].try(:records).nil?
+                   raise 'Store can be created only with "table_search_pagination" method!'
+                 else
+                   Store.new @options.delete(:store) if @options[:store]
       end
     end
 
@@ -169,16 +167,14 @@ module UiBibz::Ui::Ux::Tables
     end
 
     def default_parameters?(k)
-      %w(store_id per_page page search utf8 search controller action link_type).include?(k)
+      %w[store_id per_page page search utf8 search controller action link_type].include?(k)
     end
 
     def url_parameters
       { controller: store.controller, action: store.action, id: store.param_id }
     end
 
-    def table
-      @table
-    end
+    attr_reader :table
 
     def table_html
       content_tag :div, @table.render, class: 'card-table'
@@ -191,6 +187,5 @@ module UiBibz::Ui::Ux::Tables
     def pagination
       @pagination ||= Paginable.new store, @options.merge({ wrap_form: false }), { class: 'card-footer' }
     end
-
   end
 end

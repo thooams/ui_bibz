@@ -2,7 +2,6 @@
 
 require 'ui_bibz/ui/core/boxes/components/card_tab_group'
 module UiBibz::Ui::Core::Boxes::Components
-
   # Create a card header
   #
   # ==== Attributes
@@ -40,9 +39,8 @@ module UiBibz::Ui::Core::Boxes::Components
   #   end.render
   #
   class CardHeader < UiBibz::Ui::Core::Component
-
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize content = nil, options = nil, html_options = nil, &block
+    def initialize(content = nil, options = nil, html_options = nil, &block)
       super
     end
 
@@ -51,23 +49,22 @@ module UiBibz::Ui::Core::Boxes::Components
       content_tag :div, glyph_and_content_html, html_options
     end
 
-    def tab_group content = nil, options = nil, html_options = nil, &block
-      if is_tap(content, options)
-        @content = CardTabGroup.new(content, options, html_options).tap(&block).render
-      else
-        @content = CardTabGroup.new(content, options, html_options, &block).render
-      end
+    def tab_group(content = nil, options = nil, html_options = nil, &block)
+      @content = if is_tap(content, options)
+                   CardTabGroup.new(content, options, html_options).tap(&block).render
+                 else
+                   CardTabGroup.new(content, options, html_options, &block).render
+                 end
     end
 
-  private
+    private
 
     def component_html_classes
-      ["card-header", outline]
+      ['card-header', outline]
     end
 
     def outline
-      "text-#{ @options[:status] } border-#{ @options[:status] } bg-transparent" if @options[:outline]
+      "text-#{@options[:status]} border-#{@options[:status]} bg-transparent" if @options[:outline]
     end
-
   end
 end

@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 module UiBibz::Ui::Ux::Containers::Components
-
   # Create a card body
   #
   # ==== Attributes
@@ -32,9 +31,8 @@ module UiBibz::Ui::Ux::Containers::Components
   #   end.render
   #
   class PanelBody < UiBibz::Ui::Core::Component
-
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize content = nil, options = nil, html_options = nil, &block
+    def initialize(content = nil, options = nil, html_options = nil, &block)
       super
     end
 
@@ -43,11 +41,10 @@ module UiBibz::Ui::Ux::Containers::Components
       content_tag :div, glyph_and_content_html, html_options
     end
 
-  private
+    private
 
     def component_html_classes
-      super << ["panel-body"]
+      super << ['panel-body']
     end
-
   end
 end

@@ -4,11 +4,10 @@ require 'ui_bibz/ui/ux/tables/components/columns'
 require 'ui_bibz/ui/ux/tables/components/column'
 module UiBibz::Ui::Ux::Tables
   class Store
-
     attr_accessor :records
 
     # Store Use WillPaginate store methods
-    def initialize store
+    def initialize(store)
       @records = store.records
       @store   = store
       @model   = store.model
@@ -55,12 +54,10 @@ module UiBibz::Ui::Ux::Tables
     end
 
     def columns
-      @columns ||= Columns.new model.new.attributes.keys.map{ |record| Column.new(record, { name: record.humanize }) }
+      @columns ||= Columns.new model.new.attributes.keys.map { |record| Column.new(record, { name: record.humanize }) }
     end
 
-    def model
-      @model
-    end
+    attr_reader :model
 
     def search
       @store.search
@@ -85,6 +82,5 @@ module UiBibz::Ui::Ux::Tables
     def param_id
       @store.param_id
     end
-
   end
 end

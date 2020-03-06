@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 module UiBibz::Ui::Core::Navigations
-
   # Create a NavLinkLink
   #
   # This element is an extend of UiBibz::Ui::Core::Component.
@@ -16,13 +15,12 @@ module UiBibz::Ui::Core::Navigations
   #
   # You can add HTML attributes using the +html_options+.
   # You can pass arguments in options attribute:
-  # * +state+ - status of élement with symbol value:
+  # * +state+ - status of element with symbol value:
   #   (+:active+)
   #
   class NavLinkLink < UiBibz::Ui::Core::Component
-
     # UiBibz::Ui::Core::Component.initialize
-    def initialize content = nil, options = nil, html_options = nil, &block
+    def initialize(content = nil, options = nil, html_options = nil, &block)
       super
     end
 
@@ -34,15 +32,14 @@ module UiBibz::Ui::Core::Navigations
       end
     end
 
-  private
+    private
 
     def component_html_classes
-      "nav-link"
+      'nav-link'
     end
 
     def component_html_options
-      options[:nav_type] == "nav-tabs" ? { "data-toggle" => "tab", role: 'tab' } : {}
+      options[:nav_type] == 'nav-tabs' ? { 'data-toggle' => 'tab', role: 'tab' } : {}
     end
-
   end
 end

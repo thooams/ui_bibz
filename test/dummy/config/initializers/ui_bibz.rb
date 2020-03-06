@@ -3,4 +3,3 @@
 UiBibz.configure do |config|
   config.fontawesomejs = true
 end
-

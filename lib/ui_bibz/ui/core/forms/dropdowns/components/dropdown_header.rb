@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 module UiBibz::Ui::Core::Forms::Dropdowns::Components
-
   # Create DropdownHeader
   #
   # This element is an extend of UiBibz::Ui::Core::Component.
@@ -34,9 +33,8 @@ module UiBibz::Ui::Core::Forms::Dropdowns::Components
   #   end.render
   #
   class DropdownHeader < UiBibz::Ui::Core::Component
-
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize content = nil, options = nil, html_options = nil, &block
+    def initialize(content = nil, options = nil, html_options = nil, &block)
       super
     end
 
@@ -45,7 +43,7 @@ module UiBibz::Ui::Core::Forms::Dropdowns::Components
       content_tag :h6, glyph_and_content_html, html_options
     end
 
-  private
+    private
 
     def component_html_classes
       'dropdown-header'
@@ -54,6 +52,5 @@ module UiBibz::Ui::Core::Forms::Dropdowns::Components
     def component_html_options
       { role: 'presentation' }
     end
-
   end
 end

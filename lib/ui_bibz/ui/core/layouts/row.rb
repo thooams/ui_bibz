@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 module UiBibz::Ui::Core::Layouts
-
   # Create a row
   #
   # This element is an extend of UiBibz::Ui::Core::Component.
@@ -35,9 +34,8 @@ module UiBibz::Ui::Core::Layouts
   #  end
   #
   class Row < UiBibz::Ui::Core::Component
-
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize content = nil, options = nil, html_options = nil, &block
+    def initialize(content = nil, options = nil, html_options = nil, &block)
       super
     end
 
@@ -46,11 +44,10 @@ module UiBibz::Ui::Core::Layouts
       content_tag :div, content, html_options
     end
 
-  private
+    private
 
     def component_html_classes
       options[:type] == :form ? 'form-row' : 'row'
     end
-
   end
 end

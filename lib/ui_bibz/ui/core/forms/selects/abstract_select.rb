@@ -2,7 +2,6 @@
 
 require 'ui_bibz/ui/extensions/core/forms/surround_extension'
 module UiBibz::Ui::Core::Forms::Selects
-
   # Create a SelectField
   #
   # This element is an extend of UiBibz::Ui::Core::Component.
@@ -18,7 +17,7 @@ module UiBibz::Ui::Core::Forms::Selects
   #
   # You can add HTML attributes using the +html_options+.
   # You can pass arguments in options attribute:
-  # * +status+ - status of élement with symbol value:
+  # * +status+ - status of element with symbol value:
   #   (+:primary+, +:secondary+, +:info+, +:warning+, +:danger+, +:link+)
   # * +option_tags+ - Array, Object [required]
   # * +searchable+ - Boolean
@@ -72,7 +71,7 @@ module UiBibz::Ui::Core::Forms::Selects
     include SurroundExtension
 
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize content = nil, options = nil, html_options = nil, &block
+    def initialize(content = nil, options = nil, html_options = nil, &block)
       super
     end
 
@@ -90,12 +89,11 @@ module UiBibz::Ui::Core::Forms::Selects
     # Try to put it on a line
     def component_html_options
       super.merge({
-        multiple:      options[:multiple],
-        disabled:      options[:state] == :disabled,
-        include_blank: options[:include_blank],
-        prompt:        options[:prompt]
-      })
+                    multiple: options[:multiple],
+                    disabled: options[:state] == :disabled,
+                    include_blank: options[:include_blank],
+                    prompt: options[:prompt]
+                  })
     end
-
   end
 end

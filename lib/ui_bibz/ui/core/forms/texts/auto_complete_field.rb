@@ -2,7 +2,6 @@
 
 require 'ui_bibz/ui/extensions/core/forms/surround_extension'
 module UiBibz::Ui::Core::Forms::Texts
-
   # Create a AutoCompleteField
   #
   # This element is an extend of UiBibz::Ui::Core::Component.
@@ -46,9 +45,8 @@ module UiBibz::Ui::Core::Forms::Texts
   #   end
   #
   class AutoCompleteField < UiBibz::Ui::Core::Forms::Texts::TextField
-
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize content = nil, options = nil, html_options = nil, &block
+    def initialize(content = nil, options = nil, html_options = nil, &block)
       super
     end
 
@@ -67,17 +65,16 @@ module UiBibz::Ui::Core::Forms::Texts
     end
 
     def component_html_classes
-      super << "auto-complete-field"
+      super << 'auto-complete-field'
     end
 
     def data_list_name
-      @datalist ||= "#{ html_options[:id] || content.to_s.parameterize.underscore }-datalist"
+      @datalist ||= "#{html_options[:id] || content.to_s.parameterize.underscore}-datalist"
     end
 
     # Connect option
     def connect_options_selector
-       data_list_name
+      data_list_name
     end
-
   end
 end

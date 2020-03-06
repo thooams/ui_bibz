@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 module UiBibz::Ui::Core::Forms::Selects
-
   # Create a MultiColumnField
   #
   # This element is an extend of UiBibz::Ui::Core::Component.
@@ -48,9 +47,8 @@ module UiBibz::Ui::Core::Forms::Selects
   #   multi_column_field(content, options = {}, html_options = {})
   #
   class MultiColumnField < UiBibz::Ui::Core::Forms::Selects::AbstractSelect
-
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize content = nil, options = nil, html_options = nil, &block
+    def initialize(content = nil, options = nil, html_options = nil, &block)
       super
     end
 
@@ -68,11 +66,11 @@ module UiBibz::Ui::Core::Forms::Selects
 
     def component_html_options
       super.merge({
-        multiple:      true,
-        disabled:      options[:state] == :disabled,
-        include_blank: options[:include_blank],
-        prompt:        options[:prompt]
-      })
+                    multiple: true,
+                    disabled: options[:state] == :disabled,
+                    include_blank: options[:include_blank],
+                    prompt: options[:prompt]
+                  })
     end
 
     def searchable
@@ -84,8 +82,7 @@ module UiBibz::Ui::Core::Forms::Selects
     end
 
     def status
-      "has-#{ options[:status] }" if options[:status]
+      "has-#{options[:status]}" if options[:status]
     end
-
   end
 end

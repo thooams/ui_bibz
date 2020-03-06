@@ -3,7 +3,6 @@
 require 'ui_bibz/ui/core/notifications/components/alert_header'
 require 'ui_bibz/ui/core/notifications/components/alert_body'
 module UiBibz::Ui::Core::Notifications
-
   # Create an alert
   #
   # This element is an extend of UiBibz::Ui::Core::Component.
@@ -18,7 +17,7 @@ module UiBibz::Ui::Core::Notifications
   #
   # You can add HTML attributes using the +html_options+.
   # You can pass arguments in options attribute:
-  # * +status+ - status of élement with symbol value:
+  # * +status+ - status of element with symbol value:
   #   (+:default+, +:primary+, +:info+, +:warning+, +:danger+)
   # * +glyph+ - [String | Hash] Add glyph with name or hash options
   #   * +name+ - [String]
@@ -49,9 +48,8 @@ module UiBibz::Ui::Core::Notifications
   #   end
   #
   class Alert < UiBibz::Ui::Core::Component
-
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize content = nil, options = nil, html_options = nil, &block
+    def initialize(content = nil, options = nil, html_options = nil, &block)
       super
       header(@content) if @options[:tap].nil?
     end
@@ -65,7 +63,7 @@ module UiBibz::Ui::Core::Notifications
     end
 
     # Add Header which is a component
-    def header content = nil, options = nil, html_options = nil, &block
+    def header(content = nil, options = nil, html_options = nil, &block)
       if block.nil?
         options = @options.merge(options || {})
       else
@@ -76,28 +74,27 @@ module UiBibz::Ui::Core::Notifications
     end
 
     # Add Body which is a component
-    def body content = nil, options = nil, html_options = nil, &block
+    def body(content = nil, options = nil, html_options = nil, &block)
       @body = UiBibz::Ui::Core::Notifications::Components::AlertBody.new(content, options, html_options, &block).render
     end
 
-  private
+    private
 
     def component_html_data
       super
-      add_html_data "timeout", options[:timeout] if options[:timeout]
+      add_html_data 'timeout', options[:timeout] if options[:timeout]
     end
 
     def component_html_classes
-      ['alert', 'alert-dismissible']
+      %w[alert alert-dismissible]
     end
 
     def component_html_options
-      { role: 'alert'}
+      { role: 'alert' }
     end
 
     def status
-      "alert-#{ options[:status] || :info  }"
+      "alert-#{options[:status] || :info}"
     end
-
   end
 end

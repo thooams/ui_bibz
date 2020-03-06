@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
-require "ui_bibz/ui/ux/tables/components/store"
+require 'ui_bibz/ui/ux/tables/components/store'
 module UiBibz::Ui::Ux::Tables
-
   # Create a select pagination per page
   #
   # ==== Attributes
@@ -29,7 +28,7 @@ module UiBibz::Ui::Ux::Tables
 
     # Initialize per_page_field with component item
     # per_page_field require WillPaginate gem
-    def initialize options = nil, html_options = nil
+    def initialize(options = nil, html_options = nil)
       @per_page_field = UiBibz::Ui::Core::Component.new nil, options, html_options
     end
 
@@ -44,15 +43,15 @@ module UiBibz::Ui::Ux::Tables
       end
     end
 
-  private
+    private
 
     def store
       @store ||= if @per_page_field.options[:store].nil?
-        raise 'Store is nil!'
-      elsif @per_page_field.options[:store].try(:records).nil?
-        raise 'Store can be created only with "table_search_pagination" method!'
-      else
-        Store.new @per_page_field.options.delete :store
+                   raise 'Store is nil!'
+                 elsif @per_page_field.options[:store].try(:records).nil?
+                   raise 'Store can be created only with "table_search_pagination" method!'
+                 else
+                   Store.new @per_page_field.options.delete :store
       end
     end
 
@@ -63,7 +62,7 @@ module UiBibz::Ui::Ux::Tables
     def per_page_html
       content_tag :div, class: 'table-pagination-per-page' do
         concat results_count_html
-        concat UiBibz::Utils::Internationalization.new("ui_bibz.table.pagination.per_page", default: "Per page: ").translate
+        concat UiBibz::Utils::Internationalization.new('ui_bibz.table.pagination.per_page', default: 'Per page: ').translate
         concat select_tag('per_page', options_for_select([5, 10, 20, 30, 50, 100, 200, 500], store.per_page), class: 'form-control')
       end
     end
@@ -71,8 +70,8 @@ module UiBibz::Ui::Ux::Tables
     def per_page_html_in_wrap
       content_tag :div, class: 'table-pagination-per-page' do
         concat results_count_html
-        concat UiBibz::Utils::Internationalization.new("ui_bibz.table.pagination.per_page", default: "Per page: ").translate
-        store.parameters.with_indifferent_access.reject{ |k, v| default_parameters?(k) || v.blank? }.each do |k,v|
+        concat UiBibz::Utils::Internationalization.new('ui_bibz.table.pagination.per_page', default: 'Per page: ').translate
+        store.parameters.with_indifferent_access.reject { |k, v| default_parameters?(k) || v.blank? }.each do |k, v|
           concat tag(:input, type: 'hidden', name: k, value: v)
         end
         concat select_tag('per_page', options_for_select([5, 10, 20, 30, 50, 100, 200, 500], store.per_page), class: 'form-control')
@@ -81,7 +80,7 @@ module UiBibz::Ui::Ux::Tables
     end
 
     def results_count_html
-      "#{ page_entries_info store.records } | ".html_safe
+      "#{page_entries_info store.records} | ".html_safe
     end
 
     def from_current_results
@@ -93,8 +92,7 @@ module UiBibz::Ui::Ux::Tables
     end
 
     def default_parameters?(k)
-      %w(store_id search controller action page link_type utf8).include?(k)
+      %w[store_id search controller action page link_type utf8].include?(k)
     end
-
   end
 end

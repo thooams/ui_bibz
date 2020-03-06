@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 module UiBibz::Ui::Core::Layouts
-
   # Create a Container
   #
   # This element is an extend of UiBibz::Ui::Core::Component.
@@ -42,9 +41,8 @@ module UiBibz::Ui::Core::Layouts
   #   end
   #
   class Container < UiBibz::Ui::Core::Component
-
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize content = nil, options = nil, html_options = nil, &block
+    def initialize(content = nil, options = nil, html_options = nil, &block)
       super
     end
 
@@ -53,15 +51,14 @@ module UiBibz::Ui::Core::Layouts
       content_tag :div, content, html_options
     end
 
-  private
+    private
 
     def component_html_classes
       type
     end
 
     def type
-      options[:type] == :fluid ? "container-fluid" : "container"
+      options[:type] == :fluid ? 'container-fluid' : 'container'
     end
-
   end
 end

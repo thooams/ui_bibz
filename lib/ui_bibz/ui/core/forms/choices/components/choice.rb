@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 module UiBibz::Ui::Core::Forms::Choices
-
   # Create a choice
   #
   # This element is an extend of UiBibz::Ui::Core::Forms::Choices::Button
@@ -16,7 +15,7 @@ module UiBibz::Ui::Core::Forms::Choices
   #
   # You can add HTML attributes using the +html_options+.
   # You can pass arguments in options attribute:
-  # * +status+ - status of élement with symbol value:
+  # * +status+ - status of element with symbol value:
   #   (+:primary+, +:secondary+, +:info+, +:warning+, +:danger+)
   # * +outline+ - Boolean
   # * +state+ - Symbol (+:active+, +:disabled)
@@ -54,9 +53,8 @@ module UiBibz::Ui::Core::Forms::Choices
   #   end
   #
   class Choice < UiBibz::Ui::Core::Forms::Buttons::Button
-
     # See UiBibz::Ui::Core::Forms::Choices::Button.initialize
-    def initialize content = nil, options = nil, html_options = nil, &block
+    def initialize(content = nil, options = nil, html_options = nil, &block)
       super
     end
 
@@ -104,8 +102,7 @@ module UiBibz::Ui::Core::Forms::Choices
     end
 
     def status
-      ["btn", outline, options[:status] || :secondary].compact.join('-')
+      ['btn', outline, options[:status] || :secondary].compact.join('-')
     end
-
   end
 end

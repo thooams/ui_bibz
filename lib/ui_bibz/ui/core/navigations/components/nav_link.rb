@@ -4,7 +4,6 @@ require 'ui_bibz/ui/core/navigations/components/nav_link_link'
 require 'ui_bibz/ui/core/navigations/components/nav_link_list'
 require 'ui_bibz/ui/core/navigations/components/nav_link_span'
 module UiBibz::Ui::Core::Navigations
-
   # Create a NavLink
   #
   # This element is an extend of UiBibz::Ui::Core::Navigations::Component.
@@ -19,7 +18,7 @@ module UiBibz::Ui::Core::Navigations
   #
   # You can add HTML attributes using the +html_options+.
   # You can pass arguments in options attribute:
-  # * +state+ - status of élement with symbol value:
+  # * +state+ - status of element with symbol value:
   #   (+:active+)
   # * +url+ - String
   # * +badge+ - String
@@ -42,24 +41,23 @@ module UiBibz::Ui::Core::Navigations
   #   end.render
   #
   class NavLink < UiBibz::Ui::Core::Component
-
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize content = nil, options = nil, html_options = nil, &block
+    def initialize(content = nil, options = nil, html_options = nil, &block)
       super
       @old_options = options
     end
 
     # Render html tag
     def pre_render
-      if options[:nav_tags] == :a || options[:nav_type] == "nav-links"
+      if options[:nav_tags] == :a || options[:nav_type] == 'nav-links'
         UiBibz::Ui::Core::Navigations::NavLinkLink.new(content, options, html_options).render
       else
-        if options[:tag_type] == :span
-          cont = UiBibz::Ui::Core::Navigations::NavLinkSpan.new(content, @old_options).render
-        else
-          cont = UiBibz::Ui::Core::Navigations::NavLinkLink.new(content, options).render
-        end
-        #html_options[:class] = remove_class(html_options[:class])
+        cont = if options[:tag_type] == :span
+                 UiBibz::Ui::Core::Navigations::NavLinkSpan.new(content, @old_options).render
+               else
+                 UiBibz::Ui::Core::Navigations::NavLinkLink.new(content, options).render
+               end
+        # html_options[:class] = remove_class(html_options[:class])
         remove_classes
         UiBibz::Ui::Core::Navigations::NavLinkList.new(cont, options, html_options).render
       end
@@ -68,9 +66,8 @@ module UiBibz::Ui::Core::Navigations
     private
 
     def remove_classes
-      exclude_classes_in_html_options %w(active disabled)
+      exclude_classes_in_html_options %w[active disabled]
       options.delete(:state)
     end
-
   end
 end

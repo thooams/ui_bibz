@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 module UiBibz::Ui::Core::Forms::Choices
-
   # Create a radio
   #
   # This element is an extend of UiBibz::Ui::Core::Component.
@@ -48,9 +47,8 @@ module UiBibz::Ui::Core::Forms::Choices
   #   end
   #
   class RadioField < UiBibz::Ui::Core::Forms::Choices::CheckboxField
-
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize content = nil, options = nil, html_options = nil, &block
+    def initialize(content = nil, options = nil, html_options = nil, &block)
       super
     end
 
@@ -59,7 +57,7 @@ module UiBibz::Ui::Core::Forms::Choices
       radio_field_html_tag
     end
 
-  private
+    private
 
     def radio_field_html_tag
       content_tag :div, html_options.except(:id) do
@@ -77,12 +75,11 @@ module UiBibz::Ui::Core::Forms::Choices
     end
 
     def label_name
-      "#{ content }_#{ options[:value] }"
+      "#{content}_#{options[:value]}"
     end
 
     def component_html_classes
-      ["custom-control", "custom-radio", inline]
+      ['custom-control', 'custom-radio', inline]
     end
-
   end
 end

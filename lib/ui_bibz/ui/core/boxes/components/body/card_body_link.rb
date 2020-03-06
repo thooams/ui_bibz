@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 module UiBibz::Ui::Core::Boxes::Components::Body
-
   # Create a card block title
   #
   # ==== Attributes
@@ -32,9 +31,8 @@ module UiBibz::Ui::Core::Boxes::Components::Body
   #   end.render
   #
   class CardBodyLink < UiBibz::Ui::Core::Component
-
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize content = nil, options = nil, html_options = nil, &block
+    def initialize(content = nil, options = nil, html_options = nil, &block)
       super
     end
 
@@ -43,11 +41,10 @@ module UiBibz::Ui::Core::Boxes::Components::Body
       link_to content, options[:url], html_options
     end
 
-  private
+    private
 
     def component_html_classes
-      "card-link"
+      'card-link'
     end
-
   end
 end

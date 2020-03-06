@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 module UiBibz::Ui::Core::Navigations
-
   # Create a Link
   #
   # This element is an extend of UiBibz::Ui::Core::Component.
@@ -16,7 +15,7 @@ module UiBibz::Ui::Core::Navigations
   #
   # You can add HTML attributes using the +html_options+.
   # You can pass arguments in options attribute:
-  # * +state+ - status of élement with symbol value:
+  # * +state+ - status of element with symbol value:
   #   (+:active+)
   # * +url+ - String
   # * +glyph+ - Add glyph with name or hash options
@@ -41,15 +40,14 @@ module UiBibz::Ui::Core::Navigations
   #   end.render
   #
   class Link < UiBibz::Ui::Core::Component
-
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize content = nil, options = nil, html_options = nil, &block
+    def initialize(content = nil, options = nil, html_options = nil, &block)
       super
     end
 
     # Render html tag
     def pre_render
-      link_to glyph_and_content_html, options[:url] || "##{ options[:collapse] }", html_options
+      link_to glyph_and_content_html, options[:url] || "##{options[:collapse]}", html_options
     end
 
     private
@@ -62,7 +60,7 @@ module UiBibz::Ui::Core::Navigations
 
     def collapse
       {
-        role: "button",
+        role: 'button',
         data: { toggle: :collapse },
         aria: {
           controls: options[:collapse],
@@ -74,6 +72,5 @@ module UiBibz::Ui::Core::Navigations
     def text
       @options[:text].nil? ? true : @options[:text]
     end
-
   end
 end
