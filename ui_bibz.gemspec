@@ -21,9 +21,9 @@ Gem::Specification.new do |s|
 
   s.required_ruby_version = '>= 2.3'
 
-  s.files         = `git ls-files`.split('\n')
-  s.test_files    = `git ls-files -- {test,spec,features}/*`.split('\n')
-  s.executables   = `git ls-files -- bin/*`.split('\n').map { |f| File.basename(f) }
+  s.files         = `git ls-files`.split
+  s.test_files    = `git ls-files -- {test,spec,features}/*`.split
+  s.executables   = `git ls-files -- bin/*`.split.map { |f| File.basename(f) }
   s.require_paths = %w[lib vendor]
 
   # Rails gems
