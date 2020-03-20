@@ -7,6 +7,7 @@
 [![Inline docs](http://inch-ci.org/github/thooams/Ui-Bibz.svg?branch=master)](http://inch-ci.org/github/thooams/Ui-Bibz)
 [![security](https://hakiri.io/github/thooams/Ui-Bibz/master.svg)](https://hakiri.io/github/thooams/Ui-Bibz/master)
 [![Dependency Status](https://gemnasium.com/thooams/Ui-Bibz.svg)](https://gemnasium.com/thooams/Ui-Bibz)
+![Ruby](https://github.com/thooams/Ui-Bibz/workflows/Ruby/badge.svg)
 
 This project rocks and uses MIT-LICENSE.
 
