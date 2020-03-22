@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    ui_bibz (2.5.1)
+    ui_bibz (2.5.2)
       bootstrap (= 4.4.1)
       haml
       haml-rails
@@ -126,7 +126,7 @@ GEM
       childprocess (>= 0.6.3, < 4)
       iniparse (~> 1.4)
     parallel (1.19.1)
-    parser (2.7.0.4)
+    parser (2.7.0.5)
       ast (~> 2.4.0)
     popper_js (1.16.0)
     rack (2.2.2)

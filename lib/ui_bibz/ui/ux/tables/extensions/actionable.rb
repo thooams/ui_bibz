@@ -29,7 +29,7 @@ module UiBibz::Ui::Ux::Tables
     end
 
     def dropdown_action(record)
-      return if @action.nil?
+      return if @actions.nil?
 
       @actions.format_action&.call(record)
 
