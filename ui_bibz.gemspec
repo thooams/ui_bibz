@@ -19,7 +19,7 @@ Gem::Specification.new do |s|
   s.description = 'A Rails Interface Framework using Bootstrap.'
   s.license     = 'MIT'
 
-  s.required_ruby_version = '>= 2.3'
+  s.required_ruby_version = '>= 2.7'
 
   s.files         = `git ls-files`.split
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split

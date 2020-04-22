@@ -4,7 +4,7 @@ Layout/LineLength:
   Enabled: false
 
 AllCops:
-  TargetRubyVersion: 2.3
+  TargetRubyVersion: 2.7
 
 Lint/UselessAssignment:
   Enabled: true
@@ -22,6 +22,11 @@ Metrics/ClassLength:
 Style/FormatString:
   Exclude:
     - 'config/initializers/will_paginate.rb'
+
+Style/StringLiterals:
+  Enabled: true
+  Exclude:
+    - 'test/**/**/**/**/*'
 
 Style/ClassAndModuleChildren:
   Enabled: false
@@ -50,3 +55,15 @@ Metrics/ModuleLength:
 # SupportedStyles: annotated, template, unannotated
 Style/FormatStringToken:
   EnforcedStyle: unannotated
+
+Layout/SpaceAroundMethodCallOperator:
+  Enabled: true
+
+Lint/RaiseException:
+  Enabled: true
+
+Lint/StructNewOverride:
+  Enabled: true
+
+Style/ExponentialNotation:
+  Enabled: true
