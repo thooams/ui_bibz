@@ -53,9 +53,6 @@ module UiBibz::Ui::Core::Forms::Selects
   #
   class MultiSelectField < UiBibz::Ui::Core::Forms::Selects::AbstractSelect
     # See UiBibz::Ui::Core::Forms::Buttons::Button.initialize
-    def initialize(content = nil, options = nil, html_options = nil, &block)
-      super
-    end
 
     private
 

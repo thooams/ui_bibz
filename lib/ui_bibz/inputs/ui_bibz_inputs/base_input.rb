@@ -4,10 +4,6 @@ module UiBibzInputs
   class BaseInput < SimpleForm::Inputs::Base
     include ActionView::Helpers::FormTagHelper
 
-    def input(wrapper_options)
-      super
-    end
-
     def options
       super.merge({ value: @builder.object.send(attribute_name) }).merge(@builder.options[:input_html] || {})
     end

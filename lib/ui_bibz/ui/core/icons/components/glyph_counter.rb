@@ -3,9 +3,6 @@
 module UiBibz::Ui::Core::Icons::Components
   class GlyphCounter < UiBibz::Ui::Core::Icons::Components::GlyphText
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize(content, options = nil, html_options = nil, &block)
-      super
-    end
 
     private
 

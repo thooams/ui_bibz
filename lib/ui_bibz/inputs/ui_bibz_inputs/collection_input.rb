@@ -12,8 +12,7 @@ module UiBibzInputs
       opts = opts.merge({ disabled: options[:disabled] })           unless options[:disabled].blank?
       opts = opts.merge({ include_blank: options[:include_blank] }) unless options[:include_blank].blank?
       opts = opts.merge({ multiple: options[:multiple] })           unless options[:multiple].blank?
-      opts = (@builder.options[:input_html] || {}).merge(options[:input_html] || {}).merge(opts || {}).merge({ class: input_classes })
-      opts
+      (@builder.options[:input_html] || {}).merge(options[:input_html] || {}).merge(opts || {}).merge({ class: input_classes })
     end
 
     def new_options

@@ -56,9 +56,6 @@ module UiBibz::Ui::Core::Notifications
   #
   class Toast < UiBibz::Ui::Core::Component
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize(content = nil, options = nil, html_options = nil, &block)
-      super
-    end
 
     # Render html tag
     def pre_render
@@ -90,7 +87,7 @@ module UiBibz::Ui::Core::Notifications
 
     def component_html_data
       super
-      add_html_data 'autohide', options[:auto_hide] if options[:auto_hide]
+      add_html_data 'autohide', value: options[:auto_hide] if options[:auto_hide]
     end
   end
 end

@@ -47,9 +47,6 @@ module UiBibz::Ui::Core::Forms::Numbers
   #
   class RangeField < UiBibz::Ui::Core::Forms::Numbers::NumberField
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize(content = nil, options = nil, html_options = nil, &block)
-      super
-    end
 
     # Render html tag
     def pre_render

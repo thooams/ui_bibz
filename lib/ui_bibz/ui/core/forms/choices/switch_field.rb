@@ -41,10 +41,6 @@ module UiBibz::Ui::Core::Forms::Choices
   #   end
   #
   class SwitchField < UiBibz::Ui::Core::Forms::Choices::CheckboxField
-    def initialize(content = nil, options = nil, html_options = nil, &block)
-      super
-    end
-
     private
 
     def component_html_classes

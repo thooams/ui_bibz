@@ -48,9 +48,6 @@ module UiBibz::Ui::Core::Forms::Choices
   #
   class ChoiceGroup < UiBibz::Ui::Core::Forms::Buttons::ButtonGroup
     # See UiBibz::Ui::Core::Forms::Choices::Button.initialize
-    def initialize(content = nil, options = nil, html_options = nil, &block)
-      super
-    end
 
     def choice(content = nil, opts = nil, html_options = nil, &block)
       if block.nil?
@@ -74,7 +71,7 @@ module UiBibz::Ui::Core::Forms::Choices
 
     def component_html_data
       super
-      add_html_data 'toggle', 'buttons'
+      add_html_data 'toggle', value: 'buttons'
     end
   end
 end

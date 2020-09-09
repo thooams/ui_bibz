@@ -47,9 +47,6 @@ module UiBibz::Ui::Core::Forms::Textareas
   #
   class MarkdownEditorField < UiBibz::Ui::Core::Component
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize(content = nil, options = nil, html_options = nil, &block)
-      super
-    end
 
     # Render html tag
     def pre_render
@@ -70,7 +67,7 @@ module UiBibz::Ui::Core::Forms::Textareas
     end
 
     def provide
-      add_html_data('provide', 'markdown')
+      add_html_data('provide', value: 'markdown')
     end
 
     def autofocus
@@ -90,11 +87,11 @@ module UiBibz::Ui::Core::Forms::Textareas
     end
 
     def hidden_buttons
-      add_html_data('hiddenButtons', options[:hidden_buttons]) if options[:hidden_buttons]
+      add_html_data('hiddenButtons', value: options[:hidden_buttons]) if options[:hidden_buttons]
     end
 
     def disabled_buttons
-      add_html_data('disabledButtons', options[:disabled_buttons]) if options[:disabled_buttons]
+      add_html_data('disabledButtons', value: options[:disabled_buttons]) if options[:disabled_buttons]
     end
 
     def status

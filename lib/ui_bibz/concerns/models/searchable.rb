@@ -80,7 +80,7 @@ module UiBibz::Concerns::Models::Searchable
     end
 
     def self.generate_count_sql(sql)
-      sq = "SELECT * FROM (#{sql.group(table_name + '.id').to_sql}) countable ORDER BY countable.count #{@tmp_params[:direction] || asc}"
+      sq = "SELECT * FROM (#{sql.group("#{table_name}.id").to_sql}) countable ORDER BY countable.count #{@tmp_params[:direction] || asc}"
       paginate_by_sql(sq, page: @tmp_params[:page], per_page: @session[:per_page])
     end
 
@@ -134,7 +134,7 @@ module UiBibz::Concerns::Models::Searchable
             sql_attributes = sql_attributes.merge(Hash["#{attribute}_#{i}".to_sym, "%#{pattern}%"])
           end
         end
-        sql_query << '(' + sql_subquery.join(' OR ') + ')'
+        sql_query << "(#{sql_subquery.join(' OR ')})"
       end
 
       sql.where([sql_query.join(' AND '), sql_attributes])

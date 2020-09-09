@@ -82,7 +82,7 @@ module UiBibz::Ui::Core::Notifications
 
     def component_html_data
       super
-      add_html_data 'timeout', options[:timeout] if options[:timeout]
+      add_html_data 'timeout', value: options[:timeout] if options[:timeout]
     end
 
     def component_html_classes

@@ -3,9 +3,6 @@
 module UiBibz::Ui::Core::Forms::Surrounds
   class SurroundCheckboxField < UiBibz::Ui::Core::Forms::Choices::CheckboxField
     # See UiBibz::Ui::Core::Dropdown.initialize
-    def initialize(content, options = nil, html_options = nil, &block)
-      super
-    end
 
     private
 

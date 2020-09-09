@@ -31,10 +31,6 @@ module UiBibz::Ui::Ux::Containers::Components
   #   end.render
   #
   class PanelTabGroup < UiBibz::Ui::Core::Navigations::TabGroup
-    def initialize(content = nil, options = nil, html_options = nil, &block)
-      super
-    end
-
     private
 
     def component_html_classes

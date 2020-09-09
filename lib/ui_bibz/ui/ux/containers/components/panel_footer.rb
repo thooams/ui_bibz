@@ -33,9 +33,6 @@ module UiBibz::Ui::Ux::Containers::Components
   #
   class PanelFooter < UiBibz::Ui::Core::Component
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize(content = nil, options = nil, html_options = nil, &block)
-      super
-    end
 
     # Render html tag
     def pre_render

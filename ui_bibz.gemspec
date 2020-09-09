@@ -34,9 +34,9 @@ Gem::Specification.new do |s|
   s.add_dependency 'popper_js'
   s.add_dependency 'rails', '>= 4.2.0'
   s.add_dependency 'sass-rails', '>= 5.0.0'
-  s.add_dependency 'will-paginate-i18n'
   s.add_dependency 'will_paginate', '~> 3.1.0'
   s.add_dependency 'will_paginate-bootstrap4'
+  s.add_dependency 'will-paginate-i18n'
 
   # Development gems
   s.add_development_dependency 'codeclimate-test-reporter'
@@ -44,7 +44,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'minitest'
   s.add_development_dependency 'overcommit'
   s.add_development_dependency 'rubocop'
-  s.add_development_dependency 'simple_form'
   s.add_development_dependency 'simplecov'
+  s.add_development_dependency 'simple_form'
   s.add_development_dependency 'sqlite3'
 end

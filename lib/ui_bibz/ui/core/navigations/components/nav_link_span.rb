@@ -20,9 +20,6 @@ module UiBibz::Ui::Core::Navigations
   #
   class NavLinkSpan < UiBibz::Ui::Core::Component
     # UiBibz::Ui::Core::Component.initialize
-    def initialize(content = nil, options = nil, html_options = nil, &block)
-      super
-    end
 
     # Render html tag
     def pre_render
@@ -44,7 +41,7 @@ module UiBibz::Ui::Core::Navigations
 
     def component_html_data
       super
-      add_html_data 'link', options[:link] if options[:link]
+      add_html_data 'link', value: options[:link] if options[:link]
     end
   end
 end

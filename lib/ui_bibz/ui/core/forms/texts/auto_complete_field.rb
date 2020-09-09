@@ -46,9 +46,6 @@ module UiBibz::Ui::Core::Forms::Texts
   #
   class AutoCompleteField < UiBibz::Ui::Core::Forms::Texts::TextField
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize(content = nil, options = nil, html_options = nil, &block)
-      super
-    end
 
     private
 

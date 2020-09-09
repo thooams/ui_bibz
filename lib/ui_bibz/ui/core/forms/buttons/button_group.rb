@@ -116,10 +116,6 @@ module UiBibz::Ui::Core::Forms::Buttons
       options[:type] || :group
     end
 
-    def component_html_data
-      super
-    end
-
     def class_name
       'btn-group' if options[:position] != :vertical
     end

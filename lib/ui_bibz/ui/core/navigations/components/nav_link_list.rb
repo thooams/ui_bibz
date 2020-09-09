@@ -16,10 +16,6 @@ module UiBibz::Ui::Core::Navigations
   # You can add HTML attributes using the +html_options+.
   # You can pass arguments in options attribute:
   class NavLinkList < UiBibz::Ui::Core::Component
-    def initialize(content = nil, options = nil, html_options = nil, &block)
-      super
-    end
-
     # Render html tag
     def pre_render
       content_tag :li, content, html_options

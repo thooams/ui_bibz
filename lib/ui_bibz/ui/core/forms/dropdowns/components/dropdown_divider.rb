@@ -5,7 +5,6 @@ module UiBibz::Ui::Core::Forms::Dropdowns::Components
   #
   class DropdownDivider < UiBibz::Ui::Base
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize; end
 
     # Render html tag
     def render

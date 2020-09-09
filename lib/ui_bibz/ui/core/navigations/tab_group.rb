@@ -61,9 +61,6 @@ module UiBibz::Ui::Core::Navigations
   #
   class TabGroup < UiBibz::Ui::Core::Navigations::Nav
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize(content = nil, options = nil, html_options = nil, &block)
-      super
-    end
 
     # Add nav link items
     # See UiBibz::Ui::Core::Navigations::NavLink

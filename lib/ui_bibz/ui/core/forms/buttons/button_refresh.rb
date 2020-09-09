@@ -53,9 +53,6 @@ module UiBibz::Ui::Core::Forms::Buttons
     include ConnectExtension
 
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize(content = nil, options = nil, html_options = nil, &block)
-      super
-    end
 
     def pre_render
       button_refresh_html_tag

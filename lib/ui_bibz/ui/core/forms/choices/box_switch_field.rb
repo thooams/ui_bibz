@@ -47,9 +47,6 @@ module UiBibz::Ui::Core::Forms::Choices
   #
   class BoxSwitchField < UiBibz::Ui::Core::Component
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize(content = nil, options = nil, html_options = nil, &block)
-      super
-    end
 
     # Render html tag
     def pre_render
@@ -91,7 +88,7 @@ module UiBibz::Ui::Core::Forms::Choices
 
     # '', 'mini', 'small', 'normal', 'large'
     def size
-      add_html_data('size', matching_size[options[:size]]) unless options[:size].nil?
+      add_html_data('size', value: matching_size[options[:size]]) unless options[:size].nil?
     end
 
     def matching_size
@@ -100,7 +97,7 @@ module UiBibz::Ui::Core::Forms::Choices
 
     # true, false => default : true
     def animate
-      add_html_data('animate', options.delete(:animate)) unless options[:animate].nil?
+      add_html_data('animate', value: options.delete(:animate)) unless options[:animate].nil?
     end
 
     # active, disabled => default : active
@@ -110,27 +107,27 @@ module UiBibz::Ui::Core::Forms::Choices
 
     # 'primary', 'info', 'success', 'warning', 'danger', 'default' => default : default
     def left_color
-      add_html_data('on_color', options[:left_color]) unless options[:left_color].nil?
+      add_html_data('on_color', value: options[:left_color]) unless options[:left_color].nil?
     end
 
     # 'primary', 'info', 'success', 'warning', 'danger', 'default' => default : default
     def right_color
-      add_html_data('off_color', options[:right_color]) unless options[:right_color].nil?
+      add_html_data('off_color', value: options[:right_color]) unless options[:right_color].nil?
     end
 
     # String => default : "ON"
     def left_text
-      add_html_data('on_text', options[:left_text]) unless options[:left_text].nil?
+      add_html_data('on_text', value: options[:left_text]) unless options[:left_text].nil?
     end
 
     # String => default : "OFF"
     def right_text
-      add_html_data('off_text', options[:right_text]) unless options[:right_text].nil?
+      add_html_data('off_text', value: options[:right_text]) unless options[:right_text].nil?
     end
 
     # String => default : '&nbsp;'
     def middle_text
-      add_html_data('label_text', options[:middle_text]) unless options[:middle_text].nil?
+      add_html_data('label_text', value: options[:middle_text]) unless options[:middle_text].nil?
     end
 
     def inline

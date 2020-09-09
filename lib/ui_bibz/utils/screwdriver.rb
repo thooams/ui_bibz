@@ -6,12 +6,12 @@ module UiBibz::Utils
     include Singleton
 
     def self.join_classes(*classes)
-      klasses = [*classes].flatten.map(&:to_s).compact.uniq.reject(&:blank?)
+      klasses = Array(classes).flatten.map(&:to_s).compact.uniq.reject(&:blank?)
       klasses.empty? ? nil : klasses
     end
 
     def self.exclude_classes(html_classes, *classes)
-      klasses = (html_classes || []).flatten.map(&:to_s).reject { |klass_name| [*classes].flatten.include?(klass_name.to_s) || klass_name.blank? }
+      klasses = (html_classes || []).flatten.map(&:to_s).reject { |klass_name| Array(classes).flatten.include?(klass_name.to_s) || klass_name.blank? }
       klasses.empty? ? nil : klasses
     end
 

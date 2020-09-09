@@ -116,7 +116,7 @@ module UiBibz::Ui::Core::Forms::Buttons
     end
 
     def action
-      add_html_data('action', options[:action]) unless options[:action].nil?
+      add_html_data('action', value: options[:action]) unless options[:action].nil?
     end
 
     def badge_html

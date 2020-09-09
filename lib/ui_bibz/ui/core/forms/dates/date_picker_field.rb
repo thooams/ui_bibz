@@ -45,9 +45,6 @@ module UiBibz::Ui::Core::Forms::Dates
   #
   class DatePickerField < UiBibz::Ui::Core::Component
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize(content = nil, options = nil, html_options = nil, &block)
-      super
-    end
 
     # Render html tag
     def pre_render
@@ -98,15 +95,15 @@ module UiBibz::Ui::Core::Forms::Dates
     end
 
     def date_locale
-      add_html_data 'date_locale', I18n.locale.to_s
+      add_html_data 'date_locale', value: I18n.locale.to_s
     end
 
     def provide
-      add_html_data 'provide', 'datepicker'
+      add_html_data 'provide', value: 'datepicker'
     end
 
     def format
-      add_html_data 'date_format', picker_pattern
+      add_html_data 'date_format', value: picker_pattern
     end
 
     def picker_pattern
@@ -114,7 +111,7 @@ module UiBibz::Ui::Core::Forms::Dates
     end
 
     def today_btn
-      add_html_data 'date_today_btn', 'linked'
+      add_html_data 'date_today_btn', value: 'linked'
     end
 
     def today_highlight
@@ -138,11 +135,11 @@ module UiBibz::Ui::Core::Forms::Dates
     end
 
     def display_mode
-      add_html_data('date_start_view', views[options[:display_mode]]) if options[:display_mode]
+      add_html_data('date_start_view', value: views[options[:display_mode]]) if options[:display_mode]
     end
 
     def display_mode_min
-      add_html_data('date_min_view_mode', views[options[:display_mode_min]]) if options[:display_mode_min]
+      add_html_data('date_min_view_mode', value: views[options[:display_mode_min]]) if options[:display_mode_min]
     end
 
     def display_mode_max

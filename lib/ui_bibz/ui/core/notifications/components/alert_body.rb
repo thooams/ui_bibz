@@ -32,9 +32,6 @@ module UiBibz::Ui::Core::Notifications::Components
   #
   class AlertBody < UiBibz::Ui::Core::Component
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize(content = nil, options = nil, html_options = nil, &block)
-      super
-    end
 
     def pre_render
       tag(:hr) + content_tag(:p, content, html_options)

@@ -3,9 +3,6 @@
 module UiBibz::Ui::Core::Forms::Surrounds
   class SurroundButtonGroup < UiBibz::Ui::Core::Forms::Buttons::ButtonGroup
     # See UiBibz::Ui::Core::Dropdown.initialize
-    def initialize(content, options = nil, html_options = nil, &block)
-      super
-    end
 
     private
 

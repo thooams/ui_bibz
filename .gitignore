@@ -44,3 +44,5 @@ bower.json
 tags
 /rdoc*
 coverage
+
+.DS_Store

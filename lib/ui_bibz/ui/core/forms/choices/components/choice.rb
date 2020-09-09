@@ -54,9 +54,6 @@ module UiBibz::Ui::Core::Forms::Choices
   #
   class Choice < UiBibz::Ui::Core::Forms::Buttons::Button
     # See UiBibz::Ui::Core::Forms::Choices::Button.initialize
-    def initialize(content = nil, options = nil, html_options = nil, &block)
-      super
-    end
 
     # Render html tag
     def pre_render
