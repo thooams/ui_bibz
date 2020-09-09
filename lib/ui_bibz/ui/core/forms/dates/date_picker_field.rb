@@ -127,11 +127,11 @@ module UiBibz::Ui::Core::Forms::Dates
     end
 
     def dates_disabled
-      add_html_data('dates_disabled', [options[:dates_disabled]].flatten) if options[:dates_disabled]
+      add_html_data('dates_disabled', value: [options[:dates_disabled]].flatten) if options[:dates_disabled]
     end
 
     def toggle_active
-      add_html_data('date_toggle_active', true)
+      add_html_data('date_toggle_active')
     end
 
     def display_mode
@@ -143,19 +143,19 @@ module UiBibz::Ui::Core::Forms::Dates
     end
 
     def display_mode_max
-      add_html_data('date_max_view_mode', views[options[:display_mode_max]]) if options[:display_mode_max]
+      add_html_data('date_max_view_mode', value: views[options[:display_mode_max]]) if options[:display_mode_max]
     end
 
     def days_of_week_disabled
-      add_html_data('date_days_of_week_disabled', [options[:days_of_week_disabled]].flatten) if options[:days_of_week_disabled]
+      add_html_data('date_days_of_week_disabled', value: [options[:days_of_week_disabled]].flatten) if options[:days_of_week_disabled]
     end
 
     def days_of_week_highlighted
-      add_html_data('date_days_of_week_highlighted', [options[:days_of_week_highlighted]].flatten) if options[:days_of_week_highlighted]
+      add_html_data('date_days_of_week_highlighted', value: [options[:days_of_week_highlighted]].flatten) if options[:days_of_week_highlighted]
     end
 
     def multiple
-      add_html_data('date_multidate', options[:multiple]) if options[:multiple]
+      add_html_data('date_multidate', value: options[:multiple]) if options[:multiple]
     end
 
     # :lg, :sm or :xs
