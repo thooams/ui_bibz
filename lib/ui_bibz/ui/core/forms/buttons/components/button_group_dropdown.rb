@@ -58,9 +58,6 @@ module UiBibz::Ui::Core::Forms::Buttons
   #
   class ButtonGroupDropdown < UiBibz::Ui::Core::Forms::Dropdowns::Dropdown
     # See UiBibz::Ui::Core::Forms::Buttons::Button.initialize
-    def initialize(content = nil, options = nil, html_options = nil, &block)
-      super
-    end
 
     private
 

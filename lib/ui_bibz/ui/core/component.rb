@@ -108,17 +108,17 @@ module UiBibz::Ui::Core
     def component_html_data
       # To stimulusjs
       data_target = html_options.try(:[], :data).try(:[], :target) || options.try(:delete, :target)
-      add_html_data(:target, data_target) unless data_target.nil?
+      add_html_data(:target, value: data_target) unless data_target.nil?
 
       data_controller = html_options.try(:[], :data).try(:[], :controller) || options.try(:delete, :controller)
-      add_html_data(:controller, data_controller) unless data_controller.nil?
+      add_html_data(:controller, value: data_controller) unless data_controller.nil?
 
       data_action = html_options.try(:[], :data).try(:[], :action) || options.try(:delete, :action)
-      add_html_data(:action, data_action) unless data_action.nil?
+      add_html_data(:action, value: data_action) unless data_action.nil?
 
       # To turbolinks
       data_turbolinks = html_options.try(:[], :data).try(:[], :turbolinks) || options.try(:delete, :turbolinks)
-      add_html_data(:turbolinks, data_turbolinks) unless data_turbolinks.nil?
+      add_html_data(:turbolinks, value: data_turbolinks) unless data_turbolinks.nil?
     end
 
     # Override this method to add html Options
@@ -139,7 +139,7 @@ module UiBibz::Ui::Core
     end
 
     # Add html data arguments
-    def add_html_data(name, value = true)
+    def add_html_data(name, value: true)
       html_options[:data] = {} if html_options[:data].nil?
       value = value.is_a?(String) ? value.strip : value
       html_options[:data].update(Hash[name, value])

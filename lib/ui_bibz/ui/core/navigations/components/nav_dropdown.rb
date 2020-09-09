@@ -44,9 +44,6 @@ module UiBibz::Ui::Core::Navigations
   #
   class NavDropdown < UiBibz::Ui::Core::Forms::Dropdowns::Dropdown
     # See UiBibz::Ui::Core::Dropdown.initialize
-    def initialize(content, options = nil, html_options = nil, &block)
-      super
-    end
 
     # Render html tag
     def pre_render

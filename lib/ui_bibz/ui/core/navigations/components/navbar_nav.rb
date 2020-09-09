@@ -39,9 +39,6 @@ module UiBibz::Ui::Core::Navigations
   #
   class NavbarNav < UiBibz::Ui::Core::Navigations::Nav
     # See UiBibz::Ui::Core::Navigations::Nav.initialize
-    def initialize(content = nil, options = nil, html_options = nil, &block)
-      super
-    end
 
     private
 

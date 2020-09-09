@@ -26,6 +26,6 @@ module ConnectExtension
   end
 
   def connect_options
-    add_html_data('connect', options[:connect]) if options[:connect]
+    add_html_data('connect', value: options[:connect]) if options[:connect]
   end
 end

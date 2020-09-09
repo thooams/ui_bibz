@@ -3,9 +3,6 @@
 module UiBibz::Ui::Core::Icons::Components
   class GlyphText < UiBibz::Ui::Core::Component
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize(content, options = nil, html_options = nil, &block)
-      super
-    end
 
     # Render html tag
     def pre_render
@@ -24,7 +21,7 @@ module UiBibz::Ui::Core::Icons::Components
     end
 
     def transform
-      add_html_data 'fa_transform', options[:transform] if options[:transform]
+      add_html_data 'fa_transform', value: options[:transform] if options[:transform]
     end
   end
 end

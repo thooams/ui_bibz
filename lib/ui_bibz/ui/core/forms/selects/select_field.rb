@@ -61,9 +61,6 @@ module UiBibz::Ui::Core::Forms::Selects
   #
   class SelectField < UiBibz::Ui::Core::Forms::Selects::AbstractSelect
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize(content = nil, options = nil, html_options = nil, &block)
-      super
-    end
 
     private
 

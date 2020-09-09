@@ -56,9 +56,6 @@ module UiBibz::Ui::Core::Forms::Dropdowns
   #
   class SplitDropdown < UiBibz::Ui::Core::Forms::Dropdowns::Dropdown
     # See UiBibz::Ui::Core::Forms::Dropdowns::Dropdown.initialize
-    def initialize(name, options = nil, html_options = nil, &block)
-      super
-    end
 
     # Render html tag
     def pre_render

@@ -34,7 +34,7 @@ module UiBibz
       end
 
       config.after_initialize do
-        warn '[Ui Bibz] Ui Bibz is not configured in the application and will use the default values.' + ' Use `rails generate ui_bibz:install` to generate the Ui Bibz configuration.' unless UiBibz.configured?
+        warn '[Ui Bibz] Ui Bibz is not configured in the application and will use the default values. Use `rails generate ui_bibz:install` to generate the Ui Bibz configuration.' unless UiBibz.configured?
       end
     end
   end

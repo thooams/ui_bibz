@@ -20,9 +20,6 @@ module UiBibz::Ui::Core::Navigations
   #
   class NavLinkLink < UiBibz::Ui::Core::Component
     # UiBibz::Ui::Core::Component.initialize
-    def initialize(content = nil, options = nil, html_options = nil, &block)
-      super
-    end
 
     # Render html tag
     def pre_render

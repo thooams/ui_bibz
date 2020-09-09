@@ -30,7 +30,7 @@ module UiBibz::Utils
     end
 
     def translate_default
-      I18n.t([*@options[:default]].select { |translation| i18n_set? translation }.first, default: [*@options[:default]].last)
+      I18n.t(Array(@options[:default]).select { |translation| i18n_set? translation }.first, default: Array(@options[:default]).last)
     end
   end
 end

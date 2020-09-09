@@ -24,9 +24,6 @@ module UiBibz::Ui::Ux::Containers::Components
   #
   class PanelToolbar < UiBibz::Ui::Core::Navigations::Toolbar
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize(content = nil, options = nil, html_options = nil, &block)
-      super
-    end
 
     private
 

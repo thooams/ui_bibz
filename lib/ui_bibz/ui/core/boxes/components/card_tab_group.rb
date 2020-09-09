@@ -12,10 +12,6 @@ module UiBibz::Ui::Core::Boxes::Components
   # * +html_options+ - Html Options of element
   #
   class CardTabGroup < UiBibz::Ui::Core::Navigations::TabGroup
-    def initialize(content = nil, options = nil, html_options = nil, &block)
-      super
-    end
-
     private
 
     def component_html_classes

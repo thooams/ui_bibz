@@ -68,9 +68,6 @@ module UiBibz::Ui::Core::Forms::Selects
   #
   class DropdownSelectField < UiBibz::Ui::Core::Forms::Selects::AbstractSelect
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize(content = nil, options = nil, html_options = nil, &block)
-      super
-    end
 
     private
 
@@ -102,11 +99,11 @@ module UiBibz::Ui::Core::Forms::Selects
     ############################ Data html options
 
     def max_options
-      add_html_data('max_options', options[:max_options]) if options[:max_options]
+      add_html_data('max_options', value: options[:max_options]) if options[:max_options]
     end
 
     def selected_text_format
-      add_html_data('selected_text_format', options[:selected_text_format]) if options[:selected_text_format]
+      add_html_data('selected_text_format', value: options[:selected_text_format]) if options[:selected_text_format]
     end
 
     def searchable
@@ -114,11 +111,11 @@ module UiBibz::Ui::Core::Forms::Selects
     end
 
     def style
-      add_html_data('style', "btn-#{options[:status] || :secondary}")
+      add_html_data('style', value: "btn-#{options[:status] || :secondary}")
     end
 
     def menu_size
-      add_html_data('size', options[:menu_size]) if options[:menu_size]
+      add_html_data('size', value: options[:menu_size]) if options[:menu_size]
     end
 
     def actions_box
@@ -126,11 +123,11 @@ module UiBibz::Ui::Core::Forms::Selects
     end
 
     def header
-      add_html_data('header', options[:header]) if options[:header]
+      add_html_data('header', value: options[:header]) if options[:header]
     end
 
     def add_status
-      add_html_data('style', "btn-#{options[:status]}") if options[:status]
+      add_html_data('style', value: "btn-#{options[:status]}") if options[:status]
     end
 
     ############################# Css classes

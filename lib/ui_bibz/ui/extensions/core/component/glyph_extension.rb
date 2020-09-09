@@ -21,9 +21,10 @@ module GlyphExtension
   def glyph
     options[:content] = content if options[:text] == false
 
-    glyph_options = if options[:glyph].is_a?(Hash)
+    glyph_options = case options[:glyph]
+                    when Hash
                       options[:glyph]
-                    elsif options[:glyph].is_a?(String)
+                    when String
                       { name: options[:glyph] }
                     else
                       {}
