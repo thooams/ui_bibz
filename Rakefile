@@ -7,8 +7,8 @@ rescue LoadError
 end
 
 require 'rdoc/task'
-# Maintain your gem's version:
 require 'ui_bibz/infos'
+
 RDoc::Task.new(:rdoc) do |rdoc|
   rdoc.main      = 'README.md'
   rdoc.rdoc_dir  = "rdoc-v#{UiBibz::VERSION}"
@@ -22,9 +22,10 @@ RDoc::Task.new(:rdoc) do |rdoc|
   rdoc.rdoc_files.include('lib/ui_bibz/helpers/*.rb')
 end
 
-Bundler::GemHelper.install_tasks
+require 'bundler/gem_tasks'
 
 require 'rake/testtask'
+
 Rake::TestTask.new(:test) do |t|
   t.libs << 'lib'
   t.libs << 'test'

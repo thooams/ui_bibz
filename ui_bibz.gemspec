@@ -32,7 +32,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'haml-rails'
   s.add_dependency 'jquery-rails', '>= 3.1.0'
   s.add_dependency 'popper_js'
-  s.add_dependency 'rails', '>= 4.2.0'
+  s.add_dependency 'rails', '~> 6.0.3', '>= 6.0.3.2'
   s.add_dependency 'sass-rails', '>= 5.0.0'
   s.add_dependency 'will_paginate', '~> 3.1.0'
   s.add_dependency 'will_paginate-bootstrap4'
