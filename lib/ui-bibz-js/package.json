@@ -1,0 +1,25 @@
+{
+  "name": "ui-bibz-js",
+  "version": "1.0.0",
+  "description": "Javascript for Ui Bibz",
+  "main": "index.js",
+  "private": true,
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thooams/Ui-Bibz.git"
+  },
+  "author":  "Thooams",
+  "license": "MIT",
+  "homepage": "http://thooams.github.io/Ui-Bibz/",
+  "dependencies": {
+    "bootstrap": "^4.5.0",
+    "@fortawesome/fontawesome-free": "^5.14.0",
+    "bootstrap-multiselect": "^0.9.15",
+    "bootstrap-datepicker": "^1.9.0",
+    "bootstrap-switch": "^3.4.0",
+    "bootstrap-select": "^1.13.18",
+    "multiselect": "^0.9.12",
+    "bootstrap-markdown": "^2.10.0"
+  }
+}

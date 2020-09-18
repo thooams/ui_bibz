@@ -1,0 +1,16 @@
+{
+  "name": "ui-bibz-js",
+  "version": "1.0.0",
+  "description": "Javascript for Ui Bibz",
+  "main": "index.js",
+  "private": true,
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thooams/Ui-Bibz.git"
+  },
+  "author":  "Thooams",
+  "license": "MIT",
+  "homepage": "http://thooams.github.io/Ui-Bibz/",
+  "dependencies": {}
+}

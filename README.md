@@ -21,8 +21,7 @@ Ui Bibz load [boostrap](http://getbootstrap.com/) and [awesomefont](http://fonta
 
 ## Documentation
 Full documentation is here :
-[Ui Bibz](http://hummel.link/Ui-Bibz/)
-
+[Ui Bibz](https://ui-bibz-documentation.herokuapp.com/)
 
 ## Installation
 

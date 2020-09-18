@@ -10,14 +10,14 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 # Describe your gem and declare its dependencies:
 Gem::Specification.new do |s|
-  s.name        = 'ui_bibz'
+  s.name        = UiBibz::SLUG
   s.version     = UiBibz::VERSION
-  s.authors     = ['Thooams']
-  s.email       = 'thomas@hummel.link'
-  s.homepage    = 'http://thooams.github.io/Ui-Bibz/'
-  s.summary     = 'Create your project with Ui Bibz. Over a thirty reusable components built to provide iconography, dropdowns, input groups, navigation, alerts, and much more.'
-  s.description = 'A Rails Interface Framework using Bootstrap.'
-  s.license     = 'MIT'
+  s.authors     = UiBibz::AUTHORS
+  s.email       = UiBibz::EMAIL
+  s.homepage    = UiBibz::HOMEPAGE
+  s.summary     = UiBibz::SUMMARY
+  s.description = UiBibz::DESCRIPTION
+  s.license     = UiBibz::LICENSE
 
   s.required_ruby_version = '>= 2.7'
 
