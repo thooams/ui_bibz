@@ -2,11 +2,8 @@ PATH
   remote: .
   specs:
     ui_bibz (3.0.0)
-      bootstrap (= 5.0.0.alpha1)
       haml
       haml-rails
-      jquery-rails (>= 3.1.0)
-      popper_js
       rails (~> 6.0.3, >= 6.0.3.2)
       sass-rails (>= 5.0.0)
       will-paginate-i18n
@@ -72,13 +69,7 @@ GEM
       tzinfo (~> 1.1)
       zeitwerk (~> 2.2, >= 2.2.2)
     ast (2.4.1)
-    autoprefixer-rails (10.0.0)
-      execjs
     awesome_print (1.8.0)
-    bootstrap (5.0.0.alpha1)
-      autoprefixer-rails (>= 9.1.0)
-      popper_js (>= 1.14.3, < 2)
-      sassc-rails (>= 2.0.0)
     builder (3.2.4)
     byebug (11.1.3)
     childprocess (4.0.0)
@@ -89,7 +80,6 @@ GEM
     docile (1.3.2)
     erubi (1.9.0)
     erubis (2.7.0)
-    execjs (2.7.0)
     factory_bot (4.11.1)
       activesupport (>= 3.0.0)
     factory_bot_rails (4.11.1)
@@ -140,7 +130,6 @@ GEM
     parallel (1.19.2)
     parser (2.7.1.4)
       ast (~> 2.4.1)
-    popper_js (1.16.0)
     rack (2.2.3)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)

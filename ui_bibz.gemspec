@@ -27,13 +27,11 @@ Gem::Specification.new do |s|
   s.require_paths = %w[lib vendor]
 
   # Rails gems
-  s.add_dependency 'bootstrap', UiBibz::BOOTSTRAP_VERSION
   s.add_dependency 'haml'
   s.add_dependency 'haml-rails'
-  s.add_dependency 'jquery-rails', '>= 3.1.0'
-  s.add_dependency 'popper_js'
   s.add_dependency 'rails', '~> 6.0.3', '>= 6.0.3.2'
-  s.add_dependency 'sass-rails', '>= 5.0.0'
+
+  # Remove these dependencies after
   s.add_dependency 'will_paginate', '~> 3.1.0'
   s.add_dependency 'will_paginate-bootstrap4'
   s.add_dependency 'will-paginate-i18n'

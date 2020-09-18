@@ -14,9 +14,9 @@ This project rocks and uses MIT-LICENSE.
 # Ui Bibz
 > Ui Bibz is a [Ui framework](http://fr.wikipedia.org/wiki/Framework_d%27interface)
 > to allow build an interface very quickly and simply
-> using [Ruby on Rails 4](http://rubyonrails.org/) and [Boostrap 4](http://getbootstrap.com/).
+> using [Ruby on Rails 6](http://rubyonrails.org/) and [Boostrap 5](http://getbootstrap.com/).
 
-Ui Bibz load [boostrap](http://getbootstrap.com/) and [awesomefont](http://fontawesome.io/).
+Ui Bibz load [Bootstrap](http://getbootstrap.com/) and [Font Awesome](http://fontawesome.io/).
 
 
 ## Documentation
@@ -26,10 +26,15 @@ Full documentation is here :
 ## Installation
 
 Add it to your Gemfile
+For bootstrap v5:
+```
+gem 'ui_bibz'
+```
+
 For bootstrap v4:
 
 ```
-gem 'ui_bibz'
+gem 'ui_bibz', '~> 2.5'
 ```
 
 For bootstrap v3:
@@ -62,6 +67,4 @@ Ps: You can use sass variables into Boostrap.
 
 ## And after
 
-* See documentation [here](https://ui-bibz-documentation.herokuapp.com/) for boostrap 4.
-* See documentation [here](http://hummel.link/Ui-Bibz/1.2.5/) for boostrap 3.
-
+* See documentation [here](https://ui-bibz-documentation.herokuapp.com/) for Ui Bibz with boostrap 5.

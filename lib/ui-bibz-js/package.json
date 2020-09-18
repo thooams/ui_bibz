@@ -13,7 +13,8 @@
   "license": "MIT",
   "homepage": "http://thooams.github.io/Ui-Bibz/",
   "dependencies": {
-    "bootstrap": "^4.5.0",
+    "bootstrap": "^5.0.0-alpha1",
+    "bootstrap-icons": "^1.0.0",
     "@fortawesome/fontawesome-free": "^5.14.0",
     "bootstrap-multiselect": "^0.9.15",
     "bootstrap-datepicker": "^1.9.0",
