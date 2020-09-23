@@ -49,7 +49,7 @@ class ButtonLinkTest < ActionView::TestCase
 
   test 'button_link badge' do
     actual   = ui_button_link('state', badge: 2)
-    expected = '<a class="btn-secondary btn" role="button" href="#">state<span class="badge-secondary badge">2</span></a>'
+    expected = '<a class="btn-secondary btn" role="button" href="#">state<span class="bg-secondary badge">2</span></a>'
 
     assert_equal expected, actual
   end

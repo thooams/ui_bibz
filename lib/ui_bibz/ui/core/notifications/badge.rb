@@ -66,11 +66,11 @@ module UiBibz::Ui::Core::Notifications
     end
 
     def status
-      "badge-#{@options[:status] || :default}"
+      "bg-#{@options[:status] || :default}"
     end
 
     def type
-      'badge-pill' if @options[:type] == :pill
+      'rounded-pill' if @options[:type] == :pill
     end
   end
 end

@@ -42,7 +42,7 @@ class ButtonTest < ActionView::TestCase
 
   test 'button badge' do
     actual   = ui_button('state', badge: 2)
-    expected = '<button class="btn-secondary btn">state<span class="badge-secondary badge">2</span></button>'
+    expected = '<button class="btn-secondary btn">state<span class="bg-secondary badge">2</span></button>'
 
     assert_equal expected, actual
   end

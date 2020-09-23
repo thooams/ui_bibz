@@ -7,7 +7,7 @@ require 'will-paginate-i18n'
 # require "zeitwerk"
 # loader = Zeitwerk::Loader.for_gem
 # loader.setup # ready!
-
+#
 module UiBibzForm
   autoload :UiBibzFormBuilder, 'ui_bibz/inputs/ui_bibz_form/ui_bibz_form_builder'
 end
