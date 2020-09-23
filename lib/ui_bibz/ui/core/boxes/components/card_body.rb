@@ -2,6 +2,7 @@
 
 require 'ui_bibz/ui/core/boxes/components/body/card_body_text'
 require 'ui_bibz/ui/core/boxes/components/body/card_body_title'
+require 'ui_bibz/ui/core/boxes/components/body/card_body_subtitle'
 require 'ui_bibz/ui/core/boxes/components/body/card_body_link'
 module UiBibz::Ui::Core::Boxes::Components
   # Create a card body
@@ -53,6 +54,10 @@ module UiBibz::Ui::Core::Boxes::Components
 
     def title(content = nil, options = nil, html_options = nil, &block)
       @items << UiBibz::Ui::Core::Boxes::Components::Body::CardBodyTitle.new(content, options, html_options, &block).render
+    end
+
+    def subtitle(content = nil, options = nil, html_options = nil, &block)
+      @items << UiBibz::Ui::Core::Boxes::Components::Body::CardBodySubtitle.new(content, options, html_options, &block).render
     end
 
     def link(content = nil, options = nil, html_options = nil, &block)

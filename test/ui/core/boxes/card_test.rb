@@ -68,11 +68,12 @@ class CardTest < ActionView::TestCase
     actual = ui_card tap: true, text: { position: :right, size: :md } do |p|
       p.body tap: true do |b|
         b.title 'Special title treatment'
+        b.subtitle 'The subtitle'
         b.text 'With supporting text below as a natural lead-in to additional content.'
         b.link 'Go somewhere', url: '#go-somewhere', class: 'btn btn-primary'
       end
     end
-    expected = '<div class="card text-md-right"><div class="card-body"><h4 class="card-title">Special title treatment</h4><p class="card-text">With supporting text below as a natural lead-in to additional content.</p><a class="btn btn-primary card-link" href="#go-somewhere">Go somewhere</a></div></div>'
+    expected = "<div class=\"card text-md-right\"><div class=\"card-body\"><h5 class=\"card-title\">Special title treatment</h5><h6 class=\"card-subtitle mb-2 text-muted\">The subtitle</h6><p class=\"card-text\">With supporting text below as a natural lead-in to additional content.</p><a class=\"btn btn-primary card-link\" href=\"#go-somewhere\">Go somewhere</a></div></div>"
 
     assert_equal expected, actual
   end
@@ -130,7 +131,7 @@ class CardTest < ActionView::TestCase
         b.link 'link', url: '#'
       end
     end
-    expected = '<div class="card"><div class="card-body"><h4 class="card-title">title</h4><p class="card-text">text</p><a class="card-link" href="#">link</a></div></div>'
+    expected = '<div class="card"><div class="card-body"><h5 class="card-title">title</h5><p class="card-text">text</p><a class="card-link" href="#">link</a></div></div>'
 
     assert_equal expected, actual
   end

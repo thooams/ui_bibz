@@ -30,18 +30,18 @@ module UiBibz::Ui::Core::Boxes::Components::Body
   #     'Exemple'
   #   end.render
   #
-  class CardBodyTitle < UiBibz::Ui::Core::Component
+  class CardBodySubtitle < UiBibz::Ui::Core::Component
     # See UiBibz::Ui::Core::Component.initialize
 
     # Render html tag
     def pre_render
-      content_tag :h5, content, html_options
+      content_tag :h6, content, html_options
     end
 
     private
 
     def component_html_classes
-      'card-title'
+      'card-subtitle mb-2 text-muted'
     end
   end
 end
