@@ -66,6 +66,7 @@ module UiBibz
   module Utils
     autoload :Screwdriver,             'ui_bibz/utils/screwdriver'
     autoload :GlyphChanger,            'ui_bibz/utils/glyph_changer'
+    autoload :ColNameGenerator,        'ui_bibz/utils/col_name_generator'
   end
 
   module Ui

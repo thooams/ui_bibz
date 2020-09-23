@@ -59,48 +59,7 @@ module UiBibz::Ui::Core::Layouts
     private
 
     def component_html_classes
-      col_classes
-    end
-
-    def col_classes
-      kl = []
-      @options.each do |ke, va|
-        kl << write_classes(ke, va) if %w[xs sm md lg xl].include?(ke)
-      end
-      if not_col_options?
-        kl = 'col'
-      elsif kl.empty?
-        kl << write_classes(:md, @options)
-      end
-      kl
-    end
-
-    def not_col_options?
-      (@options.keys & %w[xs sm md lg xl num offset push pull]).empty?
-    end
-
-    def write_classes(size, opts)
-      opts.map { |k, v| send(k, size.to_sym, v) if %w[num offset push pull].include?(k) }.join(' ')
-    end
-
-    # col-md-9
-    def num(size, number)
-      size == :auto ? 'col' : "col-#{size}-#{number}"
-    end
-
-    # col-md-offset-9
-    def offset(size, number)
-      "offset-#{size}-#{number}"
-    end
-
-    # col-md-push-9
-    def push(size, number)
-      "col-#{size}-push-#{number}"
-    end
-
-    # col-md-pull-9
-    def pull(size, number)
-      "col-#{size}-pull-#{number}"
+      UiBibz::Utils::ColNameGenerator.new(@options).class_names
     end
   end
 end
