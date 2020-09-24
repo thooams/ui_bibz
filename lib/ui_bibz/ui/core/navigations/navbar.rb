@@ -29,6 +29,8 @@ module UiBibz::Ui::Core::Navigations
   # * +position_type+ - Symbol
   #   (+:fixed+, +:sticky+)
   # * +title+ - String
+  # * +container+ - Hash container options
+  # * +container_html+ - Hash container html options
   #
   # ==== Signatures
   #
@@ -79,10 +81,12 @@ module UiBibz::Ui::Core::Navigations
     # Render html tag
     def pre_render
       content_tag :nav, html_options do
-        concat title if brand_position == :left
-        concat navbar_toggle_button_html
-        concat title if brand_position == :right
-        concat body_html
+        UiBibz::Ui::Core::Layouts::Container.new(options[:container], options[:container_html]) do
+          concat title if brand_position == :left
+          concat navbar_toggle_button_html
+          concat title if brand_position == :right
+          concat body_html
+        end.render
       end
     end
 
@@ -134,7 +138,7 @@ module UiBibz::Ui::Core::Navigations
     end
 
     def body_html
-      content_tag :div, class: 'navbar-collapse', id: id do
+      content_tag :div, class: 'navbar-collapse collapse', id: id do
         concat @items.map(&:render).join.html_safe
       end
     end
