@@ -58,7 +58,7 @@ module UiBibz::Ui::Core::Boxes
     private
 
     def component_html_classes
-      ['jumbotron', fluid]
+      ['jumbotron', fluid, 'bg-light', 'rounded p-4']
     end
 
     def fluid

@@ -43,17 +43,17 @@ module UiBibz::Ui::Core::Boxes
     end
 
     def card(content = nil, options = nil, html_options = nil, &block)
-      @items << if tap? content, options
-                  UiBibz::Ui::Core::Boxes::Card.new(content, options, html_options).tap(&block).render
-                else
-                  UiBibz::Ui::Core::Boxes::Card.new(content, options, html_options, &block).render
-                end
+      @items << content_tag(:div, if tap? content, options
+                                    UiBibz::Ui::Core::Boxes::Card.new(content, options, html_options).tap(&block).render
+                                  else
+                                    UiBibz::Ui::Core::Boxes::Card.new(content, options, html_options, &block).render
+                                  end, class: 'col')
     end
 
     private
 
     def component_html_classes
-      %w[card-grid row] << UiBibz::Utils::ColNameGenerator.new(@options, 'row-cols')
+      %w[card-grid row] << UiBibz::Utils::ColNameGenerator.new(@options, 'row-cols').class_names
     end
   end
 end
