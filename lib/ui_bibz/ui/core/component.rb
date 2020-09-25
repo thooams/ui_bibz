@@ -18,7 +18,8 @@ module UiBibz::Ui::Core
   # You can add HTML attributes using the +html_options+.
   # You can pass arguments in options attribute:
   # * +status+ - status of element with symbol value:
-  #   (+:default+, +:primary+, +:info+, +:warning+, +:danger+)
+  #   (+:primary+, +:secondary+, +:success+, +:info+, +:warning+, +:danger+,
+  #   +:light+, :+dark+)
   # * +glyph+ - Add glyph with name or hash options
   #   * +name+ - String
   #   * +size+ - Integer
@@ -47,7 +48,7 @@ module UiBibz::Ui::Core
 
     # Constants
     STATUSES = %i[primary secondary success danger warning info light dark].freeze
-    SIZES    = %i[lg md sm].freeze
+    SIZES    = %i[xl lg md sm].freeze
 
     attr_accessor :content, :html_options, :options
 

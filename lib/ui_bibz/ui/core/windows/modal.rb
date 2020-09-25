@@ -19,7 +19,9 @@ module UiBibz::Ui::Core::Windows
   # You can add HTML attributes using the +html_options+.
   # You can pass arguments in options attribute:
   # * +size+
-  #   (+:sm+, +:lg+)
+  #   (+:xl:,+:lg+, +:md+, +:sm+)
+  # * +fullscreen+ - Boolean
+  # * +backdrop+ - Symbol (+:static+)
   #
   # ==== Signatures
   #
@@ -58,42 +60,88 @@ module UiBibz::Ui::Core::Windows
 
     # Render html tag
     def pre_render
-      content_tag :div, html_options do
-        content_tag :div, class: "modal-dialog #{size}", role: 'document' do
+      content_tag :div, modal_html_options do
+        content_tag :div, class: modal_dialog_classes do
           content_tag :div, class: 'modal-content' do
-            concat @header
-            concat @body
-            concat @footer
+            concat @header&.render
+            concat @body&.render
+            concat @footer&.render
           end
         end
       end
     end
 
     def header(content = nil, options = nil, html_options = nil, &block)
-      @header = UiBibz::Ui::Core::Windows::Components::ModalHeader.new(content, options, html_options, &block).render
+      @header = UiBibz::Ui::Core::Windows::Components::ModalHeader.new(content, options, html_options, &block)
     end
 
     def footer(content = nil, options = nil, html_options = nil, &block)
-      @footer = UiBibz::Ui::Core::Windows::Components::ModalFooter.new(content, options, html_options, &block).render
+      @footer = UiBibz::Ui::Core::Windows::Components::ModalFooter.new(content, options, html_options, &block)
     end
 
     def body(content = nil, options = nil, html_options = nil, &block)
-      @body = UiBibz::Ui::Core::Windows::Components::ModalBody.new(content, options, html_options, &block).render
+      @body = UiBibz::Ui::Core::Windows::Components::ModalBody.new(content, options, html_options, &block)
     end
 
     private
+
+    def modal_dialog_classes
+      UiBibz::Utils::Screwdriver.join_classes('modal-dialog', size, position, scrollable)
+    end
 
     def component_html_classes
       'modal'
     end
 
-    # :lg, :sm or :xs
+    def scrollable
+      'modal-dialog-scrollable' if @options[:scrollable]
+    end
+
+    # centered
+    def position
+      "modal-dialog-#{@options[:position]}" if @options[:position]
+    end
+
+    # :xl, :lg, :sm or :xs
     def size
-      "modal-#{@options[:size]}" if @options[:size]
+      [modal, fullscreen, @options[:size], down].compact.join('-')
+    end
+
+    def fullscreen
+      'fullscreen' if @options[:fullscreen]
     end
 
     def effect
       @options[:effect] unless @options[:effect].nil?
+    end
+
+    def down
+      'down' if @options[:size] && @options[:fullscreen]
+    end
+
+    def modal
+      'modal' if @options[:size] || @options[:fullscreen]
+    end
+
+    # Update html_options only during pre-render
+    def modal_html_options
+      html_options.merge({ tabindex: '-1', aria: { labelledby: labelled_by, hidden: 'true' } })
+    end
+
+    def component_html_data
+      super
+      backdrop
+    end
+
+    def labelled_by
+      sanitize(@header&.content || 'Modal', tags: [], attributes: [])
+    end
+
+    def backdrop
+      return unless @options[:backdrop]
+
+      add_html_data 'backdrop', value: @options[:backdrop]
+      add_html_data 'keyboard', value: 'false'
     end
   end
 end
