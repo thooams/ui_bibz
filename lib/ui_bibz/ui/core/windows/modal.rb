@@ -22,6 +22,8 @@ module UiBibz::Ui::Core::Windows
   #   (+:xl:,+:lg+, +:md+, +:sm+)
   # * +fullscreen+ - Boolean
   # * +backdrop+ - Symbol (+:static+)
+  # * +scrollable+ - Boolean
+  # * +position+ - Symbol (+:centered+)
   #
   # ==== Signatures
   #
