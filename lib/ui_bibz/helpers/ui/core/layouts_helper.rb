@@ -6,7 +6,11 @@ module UiBibz::Helpers::Ui::Core::LayoutsHelper
   # +options+ (Hash)
   # +html_options+ (Hash)
   def ui_row(content = nil, options = nil, html_options = nil, &block)
-    UiBibz::Ui::Core::Layouts::Row.new(content, options, html_options, &block).render
+    if tap?(content, options)
+      UiBibz::Ui::Core::Layouts::Row.new(content, options, html_options).tap(&block).render
+    else
+      UiBibz::Ui::Core::Layouts::Row.new(content, options, html_options, &block).render
+    end
   end
 
   # Col Component
@@ -14,7 +18,11 @@ module UiBibz::Helpers::Ui::Core::LayoutsHelper
   # +options+ (Hash)
   # +html_options+ (Hash)
   def ui_col(content = nil, options = nil, html_options = nil, &block)
-    UiBibz::Ui::Core::Layouts::Col.new(content, options, html_options, &block).render
+    if tap?(content, options)
+      UiBibz::Ui::Core::Layouts::Col.new(content, options, html_options).tap(&block).render
+    else
+      UiBibz::Ui::Core::Layouts::Col.new(content, options, html_options, &block).render
+    end
   end
 
   # Container Component

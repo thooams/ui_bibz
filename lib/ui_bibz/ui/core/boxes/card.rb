@@ -5,6 +5,8 @@ require 'ui_bibz/ui/core/boxes/components/card_footer'
 require 'ui_bibz/ui/core/boxes/components/card_body'
 require 'ui_bibz/ui/core/boxes/components/card_image'
 require 'ui_bibz/ui/core/boxes/components/card_list_group'
+require 'ui_bibz/ui/core/boxes/concerns/card_itemable_concern'
+require 'ui_bibz/ui/core/boxes/components/card_row'
 module UiBibz::Ui::Core::Boxes
   # Create a card
   #
@@ -88,48 +90,12 @@ module UiBibz::Ui::Core::Boxes
   #   end
   #
   class Card < UiBibz::Ui::Core::Component
+    include CardItemableConcern
+
     # See UiBibz::Ui::Core::Component.initialize
     def initialize(content = nil, options = nil, html_options = nil, &block)
       super
       @items = @content.nil? ? [] : [UiBibz::Ui::Core::Boxes::Components::CardBody.new(@content).render]
-    end
-
-    # Add Header which is a component
-    def header(content = nil, options = nil, html_options = nil, &block)
-      options, content = inherit_options(content, options, block)
-      @header = if tap?(content, options)
-                  UiBibz::Ui::Core::Boxes::Components::CardHeader.new(content, options, html_options).tap(&block).render
-                else
-                  UiBibz::Ui::Core::Boxes::Components::CardHeader.new(content, options, html_options, &block).render
-                end
-    end
-
-    # Add Body div which is a component
-    def body(content = nil, options = nil, html_options = nil, &block)
-      options, content = inherit_options(content, options, block)
-      if tap?(content, options)
-        content = (content || {}).merge(collapse: options.try(:[], :collapse), parent_collapse: @options[:parent_collapse])
-        @items << UiBibz::Ui::Core::Boxes::Components::CardBody.new(content, options, html_options).tap(&block).render
-      else
-        options = (options || {}).merge(collapse: options.try(:[], :collapse), parent_collapse: @options[:parent_collapse])
-        @items << UiBibz::Ui::Core::Boxes::Components::CardBody.new(content, options, html_options, &block).render
-      end
-    end
-
-    # Add Footer which is a component
-    def footer(content = nil, options = nil, html_options = nil, &block)
-      options, content = inherit_options(content, options, block)
-      @footer = UiBibz::Ui::Core::Boxes::Components::CardFooter.new(content, options, html_options, &block).render
-    end
-
-    # Add List group which is a component
-    def list_group(content = nil, options = nil, html_options = nil, &block)
-      @items << UiBibz::Ui::Core::Boxes::Components::CardListGroup.new(content, options, html_options).tap(&block).render
-    end
-
-    # Add Image which is a component
-    def image(content = nil, options = nil, html_options = nil, &block)
-      @items << UiBibz::Ui::Core::Boxes::Components::CardImage.new(content, options, html_options, &block).render
     end
 
     # Render html tag
@@ -141,15 +107,6 @@ module UiBibz::Ui::Core::Boxes
 
     def html_structure
       [@header, @items.join, @footer].compact.join.html_safe
-    end
-
-    def inherit_options(content, options, block)
-      if block.nil?
-        options = (options || {}).merge({ outline: @options[:outline], status: @options[:status] })
-      else
-        content = (content || {}).merge({ outline: @options[:outline], status: @options[:status] })
-      end
-      [options, content]
     end
 
     def component_html_classes

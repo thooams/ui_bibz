@@ -149,4 +149,24 @@ class CardTest < ActionView::TestCase
 
     assert_equal expected, actual
   end
+
+  test 'card row' do
+    actual = ui_card tap: true do |c|
+      c.row tap: true, class: "g-0" do |r|
+        r.col tap: true, num: 4 do |col|
+          col.image "https://picsum.photos/700/200", position: :left
+        end
+        r.col tap: true, num: 8 do |col|
+          col.body tap: true do |b|
+            b.title "Card title"
+            b.subtitle "Card subtitle"
+            b.text "Some quick example text to build on the card title and make up the bulk of the card's content."
+          end
+        end
+      end
+    end
+    expected = "<div class=\"card\"><div class=\"g-0 row\"><div class=\" col-md-4\"><img class=\"card-img-left\" src=\"https://picsum.photos/700/200\" /></div><div class=\" col-md-8\"><div class=\"card-body\"><h5 class=\"card-title\">Card title</h5><h6 class=\"card-subtitle mb-2 text-muted\">Card subtitle</h6><p class=\"card-text\">Some quick example text to build on the card title and make up the bulk of the card's content.</p></div></div></div></div>"
+
+    assert_equal expected, actual
+  end
 end

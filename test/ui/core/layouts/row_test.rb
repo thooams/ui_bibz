@@ -22,4 +22,15 @@ class RowTest < ActionView::TestCase
 
     assert_equal expected, actual
   end
+
+  test 'row tapped' do
+    actual = ui_row(tap: true, class: 'test') do |row|
+      row.col do
+        'test'
+      end
+    end
+    expected = "<div class=\"test row\"><div class=\"col\">test</div></div>"
+
+    assert_equal expected, actual
+  end
 end

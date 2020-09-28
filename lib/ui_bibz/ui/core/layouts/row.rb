@@ -25,6 +25,12 @@ module UiBibz::Ui::Core::Layouts
   #     #content
   #   end
   #
+  #   UiBibz::Ui::Core::Layouts::Row.new(options = { tap: true }, html_options = {}) do |row|
+  #     row.col do
+  #       # content
+  #     end
+  #   end
+  #
   # ==== Helper
   #
   #  row(content, options = {}, html_options = {})
@@ -33,12 +39,26 @@ module UiBibz::Ui::Core::Layouts
   #    content
   #  end
   #
+  #  row(options = { tap: true }, html_options = {}) do |row|
+  #    row.col do
+  #      content
+  #    end
+  #  end
+  #
   class Row < UiBibz::Ui::Core::Component
     # See UiBibz::Ui::Core::Component.initialize
+    def initialize(content = nil, options = nil, html_options = nil, &block)
+      super
+      @items = [@content]
+    end
 
     # Render html tag
     def pre_render
-      content_tag :div, content, html_options
+      content_tag :div, @items.join.html_safe, html_options
+    end
+
+    def col(content = nil, options = nil, html_options = nil, &block)
+      @items << UiBibz::Ui::Core::Layouts::Col.new(content, options, html_options, &block).render
     end
 
     private
