@@ -239,6 +239,19 @@ test1</textarea></div></form>"
     assert_equal expected, actual
   end
 
+  test 'choice field' do
+    actual = ui_form_for @user do |f|
+      f.ui_choice_group do |cg|
+        cg.input :name_fr, as: :ui_choice_field
+        cg.input :name_fr, as: :ui_choice_field
+      end
+    end
+
+    expected = ''
+
+    assert_equal expected, actual
+  end
+
   #   test 'test surround field into simple form' do
   #     actual = ui_form_for @user do |f|
   #       concat(f.ui_surround_field do |sf|

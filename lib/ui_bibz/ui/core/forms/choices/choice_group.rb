@@ -47,7 +47,16 @@ module UiBibz::Ui::Core::Forms::Choices
   #   end
   #
   class ChoiceGroup < UiBibz::Ui::Core::Forms::Buttons::ButtonGroup
+    attr_reader :errors, :required_fields
+
     # See UiBibz::Ui::Core::Forms::Choices::Button.initialize
+    #
+    def initialize(content = nil, options = nil, html_options = nil, &block)
+      super
+      @items = []
+      @errors = []
+      @required_fields = []
+    end
 
     def choice(content = nil, opts = nil, html_options = nil, &block)
       if block.nil?
@@ -57,6 +66,13 @@ module UiBibz::Ui::Core::Forms::Choices
       end
 
       @items << Choice.new(content, opts, html_options, &block).render
+    end
+
+    def input(attribute_name, options = {}, &block)
+      @items << @options[:form].input(attribute_name, options.merge({ label: false, wrapper: false, error: false }), &block)
+      obj = @options[:form].object
+      @errors << obj.errors[attribute_name] unless obj.errors[attribute_name].empty?
+      @required_fields << (obj._validators[attribute_name].try(:first).class.to_s == 'ActiveRecord::Validations::PresenceValidator')
     end
 
     private

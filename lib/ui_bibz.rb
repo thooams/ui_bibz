@@ -18,6 +18,7 @@ module UiBibzInputs
   autoload :StringInput,                'ui_bibz/inputs/ui_bibz_inputs/string_input'
   autoload :UiAutoCompleteFieldInput,   'ui_bibz/inputs/ui_bibz_inputs/ui_auto_complete_field_input'
   autoload :UiChoiceGroupInput,         'ui_bibz/inputs/ui_bibz_inputs/ui_choice_group_input'
+  autoload :UiChoiceFieldInput,         'ui_bibz/inputs/ui_bibz_inputs/ui_choice_field_input'
   autoload :UiDatePickerFieldInput,     'ui_bibz/inputs/ui_bibz_inputs/ui_date_picker_field_input'
   autoload :UiDropdownSelectFieldInput, 'ui_bibz/inputs/ui_bibz_inputs/ui_dropdown_select_field_input'
   autoload :UiFormulaFieldInput,        'ui_bibz/inputs/ui_bibz_inputs/ui_formula_field_input'
