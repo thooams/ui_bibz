@@ -63,15 +63,30 @@ module UiBibz::Ui::Core::Forms::Choices
     private
 
     def button_choice_html_tag
-      content_tag :label, html_options do
+      capture do
         concat tag(:input, input_options)
-        concat glyph_and_content_html(options[:text].nil? ? @content : ' ')
-        concat badge_html unless options[:badge].nil?
+        concat label_tag
+      end
+    end
+
+    def label_tag
+      if options[:label]
+        content_tag :label, options[:label], html_options.merge(for: input_id)
+      else
+        content_tag :label, html_options.merge(for: input_id) do
+          concat glyph_and_content_html(options[:text].nil? ? @content : ' ')
+          concat badge_html unless options[:badge].nil?
+        end
       end
     end
 
     def input_options
-      { type: type, autocomplete: :off }.merge(checked).merge(value).merge(name).merge(id).merge(input_html_options)
+      { type: type, autocomplete: :off, class: 'btn-check' }
+        .merge(checked)
+        .merge(value)
+        .merge(name)
+        .merge({ id: input_id })
+        .merge(input_html_options)
     end
 
     def checked
@@ -86,10 +101,6 @@ module UiBibz::Ui::Core::Forms::Choices
       @options[:name].nil? ? {} : { name: @options[:name] }
     end
 
-    def id
-      @options[:id].nil? ? {} : { id: @options[:id] }
-    end
-
     def input_html_options
       @options[:input_html_options].nil? ? {} : @options[:input_html_options]
     end
@@ -100,6 +111,10 @@ module UiBibz::Ui::Core::Forms::Choices
 
     def status
       ['btn', outline, options[:status] || :secondary].compact.join('-')
+    end
+
+    def input_id
+      @input_id ||= @options[:id] || generate_id('choice')
     end
   end
 end

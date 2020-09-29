@@ -56,6 +56,7 @@ module UiBibz::Ui::Core::Forms::Choices
       @items = []
       @errors = []
       @required_fields = []
+      @radio_name = @options[:name] || generate_id('choice')
     end
 
     def choice(content = nil, opts = nil, html_options = nil, &block)
@@ -65,11 +66,16 @@ module UiBibz::Ui::Core::Forms::Choices
         content = @options.merge(content || {})
       end
 
+      opts = opts.merge(name: @radio_name) if opts[:type] == :radio
+
       @items << Choice.new(content, opts, html_options, &block).render
     end
 
     def input(attribute_name, options = {}, &block)
-      @items << @options[:form].input(attribute_name, options.merge({ label: false, wrapper: false, error: false }), &block)
+      new_options = options.merge(old_label: options[:label], label: false, wrapper: false, error: false)
+      new_options = new_options.merge(name: @radio_name) if @options[:type] == :radio
+
+      @items << @options[:form].input(attribute_name, new_options, &block)
       obj = @options[:form].object
       @errors << obj.errors[attribute_name] unless obj.errors[attribute_name].empty?
       @required_fields << (obj._validators[attribute_name].try(:first).class.to_s == 'ActiveRecord::Validations::PresenceValidator')
