@@ -57,4 +57,15 @@ class NavTest < ActionView::TestCase
 
     assert_equal expected, actual
   end
+
+  test 'list' do
+    actual = ui_nav(type: :list) do |n|
+      n.link 'Home', state: :active, url: '#Home', selector: 'home'
+      n.link 'Profile', url: '#profile', selector: 'profile', label: 16
+      n.link 'Messages', url: '#messages', selector: 'messages', state: :disabled
+    end
+    expected = "<div class=\"list-group\" role=\"tablist\"><a class=\"active list-group-item list-group-item-action\" data-toggle=\"tab\" role=\"tab\" aria-controls=\"Home\" href=\"#Home\">Home</a><a class=\"list-group-item list-group-item-action\" data-toggle=\"tab\" role=\"tab\" aria-controls=\"Profile\" href=\"#profile\">Profile</a><a class=\"disabled list-group-item list-group-item-action\" data-toggle=\"tab\" role=\"tab\" aria-controls=\"Messages\" href=\"#messages\">Messages</a></div>"
+
+    assert_equal expected, actual
+  end
 end

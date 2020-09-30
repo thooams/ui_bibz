@@ -150,6 +150,10 @@ module UiBibz::Ui::Core
       options[:state] == :disabled || html_options[:disabled]
     end
 
+    def sanitize_text(text)
+      sanitize(text, tags: [], attributes: [])
+    end
+
     private
 
     def render_with_or_without_cache

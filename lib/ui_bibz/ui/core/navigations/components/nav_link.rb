@@ -49,7 +49,7 @@ module UiBibz::Ui::Core::Navigations
 
     # Render html tag
     def pre_render
-      if options[:nav_tags] == :a || options[:nav_type] == 'nav-links'
+      if options[:nav_tags] == :a || %w[nav-links list-group].include?(options[:nav_type])
         UiBibz::Ui::Core::Navigations::NavLinkLink.new(content, options, html_options).render
       else
         cont = if options[:tag_type] == :span

@@ -136,7 +136,7 @@ module UiBibz::Ui::Core::Windows
     end
 
     def labelled_by
-      sanitize(@header&.content || 'Modal', tags: [], attributes: [])
+      sanitize_text(@header&.content || 'Modal')
     end
 
     def backdrop

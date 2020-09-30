@@ -32,11 +32,23 @@ module UiBibz::Ui::Core::Navigations
     private
 
     def component_html_classes
-      'nav-link'
+      if options[:nav_type] == 'list-group'
+        'list-group-item list-group-item-action'
+      else
+        'nav-link'
+      end
     end
 
     def component_html_options
-      options[:nav_type] == 'nav-tabs' ? { 'data-toggle' => 'tab', role: 'tab' } : {}
+      html_tag_base = { 'data-toggle' => 'tab', role: 'tab' }
+      case options[:nav_type]
+      when 'nav-tabs'
+        html_tag_base
+      when 'list-group'
+        html_tag_base.merge("aria-controls": sanitize_text(content))
+      else
+        {}
+      end
     end
   end
 end

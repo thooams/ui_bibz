@@ -108,12 +108,20 @@ module UiBibz::Ui::Core::Navigations
     protected
 
     def component_html_classes
-      ['nav', type, position, stacked, justify, fill]
+      [nav_class, type, position, stacked, justify, fill]
+    end
+
+    def component_html_options
+      @options[:type] == :list ? { role: 'tablist' } : super
     end
 
     # tabs or pills
     def type
-      "nav-#{@options[:type]}" unless @options[:type].nil?
+      if @options[:type] == :list
+        'list-group'
+      else
+        "nav-#{@options[:type]}" unless @options[:type].nil?
+      end
     end
 
     def position
@@ -140,10 +148,21 @@ module UiBibz::Ui::Core::Navigations
     end
 
     def tag
-      if options[:tag]
-        options[:tag]
+      options[:tag] || tag_type
+    end
+
+    def nav_class
+      'nav' if type != 'list-group'
+    end
+
+    def tag_type
+      case type
+      when 'nav-links'
+        :nav
+      when 'list-group'
+        :div
       else
-        type == 'nav-links' ? :nav : :ul
+        :ul
       end
     end
 
