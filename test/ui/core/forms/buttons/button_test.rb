@@ -77,7 +77,7 @@ class ButtonTest < ActionView::TestCase
 
   test 'button glyph without text' do
     actual   = ui_button('state', glyph: 'diamond', text: false)
-    expected = '<button class="btn-secondary btn without-text"><i class="glyph fas fa-diamond"></i></button>'
+    expected = '<button class="btn-secondary btn without-text"><i class="glyph fas fa-diamond"></i><span class="empty-space"> </span></button>'
 
     assert_equal expected, actual
   end

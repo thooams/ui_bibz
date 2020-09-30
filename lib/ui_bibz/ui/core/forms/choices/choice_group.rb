@@ -47,7 +47,7 @@ module UiBibz::Ui::Core::Forms::Choices
   #   end
   #
   class ChoiceGroup < UiBibz::Ui::Core::Forms::Buttons::ButtonGroup
-    attr_reader :errors, :required_fields
+    attr_reader :errors, :required_fields, :items
 
     # See UiBibz::Ui::Core::Forms::Choices::Button.initialize
     #
@@ -68,12 +68,12 @@ module UiBibz::Ui::Core::Forms::Choices
 
       opts = opts.merge(name: @radio_name) if opts[:type] == :radio
 
-      @items << Choice.new(content, opts, html_options, &block).render
+      @items << Choice.new(content, opts, html_options, &block)
     end
 
     def input(attribute_name, options = {}, &block)
       new_options = options.merge(old_label: options[:label], label: false, wrapper: false, error: false)
-      new_options = new_options.merge(name: @radio_name) if @options[:type] == :radio
+      new_options = new_options.merge(name: @radio_name, type: :radio) if @options[:type] == :radio
 
       @items << @options[:form].input(attribute_name, new_options, &block)
       obj = @options[:form].object

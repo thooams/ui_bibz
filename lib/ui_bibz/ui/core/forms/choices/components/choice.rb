@@ -60,6 +60,15 @@ module UiBibz::Ui::Core::Forms::Choices
       button_choice_html_tag
     end
 
+    def input_options
+      @input_options ||= { type: type, autocomplete: :off, class: 'btn-check' }
+                         .merge(checked)
+                         .merge(value)
+                         .merge(name)
+                         .merge({ id: input_id })
+                         .merge(input_html_options)
+    end
+
     private
 
     def button_choice_html_tag
@@ -78,15 +87,6 @@ module UiBibz::Ui::Core::Forms::Choices
           concat badge_html unless options[:badge].nil?
         end
       end
-    end
-
-    def input_options
-      { type: type, autocomplete: :off, class: 'btn-check' }
-        .merge(checked)
-        .merge(value)
-        .merge(name)
-        .merge({ id: input_id })
-        .merge(input_html_options)
     end
 
     def checked

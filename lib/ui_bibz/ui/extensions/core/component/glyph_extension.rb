@@ -14,6 +14,7 @@ module GlyphExtension
   def glyph_with_space
     out = [glyph]
     out << ' ' if options[:text] != false
+    out << content_tag(:span, ' ', class: 'empty-space') if options[:text] == false
     out.join unless glyph.nil?
   end
 
