@@ -18,7 +18,7 @@ class RowTest < ActionView::TestCase
     actual = ui_row(num: 2) do
       'test'
     end
-    expected = '<div class="row row-cols-md-2">test</div>'
+    expected = '<div class="row row-cols-2">test</div>'
 
     assert_equal expected, actual
   end

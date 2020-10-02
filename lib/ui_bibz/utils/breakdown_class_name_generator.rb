@@ -44,17 +44,17 @@ module UiBibz::Utils
 
     # col-md-offset-9
     def offset(size, number)
-      "offset-#{size}-#{number}"
+      ['offset', size, number].compact.join('-')
     end
 
     # col-md-push-9
     def push(size, number)
-      "#{@klass_name}-#{size}-push-#{number}"
+      [@klass_name, size, 'push', number].compact.join('-')
     end
 
     # col-md-pull-9
     def pull(size, number)
-      "#{@klass_name}-#{size}-pull-#{number}"
+      [@klass_name, size, 'pull', number].compact.join('-')
     end
 
     def position

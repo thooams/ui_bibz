@@ -7,7 +7,7 @@ class ColTest < ActionView::TestCase
 
   test 'col with options' do
     actual   = ui_col('test', { num: 1, push: 2, offset: 3, pull: 4 }, { class: 'test' })
-    expected = '<div class="test col-md-1 col-md-push-2 offset-md-3 col-md-pull-4">test</div>'
+    expected = '<div class="test col-1 col-push-2 offset-3 col-pull-4">test</div>'
 
     assert_equal expected, actual
   end
