@@ -48,7 +48,8 @@ module UiBibz::Ui::Core
 
     # Constants
     STATUSES = %i[primary secondary success danger warning info light dark].freeze
-    SIZES    = %i[xl lg md sm].freeze
+    BREAKPOINTS = %i[xxl xl lg md sm xs].freeze
+    SIZES = %i[lg md sm].freeze
 
     attr_accessor :content, :html_options, :options
 

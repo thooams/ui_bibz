@@ -74,7 +74,7 @@ module UiBibz::Ui::Core::Navigations
 
     # Render html tag
     def pre_render
-      content_tag tag, @items.map(&:render).join.html_safe, html_options
+      content_tag htlm_tag, @items.map(&:render).join.html_safe, html_options
     end
 
     # Add nav link items
@@ -147,7 +147,7 @@ module UiBibz::Ui::Core::Navigations
       'flex-column' if @options[:stacked]
     end
 
-    def tag
+    def htlm_tag
       options[:tag] || tag_type
     end
 

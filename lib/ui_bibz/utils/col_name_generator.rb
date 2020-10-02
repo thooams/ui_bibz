@@ -3,9 +3,9 @@
 module UiBibz::Utils
   # Generate the col class name
   class ColNameGenerator
-    SIZE = %i[xs sm md lg xl].freeze
     POSITIONING = %i[num offset push pull].freeze
-    PARAMETERS = SIZE + POSITIONING
+    BREAKPOINTS = UiBibz::Ui::Core::Component::BREAKPOINTS
+    PARAMETERS =  BREAKPOINTS + POSITIONING
 
     def initialize(options = {}, klass_name = 'col')
       @options = options
@@ -17,7 +17,7 @@ module UiBibz::Utils
 
       kl = []
       @options.each do |key, value|
-        kl << write_classes(key.to_sym, value) if SIZE.include?(key.to_sym)
+        kl << write_classes(key.to_sym, value) if BREAKPOINTS.include?(key.to_sym)
       end
       kl << write_classes(:md, @options) if kl.empty?
 

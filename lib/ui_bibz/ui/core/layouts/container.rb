@@ -51,11 +51,17 @@ module UiBibz::Ui::Core::Layouts
     private
 
     def component_html_classes
-      type
+      klass_name
     end
 
-    def type
-      options[:type] == :fluid ? 'container-fluid' : 'container'
+    def klass_name
+      if options[:type] == :fluid
+        'container-fluid'
+      elsif options[:size]
+        "container-#{options[:size]}"
+      else
+        'container'
+      end
     end
   end
 end
