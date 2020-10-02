@@ -25,6 +25,7 @@ module UiBibz::Ui::Core::Layouts
   # * +md+ - Hash
   # * +lg+ - Hash
   # * +xl+ - Hash
+  # * +xxl+ - Hash
   #
   # ==== Signatures
   #
@@ -59,7 +60,7 @@ module UiBibz::Ui::Core::Layouts
     private
 
     def component_html_classes
-      UiBibz::Utils::ColNameGenerator.new(@options).class_names
+      UiBibz::Utils::BreakdownClassNameGenerator.new(@options).class_names
     end
   end
 end

@@ -10,7 +10,7 @@ class CardGridTest < ActionView::TestCase
       cg.card "card 1"
       cg.card "card 2"
     end
-    expected = "<div class=\"card-grid row row-cols\"><div class=\"col\"><div class=\"card\"><div class=\"card-body\">card 1</div></div></div><div class=\"col\"><div class=\"card\"><div class=\"card-body\">card 2</div></div></div></div>"
+    expected = "<div class=\"row card-grid\"><div class=\"col\"><div class=\"card\"><div class=\"card-body\">card 1</div></div></div><div class=\"col\"><div class=\"card\"><div class=\"card-body\">card 2</div></div></div></div>"
 
     assert_equal expected, actual
   end

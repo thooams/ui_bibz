@@ -2,10 +2,10 @@
 
 module UiBibz::Utils
   # Generate the col class name
-  class ColNameGenerator
+  class BreakdownClassNameGenerator
     POSITIONING = %i[num offset push pull].freeze
     BREAKPOINTS = UiBibz::Ui::Core::Component::BREAKPOINTS
-    PARAMETERS =  BREAKPOINTS + POSITIONING
+    PARAMETERS =  BREAKPOINTS + POSITIONING + [:position]
 
     def initialize(options = {}, klass_name = 'col')
       @options = options
@@ -19,7 +19,7 @@ module UiBibz::Utils
       @options.each do |key, value|
         kl << write_classes(key.to_sym, value) if BREAKPOINTS.include?(key.to_sym)
       end
-      kl << write_classes(:md, @options) if kl.empty?
+      kl << write_classes(nil, @options) if kl.empty?
 
       kl
     end
@@ -31,12 +31,15 @@ module UiBibz::Utils
     end
 
     def write_classes(size, opts)
-      opts.map { |k, v| send(k, size, v) if POSITIONING.include?(k.to_sym) }.join(' ')
+      @position = opts[:position]
+      opts.map do |k, v|
+        send(k, size, v) if POSITIONING.include?(k.to_sym)
+      end.compact.join(' ')
     end
 
     # col-md-9
-    def num(size, number)
-      size == :auto ? @klass_name : "#{@klass_name}-#{size}-#{number}"
+    def num(size, number, _pos = nil)
+      size == :auto ? @klass_name : ["#{@klass_name}#{position}", size, number].compact.join('-')
     end
 
     # col-md-offset-9
@@ -52,6 +55,15 @@ module UiBibz::Utils
     # col-md-pull-9
     def pull(size, number)
       "#{@klass_name}-#{size}-pull-#{number}"
+    end
+
+    def position
+      case @position || @options[:position]
+      when :vertical
+        'y'
+      when :horizontal
+        'x'
+      end
     end
   end
 end

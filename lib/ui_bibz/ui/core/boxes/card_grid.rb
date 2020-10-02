@@ -30,11 +30,10 @@ module UiBibz::Ui::Core::Boxes
   #     cg.card 'Exemple 3'
   #   end.render
   #
-  class CardGrid < UiBibz::Ui::Core::Component
+  class CardGrid < UiBibz::Ui::Core::Layouts::Row
     # See UiBibz::Ui::Core::Component.initialize
     def initialize(content = nil, options = nil, html_options = nil, &block)
       super
-      @items = []
     end
 
     # Render html tag
@@ -53,7 +52,7 @@ module UiBibz::Ui::Core::Boxes
     private
 
     def component_html_classes
-      %w[card-grid row] << UiBibz::Utils::ColNameGenerator.new(@options, 'row-cols').class_names
+      super << 'card-grid'
     end
   end
 end

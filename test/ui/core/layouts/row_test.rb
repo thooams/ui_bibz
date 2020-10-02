@@ -14,11 +14,20 @@ class RowTest < ActionView::TestCase
     assert_equal expected, actual
   end
 
-  test 'row form' do
-    actual = ui_row(type: :form) do
+  test 'row with size' do
+    actual = ui_row(num: 2) do
       'test'
     end
-    expected = '<div class="form-row">test</div>'
+    expected = '<div class="row row-cols-md-2">test</div>'
+
+    assert_equal expected, actual
+  end
+
+  test 'row with several sizes' do
+    actual = ui_row(md: { num: 4 }, xs: { num: 2 }) do
+      'test'
+    end
+    expected = '<div class="row row-cols-md-4 row-cols-xs-2">test</div>'
 
     assert_equal expected, actual
   end

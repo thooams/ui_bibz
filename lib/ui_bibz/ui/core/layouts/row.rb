@@ -64,7 +64,15 @@ module UiBibz::Ui::Core::Layouts
     private
 
     def component_html_classes
-      options[:type] == :form ? 'form-row' : 'row'
+      [
+        'row',
+        (UiBibz::Utils::BreakdownClassNameGenerator.new(@options[:gutter], 'g').class_names if @options[:gutter]),
+        (UiBibz::Utils::BreakdownClassNameGenerator.new(@options, 'row-cols').class_names if breakpoints_present?)
+      ]
+    end
+
+    def breakpoints_present?
+      @options.keys.size - (@options.keys.map(&:to_sym) - [UiBibz::Ui::Core::Component::BREAKPOINTS, :num].flatten).size != 0
     end
   end
 end
