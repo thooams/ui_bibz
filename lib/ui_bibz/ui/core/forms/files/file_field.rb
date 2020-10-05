@@ -46,23 +46,26 @@ module UiBibz::Ui::Core::Forms::Files
     # Render html tag
     def pre_render
       content_tag :div, html_options do
-        concat file_field_tag content, class: 'custom-file-input', multiple: options[:multiple], disabled: disabled?
-        concat label_tag label_name, label_content, class: 'custom-file-label'
+        concat file_field_tag content, class: 'form-file-input', multiple: options[:multiple], disabled: disabled?
+        concat label_text_and_button
       end
     end
 
     private
 
+    def label_text_and_button
+      label_tag label_name, class: 'form-file-label' do
+        concat content_tag(:span, options[:input_text] || options[:value], class: 'form-file-text')
+        concat content_tag(:span, options[:button_text] || 'Browse', class: 'form-file-button')
+      end
+    end
+
     def label_name
       html_options[:id] || content
     end
 
-    def label_content
-      options[:value] || ''
-    end
-
     def component_html_classes
-      super << 'custom-file'
+      super << 'form-file'
     end
   end
 end
