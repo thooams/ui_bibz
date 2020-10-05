@@ -44,7 +44,7 @@ module UiBibz::Ui::Core::Forms::Choices
     private
 
     def component_html_classes
-      ['custom-control', 'custom-switch', inline]
+      ['form-check', 'form-switch', inline]
     end
   end
 end

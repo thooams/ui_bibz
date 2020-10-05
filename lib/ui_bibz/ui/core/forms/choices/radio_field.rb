@@ -59,7 +59,7 @@ module UiBibz::Ui::Core::Forms::Choices
     def radio_field_html_tag
       content_tag :div, html_options.except(:id) do
         concat radio_button_tag content, options[:value], options[:checked] || false, checkbox_html_options
-        concat label_tag label_name, label_content, class: 'custom-control-label'
+        concat label_tag label_name, label_content, class: 'form-check-label'
       end
     end
 
@@ -67,7 +67,7 @@ module UiBibz::Ui::Core::Forms::Choices
       {
         disabled: options[:state] == :disabled,
         "data-action": options[:action],
-        class: 'custom-control-input'
+        class: 'form-check-input'
       }
     end
 
@@ -76,7 +76,7 @@ module UiBibz::Ui::Core::Forms::Choices
     end
 
     def component_html_classes
-      ['custom-control', 'custom-radio', inline]
+      ['form-check', inline]
     end
   end
 end
