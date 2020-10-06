@@ -16,7 +16,7 @@ module UiBibz::Ui::Core::Forms::Surrounds
     end
 
     def component_html_classes
-      'input-group-addon'
+      'input-group-text'
     end
   end
 end

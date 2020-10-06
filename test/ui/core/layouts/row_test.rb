@@ -23,6 +23,15 @@ class RowTest < ActionView::TestCase
     assert_equal expected, actual
   end
 
+  test 'row with integer in parameter' do
+    actual = ui_row 2 do
+      'test'
+    end
+    expected = '<div class="row row-cols-2">test</div>'
+
+    assert_equal expected, actual
+  end
+
   test 'row with several sizes' do
     actual = ui_row(md: { num: 4 }, xs: { num: 2 }) do
       'test'
@@ -39,6 +48,20 @@ class RowTest < ActionView::TestCase
       end
     end
     expected = "<div class=\"test row\"><div class=\"col\">test</div></div>"
+
+    assert_equal expected, actual
+  end
+
+  test 'row with gutters' do
+    actual = ui_row(gutters: 6)
+    expected = "<div class=\"row g-6\"></div>"
+
+    assert_equal expected, actual
+  end
+
+  test 'row with complex gutters' do
+    actual = ui_row(gutters: { md: { num: 6 }, xs: { num: 3, position: :horizontal } })
+    expected = "<div class=\"row g-md-6 gx-xs-3\"></div>"
 
     assert_equal expected, actual
   end

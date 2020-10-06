@@ -50,4 +50,11 @@ class BreakdownClassNameGeneratorTest < ActionView::TestCase
 
     assert_equal expected, actual
   end
+
+  test "name generator with only an integer" do
+    actual   = UiBibz::Utils::BreakdownClassNameGenerator.new(2, 'g').class_names
+    expected = ["g-2"]
+
+    assert_equal expected, actual
+  end
 end

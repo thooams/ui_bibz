@@ -48,6 +48,9 @@ module UiBibz::Ui::Core::Layouts
   class Row < UiBibz::Ui::Core::Component
     # See UiBibz::Ui::Core::Component.initialize
     def initialize(content = nil, options = nil, html_options = nil, &block)
+      unless block.nil?
+        content = content.is_a?(Integer) ? { num: content } : content
+      end
       super
       @items = [@content]
     end
@@ -66,7 +69,7 @@ module UiBibz::Ui::Core::Layouts
     def component_html_classes
       [
         'row',
-        (UiBibz::Utils::BreakdownClassNameGenerator.new(@options[:gutter], 'g').class_names if @options[:gutter]),
+        (UiBibz::Utils::BreakdownClassNameGenerator.new(@options[:gutters], 'g').class_names if @options[:gutters]),
         (UiBibz::Utils::BreakdownClassNameGenerator.new(@options, 'row-cols').class_names if breakpoints_present?)
       ]
     end

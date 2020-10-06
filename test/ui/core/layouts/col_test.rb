@@ -22,10 +22,19 @@ class ColTest < ActionView::TestCase
   end
 
   test 'col' do
-    actual   = ui_col do
+    actual = ui_col do
       'test'
     end
     expected = '<div class="col">test</div>'
+
+    assert_equal expected, actual
+  end
+
+  test 'col with integer in parameter' do
+    actual = ui_col 3 do
+      'test'
+    end
+    expected = '<div class="col-3">test</div>'
 
     assert_equal expected, actual
   end

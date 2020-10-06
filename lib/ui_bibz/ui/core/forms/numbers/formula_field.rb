@@ -48,7 +48,7 @@ module UiBibz::Ui::Core::Forms::Numbers
     private
 
     def formula_field_html_tag
-      UiBibz::Ui::Core::Forms::Surrounds::SurroundField.new(class: join_classes('formula_field', status, size)).tap do |sf|
+      UiBibz::Ui::Core::Forms::Surrounds::SurroundField.new(class: join_classes('formula_field', state, size)).tap do |sf|
         sf.text_field formula_field_name, nil, text_field_formula_html_options
         sf.addon '=', class: 'formula-field-sign'
         sf.text_field content, nil, text_field_input_html_options
@@ -72,7 +72,7 @@ module UiBibz::Ui::Core::Forms::Numbers
     end
 
     def component_html_options
-      options[:state] == :disabled ? { disabled: 'disabled' } : {}
+      disabled? ? { disabled: 'disabled' } : {}
     end
 
     def formula_field_alert_glyph
@@ -87,13 +87,24 @@ module UiBibz::Ui::Core::Forms::Numbers
       content.to_s.split('').select { |i| i == ']' }.count.positive? ? content.to_s.gsub(/]$/, '_formula]') : "#{content}_formula"
     end
 
-    def status
-      "has-#{options[:status]}" if options[:status]
+    def state
+      states_matching[@options[:status] || @options[:state]] if @options[:status] || @options[:state]
     end
 
     # :lg, :sm or :xs
     def size
       "input-group-#{options[:size]}" if options[:size]
+    end
+
+    def states_matching
+      {
+        success: 'is-valid',
+        danger: 'is-invalid',
+        valid: 'is-valid',
+        invalid: 'is-invalid',
+        active: 'active',
+        disabled: 'disabled'
+      }
     end
   end
 end

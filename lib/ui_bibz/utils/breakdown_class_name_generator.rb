@@ -8,7 +8,7 @@ module UiBibz::Utils
     PARAMETERS =  BREAKPOINTS + POSITIONING + [:position]
 
     def initialize(options = {}, klass_name = 'col')
-      @options = options
+      @options = options.is_a?(Integer) ? { num: options } : options
       @klass_name = klass_name
     end
 
