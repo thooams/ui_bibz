@@ -11,7 +11,6 @@ module UiBibz::Ui::Core::Boxes
   # Create a card
   #
   # This element is an extend of UiBibz::Ui::Core::Component.
-  # You can use tap method to add header, body or footer element.
   #
   # ==== Attributes
   #
@@ -69,7 +68,7 @@ module UiBibz::Ui::Core::Boxes
   #     content
   #   end
   #
-  #   card(options = { tap: true }, html_options = {}) do |p|
+  #   card(options = {}, html_options = {}) do |p|
   #     p.header(content, options = {}, html_options = {})
   #     # or
   #     p.header(options = {}, html_options = {}) do
@@ -126,7 +125,7 @@ module UiBibz::Ui::Core::Boxes
     end
 
     def card_block
-      'card-block' if !@options[:block].nil? || @options[:tap].nil?
+      'card-block' if !@options[:block].nil? || @tapped
     end
 
     def type

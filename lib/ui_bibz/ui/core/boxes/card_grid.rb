@@ -42,7 +42,7 @@ module UiBibz::Ui::Core::Boxes
     end
 
     def card(content = nil, options = nil, html_options = nil, &block)
-      @items << content_tag(:div, if tap? content, options
+      @items << content_tag(:div, if tapped?(block)
                                     UiBibz::Ui::Core::Boxes::Card.new(content, options, html_options).tap(&block).render
                                   else
                                     UiBibz::Ui::Core::Boxes::Card.new(content, options, html_options, &block).render

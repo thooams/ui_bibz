@@ -6,7 +6,7 @@ class BreadcrumbTest < ActionView::TestCase
   include UiBibz::Helpers::Ui::CoreHelper
 
   test 'breadcrumb' do
-    actual = ui_breadcrumb tap: true do |b|
+    actual = ui_breadcrumb do |b|
       b.link 'Home', url: '#home', glyph: 'home'
       b.link 'state', { url: '#state', state: :active }
     end

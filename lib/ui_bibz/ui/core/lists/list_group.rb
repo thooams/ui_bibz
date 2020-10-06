@@ -22,7 +22,7 @@ module UiBibz::Ui::Core::Lists
   #
   # ==== Signatures
   #
-  #   UiBibz::Ui::Core::ListGroup.new().tap |lg|
+  #   UiBibz::Ui::Core::ListGroup.new.tap |lg|
   #     ...
   #     lg.list content = nil, options = nil, html_options = nil, &block
   #     ...
@@ -30,7 +30,7 @@ module UiBibz::Ui::Core::Lists
   #
   # ==== Examples
   #
-  #   UiBibz::Ui::Core::ListGroup.new().tap do |d|
+  #   UiBibz::Ui::Core::ListGroup.new.tap do |d|
   #     d.list 'Test', status: :success
   #     d.list 'Test2', status: :primary
   #   end.render
@@ -40,7 +40,7 @@ module UiBibz::Ui::Core::Lists
   #     d.list(status: :primary) do
   #       'Test 2'
   #     end
-  #     d.list(tap: true, state: :active) do |l|
+  #     d.list(state: :active) do |l|
   #       l.header 'My title', nil, class: 'my-title'
   #       l.body do
   #         'My content'
@@ -50,12 +50,12 @@ module UiBibz::Ui::Core::Lists
   #
   # ==== Helper
   #
-  #   list_group( options = { tap: true }, html_options = {}) do |l|
+  #   list_group( options = {}, html_options = {}) do |l|
   #     l.list(content, options = {}, html_options = {})
   #     l.list(options = {}, html_options = {}) do
   #       content
   #     end
-  #     l.list(options = { tap: true }, html_options = {}) do |li|
+  #     l.list(options = {}, html_options = {}) do |li|
   #       li.header(content, options = {}, html_options = {})
   #       # or
   #       li.header(options = {}, html_options = {}) do
@@ -87,7 +87,8 @@ module UiBibz::Ui::Core::Lists
     def list(content = nil, options = {}, html_options = nil, &block)
       options = options.merge({ tag_type: @options[:tag_type] }) unless @options[:tag_type].nil?
 
-      @lists << if tap?(content, options)
+      @lists << if tapped?(block)
+                  content[:tap] = true
                   UiBibz::Ui::Core::Lists::Components::List.new(content, options, html_options).tap(&block).render
                 else
                   UiBibz::Ui::Core::Lists::Components::List.new(content, options, html_options, &block).render

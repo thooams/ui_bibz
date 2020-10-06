@@ -51,7 +51,7 @@ module UiBibz::Ui::Core::Notifications
     # See UiBibz::Ui::Core::Component.initialize
     def initialize(content = nil, options = nil, html_options = nil, &block)
       super
-      header(@content) if @options[:tap].nil?
+      header(@content, tap: false) unless @tapped
     end
 
     # Render html tag

@@ -6,8 +6,6 @@ module UiBibz::Helpers::Ui::UxHelper
   # +options+ (Hash)
   # +html_options+ (Hash)
   #
-  # Option +tap: true+ is required if you want add +header+, +block+ or
-  # +footer+.
   def ui_table(content = nil, options = nil, html_options = nil, &block)
     if tapped?(block)
       UiBibz::Ui::Ux::Tables::Table.new(content, options, html_options).tap(&block).render
@@ -52,8 +50,6 @@ module UiBibz::Helpers::Ui::UxHelper
   # +options+ (Hash) [Required]
   # +html_options+ (Hash)
   #
-  # Option +tap: true+ is required if you want add +header+, +block+ or
-  # +footer+.
   def ui_table_card(content = nil, options = nil, html_options = nil, &block)
     if tapped?(block)
       UiBibz::Ui::Ux::Tables::TableCard.new(content, options, html_options).tap(&block).render

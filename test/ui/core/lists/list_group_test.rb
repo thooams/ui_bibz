@@ -8,7 +8,7 @@ class ListGroupTest < ActionView::TestCase
   test 'list_group with link' do
     actual = ui_list_group(tag_type: :a) do |lg|
       lg.list 'Momo', { status: :success, url: '#momo' }
-      lg.list({ tap: true, active: true, url: '#state' }) do |l|
+      lg.list(active: true, url: '#state') do |l|
         l.header 'My title'
         l.body   'My body'
       end

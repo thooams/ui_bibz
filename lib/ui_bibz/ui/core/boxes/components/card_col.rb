@@ -37,7 +37,7 @@ module UiBibz::Ui::Core::Boxes::Components
   #     'Exemple'
   #   end.render
   #
-  #   UiBibz::Ui::Core::Boxes::CardCol.new(tap: true) do |col|
+  #   UiBibz::Ui::Core::Boxes::CardCol.new do |col|
   #     col.body do
   #      'Exemple'
   #     end

@@ -7,7 +7,6 @@ module UiBibz::Ui::Core::Forms::Dropdowns
   # Create a dropdown
   #
   # This element is an extend of UiBibz::Ui::Core::Component.
-  # You can use tap method to add list items.
   #
   # ==== Attributes
   #
@@ -50,7 +49,7 @@ module UiBibz::Ui::Core::Forms::Dropdowns
   #
   # ==== Helper
   #
-  #   dropdown(name, options = { tap: true }, html_options = {}) do |d|
+  #   dropdown(name, options = {}, html_options = {}) do |d|
   #     d.link(content, options = {}, html_options = {})
   #     d.link(options = {}, html_options = {}) do
   #       content

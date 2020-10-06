@@ -27,7 +27,6 @@ module UiBibz::Ui::Ux::Tables
   # You can pass arguments in options attribute:
   # * +store+ - Store generate by '+table_search_pagination+' method
   # * +url+ - String
-  # * +tap+ - Boolean
   # * +actionable+ - Boolean
   # * +sortable+ - Boolean
   # * +searchable+ - Boolean
@@ -49,7 +48,7 @@ module UiBibz::Ui::Ux::Tables
   #
   #   UiBibz::Ui::Ux::Tables::Table.new(store: @store)
   #
-  #   UiBibz::Ui::Ux::Tables::Table.new(store: @store, tap: true) do |t|
+  #   UiBibz::Ui::Ux::Tables::Table.new(store: @store) do |t|
   #     t.columns do |c|
   #       c.column :id, name: '#'
   #     end
@@ -80,7 +79,7 @@ module UiBibz::Ui::Ux::Tables
   #
   #   table(options = {}, html_options = {})
   #
-  #   table(options = { tap: true }, html_options = {}) do |t|
+  #   table(options = {}, html_options = {}) do |t|
   #     t.columns do |cls|
   #       cls.column(name, options = {}, html_options = {})
   #       cls.column(options = {}, html_options = {}) do

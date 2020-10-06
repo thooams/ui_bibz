@@ -47,7 +47,7 @@ module UiBibz::Ui::Core::Boxes::Components
     end
 
     def tab_group(content = nil, options = nil, html_options = nil, &block)
-      @content = if tap?(content, options)
+      @content = if tapped?(block)
                    CardTabGroup.new(content, options, html_options).tap(&block).render
                  else
                    CardTabGroup.new(content, options, html_options, &block).render

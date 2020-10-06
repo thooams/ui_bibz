@@ -12,7 +12,7 @@ class AlertTest < ActionView::TestCase
   end
 
   test 'alert with more informaton' do
-    actual = ui_alert(tap: true, status: :success, glyph: 'thumbs-o-up', closable: true) do |a|
+    actual = ui_alert(status: :success, glyph: 'thumbs-o-up', closable: true) do |a|
       a.header 'Information'
       a.body 'Body text'
     end

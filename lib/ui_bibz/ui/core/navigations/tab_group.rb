@@ -46,7 +46,7 @@ module UiBibz::Ui::Core::Navigations
   #
   # ==== Helper
   #
-  #   ui_tab_group(options = { tap: true }, html_options = {}) do |n|
+  #   ui_tab_group(options = {}, html_options = {}) do |n|
   #     n.tab(content, options = {}, html_options = {})
   #     n.tab(options = {}, html_options = {}) do
   #       content

@@ -22,7 +22,7 @@ class CardTest < ActionView::TestCase
   end
 
   test 'card outline' do
-    actual = ui_card 'test', status: :success, outline: true, tap: true do |c|
+    actual = ui_card 'test', status: :success, outline: true do |c|
       c.header 'header'
       c.body 'header'
       c.footer 'header'
@@ -65,8 +65,8 @@ class CardTest < ActionView::TestCase
   end
 
   test 'position' do
-    actual = ui_card tap: true, text: { position: :right, size: :md } do |p|
-      p.body tap: true do |b|
+    actual = ui_card text: { position: :right, size: :md } do |p|
+      p.body do |b|
         b.title 'Special title treatment'
         b.subtitle 'The subtitle'
         b.text 'With supporting text below as a natural lead-in to additional content.'
@@ -111,7 +111,7 @@ class CardTest < ActionView::TestCase
   end
 
   test 'card list group' do
-    actual = ui_card tap: true do |c|
+    actual = ui_card do |c|
       c.list_group do |lg|
         lg.list 'list 1'
         lg.list 'list 2'
@@ -124,8 +124,8 @@ class CardTest < ActionView::TestCase
   end
 
   test 'card body parameters' do
-    actual = ui_card tap: true do |c|
-      c.body tap: true do |b|
+    actual = ui_card do |c|
+      c.body do |b|
         b.title 'title'
         b.text 'text'
         b.link 'link', url: '#'
@@ -137,9 +137,9 @@ class CardTest < ActionView::TestCase
   end
 
   test 'card header tab group' do
-    actual = ui_card tap: true do |c|
-      c.header tap: true do |h|
-        h.tab_group tap: true do |cg|
+    actual = ui_card do |c|
+      c.header do |h|
+        h.tab_group do |cg|
           cg.tab 'link1', url: '#link1'
           cg.tab 'link2', url: '#link2'
         end
@@ -151,13 +151,13 @@ class CardTest < ActionView::TestCase
   end
 
   test 'card row' do
-    actual = ui_card tap: true do |c|
-      c.row tap: true, class: "g-0" do |r|
-        r.col tap: true, num: 4 do |col|
+    actual = ui_card do |c|
+      c.row class: "g-0" do |r|
+        r.col num: 4 do |col|
           col.image "https://picsum.photos/700/200", position: :left
         end
-        r.col tap: true, num: 8 do |col|
-          col.body tap: true do |b|
+        r.col num: 8 do |col|
+          col.body do |b|
             b.title "Card title"
             b.subtitle "Card subtitle"
             b.text "Some quick example text to build on the card title and make up the bulk of the card's content."

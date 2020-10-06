@@ -60,8 +60,8 @@ module UiBibz::Ui::Core::Navigations
   #
   # ==== Helper
   #
-  #   ui_navbar(options = { tap: true }, html_options = {}) do |nb|
-  #     nb.nav(options = { tap: true }, html_options = {}) do |n|
+  #   ui_navbar(options = {}, html_options = {}) do |nb|
+  #     nb.nav(options = {}, html_options = {}) do |n|
   #       n.link(content, options = {}, html_options = {})
   #       n.link(options = {}, html_options = {}) do
   #         content

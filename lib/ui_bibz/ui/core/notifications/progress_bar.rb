@@ -47,7 +47,7 @@ module UiBibz::Ui::Core::Notifications
   #
   #   ui_progress_bar(integer, options = {}, html_options = {})
   #
-  #   ui_progress_bar(options = { tap: true }, html_options = {}) do |pb|
+  #   ui_progress_bar(options = {}, html_options = {}) do |pb|
   #     pb.bar(integer, options = {}, html_options = {})
   #     pb.bar(options = {}, html_options = {}) do
   #       integer

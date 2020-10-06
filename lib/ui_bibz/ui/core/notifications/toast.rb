@@ -49,7 +49,7 @@ module UiBibz::Ui::Core::Notifications
   #
   # ==== Helper
   #
-  #   ui_toast(options = { tap: true }, html_options = {}) do |t|
+  #   ui_toast(options = {}, html_options = {}) do |t|
   #     t.header "My header toast", glyph: 'eye', time: 'now'
   #     t.body "My body toast"
   #   end

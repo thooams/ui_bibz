@@ -37,7 +37,7 @@ module UiBibz::Ui::Core::Boxes::Components
   #     'Exemple'
   #   end.render
   #
-  #   UiBibz::Ui::Core::Boxes::CardRow.new(tap: true) do |row|
+  #   UiBibz::Ui::Core::Boxes::CardRow.new do |row|
   #     row.col do
   #      'Exemple'
   #     end
@@ -55,7 +55,7 @@ module UiBibz::Ui::Core::Boxes::Components
     end
 
     def col(content = nil, options = nil, html_options = nil, &block)
-      @items << if tap?(content, options)
+      @items << if tapped?(block)
                   UiBibz::Ui::Core::Boxes::Components::CardCol.new(content, options, html_options).tap(&block).render
                 else
                   UiBibz::Ui::Core::Layouts::Col.new(content, options, html_options, &block).render

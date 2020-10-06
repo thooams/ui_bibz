@@ -51,7 +51,7 @@ module UiBibz::Ui::Ux::Containers::Components
     end
 
     def tab_group(content = nil, options = nil, html_options = nil, &block)
-      @content = if tap?(content, options)
+      @content = if tapped?(block)
                    PanelTabGroup.new(content, options, html_options).tap(&block).render
                  else
                    PanelTabGroup.new(content, options, html_options, &block).render

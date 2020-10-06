@@ -41,7 +41,7 @@ class ProgressBarTest < ActionView::TestCase
   end
 
   test 'progress bar custom' do
-    actual = ui_progress_bar tap: true do |pb|
+    actual = ui_progress_bar do |pb|
       pb.bar 25, status: :warning, striped: true
       pb.bar 65, status: :danger
     end

@@ -8,7 +8,6 @@ module UiBibz::Ui::Core::Navigations
   # Separators are automatically added in CSS through +:before+ and +content+.
   #
   # This element is an extend of UiBibz::Ui::Core::Component.
-  # You can use tap method to add link items.
   #
   # ==== Attributes
   #
@@ -56,7 +55,7 @@ module UiBibz::Ui::Core::Navigations
   #
   # ==== Helper
   #
-  #   ui_breadcrumb({tap: true}) do |b|
+  #   ui_breadcrumb do |b|
   #     b.link(content, options = {}, html_options = {})
   #     b.link(options = {}, html_options = {}) do
   #       content

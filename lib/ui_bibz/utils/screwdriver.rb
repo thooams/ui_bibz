@@ -5,18 +5,24 @@ module UiBibz::Utils
   class Screwdriver
     include Singleton
 
-    def self.join_classes(*classes)
-      klasses = Array(classes).flatten.map(&:to_s).compact.uniq.reject(&:blank?)
-      klasses.empty? ? nil : klasses
-    end
+    class << self
+      def join_classes(*classes)
+        klasses = Array(classes).flatten.map(&:to_s).compact.uniq.reject(&:blank?)
+        klasses.empty? ? nil : klasses
+      end
 
-    def self.exclude_classes(html_classes, *classes)
-      klasses = (html_classes || []).flatten.map(&:to_s).reject { |klass_name| Array(classes).flatten.include?(klass_name.to_s) || klass_name.blank? }
-      klasses.empty? ? nil : klasses
-    end
+      def exclude_classes(html_classes, *classes)
+        klasses = (html_classes || []).flatten.map(&:to_s).reject { |klass_name| Array(classes).flatten.include?(klass_name.to_s) || klass_name.blank? }
+        klasses.empty? ? nil : klasses
+      end
 
-    def self.uniq_word_in_string(str)
-      str.split(/\s/).uniq
+      def uniq_word_in_string(str)
+        str.split(/\s/).uniq
+      end
+
+      def tapped?(block)
+        block.present? && block.parameters.present?
+      end
     end
   end
 end

@@ -25,7 +25,7 @@ module UiBibz::Ui::Core::Layouts
   #     #content
   #   end
   #
-  #   UiBibz::Ui::Core::Layouts::Row.new(options = { tap: true }, html_options = {}) do |row|
+  #   UiBibz::Ui::Core::Layouts::Row.new(options = {}, html_options = {}) do |row|
   #     row.col do
   #       # content
   #     end
@@ -39,7 +39,7 @@ module UiBibz::Ui::Core::Layouts
   #    content
   #  end
   #
-  #  row(options = { tap: true }, html_options = {}) do |row|
+  #  row(options = {}, html_options = {}) do |row|
   #    row.col do
   #      content
   #    end

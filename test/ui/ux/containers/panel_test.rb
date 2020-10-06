@@ -7,7 +7,7 @@ class CardTest < ActionView::TestCase
 
   test 'create panel' do
     actual = ui_panel do |p|
-      p.header tap: true do |h|
+      p.header do |h|
         h.title 'My header'
         h.actions size: :sm, outline: true, status: :secondary do |a|
           a.button 'Minimize', glyph: 'caret-up', text: false
@@ -42,7 +42,7 @@ class CardTest < ActionView::TestCase
 
   test 'panel with group' do
     actual = ui_panel do |p|
-      p.header tap: true do |h|
+      p.header do |h|
         h.title 'Main panel header'
       end
       p.toolbar justify: true, size: :sm do |t|
@@ -76,7 +76,7 @@ class CardTest < ActionView::TestCase
 
   test 'panel with deck' do
     actual = ui_panel do |p|
-      p.header tap: true do |h|
+      p.header do |h|
         h.title 'Main panel header'
       end
       p.toolbar justify: true, size: :sm do |t|
@@ -110,7 +110,7 @@ class CardTest < ActionView::TestCase
 
   test 'panel with column' do
     actual = ui_panel do |p|
-      p.header tap: true do |h|
+      p.header do |h|
         h.title 'Main panel header'
       end
       p.toolbar justify: true, size: :sm do |t|

@@ -60,6 +60,7 @@ module UiBibz::Ui::Core
     # * Html options is defined in hash html_options
     def initialize(content = nil, options = nil, html_options = nil, &block)
       if !block.nil?
+        @tapped = tapped?(block)
         @html_options = options
         @options = content
         read_cache = Rails.cache.read(@options.try(:[], :cache))
@@ -94,8 +95,8 @@ module UiBibz::Ui::Core
     end
 
     # Know if component is tapped or not
-    def tap?(content, options)
-      (content[:tap] if content.is_a?(Hash)) || (options[:tap] unless options.nil?)
+    def tapped?(block)
+      UiBibz::Utils::Screwdriver.tapped?(block)
     end
 
     protected

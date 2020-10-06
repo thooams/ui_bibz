@@ -52,7 +52,7 @@ module UiBibz::Ui::Core::Navigations
   #
   # ==== Helper
   #
-  #   nav(options = { tap: true }, html_options = {}) do |n|
+  #   nav(options = {}, html_options = {}) do |n|
   #     n.link(content, options = {}, html_options = {})
   #     n.link(options = {}, html_options = {}) do
   #       content

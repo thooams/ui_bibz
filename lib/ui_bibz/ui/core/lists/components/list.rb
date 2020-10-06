@@ -20,7 +20,6 @@ module UiBibz::Ui::Core::Lists::Components
   # * +state+ - status of element with symbol value:
   #   (+:active+, +:disabled+)
   # * +url+
-  # * +tap+ - Boolean to add header and body
   # * +status+ - status of element with symbol value:
   #   (+:default+, +:primary+, +:info+, +:warning+, +:danger+)
   # * +glyph+ - Add glyph with name or hash options
@@ -30,7 +29,7 @@ module UiBibz::Ui::Core::Lists::Components
   #
   # ==== Signatures
   #
-  #   UiBibz::Ui::Core::Lists::Components::List.new(tap: true) do |l|
+  #   UiBibz::Ui::Core::Lists::Components::List.new do |l|
   #     l.header content =  nil, options = nil, html_options = nil, &block
   #     l.body content =  nil, options = nil, html_options = nil, &block
   #   end
@@ -49,7 +48,7 @@ module UiBibz::Ui::Core::Lists::Components
   #       'Test 2'
   #   end.render
   #
-  #   UiBibz::Ui::Core::List.new(tap: true, state: :active) do |l|
+  #   UiBibz::Ui::Core::List.new(state: :active) do |l|
   #     l.header 'My title', nil, class: 'my-title'
   #     l.body do
   #       'My content'
@@ -63,7 +62,7 @@ module UiBibz::Ui::Core::Lists::Components
     def pre_render
       content_tag tag_type, html_options do
         concat glyph_and_content_html if @content
-        concat header_html if @body
+        concat header_html if @header
         concat body_html   if @body
         concat badge_html  if @options[:badge]
       end
@@ -102,7 +101,7 @@ module UiBibz::Ui::Core::Lists::Components
     end
 
     def header_classes
-      'flex-column align-items-start' unless options[:tap].nil?
+      'flex-column align-items-start' if options[:tap]
     end
 
     def tag_type_class

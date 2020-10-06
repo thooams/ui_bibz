@@ -32,7 +32,7 @@ module UiBibz::Ui::Core::Navigations
   #
   # ==== Examples
   #
-  #   UiBibz::Ui::Core::Navigations::NavbarNav.new().tap do |n|
+  #   UiBibz::Ui::Core::Navigations::NavbarNav.new.tap do |n|
   #     n.link 'Test', url: '#test'
   #     n.link 'Test2', url: '#test2', state: :active
   #   end.render

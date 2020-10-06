@@ -34,10 +34,10 @@ module UiBibz::Ui::Core::Notifications::Components
     # See UiBibz::Ui::Core::Component.initialize
 
     def pre_render
-      if options[:tap]
-        content_tag :h4, html_content, html_options
-      else
+      if options[:tap] == false
         html_content
+      else
+        content_tag :h4, html_content, html_options
       end
     end
 

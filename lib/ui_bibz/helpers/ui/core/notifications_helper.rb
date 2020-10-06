@@ -55,6 +55,6 @@ module UiBibz::Helpers::Ui::Core::NotificationsHelper
   private
 
   def tapped?(block)
-    block.present? && block.parameters.present?
+    UiBibz::Utils::Screwdriver.tapped?(block)
   end
 end
