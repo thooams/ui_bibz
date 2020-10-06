@@ -128,7 +128,7 @@ module UiBibz::Ui::Core::Forms::Dropdowns
     end
 
     def ul_html
-      content_tag :div, @items.join.html_safe, class: join_classes('dropdown-menu', position, open), 'arial-labelledby' => id
+      content_tag :div, @items.join.html_safe, class: join_classes('dropdown-menu', theme, position, open), 'arial-labelledby' => id
     end
 
     def dropdown_tag
@@ -170,6 +170,10 @@ module UiBibz::Ui::Core::Forms::Dropdowns
     # :lg, :sm or :xs
     def size
       "btn-#{@options[:size]}" if @options[:size]
+    end
+
+    def theme
+      'dropdown-menu-dark' if @options[:theme]
     end
   end
 end
