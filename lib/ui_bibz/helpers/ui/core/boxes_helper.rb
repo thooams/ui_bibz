@@ -9,7 +9,7 @@ module UiBibz::Helpers::Ui::Core::BoxesHelper
   # Option +tap: true+ is required if you want add +header+, +block+ or
   # +footer+.
   def ui_card(content = nil, options = nil, html_options = nil, &block)
-    if tap?(content, options)
+    if tapped?(block)
       UiBibz::Ui::Core::Boxes::Card.new(content, options, html_options).tap(&block).render
     else
       UiBibz::Ui::Core::Boxes::Card.new(content, options, html_options, &block).render

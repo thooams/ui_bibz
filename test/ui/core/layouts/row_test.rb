@@ -52,6 +52,17 @@ class RowTest < ActionView::TestCase
     assert_equal expected, actual
   end
 
+  test 'row with col' do
+    actual = ui_row do
+      ui_col do
+        "Test"
+      end
+    end
+    expected = "<div class=\"row\"><div class=\"col\">Test</div></div>"
+
+    assert_equal expected, actual
+  end
+
   test 'row with gutters' do
     actual = ui_row(gutters: 6)
     expected = "<div class=\"row g-6\"></div>"
@@ -62,6 +73,17 @@ class RowTest < ActionView::TestCase
   test 'row with complex gutters' do
     actual = ui_row(gutters: { md: { num: 6 }, xs: { num: 3, position: :horizontal } })
     expected = "<div class=\"row g-md-6 gx-xs-3\"></div>"
+
+    assert_equal expected, actual
+  end
+
+  test "toto" do
+    actual = ui_row do |row|
+      row.col do
+        'Test'
+      end
+    end
+    expected = "<div class=\"row\"><div class=\"col\">Test</div></div>"
 
     assert_equal expected, actual
   end

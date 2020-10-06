@@ -14,7 +14,7 @@ module UiBibz::Helpers::Ui::Core::ListsHelper
   # +options+ (Hash)
   # +html_options+ (Hash)
   def ui_list(content = nil, options = nil, html_options = nil, &block)
-    if tap?(content, options)
+    if tapped?(block)
       UiBibz::Ui::Core::Lists::Components::List.new(content, options, html_options).tap(&block).render
     else
       UiBibz::Ui::Core::Lists::Components::List.new(content, options, html_options, &block).render
