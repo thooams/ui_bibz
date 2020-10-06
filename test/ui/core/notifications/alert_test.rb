@@ -16,7 +16,7 @@ class AlertTest < ActionView::TestCase
       a.header 'Information'
       a.body 'Body text'
     end
-    expected = '<div class="alert-success alert alert-dismissible" role="alert"><h4 class="alert-header"><i class="glyph fas fa-thumbs-o-up"></i>  Information<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button></h4><hr /><p class="alert-body mb-0">Body text</p></div>'
+    expected = "<div class=\"alert-success alert alert-dismissible\" role=\"alert\"><h4 class=\"alert-header\"><i class=\"glyph fas fa-thumbs-o-up\"></i>  Information<button type=\"button\" class=\"btn-close\" data-dismiss=\"alert\" aria-label=\"Close\"></button></h4><hr /><p class=\"alert-body mb-0\">Body text</p></div>"
 
     assert_equal expected, actual
   end

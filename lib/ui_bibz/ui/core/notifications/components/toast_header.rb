@@ -46,9 +46,7 @@ module UiBibz::Ui::Core::Notifications::Components
     private
 
     def close_button
-      content_tag :button, class: 'ml-2 mb-1 close', "data-dismiss": 'toast', "aria-label": 'Close' do
-        content_tag(:span, '×', "aria-hidden": true).html_safe
-      end
+      content_tag :button, '', class: 'ml-2 mb-1 close', "data-dismiss": 'toast', "aria-label": 'Close'
     end
 
     def component_html_classes

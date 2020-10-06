@@ -48,10 +48,7 @@ module UiBibz::Ui::Core::Windows::Components
     end
 
     def close_button_html
-      content_tag :button, class: 'close', 'data-dismiss' => 'modal', 'aria-label' => 'Close' do
-        concat content_tag :span, '×', 'aria-hidden' => true
-        concat content_tag :span, 'Close', class: 'sr-only'
-      end
+      content_tag :button, '', class: 'close', 'data-dismiss' => 'modal', 'aria-label' => 'Close'
     end
   end
 end

@@ -54,10 +54,7 @@ module UiBibz::Ui::Core::Notifications::Components
     end
 
     def close_html
-      content_tag :button, type: 'button', class: 'close', 'data-dismiss' => 'alert', 'aria-label' => 'Close' do
-        concat content_tag :span, '×', 'aria-hidden' => true
-        concat content_tag :span, 'Close', class: 'sr-only'
-      end
+      content_tag :button, '', type: 'button', class: 'btn-close', 'data-dismiss' => 'alert', 'aria-label' => 'Close'
     end
   end
 end
