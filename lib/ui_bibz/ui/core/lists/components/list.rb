@@ -101,7 +101,7 @@ module UiBibz::Ui::Core::Lists::Components
     end
 
     def header_classes
-      'flex-column align-items-start' if options[:tap]
+      'flex-column align-items-start' if @options[:tap]
     end
 
     def tag_type_class
