@@ -50,13 +50,44 @@ module UiBibz::Ui::Core::Forms::Numbers
 
     # Render html tag
     def pre_render
-      range_field_tag content, options[:value] || html_options[:value], html_options
+      capture do
+        concat range_field_tag(content, options[:value] || html_options[:value], html_options)
+        concat datalist_tag if options[:tick]
+      end
+    end
+
+    def html_id
+      @html_id ||= html_options[:id] || generate_id('range')
     end
 
     private
 
+    def datalist_tag
+      content_tag :datalist, id: datalist_id do
+        (html_min..html_max).step(html_step).map do |i|
+          content_tag :option, option_label(i), value: i, label: option_label(i)
+        end.join.html_safe
+      end
+    end
+
+    def component_html_options
+      options[:tick] ? super.merge(list: datalist_id) : super
+    end
+
     def component_html_classes
       'form-range'
+    end
+
+    def option_label(value)
+      value if [html_min, middle_range_value, html_max].include?(value)
+    end
+
+    def middle_range_value
+      (html_min..html_max).to_a[(html_min..html_max).size / 2]
+    end
+
+    def datalist_id
+      "#{html_id}-list"
     end
   end
 end

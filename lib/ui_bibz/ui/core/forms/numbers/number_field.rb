@@ -70,5 +70,25 @@ module UiBibz::Ui::Core::Forms::Numbers
         within: options[:within]
       }
     end
+
+    def html_max
+      options[:max] || 100
+    end
+
+    def html_min
+      options[:min] || 0
+    end
+
+    def html_step
+      options[:step] || 1
+    end
+
+    def html_in
+      options[:in]
+    end
+
+    def html_within
+      options[:within]
+    end
   end
 end
