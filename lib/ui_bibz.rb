@@ -112,6 +112,8 @@ module UiBibz
           autoload :FormulaField,            'ui_bibz/ui/core/forms/numbers/formula_field'
           autoload :NumberField,             'ui_bibz/ui/core/forms/numbers/number_field'
           autoload :RangeField,              'ui_bibz/ui/core/forms/numbers/range_field'
+          autoload :SliderField,             'ui_bibz/ui/core/forms/numbers/slider_field'
+          autoload :SliderHeader,            'ui_bibz/ui/core/forms/numbers/slider_header'
         end
 
         module Selects

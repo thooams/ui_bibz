@@ -181,6 +181,24 @@ module UiBibz::Helpers::Ui::Core::FormsHelper
     UiBibz::Ui::Core::Forms::Numbers::RangeField.new(name, options, html_options, &block).render
   end
 
+  # Slider Component
+  #
+  # +name+ (String) [Required]
+  # +options+ (Hash)
+  # +html_options+ (Hash)
+  def ui_slider_field(name, options = nil, html_options = nil, &block)
+    UiBibz::Ui::Core::Forms::Numbers::SliderField.new(name, options, html_options, &block).render
+  end
+
+  # Slider Header Component
+  #
+  # +name+ (String) [Required]
+  # +options+ (Hash)
+  # +html_options+ (Hash)
+  def ui_slider_header(options, html_options = nil, &block)
+    UiBibz::Ui::Core::Forms::Numbers::SliderHeader.new(nil, options, html_options, &block).render
+  end
+
   # File Component
   #
   # +name+ (String) [Required]
