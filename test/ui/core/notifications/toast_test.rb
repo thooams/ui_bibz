@@ -18,7 +18,7 @@ class ToastTest < ActionView::TestCase
     actual = ui_toast do
       'My body toast'
     end
-    expected = "<div class=\"toast\" role=\"alert\" aria-live=\"assertive\" aria-atomic=\"true\"><div class=\"toast-body\"></div></div>"
+    expected = "<div class=\"toast\" role=\"alert\" aria-live=\"assertive\" aria-atomic=\"true\"><div class=\"toast-body\">My body toast</div></div>"
 
     assert_equal expected, actual
   end
