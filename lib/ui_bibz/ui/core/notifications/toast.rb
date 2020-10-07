@@ -56,6 +56,10 @@ module UiBibz::Ui::Core::Notifications
   #
   class Toast < UiBibz::Ui::Core::Component
     # See UiBibz::Ui::Core::Component.initialize
+    def initialize(content = nil, options = nil, html_options = nil, &block)
+      super
+      body(@content) unless @tapped
+    end
 
     # Render html tag
     def pre_render
@@ -78,7 +82,7 @@ module UiBibz::Ui::Core::Notifications
     private
 
     def component_html_classes
-      super << 'toast'
+      super << ['toast', status, white_text_color]
     end
 
     def component_html_options
@@ -88,6 +92,16 @@ module UiBibz::Ui::Core::Notifications
     def component_html_data
       super
       add_html_data 'autohide', value: options[:auto_hide] if options[:auto_hide]
+    end
+
+    def status
+      "bg-#{options[:status]}" if options[:status]
+    end
+
+    def white_text_color
+      return if options[:status].nil?
+
+      'text-white' unless %i[info warning info light].include?(options[:status])
     end
   end
 end
