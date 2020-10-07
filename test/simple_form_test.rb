@@ -234,7 +234,7 @@ test1</textarea></div></form>"
       f.input :name_fr, as: :ui_range_field
     end
 
-    expected = '<form class="simple_form edit_user" id="edit_user_1" action="/users/1" accept-charset="UTF-8" method="post"><input type="hidden" name="_method" value="patch" /><div class="form-group ui_range_field optional user_name_fr"><label class="control-label ui_range_field optional" for="user_name_fr">Name fr</label><input type="range" name="user[name_fr]" id="user_name_fr" value="test1" class="ui_range_field optional custom-range" /></div></form>'
+    expected = '<form class="simple_form edit_user" id="edit_user_1" action="/users/1" accept-charset="UTF-8" method="post"><input type="hidden" name="_method" value="patch" /><div class="form-group ui_range_field optional user_name_fr"><label class="control-label ui_range_field optional" for="user_name_fr">Name fr</label><input type="range" name="user[name_fr]" id="user_name_fr" value="test1" class="ui_range_field optional form-range" /></div></form>'
 
     assert_equal expected, actual
   end

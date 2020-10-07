@@ -56,7 +56,7 @@ module UiBibz::Ui::Core::Forms::Numbers
     private
 
     def component_html_classes
-      'custom-range'
+      'form-range'
     end
   end
 end
