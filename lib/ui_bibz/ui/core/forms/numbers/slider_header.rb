@@ -52,15 +52,15 @@ module UiBibz::Ui::Core::Forms::Numbers
 
     def header_min
       content_tag :div, class: 'slider-header-min' do
-        concat content_tag :label, options[:min].try(:[], :label) || 'Min: '
-        concat content_tag :span, options[:min]
+        concat content_tag :label, options[:label_min] || 'Min: '
+        concat content_tag :span, options[:thumb_min]
       end
     end
 
     def header_max
       content_tag :div, class: 'slider-header-max' do
-        concat content_tag :label, options[:max].try(:[], :label) || 'max: '
-        concat content_tag :span, options[:max]
+        concat content_tag :label, options[:label_max] || 'max: '
+        concat content_tag :span, options[:thumb_max]
       end
     end
 

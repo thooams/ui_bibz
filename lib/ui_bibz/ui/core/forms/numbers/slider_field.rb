@@ -54,8 +54,8 @@ module UiBibz::Ui::Core::Forms::Numbers
     def pre_render
       content_tag :div, html_options do
         concat slider_html
-        concat range_field_tag("#{content}_min", options[:value] || thumb_min, range_html_options)
-        concat range_field_tag("#{content}_min", options[:value] || thumb_max, range_html_options)
+        concat range_field_tag("#{content}_min", options[:value] || options[:thumb_min] || 0, range_html_options)
+        concat range_field_tag("#{content}_min", options[:value] || options[:thumb_max] || 100, range_html_options)
       end
     end
 
@@ -63,30 +63,62 @@ module UiBibz::Ui::Core::Forms::Numbers
       content_tag :div do
         concat content_tag :div, '', class: 'slider-inverse-left', style: 'width: 100%'
         concat content_tag :div, '', class: 'slider-inverse-right', style: 'width: 100%'
-        concat content_tag :div, '', class: 'slider-range', style: 'left: 0%; right: 0%'
-        concat content_tag :div, '', class: 'slider-thumb slider-thumb-left', style: "left: #{thumb_min}%"
-        concat content_tag :div, '', class: 'slider-thumb slider-thumb-right', style: "left: #{thumb_max}%"
+        concat content_tag :div, '', class: 'slider-range', style: "left: #{left_percentage}%; right: #{100 - right_percentage}%"
+        concat content_tag :div, '', class: 'slider-thumb slider-thumb-left', style: "left: #{left_percentage}%"
+        concat content_tag :div, '', class: 'slider-thumb slider-thumb-right', style: "left: #{right_percentage}%"
       end
     end
 
     def range_html_options
-      { max: options[:max] || 100, min: options[:min] || 0, step: options[:step] || 1 }
-    end
-
-    def thumb_min
-      not_on_hundred_percent? ? 100 * options[:thumb_min] / options[:max] : (options[:thumb_min] || 0)
-    end
-
-    def thumb_max
-      not_on_hundred_percent? ? 100 * options[:thumb_max] / options[:max] : (options[:thumb_max] || 100)
+      { max: options[:max] || 100, min: options[:min] || 0, step: options[:step] || 1, disabled: disabled }
     end
 
     def not_on_hundred_percent?
       options[:max].present? && options[:max] != 100 || options[:min].present? && options[:min] != 0
     end
 
+    def absolute_total
+      @absolute_total ||= min.abs + max.abs
+    end
+
+    def absolute_min
+      (min - thumb_min).abs
+    end
+
+    def absolute_max
+      (max - thumb_max).abs
+    end
+
+    def min
+      options[:min] || 0
+    end
+
+    def max
+      options[:max] || 100
+    end
+
+    def thumb_min
+      options[:thumb_min] || 0
+    end
+
+    def thumb_max
+      options[:thumb_max] || 100
+    end
+
+    def left_percentage
+      @left_percentage ||= not_on_hundred_percent? ? 100 * absolute_min / absolute_total : thumb_min
+    end
+
+    def right_percentage
+      @right_percentage ||= not_on_hundred_percent? ? 100 - (100 * absolute_max / absolute_total) : thumb_max
+    end
+
     def component_html_classes
-      'slider'
+      ['slider', ('disabled' if disabled)]
+    end
+
+    def disabled
+      'disabled' if options[:state] == :disabled || html_options[:disabled]
     end
   end
 end
