@@ -71,6 +71,8 @@ module UiBibz::Ui::Core::Lists
   #   end
   #
   class ListGroup < UiBibz::Ui::Core::Component
+    include UiBibz::Ui::Concerns::HtmlConcern
+
     # See UiBibz::Ui::Core::Component.initialize
     def initialize(content = nil, options = nil, html_options = nil, &block)
       super

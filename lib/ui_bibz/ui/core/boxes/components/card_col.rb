@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require 'ui_bibz/ui/core/boxes/concerns/card_itemable_concern'
 module UiBibz::Ui::Core::Boxes::Components
   # Create a card col
   #
@@ -44,7 +43,7 @@ module UiBibz::Ui::Core::Boxes::Components
   #   end.render
   #
   class CardCol < UiBibz::Ui::Core::Layouts::Col
-    include CardItemableConcern
+    include UiBibz::Ui::Concerns::CardItemableConcern
 
     # See UiBibz::Ui::Core::Component.initialize
     def initialize(content = nil, options = nil, html_options = nil, &block)

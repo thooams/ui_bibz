@@ -62,6 +62,8 @@ module UiBibz::Ui::Core::Forms::Dropdowns
   #   end
   #
   class Dropdown < UiBibz::Ui::Core::Component
+    include UiBibz::Ui::Concerns::HtmlConcern
+
     def initialize(content, options = nil, html_options = nil, &block)
       super
       @items = []
@@ -92,16 +94,6 @@ module UiBibz::Ui::Core::Forms::Dropdowns
     # See UiBibz::Ui::Core::Forms::Dropdowns::Components::DropdownLink
     def link(content = nil, options = nil, html_options = nil, &block)
       @items << UiBibz::Ui::Core::Forms::Dropdowns::Components::DropdownLink.new(content, options, html_options, &block).render
-    end
-
-    # Add html component
-    def html(content = nil, &block)
-      if !block.nil?
-        context = eval('self', block.binding) # rubocop:disable Style/EvalWithLocation
-        @items << context.capture(&block)
-      else
-        @items << content
-      end
     end
 
     def id

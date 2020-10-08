@@ -55,10 +55,12 @@ module UiBibz::Ui::Core::Notifications
   #   end
   #
   class ProgressBar < UiBibz::Ui::Core::Component
+    include UiBibz::Ui::Concerns::HtmlConcern
+
     # See UiBibz::Ui::Core::Component.initialize
     def initialize(content = nil, options = nil, html_options = nil, &block)
       super
-      @bars = []
+      @items = []
     end
 
     # Render html tag
@@ -67,7 +69,7 @@ module UiBibz::Ui::Core::Notifications
     end
 
     def bar(content = nil, options = nil, html_options = nil, &block)
-      @bars << UiBibz::Ui::Core::Notifications::Components::Bar.new(content, options, html_options, &block).render
+      @items << UiBibz::Ui::Core::Notifications::Components::Bar.new(content, options, html_options, &block).render
     end
 
     private
@@ -77,8 +79,8 @@ module UiBibz::Ui::Core::Notifications
     end
 
     def bars
-      if !@bars.empty?
-        @bars
+      if !@items.empty?
+        @items
       elsif options[:stacked]
         stacked_bars
       else

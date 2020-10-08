@@ -47,6 +47,7 @@ module UiBibz::Ui::Core::Forms::Choices
   #   end
   #
   class ChoiceGroup < UiBibz::Ui::Core::Forms::Buttons::ButtonGroup
+    include UiBibz::Ui::Concerns::HtmlConcern
     attr_reader :errors, :required_fields, :items
 
     # See UiBibz::Ui::Core::Forms::Choices::Button.initialize

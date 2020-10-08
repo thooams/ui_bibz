@@ -55,4 +55,16 @@ class SurroundFieldTest < ActionView::TestCase
 
     assert_equal expected, actual
   end
+
+  test 'surround_field with html' do
+    actual = UiBibz::Ui::Core::Forms::Surrounds::SurroundField.new.tap do |sf|
+      sf.html 'Content'
+      sf.html do
+        " Content 2"
+      end
+    end.render
+    expected = "<div class=\"input-group ui_surround_field\">Content Content 2</div>"
+
+    assert_equal expected, actual
+  end
 end

@@ -72,6 +72,8 @@ module UiBibz::Ui::Core::Navigations
   #   end
   #
   class Navbar < UiBibz::Ui::Core::Component
+    include UiBibz::Ui::Concerns::HtmlConcern
+
     # See UiBibz::Ui::Core::Component.initialize
     def initialize(content = nil, options = nil, html_options = nil, &block)
       super

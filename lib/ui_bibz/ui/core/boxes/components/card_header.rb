@@ -39,6 +39,7 @@ module UiBibz::Ui::Core::Boxes::Components
   #   end.render
   #
   class CardHeader < UiBibz::Ui::Core::Component
+    include UiBibz::Ui::Concerns::HtmlConcern
     # See UiBibz::Ui::Core::Component.initialize
 
     # Render html tag

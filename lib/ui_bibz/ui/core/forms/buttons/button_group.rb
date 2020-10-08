@@ -47,6 +47,8 @@ module UiBibz::Ui::Core::Forms::Buttons
   #   end
   #
   class ButtonGroup < UiBibz::Ui::Core::Component
+    include UiBibz::Ui::Concerns::HtmlConcern
+
     # See UiBibz::Ui::Core::Component.initialize
     def initialize(content = nil, options = nil, html_options = nil, &block)
       super

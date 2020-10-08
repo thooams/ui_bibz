@@ -68,6 +68,8 @@ module UiBibz::Ui::Core::Navigations
   #   ui_breadcrumb(@users, { link_label: name, link_url: user_path(:id) })
   #
   class Breadcrumb < UiBibz::Ui::Core::Component
+    include UiBibz::Ui::Concerns::HtmlConcern
+
     # See UiBibz::Ui::Core::Component.initialize
     def initialize(content = nil, options = nil, html_options = nil, &block)
       super

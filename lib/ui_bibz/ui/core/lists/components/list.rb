@@ -56,6 +56,8 @@ module UiBibz::Ui::Core::Lists::Components
   #   end.render
   #
   class List < UiBibz::Ui::Core::Component
+    include UiBibz::Ui::Concerns::HtmlConcern
+
     # See UiBibz::Ui::Core::Component.initialize
 
     # Render html tag

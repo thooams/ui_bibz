@@ -104,6 +104,8 @@ module UiBibz::Ui::Ux::Tables
   #     end
   #   end
   class TableCard < UiBibz::Ui::Core::Boxes::Card
+    include UiBibz::Ui::Concerns::HtmlConcern
+
     # See UiBibz::Ui::Core::Boxes::Card.initialize
     def initialize(content = nil, options = nil, html_options = nil, &block)
       super

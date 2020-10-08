@@ -75,6 +75,12 @@ module UiBibz
     # Base
     autoload :Base, 'ui_bibz/ui/base'
 
+    # Concerns
+    module Concerns
+      autoload :HtmlConcern,         'ui_bibz/ui/concerns/html_concern'
+      autoload :CardItemableConcern, 'ui_bibz/ui/concerns/card_itemable_concern'
+    end
+
     # Core
     module Core
       module Boxes

@@ -39,6 +39,8 @@ module UiBibz::Ui::Ux::Containers
   #   end
   #
   class Panel < UiBibz::Ui::Core::Component
+    include UiBibz::Ui::Concerns::HtmlConcern
+
     def initialize(content = nil, options = nil, html_options = nil, &block)
       super
       @items = []

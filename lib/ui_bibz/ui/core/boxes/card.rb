@@ -5,7 +5,6 @@ require 'ui_bibz/ui/core/boxes/components/card_footer'
 require 'ui_bibz/ui/core/boxes/components/card_body'
 require 'ui_bibz/ui/core/boxes/components/card_image'
 require 'ui_bibz/ui/core/boxes/components/card_list_group'
-require 'ui_bibz/ui/core/boxes/concerns/card_itemable_concern'
 require 'ui_bibz/ui/core/boxes/components/card_row'
 module UiBibz::Ui::Core::Boxes
   # Create a card
@@ -89,7 +88,7 @@ module UiBibz::Ui::Core::Boxes
   #   end
   #
   class Card < UiBibz::Ui::Core::Component
-    include CardItemableConcern
+    include UiBibz::Ui::Concerns::CardItemableConcern
 
     # See UiBibz::Ui::Core::Component.initialize
     def initialize(content = nil, options = nil, html_options = nil, &block)

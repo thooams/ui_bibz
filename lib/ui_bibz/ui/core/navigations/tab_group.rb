@@ -60,6 +60,8 @@ module UiBibz::Ui::Core::Navigations
   #   end
   #
   class TabGroup < UiBibz::Ui::Core::Navigations::Nav
+    include UiBibz::Ui::Concerns::HtmlConcern
+
     # See UiBibz::Ui::Core::Component.initialize
 
     # Add nav link items

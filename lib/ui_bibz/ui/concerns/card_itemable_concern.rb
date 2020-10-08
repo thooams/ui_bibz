@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
-module CardItemableConcern
+module UiBibz::Ui::Concerns::CardItemableConcern #:nodoc:
   extend ActiveSupport::Concern
+  include UiBibz::Ui::Concerns::HtmlConcern
 
   included do
     # Add Header which is a component

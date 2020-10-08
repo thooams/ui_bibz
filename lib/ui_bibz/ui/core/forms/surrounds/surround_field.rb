@@ -50,6 +50,7 @@ module UiBibz::Ui::Core::Forms::Surrounds
   #   end
   #
   class SurroundField < UiBibz::Ui::Core::Component
+    include UiBibz::Ui::Concerns::HtmlConcern
     attr_reader :errors, :required_fields
 
     # See UiBibz::Ui::Core::Component.initialize
@@ -130,10 +131,6 @@ module UiBibz::Ui::Core::Forms::Surrounds
 
     def auto_complete_field(content = nil, options = nil, html_options = nil, &block)
       @items << UiBibz::Ui::Core::Forms::Texts::AutoCompleteField.new(content, options, html_options, &block).render
-    end
-
-    def html(content)
-      @items << content
     end
 
     # Not correctly implemented

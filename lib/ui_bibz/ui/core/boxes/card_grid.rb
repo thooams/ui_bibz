@@ -31,6 +31,8 @@ module UiBibz::Ui::Core::Boxes
   #   end.render
   #
   class CardGrid < UiBibz::Ui::Core::Layouts::Row
+    include UiBibz::Ui::Concerns::HtmlConcern
+
     # See UiBibz::Ui::Core::Component.initialize
     def initialize(content = nil, options = nil, html_options = nil, &block)
       super
