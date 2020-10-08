@@ -33,6 +33,7 @@ module UiBibzInputs
   autoload :UiTextFieldInput,           'ui_bibz/inputs/ui_bibz_inputs/ui_text_field_input'
   autoload :UiFileFieldInput,           'ui_bibz/inputs/ui_bibz_inputs/ui_file_field_input'
   autoload :UiRangeFieldInput,          'ui_bibz/inputs/ui_bibz_inputs/ui_range_field_input'
+  autoload :UiSliderFieldInput,         'ui_bibz/inputs/ui_bibz_inputs/ui_slider_field_input'
 end
 
 module UiBibz

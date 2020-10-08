@@ -239,6 +239,16 @@ test1</textarea></div></form>"
     assert_equal expected, actual
   end
 
+  test 'slider field' do
+    actual = simple_form_for @user do |f|
+      f.input :name_en, as: :ui_slider_field
+    end
+
+    expected = "<form class=\"simple_form edit_user\" id=\"edit_user_1\" action=\"/users/1\" accept-charset=\"UTF-8\" method=\"post\"><input type=\"hidden\" name=\"_method\" value=\"patch\" /><div class=\"form-group ui_slider_field optional user_name_en\"><label class=\"control-label ui_slider_field optional\" for=\"user_name_en\">Name en</label><div class=\"ui_slider_field optional slider\"><div><div class=\"slider-inverse-left\" style=\"width: 100%\"></div><div class=\"slider-inverse-right\" style=\"width: 100%\"></div><div class=\"slider-range\" style=\"left: 0%; right: 0%\"></div><div class=\"slider-thumb slider-thumb-left\" style=\"left: 0%\"></div><div class=\"slider-thumb slider-thumb-right\" style=\"left: 100%\"></div></div><input type=\"range\" name=\"user[name_en_min]\" id=\"user_name_en_min\" value=\"0\" max=\"100\" min=\"0\" step=\"1\" /><input type=\"range\" name=\"user[name_en_max]\" id=\"user_name_en_max\" value=\"100\" max=\"100\" min=\"0\" step=\"1\" /></div></div></form>"
+
+    assert_equal expected, actual
+  end
+
   # test 'choice field' do
   #   actual = ui_form_for @user do |f|
   #     f.ui_choice_group do |cg|

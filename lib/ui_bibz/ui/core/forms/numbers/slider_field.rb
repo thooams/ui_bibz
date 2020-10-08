@@ -54,8 +54,8 @@ module UiBibz::Ui::Core::Forms::Numbers
     def pre_render
       content_tag :div, html_options do
         concat slider_html
-        concat range_field_tag("#{content}_min", options[:value] || options[:thumb_min] || 0, range_html_options)
-        concat range_field_tag("#{content}_min", options[:value] || options[:thumb_max] || 100, range_html_options)
+        concat range_field_tag(options[:input_name_min] || range_name('_min'), options[:thumb_min] || 0, range_html_options)
+        concat range_field_tag(options[:input_name_max] || range_name('_max'), options[:thumb_max] || 100, range_html_options)
       end
     end
 
@@ -119,6 +119,14 @@ module UiBibz::Ui::Core::Forms::Numbers
 
     def disabled
       'disabled' if options[:state] == :disabled || html_options[:disabled]
+    end
+
+    def range_name(suffix)
+      if content.end_with?(']')
+        content.clone.insert(-2, suffix)
+      else
+        "#{content}#{suffix}"
+      end
     end
   end
 end
