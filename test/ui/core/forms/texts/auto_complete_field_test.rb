@@ -16,7 +16,7 @@ class AutoCompleteFieldTest < ActionView::TestCase
     options = options_for_select(2.times.map { |i| "option #{i}" })
     actual = UiBibz::Ui::Core::Forms::Texts::AutoCompleteField.new('test', { option_tags: options, refresh: { target: { url: '/' } } }, { id: 'test' }).render
     expected = "<div class=\"field-refresh input-group ui_surround_field\"><input type=\"text\" name=\"test\" id=\"test\" class=\"form-control auto-complete-field\" autocomplete=\"true\" list=\"test-datalist\" /><datalist id=\"test-datalist\"><option value=\"option 0\">option 0</option>
-<option value=\"option 1\">option 1</option></datalist><div class=\"input-group-btn\"><span data-connect=\"{&quot;events&quot;:&quot;click&quot;,&quot;mode&quot;:&quot;remote&quot;,&quot;target&quot;:{&quot;selector&quot;:&quot;#test-datalist&quot;,&quot;url&quot;:&quot;/&quot;,&quot;data&quot;:[]}}\" class=\"btn-secondary ui-bibz-connect btn input-refresh-button\"><i class=\"glyph fas fa-sync-alt\"></i> </span></div></div>"
+<option value=\"option 1\">option 1</option></datalist><span data-connect=\"{&quot;events&quot;:&quot;click&quot;,&quot;mode&quot;:&quot;remote&quot;,&quot;target&quot;:{&quot;selector&quot;:&quot;#test-datalist&quot;,&quot;url&quot;:&quot;/&quot;,&quot;data&quot;:[]}}\" class=\"btn-secondary ui-bibz-connect btn input-refresh-button\"><i class=\"glyph fas fa-sync-alt\"></i> </span></div>"
 
     assert_equal expected, actual
   end
@@ -25,7 +25,7 @@ class AutoCompleteFieldTest < ActionView::TestCase
     options = options_for_select(2.times.map { |i| "option #{i}" })
     actual = UiBibz::Ui::Core::Forms::Texts::AutoCompleteField.new('test', { option_tags: options, append: 'Append content', refresh: { target: { url: '/' } } }, { id: 'test' }).render
     expected = "<div class=\"field-refresh input-group ui_surround_field\"><span class=\"input-group-text\">Append content</span><input type=\"text\" name=\"test\" id=\"test\" class=\"form-control auto-complete-field\" autocomplete=\"true\" list=\"test-datalist\" /><datalist id=\"test-datalist\"><option value=\"option 0\">option 0</option>
-<option value=\"option 1\">option 1</option></datalist><div class=\"input-group-btn\"><span data-connect=\"{&quot;events&quot;:&quot;click&quot;,&quot;mode&quot;:&quot;remote&quot;,&quot;target&quot;:{&quot;selector&quot;:&quot;#test-datalist&quot;,&quot;url&quot;:&quot;/&quot;,&quot;data&quot;:[]}}\" class=\"btn-secondary ui-bibz-connect btn input-refresh-button\"><i class=\"glyph fas fa-sync-alt\"></i> </span></div></div>"
+<option value=\"option 1\">option 1</option></datalist><span data-connect=\"{&quot;events&quot;:&quot;click&quot;,&quot;mode&quot;:&quot;remote&quot;,&quot;target&quot;:{&quot;selector&quot;:&quot;#test-datalist&quot;,&quot;url&quot;:&quot;/&quot;,&quot;data&quot;:[]}}\" class=\"btn-secondary ui-bibz-connect btn input-refresh-button\"><i class=\"glyph fas fa-sync-alt\"></i> </span></div>"
 
     assert_equal expected, actual
   end
