@@ -55,9 +55,7 @@ module UiBibzInputs
     end
 
     def input_attribute_name
-      new_attribute_name = "#{ @builder.lookup_model_names.first }"
-      new_attribute_name += "[#{ @builder.lookup_model_names.second }_attributes]" if @builder.lookup_model_names.second
-      new_attribute_name += "[#{ attribute_name }]"
+      "#{@builder.object_name}[#{attribute_name}]"
     end
 
     def collection
