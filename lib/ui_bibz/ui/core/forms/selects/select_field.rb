@@ -65,7 +65,7 @@ module UiBibz::Ui::Core::Forms::Selects
     private
 
     def component_html_classes
-      super << ['select-field', 'form-control', 'custom-select', size]
+      super << ['select-field', 'form-control', 'form-select', size]
     end
 
     def component_options
@@ -73,7 +73,7 @@ module UiBibz::Ui::Core::Forms::Selects
     end
 
     def size
-      "custom-select-#{options[:size]}" unless options[:size].nil?
+      "form-select-#{options[:size]}" unless options[:size].nil?
     end
   end
 end
