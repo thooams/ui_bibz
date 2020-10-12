@@ -60,7 +60,7 @@ module UiBibz::Ui::Core::Forms::Choices
       content_tag(:div, html_options.except(:id, 'data-action')) do
         concat hidden_field_tag content, '0', id: "#{content}-hidden"
         concat check_box_tag content, options[:value] || '1', options[:checked] || html_options[:checked], checkbox_html_options
-        concat label_tag label_name, label_content, class: 'form-check-label'
+        concat label_tag(label_name, label_content, class: 'form-check-label') if options[:label] != false
       end
     end
 
@@ -89,11 +89,15 @@ module UiBibz::Ui::Core::Forms::Choices
     end
 
     def component_html_classes
-      super << ['form-check', inline]
+      super << component_wrapper_html_classes
     end
 
     def inline
       'form-check-inline' if options[:inline]
+    end
+
+    def component_wrapper_html_classes
+      ['form-check', inline]
     end
   end
 end

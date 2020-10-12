@@ -59,7 +59,7 @@ module UiBibz::Ui::Core::Forms::Choices
     def radio_field_html_tag
       content_tag :div, html_options.except(:id) do
         concat radio_button_tag content, options[:value], options[:checked] || false, checkbox_html_options
-        concat label_tag label_name, label_content, class: 'form-check-label'
+        concat label_tag(label_name, label_content, class: 'form-check-label') if options[:label] != false
       end
     end
 
@@ -76,6 +76,14 @@ module UiBibz::Ui::Core::Forms::Choices
     end
 
     def component_html_classes
+      super << component_wrapper_html_classes
+    end
+
+    def inline
+      'form-check-inline' if options[:inline]
+    end
+
+    def component_wrapper_html_classes
       ['form-check', inline]
     end
   end

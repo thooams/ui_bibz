@@ -6,8 +6,16 @@ module UiBibz::Ui::Core::Forms::Surrounds
 
     private
 
+    def component_html_options
+      { label: false }
+    end
+
+    def component_wrapper_html_classes
+      inline
+    end
+
     def component_html_classes
-      super << 'input-group-addon'
+      super << 'input-group-text'
     end
   end
 end
