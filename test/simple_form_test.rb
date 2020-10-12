@@ -82,7 +82,7 @@ class SimpleFormTest < ActionView::TestCase
       f.input :name_fr, as: :ui_markdown_editor_field
     end
 
-    expected = "<form class=\"simple_form edit_user\" id=\"edit_user_1\" action=\"/users/1\" accept-charset=\"UTF-8\" method=\"post\"><input type=\"hidden\" name=\"_method\" value=\"patch\" /><div class=\"form-group ui_markdown_editor_field optional user_name_fr\"><label class=\"control-label ui_markdown_editor_field optional\" for=\"user_name_fr\">Name fr</label><textarea name=\"user[name_fr]\" id=\"user_name_fr\" class=\"ui_markdown_editor_field optional\" data-provide=\"markdown\" data-iconlibrary=\"fa-5\">
+    expected = "<form class=\"simple_form edit_user\" id=\"edit_user_1\" action=\"/users/1\" accept-charset=\"UTF-8\" method=\"post\"><input type=\"hidden\" name=\"_method\" value=\"patch\" /><div class=\"form-group ui_markdown_editor_field optional user_name_fr\"><label class=\"control-label ui_markdown_editor_field optional\" for=\"user_name_fr\">Name fr</label><textarea name=\"user[name_fr]\" id=\"user_name_fr\" class=\"ui_markdown_editor_field optional\" data-provide=\"markdown\" data-iconlibrary=\"fa\">
 test1</textarea></div></form>"
 
     assert_equal expected, actual
