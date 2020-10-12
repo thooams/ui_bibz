@@ -40,23 +40,23 @@ module UiBibz::Ui::Ux::Tables
     def search_field_html
       # add surround_field maybe ?
       content_tag :div, html_options do
-        concat content_tag(:span, UiBibz::Ui::Core::Icons::Glyph.new('search').render, class: 'input-group-addon')
+        concat content_tag(:span, UiBibz::Ui::Core::Icons::Glyph.new('search').render, class: 'input-group-text')
         concat tag(:input, type: 'search', value: search_content, name: 'search', class: 'form-control', placeholder: search_placeholder_field)
         concat tag(:input, type: 'hidden', name: 'link_type', value: 'search')
-        concat content_tag(:span, UiBibz::Ui::Core::Icons::Glyph.new('times-circle').render, class: 'clear-search-btn input-group-addon')
+        concat content_tag(:span, UiBibz::Ui::Core::Icons::Glyph.new('times-circle').render, class: 'clear-search-btn input-group-text')
       end
     end
 
     def search_field_html_in_wrap
       content_tag :div, html_options do
-        concat content_tag(:span, UiBibz::Ui::Core::Icons::Glyph.new('search').render, class: 'input-group-addon')
+        concat content_tag(:span, UiBibz::Ui::Core::Icons::Glyph.new('search').render, class: 'input-group-text')
         store.parameters.with_indifferent_access.reject { |k, _| default_parameters?(k) }.each do |k, v|
           concat tag(:input, type: 'hidden', name: k, value: v)
         end
         concat tag(:input, type: 'hidden', name: 'store_id', value: store.id) unless store.id.nil? # if there is more one table in html page
         concat tag(:input, type: 'hidden', name: 'link_type', value: 'search')
         concat tag(:input, type: 'search', value: search_content, name: 'search', class: 'form-control', placeholder: search_placeholder_field)
-        concat content_tag(:span, clear_button, class: 'input-group-btn clear-search-btn')
+        concat clear_button
       end
     end
 
@@ -69,7 +69,7 @@ module UiBibz::Ui::Ux::Tables
     end
 
     def clear_button
-      content_tag :button, UiBibz::Ui::Core::Icons::Glyph.new('times-circle').render, type: :button, class: 'btn btn-secondary'
+      content_tag :button, UiBibz::Ui::Core::Icons::Glyph.new('times-circle').render, type: :button, class: 'btn btn-secondary input-group-btn clear-search-btn'
     end
 
     def component_html_classes
