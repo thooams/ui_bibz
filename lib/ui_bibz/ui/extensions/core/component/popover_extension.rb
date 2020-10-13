@@ -8,7 +8,7 @@ module PopoverExtension
                        trigger offset fallback_placement boundary sanitize white_list sanitize_fn].freeze
 
   def popover_data_html
-    unless options[:popover].blank?
+    if options[:popover].present?
       add_html_data :toggle, value: 'popover'
       add_html_data :content, value: (options[:popover].is_a?(String) ? options[:popover] : options[:popover][:content])
     end

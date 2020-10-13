@@ -22,15 +22,15 @@ class StoreTest < ActionView::TestCase
   end
 
   test 'total pages' do
-    assert_equal @store.total_pages, 3
+    assert_equal(3, @store.total_pages)
   end
 
   test 'current page' do
-    assert_equal @store.current_page, 1
+    assert_equal(1, @store.current_page)
   end
 
   test 'limit value' do
-    assert_equal @store.limit_value, 10
+    assert_equal(10, @store.limit_value)
   end
 
   test 'model' do
@@ -38,10 +38,10 @@ class StoreTest < ActionView::TestCase
   end
 
   test 'records' do
-    assert_equal @store.records.count, 25
+    assert_equal(25, @store.records.count)
   end
 
   test 'controller' do
-    assert_equal @store.controller, 'users'
+    assert_equal('users', @store.controller)
   end
 end

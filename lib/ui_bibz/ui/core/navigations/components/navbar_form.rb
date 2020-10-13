@@ -53,7 +53,7 @@ module UiBibz::Ui::Core::Navigations
       @content      = block
       @model_or_url = model_or_url
       @options      = options
-      @html_options = !%i[form_for ui_form_for].include?(type) ? html_options_for_form(@model_or_url, new_option) : new_option
+      @html_options = %i[form_for ui_form_for].exclude?(type) ? html_options_for_form(@model_or_url, new_option) : new_option
     end
 
     # Render html tag

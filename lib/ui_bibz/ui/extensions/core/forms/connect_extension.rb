@@ -14,7 +14,7 @@ module ConnectExtension
 
   def connect_opts
     selector = options[:refresh][:target][:selector]
-    options[:refresh][:target][:selector] = selector.blank? ? "##{connect_options_selector}" : selector
+    options[:refresh][:target][:selector] = selector.presence || "##{connect_options_selector}"
 
     options[:refresh].merge({
                               connect: {

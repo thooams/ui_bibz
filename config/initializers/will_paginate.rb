@@ -49,7 +49,8 @@ module WillPaginate
         if page == current_page
           tag :li, tag(:span, page, class: 'page-link'), class: 'page-item active'
         else
-          link_options.merge! class: 'page-link', rel: rel_value(page)
+          link_options[:class] = 'page-link'
+          link_options[:rel] = rel_value(page)
           tag :li, link(page, page, link_options), class: 'page-item'
         end
       end

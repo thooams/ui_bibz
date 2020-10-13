@@ -62,7 +62,7 @@ module UiBibz::Concerns::Models::Searchable
       sql = generate_parent_sort_query sql if @params[:parent]
 
       # Main query with argument or not
-      sql = search_by_query sql unless @tmp_params[:search].blank?
+      sql = search_by_query sql if @tmp_params[:search].present?
 
       generate_sql sql, column_args
     end

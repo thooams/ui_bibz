@@ -82,12 +82,18 @@ module UiBibz::Ui::Core::Navigations
     # Add nav link items
     # See UiBibz::Ui::Core::Navigations::NavLink
     def link(content = nil, options = {}, html_options = nil, &block)
-      block_given? ? content.merge!({ nav_type: type, nav_tags: nav_tags }) : options.merge!({ nav_type: type, nav_tags: nav_tags })
+      if block_given?
+        content[:nav_type] = type
+        content[:nav_tags] = nav_tags
+      else
+        options[:nav_type] = type
+        options[:nav_tags] = nav_tags
+      end
       @items << NavLink.new(content, options, html_options, &block)
     end
 
     def text(content = nil, options = {}, html_options = nil, &block)
-      block_given? ? content.merge!({ nav_type: type }) : options.merge!({ nav_type: type })
+      block_given? ? content[:nav_type] = type : options[:nav_type] = type
       @items << NavText.new(content, options, html_options, &block)
     end
 
