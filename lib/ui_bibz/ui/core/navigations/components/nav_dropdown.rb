@@ -60,7 +60,7 @@ module UiBibz::Ui::Core::Navigations
     end
 
     def link_html
-      link_to button_content, '#', class: join_classes(size, 'dropdown-toggle', 'nav-link'), 'data-toggle' => 'dropdown', 'aria-expanded' => false
+      link_to button_content, '#', class: join_classes(size, state, 'dropdown-toggle', 'nav-link'), 'data-toggle' => 'dropdown', 'aria-expanded' => false
     end
   end
 end

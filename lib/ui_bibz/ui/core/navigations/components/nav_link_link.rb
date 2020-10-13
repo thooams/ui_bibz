@@ -48,7 +48,7 @@ module UiBibz::Ui::Core::Navigations
         html_tag_base.merge("aria-controls": sanitize_text(content))
       else
         {}
-      end
+      end.merge(options[:a_html] || {})
     end
   end
 end
