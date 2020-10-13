@@ -5,7 +5,7 @@ module UiBibz
   SLUG                = 'ui_bibz'
   BOOTSTRAP_VERSION   = '5.0.0.alpha2'
   DESCRIPTION         = "A Rails Interface Framework using Bootstrap #{BOOTSTRAP_VERSION}."
-  SUMMARY             = 'Create your project with Ui Bibz. Over a thirty reusable components built to provide dropdowns, input groups, navigation, alerts, and much more without writing html.'
+  SUMMARY             = "Ui Bibz is a Ui Framework that allows you to build an interface very quickly and simply using Bootstrap #{BOOTSTRAP_VERSION}."
   LICENSE             = 'MIT'
   FONTAWESOME_VERSION = '5.14.0'
   HOMEPAGE            = 'http://thooams.github.io/Ui-Bibz/'
