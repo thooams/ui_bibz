@@ -47,6 +47,7 @@ module UiBibz::Ui::Core::Boxes::Components
 
     # See UiBibz::Ui::Core::Component.initialize
     def initialize(content = nil, options = nil, html_options = nil, &block)
+      content = content.is_a?(Integer) ? { num: content } : content
       super
       @items = [@content]
     end
