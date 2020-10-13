@@ -61,11 +61,20 @@ module UiBibz::Ui::Core::Forms::Files
     end
 
     def label_content
-      options[:value] || ''
+      format_value(options[:value])
     end
 
     def component_html_classes
       super << "custom-file"
+    end
+
+    def format_value(value)
+      if value.is_a? ActiveStorage::Attached::One
+        return '' unless value.attached?
+        return value.attachment.blob.filename
+      end
+
+      return value.to_s
     end
 
   end
