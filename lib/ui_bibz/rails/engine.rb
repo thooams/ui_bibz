@@ -22,14 +22,6 @@ module UiBibz
         ActionView::Base.include UiBibzForm
       end
 
-      # initializer 'font-awesome-sass.assets.precompile', group: :all do |app|
-      #   %w[eot svg ttf woff woff2].each do |ext|
-      #     app.config.assets.precompile << "fonts/fa-brands-400.#{ext}"
-      #     app.config.assets.precompile << "fonts/fa-regular-400.#{ext}"
-      #     app.config.assets.precompile << "fonts/fa-solid-900.#{ext}"
-      #   end
-      # end
-
       config.after_initialize do
         warn '[Ui Bibz] Ui Bibz is not configured in the application and will use the default values. Use `rails generate ui_bibz:install` to generate the Ui Bibz configuration.' unless UiBibz.configured?
       end
