@@ -167,3 +167,6 @@ Style/StringConcatenation: # (new in 0.89)
 
 Rails/ContentTag:
   Enabled: false
+
+Rails/OutputSafety:
+  Enabled: false
