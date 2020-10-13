@@ -27,8 +27,6 @@ Gem::Specification.new do |s|
   s.require_paths = %w[lib vendor]
 
   # Rails gems
-  s.add_dependency 'haml'
-  s.add_dependency 'haml-rails'
   s.add_dependency 'rails', '~> 6.0.3', '>= 6.0.3.2'
 
   # Remove these dependencies after
@@ -39,9 +37,13 @@ Gem::Specification.new do |s|
   # Development gems
   s.add_development_dependency 'codeclimate-test-reporter'
   s.add_development_dependency 'factory_bot_rails', '~> 4.0'
+  s.add_development_dependency 'haml-rails'
   s.add_development_dependency 'minitest'
   s.add_development_dependency 'overcommit'
   s.add_development_dependency 'rubocop'
+  s.add_development_dependency 'rubocop-minitest'
+  s.add_development_dependency 'rubocop-performance'
+  s.add_development_dependency 'rubocop-rails'
   s.add_development_dependency 'simplecov'
   s.add_development_dependency 'simple_form'
   s.add_development_dependency 'sqlite3'
