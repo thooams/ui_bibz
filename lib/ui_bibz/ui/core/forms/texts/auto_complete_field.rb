@@ -30,10 +30,10 @@ module UiBibz::Ui::Core::Forms::Texts
   #
   # ==== Examples
   #
-  #   options = options_for_select(2.times.map{ |i| "option #{i}" })
+  #   options = options_for_select(Array.new(2){ |i| "option #{i}" })
   #   UiBibz::Ui::Core::Forms::Texts::AutoCompleteField.new('company', { option_tags: options }, { class: 'test' })
   #
-  #   options = options_for_select(2.times.map{ |i| "option #{i}" })
+  #   options = options_for_select(Array.new(2){ |i| "option #{i}" })
   #   UiBibz::Ui::Core::Forms::Texts::AutoCompleteField.new(option_tags: options) do
   #     #content
   #   end

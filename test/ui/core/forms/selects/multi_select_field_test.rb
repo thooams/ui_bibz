@@ -4,7 +4,7 @@ require 'test_helper'
 
 class MultiSelectFieldTest < ActionView::TestCase
   test 'Multi Select Field' do
-    options  = options_for_select(2.times.map { |i| "option #{i}" })
+    options  = options_for_select(Array.new(2) { |i| "option #{i}" })
     actual   = UiBibz::Ui::Core::Forms::Selects::MultiSelectField.new('example', option_tags: options).render
     expected = "<select name=\"example[]\" id=\"example\" class=\"btn-secondary multi-select-field\" multiple=\"multiple\"><option value=\"option 0\">option 0</option>
 <option value=\"option 1\">option 1</option></select>"

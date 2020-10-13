@@ -170,3 +170,6 @@ Rails/ContentTag:
 
 Rails/OutputSafety:
   Enabled: false
+
+Rails/SkipsModelValidations:
+  Enabled: false
