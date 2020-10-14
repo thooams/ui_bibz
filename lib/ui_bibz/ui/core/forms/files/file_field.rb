@@ -55,9 +55,19 @@ module UiBibz::Ui::Core::Forms::Files
 
     def label_text_and_button
       label_tag label_name, class: 'form-file-label' do
-        concat content_tag(:span, options[:input_text] || options[:value], class: 'form-file-text')
+        concat content_tag(:span, format_value(options[:input_text] || options[:value]), class: 'form-file-text')
         concat content_tag(:span, options[:button_text] || 'Browse', class: 'form-file-button')
       end
+    end
+
+    def format_value(value)
+      if value.is_a? ActiveStorage::Attached::One
+        return '' unless value.attached?
+
+        return value.attachment.blob.filename
+      end
+
+      value.to_s
     end
 
     def label_name

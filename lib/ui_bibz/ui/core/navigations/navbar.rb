@@ -84,9 +84,15 @@ module UiBibz::Ui::Core::Navigations
     def pre_render
       content_tag :nav, html_options do
         UiBibz::Ui::Core::Layouts::Container.new(options[:container], options[:container_html]) do
-          concat title if brand_position == :left
+          if brand_position == :left
+            concat title
+            concat @navbar_toggle_html
+          end
           concat navbar_toggle_button_html
-          concat title if brand_position == :right
+          if brand_position == :right
+            concat title
+            concat @navbar_toggle_html
+          end
           concat body_html
         end.render
       end
@@ -123,6 +129,15 @@ module UiBibz::Ui::Core::Navigations
 
     def id
       @id ||= generate_id('navbar-id')
+    end
+
+    def navbar_toggle_html(content = nil, &block)
+      @navbar_toggle_html = if !block.nil?
+                              context = eval('self', block.binding) # rubocop:disable Style/EvalWithLocation
+                              context.capture(&block)
+                            else
+                              content
+                            end
     end
 
     private
