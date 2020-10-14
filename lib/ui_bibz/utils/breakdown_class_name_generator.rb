@@ -19,7 +19,7 @@ module UiBibz::Utils
       @options.each do |key, value|
         kl << write_classes(key.to_sym, value) if BREAKPOINTS.include?(key.to_sym)
       end
-      kl << write_classes(nil, @options) if kl.empty?
+      kl << write_classes(nil, @options) if kl.empty? || @options.key?('num')
 
       kl
     end
