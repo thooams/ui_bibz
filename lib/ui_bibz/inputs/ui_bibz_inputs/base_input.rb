@@ -11,9 +11,10 @@ module UiBibzInputs
     private
 
     def input_attribute_name
-      new_attribute_name = @builder.lookup_model_names.first.to_s
-      new_attribute_name += "[#{@builder.lookup_model_names.second}_attributes]" if @builder.lookup_model_names.second
-      new_attribute_name + "[#{attribute_name}]"
+      # new_attribute_name = @builder.lookup_model_names.first.to_s
+      # new_attribute_name += "[#{@builder.lookup_model_names.second}_attributes]" if @builder.lookup_model_names.second
+      # new_attribute_name + "[#{attribute_name}]"
+      "#{@builder.object_name}[#{attribute_name}]"
     end
   end
 end

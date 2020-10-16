@@ -7,11 +7,11 @@ module UiBibz
   DESCRIPTION         = "A Rails Interface Framework using Bootstrap #{BOOTSTRAP_VERSION}."
   SUMMARY             = "Ui Bibz is an Ui Framework that allows you to build an interface very quickly and simply using Bootstrap #{BOOTSTRAP_VERSION}."
   LICENSE             = 'MIT'
-  FONTAWESOME_VERSION = '5.14.0'
+  FONTAWESOME_VERSION = '5.15.1'
   HOMEPAGE            = 'http://thooams.github.io/Ui-Bibz/'
   REPO                = 'git+https://github.com/thooams/Ui-Bibz.git'
   EMAIL               = 'thomas@hummel.link'
   AUTHOR              = 'Thooams'
-  VERSION             = '3.0.0.alpha2'
+  VERSION             = '3.0.0.alpha3'
   AUTHORS = ['Thooams'].freeze
 end

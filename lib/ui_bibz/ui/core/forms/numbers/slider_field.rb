@@ -123,7 +123,7 @@ module UiBibz::Ui::Core::Forms::Numbers
 
     def range_name(suffix)
       if content.end_with?(']')
-        content.clone.insert(-2, suffix)
+        content.dup.insert(-2, suffix)
       else
         "#{content}#{suffix}"
       end
