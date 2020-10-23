@@ -3,7 +3,7 @@
 module UiBibz::Utils
   # Generate the col class name
   class BreakdownClassNameGenerator
-    POSITIONING = %i[num offset push pull].freeze
+    POSITIONING = %i[num offset push pull order].freeze
     BREAKPOINTS = UiBibz::Ui::Core::Component::BREAKPOINTS
     PARAMETERS =  BREAKPOINTS + POSITIONING + [:position]
 
@@ -50,6 +50,11 @@ module UiBibz::Utils
     # col-md-push-9
     def push(size, number)
       [@klass_name, size, 'push', number].compact.join('-')
+    end
+
+    # order-md-9
+    def order(size, number)
+      ['order', size, number].compact.join('-')
     end
 
     # col-md-pull-9

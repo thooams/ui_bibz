@@ -20,7 +20,8 @@ module UiBibz::Ui::Core::Forms::Choices
   # * +inline+ - Boolean
   # * +checked+ - Boolean
   # * +action+ - String Stimulus Option
-  # * +label+ - String
+  # * +label+ - [String/Boolean]
+  # * +boolean+ - Boolean Add an hidden field for rails
   #
   # ==== Signatures
   #
@@ -58,7 +59,7 @@ module UiBibz::Ui::Core::Forms::Choices
 
     def checkbox_field_html_tag
       content_tag(:div, html_options.except(:id, 'data-action')) do
-        concat hidden_field_tag content, '0', id: "#{content}-hidden"
+        concat hidden_field_tag content, '0', id: "#{content}-hidden" if options[:boolean]
         concat check_box_tag content, options[:value] || '1', options[:checked] || html_options[:checked], checkbox_html_options
         concat label_tag(label_name, label_content, class: 'form-check-label') if options[:label] != false
       end
@@ -70,7 +71,9 @@ module UiBibz::Ui::Core::Forms::Choices
         indeterminate: options[:indeterminate],
         "data-action": options[:action],
         class: 'form-check-input'
-      }
+      }.tap do |html|
+        html[:id] = html_options[:id] if html_options[:id]
+      end
     end
 
     def label_name

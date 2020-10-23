@@ -70,6 +70,14 @@ module UiBibz::Ui::Core::Boxes::Components
       @items << UiBibz::Ui::Core::Boxes::Components::Body::CardBodyText.new(content, options, html_options, &block).render
     end
 
+    def row(content = nil, options = nil, html_options = nil, &block)
+      @items << if tapped?(block)
+                  UiBibz::Ui::Core::Layouts::Row.new(content, options, html_options).tap(&block).render
+                else
+                  UiBibz::Ui::Core::Layouts::Row.new(content, options, html_options, &block).render
+                end
+    end
+
     private
 
     def component_html_classes
