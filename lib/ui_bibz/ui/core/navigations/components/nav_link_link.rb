@@ -23,7 +23,7 @@ module UiBibz::Ui::Core::Navigations
 
     # Render html tag
     def pre_render
-      link_to options[:url], html_options do
+      content_tag :a, { href: options[:url] }.merge(html_options) do
         concat glyph_and_content_html
         concat tag_html if options[:tag]
       end

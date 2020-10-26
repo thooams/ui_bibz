@@ -113,7 +113,7 @@ module UiBibz::Ui::Core::Forms::Dropdowns
     def button_html
       html_button = options[:html_button] || {}
       if options[:tag] == :a
-        content_tag dropdown_tag, button_content, { class: join_classes('btn', button_status, state, size, 'dropdown-toggle'), href: '#', role: 'button', 'data-toggle' => 'dropdown', 'aria-haspopup' => true, 'aria-expanded' => false, 'id' => id }.merge(html_button)
+        content_tag dropdown_tag, button_content, { class: join_classes('btn', button_status, state, size, 'dropdown-toggle'), role: 'button', 'data-toggle' => 'dropdown', 'aria-haspopup' => true, 'aria-expanded' => false, 'id' => id }.merge(html_button)
       else
         content_tag dropdown_tag, button_content, { class: join_classes('btn', button_status, state, size, 'dropdown-toggle'), type: 'button', 'data-toggle' => 'dropdown', 'aria-haspopup' => true, 'aria-expanded' => false, 'id' => id }.merge(html_button)
       end
