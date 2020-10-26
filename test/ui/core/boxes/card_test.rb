@@ -145,7 +145,7 @@ class CardTest < ActionView::TestCase
         end
       end
     end
-    expected = '<div class="card"><div class="card-header"><ul class="nav nav-tabs card-header-tabs"><li class="nav-item"><a class="nav-link" data-toggle="tab" role="tab" href="#link1">link1</a></li><li class="nav-item"><a class="nav-link" data-toggle="tab" role="tab" href="#link2">link2</a></li></ul></div></div>'
+    expected = "<div class=\"card\"><div class=\"card-header\"><ul class=\"nav nav-tabs card-header-tabs\"><li class=\"nav-item\"><a href=\"#link1\" class=\"nav-link\" data-toggle=\"tab\" role=\"tab\">link1</a></li><li class=\"nav-item\"><a href=\"#link2\" class=\"nav-link\" data-toggle=\"tab\" role=\"tab\">link2</a></li></ul></div></div>"
 
     assert_equal expected, actual
   end

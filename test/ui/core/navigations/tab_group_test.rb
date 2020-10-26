@@ -10,7 +10,7 @@ class TabGroupTest < ActionView::TestCase
       n.tab 'Profile', url: '#profile', selector: 'profile'
       n.tab 'Messages', url: '#messages', selector: 'messages'
     end
-    expected = '<ul class="nav nav-tabs"><li class="nav-item"><a class="active nav-link" data-toggle="tab" role="tab" href="#Home">Home</a></li><li class="nav-item"><a class="nav-link" data-toggle="tab" role="tab" href="#profile">Profile</a></li><li class="nav-item"><a class="nav-link" data-toggle="tab" role="tab" href="#messages">Messages</a></li></ul>'
+    expected = "<ul class=\"nav nav-tabs\"><li class=\"nav-item\"><a href=\"#Home\" class=\"active nav-link\" data-toggle=\"tab\" role=\"tab\">Home</a></li><li class=\"nav-item\"><a href=\"#profile\" class=\"nav-link\" data-toggle=\"tab\" role=\"tab\">Profile</a></li><li class=\"nav-item\"><a href=\"#messages\" class=\"nav-link\" data-toggle=\"tab\" role=\"tab\">Messages</a></li></ul>"
 
     assert_equal expected, actual
   end
@@ -21,7 +21,7 @@ class TabGroupTest < ActionView::TestCase
       n.tab 'Profile', url: '#profile', selector: 'profile'
       n.tab 'Messages', url: '#messages', selector: 'messages'
     end
-    expected = '<ul class="nav nav-tabs"><li class="nav-item"><a class="active nav-link" data-toggle="tab" role="tab" href="#Home">Home</a></li><li class="nav-item"><a class="nav-link" data-toggle="tab" role="tab" href="#profile">Profile</a></li><li class="nav-item"><a class="nav-link" data-toggle="tab" role="tab" href="#messages">Messages</a></li></ul>'
+    expected = "<ul class=\"nav nav-tabs\"><li class=\"nav-item\"><a href=\"#Home\" class=\"active nav-link\" data-toggle=\"tab\" role=\"tab\">Home</a></li><li class=\"nav-item\"><a href=\"#profile\" class=\"nav-link\" data-toggle=\"tab\" role=\"tab\">Profile</a></li><li class=\"nav-item\"><a href=\"#messages\" class=\"nav-link\" data-toggle=\"tab\" role=\"tab\">Messages</a></li></ul>"
 
     assert_equal expected, actual
   end
@@ -43,7 +43,7 @@ class TabGroupTest < ActionView::TestCase
       n.tab 'Profile', url: '#profile', selector: 'profile', label: 16
       n.tab 'Messages', url: '#messages', selector: 'messages', state: :disabled
     end
-    expected = '<ul class="nav nav-tabs justify-content-end"><li class="nav-item"><a class="active nav-link" data-toggle="tab" role="tab" href="#Home">Home</a></li><li class="nav-item"><a class="nav-link" data-toggle="tab" role="tab" href="#profile">Profile</a></li><li class="nav-item"><a class="disabled nav-link" data-toggle="tab" role="tab" href="#messages">Messages</a></li></ul>'
+    expected = "<ul class=\"nav nav-tabs justify-content-end\"><li class=\"nav-item\"><a href=\"#Home\" class=\"active nav-link\" data-toggle=\"tab\" role=\"tab\">Home</a></li><li class=\"nav-item\"><a href=\"#profile\" class=\"nav-link\" data-toggle=\"tab\" role=\"tab\">Profile</a></li><li class=\"nav-item\"><a href=\"#messages\" class=\"disabled nav-link\" data-toggle=\"tab\" role=\"tab\">Messages</a></li></ul>"
 
     assert_equal expected, actual
   end
@@ -54,7 +54,7 @@ class TabGroupTest < ActionView::TestCase
       n.tab 'Profile', url: '#profile', selector: 'profile', label: 16
       n.tab 'Messages', url: '#messages', selector: 'messages', state: :disabled
     end
-    expected = '<ul class="nav nav-tabs"><li class="nav-item"><a class="active nav-link" data-toggle="tab" role="tab" href="#Home">Home</a></li><li class="nav-item"><a class="nav-link" data-toggle="tab" role="tab" href="#profile">Profile</a></li><li class="nav-item"><a class="disabled nav-link" data-toggle="tab" role="tab" href="#messages">Messages</a></li></ul>'
+    expected = "<ul class=\"nav nav-tabs\"><li class=\"nav-item\"><a href=\"#Home\" class=\"active nav-link\" data-toggle=\"tab\" role=\"tab\">Home</a></li><li class=\"nav-item\"><a href=\"#profile\" class=\"nav-link\" data-toggle=\"tab\" role=\"tab\">Profile</a></li><li class=\"nav-item\"><a href=\"#messages\" class=\"disabled nav-link\" data-toggle=\"tab\" role=\"tab\">Messages</a></li></ul>"
 
     assert_equal expected, actual
   end

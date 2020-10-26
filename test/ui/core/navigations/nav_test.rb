@@ -10,7 +10,8 @@ class NavTest < ActionView::TestCase
       n.link 'Profile', url: '#profile', selector: 'profile'
       n.link 'Messages', url: '#messages', selector: 'messages'
     end
-    expected = '<ul class="nav nav-tabs"><li class="nav-item"><a class="active nav-link" data-toggle="tab" role="tab" href="#Home">Home</a></li><li class="nav-item"><a class="nav-link" data-toggle="tab" role="tab" href="#profile">Profile</a></li><li class="nav-item"><a class="nav-link" data-toggle="tab" role="tab" href="#messages">Messages</a></li></ul>'
+    expected = "<ul class=\"nav nav-tabs\"><li class=\"nav-item\"><a href=\"#Home\" class=\"active nav-link\" data-toggle=\"tab\" role=\"tab\">Home</a></li><li class=\"nav-item\"><a href=\"#profile\" class=\"nav-link\" data-toggle=\"tab\" role=\"tab\">Profile</a></li><li class=\"nav-item\"><a href=\"#messages\" class=\"nav-link\" data-toggle=\"tab\" role=\"tab\">Messages</a></li></ul>"
+
     assert_equal expected, actual
   end
 
@@ -20,7 +21,7 @@ class NavTest < ActionView::TestCase
       n.link 'Profile', url: '#profile', selector: 'profile', label: 16
       n.link 'Messages', url: '#messages', selector: 'messages', state: :disabled
     end
-    expected = '<ul class="nav nav-pills"><li class="nav-item"><a class="active nav-link" href="#Home">Home</a></li><li class="nav-item"><a class="nav-link" href="#profile">Profile</a></li><li class="nav-item"><a class="disabled nav-link" href="#messages">Messages</a></li></ul>'
+    expected = "<ul class=\"nav nav-pills\"><li class=\"nav-item\"><a href=\"#Home\" class=\"active nav-link\">Home</a></li><li class=\"nav-item\"><a href=\"#profile\" class=\"nav-link\">Profile</a></li><li class=\"nav-item\"><a href=\"#messages\" class=\"disabled nav-link\">Messages</a></li></ul>"
 
     assert_equal expected, actual
   end
@@ -31,7 +32,7 @@ class NavTest < ActionView::TestCase
       n.link 'Profile', url: '#profile', selector: 'profile', label: 16
       n.link 'Messages', url: '#messages', selector: 'messages', state: :disabled
     end
-    expected = '<ul class="nav justify-content-end"><li class="nav-item"><a class="active nav-link" href="#Home">Home</a></li><li class="nav-item"><a class="nav-link" href="#profile">Profile</a></li><li class="nav-item"><a class="disabled nav-link" href="#messages">Messages</a></li></ul>'
+    expected = "<ul class=\"nav justify-content-end\"><li class=\"nav-item\"><a href=\"#Home\" class=\"active nav-link\">Home</a></li><li class=\"nav-item\"><a href=\"#profile\" class=\"nav-link\">Profile</a></li><li class=\"nav-item\"><a href=\"#messages\" class=\"disabled nav-link\">Messages</a></li></ul>"
 
     assert_equal expected, actual
   end
@@ -42,7 +43,7 @@ class NavTest < ActionView::TestCase
       n.link 'Profile', url: '#profile', selector: 'profile', label: 16
       n.link 'Messages', url: '#messages', selector: 'messages', state: :disabled
     end
-    expected = '<ul class="nav"><li class="nav-item"><a class="active nav-link" href="#Home">Home</a></li><li class="nav-item"><a class="nav-link" href="#profile">Profile</a></li><li class="nav-item"><a class="disabled nav-link" href="#messages">Messages</a></li></ul>'
+    expected = "<ul class=\"nav\"><li class=\"nav-item\"><a href=\"#Home\" class=\"active nav-link\">Home</a></li><li class=\"nav-item\"><a href=\"#profile\" class=\"nav-link\">Profile</a></li><li class=\"nav-item\"><a href=\"#messages\" class=\"disabled nav-link\">Messages</a></li></ul>"
 
     assert_equal expected, actual
   end
@@ -53,7 +54,7 @@ class NavTest < ActionView::TestCase
       n.link 'Profile', url: '#profile', selector: 'profile', label: 16
       n.link 'Messages', url: '#messages', selector: 'messages', state: :disabled
     end
-    expected = '<ul class="nav flex-column"><li class="nav-item"><a class="active nav-link" href="#Home">Home</a></li><li class="nav-item"><a class="nav-link" href="#profile">Profile</a></li><li class="nav-item"><a class="disabled nav-link" href="#messages">Messages</a></li></ul>'
+    expected = "<ul class=\"nav flex-column\"><li class=\"nav-item\"><a href=\"#Home\" class=\"active nav-link\">Home</a></li><li class=\"nav-item\"><a href=\"#profile\" class=\"nav-link\">Profile</a></li><li class=\"nav-item\"><a href=\"#messages\" class=\"disabled nav-link\">Messages</a></li></ul>"
 
     assert_equal expected, actual
   end
@@ -64,7 +65,7 @@ class NavTest < ActionView::TestCase
       n.link 'Profile', url: '#profile', selector: 'profile', label: 16
       n.link 'Messages', url: '#messages', selector: 'messages', state: :disabled
     end
-    expected = "<div class=\"list-group\" role=\"tablist\"><a class=\"active list-group-item list-group-item-action\" data-toggle=\"tab\" role=\"tab\" aria-controls=\"Home\" href=\"#Home\">Home</a><a class=\"list-group-item list-group-item-action\" data-toggle=\"tab\" role=\"tab\" aria-controls=\"Profile\" href=\"#profile\">Profile</a><a class=\"disabled list-group-item list-group-item-action\" data-toggle=\"tab\" role=\"tab\" aria-controls=\"Messages\" href=\"#messages\">Messages</a></div>"
+    expected = "<div class=\"list-group\" role=\"tablist\"><a href=\"#Home\" class=\"active list-group-item list-group-item-action\" data-toggle=\"tab\" role=\"tab\" aria-controls=\"Home\">Home</a><a href=\"#profile\" class=\"list-group-item list-group-item-action\" data-toggle=\"tab\" role=\"tab\" aria-controls=\"Profile\">Profile</a><a href=\"#messages\" class=\"disabled list-group-item list-group-item-action\" data-toggle=\"tab\" role=\"tab\" aria-controls=\"Messages\">Messages</a></div>"
 
     assert_equal expected, actual
   end
