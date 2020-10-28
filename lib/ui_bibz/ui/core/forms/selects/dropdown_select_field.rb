@@ -1,11 +1,10 @@
 # frozen_string_literal: true
 
-require 'ui_bibz/ui/extensions/core/forms/surround_extension'
 module UiBibz::Ui::Core::Forms::Selects
   # Create a DropdownSelectField
   #
-  # This element is an extend of UiBibz::Ui::Core::Component.
-  # source : http://silviomoreto.github.io/bootstrap-select/examples/
+  # This element is an extend of UiBibz::Ui::Core::Forms::Buttons::Button
+  # source : http://loudev.com/
   #
   # ==== Attributes
   #
@@ -17,28 +16,15 @@ module UiBibz::Ui::Core::Forms::Selects
   #
   # You can add HTML attributes using the +html_options+.
   # You can pass arguments in options attribute:
-  # * +status+ - status of element with symbol value:
-  #   (+:primary+, +:secondary+, +:info+, +:warning+, +:danger+, +:link+)
   # * +option_tags+ - Array, Object [required]
+  # * +multiple+ - Boolean
+  # * +clickable_opt_group+ - Boolean
+  # * +collapsible_opt_group+ - Boolean
   # * +searchable+ - Boolean
-  # * +max_options+ - Integer
-  # * +selected_text_format+ - String
-  # * +menu_size+ - Integer
-  # * +header+ - String
-  # * +actions_box+ - Boolean
-  # * +show_tick+ - Boolean
-  # * +show_menu_arrow+ - Boolean
-  # * +dropup+ - Boolean
+  # * +select_all_option+ - Boolean
   # * +append+ - String, Html
   # * +prepend+ - String, Html
   # * +connect+ - Hash
-  #   * +event+ - String
-  #   * +mode+ - String
-  #   * +target+ - Hash
-  #     * +selector+ - String
-  #     * +data+ - Array
-  #     * +url+ - String
-  # * +refresh+ - Hash
   #   * +event+ - String
   #   * +mode+ - String
   #   * +target+ - Hash
@@ -58,7 +44,7 @@ module UiBibz::Ui::Core::Forms::Selects
   #
   #   UiBibz::Ui::Core::Forms::Selects::DropdownSelectField.new('fruits', { option_tags: list_of_fruits, searchable: true }, { class: 'test' })
   #
-  #   UiBibz::Ui::Core::Forms::Selects::DropdownSelectField.new({ option_tags: list_of_fruits, actions_box: true }, { class: 'test' }) do
+  #   UiBibz::Ui::Core::Forms::Selects::DropdownSelectField.new({ option_tags: list_of_fruits, select_all_option: true }, { class: 'test' }) do
   #     'fruits'
   #   end
   #
@@ -67,77 +53,71 @@ module UiBibz::Ui::Core::Forms::Selects
   #   dropdown_select_field(content, options = {}, html_options = {})
   #
   class DropdownSelectField < UiBibz::Ui::Core::Forms::Selects::AbstractSelect
-    # See UiBibz::Ui::Core::Component.initialize
+    # See UiBibz::Ui::Core::Forms::Buttons::Button.initialize
 
     private
 
     def component_html_options
-      super.merge({}.tap do |h|
-        h[:multiple] = true if options[:multiple]
-        h[:disabled] = options[:state] == :disabled
-        h[:include_blank] = options[:include_blank]
-        h[:title] = h.delete(:prompt) unless options[:prompt].nil?
-      end)
+      super.merge({
+                    multiple: options[:multiple],
+                    disabled: options[:state] == :disabled,
+                    include_blank: false,
+                    prompt: false
+                  })
     end
 
     def component_html_classes
-      super << ['dropdown-select-field', show_tick, dropup]
+      super << [size, type, status, button_outline, 'multi-select-field']
     end
 
     def component_html_data
       super
+      clickable_opt_group
+      collapsible_opt_group
       searchable
-      max_options
-      selected_text_format
-      menu_size
-      style
-      header
-      actions_box
-      add_status
+      select_all_options
+      number_displayed
     end
 
-    ############################ Data html options
-
-    def max_options
-      add_html_data('max_options', value: options[:max_options]) if options[:max_options]
+    def clickable_opt_group
+      add_html_data('enable_clickable_opt_groups') if options[:clickable_opt_group]
     end
 
-    def selected_text_format
-      add_html_data('selected_text_format', value: options[:selected_text_format]) if options[:selected_text_format]
+    def collapsible_opt_group
+      add_html_data('enable_collapsible_opt_groups') if options[:collapsible_opt_group]
     end
 
     def searchable
-      add_html_data('live_search') if options[:searchable]
+      add_html_data('enable_filtering') if options[:searchable]
     end
 
-    def style
-      add_html_data('style', value: "btn-#{options[:status] || :secondary}")
+    def number_displayed
+      add_html_data('number_displayed') if options[:number_displayed]
     end
 
-    def menu_size
-      add_html_data('size', value: options[:menu_size]) if options[:menu_size]
+    def select_all_options
+      add_html_data('include_select_all_option') if options[:select_all_options]
     end
 
-    def actions_box
-      add_html_data('actions_box') if options[:actions_box]
+    def status
+      options[:status].nil? ? 'btn-secondary' : "btn-#{options[:status]}"
     end
 
-    def header
-      add_html_data('header', value: options[:header]) if options[:header]
+    def type
+      'btn-block' if options[:type] == :block
     end
 
-    def add_status
-      add_html_data('style', value: "btn-#{options[:status]}") if options[:status]
+    # :lg, :sm or :xs
+    def size
+      "btn-#{options[:size]}" if options[:size]
     end
 
-    ############################# Css classes
-
-    def show_tick
-      'show-tick' if options[:show_tick]
+    def button_outline
+      ['btn', outline, @status || :secondary].compact.join('-')
     end
 
-    def dropup
-      'dropup' if options[:dropup]
+    def outline
+      'outline' if @options[:outline]
     end
   end
 end

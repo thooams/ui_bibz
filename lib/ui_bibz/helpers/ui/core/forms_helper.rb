@@ -62,7 +62,8 @@ module UiBibz::Helpers::Ui::Core::FormsHelper
   # +options+ (Hash)
   # +html_options+ (Hash)
   def ui_multi_select_field(content = nil, options = nil, html_options = nil, &block)
-    UiBibz::Ui::Core::Forms::Selects::MultiSelectField.new(content, options, html_options, &block).render
+    options = (options || {}).merge(multiple: true)
+    UiBibz::Ui::Core::Forms::Selects::DropdownSelectField.new(content, options, html_options, &block).render
   end
 
   # Formula Field Component

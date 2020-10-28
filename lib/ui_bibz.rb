@@ -24,7 +24,6 @@ module UiBibzInputs
   autoload :UiFormulaFieldInput,        'ui_bibz/inputs/ui_bibz_inputs/ui_formula_field_input'
   autoload :UiMarkdownEditorFieldInput, 'ui_bibz/inputs/ui_bibz_inputs/ui_markdown_editor_field_input'
   autoload :UiMultiColumnFieldInput,    'ui_bibz/inputs/ui_bibz_inputs/ui_multi_column_field_input'
-  autoload :UiMultiSelectFieldInput,    'ui_bibz/inputs/ui_bibz_inputs/ui_multi_select_field_input'
   autoload :UiNumberFieldInput,         'ui_bibz/inputs/ui_bibz_inputs/ui_number_field_input'
   autoload :UiRadioFieldInput,          'ui_bibz/inputs/ui_bibz_inputs/ui_radio_field_input'
   autoload :UiSelectFieldInput,         'ui_bibz/inputs/ui_bibz_inputs/ui_select_field_input'

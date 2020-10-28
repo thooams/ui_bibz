@@ -42,28 +42,6 @@ class SimpleFormTest < ActionView::TestCase
     assert_equal expected, actual
   end
 
-  test 'dropdown field select input in simple form' do
-    actual = simple_form_for @user do |f|
-      f.input :name_fr, as: :ui_dropdown_select_field, collection: @users, label_method: :name_fr
-    end
-
-    expected = "<form class=\"simple_form edit_user\" id=\"edit_user_1\" action=\"/users/1\" accept-charset=\"UTF-8\" method=\"post\"><input type=\"hidden\" name=\"_method\" value=\"patch\" /><div class=\"form-group ui_dropdown_select_field optional user_name_fr\"><label class=\"control-label ui_dropdown_select_field optional\" for=\"user_name_fr\">Name fr</label><select name=\"user[name_fr]\" id=\"user_name_fr\" class=\"dropdown-select-field\" data-style=\"btn-secondary\"><option value=\"1\">test1</option>
-<option value=\"2\">test2</option></select></div></form>"
-
-    assert_equal expected, actual
-  end
-
-  test 'dropdown field select input with grouped option in simple form' do
-    actual = simple_form_for @user do |f|
-      f.input :name_fr, as: :ui_dropdown_select_field, collection: @continents, toto: 'lala', grouped: true, group_method: :countries
-    end
-
-    expected = "<form class=\"simple_form edit_user\" id=\"edit_user_1\" action=\"/users/1\" accept-charset=\"UTF-8\" method=\"post\"><input type=\"hidden\" name=\"_method\" value=\"patch\" /><div class=\"form-group ui_dropdown_select_field optional user_name_fr\"><label class=\"control-label ui_dropdown_select_field optional\" for=\"user_name_fr\">Name fr</label><select name=\"user[name_fr]\" id=\"user_name_fr\" class=\"dropdown-select-field\" data-style=\"btn-secondary\"><optgroup label=\"Europe\"><option value=\"1\">France</option>
-<option value=\"2\">Deutchland</option></optgroup></select></div></form>"
-
-    assert_equal expected, actual
-  end
-
   test 'formula field input in simple form' do
     @user.price         = 3.0
     @user.price_formula = '1+2'
@@ -101,10 +79,10 @@ test1</textarea></div></form>"
 
   test 'multi select field input in simple form' do
     actual = simple_form_for @user do |f|
-      f.input :name_fr, as: :ui_multi_select_field, collection: @users, label_method: :name_fr
+      f.input :name_fr, as: :ui_dropdown_select_field, multiple: true, collection: @users, label_method: :name_fr
     end
 
-    expected = "<form class=\"simple_form edit_user\" id=\"edit_user_1\" action=\"/users/1\" accept-charset=\"UTF-8\" method=\"post\"><input type=\"hidden\" name=\"_method\" value=\"patch\" /><div class=\"form-group ui_multi_select_field optional user_name_fr\"><label class=\"control-label ui_multi_select_field optional\" for=\"user_name_fr\">Name fr</label><select name=\"user[name_fr][]\" id=\"user_name_fr\" class=\"btn-secondary multi-select-field\" multiple=\"multiple\"><option value=\"1\">test1</option>
+    expected = "<form class=\"simple_form edit_user\" id=\"edit_user_1\" action=\"/users/1\" accept-charset=\"UTF-8\" method=\"post\"><input type=\"hidden\" name=\"_method\" value=\"patch\" /><div class=\"form-group ui_dropdown_select_field optional user_name_fr\"><label class=\"control-label ui_dropdown_select_field optional\" for=\"user_name_fr\">Name fr</label><select name=\"user[name_fr][]\" id=\"user_name_fr\" class=\"btn-secondary multi-select-field\" multiple=\"multiple\"><option value=\"1\">test1</option>
 <option value=\"2\">test2</option></select></div></form>"
 
     assert_equal expected, actual
@@ -112,10 +90,10 @@ test1</textarea></div></form>"
 
   test 'multi select input with grouped option in simple form' do
     actual = simple_form_for @user do |f|
-      f.input :name_fr, as: :ui_multi_select_field, collection: @continents, toto: 'lala', grouped: true, group_method: :countries
+      f.input :name_fr, as: :ui_dropdown_select_field, multiple: true, collection: @continents, toto: 'lala', grouped: true, group_method: :countries
     end
 
-    expected = "<form class=\"simple_form edit_user\" id=\"edit_user_1\" action=\"/users/1\" accept-charset=\"UTF-8\" method=\"post\"><input type=\"hidden\" name=\"_method\" value=\"patch\" /><div class=\"form-group ui_multi_select_field optional user_name_fr\"><label class=\"control-label ui_multi_select_field optional\" for=\"user_name_fr\">Name fr</label><select name=\"user[name_fr][]\" id=\"user_name_fr\" class=\"btn-secondary multi-select-field\" multiple=\"multiple\"><optgroup label=\"Europe\"><option value=\"1\">France</option>
+    expected = "<form class=\"simple_form edit_user\" id=\"edit_user_1\" action=\"/users/1\" accept-charset=\"UTF-8\" method=\"post\"><input type=\"hidden\" name=\"_method\" value=\"patch\" /><div class=\"form-group ui_dropdown_select_field optional user_name_fr\"><label class=\"control-label ui_dropdown_select_field optional\" for=\"user_name_fr\">Name fr</label><select name=\"user[name_fr][]\" id=\"user_name_fr\" class=\"btn-secondary multi-select-field\" multiple=\"multiple\"><optgroup label=\"Europe\"><option value=\"1\">France</option>
 <option value=\"2\">Deutchland</option></optgroup></select></div></form>"
 
     assert_equal expected, actual
