@@ -40,6 +40,8 @@ module UiBibz::Ui::Concerns::CardItemableConcern #:nodoc:
 
     # Add Image which is a component
     def image(content = nil, options = nil, html_options = nil, &block)
+      # Add position top to the image if the image is in top of the card
+      options = (options || {}).merge(position: :top) if @header.nil? && @items.empty? && options.try(:[], :position).nil?
       @items << UiBibz::Ui::Core::Boxes::Components::CardImage.new(content, options, html_options, &block).render
     end
 

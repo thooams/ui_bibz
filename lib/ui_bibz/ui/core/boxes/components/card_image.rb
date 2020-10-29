@@ -48,7 +48,7 @@ module UiBibz::Ui::Core::Boxes::Components
     end
 
     def position
-      "card-img-#{@options[:position] || :top}"
+      "card-img-#{@options[:position] || :top}" if @options[:position]
     end
   end
 end
