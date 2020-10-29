@@ -144,7 +144,7 @@ module UiBibz::Ui::Core::Forms::Dropdowns
     end
 
     def inline
-      'btn-group' if @options[:inline]
+      'btn-group' if @options[:inline] || @options[:position]
     end
 
     def without_caret
