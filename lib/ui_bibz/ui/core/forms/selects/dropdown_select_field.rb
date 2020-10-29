@@ -18,6 +18,8 @@ module UiBibz::Ui::Core::Forms::Selects
   # You can pass arguments in options attribute:
   # * +option_tags+ - Array, Object [required]
   # * +multiple+ - Boolean
+  # * +outline+ - Boolean
+  # * +theme+ - String
   # * +clickable_opt_group+ - Boolean
   # * +collapsible_opt_group+ - Boolean
   # * +searchable+ - Boolean
@@ -67,7 +69,7 @@ module UiBibz::Ui::Core::Forms::Selects
     end
 
     def component_html_classes
-      super << [size, type, status, button_outline, 'multi-select-field']
+      [size, type, button_status, 'multi-select-field']
     end
 
     def component_html_data
@@ -99,10 +101,6 @@ module UiBibz::Ui::Core::Forms::Selects
       add_html_data('include_select_all_option') if options[:select_all_options]
     end
 
-    def status
-      options[:status].nil? ? 'btn-secondary' : "btn-#{options[:status]}"
-    end
-
     def type
       'btn-block' if options[:type] == :block
     end
@@ -112,12 +110,16 @@ module UiBibz::Ui::Core::Forms::Selects
       "btn-#{options[:size]}" if options[:size]
     end
 
-    def button_outline
-      ['btn', outline, @status || :secondary].compact.join('-')
+    def button_status
+      ['btn', outline, options[:status] || :secondary].compact.join('-')
     end
 
     def outline
-      'outline' if @options[:outline]
+      'outline' if options[:outline]
+    end
+
+    def theme
+      'dropdown-menu-dark' if @options[:theme]
     end
   end
 end
