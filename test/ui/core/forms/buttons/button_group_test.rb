@@ -43,7 +43,7 @@ class ButtonGroupTest < ActionView::TestCase
 
   test 'button group with dropdown' do
     actual = ui_button_group do |bg|
-      bg.dropdown('Dropdown', { type: :dropup, status: :success }, { id: 'dropdown-test' }) do |d|
+      bg.dropdown('Dropdown', { position: :up, status: :success }, { id: 'dropdown-test' }) do |d|
         d.link 'Link 1', url: '#link1', glyph: 'eye'
       end
     end

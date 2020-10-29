@@ -27,6 +27,10 @@ module UiBibz::Ui::Core::Forms::Dropdowns
   #   * +size+ - Integer
   #   * +type+ - Symbol
   # * +html_button+ - Hash
+  # * +position+ - Symbol
+  #   (+:up+, +:right+, +:down+, +:left+)
+  # * +alignement+ - Symbol
+  #   (+:right)
   #
   # ==== Signatures
   #
@@ -103,7 +107,7 @@ module UiBibz::Ui::Core::Forms::Dropdowns
     protected
 
     def component_html_classes
-      [type, open, inline, without_caret, keep_open]
+      [position, open, inline, without_caret, keep_open]
     end
 
     def button_content
@@ -120,19 +124,19 @@ module UiBibz::Ui::Core::Forms::Dropdowns
     end
 
     def ul_html
-      content_tag :div, @items.join.html_safe, class: join_classes('dropdown-menu', theme, position, open), 'arial-labelledby' => id
+      content_tag :div, @items.join.html_safe, class: join_classes('dropdown-menu', theme, alignement, open), 'arial-labelledby' => id
     end
 
     def dropdown_tag
       options[:tag] || :button
     end
 
-    def position
-      "dropdown-menu-#{@options[:position]}" unless @options[:position].nil?
+    def alignement
+      "dropdown-menu-#{@options[:alignement]}" unless @options[:alignement].nil?
     end
 
-    def type
-      @options[:type] || 'dropdown'
+    def position
+      "drop#{@options[:position] || 'down'}"
     end
 
     def open
@@ -144,7 +148,7 @@ module UiBibz::Ui::Core::Forms::Dropdowns
     end
 
     def inline
-      'btn-group' if @options[:inline] || @options[:position]
+      'btn-group' if @options[:inline] || @options[:alignement]
     end
 
     def without_caret

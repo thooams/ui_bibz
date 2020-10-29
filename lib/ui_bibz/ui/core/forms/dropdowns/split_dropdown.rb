@@ -69,7 +69,7 @@ module UiBibz::Ui::Core::Forms::Dropdowns
     private
 
     def component_html_classes
-      ['btn-group', type]
+      ['btn-group', position, alignement, open, inline, keep_open]
     end
 
     def button_html
@@ -77,11 +77,16 @@ module UiBibz::Ui::Core::Forms::Dropdowns
     end
 
     def split_html
-      content_tag :button, split_content, class: join_classes('btn', button_status, size, 'dropdown-toggle', 'dropdown-toggle-split'), type: 'button', 'data-toggle' => 'dropdown', 'aria-haspopup' => true, 'aria-expanded' => false
+      content_tag :button, split_content, class: split_classes, type: 'button',
+                                          'data-toggle' => 'dropdown', 'aria-haspopup' => true, 'aria-expanded' => false
     end
 
     def split_content
       src_only
+    end
+
+    def split_classes
+      join_classes('btn', button_status, size, 'dropdown-toggle', 'dropdown-toggle-split')
     end
 
     def src_only
