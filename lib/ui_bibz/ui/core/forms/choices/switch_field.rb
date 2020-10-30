@@ -43,6 +43,10 @@ module UiBibz::Ui::Core::Forms::Choices
   class SwitchField < UiBibz::Ui::Core::Forms::Choices::CheckboxField
     private
 
+    def component_options
+      { boolean: true }
+    end
+
     def component_html_classes
       ['form-check', 'form-switch', inline]
     end
