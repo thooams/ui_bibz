@@ -29,7 +29,7 @@ module UiBibz::Ui::Core::Forms::Dropdowns
   # * +html_button+ - Hash
   # * +position+ - Symbol
   #   (+:up+, +:right+, +:down+, +:left+)
-  # * +alignement+ - Symbol
+  # * +alignment+ - Symbol
   #   (+:right)
   #
   # ==== Signatures
@@ -124,15 +124,15 @@ module UiBibz::Ui::Core::Forms::Dropdowns
     end
 
     def ul_html
-      content_tag :div, @items.join.html_safe, class: join_classes('dropdown-menu', theme, alignement, open), 'arial-labelledby' => id
+      content_tag :div, @items.join.html_safe, class: join_classes('dropdown-menu', theme, alignment, open), 'arial-labelledby' => id
     end
 
     def dropdown_tag
       options[:tag] || :button
     end
 
-    def alignement
-      "dropdown-menu-#{@options[:alignement]}" unless @options[:alignement].nil?
+    def alignment
+      "dropdown-menu-#{@options[:alignment]}" unless @options[:alignment].nil?
     end
 
     def position
@@ -148,7 +148,7 @@ module UiBibz::Ui::Core::Forms::Dropdowns
     end
 
     def inline
-      'btn-group' if @options[:inline] || @options[:alignement]
+      'btn-group' if @options[:inline] || @options[:alignment]
     end
 
     def without_caret

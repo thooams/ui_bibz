@@ -32,7 +32,7 @@ class DropdownTest < ActionView::TestCase
   end
 
   test 'Dropdown options' do
-    actual = UiBibz::Ui::Core::Forms::Dropdowns::Dropdown.new('Dropdown', position: :up, alignement: :right, status: :success, glyph: 'diamond').tap do |d|
+    actual = UiBibz::Ui::Core::Forms::Dropdowns::Dropdown.new('Dropdown', position: :up, alignment: :right, status: :success, glyph: 'diamond').tap do |d|
       d.link 'Link 1', url: '#link1', glyph: 'eye'
       d.header 'header'
       d.link 'Link 2', url: '#link2'

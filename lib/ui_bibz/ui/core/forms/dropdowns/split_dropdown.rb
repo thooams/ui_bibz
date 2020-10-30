@@ -69,7 +69,7 @@ module UiBibz::Ui::Core::Forms::Dropdowns
     private
 
     def component_html_classes
-      ['btn-group', position, alignement, open, inline, keep_open]
+      ['btn-group', position, alignment, open, inline, keep_open]
     end
 
     def button_html
