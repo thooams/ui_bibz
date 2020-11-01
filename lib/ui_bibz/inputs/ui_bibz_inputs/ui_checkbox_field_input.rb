@@ -4,7 +4,7 @@ module UiBibzInputs
   class UiCheckboxFieldInput < BaseInput
     include UiBibz::Ui::Core::Forms::Choices
 
-    def label
+    def label(_wrapper_options)
       false
     end
 

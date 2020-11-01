@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'ui_bibz/ui/ux/containers/components/panel_tab_group'
+require 'ui_bibz/ui/ux/containers/components/panel_header_title'
 module UiBibz::Ui::Ux::Containers::Components
   # Create a panel header
   #
@@ -42,8 +43,8 @@ module UiBibz::Ui::Ux::Containers::Components
       end
     end
 
-    def title(text)
-      @content = content_tag :div, text, class: 'panel-title'
+    def title(content = nil, options = nil, html_options = nil, &block)
+      @content = PanelHeaderTitle.new(content, options, html_options, &block).render
     end
 
     def actions(content = nil, options = nil, html_options = nil, &block)

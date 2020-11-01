@@ -57,4 +57,18 @@ class BreakdownClassNameGeneratorTest < ActionView::TestCase
 
     assert_equal expected, actual
   end
+
+  test "name generator with order" do
+    actual   = UiBibz::Utils::BreakdownClassNameGenerator.new(md: { num: 2 }, order: 2).class_names
+    expected = %w[col-md-2 order-2]
+
+    assert_equal expected, actual
+  end
+
+  test "name generator with md: 8" do
+    actual   = UiBibz::Utils::BreakdownClassNameGenerator.new(md: 8).class_names
+    expected = ["col-md-8"]
+
+    assert_equal expected, actual
+  end
 end

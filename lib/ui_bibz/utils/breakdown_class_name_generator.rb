@@ -12,6 +12,8 @@ module UiBibz::Utils
       @klass_name = klass_name
     end
 
+    # Possible options
+    # 3 or md: 3 or md: { num: 3 }, xs: { num: 4 }
     def class_names
       return @klass_name unless col_options?
 
@@ -19,9 +21,9 @@ module UiBibz::Utils
       @options.each do |key, value|
         kl << write_classes(key.to_sym, value) if BREAKPOINTS.include?(key.to_sym)
       end
-      kl << write_classes(nil, @options) if kl.empty? || @options.key?('num')
+      kl << write_classes(nil, @options)
 
-      kl
+      kl.delete_if(&:blank?)
     end
 
     private
@@ -30,11 +32,17 @@ module UiBibz::Utils
       (@options.keys.map(&:to_sym) & PARAMETERS).present?
     end
 
+    # md: 8 or md: { num: 3}, xs: { num: 4 }
     def write_classes(size, opts)
-      @position = opts[:position]
-      opts.map do |k, v|
-        send(k, size, v) if POSITIONING.include?(k.to_sym)
-      end.compact.join(' ')
+      if opts.is_a?(Hash)
+        @position = opts[:position]
+
+        opts.map do |k, v|
+          send(k, size, v) if POSITIONING.include?(k.to_sym)
+        end.compact.join(' ')
+      else
+        send('num', size, opts)
+      end
     end
 
     # col-md-9

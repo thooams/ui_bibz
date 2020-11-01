@@ -13,8 +13,11 @@ module GlyphExtension
   # Render glyph with space html
   def glyph_with_space
     out = [glyph]
-    out << ' ' if options[:text] != false
-    out << content_tag(:span, ' ', class: 'empty-space') if options[:text] == false
+    out << if options[:text] == false
+             content_tag(:span, ' ', class: 'empty-space')
+           else
+             ' '
+           end
     out.join unless glyph.nil?
   end
 
@@ -22,10 +25,9 @@ module GlyphExtension
   def glyph
     options[:content] = content if options[:text] == false
 
-    glyph_options = case options[:glyph]
-                    when Hash
+    glyph_options = if options[:glyph].is_a?(Hash)
                       options[:glyph]
-                    when String
+                    elsif options[:glyph]
                       { name: options[:glyph] }
                     else
                       {}
