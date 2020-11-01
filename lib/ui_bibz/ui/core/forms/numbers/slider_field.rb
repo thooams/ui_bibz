@@ -114,11 +114,15 @@ module UiBibz::Ui::Core::Forms::Numbers
     end
 
     def component_html_classes
-      ['slider', ('disabled' if disabled)]
+      ['slider', status, ('disabled' if disabled)]
     end
 
     def disabled
       'disabled' if options[:state] == :disabled || html_options[:disabled]
+    end
+
+    def status
+      "slider-#{options[:status]}" if options[:status]
     end
 
     def range_name(suffix)

@@ -59,7 +59,7 @@ module UiBibz::Ui::Core::Forms::Numbers
 
     def header_max
       content_tag :div, class: 'slider-header-max' do
-        concat content_tag :label, options[:label_max] || 'max: '
+        concat content_tag :label, options[:label_max] || 'Max: '
         concat content_tag :span, options[:thumb_max], "data-unit": options[:unit] || options[:unit_max]
       end
     end
