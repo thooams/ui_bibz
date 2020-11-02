@@ -29,10 +29,8 @@ module UiBibz::Ui::Core::Forms::Surrounds
   #
   # ==== Signatures
   #
-  #   UiBibz::Ui::Core::Forms::Texts::TextField.new(content, options = {}, html_options = {}).render
-  #
-  #   UiBibz::Ui::Core::Forms::Texts::TextField.new(options = {}, html_options = {}) do
-  #     content
+  #   UiBibz::Ui::Core::Forms::Surrounds::Surround.new(options = {}, html_options = {}) do |s|
+  #     s.
   #   end.render
   #
   # ==== Examples
@@ -118,15 +116,12 @@ module UiBibz::Ui::Core::Forms::Surrounds
     end
 
     def dropdown_select_field(content = nil, options = nil, html_options = nil, &block)
+      html_options = (html_options || {}).merge("data-wrapper-classes": 'input-group-btn')
       @items << UiBibz::Ui::Core::Forms::Selects::DropdownSelectField.new(content, options, html_options, &block).render
     end
 
     def select_field(content = nil, options = nil, html_options = nil, &block)
       @items << UiBibz::Ui::Core::Forms::Selects::SelectField.new(content, options, html_options, &block).render
-    end
-
-    def multi_select_field(content = nil, options = nil, html_options = nil, &block)
-      @items << UiBibz::Ui::Core::Forms::Selects::MultiSelectField.new(content, options, html_options, &block).render
     end
 
     def auto_complete_field(content = nil, options = nil, html_options = nil, &block)

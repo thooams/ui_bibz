@@ -12,7 +12,7 @@ module UiBibz::Utils
     end
 
     def translate
-      I18n.t(@translation, options_with_default)
+      I18n.t(@translation, **options_with_default)
     end
 
     private
