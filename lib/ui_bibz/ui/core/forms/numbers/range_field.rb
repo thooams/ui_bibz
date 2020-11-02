@@ -20,6 +20,12 @@ module UiBibz::Ui::Core::Forms::Numbers
   # * +step+ - [Float, Integer]
   # * +in+ - Array
   # * +within+ - Array
+  # * +status+ - status of element with symbol value:
+  #   (+:primary+, +:secondary+, +:success+, :info+, +:warning+, +:danger+, +:light+, +:dark+)
+  # * +thumb_status+ - status of the thumb:
+  #   (+:primary+, +:secondary+, +:success+, :info+, +:warning+, +:danger+, +:light+, +:dark+)
+  # * +track_status+ - status of track:
+  #   (+:primary+, +:secondary+, +:success+, :info+, +:warning+, +:danger+, +:light+, +:dark+)
   #
   # ==== Signatures
   #
@@ -75,7 +81,19 @@ module UiBibz::Ui::Core::Forms::Numbers
     end
 
     def component_html_classes
-      'form-range'
+      ['form-range', status, thumb_status, track_status]
+    end
+
+    def status
+      "form-range-#{options[:status]}" if options[:status]
+    end
+
+    def thumb_status
+      "form-range-thumb-#{options[:thumb_status]}" if options[:thumb_status]
+    end
+
+    def track_status
+      "form-range-track-#{options[:track_status]}" if options[:track_status]
     end
 
     def option_label(value)
