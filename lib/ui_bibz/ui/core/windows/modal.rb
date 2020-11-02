@@ -88,7 +88,7 @@ module UiBibz::Ui::Core::Windows
     private
 
     def modal_dialog_classes
-      UiBibz::Utils::Screwdriver.join_classes('modal-dialog', size, position, scrollable)
+      UiBibz::Utils::Screwdriver.join_classes('modal-dialog', fullscreen_size, size, position, scrollable)
     end
 
     def component_html_classes
@@ -105,8 +105,12 @@ module UiBibz::Ui::Core::Windows
     end
 
     # :xl, :lg, :sm or :xs
-    def size
+    def fullscreen_size
       [modal, fullscreen, @options[:size], down].compact.join('-')
+    end
+
+    def size
+      [modal, @options[:size]].compact.join('-') if @options[:size]
     end
 
     def fullscreen
