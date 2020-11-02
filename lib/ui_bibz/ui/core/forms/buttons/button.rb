@@ -16,7 +16,7 @@ module UiBibz::Ui::Core::Forms::Buttons
   # You can add HTML attributes using the +html_options+.
   # You can pass arguments in options attribute:
   # * +status+ - status of element with symbol value:
-  #   (+:primary+, +:secondary+, +:info+, +:warning+, +:danger+, +:link+)
+  #   (+:primary+, +:secondary+, +:success+, :info+, +:warning+, +:danger+, +:light+, +:dark+)
   # * +size+
   #   (+:xs+, +:sm+, +:lg+)
   # * +outline+ - Boolean
