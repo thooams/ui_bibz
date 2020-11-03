@@ -3,16 +3,14 @@
 require 'test_helper'
 class NavbarTest < ActionView::TestCase
   test 'Navbar' do
-    actual = UiBibz::Ui::Core::Navigations::Navbar.new.tap do |nb|
-    end
+    actual = UiBibz::Ui::Core::Navigations::Navbar.new
     expected = "<nav class=\"navbar navbar-light navbar-expand-lg\"><div class=\"container\"><button class=\"navbar-toggler hidden-sm-up\" type=\"button\" data-toggle=\"collapse\" data-target=\"##{actual.id}\">☰</button><div class=\"navbar-collapse collapse\" id=\"#{actual.id}\"></div></div></nav>"
 
     assert_equal expected, actual.render
   end
 
   test 'Navbar with options' do
-    actual = UiBibz::Ui::Core::Navigations::Navbar.new(title: 'Brand', expand_size: :xs, status: :primary, position: :top, brand_position: :right).tap do |nb|
-    end
+    actual = UiBibz::Ui::Core::Navigations::Navbar.new(title: 'Brand', expand_size: :xs, status: :primary, position: :top, brand_position: :right)
     expected = "<nav class=\"bg-primary navbar navbar-light fixed-top navbar-expand-xs\"><div class=\"container\"><button class=\"navbar-toggler hidden-sm-up\" type=\"button\" data-toggle=\"collapse\" data-target=\"##{actual.id}\">☰</button><span class=\"navbar-brand\">Brand</span><div class=\"navbar-collapse collapse\" id=\"#{actual.id}\"></div></div></nav>"
 
     assert_equal expected, actual.render
