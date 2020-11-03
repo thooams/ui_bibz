@@ -11,8 +11,8 @@ class SliderFieldTest < ActionView::TestCase
   end
 
   test 'slider field with options' do
-    actual = UiBibz::Ui::Core::Forms::Numbers::SliderField.new('myrange', status: :secondary, thumb_max: 2, thumb_min: -7, min: -9, max: 6, step: 2, input_name_max: "price_max", input_name_min: "price_min").render
-    expected = "<div class=\"slider-secondary slider\" min=\"-9\" max=\"6\" step=\"2\"><div><div class=\"slider-inverse-left\" style=\"width: 100%\"></div><div class=\"slider-inverse-right\" style=\"width: 100%\"></div><div class=\"slider-range\" style=\"left: 13%; right: 26%\"></div><div class=\"slider-thumb slider-thumb-left\" style=\"left: 13%\"></div><div class=\"slider-thumb slider-thumb-right\" style=\"left: 74%\"></div></div><input type=\"range\" name=\"price_min\" id=\"price_min\" value=\"-7\" max=\"6\" min=\"-9\" step=\"2\" /><input type=\"range\" name=\"price_max\" id=\"price_max\" value=\"2\" max=\"6\" min=\"-9\" step=\"2\" /></div>"
+    actual = UiBibz::Ui::Core::Forms::Numbers::SliderField.new('myrange', status: :secondary, track_status: :dark, thumb_max: 2, thumb_min: -7, min: -9, max: 6, step: 2, input_name_max: "price_max", input_name_min: "price_min").render
+    expected = "<div class=\"slider-secondary slider slider-track-dark\" min=\"-9\" max=\"6\" step=\"2\"><div><div class=\"slider-inverse-left\" style=\"width: 100%\"></div><div class=\"slider-inverse-right\" style=\"width: 100%\"></div><div class=\"slider-range\" style=\"left: 13%; right: 26%\"></div><div class=\"slider-thumb slider-thumb-left\" style=\"left: 13%\"></div><div class=\"slider-thumb slider-thumb-right\" style=\"left: 74%\"></div></div><input type=\"range\" name=\"price_min\" id=\"price_min\" value=\"-7\" max=\"6\" min=\"-9\" step=\"2\" /><input type=\"range\" name=\"price_max\" id=\"price_max\" value=\"2\" max=\"6\" min=\"-9\" step=\"2\" /></div>"
 
     assert_equal expected, actual
   end

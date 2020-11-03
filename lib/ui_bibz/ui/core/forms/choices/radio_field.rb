@@ -67,7 +67,7 @@ module UiBibz::Ui::Core::Forms::Choices
       {
         disabled: options[:state] == :disabled,
         "data-action": options[:action],
-        class: 'form-check-input'
+        class: UiBibz::Utils::Screwdriver.join_classes('form-check-input', input_status)
       }
     end
 
@@ -77,6 +77,12 @@ module UiBibz::Ui::Core::Forms::Choices
 
     def component_html_classes
       super << component_wrapper_html_classes
+    end
+
+    def status; end
+
+    def input_status
+      "form-check-input-#{options[:status]}" if options[:status]
     end
 
     def inline

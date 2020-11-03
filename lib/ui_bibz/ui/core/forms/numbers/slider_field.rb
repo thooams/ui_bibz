@@ -20,6 +20,10 @@ module UiBibz::Ui::Core::Forms::Numbers
   # * +step+ - [Float, Integer]
   # * +in+ - Array
   # * +within+ - Array
+  # * +status+ - status of element with symbol value:
+  #   (+:primary+, +:secondary+, +:success+, :info+, +:warning+, +:danger+, +:light+, +:dark+)
+  # * +track_status+ - status of track:
+  #   (+:primary+, +:secondary+, +:success+, :info+, +:warning+, +:danger+, +:light+, +:dark+)
   #
   # ==== Signatures
   #
@@ -114,7 +118,7 @@ module UiBibz::Ui::Core::Forms::Numbers
     end
 
     def component_html_classes
-      ['slider', status, ('disabled' if disabled)]
+      ['slider', status, track_status, ('disabled' if disabled)]
     end
 
     def disabled
@@ -123,6 +127,10 @@ module UiBibz::Ui::Core::Forms::Numbers
 
     def status
       "slider-#{options[:status]}" if options[:status]
+    end
+
+    def track_status
+      "slider-track-#{options[:track_status]}" if options[:track_status]
     end
 
     def range_name(suffix)
