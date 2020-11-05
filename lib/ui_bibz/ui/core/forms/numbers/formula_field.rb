@@ -49,10 +49,12 @@ module UiBibz::Ui::Core::Forms::Numbers
 
     def formula_field_html_tag
       UiBibz::Ui::Core::Forms::Surrounds::SurroundField.new(class: join_classes('formula_field', state, size)).tap do |sf|
+        sf.addon @options[:append] unless @options[:append].nil?
         sf.text_field formula_field_name, nil, text_field_formula_html_options
         sf.addon '=', class: 'formula-field-sign'
         sf.text_field content, nil, text_field_input_html_options
         sf.addon formula_field_alert_glyph, { class: 'formula-field-alert' }, { data: { toggle: 'tooltip' } }
+        sf.addon @options[:prepend] unless @options[:prepend].nil?
       end.render
     end
 
