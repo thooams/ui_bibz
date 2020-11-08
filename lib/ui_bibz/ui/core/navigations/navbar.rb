@@ -31,6 +31,8 @@ module UiBibz::Ui::Core::Navigations
   # * +title+ - String
   # * +container+ - Hash container options
   # * +container_html+ - Hash container html options
+  # * +expand_size+ - Symbol size
+  # (+:sm+, +:md+, +:lg+, +:xl+, +:xxl+)
   #
   # ==== Signatures
   #
@@ -165,7 +167,7 @@ module UiBibz::Ui::Core::Navigations
     end
 
     def expand_size
-      "navbar-expand-#{@options[:expand_size] || :lg}" # unless @options[:expand_size].nil?
+      "navbar-expand-#{@options[:expand_size] || :lg}" unless options[:collapsible] == false
     end
 
     def position

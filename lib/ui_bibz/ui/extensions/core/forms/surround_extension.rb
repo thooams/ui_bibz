@@ -7,7 +7,7 @@ module SurroundExtension
   private
 
   def surrounded?
-    !options[:append].nil? || !options[:prepend].nil? || !options[:refresh].nil? || !options[:surrounded].nil?
+    options[:append].present? || options[:prepend].present? || options[:refresh].present? || options[:surrounded].present?
   end
 
   def surround_wrapper_tag(ct_tag)
