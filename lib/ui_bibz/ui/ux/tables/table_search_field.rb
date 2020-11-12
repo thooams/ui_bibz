@@ -13,12 +13,12 @@ module UiBibz::Ui::Ux::Tables
 
     # Render html tag
     def pre_render
-      if options[:wrap_form] != false
+      if options[:wrap_form] == false
+        search_field_html
+      else
         form_tag(url_for(url_parameters), method: :get, class: 'form-table-search-field') do
           search_field_html_in_wrap
         end
-      else
-        search_field_html
       end
     end
 

@@ -34,12 +34,12 @@ module UiBibz::Ui::Ux::Tables
 
     # Render html tag
     def render
-      if @per_page_field.options[:wrap_form] != false
+      if @per_page_field.options[:wrap_form] == false
+        per_page_html
+      else
         form_tag(url_for(url_parameters), method: :get) do
           per_page_html_in_wrap
         end
-      else
-        per_page_html
       end
     end
 

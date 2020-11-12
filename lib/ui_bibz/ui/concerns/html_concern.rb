@@ -5,11 +5,11 @@ module UiBibz::Ui::Concerns::HtmlConcern #:nodoc:
 
   included do
     def html(content = nil, &block)
-      if !block.nil?
+      if block.nil?
+        @items << content
+      else
         context = eval('self', block.binding) # rubocop:disable Style/EvalWithLocation
         @items << context.capture(&block)
-      else
-        @items << content
       end
     end
   end

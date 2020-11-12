@@ -134,11 +134,11 @@ module UiBibz::Ui::Core::Navigations
     end
 
     def navbar_toggle_html(content = nil, &block)
-      @navbar_toggle_html = if !block.nil?
+      @navbar_toggle_html = if block.nil?
+                              content
+                            else
                               context = eval('self', block.binding) # rubocop:disable Style/EvalWithLocation
                               context.capture(&block)
-                            else
-                              content
                             end
     end
 
