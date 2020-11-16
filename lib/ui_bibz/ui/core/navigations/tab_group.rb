@@ -83,6 +83,10 @@ module UiBibz::Ui::Core::Navigations
       ['nav', 'nav-tabs', position, justify, fill]
     end
 
+    def component_html_options
+      { role: 'tablist' }
+    end
+
     def type
       'nav-tabs'
     end
