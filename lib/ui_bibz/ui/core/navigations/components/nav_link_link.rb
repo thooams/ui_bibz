@@ -45,7 +45,7 @@ module UiBibz::Ui::Core::Navigations
       when 'nav-tabs'
         html_tag_base
       when 'list-group'
-        html_tag_base.merge("aria-controls": sanitize_text(content))
+        html_tag_base.merge("aria-controls": sanitize_text(content).parameterize)
       else
         {}
       end.merge(options[:a_html] || {})

@@ -69,7 +69,7 @@ module UiBibz::Ui::Ux::Tables
     end
 
     def clear_button
-      content_tag :button, UiBibz::Ui::Core::Icons::Glyph.new('times-circle').render, type: :button, class: 'btn btn-secondary input-group-btn clear-search-btn'
+      content_tag :button, UiBibz::Ui::Core::Icons::Glyph.new('times-circle', text: false, label: 'Clear Search').render, type: :button, class: 'btn btn-secondary input-group-btn clear-search-btn'
     end
 
     def component_html_classes

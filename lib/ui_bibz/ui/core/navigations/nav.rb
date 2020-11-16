@@ -120,7 +120,7 @@ module UiBibz::Ui::Core::Navigations
     end
 
     def component_html_options
-      @options[:type] == :list ? { role: 'tablist' } : super
+      %i[tabs list].include?(@options[:type]) ? { role: 'tablist' } : super
     end
 
     # tabs or pills

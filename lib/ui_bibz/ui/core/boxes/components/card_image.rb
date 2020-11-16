@@ -38,7 +38,11 @@ module UiBibz::Ui::Core::Boxes::Components
     # Render html tag
     def pre_render
       # image_tag content, html_options
-      image_tag content, html_options
+      if options[:pack]
+        image_pack_tag content, html_options
+      else
+        image_tag content, html_options
+      end
     end
 
     private
