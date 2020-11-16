@@ -111,7 +111,7 @@ module UiBibz::Ui::Core::Forms::Dropdowns
     end
 
     def button_content
-      glyph_and_content_html(options[:text].nil? ? @content : '').html_safe
+      glyph_and_content_html(@content)
     end
 
     def button_html
