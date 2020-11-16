@@ -63,7 +63,7 @@ module UiBibz::Ui::Core::Forms::Buttons
     def button_html_tag
       content_tag :button, html_options do
         concat spinner_html unless options[:spinner].nil?
-        concat glyph_and_content_html(options[:text].nil? ? @content : '')
+        concat glyph_and_content_html(@content)
         concat badge_html unless options[:badge].nil?
       end
     end

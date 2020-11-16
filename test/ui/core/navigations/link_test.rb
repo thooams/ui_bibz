@@ -13,7 +13,7 @@ class LinkTest < ActionView::TestCase
 
   test 'Link without text' do
     actual = ui_link 'My link', glyph: 'gem', text: false, url: '#link'
-    expected = '<a href="#link"><i class="glyph fas fa-gem"></i><span class="empty-space"> </span></a>'
+    expected = "<a href=\"#link\"><i class=\"glyph fas fa-gem\"></i> <span class=\"visually-hidden\">My link</span></a>"
 
     assert_equal expected, actual
   end

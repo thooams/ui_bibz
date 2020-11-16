@@ -6,7 +6,7 @@ class BadgeTest < ActionView::TestCase
 
   test 'badge' do
     actual   = ui_badge 'state', status: :success, glyph: 'pencil'
-    expected = '<span class="bg-success badge"><i class="glyph fas fa-pencil"></i>  state</span>'
+    expected = "<span class=\"bg-success badge\"><i class=\"glyph fas fa-pencil\"></i> state</span>"
 
     assert_equal expected, actual
   end
@@ -20,7 +20,7 @@ class BadgeTest < ActionView::TestCase
 
   test 'badge pill' do
     actual   = ui_badge 'state', status: :success, type: :pill, glyph: 'pencil'
-    expected = '<span class="bg-success badge rounded-pill"><i class="glyph fas fa-pencil"></i>  state</span>'
+    expected = "<span class=\"bg-success badge rounded-pill\"><i class=\"glyph fas fa-pencil\"></i> state</span>"
 
     assert_equal expected, actual
   end

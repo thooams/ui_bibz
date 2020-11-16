@@ -61,7 +61,7 @@ module UiBibz::Ui::Core::Icons
 
     # Render html tag
     def pre_render
-      [content_tag(:i, '', html_options), options[:label]].compact.join(' ').html_safe
+      [content_tag(:i, '', html_options), label].compact.join(' ').html_safe
     end
 
     private
@@ -137,6 +137,14 @@ module UiBibz::Ui::Core::Icons
 
     def match_style
       { solid: 'fas', regular: 'far', light: 'fal', brands: 'fab' }
+    end
+
+    def label
+      if options[:text] == false
+        content_tag :span, options[:label], class: 'visually-hidden'
+      else
+        options[:label]
+      end
     end
   end
 end

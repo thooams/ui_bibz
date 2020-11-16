@@ -39,7 +39,7 @@ class DropdownTest < ActionView::TestCase
       d.divider
       d.link 'Link3', url: '#link3'
     end
-    expected = "<div class=\"dropup btn-group\"><button class=\"btn btn-success dropdown-toggle\" type=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\" id=\"#{actual.id}\"><i class=\"glyph fas fa-diamond\"></i>  Dropdown</button><div class=\"dropdown-menu dropdown-menu-right\" arial-labelledby=\"#{actual.id}\"><a class=\"dropdown-item\" href=\"#link1\"><i class=\"glyph fas fa-eye\"></i>  Link 1</a><h6 class=\"dropdown-header\" role=\"presentation\">header</h6><a class=\"dropdown-item\" href=\"#link2\">Link 2</a><div class=\"dropdown-divider\"></div><a class=\"dropdown-item\" href=\"#link3\">Link3</a></div></div>"
+    expected = "<div class=\"dropup btn-group\"><button class=\"btn btn-success dropdown-toggle\" type=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\" id=\"#{actual.id}\"><i class=\"glyph fas fa-diamond\"></i> Dropdown</button><div class=\"dropdown-menu dropdown-menu-right\" arial-labelledby=\"#{actual.id}\"><a class=\"dropdown-item\" href=\"#link1\"><i class=\"glyph fas fa-eye\"></i> Link 1</a><h6 class=\"dropdown-header\" role=\"presentation\">header</h6><a class=\"dropdown-item\" href=\"#link2\">Link 2</a><div class=\"dropdown-divider\"></div><a class=\"dropdown-item\" href=\"#link3\">Link3</a></div></div>"
 
     assert_equal expected, actual.render
   end

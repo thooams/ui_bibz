@@ -147,7 +147,7 @@ test1</textarea></div></form>"
     end
 
     expected = "<form class=\"simple_form edit_user\" id=\"edit_user_1\" action=\"/users/1\" accept-charset=\"UTF-8\" method=\"post\"><input type=\"hidden\" name=\"_method\" value=\"patch\" /><div class=\"form-group ui_select_field optional user_name_fr\"><label class=\"control-label ui_select_field optional\" for=\"user_name_fr\">Name fr</label><div class=\"field-refresh input-group ui_surround_field\"><select name=\"user[name_fr]\" id=\"user_name_fr\" class=\"form-control select-field form-select\"><option value=\"1\">test1</option>
-<option value=\"2\">test2</option></select><span data-connect=\"{&quot;events&quot;:&quot;click&quot;,&quot;mode&quot;:&quot;remote&quot;,&quot;target&quot;:{&quot;selector&quot;:&quot;#user_name_fr&quot;,&quot;url&quot;:&quot;&quot;,&quot;data&quot;:[]}}\" class=\"btn-secondary ui-bibz-connect btn input-refresh-button\"><i class=\"glyph fas fa-sync-alt\"></i> </span></div></div></form>"
+<option value=\"2\">test2</option></select><span data-connect=\"{&quot;events&quot;:&quot;click&quot;,&quot;mode&quot;:&quot;remote&quot;,&quot;target&quot;:{&quot;selector&quot;:&quot;#user_name_fr&quot;,&quot;url&quot;:&quot;&quot;,&quot;data&quot;:[]}}\" class=\"btn-secondary ui-bibz-connect btn input-refresh-button\"><i class=\"glyph fas fa-sync-alt\"></i></span></div></div></form>"
 
     assert_equal expected, actual
   end

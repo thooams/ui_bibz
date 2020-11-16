@@ -3,28 +3,11 @@
 module GlyphExtension
   # Render glyph and content html
   def glyph_and_content_html(content_html = nil)
-    [glyph_with_space, ct_html(content_html)].compact.join(' ').html_safe
-  end
-
-  def ct_html(content_html)
-    content_html || content if options[:text].nil? || options[:text] == true
-  end
-
-  # Render glyph with space html
-  def glyph_with_space
-    out = [glyph]
-    out << if options[:text] == false
-             content_tag(:span, ' ', class: 'empty-space')
-           else
-             ' '
-           end
-    out.join unless glyph.nil?
+    options[:glyph] ? generate_glyph(content_html) : content_html || content
   end
 
   # Render glyph html
-  def glyph
-    options[:content] = content if options[:text] == false
-
+  def generate_glyph(content_html)
     glyph_options = if options[:glyph].is_a?(Hash)
                       options[:glyph]
                     elsif options[:glyph]
@@ -33,11 +16,14 @@ module GlyphExtension
                       {}
                     end
 
-    glyph_options[:text]       = options[:text] unless options[:text].nil?
-    glyph_options[:content]    = options[:content] unless options[:content].nil?
-    glyph_options[:shortcut]   = options[:shortcut] unless options[:shortcut].nil?
-    glyph_options[:html_options] = options[:html_options]  unless options[:html_options].nil?
+    glyph_options = glyph_options.tap do |h|
+      h[:text] = options[:text]
+      h[:label] = options[:label] || content_html || content
+      h[:shortcut] = options[:shortcut] unless options[:shortcut].nil?
+      h[:html_options] = options[:html_options] unless options[:html_options].nil?
+    end
 
-    UiBibz::Utils::GlyphChanger.new(glyph_options[:name], glyph_options).render unless glyph_options[:name].nil?
+    # UiBibz::Utils::GlyphChanger.new(glyph_options[:name], glyph_options).render unless glyph_options[:name].nil?
+    UiBibz::Ui::Core::Icons::Glyph.new(glyph_options[:name], glyph_options).render if glyph_options[:name].present?
   end
 end
