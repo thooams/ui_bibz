@@ -21,7 +21,6 @@ module UiBibz::Ui::Core::Forms::Buttons
   #   (+:xs+, +:sm+, +:lg+)
   # * +outline+ - Boolean
   # * +state+ - Symbol (+:active+, +:disabled)
-  # * +type+ - Symbol (+:outline)
   # * +collapse+ - String
   # * +expand_collaspe+ - Boolean
   # * +glyph+ - Add glyph with name or hash options
@@ -69,7 +68,7 @@ module UiBibz::Ui::Core::Forms::Buttons
     end
 
     def component_html_classes
-      super << ['btn', size, type, without_text]
+      super << ['btn', size]
     end
 
     def component_html_options
@@ -105,14 +104,6 @@ module UiBibz::Ui::Core::Forms::Buttons
 
     def active_html_options
       { 'aria-pressed' => true }
-    end
-
-    def type
-      'btn-block' if options[:type] == :block
-    end
-
-    def without_text
-      'without-text' unless options[:text].nil?
     end
 
     def action

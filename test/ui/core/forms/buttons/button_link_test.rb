@@ -54,13 +54,6 @@ class ButtonLinkTest < ActionView::TestCase
     assert_equal expected, actual
   end
 
-  test 'button_link block' do
-    actual   = ui_button_link('state', type: :block)
-    expected = '<a class="btn-secondary btn btn-block" role="button" href="#">state</a>'
-
-    assert_equal expected, actual
-  end
-
   test 'button_link size' do
     actual   = ui_button_link('state', size: :sm)
     expected = '<a class="btn-secondary btn btn-sm" role="button" href="#">state</a>'

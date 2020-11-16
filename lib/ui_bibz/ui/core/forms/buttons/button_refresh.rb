@@ -20,7 +20,6 @@ module UiBibz::Ui::Core::Forms::Buttons
   #   (+:xs+, +:sm+, +:lg+)
   # * +outline+ - Boolean
   # * +state+ - Symbol (+:active+, +:disabled)
-  # * +type+ - Symbol (+:outline)
   # * +glyph+ - Add glyph with name or hash options
   #   * +name+ - String
   #   * +size+ - Integer

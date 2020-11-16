@@ -47,13 +47,6 @@ class ButtonTest < ActionView::TestCase
     assert_equal expected, actual
   end
 
-  test 'button block' do
-    actual   = ui_button('state', type: :block)
-    expected = '<button class="btn-secondary btn btn-block">state</button>'
-
-    assert_equal expected, actual
-  end
-
   test 'button size' do
     actual   = ui_button('state', size: :sm)
     expected = '<button class="btn-secondary btn btn-sm">state</button>'
@@ -77,7 +70,7 @@ class ButtonTest < ActionView::TestCase
 
   test 'button glyph without text' do
     actual   = ui_button('state', glyph: 'diamond', text: false)
-    expected = "<button class=\"btn-secondary btn without-text\"><i class=\"glyph fas fa-diamond\"></i> <span class=\"visually-hidden\">state</span></button>"
+    expected = "<button class=\"btn-secondary btn\"><i class=\"glyph fas fa-diamond\"></i> <span class=\"visually-hidden\">state</span></button>"
 
     assert_equal expected, actual
   end
