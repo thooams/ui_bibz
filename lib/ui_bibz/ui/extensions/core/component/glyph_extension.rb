@@ -20,7 +20,6 @@ module GlyphExtension
       h[:text] = options[:text]
       h[:label] = options[:label] || content_html || content
       h[:shortcut] = options[:shortcut] unless options[:shortcut].nil?
-      h[:html_options] = options[:html_options] unless options[:html_options].nil?
     end
 
     # UiBibz::Utils::GlyphChanger.new(glyph_options[:name], glyph_options).render unless glyph_options[:name].nil?
