@@ -12,7 +12,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 Gem::Specification.new do |s|
   s.name        = UiBibz::SLUG
   s.version     = UiBibz::VERSION
-  s.authors     = UiBibz::AUTHORS
+  s.author      = UiBibz::AUTHOR
   s.email       = UiBibz::EMAIL
   s.homepage    = UiBibz::HOMEPAGE
   s.summary     = UiBibz::SUMMARY

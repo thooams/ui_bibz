@@ -8,10 +8,10 @@ module UiBibz
   SUMMARY             = "Ui Bibz is an Ui Framework that allows you to build an interface very quickly and simply using Bootstrap #{BOOTSTRAP_VERSION}."
   LICENSE             = 'MIT'
   FONTAWESOME_VERSION = '5.15.1'
-  HOMEPAGE            = 'http://thooams.github.io/Ui-Bibz/'
+  HOMEPAGE            = 'https://hummel.link/ui-bibz/'
   REPO                = 'git+https://github.com/thooams/Ui-Bibz.git'
   EMAIL               = 'thomas@hummel.link'
-  AUTHOR              = 'Thooams'
+  AUTHOR              = 'Thooams [Thomas HUMMEL]'
   VERSION             = '3.0.0.alpha9'
   AUTHORS = ['Thooams'].freeze
 end
