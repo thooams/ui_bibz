@@ -23,3 +23,7 @@ Full documentation is here with bootstrap 5:
 
 Older documentation is here with bootstrap 4:
 [Ui Bibz v2.5](http://hummel.link/Ui-Bibz/docs/v2.5/)
+
+
+## Donate
+![Liberapay](https://img.shields.io/liberapay/patrons/Thomas.svg?logo=liberapay)
