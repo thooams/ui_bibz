@@ -31,7 +31,7 @@ module UiBibz::Ui::Core::Notifications::Components
   #   end.render
   #
   class ToastHeader < UiBibz::Ui::Core::Component
-    include Webpacker::Helper
+    include Webpacker::Helper if defined?(Webpacker)
     # See UiBibz::Ui::Core::Component.initialize
 
     def pre_render

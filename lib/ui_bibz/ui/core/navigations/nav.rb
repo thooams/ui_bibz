@@ -82,7 +82,7 @@ module UiBibz::Ui::Core::Navigations
     # Add nav link items
     # See UiBibz::Ui::Core::Navigations::NavLink
     def link(content = nil, options = {}, html_options = nil, &block)
-      if block_given?
+      if block
         content[:nav_type] = type
         content[:nav_tags] = nav_tags
       else
@@ -93,7 +93,7 @@ module UiBibz::Ui::Core::Navigations
     end
 
     def text(content = nil, options = {}, html_options = nil, &block)
-      block_given? ? content[:nav_type] = type : options[:nav_type] = type
+      block ? content[:nav_type] = type : options[:nav_type] = type
       @items << NavText.new(content, options, html_options, &block)
     end
 

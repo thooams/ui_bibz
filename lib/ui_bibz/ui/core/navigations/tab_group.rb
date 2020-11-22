@@ -67,7 +67,7 @@ module UiBibz::Ui::Core::Navigations
     # Add nav link items
     # See UiBibz::Ui::Core::Navigations::NavLink
     def tab(content = nil, options = {}, html_options = nil, &block)
-      if block_given?
+      if block
         content[:nav_type] = type
         content[:tag_type] = @options[:tag_type]
       else
