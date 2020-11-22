@@ -31,12 +31,13 @@ module UiBibz::Ui::Core::Notifications::Components
   #   end.render
   #
   class ToastHeader < UiBibz::Ui::Core::Component
+    include Webpacker::Helper
     # See UiBibz::Ui::Core::Component.initialize
 
     def pre_render
       content_tag :div, html_options do
         concat UiBibz::Ui::Core::Icons::Glyph.new(options[:glyph], class: 'mr-2').render unless options[:glyph].nil?
-        concat image_tag(options[:img], class: 'rounded mr-2') unless options[:img].nil?
+        concat image unless options[:image].nil?
         concat content_tag(:strong, content, class: 'mr-auto')
         concat content_tag(:small, options[:time], class: 'text-muted') unless options[:time].nil?
         concat close_button
@@ -44,6 +45,19 @@ module UiBibz::Ui::Core::Notifications::Components
     end
 
     private
+
+    def image
+      if options[:image].is_a?(String)
+        image_tag(options[:image], class: 'rounded mr-2', alt: sanitize_text(options[:image])) unless options[:image].nil?
+      else
+        options[:image][:class] = UiBibz::Utils::Screwdriver.join_classes(options[:image][:class], 'rounded mr-2')
+        if options[:image].delete(:pack)
+          image_pack_tag(options[:image].delete(:href), **options[:image])
+        else
+          image_tag(options[:image].delete(:href), **options[:image])
+        end
+      end
+    end
 
     def close_button
       content_tag :button, '', class: 'ml-2 mb-1 btn-close', "data-dismiss": 'toast', "aria-label": 'Close'

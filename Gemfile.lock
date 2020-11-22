@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    ui_bibz (3.0.0.alpha9)
+    ui_bibz (3.0.0.alpha10)
       rails (~> 6.0.3, >= 6.0.3.2)
       will-paginate-i18n
       will_paginate (~> 3.1.0)

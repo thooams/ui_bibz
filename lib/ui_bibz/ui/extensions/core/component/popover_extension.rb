@@ -28,7 +28,7 @@ module PopoverExtension
       TOOLTIP_METHODS.each { |mth| add_html_data(mth, value: options[:tooltip].try(:[], mth)) unless options[:tooltip].try(:[], mth).nil? }
       add_html_data :placement, value: options[:tooltip].try(:[], :position) unless options[:tooltip].try(:[], :position).nil?
     else
-      add_html_data :title, value: options[:tooltip]
+      add_html_data :title, value: options[:tooltip] == true ? sanitize_text(content) : options[:tooltip]
     end
   end
 end
