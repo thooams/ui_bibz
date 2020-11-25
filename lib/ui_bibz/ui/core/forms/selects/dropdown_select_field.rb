@@ -25,7 +25,13 @@ module UiBibz::Ui::Core::Forms::Selects
   # * +searchable+ - Boolean
   # * +select_all_option+ - Boolean
   # * +append+ - String, Html
+  # * +open+ - Boolean
+  # * +theme+ - Symbol, defaut: +:dark+
   # * +prepend+ - String, Html
+  # * +position+ - Symbol
+  #   (+:up+, +:right+, +:down+, +:left+)
+  # * +alignment+ - Symbol
+  #   (+:right)
   # * +connect+ - Hash
   #   * +event+ - String
   #   * +mode+ - String

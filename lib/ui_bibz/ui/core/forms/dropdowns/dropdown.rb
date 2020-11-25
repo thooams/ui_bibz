@@ -21,12 +21,14 @@ module UiBibz::Ui::Core::Forms::Dropdowns
   # * +status+ - status of element with symbol value:
   #   (+:primary+, +:secondary+, +:info+, +:warning+, +:danger+)
   # * +size+
+  # * +open+ - Boolean
   #   (+:xs+, +:sm+, +:lg+)
   # * +glyph+ - Add glyph with name or hash options
   #   * +name+ - String
   #   * +size+ - Integer
   #   * +type+ - Symbol
   # * +html_button+ - Hash
+  # * +theme+ - Symbol, defaut: +:dark+
   # * +position+ - Symbol
   #   (+:up+, +:right+, +:down+, +:left+)
   # * +alignment+ - Symbol
