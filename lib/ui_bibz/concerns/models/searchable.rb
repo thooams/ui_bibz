@@ -110,7 +110,7 @@ module UiBibz::Concerns::Models::Searchable
       search_patterns = @tmp_params[:search].strip.gsub(/(?<=[\\s])\\s*|^\\s+|\\s+$/, '').downcase
 
       search_patterns_tmp = search_patterns.scan(/"(.*?)"/).flatten
-      search_patterns     = search_patterns.gsub(/"(.*?)"/, '').split(' ')
+      search_patterns     = search_patterns.gsub(/"(.*?)"/, '').split
       search_patterns << search_patterns_tmp
 
       search_patterns.flatten.each_with_index do |pattern, i|
