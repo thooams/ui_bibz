@@ -104,7 +104,7 @@ test1</textarea></div></form>"
       f.input :name_fr, as: :ui_text_field
     end
 
-    expected = "<form class=\"simple_form edit_user\" id=\"edit_user_1\" action=\"/users/1\" accept-charset=\"UTF-8\" method=\"post\"><input type=\"hidden\" name=\"_method\" value=\"patch\" /><div class=\"form-group ui_text_field optional user_name_fr\"><label class=\"control-label ui_text_field optional\" for=\"user_name_fr\">Name fr</label><input type=\"ui_text_field\" name=\"user[name_fr]\" id=\"user_name_fr\" value=\"test1\" class=\"form-control string ui_text_field optional\" /></div></form>"
+    expected = "<form class=\"simple_form edit_user\" id=\"edit_user_1\" action=\"/users/1\" accept-charset=\"UTF-8\" method=\"post\"><input type=\"hidden\" name=\"_method\" value=\"patch\" /><div class=\"form-group ui_text_field optional user_name_fr\"><label class=\"control-label ui_text_field optional\" for=\"user_name_fr\">Name fr</label><input type=\"text\" name=\"user[name_fr]\" id=\"user_name_fr\" value=\"test1\" class=\"form-control string ui_text_field optional\" /></div></form>"
 
     assert_equal expected, actual
   end

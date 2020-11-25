@@ -7,7 +7,7 @@ module UiBibzInputs
     def input(wrapper_options)
       unless string?
         input_html_classes.unshift('string')
-        input_html_options[:type] ||= input_type if html5?
+        # input_html_options[:type] ||= input_type if html5?
       end
 
       merged_input_options = merge_wrapper_options(input_html_options, wrapper_options)
