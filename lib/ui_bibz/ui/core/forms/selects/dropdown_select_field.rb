@@ -69,7 +69,7 @@ module UiBibz::Ui::Core::Forms::Selects
     end
 
     def component_html_classes
-      [size, type, button_status, 'multi-select-field']
+      [open, size, type, button_status, 'multi-select-field']
     end
 
     def component_html_data
@@ -79,6 +79,8 @@ module UiBibz::Ui::Core::Forms::Selects
       searchable
       select_all_options
       number_displayed
+      dropdown_menu_classes
+      dropdown_classes
     end
 
     def clickable_opt_group
@@ -101,6 +103,32 @@ module UiBibz::Ui::Core::Forms::Selects
       add_html_data('include_select_all_option') if options[:select_all_options]
     end
 
+    def dropdown_menu_classes
+      classes = join_classes(theme, alignment, open)
+      add_html_data('dropdown_menu_classes', value: classes.nil? ? nil : classes.join(' '))
+    end
+
+    def dropdown_classes
+      classes = join_classes(position, open)
+      add_html_data('dropdown_classes', value: classes.nil? ? nil : classes.join(' '))
+    end
+
+    def position
+      "drop#{@options[:position] || 'down'}"
+    end
+
+    def theme
+      'dropdown-menu-dark' if @options[:theme]
+    end
+
+    def open
+      'show' if @options[:open]
+    end
+
+    def alignment
+      "dropdown-menu-#{@options[:alignment]}" unless @options[:alignment].nil?
+    end
+
     def type
       'btn-block' if options[:type] == :block
     end
@@ -116,10 +144,6 @@ module UiBibz::Ui::Core::Forms::Selects
 
     def outline
       'outline' if options[:outline]
-    end
-
-    def theme
-      'dropdown-menu-dark' if @options[:theme]
     end
   end
 end
