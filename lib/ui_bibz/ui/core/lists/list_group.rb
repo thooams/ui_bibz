@@ -90,7 +90,7 @@ module UiBibz::Ui::Core::Lists
       options = options.merge({ tag_type: @options[:tag_type] }) unless @options[:tag_type].nil?
 
       @lists << if tapped?(block)
-                  content = (content || {}).merge(tap: true)
+                  content = (content || {}).merge(options)
                   UiBibz::Ui::Core::Lists::Components::List.new(content, options, html_options).tap(&block).render
                 else
                   UiBibz::Ui::Core::Lists::Components::List.new(content, options, html_options, &block).render
