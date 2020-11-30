@@ -6,11 +6,17 @@ module UiBibz::Ui::Concerns::HtmlConcern #:nodoc:
   included do
     def html(content = nil, &block)
       if block.nil?
-        @items << content
+        @items << RenderString.new(content)
       else
         context = eval('self', block.binding) # rubocop:disable Style/EvalWithLocation
-        @items << context.capture(&block)
+        @items << RenderString.new(context.capture(&block))
       end
     end
+  end
+end
+
+class RenderString < SimpleDelegator
+  def render
+    self
   end
 end
