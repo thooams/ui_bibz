@@ -41,6 +41,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'minitest'
   s.add_development_dependency 'overcommit'
   s.add_development_dependency 'rubocop'
+  s.add_development_dependency 'rubocop-ast'
   s.add_development_dependency 'rubocop-minitest'
   s.add_development_dependency 'rubocop-performance'
   s.add_development_dependency 'rubocop-rails'
