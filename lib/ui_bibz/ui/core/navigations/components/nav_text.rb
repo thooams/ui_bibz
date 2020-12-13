@@ -40,7 +40,7 @@ module UiBibz::Ui::Core::Navigations
     end
 
     def component_html_options
-      options[:nav_type] == 'nav-tabs' ? { 'data-toggle' => 'tab', role: 'tab' } : {}
+      options[:nav_type] == 'nav-tabs' ? { 'data-bs-toggle' => 'tab', role: 'tab' } : {}
     end
   end
 end

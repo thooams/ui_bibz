@@ -78,7 +78,7 @@ module UiBibz::Ui::Core::Forms::Dropdowns
 
     def split_html
       content_tag :button, split_content, class: split_classes, type: 'button',
-                                          'data-toggle' => 'dropdown', 'aria-haspopup' => true, 'aria-expanded' => false
+                                          'data-bs-toggle' => 'dropdown', 'aria-haspopup' => true, 'aria-expanded' => false
     end
 
     def split_content

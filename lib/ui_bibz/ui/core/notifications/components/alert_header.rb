@@ -54,7 +54,7 @@ module UiBibz::Ui::Core::Notifications::Components
     end
 
     def close_html
-      content_tag :button, '', type: 'button', class: 'btn-close', 'data-dismiss' => 'alert', 'aria-label' => 'Close'
+      content_tag :button, '', type: 'button', class: 'btn-close', 'data-bs-dismiss' => 'alert', 'aria-label' => 'Close'
     end
   end
 end

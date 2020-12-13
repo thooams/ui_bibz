@@ -10,7 +10,7 @@ class NavTest < ActionView::TestCase
       n.link 'Profile', url: '#profile', selector: 'profile'
       n.link 'Messages', url: '#messages', selector: 'messages'
     end
-    expected = "<ul class=\"nav nav-tabs\" role=\"tablist\"><li class=\"nav-item\"><a href=\"#Home\" class=\"active nav-link\" data-toggle=\"tab\" role=\"tab\">Home</a></li><li class=\"nav-item\"><a href=\"#profile\" class=\"nav-link\" data-toggle=\"tab\" role=\"tab\">Profile</a></li><li class=\"nav-item\"><a href=\"#messages\" class=\"nav-link\" data-toggle=\"tab\" role=\"tab\">Messages</a></li></ul>"
+    expected = "<ul class=\"nav nav-tabs\" role=\"tablist\"><li class=\"nav-item\"><a href=\"#Home\" class=\"active nav-link\" data-bs-toggle=\"tab\" role=\"tab\">Home</a></li><li class=\"nav-item\"><a href=\"#profile\" class=\"nav-link\" data-bs-toggle=\"tab\" role=\"tab\">Profile</a></li><li class=\"nav-item\"><a href=\"#messages\" class=\"nav-link\" data-bs-toggle=\"tab\" role=\"tab\">Messages</a></li></ul>"
 
     assert_equal expected, actual
   end
@@ -65,7 +65,7 @@ class NavTest < ActionView::TestCase
       n.link 'Profile', url: '#profile', selector: 'profile', label: 16
       n.link 'Messages', url: '#messages', selector: 'messages', state: :disabled
     end
-    expected = "<div class=\"list-group\" role=\"tablist\"><a href=\"#Home\" class=\"active list-group-item list-group-item-action\" data-toggle=\"tab\" role=\"tab\" aria-controls=\"home\">Home</a><a href=\"#profile\" class=\"list-group-item list-group-item-action\" data-toggle=\"tab\" role=\"tab\" aria-controls=\"profile\">Profile</a><a href=\"#messages\" class=\"disabled list-group-item list-group-item-action\" data-toggle=\"tab\" role=\"tab\" aria-controls=\"messages\">Messages</a></div>"
+    expected = "<div class=\"list-group\" role=\"tablist\"><a href=\"#Home\" class=\"active list-group-item list-group-item-action\" data-bs-toggle=\"tab\" role=\"tab\" aria-controls=\"home\">Home</a><a href=\"#profile\" class=\"list-group-item list-group-item-action\" data-bs-toggle=\"tab\" role=\"tab\" aria-controls=\"profile\">Profile</a><a href=\"#messages\" class=\"disabled list-group-item list-group-item-action\" data-bs-toggle=\"tab\" role=\"tab\" aria-controls=\"messages\">Messages</a></div>"
 
     assert_equal expected, actual
   end

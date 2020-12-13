@@ -83,8 +83,8 @@ module UiBibz::Ui::Core::Forms::Buttons
     def collapse
       # Must be flat hash not deep hash
       {
-        "data-toggle": :collapse,
-        "data-target": "##{options[:collapse]}",
+        "data-bs-toggle": :collapse,
+        "data-bs-target": "##{options[:collapse]}",
         "aria-controls": options[:collapse],
         "aria-expanded": options[:expand_collapse].nil? ? false : options[:expand_collapse]
       }
@@ -99,7 +99,7 @@ module UiBibz::Ui::Core::Forms::Buttons
     end
 
     def toggle
-      { 'data-toggle' => 'button', 'aria-pressed' => false, 'autocomplete' => 'off' }
+      { 'data-bs-toggle' => 'button', 'aria-pressed' => false, 'autocomplete' => 'off' }
     end
 
     def active_html_options

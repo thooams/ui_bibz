@@ -36,7 +36,7 @@ module UiBibz::Ui::Core::Navigations
     end
 
     def component_html_options
-      { 'data-toggle' => 'tab', role: 'tab' }
+      { 'data-bs-toggle' => 'tab', role: 'tab' }
     end
 
     def component_html_data

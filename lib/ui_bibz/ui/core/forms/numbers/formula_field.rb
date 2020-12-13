@@ -53,7 +53,7 @@ module UiBibz::Ui::Core::Forms::Numbers
         sf.text_field formula_field_name, nil, text_field_formula_html_options
         sf.addon '=', class: 'formula-field-sign'
         sf.text_field content, nil, text_field_input_html_options
-        sf.addon formula_field_alert_glyph, { class: 'formula-field-alert' }, { data: { toggle: 'tooltip' } }
+        sf.addon formula_field_alert_glyph, { class: 'formula-field-alert' }, { data: { "bs-toggle": 'tooltip' } }
         sf.addon @options[:prepend] unless @options[:prepend].nil?
       end.render
     end

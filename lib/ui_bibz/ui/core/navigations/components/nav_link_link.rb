@@ -40,7 +40,7 @@ module UiBibz::Ui::Core::Navigations
     end
 
     def component_html_options
-      html_tag_base = { 'data-toggle' => 'tab', role: 'tab' }
+      html_tag_base = { 'data-bs-toggle' => 'tab', role: 'tab' }
       case options[:nav_type]
       when 'nav-tabs'
         html_tag_base

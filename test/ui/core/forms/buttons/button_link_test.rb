@@ -63,7 +63,7 @@ class ButtonLinkTest < ActionView::TestCase
 
   test 'button_link toggle' do
     actual   = ui_button_link('state', toggle: true)
-    expected = '<a class="btn-secondary btn" data-toggle="button" aria-pressed="false" autocomplete="off" role="button" href="#">state</a>'
+    expected = '<a class="btn-secondary btn" data-bs-toggle="button" aria-pressed="false" autocomplete="off" role="button" href="#">state</a>'
 
     assert_equal expected, actual
   end

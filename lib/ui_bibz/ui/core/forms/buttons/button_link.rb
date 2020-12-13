@@ -78,7 +78,7 @@ module UiBibz::Ui::Core::Forms::Buttons
     def collapse
       # Must be flat hash not deep hash
       {
-        "data-toggle": :collapse,
+        "data-bs-toggle": :collapse,
         "aria-controls": options[:collapse],
         "aria-expanded": options[:expand_collaspe].nil? ? false : options[:expand_collaspe]
       }
