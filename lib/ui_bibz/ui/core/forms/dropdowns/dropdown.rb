@@ -31,8 +31,8 @@ module UiBibz::Ui::Core::Forms::Dropdowns
   # * +theme+ - Symbol, defaut: +:dark+
   # * +position+ - Symbol
   #   (+:up+, +:right+, +:down+, +:left+)
-  # * +alignment+ - Symbol
-  #   (+:right)
+  # * +alignment+ - Symbol/Hash - eq. { direction: :start, size: :lg }
+  #   (+:left+, +:right+, +:start+, +:end+)
   #
   # ==== Signatures
   #
@@ -119,9 +119,9 @@ module UiBibz::Ui::Core::Forms::Dropdowns
     def button_html
       html_button = options[:html_button] || {}
       if options[:tag] == :a
-        content_tag dropdown_tag, button_content, { class: join_classes('btn', button_status, state, size, 'dropdown-toggle'), role: 'button', 'data-bs-toggle' => 'dropdown', 'aria-haspopup' => true, 'aria-expanded' => false, 'id' => id }.merge(html_button)
+        content_tag dropdown_tag, button_content, { class: join_classes('btn', button_status, state, size, 'dropdown-toggle'), role: 'button', 'data-bs-toggle' => 'dropdown', 'aria-expanded' => false, 'id' => id }.merge(html_button)
       else
-        content_tag dropdown_tag, button_content, { class: join_classes('btn', button_status, state, size, 'dropdown-toggle'), type: 'button', 'data-bs-toggle' => 'dropdown', 'aria-haspopup' => true, 'aria-expanded' => false, 'id' => id }.merge(html_button)
+        content_tag dropdown_tag, button_content, { class: join_classes('btn', button_status, state, size, 'dropdown-toggle'), type: 'button', 'data-bs-toggle' => 'dropdown', 'aria-expanded' => false, 'id' => id }.merge(html_button)
       end
     end
 
@@ -134,11 +134,17 @@ module UiBibz::Ui::Core::Forms::Dropdowns
     end
 
     def alignment
-      "dropdown-menu-#{@options[:alignment]}" unless @options[:alignment].nil?
+      return nil if @options[:alignment].nil?
+
+      if @options[:alignment].is_a? Hash
+        ['dropdown-menu', @options[:alignment][:size], match_direction[@options[:alignment][:direction]]].join('-')
+      else
+        "dropdown-menu-#{match_direction[@options[:alignment]]}"
+      end
     end
 
     def position
-      "drop#{@options[:position] || 'down'}"
+      "drop#{match_direction[@options[:position] || :down]}"
     end
 
     def open
@@ -172,6 +178,18 @@ module UiBibz::Ui::Core::Forms::Dropdowns
 
     def theme
       'dropdown-menu-dark' if @options[:theme]
+    end
+
+    # Match end and start directions
+    def match_direction
+      {
+        up: 'up',
+        right: 'end',
+        down: 'down',
+        left: 'start',
+        start: 'start',
+        end: 'end'
+      }.with_indifferent_access
     end
   end
 end

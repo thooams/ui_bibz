@@ -27,7 +27,7 @@ class SpinnerTest < ActionView::TestCase
 
   test 'spinner in button' do
     actual   = ui_button 'Load', spinner: { status: :danger, type: :grow }
-    expected = '<button class="btn-secondary btn"><span class="text-danger mr-2 spinner-grow spinner-grow-sm" role="status"><span class="sr-only">Loading...</span></span>Load</button>'
+    expected = '<button class="btn-secondary btn"><span class="text-danger me-2 spinner-grow spinner-grow-sm" role="status"><span class="sr-only">Loading...</span></span>Load</button>'
 
     assert_equal expected, actual
   end

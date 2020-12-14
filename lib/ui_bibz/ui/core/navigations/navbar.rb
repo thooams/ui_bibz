@@ -125,7 +125,7 @@ module UiBibz::Ui::Core::Navigations
     end
 
     def spacer(num = 'auto')
-      kls = " mr-#{num}"
+      kls = " me-#{num}"
       @items.last.html_options[:class].nil? ? @items.last.html_options[:class] = kls : @items.last.html_options[:class] << kls
     end
 

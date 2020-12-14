@@ -72,7 +72,7 @@ module UiBibz::Ui::Core::Navigations
     end
 
     def spacer(num = 'auto')
-      kls = "mr-#{num}"
+      kls = "me-#{num}"
       @items.last.html_options['class'] = join_classes(@items.last.html_options.delete(:class), @items.last.html_options[:class], kls)
     end
 

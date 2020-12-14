@@ -121,7 +121,7 @@ module UiBibz::Ui::Core::Forms::Buttons
     end
 
     def spinner_html
-      opts = { size: :sm, tag: :span, class: options[:text] == false ? nil : 'mr-2' }
+      opts = { size: :sm, tag: :span, class: options[:text] == false ? nil : 'me-2' }
       opts = opts.merge(options[:spinner]) if options[:spinner].is_a? Hash
 
       UiBibz::Ui::Core::Notifications::Spinner.new(nil, opts).render

@@ -36,9 +36,9 @@ module UiBibz::Ui::Core::Notifications::Components
 
     def pre_render
       content_tag :div, html_options do
-        concat UiBibz::Ui::Core::Icons::Glyph.new(options[:glyph], class: 'mr-2').render unless options[:glyph].nil?
+        concat UiBibz::Ui::Core::Icons::Glyph.new(options[:glyph], class: 'me-2').render unless options[:glyph].nil?
         concat image unless options[:image].nil?
-        concat content_tag(:strong, content, class: 'mr-auto')
+        concat content_tag(:strong, content, class: 'me-auto')
         concat content_tag(:small, options[:time], class: 'text-muted') unless options[:time].nil?
         concat close_button
       end
@@ -48,9 +48,9 @@ module UiBibz::Ui::Core::Notifications::Components
 
     def image
       if options[:image].is_a?(String)
-        image_tag(options[:image], class: 'rounded mr-2', alt: sanitize_text(options[:image])) unless options[:image].nil?
+        image_tag(options[:image], class: 'rounded me-2', alt: sanitize_text(options[:image])) unless options[:image].nil?
       else
-        options[:image][:class] = UiBibz::Utils::Screwdriver.join_classes(options[:image][:class], 'rounded mr-2')
+        options[:image][:class] = UiBibz::Utils::Screwdriver.join_classes(options[:image][:class], 'rounded me-2')
         if options[:image].delete(:pack)
           image_pack_tag(options[:image].delete(:href), **options[:image])
         else

@@ -146,8 +146,8 @@ module UiBibz::Ui::Core::Windows
     def backdrop
       return unless @options[:backdrop]
 
-      add_html_data 'backdrop', value: @options[:backdrop]
-      add_html_data 'keyboard', value: 'false'
+      add_html_data 'bs-backdrop', value: @options[:backdrop]
+      add_html_data 'bs-keyboard', value: 'false'
     end
   end
 end
