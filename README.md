@@ -5,7 +5,7 @@
 [![Test Coverage](https://codeclimate.com/github/thooams/Ui-Bibz/badges/coverage.svg)](https://codeclimate.com/github/thooams/Ui-Bibz)
 [![Inline docs](http://inch-ci.org/github/thooams/Ui-Bibz.svg?branch=master)](http://inch-ci.org/github/thooams/Ui-Bibz)
 [![security](https://hakiri.io/github/thooams/Ui-Bibz/master.svg)](https://hakiri.io/github/thooams/Ui-Bibz/master)
-![Ci](https://github.com/thooams/Ui-Bibz/workflows/Ci/badge.svg)
+![Ci](https://github.com/thooams/Ui-Bibz/workflows/CI/badge.svg)
 
 This project rocks and uses MIT-LICENSE.
 
