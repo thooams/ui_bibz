@@ -15,10 +15,14 @@ jobs:
       with:
         bundler-cache: true
 
-    - name: Build and test with Rake
-      env:
-        CC_TEST_REPORTER_ID: 95196f8dbe3406321c6e7b406585532102784f0a3d4141a25f53937eedb844b6
+    - name: Install gems
       run: |
         gem install bundler
         bundle install --jobs 4 --retry 3
-        bundle exec rake
+
+    - name: Test with Rake
+      uses: paambaati/codeclimate-action@v2.7.5
+      env:
+        CC_TEST_REPORTER_ID: 95196f8dbe3406321c6e7b406585532102784f0a3d4141a25f53937eedb844b6
+      with:
+      coverageCommand: bundle exec rake
