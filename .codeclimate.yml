@@ -1,0 +1,5 @@
+plugins:
+  brakeman:
+    enabled: true
+  bundler-audit:
+    enabled: true
