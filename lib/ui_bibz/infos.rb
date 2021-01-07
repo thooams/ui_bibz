@@ -9,9 +9,9 @@ module UiBibz
   LICENSE             = 'MIT'
   FONTAWESOME_VERSION = '5.15.1'
   HOMEPAGE            = 'https://hummel.link/ui-bibz/'
-  REPO                = 'git+https://github.com/thooams/Ui-Bibz.git'
+  REPO                = 'git+https://github.com/thooams/ui_bibz.git'
   EMAIL               = 'thomas@hummel.link'
   AUTHOR              = 'Thooams [Thomas HUMMEL]'
-  VERSION             = '3.0.0.beta2'
+  VERSION             = '3.0.0.beta3'
   AUTHORS = ['Thooams'].freeze
 end

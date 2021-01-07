@@ -27,7 +27,7 @@ Gem::Specification.new do |s|
   s.require_paths = %w[lib vendor]
 
   # Rails gems
-  s.add_dependency 'rails', '~> 6.0.3', '>= 6.0.3.2'
+  s.add_development_dependency 'rails', '~> 6.0.3', '>= 6.0.3.2'
 
   # Remove these dependencies after
   s.add_dependency 'will_paginate', '~> 3.1.0'
