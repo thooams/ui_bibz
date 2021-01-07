@@ -21,7 +21,7 @@ Full documentation is here with bootstrap 5:
 [Ui Bibz v3](http://hummel.link/ui-bibz/)
 
 Older documentation is here with bootstrap 4:
-[Ui Bibz v2.5](http://hummel.link/ui_bibz/docs/v2.5/)
+[Ui Bibz v2.5](http://hummel.link/ui-bibz/docs/v2.5/)
 
 
 ## Donate
