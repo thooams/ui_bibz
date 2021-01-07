@@ -1,11 +1,11 @@
 ![Ui Bibz logo](https://repository-images.githubusercontent.com/29547689/e29b2180-0d59-11eb-89f3-4541571d7c67)
 
 [![Gem Version](https://badge.fury.io/rb/ui_bibz.svg)](https://badge.fury.io/rb/ui_bibz)
-[![Code Climate](https://codeclimate.com/github/thooams/Ui-Bibz/badges/gpa.svg)](https://codeclimate.com/github/thooams/Ui-Bibz)
-[![Test Coverage](https://codeclimate.com/github/thooams/Ui-Bibz/badges/coverage.svg)](https://codeclimate.com/github/thooams/Ui-Bibz)
-[![Inline docs](http://inch-ci.org/github/thooams/Ui-Bibz.svg?branch=master)](http://inch-ci.org/github/thooams/Ui-Bibz)
-[![security](https://hakiri.io/github/thooams/Ui-Bibz/master.svg)](https://hakiri.io/github/thooams/Ui-Bibz/master)
-![Ci](https://github.com/thooams/Ui-Bibz/workflows/CI/badge.svg)
+[![Maintainability](https://api.codeclimate.com/v1/badges/cfbe9828c32d69581534/maintainability)](https://codeclimate.com/github/thooams/ui_bibz/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/cfbe9828c32d69581534/test_coverage)](https://codeclimate.com/github/thooams/ui_bibz/test_coverage)
+[![Inline docs](http://inch-ci.org/github/thooams/ui_bibz.svg?branch=master)](http://inch-ci.org/github/thooams/ui_bibz)
+[![security](https://hakiri.io/github/thooams/ui_bibz/master.svg)](https://hakiri.io/github/thooams/ui_bibz/master)
+![Ci](https://github.com/thooams/ui_bibz/workflows/CI/badge.svg)
 
 This project rocks and uses MIT-LICENSE.
 
@@ -21,7 +21,7 @@ Full documentation is here with bootstrap 5:
 [Ui Bibz v3](http://hummel.link/ui-bibz/)
 
 Older documentation is here with bootstrap 4:
-[Ui Bibz v2.5](http://hummel.link/Ui-Bibz/docs/v2.5/)
+[Ui Bibz v2.5](http://hummel.link/ui_bibz/docs/v2.5/)
 
 
 ## Donate
