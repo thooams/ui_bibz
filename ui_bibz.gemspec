@@ -35,7 +35,6 @@ Gem::Specification.new do |s|
   s.add_dependency 'will-paginate-i18n'
 
   # Development gems
-  s.add_development_dependency 'codeclimate-test-reporter'
   s.add_development_dependency 'factory_bot_rails', '~> 4.0'
   s.add_development_dependency 'haml-rails'
   s.add_development_dependency 'minitest'
