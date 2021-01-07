@@ -4,7 +4,7 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/cfbe9828c32d69581534/maintainability)](https://codeclimate.com/github/thooams/ui_bibz/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/cfbe9828c32d69581534/test_coverage)](https://codeclimate.com/github/thooams/ui_bibz/test_coverage)
 [![Inline docs](http://inch-ci.org/github/thooams/ui_bibz.svg?branch=master)](http://inch-ci.org/github/thooams/ui_bibz)
-[![security](https://hakiri.io/github/thooams/ui_bibz/master.svg)](https://hakiri.io/github/thooams/ui_bibz/master)
+[![security](https://hakiri.io/github/thooams/ui_bibz/main.svg)](https://hakiri.io/github/thooams/ui_bibz/main)
 ![Ci](https://github.com/thooams/ui_bibz/workflows/CI/badge.svg)
 
 This project rocks and uses MIT-LICENSE.
