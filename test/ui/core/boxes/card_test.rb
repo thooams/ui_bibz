@@ -69,7 +69,7 @@ class CardTest < ActionView::TestCase
       p.body do |b|
         b.title 'Special title treatment'
         b.subtitle 'The subtitle'
-        b.text 'With supporting text below as a natural lead-in to additional content.'
+        b.text _('With supporting text below as a natural lead-in to additional content.')
         b.link 'Go somewhere', url: '#go-somewhere', class: 'btn btn-primary'
       end
     end
