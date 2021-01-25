@@ -45,19 +45,17 @@ module UiBibz::Ui::Core::Forms::Files
 
     # Render html tag
     def pre_render
-      content_tag :div, html_options do
-        concat file_field_tag content, class: 'form-file-input', multiple: options[:multiple], disabled: disabled?
-        concat label_text_and_button
-      end
+      file_field_tag content, html_options
     end
 
     private
 
-    def label_text_and_button
-      label_tag label_name, class: 'form-file-label' do
-        concat content_tag(:span, format_value(options[:input_text] || options[:value]), class: 'form-file-text')
-        concat content_tag(:span, options[:button_text] || 'Browse', class: 'form-file-button')
-      end
+    def component_html_options
+      super.merge({
+                    multiple: options[:multiple],
+                    disabled: disabled?,
+                    value: format_value(options[:input_text] || options[:value])
+                  })
     end
 
     def format_value(value)
@@ -70,12 +68,8 @@ module UiBibz::Ui::Core::Forms::Files
       value.to_s
     end
 
-    def label_name
-      html_options[:id] || content
-    end
-
     def component_html_classes
-      super << 'form-file'
+      super << 'form-control'
     end
   end
 end
