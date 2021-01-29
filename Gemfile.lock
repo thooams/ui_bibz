@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    ui_bibz (3.0.0.beta6)
+    ui_bibz (3.0.0.beta7)
       will-paginate-i18n
       will_paginate (~> 3.3.0)
       will_paginate-bootstrap4
@@ -158,7 +158,7 @@ GEM
     rake (13.0.3)
     regexp_parser (2.0.3)
     rexml (3.2.4)
-    rubocop (1.8.1)
+    rubocop (1.9.0)
       parallel (~> 1.10)
       parser (>= 3.0.0.0)
       rainbow (>= 2.2.2, < 4.0)

@@ -90,8 +90,8 @@ class ButtonTest < ActionView::TestCase
   end
 
   test 'button with complex popover' do
-    actual = ui_button('My Button', popover: { content: 'My popover', position: :left })
-    expected = '<button data-bs-toggle="popover" data-bs-content="My popover" data-bs-placement="left" class="btn-secondary btn">My Button</button>'
+    actual = ui_button('My Button', popover: { content: 'My popover', position: :left, html: true })
+    expected = '<button data-bs-toggle="popover" data-bs-content="My popover" data-bs-html="true" data-bs-placement="left" class="btn-secondary btn">My Button</button>'
 
     assert_equal expected, actual
   end
@@ -105,7 +105,7 @@ class ButtonTest < ActionView::TestCase
 
   test 'button with complex tooltip' do
     actual = ui_button('My Button', tooltip: { title: 'My tooltip', position: :left })
-    expected = '<button data-bs-toggle="tooltip" data-title="My tooltip" data-bs-placement="left" class="btn-secondary btn">My Button</button>'
+    expected = '<button data-bs-toggle="tooltip" data-bs-title="My tooltip" data-bs-placement="left" class="btn-secondary btn">My Button</button>'
 
     assert_equal expected, actual
   end
