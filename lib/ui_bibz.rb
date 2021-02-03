@@ -183,6 +183,7 @@ module UiBibz
         autoload :ProgressBar,             'ui_bibz/ui/core/notifications/progress_bar'
         autoload :Spinner,                 'ui_bibz/ui/core/notifications/spinner'
         autoload :Toast,                   'ui_bibz/ui/core/notifications/toast'
+        autoload :Tooltip,                 'ui_bibz/ui/core/notifications/tooltip'
       end
 
       module Windows

@@ -25,20 +25,20 @@ module UiBibz::Ui::Core::Notifications
   #
   # ==== Signatures
   #
-  #   UiBibz::Ui::Core::Toast.new(content, options = nil, html_options = nil)
+  #   UiBibz::Ui::Core::Notifications::Toast.new(content, options = nil, html_options = nil)
   #
-  #   UiBibz::Ui::Core::Toast.new(options = nil, html_options = nil) do
+  #   UiBibz::Ui::Core::Notifications::Toast.new(options = nil, html_options = nil) do
   #     content
   #   end
   #
   # ==== Examples
   #
-  #   UiBibz::Ui::Core::Toast.new(class: 'my-toast').tap |t|
+  #   UiBibz::Ui::Core::Notifications::Toast.new(class: 'my-toast').tap |t|
   #     t.header "My header toast", glyph: 'eye', time: 'now'
   #     t.body "My body toast"
   #   end
   #
-  #   UiBibz::Ui::Core::Toast.new(class: 'my-toast').tap |t|
+  #   UiBibz::Ui::Core::Notifications::Toast.new(class: 'my-toast').tap |t|
   #     t.header glyph: 'eye', time: 'now' do
   #       My header toast
   #     end
