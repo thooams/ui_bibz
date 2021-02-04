@@ -26,24 +26,33 @@ module UiBibz::Ui::Core::Notifications
   #
   # ==== Examples
   #
-  #   UiBibz::Ui::Core::Notifications::Tooltip.new(class: 'my-toast').tap |t|
-  #     t.header "My header toast", glyph: 'eye', time: 'now'
-  #     t.body "My body toast"
+  #   UiBibz::Ui::Core::Notifications::Tooltip.new("My content")
+  #
+  #   # or
+  #
+  #   UiBibz::Ui::Core::Notifications::Tooltip.new(position: :right) do
+  #     content
   #   end
   #
   # ==== Helper
   #
-  #   tooltip = UiBibz::Ui::Core::Notifications::Tooltip.new(position: left) do
-  #      My content
-  #   end
+  #   tooltip = UiBibz::Ui::Core::Notifications::Tooltip.new("My content", position: :left)
   #   ui_glyph("diamond", tooltip: tooltip)
+  #
+  #   # or
+  #
+  #   ui_glyph("diamond", {tooltip: true}, { title: "My content" })
+  #
+  #   # or
+  #
+  #   ui_glyph("diamond", tooltip: { title: "My content", position: :right})
   #
   class Tooltip < UiBibz::Ui::Core::Component
     # Note that for security reasons the sanitize, sanitizeFn, and allowList
     # options cannot be supplied using data attributes.
     # https://getbootstrap.com/docs/5.0/components/tooltips/#options
     DATA_ATTRIBUTES = %i[animation container delay html selector template trigger
-                         offset fallback_placement boundary].freeze
+                         offset fallbackPlacement boundary].freeze
 
     # See UiBibz::Ui::Core::Component.initialize
     def initialize(content = nil, options = nil, html_options = nil, &block)
@@ -55,7 +64,7 @@ module UiBibz::Ui::Core::Notifications
     def render
       {
         'data-bs-toggle' => 'tooltip',
-        'data-bs-title' => @content,
+        'data-bs-title' => @content.html_safe,
         'data-bs-placement' => options[:position] || options[:placement]
       }.merge(data_attributes)
     end
@@ -64,8 +73,12 @@ module UiBibz::Ui::Core::Notifications
 
     def data_attributes
       DATA_ATTRIBUTES.map do |data_attribute|
-        { "data-bs-#{data_attribute}" => options[data_attribute] }
+        { "data-bs-#{data_attribute}" => data_attribute_value(data_attribute) }
       end.reduce(&:merge)
+    end
+
+    def data_attribute_value(data_attribute)
+      options[data_attribute].is_a?(String) ? options[data_attribute].html_safe : options[data_attribute]
     end
   end
 end

@@ -5,13 +5,13 @@ class TooltipTest < ActionView::TestCase
   setup do
     @parameters = { animation: true, container: "body", position: :left,
                     delay: 10, html: true, selector: false, template: "<b>",
-                    trigger: "hover focus", fallback_placement: %w[top right],
+                    trigger: "hover focus", fallbackPlacement: %w[top right],
                     boundary: 'clippingParents' }
   end
 
   test 'tooltip by hash' do
     actual   = UiBibz::Ui::Core::Notifications::Tooltip.new(@parameters.merge(title: "My Title")).render
-    expected = { "data-bs-toggle" => "tooltip", "data-bs-title" => "My Title", "data-bs-placement" => :left, "data-bs-animation" => true, "data-bs-container" => "body", "data-bs-delay" => 10, "data-bs-html" => true, "data-bs-selector" => false, "data-bs-template" => "<b>", "data-bs-trigger" => "hover focus", "data-bs-offset" => nil, "data-bs-fallback_placement" => %w[top right], "data-bs-boundary" => "clippingParents" }
+    expected = { "data-bs-toggle" => "tooltip", "data-bs-title" => "My Title", "data-bs-placement" => :left, "data-bs-animation" => true, "data-bs-container" => "body", "data-bs-delay" => 10, "data-bs-html" => true, "data-bs-selector" => false, "data-bs-template" => "<b>", "data-bs-trigger" => "hover focus", "data-bs-offset" => nil, "data-bs-fallbackPlacement" => %w[top right], "data-bs-boundary" => "clippingParents" }
 
     assert_equal expected, actual
   end
@@ -19,7 +19,7 @@ class TooltipTest < ActionView::TestCase
   test 'tooltip with content and options' do
     actual = UiBibz::Ui::Core::Notifications::Tooltip.new("My Title", @parameters).render
 
-    expected = { "data-bs-toggle" => "tooltip", "data-bs-title" => "My Title", "data-bs-placement" => :left, "data-bs-animation" => true, "data-bs-container" => "body", "data-bs-delay" => 10, "data-bs-html" => true, "data-bs-selector" => false, "data-bs-template" => "<b>", "data-bs-trigger" => "hover focus", "data-bs-offset" => nil, "data-bs-fallback_placement" => %w[top right], "data-bs-boundary" => "clippingParents" }
+    expected = { "data-bs-toggle" => "tooltip", "data-bs-title" => "My Title", "data-bs-placement" => :left, "data-bs-animation" => true, "data-bs-container" => "body", "data-bs-delay" => 10, "data-bs-html" => true, "data-bs-selector" => false, "data-bs-template" => "<b>", "data-bs-trigger" => "hover focus", "data-bs-offset" => nil, "data-bs-fallbackPlacement" => %w[top right], "data-bs-boundary" => "clippingParents" }
 
     assert_equal expected, actual
   end
@@ -29,7 +29,29 @@ class TooltipTest < ActionView::TestCase
       "My Title"
     end.render
 
-    expected = { "data-bs-toggle" => "tooltip", "data-bs-title" => "My Title", "data-bs-placement" => :left, "data-bs-animation" => true, "data-bs-container" => "body", "data-bs-delay" => 10, "data-bs-html" => true, "data-bs-selector" => false, "data-bs-template" => "<b>", "data-bs-trigger" => "hover focus", "data-bs-offset" => nil, "data-bs-fallback_placement" => %w[top right], "data-bs-boundary" => "clippingParents" }
+    expected = { "data-bs-toggle" => "tooltip", "data-bs-title" => "My Title", "data-bs-placement" => :left, "data-bs-animation" => true, "data-bs-container" => "body", "data-bs-delay" => 10, "data-bs-html" => true, "data-bs-selector" => false, "data-bs-template" => "<b>", "data-bs-trigger" => "hover focus", "data-bs-offset" => nil, "data-bs-fallbackPlacement" => %w[top right], "data-bs-boundary" => "clippingParents" }
+
+    assert_equal expected, actual
+  end
+
+  test 'glyph with tooltip object' do
+    tooltip = UiBibz::Ui::Core::Notifications::Tooltip.new(@parameters.merge(title: "My Title"))
+    actual = UiBibz::Ui::Core::Icons::Glyph.new("diamond", tooltip: tooltip).render
+    expected = "<i data-bs-toggle=\"tooltip\" data-bs-title=\"My Title\" data-bs-placement=\"left\" data-bs-animation=\"true\" data-bs-container=\"body\" data-bs-delay=\"10\" data-bs-html=\"true\" data-bs-selector=\"false\" data-bs-template=\"<b>\" data-bs-trigger=\"hover focus\" data-bs-fallbackPlacement=\"top right\" data-bs-boundary=\"clippingParents\" class=\"glyph fas fa-diamond\"></i>"
+
+    assert_equal expected, actual
+  end
+
+  test 'glyph with tooltip hash' do
+    actual = UiBibz::Ui::Core::Icons::Glyph.new("diamond", tooltip: @parameters.merge(title: "My Title")).render
+    expected = "<i data-bs-toggle=\"tooltip\" data-bs-title=\"My Title\" data-bs-placement=\"left\" data-bs-animation=\"true\" data-bs-container=\"body\" data-bs-delay=\"10\" data-bs-html=\"true\" data-bs-selector=\"false\" data-bs-template=\"<b>\" data-bs-trigger=\"hover focus\" data-bs-fallbackPlacement=\"top right\" data-bs-boundary=\"clippingParents\" class=\"glyph fas fa-diamond\"></i>"
+
+    assert_equal expected, actual
+  end
+
+  test 'glyph with tooltip boolean' do
+    actual = UiBibz::Ui::Core::Icons::Glyph.new("diamond", { tooltip: true }, { title: "My Title" }).render
+    expected = "<i data-bs-toggle=\"tooltip\" data-bs-title=\"My Title\" class=\"glyph fas fa-diamond\"></i>"
 
     assert_equal expected, actual
   end
