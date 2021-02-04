@@ -73,12 +73,12 @@ module UiBibz::Ui::Core::Forms::Dropdowns
     end
 
     def button_html
-      content_tag :button, button_content, class: join_classes('btn', button_status, size)
+      content_tag :button, button_content, (options[:html_button] || {}).merge(class: join_classes('btn', button_status, size, options[:html_button].try(:[], :class)))
     end
 
     def split_html
-      content_tag :button, split_content, class: split_classes, type: 'button',
-                                          'data-bs-toggle' => 'dropdown', 'aria-haspopup' => true, 'aria-expanded' => false
+      content_tag :button, split_content, (options[:html_split] || {}).merge(class: split_classes, type: 'button',
+                                                                             'data-bs-toggle' => 'dropdown', 'aria-haspopup' => true, 'aria-expanded' => false)
     end
 
     def split_content
@@ -86,7 +86,7 @@ module UiBibz::Ui::Core::Forms::Dropdowns
     end
 
     def split_classes
-      join_classes('btn', button_status, size, 'dropdown-toggle', 'dropdown-toggle-split')
+      join_classes('btn', button_status, size, 'dropdown-toggle', 'dropdown-toggle-split', options[:split_html].try(:[], :class))
     end
 
     def src_only

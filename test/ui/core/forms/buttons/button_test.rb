@@ -98,7 +98,7 @@ class ButtonTest < ActionView::TestCase
 
   test 'button with simple tooltip' do
     actual = ui_button('My Button', { tooltip: 'My Button' }, { title: 'My tooltip' })
-    expected = '<button title="My tooltip" data-bs-toggle="tooltip" data-title="My Button" class="btn-secondary btn">My Button</button>'
+    expected = '<button title="My tooltip" data-bs-toggle="tooltip" data-bs-title="My Button" class="btn-secondary btn">My Button</button>'
 
     assert_equal expected, actual
   end
