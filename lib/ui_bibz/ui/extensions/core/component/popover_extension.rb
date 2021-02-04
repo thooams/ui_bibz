@@ -1,22 +1,10 @@
 # frozen_string_literal: true
 
 module PopoverExtension
-  # TOOLTIP_METHODS = %i[animation container delay html placement selector template title trigger
-  #                     offset fallback_placement boundary sanitize white_list santitize_fn].freeze
-
-  POPOVER_METHODS = %i[animation container delay html placement selector template title
-                       trigger offset fallbackPlacement boundary sanitize white_list sanitize_fn].freeze
-
   def popover_data_html
-    if options[:popover].present?
-      add_html_data 'bs-toggle', value: 'popover'
-      add_html_data 'bs-content', value: (options[:popover].is_a?(String) ? options[:popover] : options[:popover][:content])
-    end
+    return if options[:popover].nil?
 
-    return unless options[:popover].is_a?(Hash)
-
-    POPOVER_METHODS.each { |mth| add_html_data("bs-#{mth}", value: options[:popover].try(:[], mth)) unless options[:popover].try(:[], mth).nil? }
-    add_html_data 'bs-placement', value: options[:popover].try(:[], :position) unless options[:popover].try(:[], :position).nil?
+    html_options.update(generate_popover.render)
   end
 
   def tooltip_data_html
@@ -35,6 +23,15 @@ module PopoverExtension
       UiBibz::Ui::Core::Notifications::Tooltip.new(html_options.delete(:title))
     else
       UiBibz::Ui::Core::Notifications::Tooltip.new(options[:tooltip])
+    end
+  end
+
+  def generate_popover
+    case options[:popover].class.name
+    when 'UiBibz::Ui::Core::Notifications::Popover'
+      options[:popover]
+    else
+      UiBibz::Ui::Core::Notifications::Popover.new(options[:popover])
     end
   end
 end

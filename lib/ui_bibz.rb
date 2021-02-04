@@ -180,6 +180,7 @@ module UiBibz
       module Notifications
         autoload :Alert,                   'ui_bibz/ui/core/notifications/alert'
         autoload :Badge,                   'ui_bibz/ui/core/notifications/badge'
+        autoload :Popover,                 'ui_bibz/ui/core/notifications/popover'
         autoload :ProgressBar,             'ui_bibz/ui/core/notifications/progress_bar'
         autoload :Spinner,                 'ui_bibz/ui/core/notifications/spinner'
         autoload :Toast,                   'ui_bibz/ui/core/notifications/toast'

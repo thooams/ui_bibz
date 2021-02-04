@@ -91,7 +91,7 @@ class ButtonTest < ActionView::TestCase
 
   test 'button with complex popover' do
     actual = ui_button('My Button', popover: { content: 'My popover', position: :left, html: true })
-    expected = '<button data-bs-toggle="popover" data-bs-content="My popover" data-bs-html="true" data-bs-placement="left" class="btn-secondary btn">My Button</button>'
+    expected = "<button data-bs-toggle=\"popover\" data-bs-content=\"My popover\" data-bs-placement=\"left\" data-bs-html=\"true\" class=\"btn-secondary btn\">My Button</button>"
 
     assert_equal expected, actual
   end

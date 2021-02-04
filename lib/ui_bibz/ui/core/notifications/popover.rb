@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module UiBibz::Ui::Core::Notifications
-  # Create a tooltip
+  # Create a popover
   #
   # This element is an extend of UiBibz::Ui::Core::Component.
   #
@@ -18,46 +18,46 @@ module UiBibz::Ui::Core::Notifications
   #
   # ==== Signatures
   #
-  #   UiBibz::Ui::Core::Notifications::Tooltip.new(content, options = nil, html_options = nil)
+  #   UiBibz::Ui::Core::Notifications::Popover.new(content, options = nil, html_options = nil)
   #
-  #   UiBibz::Ui::Core::Notifications::Tooltip.new(options = nil, html_options = nil) do
+  #   UiBibz::Ui::Core::Notifications::Popover.new(options = nil, html_options = nil) do
   #     content
   #   end
   #
   # ==== Examples
   #
-  #   UiBibz::Ui::Core::Notifications::Tooltip.new("My content")
-  #
-  #   # or
-  #
-  #   UiBibz::Ui::Core::Notifications::Tooltip.new(position: :right) do
-  #     content
+  #   UiBibz::Ui::Core::Notifications::Popover.new(class: 'my-toast').tap |t|
+  #     t.header "My header toast", glyph: 'eye', time: 'now'
+  #     t.body "My body toast"
   #   end
   #
   # ==== Helper
   #
-  #   tooltip = UiBibz::Ui::Core::Notifications::Tooltip.new("My content", position: :left)
-  #   ui_glyph("diamond", tooltip: tooltip)
+  #   popover = UiBibz::Ui::Core::Notifications::Popover.new(position: :left) do
+  #      My content
+  #   end
+  #   ui_glyph("diamond", popover: popover)
   #
   #   # or
   #
-  #   ui_glyph("diamond", {tooltip: true}, { title: "My content" })
+  #   ui_glyph("diamond", {popover: true}, { title: "My content" })
   #
   #   # or
   #
-  #   ui_glyph("diamond", tooltip: { title: "My content", position: :right})
+  #   ui_glyph("diamond", popover: { title: "My content", position: :right})
   #
-  class Tooltip < UiBibz::Ui::Core::Component
+  class Popover < UiBibz::Ui::Core::Component
     # Note that for security reasons the sanitize, sanitizeFn, and allowList
     # options cannot be supplied using data attributes.
-    # https://getbootstrap.com/docs/5.0/components/tooltips/#options
-    DATA_ATTRIBUTES = %i[animation container delay html selector template trigger
-                         fallbackPlacement boundary].freeze
+    # https://getbootstrap.com/docs/5.0/components/popovers/#options
+    DATA_ATTRIBUTES = %i[animation container delay html selector
+                         template title trigger offset fallbackPlacement
+                         boundary customClass popperConfig].freeze
 
     # See UiBibz::Ui::Core::Component.initialize
     def initialize(content = nil, options = nil, html_options = nil, &block)
       super
-      @content = @options[:title] if content.is_a?(Hash) && block.nil?
+      @content = @options[:content] if content.is_a?(Hash) && block.nil?
     end
 
     # Render html tag
@@ -69,8 +69,8 @@ module UiBibz::Ui::Core::Notifications
 
     def base_attributes
       {
-        'data-bs-toggle' => 'tooltip',
-        'data-bs-title' => @content.html_safe
+        'data-bs-toggle' => 'popover',
+        'data-bs-content' => @content.html_safe
       }.tap do |h|
         h['data-bs-placement'] = options[:position] || options[:placement] if (options[:position] || options[:placement]).present?
       end

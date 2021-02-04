@@ -11,7 +11,7 @@ class TooltipTest < ActionView::TestCase
 
   test 'tooltip by hash' do
     actual   = UiBibz::Ui::Core::Notifications::Tooltip.new(@parameters.merge(title: "My Title")).render
-    expected = { "data-bs-toggle" => "tooltip", "data-bs-title" => "My Title", "data-bs-placement" => :left, "data-bs-animation" => true, "data-bs-container" => "body", "data-bs-delay" => 10, "data-bs-html" => true, "data-bs-selector" => false, "data-bs-template" => "<b>", "data-bs-trigger" => "hover focus", "data-bs-offset" => nil, "data-bs-fallbackPlacement" => %w[top right], "data-bs-boundary" => "clippingParents" }
+    expected = { "data-bs-toggle" => "tooltip", "data-bs-title" => "My Title", "data-bs-placement" => :left, "data-bs-animation" => true, "data-bs-container" => "body", "data-bs-delay" => 10, "data-bs-html" => true, "data-bs-selector" => false, "data-bs-template" => "<b>", "data-bs-trigger" => "hover focus", "data-bs-fallbackPlacement" => %w[top right], "data-bs-boundary" => "clippingParents" }
 
     assert_equal expected, actual
   end
@@ -19,7 +19,7 @@ class TooltipTest < ActionView::TestCase
   test 'tooltip with content and options' do
     actual = UiBibz::Ui::Core::Notifications::Tooltip.new("My Title", @parameters).render
 
-    expected = { "data-bs-toggle" => "tooltip", "data-bs-title" => "My Title", "data-bs-placement" => :left, "data-bs-animation" => true, "data-bs-container" => "body", "data-bs-delay" => 10, "data-bs-html" => true, "data-bs-selector" => false, "data-bs-template" => "<b>", "data-bs-trigger" => "hover focus", "data-bs-offset" => nil, "data-bs-fallbackPlacement" => %w[top right], "data-bs-boundary" => "clippingParents" }
+    expected = { "data-bs-toggle" => "tooltip", "data-bs-title" => "My Title", "data-bs-placement" => :left, "data-bs-animation" => true, "data-bs-container" => "body", "data-bs-delay" => 10, "data-bs-html" => true, "data-bs-selector" => false, "data-bs-template" => "<b>", "data-bs-trigger" => "hover focus", "data-bs-fallbackPlacement" => %w[top right], "data-bs-boundary" => "clippingParents" }
 
     assert_equal expected, actual
   end
@@ -29,7 +29,7 @@ class TooltipTest < ActionView::TestCase
       "My Title"
     end.render
 
-    expected = { "data-bs-toggle" => "tooltip", "data-bs-title" => "My Title", "data-bs-placement" => :left, "data-bs-animation" => true, "data-bs-container" => "body", "data-bs-delay" => 10, "data-bs-html" => true, "data-bs-selector" => false, "data-bs-template" => "<b>", "data-bs-trigger" => "hover focus", "data-bs-offset" => nil, "data-bs-fallbackPlacement" => %w[top right], "data-bs-boundary" => "clippingParents" }
+    expected = { "data-bs-toggle" => "tooltip", "data-bs-title" => "My Title", "data-bs-placement" => :left, "data-bs-animation" => true, "data-bs-container" => "body", "data-bs-delay" => 10, "data-bs-html" => true, "data-bs-selector" => false, "data-bs-template" => "<b>", "data-bs-trigger" => "hover focus", "data-bs-fallbackPlacement" => %w[top right], "data-bs-boundary" => "clippingParents" }
 
     assert_equal expected, actual
   end
