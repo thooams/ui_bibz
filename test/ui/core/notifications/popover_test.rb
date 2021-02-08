@@ -49,4 +49,11 @@ class PopoverTest < ActionView::TestCase
 
     assert_equal expected, actual
   end
+
+  test 'glyph with popover String' do
+    actual = UiBibz::Ui::Core::Icons::Glyph.new("diamond", popover: "My Content").render
+    expected = "<i data-bs-toggle=\"popover\" data-bs-content=\"My Content\" class=\"glyph fas fa-diamond\"></i>"
+
+    assert_equal expected, actual
+  end
 end
