@@ -35,7 +35,7 @@ module UiBibz::Ui::Ux::Tables
 
       return if default_actions? != true && @actions.raw_list.empty?
 
-      UiBibz::Ui::Core::Forms::Dropdowns::Dropdown.new(dropdown_action_name, { position: :right, size: :sm, glyph: actions_glyph }, { class: 'dropdown-action' }).tap do |d|
+      UiBibz::Ui::Core::Forms::Dropdowns::Dropdown.new(dropdown_action_name, { size: :sm, glyph: actions_glyph }, { class: 'dropdown-action' }).tap do |d|
         actions_links(record).each do |l|
           d.html l.to_s.html_safe
         end
