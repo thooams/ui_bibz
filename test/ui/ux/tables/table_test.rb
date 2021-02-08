@@ -195,11 +195,14 @@ class TableTest < ActionView::TestCase
   end
 
   test 'table visual options' do
-    table  = UiBibz::Ui::Ux::Tables::Table.new(store: @users, striped: true, status: :inverse, responsive: true, bordered: true, size: :sm, hoverable: true, reflow: true).render
-    actual = Nokogiri::HTML(table).xpath('//table')[0].attributes['class'].value
-    expected = 'table-inverse table table-striped table-bordered table-hoverable table-sm table-responsive table-reflow'
+    table = UiBibz::Ui::Ux::Tables::Table.new(store: @users, striped: true, status: :inverse, responsive: true, bordered: true, size: :sm, hoverable: true, breakpoint: :sm).render
+    div_classes = Nokogiri::HTML(table).xpath('//div')[0].attributes['class'].value
+    actual_table_classes = Nokogiri::HTML(table).xpath('//table')[0].attributes['class'].value
+    table_classes = 'table-inverse table table-striped table-bordered table-hoverable table-sm'
+    actual_div_classes = 'table-responsive-sm'
 
-    assert_equal expected, actual
+    assert_equal table_classes, actual_table_classes
+    assert_equal div_classes, actual_div_classes
   end
 
   test 'table thead visual options' do

@@ -32,7 +32,8 @@ module UiBibz::Ui::Ux::Tables
   #   * +size+
   #     (+sm+)
   #   * +responsive+ - Boolean
-  #   * +reflow+ - Boolean
+  #   * +breakpoint+
+  #     (+:sm+, +:md+, +:lg+, +:xl+, +:xxl+)
   #
   #
   # ==== Signatures
