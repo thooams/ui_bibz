@@ -21,6 +21,16 @@ class SimpleFormTest < ActionView::TestCase
     @user       = @users.first
   end
 
+  test 'simple form input' do
+    actual = simple_form_for @user do |f|
+      f.input :name_fr
+    end
+
+    expected = "<form class=\"simple_form edit_user\" id=\"edit_user_1\" action=\"/users/1\" accept-charset=\"UTF-8\" method=\"post\"><input type=\"hidden\" name=\"_method\" value=\"patch\" /><div class=\"form-group string optional user_name_fr\"><label class=\"control-label string optional\" for=\"user_name_fr\">Name fr</label><input class=\"form-control string optional\" type=\"text\" value=\"test1\" name=\"user[name_fr]\" id=\"user_name_fr\" /></div></form>"
+
+    assert_equal expected, actual
+  end
+
   test 'auto complete field input in simple form' do
     actual = simple_form_for @user do |f|
       f.input :name_fr, as: :ui_auto_complete_field, collection: @users, label_method: :name_fr

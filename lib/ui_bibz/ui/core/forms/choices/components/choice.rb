@@ -116,5 +116,7 @@ module UiBibz::Ui::Core::Forms::Choices
     def input_id
       @input_id ||= @options[:id] || generate_id('choice')
     end
+
+    def state; end
   end
 end

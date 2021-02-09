@@ -11,7 +11,7 @@ class ChoiceGroupTest < ActionView::TestCase
       bc.choice 'Checkbox 2', state: :active
     end
 
-    expected = "<div data-toggle=\"buttons\" class=\"btn-group button-choice btn-group-toggle\"><input type=\"checkbox\" autocomplete=\"off\" class=\"btn-check\" id=\"#{actual.items.first.input_options[:id]}\" /><label class=\"btn-secondary btn\" for=\"#{actual.items.first.input_options[:id]}\">Checkbox 1</label><input type=\"checkbox\" autocomplete=\"off\" class=\"btn-check\" checked=\"checked\" id=\"#{actual.items.last.input_options[:id]}\" /><label class=\"active btn-secondary btn\" aria-pressed=\"true\" for=\"#{actual.items.last.input_options[:id]}\">Checkbox 2</label></div>"
+    expected = "<div data-toggle=\"buttons\" class=\"btn-group button-choice btn-group-toggle\"><input type=\"checkbox\" autocomplete=\"off\" class=\"btn-check\" id=\"#{actual.items.first.input_options[:id]}\" /><label class=\"btn-secondary btn\" for=\"#{actual.items.first.input_options[:id]}\">Checkbox 1</label><input type=\"checkbox\" autocomplete=\"off\" class=\"btn-check\" checked=\"checked\" id=\"#{actual.items.last.input_options[:id]}\" /><label class=\"btn-secondary btn\" aria-pressed=\"true\" for=\"#{actual.items.last.input_options[:id]}\">Checkbox 2</label></div>"
 
     assert_equal expected, actual.render
   end
@@ -22,7 +22,7 @@ class ChoiceGroupTest < ActionView::TestCase
       bc.choice 'Radio 2', state: :active
     end
 
-    expected = "<div data-toggle=\"buttons\" class=\"btn-group button-choice btn-group-toggle\"><input type=\"radio\" autocomplete=\"off\" class=\"btn-check\" name=\"#{actual.items.first.input_options[:name]}\" id=\"#{actual.items.first.input_options[:id]}\" /><label class=\"btn-secondary btn\" for=\"#{actual.items.first.input_options[:id]}\">Radio 1</label><input type=\"radio\" autocomplete=\"off\" class=\"btn-check\" checked=\"checked\" name=\"#{actual.items.last.input_options[:name]}\" id=\"#{actual.items.last.input_options[:id]}\" /><label class=\"active btn-secondary btn\" aria-pressed=\"true\" for=\"#{actual.items.last.input_options[:id]}\">Radio 2</label></div>"
+    expected = "<div data-toggle=\"buttons\" class=\"btn-group button-choice btn-group-toggle\"><input type=\"radio\" autocomplete=\"off\" class=\"btn-check\" name=\"#{actual.items.first.input_options[:name]}\" id=\"#{actual.items.first.input_options[:id]}\" /><label class=\"btn-secondary btn\" for=\"#{actual.items.first.input_options[:id]}\">Radio 1</label><input type=\"radio\" autocomplete=\"off\" class=\"btn-check\" checked=\"checked\" name=\"#{actual.items.last.input_options[:name]}\" id=\"#{actual.items.last.input_options[:id]}\" /><label class=\"btn-secondary btn\" aria-pressed=\"true\" for=\"#{actual.items.last.input_options[:id]}\">Radio 2</label></div>"
 
     assert_equal expected, actual.render
   end
@@ -32,7 +32,7 @@ class ChoiceGroupTest < ActionView::TestCase
       bc.choice 'Radio 1', glyph: 'diamond', status: :primary
       bc.choice 'Radio 2', state: :active
     end
-    expected = "<div data-toggle=\"buttons\" class=\"btn-group btn-group-lg button-choice btn-group-toggle\"><input type=\"radio\" autocomplete=\"off\" class=\"btn-check\" name=\"#{actual.items.first.input_options[:name]}\" id=\"#{actual.items.first.input_options[:id]}\" /><label class=\"btn-outline-primary btn btn-lg\" for=\"#{actual.items.first.input_options[:id]}\"><i class=\"glyph fas fa-diamond\"></i> Radio 1</label><input type=\"radio\" autocomplete=\"off\" class=\"btn-check\" checked=\"checked\" name=\"#{actual.items.last.input_options[:name]}\" id=\"#{actual.items.last.input_options[:id]}\" /><label class=\"active btn-outline-secondary btn btn-lg\" aria-pressed=\"true\" for=\"#{actual.items.last.input_options[:id]}\">Radio 2</label></div>"
+    expected = "<div data-toggle=\"buttons\" class=\"btn-group btn-group-lg button-choice btn-group-toggle\"><input type=\"radio\" autocomplete=\"off\" class=\"btn-check\" name=\"#{actual.items.first.input_options[:name]}\" id=\"#{actual.items.first.input_options[:id]}\" /><label class=\"btn-outline-primary btn btn-lg\" for=\"#{actual.items.first.input_options[:id]}\"><i class=\"glyph fas fa-diamond\"></i> Radio 1</label><input type=\"radio\" autocomplete=\"off\" class=\"btn-check\" checked=\"checked\" name=\"#{actual.items.last.input_options[:name]}\" id=\"#{actual.items.last.input_options[:id]}\" /><label class=\"btn-outline-secondary btn btn-lg\" aria-pressed=\"true\" for=\"#{actual.items.last.input_options[:id]}\">Radio 2</label></div>"
 
     assert_equal expected, actual.render
   end

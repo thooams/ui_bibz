@@ -68,6 +68,7 @@ module UiBibz::Ui::Core::Forms::Choices
     def checkbox_html_options
       {
         disabled: disabled?,
+        checked: options[:state] == :active,
         indeterminate: options[:indeterminate],
         "data-action": options[:action],
         class: UiBibz::Utils::Screwdriver.join_classes('form-check-input', input_status)
