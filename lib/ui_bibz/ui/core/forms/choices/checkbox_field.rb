@@ -22,6 +22,8 @@ module UiBibz::Ui::Core::Forms::Choices
   # * +action+ - String Stimulus Option
   # * +label+ - [String/Boolean]
   # * +boolean+ - Boolean Add an hidden field for rails
+  # * +wrapper_html+: - Hash html_options for the wrapper
+  # * +label_html+: - Hash html_options for the label
   #
   # ==== Signatures
   #
@@ -52,29 +54,33 @@ module UiBibz::Ui::Core::Forms::Choices
 
     # Render html tag
     def pre_render
-      checkbox_field_html_tag
+      content_tag :div, wrapper_html_options  do
+        concat hidden_field_tag(content, '0', id: "#{content}-hidden") if options[:boolean]
+        concat check_box_tag(content, options[:value] || '1', options[:checked] || html_options[:checked], checkbox_html_options)
+        concat label_tag(label_name, label_content, label_html_options) if options[:label] != false
+      end
     end
 
     private
 
-    def checkbox_field_html_tag
-      content_tag(:div, html_options.except(:id, 'data-action')) do
-        concat hidden_field_tag content, '0', id: "#{content}-hidden" if options[:boolean]
-        concat check_box_tag content, options[:value] || '1', options[:checked] || html_options[:checked], checkbox_html_options
-        concat label_tag(label_name, label_content, class: 'form-check-label') if options[:label] != false
+    def wrapper_html_options
+      (options[:wrapper_html] || {}).tap do |option|
+        option[:class] = UiBibz::Utils::Screwdriver.join_classes('form-check', inline, options[:wrapper_html].try(:[], :class))
+      end
+    end
+
+    def label_html_options
+      (options[:label_html] || {}).tap do |option|
+        option[:class] = UiBibz::Utils::Screwdriver.join_classes('form-check-label', options[:label_html].try(:[], :class))
       end
     end
 
     def checkbox_html_options
-      {
-        disabled: disabled?,
-        checked: options[:state] == :active,
-        indeterminate: options[:indeterminate],
-        "data-action": options[:action],
-        class: UiBibz::Utils::Screwdriver.join_classes('form-check-input', input_status)
-      }.tap do |html|
-        html[:id] = html_options[:id] if html_options[:id]
-      end
+      html_options.merge({
+                           disabled: disabled?,
+                           checked: html_options[:checked] || options[:state] == :active,
+                           indeterminate: options[:indeterminate]
+                         })
     end
 
     def label_name
@@ -93,7 +99,7 @@ module UiBibz::Ui::Core::Forms::Choices
     end
 
     def component_html_classes
-      super << component_wrapper_html_classes
+      super << ['form-check-input', input_status]
     end
 
     def input_status
@@ -104,10 +110,6 @@ module UiBibz::Ui::Core::Forms::Choices
 
     def inline
       'form-check-inline' if options[:inline]
-    end
-
-    def component_wrapper_html_classes
-      ['form-check', inline]
     end
   end
 end

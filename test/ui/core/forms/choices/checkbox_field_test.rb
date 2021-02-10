@@ -16,4 +16,11 @@ class CheckboxFieldTest < ActionView::TestCase
 
     assert_equal expected, actual
   end
+
+  test 'checkbox_field with options and html_options' do
+    actual = UiBibz::Ui::Core::Forms::Choices::CheckboxField.new('John', action: 'click->controller#action', label_html: { class: 'test' }, wrapper_html: { title: "My title" }).render
+    expected = "<div title=\"My title\" class=\"form-check\"><input type=\"checkbox\" name=\"John\" id=\"John\" value=\"1\" data-action=\"click-&gt;controller#action\" class=\"form-check-input\" /><label class=\"form-check-label test\" for=\"John\">John</label></div>"
+
+    assert_equal expected, actual
+  end
 end

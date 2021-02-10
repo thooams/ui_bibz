@@ -21,6 +21,8 @@ module UiBibz::Ui::Core::Forms::Choices
   # * +inline+ - Boolean
   # * +action+ - String Stimulus Option
   # * +label+ - String
+  # * +wrapper_html+: - Hash html_options for the wrapper
+  # * +label_html+: - Hash html_options for the label
   #
   # ==== Signatures
   #
@@ -51,10 +53,25 @@ module UiBibz::Ui::Core::Forms::Choices
 
     # Render html tag
     def pre_render
-      radio_field_html_tag
+      content_tag :div, wrapper_html_options do
+        concat radio_button_tag content, options[:value], options[:checked] || false, checkbox_html_options
+        concat label_tag(label_name, label_content, class: 'form-check-label') if options[:label] != false
+      end
     end
 
     private
+
+    def wrapper_html_options
+      (options[:wrapper_html] || {}).tap do |option|
+        option[:class] = UiBibz::Utils::Screwdriver.join_classes('form-check', inline, options[:wrapper_html].try(:[], :class))
+      end
+    end
+
+    def label_html_options
+      (options[:label_html] || {}).tap do |option|
+        option[:class] = UiBibz::Utils::Screwdriver.join_classes('form-check-label', options[:label_html].try(:[], :class))
+      end
+    end
 
     def radio_field_html_tag
       content_tag :div, html_options.except(:id) do
@@ -63,35 +80,8 @@ module UiBibz::Ui::Core::Forms::Choices
       end
     end
 
-    def checkbox_html_options
-      {
-        disabled: disabled?,
-        checked: options[:state] == :active,
-        "data-action": options[:action],
-        class: UiBibz::Utils::Screwdriver.join_classes('form-check-input', input_status)
-      }
-    end
-
     def label_name
       "#{content}_#{options[:value]}"
-    end
-
-    def component_html_classes
-      super << component_wrapper_html_classes
-    end
-
-    def status; end
-
-    def input_status
-      "form-check-input-#{options[:status]}" if options[:status]
-    end
-
-    def inline
-      'form-check-inline' if options[:inline]
-    end
-
-    def component_wrapper_html_classes
-      ['form-check', inline]
     end
   end
 end
