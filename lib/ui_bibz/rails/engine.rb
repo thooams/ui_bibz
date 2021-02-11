@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 # to load pagination in rails app
-require 'will_paginate' if system('gem list -i will_paginate', out: File::NULL)
-require 'simple_form' if system('gem list -i simple_form', out: File::NULL)
+require 'will_paginate' if Gem.loaded_specs.key?('will_paginate')
+require 'simple_form' if Gem.loaded_specs.key?('simple_form')
 
 module UiBibz
   module Rails
