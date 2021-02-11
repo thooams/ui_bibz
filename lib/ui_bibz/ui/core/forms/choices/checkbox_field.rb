@@ -65,13 +65,13 @@ module UiBibz::Ui::Core::Forms::Choices
 
     def wrapper_html_options
       (options[:wrapper_html] || {}).tap do |option|
-        option[:class] = UiBibz::Utils::Screwdriver.join_classes('form-check', inline, options[:wrapper_html].try(:[], :class))
+        option[:class] = UiBibz::Utils::Screwdriver.join_classes(wrapper_classes, inline, options[:wrapper_html].try(:[], :class))
       end
     end
 
     def label_html_options
       (options[:label_html] || {}).tap do |option|
-        option[:class] = UiBibz::Utils::Screwdriver.join_classes('form-check-label', options[:label_html].try(:[], :class))
+        option[:class] = UiBibz::Utils::Screwdriver.join_classes(label_classes, options[:label_html].try(:[], :class))
       end
     end
 
@@ -110,6 +110,14 @@ module UiBibz::Ui::Core::Forms::Choices
 
     def inline
       'form-check-inline' if options[:inline]
+    end
+
+    def wrapper_classes
+      'form-check'
+    end
+
+    def label_classes
+      'form-check-label'
     end
   end
 end

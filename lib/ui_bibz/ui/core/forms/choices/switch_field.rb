@@ -47,8 +47,8 @@ module UiBibz::Ui::Core::Forms::Choices
       { boolean: true }
     end
 
-    def component_html_classes
-      ['form-check', 'form-switch', inline]
+    def wrapper_classes
+      %w[form-check form-switch]
     end
   end
 end

@@ -61,27 +61,8 @@ module UiBibz::Ui::Core::Forms::Choices
 
     private
 
-    def wrapper_html_options
-      (options[:wrapper_html] || {}).tap do |option|
-        option[:class] = UiBibz::Utils::Screwdriver.join_classes('form-check', inline, options[:wrapper_html].try(:[], :class))
-      end
-    end
-
-    def label_html_options
-      (options[:label_html] || {}).tap do |option|
-        option[:class] = UiBibz::Utils::Screwdriver.join_classes('form-check-label', options[:label_html].try(:[], :class))
-      end
-    end
-
-    def radio_field_html_tag
-      content_tag :div, html_options.except(:id) do
-        concat radio_button_tag content, options[:value], options[:checked] || false, checkbox_html_options
-        concat label_tag(label_name, label_content, class: 'form-check-label') if options[:label] != false
-      end
-    end
-
     def label_name
-      "#{content}_#{options[:value]}"
+      html_options[:id] || "#{content}_#{options[:value]}"
     end
   end
 end

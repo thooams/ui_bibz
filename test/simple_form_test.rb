@@ -132,10 +132,10 @@ test1</textarea></div></form>"
 
   test 'radio field input in simple form' do
     actual = simple_form_for @user do |f|
-      f.input :name_fr, as: :ui_radio_field, collection: @users, label_method: :name_fr
+      f.input :name_fr, as: :ui_radio_field, label: 'Radio 1', input_html: { id: "radio_1" }
     end
 
-    expected = "<form class=\"simple_form edit_user\" id=\"edit_user_1\" action=\"/users/1\" accept-charset=\"UTF-8\" method=\"post\"><input type=\"hidden\" name=\"_method\" value=\"patch\" /><div class=\"form-group ui_radio_field optional user_name_fr\"><label class=\"control-label ui_radio_field optional\">Name fr</label><input type=\"hidden\" name=\"user[name_fr]\" value=\"\" /><div class=\"radio ui_radio_field optional form-check-input\"><input class=\"ui_radio_field optional form-check-input\" type=\"radio\" value=\"1\" name=\"user[name_fr]\" id=\"user_name_fr_1\" /><label class=\"collection_radio_buttons\" for=\"user_name_fr_1\">test1</label></div><div class=\"radio ui_radio_field optional form-check-input\"><input class=\"ui_radio_field optional form-check-input\" type=\"radio\" value=\"2\" name=\"user[name_fr]\" id=\"user_name_fr_2\" /><label class=\"collection_radio_buttons\" for=\"user_name_fr_2\">test2</label></div></div></form>"
+    expected = "<form class=\"simple_form edit_user\" id=\"edit_user_1\" action=\"/users/1\" accept-charset=\"UTF-8\" method=\"post\"><input type=\"hidden\" name=\"_method\" value=\"patch\" /><div class=\"form-group ui_radio_field optional user_name_fr\"><div class=\"form-check\"><input type=\"radio\" name=\"user[name_fr]\" id=\"radio_1\" value=\"test1\" class=\"ui_radio_field optional form-check-input\" /><label class=\"form-check-label\" for=\"radio_1\">Radio 1</label></div></div></form>"
 
     assert_equal expected, actual
   end
