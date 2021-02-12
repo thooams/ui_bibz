@@ -82,10 +82,14 @@ module UiBibz::Ui::Core::Forms::Choices
       if options[:label]
         content_tag :label, options[:label], html_options.merge(for: input_id)
       else
-        content_tag :label, html_options.merge(for: input_id) do
-          concat glyph_and_content_html(options[:text].nil? ? @content : ' ')
-          concat badge_html unless options[:badge].nil?
-        end
+        generated_label
+      end
+    end
+
+    def generated_label
+      content_tag :label, html_options.merge(for: input_id) do
+        concat glyph_and_content_html(options[:text].nil? ? @content : ' ')
+        concat badge_html unless options[:badge].nil?
       end
     end
 
