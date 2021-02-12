@@ -8,6 +8,9 @@ module UiBibz::Ui::Ux::Tables
 
     # Store Use WillPaginate store methods
     def initialize(store)
+      raise 'Store is nil!' if store.nil?
+      raise 'Store can be created only with "table_search_pagination" method!' if store.try(:records).nil?
+
       @records = store.records
       @store   = store
       @model   = store.model
