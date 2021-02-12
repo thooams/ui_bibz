@@ -47,6 +47,8 @@ module UiBibz::Ui::Core::Notifications
   #   ui_glyph("diamond", popover: { title: "My content", position: :right})
   #
   class Popover < UiBibz::Ui::Core::Component
+    include UiBibz::Ui::Concerns::NotificationConcern
+
     # Note that for security reasons the sanitize, sanitizeFn, and allowList
     # options cannot be supplied using data attributes.
     # https://getbootstrap.com/docs/5.0/components/popovers/#options
@@ -74,12 +76,6 @@ module UiBibz::Ui::Core::Notifications
       }.tap do |h|
         h['data-bs-placement'] = options[:position] || options[:placement] if (options[:position] || options[:placement]).present?
       end
-    end
-
-    def data_attributes
-      DATA_ATTRIBUTES.map do |data_attribute|
-        options[data_attribute].to_s.blank? ? nil : { "data-bs-#{data_attribute}" => data_attribute_value(data_attribute) }
-      end.compact.reduce(&:merge) || {}
     end
 
     def data_attribute_value(data_attribute)

@@ -79,6 +79,7 @@ module UiBibz
       autoload :HtmlConcern,         'ui_bibz/ui/concerns/html_concern'
       autoload :CardItemableConcern, 'ui_bibz/ui/concerns/card_itemable_concern'
       autoload :NavigationConcern,   'ui_bibz/ui/concerns/navigation_concern'
+      autoload :NotificationConcern, 'ui_bibz/ui/concerns/notification_concern'
     end
 
     # Core
