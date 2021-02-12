@@ -237,31 +237,40 @@ test1</textarea></div></form>"
     assert_equal expected, actual
   end
 
-  # test 'choice field' do
-  #   actual = ui_form_for @user do |f|
-  #     f.ui_choice_group do |cg|
-  #       cg.input :name_fr, as: :ui_choice_field
-  #       cg.input :name_fr, as: :ui_choice_field
-  #     end
-  #   end
-  #
-  #   expected = "<form class=\"simple_form\" id=\"edit_user_1\" action=\"/users/1\" accept-charset=\"UTF-8\" method=\"post\"><input type=\"hidden\" name=\"_method\" value=\"patch\" /><div class=\"button_group\"><div data-toggle=\"buttons\" class=\"btn-group button-choice btn-group-toggle\"><input type=\"checkbox\" autocomplete=\"off\" class=\"btn-check\" id=\"choice-21472\" /><label class=\"btn-secondary btn checkbox\" checked=\"checked\" for=\"choice-21472\">Name Fr</label><input type=\"checkbox\" autocomplete=\"off\" class=\"btn-check\" id=\"choice-13741\" /><label class=\"btn-secondary btn checkbox\" checked=\"checked\" for=\"choice-13741\">Name Fr</label></div></div></form>"
-  #
-  #   assert_equal expected, actual
-  # end
+  test 'ui_button_group' do
+    actual = ui_form_for @user do |f|
+      f.ui_button_group do |bg|
+        bg.button "test"
+      end
+    end
 
-  #   test 'test surround field into simple form' do
-  #     actual = ui_form_for @user do |f|
-  #       concat(f.ui_surround_field do |sf|
-  #         sf.input :name_en, as: :text_field
-  #         sf.addon("€")
-  #       end)
-  #       concat f.input(:name_fr, as: :ui_auto_complete_field, collection: @users, label_method: :name_fr)
-  #     end
-  #
-  #     expected = "<form class=\"simple_form edit_user\" id=\"edit_user_1\" action=\"/users/1\" accept-charset=\"UTF-8\" method=\"post\"><input type=\"hidden\" name=\"_method\" value=\"patch\" /><div><div class=\"input-group\"><input type=\"text\" name=\"user[name_en]\" id=\"user_name_en\" value=\"test1 en\" class=\"text_field optional form-control\" /><span class=\"input-group-text\">€</span></div></div><div class=\"form-group ui_auto_complete_field optional user_name_fr\"><label class=\"control-label ui_auto_complete_field optional\" for=\"user_name_fr\">Name fr</label><input type=\"text\" name=\"user[name_fr]\" id=\"user_name_fr\" value=\"test1\" class=\"ui_auto_complete_field optional form-control auto-complete-field\" autocomplete=\"true\" list=\"user_name_fr-datalist\" /><datalist id=\"user_name_fr-datalist\"><option value=\"1\">test1</option>
-  # <option value=\"2\">test2</option></datalist></div></form>"
-  #
-  #     assert_equal expected, actual
-  #   end
+    expected = "<form class=\"simple_form\" id=\"edit_user_1\" action=\"/users/1\" accept-charset=\"UTF-8\" method=\"post\"><input type=\"hidden\" name=\"_method\" value=\"patch\" /><div class=\"button_group\"><div class=\"btn-group\" role=\"group\"><button class=\"btn-secondary btn\">test</button></div></div></form>"
+
+    assert_equal expected, actual
+  end
+
+  test 'ui_choice_group' do
+    actual = ui_form_for @user do |f|
+      f.ui_choice_group do |cg|
+        cg.input :name_fr, as: :ui_checkbox_field
+      end
+    end
+
+    expected = "<form class=\"simple_form\" id=\"edit_user_1\" action=\"/users/1\" accept-charset=\"UTF-8\" method=\"post\"><input type=\"hidden\" name=\"_method\" value=\"patch\" /><div class=\"button_group\"><div data-toggle=\"buttons\" class=\"btn-group button-choice btn-group-toggle\"><div class=\"form-check\"><input type=\"checkbox\" name=\"user[name_fr]\" id=\"user_name_fr\" value=\"test1\" class=\"ui_checkbox_field optional form-check-input\" checked=\"checked\" /><label class=\"form-check-label\" for=\"user_name_fr\">Name Fr</label></div></div></div></form>"
+
+    assert_equal expected, actual
+  end
+
+  test 'test surround field into simple form' do
+    actual = ui_form_for @user do |f|
+      f.ui_surround_field do |sf|
+        sf.input :name_en, as: :ui_text_field
+        sf.addon("€")
+      end
+    end
+
+    expected = "<form class=\"simple_form\" id=\"edit_user_1\" action=\"/users/1\" accept-charset=\"UTF-8\" method=\"post\"><input type=\"hidden\" name=\"_method\" value=\"patch\" /><div class=\"form-group surround_field\"><div class=\"input-group ui_surround_field\"><input type=\"text\" name=\"user[name_en]\" id=\"user_name_en\" value=\"test1 en\" class=\"form-control string ui_text_field optional\" /><span class=\"input-group-text\">€</span></div></div></form>"
+
+    assert_equal expected, actual
+  end
 end
