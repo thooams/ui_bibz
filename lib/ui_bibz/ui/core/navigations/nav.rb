@@ -67,6 +67,7 @@ module UiBibz::Ui::Core::Navigations
   #
   class Nav < UiBibz::Ui::Core::Component
     include UiBibz::Ui::Concerns::HtmlConcern
+    include UiBibz::Ui::Concerns::NavigationConcern
 
     # See UiBibz::Ui::Core::Component.initialize
     def initialize(content = nil, options = nil, html_options = nil, &block)
@@ -106,11 +107,6 @@ module UiBibz::Ui::Core::Navigations
     # See UiBibz::Ui::Core::Navigations::NavDropdown
     def dropdown(content = nil, options = {}, html_options = nil, &block)
       @items << NavDropdown.new(content, options, html_options).tap(&block)
-    end
-
-    def spacer(num = 'auto')
-      kls = " me-#{num}"
-      @items.last.html_options[:class].nil? ? @items.last.html_options[:class] = kls : @items.last.html_options[:class] << kls
     end
 
     protected

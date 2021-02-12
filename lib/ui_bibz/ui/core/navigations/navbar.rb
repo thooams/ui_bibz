@@ -75,6 +75,7 @@ module UiBibz::Ui::Core::Navigations
   #
   class Navbar < UiBibz::Ui::Core::Component
     include UiBibz::Ui::Concerns::HtmlConcern
+    include UiBibz::Ui::Concerns::NavigationConcern
 
     # See UiBibz::Ui::Core::Component.initialize
     def initialize(content = nil, options = nil, html_options = nil, &block)
@@ -122,11 +123,6 @@ module UiBibz::Ui::Core::Navigations
 
     def brand(content = nil, options = nil, html_options = nil, &block)
       @brand = UiBibz::Ui::Core::Navigations::NavbarBrand.new(content, options, html_options, &block).render
-    end
-
-    def spacer(num = 'auto')
-      kls = " me-#{num}"
-      @items.last.html_options[:class].nil? ? @items.last.html_options[:class] = kls : @items.last.html_options[:class] << kls
     end
 
     def id
