@@ -47,6 +47,7 @@ $.fn.selectpicker.Constructor.BootstrapVersion = '4'
 
   constructor: (args = {}) ->
     @turbolinks = args.turbolinks
+    @turbo = args.turbo
     return false
 
   initial: ->
@@ -59,16 +60,19 @@ $.fn.selectpicker.Constructor.BootstrapVersion = '4'
     new window.UiBibzForm()
     new window.UiBibzInterface()
     new window.UiBibzFormula()
-    $("textarea[data-provide*='markdown']").markdown() # fix markdown js if turbolinks exists
+    $("textarea[data-provide*='markdown']").markdown() # fix markdown js if turbolinks/turbo exists
     return false
 
   ready: ->
     me = this
     console.log "ready"
+    if @turbo?
+      $(document).on 'turbo:load', ->
+        me.initial() # catch event for turbo and fix in ready() function
     if @turbolinks?
       $(document).on 'turbolinks:load', ->
         me.initial() # catch event for turbolinks and fix in ready() function
-    else
+    if !@turbo? && !@turbolinks?
       $(document).ready ->
         me.initial()
     return false
