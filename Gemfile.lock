@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    ui_bibz (3.0.0.beta14)
+    ui_bibz (3.0.0.beta15)
       will-paginate-i18n
       will_paginate (~> 3.3.0)
       will_paginate-bootstrap4
@@ -95,7 +95,7 @@ GEM
       haml (>= 4.0, < 6)
       nokogiri (>= 1.6.0)
       ruby_parser (~> 3.5)
-    i18n (1.8.8)
+    i18n (1.8.9)
       concurrent-ruby (~> 1.0)
     iniparse (1.5.0)
     jquery-rails (4.4.0)

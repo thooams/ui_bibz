@@ -122,6 +122,10 @@ module UiBibz::Ui::Core
       # To turbolinks
       data_turbolinks = html_options.try(:[], :data).try(:[], :turbolinks) || options.try(:delete, :turbolinks)
       add_html_data(:turbolinks, value: data_turbolinks) unless data_turbolinks.nil?
+
+      # To Turbo
+      data_turbo = html_options.try(:[], :data).try(:[], :turbo) || options.try(:delete, :turbo)
+      add_html_data(:turbo, value: data_turbo) unless data_turbo.nil?
     end
 
     # Override this method to add html Options
