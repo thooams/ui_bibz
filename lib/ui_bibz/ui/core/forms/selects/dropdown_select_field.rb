@@ -25,6 +25,7 @@ module UiBibz::Ui::Core::Forms::Selects
   # * +searchable+ - Boolean
   # * +select_all_option+ - Boolean
   # * +append+ - String, Html
+  # * +non_selected_text+ - String
   # * +open+ - Boolean
   # * +theme+ - Symbol, defaut: +:dark+
   # * +prepend+ - String, Html
@@ -83,6 +84,7 @@ module UiBibz::Ui::Core::Forms::Selects
       clickable_opt_group
       collapsible_opt_group
       searchable
+      non_selected_text
       select_all_options
       number_displayed
       dropdown_menu_classes
@@ -107,6 +109,10 @@ module UiBibz::Ui::Core::Forms::Selects
 
     def select_all_options
       add_html_data('include_select_all_option') if options[:select_all_options]
+    end
+
+    def non_selected_text
+      add_html_data('non_selected_text', value: options[:non_selected_text]) if options[:non_selected_text]
     end
 
     def dropdown_menu_classes
