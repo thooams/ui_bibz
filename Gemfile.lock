@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    ui_bibz (3.0.0.beta15)
+    ui_bibz (3.0.0.beta16)
       will-paginate-i18n
       will_paginate (~> 3.3.0)
       will_paginate-bootstrap4
@@ -65,7 +65,7 @@ GEM
       tzinfo (~> 1.1)
       zeitwerk (~> 2.2, >= 2.2.2)
     ast (2.4.2)
-    awesome_print (1.8.0)
+    awesome_print (1.9.2)
     builder (3.2.4)
     byebug (11.1.3)
     childprocess (4.0.0)
@@ -114,7 +114,7 @@ GEM
     mini_mime (1.0.2)
     mini_portile2 (2.5.0)
     minitest (5.14.4)
-    nio4r (2.5.5)
+    nio4r (2.5.7)
     nokogiri (1.11.1)
       mini_portile2 (~> 2.5.0)
       racc (~> 1.4)
@@ -213,6 +213,7 @@ GEM
     will_paginate (3.3.0)
     will_paginate-bootstrap4 (0.2.2)
       will_paginate (~> 3.0, >= 3.0.0)
+    yard (0.9.26)
     zeitwerk (2.4.2)
 
 PLATFORMS
@@ -236,6 +237,7 @@ DEPENDENCIES
   simplecov
   sqlite3
   ui_bibz!
+  yard
 
 BUNDLED WITH
    2.1.4

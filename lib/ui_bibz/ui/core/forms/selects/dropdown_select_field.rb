@@ -89,6 +89,7 @@ module UiBibz::Ui::Core::Forms::Selects
       number_displayed
       dropdown_menu_classes
       dropdown_classes
+      n_selected_text
     end
 
     def clickable_opt_group
@@ -101,6 +102,10 @@ module UiBibz::Ui::Core::Forms::Selects
 
     def searchable
       add_html_data('enable_filtering') if options[:searchable]
+    end
+
+    def n_selected_text
+      add_html_data('n_selected_text', value: options[:n_selected_text]) if options[:n_selected_text]
     end
 
     def number_displayed
