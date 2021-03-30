@@ -76,13 +76,29 @@ module UiBibz::Ui::Core::Notifications
 
     # Add Body which is a component
     def body(content = nil, options = nil, html_options = nil, &block)
-      @body = UiBibz::Ui::Core::Notifications::Components::ToastBody.new(content, options, html_options, &block).render
+      @body = if @header.nil?
+                content_tag :div, class: 'd-flex' do
+                  concat UiBibz::Ui::Core::Notifications::Components::ToastBody.new(content, options, html_options, &block).render
+                  concat close_html if (options || {})[:closable]
+                end
+              else
+                UiBibz::Ui::Core::Notifications::Components::ToastBody.new(content, options, html_options, &block).render
+              end
     end
 
     private
 
+    def only_body_html
+      @body = UiBibz::Ui::Core::Notifications::Components::ToastBody.new(content, options, html_options, &block).render
+    end
+
+    def close_html
+      content_tag :button, '', type: 'button', class: close_button_classes,
+                               'data-bs-dismiss' => 'toast', 'aria-label' => 'Close'
+    end
+
     def component_html_classes
-      super << ['toast', status, white_text_color]
+      super << ['toast', status, white_text_color, align_items_center]
     end
 
     def component_html_options
@@ -98,10 +114,24 @@ module UiBibz::Ui::Core::Notifications
       "bg-#{options[:status]}" if options[:status]
     end
 
+    def align_items_center
+      'align-items-center' if @header.nil?
+    end
+
     def white_text_color
       return if options[:status].nil?
 
       'text-white' unless %i[info warning info light].include?(options[:status])
+    end
+
+    def white_btn_color
+      return if options[:status].nil?
+
+      'btn-close-white' unless %i[info warning info light].include?(options[:status])
+    end
+
+    def close_button_classes
+      UiBibz::Utils::Screwdriver.join_classes('btn-close', 'me-2', 'm-auto', white_btn_color)
     end
   end
 end

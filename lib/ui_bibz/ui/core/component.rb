@@ -149,7 +149,7 @@ module UiBibz::Ui::Core
     def add_html_data(name, value: true)
       html_options[:data] = {} if html_options[:data].nil?
       value = value.is_a?(String) ? value.strip : value
-      html_options[:data].update(Hash[name, value])
+      html_options[:data].update({ name => value })
     end
 
     def disabled?

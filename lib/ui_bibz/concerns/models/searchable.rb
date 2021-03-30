@@ -119,19 +119,19 @@ module UiBibz::Concerns::Models::Searchable
           if attribute.is_a?(Hash)
             if attribute == :as
               attribute.each_value do |value|
-                sql_subquery << "lower(#{value}) LIKE :#{value}_#{i}"
-                sql_attributes = sql_attributes.merge(Hash["#{value}_#{i}".to_sym, "%#{pattern}%"])
+                sql_subquery << "lower(CAST(#{value} AS TEXT)) LIKE :#{value}_#{i}"
+                sql_attributes = sql_attributes.merge({ "#{value}_#{i}".to_sym => "%#{pattern}%" })
               end
             else
               key_name = attribute.keys.first.to_s.pluralize
               attribute.each_value do |value|
-                sql_subquery << "lower(#{key_name}.#{value}) LIKE :#{key_name}_#{value}_#{i}"
-                sql_attributes = sql_attributes.merge(Hash["#{key_name}_#{value}_#{i}".to_sym, "%#{pattern}%"])
+                sql_subquery << "lower(CAST(#{key_name}.#{value} AS TEXT)) LIKE :#{key_name}_#{value}_#{i}"
+                sql_attributes = sql_attributes.merge({ "#{key_name}_#{value}_#{i}".to_sym => "%#{pattern}%" })
               end
             end
           else
-            sql_subquery << "lower(#{to_s.underscore.pluralize.split('/').last}.#{attribute}) LIKE :#{attribute}_#{i}"
-            sql_attributes = sql_attributes.merge(Hash["#{attribute}_#{i}".to_sym, "%#{pattern}%"])
+            sql_subquery << "lower(CAST(#{to_s.underscore.pluralize.split('/').last}.#{attribute} AS TEXT)) LIKE :#{attribute}_#{i}"
+            sql_attributes = sql_attributes.merge({ "#{attribute}_#{i}".to_sym => "%#{pattern}%" })
           end
         end
         sql_query << "(#{sql_subquery.join(' OR ')})"

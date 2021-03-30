@@ -86,7 +86,7 @@ module UiBibz::Ui::Core::Forms::Numbers
     end
 
     def content_formula_name
-      content.to_s.split('').count { |i| i == ']' }.positive? ? content.to_s.gsub(/]$/, '_formula]') : "#{content}_formula"
+      content.to_s.chars.count { |i| i == ']' }.positive? ? content.to_s.gsub(/]$/, '_formula]') : "#{content}_formula"
     end
 
     def state

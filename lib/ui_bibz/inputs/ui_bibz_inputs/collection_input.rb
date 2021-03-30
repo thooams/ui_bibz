@@ -60,14 +60,12 @@ module UiBibzInputs
     end
 
     def collection
-      @collection ||= begin
-        if options[:grouped]
-          grouped_collection.map { |collection| collection.try(:send, group_method) }.detect(&:present?) || []
-        else
-          collection = options.delete(:collection) || self.class.boolean_collection
-          collection.respond_to?(:call) ? collection.call : collection.to_a
-        end
-      end
+      @collection ||= if options[:grouped]
+                        grouped_collection.map { |collection| collection.try(:send, group_method) }.detect(&:present?) || []
+                      else
+                        collection = options.delete(:collection) || self.class.boolean_collection
+                        collection.respond_to?(:call) ? collection.call : collection.to_a
+                      end
     end
 
     def group_method
