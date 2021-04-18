@@ -37,11 +37,13 @@ module UiBibz::Concerns::Models::Searchable
 
     # If there is more one table in html page
     def self.initialize_params
+      @tmp_params = { per_page: @arguments[:per_page] }
+
       return unless good_store_id?
 
       @tmp_params = {
         search: @params[:search],
-        per_page: @params[:per_page],
+        per_page: @params[:per_page] || @arguments[:per_page],
         page: new_search? ? nil : @params[:page],
         sort: @params[:sort],
         direction: @params[:direction]
