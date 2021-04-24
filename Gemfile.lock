@@ -211,6 +211,7 @@ GEM
     will_paginate (3.3.0)
     will_paginate-bootstrap4 (0.2.2)
       will_paginate (~> 3.0, >= 3.0.0)
+    yard (0.9.26)
     zeitwerk (2.4.2)
 
 PLATFORMS
@@ -234,6 +235,7 @@ DEPENDENCIES
   simplecov
   sqlite3
   ui_bibz!
+  yard
 
 BUNDLED WITH
    2.2.15
