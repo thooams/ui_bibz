@@ -7,7 +7,7 @@ module UiBibz::Utils
 
     class << self
       def join_classes(*classes)
-        klasses = Array(classes).flatten.map(&:to_s).compact.uniq.reject(&:blank?)
+        klasses = Array(classes).flatten.filter_map(&:to_s).uniq.reject(&:blank?)
         klasses.empty? ? nil : klasses
       end
 

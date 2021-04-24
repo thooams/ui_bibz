@@ -37,9 +37,9 @@ module UiBibz::Utils
       if opts.is_a?(Hash)
         @position = opts[:position]
 
-        opts.map do |k, v|
+        opts.filter_map do |k, v|
           send(k, size, v) if POSITIONING.include?(k.to_sym)
-        end.compact.join(' ')
+        end.join(' ')
       else
         send('num', size, opts)
       end

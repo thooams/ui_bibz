@@ -8,7 +8,6 @@ Layout/LineLength:
   Enabled: false
 
 AllCops:
-  TargetRubyVersion: 2.7
   NewCops: enable
 
 Lint/UselessAssignment:

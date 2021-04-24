@@ -19,7 +19,7 @@ Gem::Specification.new do |s|
   s.description = UiBibz::DESCRIPTION
   s.license     = UiBibz::LICENSE
 
-  s.required_ruby_version = '>= 2.7'
+  s.required_ruby_version = '>= 3.0.0'
 
   s.files         = `git ls-files`.split
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split
