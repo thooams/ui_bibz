@@ -256,7 +256,7 @@ test1</textarea></div></form>"
       end
     end
 
-    expected = "<form class=\"simple_form\" id=\"edit_user_1\" action=\"/users/1\" accept-charset=\"UTF-8\" method=\"post\"><input type=\"hidden\" name=\"_method\" value=\"patch\" /><div class=\"button_group\"><div data-toggle=\"buttons\" class=\"btn-group button-choice btn-group-toggle\"><div class=\"form-check\"><input type=\"checkbox\" name=\"user[name_fr]\" id=\"user_name_fr\" value=\"test1\" class=\"ui_checkbox_field optional form-check-input\" checked=\"checked\" /><label class=\"form-check-label\" for=\"user_name_fr\">Name Fr</label></div></div></div></form>"
+    expected = "<form class=\"simple_form\" id=\"edit_user_1\" action=\"/users/1\" accept-charset=\"UTF-8\" method=\"post\"><input type=\"hidden\" name=\"_method\" value=\"patch\" /><div class=\"button_group\"><div class=\"btn-group button-choice btn-group-toggle\"><div class=\"form-check\"><input type=\"checkbox\" name=\"user[name_fr]\" id=\"user_name_fr\" value=\"test1\" class=\"ui_checkbox_field optional form-check-input\" checked=\"checked\" /><label class=\"form-check-label\" for=\"user_name_fr\">Name Fr</label></div></div></div></form>"
 
     assert_equal expected, actual
   end

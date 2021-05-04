@@ -94,7 +94,7 @@ module UiBibz::Ui::Core::Forms::Choices
 
     def component_html_data
       super
-      add_html_data 'toggle', value: 'buttons'
+      add_html_data 'toggle', value: 'buttons' if @options[:form].nil?
     end
   end
 end
