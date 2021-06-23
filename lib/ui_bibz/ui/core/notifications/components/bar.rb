@@ -56,7 +56,7 @@ module UiBibz::Ui::Core::Notifications::Components
     end
 
     def component_html_options
-      { "aria-valuenow": value, "aria-valuemin": min, "aria-valuemax": max, style: "width: #{value}%", role: 'progressbar' }
+      { 'aria-valuenow': value, 'aria-valuemin': min, 'aria-valuemax': max, style: "width: #{value}%", role: 'progressbar' }
     end
 
     def striped

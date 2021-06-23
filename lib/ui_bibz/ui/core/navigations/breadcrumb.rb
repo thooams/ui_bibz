@@ -93,7 +93,7 @@ module UiBibz::Ui::Core::Navigations
     private
 
     def component_html_options
-      super.merge({ "arial-label": 'breadcrumb' })
+      super.merge({ 'arial-label': 'breadcrumb' })
     end
 
     def model_name

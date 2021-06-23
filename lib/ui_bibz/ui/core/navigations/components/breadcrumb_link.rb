@@ -50,7 +50,7 @@ module UiBibz::Ui::Core::Navigations::Components
     private
 
     def component_html_options
-      super.merge(options[:current] ? { "aria-current": 'page' } : {})
+      super.merge(options[:current] ? { 'aria-current': 'page' } : {})
     end
 
     def component_html_classes

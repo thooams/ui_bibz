@@ -46,7 +46,7 @@ module UiBibz::Ui::Core::Boxes::Components
     # Render html tag
     def pre_render
       if options[:collapse]
-        content_tag :div, class: join_classes('collapse', show), id: options[:collapse], "data-bs-parent": "##{options[:parent_collapse]}" do
+        content_tag :div, class: join_classes('collapse', show), id: options[:collapse], 'data-bs-parent': "##{options[:parent_collapse]}" do
           content_tag :div, @items.join.html_safe, html_options
         end
       else

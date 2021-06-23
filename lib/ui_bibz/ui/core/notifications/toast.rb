@@ -102,7 +102,7 @@ module UiBibz::Ui::Core::Notifications
     end
 
     def component_html_options
-      { role: 'alert', "aria-live": 'assertive', "aria-atomic": true }
+      { role: 'alert', 'aria-live': 'assertive', 'aria-atomic': true }
     end
 
     def component_html_data

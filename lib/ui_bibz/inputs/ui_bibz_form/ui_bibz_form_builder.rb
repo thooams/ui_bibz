@@ -20,7 +20,7 @@ module UiBibzForm
       required       = surround_field.required_fields.any?(true)
       wrapper_classes = UiBibz::Utils::Screwdriver.join_classes(('has-error' if errors_text.present?), wrapper_html.try(:[], :class))
       label_classes = UiBibz::Utils::Screwdriver.join_classes(('required' if required), 'control-label')
-      abbr_html     = content_tag('abbr', I18n.t(:"simple_form.required.mark", default: '*'), title: I18n.t(:"simple_form.required.text", default: 'required')) if required
+      abbr_html     = content_tag('abbr', I18n.t(:'simple_form.required.mark', default: '*'), title: I18n.t(:'simple_form.required.text', default: 'required')) if required
 
       wrapper_html[:class] = wrapper_classes
 

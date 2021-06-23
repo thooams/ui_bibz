@@ -60,7 +60,7 @@ module UiBibz::Ui::Core::Notifications::Components
     end
 
     def close_button
-      content_tag :button, '', class: 'ml-2 mb-1 btn-close', "data-bs-dismiss": 'toast', "aria-label": 'Close'
+      content_tag :button, '', class: 'ml-2 mb-1 btn-close', 'data-bs-dismiss': 'toast', 'aria-label': 'Close'
     end
 
     def component_html_classes

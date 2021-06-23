@@ -159,7 +159,7 @@ module UiBibz::Ui::Core::Navigations
     end
 
     def navbar_toggle_button_html
-      content_tag :button, '☰', class: 'navbar-toggler hidden-sm-up', type: :button, data: { "bs-toggle": 'collapse', "bs-target": "##{id}" }
+      content_tag :button, '☰', class: 'navbar-toggler hidden-sm-up', type: :button, data: { 'bs-toggle': 'collapse', 'bs-target': "##{id}" }
     end
 
     def expand_size
