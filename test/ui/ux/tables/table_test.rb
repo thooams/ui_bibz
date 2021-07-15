@@ -129,6 +129,13 @@ class TableTest < ActionView::TestCase
     assert_equal expected, actual
   end
 
+  test 'table actionable with antoher controller' do
+    @users = User.table_search_pagination(params, session, { controller: "areas" })
+    @store = UiBibz::Ui::Ux::Tables::Store.new @users
+
+    assert_equal("areas", @store.controller)
+  end
+
   test 'table non actionable header' do
     options  = { actionable: false }
     action   = UiBibz::Ui::Ux::Tables::Actionable.new(@store, options)

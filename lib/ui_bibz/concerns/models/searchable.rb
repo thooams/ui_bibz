@@ -16,7 +16,7 @@ module UiBibz::Concerns::Models::Searchable
 
     def self.generate_parameters
       {
-        controller: @params[:controller],
+        controller: @arguments[:controller] || @params[:controller],
         param_id: @params[:id],
         params: @params,
         direction: @params[:direction],
