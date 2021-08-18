@@ -148,7 +148,7 @@ module UiBibz::Ui::Core
     # Add html data arguments
     def add_html_data(name, value: true)
       html_options[:data] = {} if html_options[:data].nil?
-      value = value.is_a?(String) ? value.strip : value
+      value = value.strip if value.is_a?(String)
       html_options[:data].update({ name => value })
     end
 

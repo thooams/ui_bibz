@@ -43,7 +43,7 @@ module UiBibz
     attr_accessor :configuration
   end
 
-  def self.configured? #:nodoc:
+  def self.configured? # :nodoc:
     @@configured
   end
 

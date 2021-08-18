@@ -73,7 +73,7 @@ class TableTest < ActionView::TestCase
 <option value=\"50\">50</option>
 <option value=\"100\">100</option>
 <option value=\"200\">200</option>
-<option value=\"500\">500</option></select></div></form><br class=\"ui-bibz-clear\" /></div>"
+<option value=\"500\">500</option></select></div></form></div>"
 
     assert_equal expected, actual
   end

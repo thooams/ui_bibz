@@ -44,7 +44,7 @@ module UiBibz::Ui::Core::Navigations
     include Haml::Helpers
     include SimpleForm::ActionViewExtensions::FormHelper if defined?(SimpleForm)
     include UiBibz::Helpers::UtilsHelper
-    include ActionView::Helpers #::FormHelper
+    include ActionView::Helpers # ::FormHelper
 
     attr_accessor :html_options
 

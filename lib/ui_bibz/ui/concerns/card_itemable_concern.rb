@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module UiBibz::Ui::Concerns::CardItemableConcern #:nodoc:
+module UiBibz::Ui::Concerns::CardItemableConcern # :nodoc:
   extend ActiveSupport::Concern
   include UiBibz::Ui::Concerns::HtmlConcern
 

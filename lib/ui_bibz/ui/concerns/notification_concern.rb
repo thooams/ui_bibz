@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module UiBibz::Ui::Concerns::NotificationConcern #:nodoc:
+module UiBibz::Ui::Concerns::NotificationConcern # :nodoc:
   extend ActiveSupport::Concern
 
   included do
