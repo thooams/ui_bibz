@@ -62,11 +62,7 @@ module UiBibz::Ui::Ux::Tables
     end
 
     def search_content
-      if store.id.nil?
-        store.search
-      else
-        store.id == store.params[:store_id] ? store.search : ''
-      end
+      store.search
     end
 
     def clear_button

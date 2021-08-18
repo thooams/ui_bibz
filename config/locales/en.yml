@@ -1,5 +1,8 @@
 en:
   ui_bibz:
+    table:
+      pagination:
+        per_page: 'Per page: '
     grid:
       pagination:
         per_page: 'Per page: '

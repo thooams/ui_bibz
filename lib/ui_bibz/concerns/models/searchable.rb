@@ -16,19 +16,24 @@ module UiBibz::Concerns::Models::Searchable
 
     def self.generate_parameters
       {
-        controller: @arguments[:controller] || @params[:controller],
+        controller: @params[:controller],
+        actions_controller: @arguments[:actions_controller] || @params[:controller],
         param_id: @params[:id],
         params: @params,
-        direction: @params[:direction],
-        search: @params[:search],
-        sort: @params[:sort],
+        direction: @tmp_params[:direction],
+        search: @tmp_params[:search],
+        sort: @tmp_params[:sort],
         action: @params[:action],
         column_id: @params[:column_id],
-        id: @arguments[:store_id],
+        id: store_id,
         records: search_sort_paginate,
         searchable_attributes: @searchable_attributes,
         model: create_model
       }
+    end
+
+    def self.store_id
+      @arguments[:store_id] || @arguments[:controller] || @params[:controller]
     end
 
     def self.create_model
@@ -37,17 +42,19 @@ module UiBibz::Concerns::Models::Searchable
 
     # If there is more one table in html page
     def self.initialize_params
-      @tmp_params = { per_page: @arguments[:per_page] }
+      @tmp_params = (session_store || { "per_page" => @arguments[:per_page] || 30 }).with_indifferent_access
 
       return unless good_store_id?
 
       @tmp_params = {
-        search: @params[:search],
-        per_page: @params[:per_page] || @arguments[:per_page],
-        page: new_search? ? nil : @params[:page],
-        sort: @params[:sort],
-        direction: @params[:direction]
-      }
+        "search" => @params[:search] || @tmp_params["search"],
+        "per_page" => @params[:per_page] || @tmp_params["per_page"] || @arguments[:per_page],
+        "page" => @params[:page],
+        "sort" => @params[:sort] || @tmp_params["sort"],
+        "direction" => @params[:direction] || @tmp_params["direction"]
+      }.with_indifferent_access
+
+      @session[store_id] = @tmp_params
     end
 
     def self.search
@@ -75,15 +82,15 @@ module UiBibz::Concerns::Models::Searchable
 
     def self.generate_default_sql(sql)
       if sorting?
-        sql.paginate(page: @tmp_params[:page], per_page: @session[:per_page])
+        sql.paginate(page: @tmp_params[:page], per_page: @tmp_params[:per_page])
       else
-        sql.reorder(order_sql).paginate(page: @tmp_params[:page], per_page: @session[:per_page])
+        sql.reorder(order_sql).paginate(page: @tmp_params[:page], per_page: @tmp_params[:per_page])
       end
     end
 
     def self.generate_count_sql(sql)
       sq = "SELECT * FROM (#{sql.group("#{table_name}.id").to_sql}) countable ORDER BY countable.count #{@tmp_params[:direction] || asc}"
-      paginate_by_sql(sq, page: @tmp_params[:page], per_page: @session[:per_page])
+      paginate_by_sql(sq, page: @tmp_params[:page], per_page: @tmp_params[:per_page])
     end
 
     def self.generate_select_count_sort_query(sql, column_args)
@@ -147,13 +154,16 @@ module UiBibz::Concerns::Models::Searchable
     end
 
     def self.search_sort_paginate
-      @session[:per_page] = @tmp_params[:per_page] unless @tmp_params[:per_page].nil?
       search
+    end
+
+    def self.session_store
+      @session[store_id]
     end
 
     # If there's several table in the same page
     def self.good_store_id?
-      @arguments[:store_id] == @params[:store_id]
+      @params[:store_id].nil? ? true : store_id == @params[:store_id]
     end
 
     def self.new_search?

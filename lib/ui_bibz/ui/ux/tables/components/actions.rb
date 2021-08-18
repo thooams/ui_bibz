@@ -51,9 +51,9 @@ module UiBibz::Ui::Ux::Tables
 
     def defaults_actions
       [
-        UiBibz::Ui::Core::Forms::Dropdowns::Components::DropdownLink.new(show_name, url: { controller: @store.controller, action: 'show', id: :id }, glyph: 'eye').render,
-        UiBibz::Ui::Core::Forms::Dropdowns::Components::DropdownLink.new(edit_name, url: { controller: @store.controller, action: 'edit', id: :id }, glyph: 'edit').render,
-        UiBibz::Ui::Core::Forms::Dropdowns::Components::DropdownLink.new(delete_name, { glyph: 'trash', url: { controller: @store.controller, action: 'destroy', id: :id }, link_html_options: { data: { confirm: 'Are you sure?', method: :delete } } }).render
+        UiBibz::Ui::Core::Forms::Dropdowns::Components::DropdownLink.new(show_name, url: { controller: @store.actions_controller, action: 'show', id: :id }, glyph: 'eye').render,
+        UiBibz::Ui::Core::Forms::Dropdowns::Components::DropdownLink.new(edit_name, url: { controller: @store.actions_controller, action: 'edit', id: :id }, glyph: 'edit').render,
+        UiBibz::Ui::Core::Forms::Dropdowns::Components::DropdownLink.new(delete_name, { glyph: 'trash', url: { controller: @store.actions_controller, action: 'destroy', id: :id }, link_html_options: { data: { confirm: 'Are you sure?', method: :delete } } }).render
       ]
     end
 

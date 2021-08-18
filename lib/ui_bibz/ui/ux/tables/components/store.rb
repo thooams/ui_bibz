@@ -70,6 +70,10 @@ module UiBibz::Ui::Ux::Tables
       @store.controller
     end
 
+    def actions_controller
+      @store.actions_controller
+    end
+
     def params
       @store.params || {}
     end
