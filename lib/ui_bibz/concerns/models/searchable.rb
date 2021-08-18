@@ -42,16 +42,16 @@ module UiBibz::Concerns::Models::Searchable
 
     # If there is more one table in html page
     def self.initialize_params
-      @tmp_params = (session_store || { "per_page" => @arguments[:per_page] || 30 }).with_indifferent_access
+      @tmp_params = (session_store || { 'per_page' => @arguments[:per_page] || 30 }).with_indifferent_access
 
       return unless good_store_id?
 
       @tmp_params = {
-        "search" => @params[:search] || @tmp_params["search"],
-        "per_page" => @params[:per_page] || @tmp_params["per_page"] || @arguments[:per_page],
-        "page" => @params[:page],
-        "sort" => @params[:sort] || @tmp_params["sort"],
-        "direction" => @params[:direction] || @tmp_params["direction"]
+        'search' => @params[:search] || @tmp_params['search'],
+        'per_page' => @params[:per_page] || @tmp_params['per_page'] || @arguments[:per_page],
+        'page' => @params[:page],
+        'sort' => @params[:sort] || @tmp_params['sort'],
+        'direction' => @params[:direction] || @tmp_params['direction']
       }.with_indifferent_access
 
       @session[store_id] = @tmp_params
