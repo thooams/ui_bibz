@@ -33,7 +33,7 @@ module UiBibz::Concerns::Models::Searchable
     end
 
     def self.store_id
-      @arguments[:store_id] || @arguments[:controller] || @params[:controller]
+      @arguments[:store_id] || @params[:controller]
     end
 
     def self.create_model

@@ -26,6 +26,7 @@ module UiBibz::Ui::Core::Boxes
   # * text - Hash (+:size+, +:position+)
   #   (+:left+, +:right+, +:center+)
   # * block - Boolean
+  # * tabbed - Boolean to use tab card
   # * type - Symbol
   #   (+:inverse+)
   #
@@ -108,7 +109,7 @@ module UiBibz::Ui::Core::Boxes
     end
 
     def component_html_classes
-      ['card', text, type, tab_pane, outline]
+      ['card', text, type, tab_pane, outline, tabbed]
     end
 
     def status
@@ -133,6 +134,10 @@ module UiBibz::Ui::Core::Boxes
 
     def tab_pane
       'tab-pane' if @options[:tab]
+    end
+
+    def tabbed
+      'tab-content' if @options[:tabbed]
     end
 
     def outline
