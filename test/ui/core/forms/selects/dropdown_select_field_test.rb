@@ -12,6 +12,15 @@ class DropdownSelectFieldTest < ActionView::TestCase
     assert_equal expected, actual
   end
 
+  test 'Dropdown Select Field with fuzzy search' do
+    options  = options_for_select(Array.new(2) { |i| "option #{i}" })
+    actual   = UiBibz::Ui::Core::Forms::Selects::DropdownSelectField.new('example', option_tags: options, searchable: :fuzzy).render
+    expected = "<select name=\"example\" id=\"example\" data-enable-filtering=\"true\" data-fuzzy-search=\"true\" data-dropdown-classes=\"dropdown\" class=\"btn-secondary multi-select-field\"><option value=\"option 0\">option 0</option>
+<option value=\"option 1\">option 1</option></select>"
+
+    assert_equal expected, actual
+  end
+
   test 'Dropdown Select Field data html options' do
     grouped_options = { 'North America' => [['United statuss', 'US'], 'Canada'], 'Europe' => %w[Denmark Germany France] }
     actual = UiBibz::Ui::Core::Forms::Selects::DropdownSelectField.new('example', { multiple: true, option_tags: grouped_options_for_select(grouped_options), clickable_opt_group: true, collapsible_opt_group: true, searchable: true, non_selected_text: 'test', select_all_options: true, number_displayed: 2, status: :danger, n_selected_text: "items selected" }).render

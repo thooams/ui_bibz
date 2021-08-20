@@ -102,6 +102,7 @@ module UiBibz::Ui::Core::Forms::Selects
 
     def searchable
       add_html_data('enable_filtering') if options[:searchable]
+      add_html_data('fuzzy_search') if options[:searchable] == :fuzzy
     end
 
     def n_selected_text
