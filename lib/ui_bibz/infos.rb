@@ -12,6 +12,6 @@ module UiBibz
   REPO                = 'git+https://github.com/thooams/ui_bibz.git'
   EMAIL               = 'thomas@hummel.link'
   AUTHOR              = 'Thooams [Thomas HUMMEL]'
-  VERSION             = '3.0.4'
+  VERSION             = '3.0.5'
   AUTHORS = ['Thooams'].freeze
 end

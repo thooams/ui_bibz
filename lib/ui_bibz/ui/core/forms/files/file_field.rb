@@ -59,10 +59,13 @@ module UiBibz::Ui::Core::Forms::Files
     end
 
     def format_value(value)
-      if value.is_a? ActiveStorage::Attached::One
+      case value
+      when ActiveStorage::Attached::One
         return '' unless value.attached?
 
         return value.attachment.blob.filename
+      when ActiveStorage::Attached::Many
+        return ''
       end
 
       value.to_s
