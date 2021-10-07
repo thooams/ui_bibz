@@ -139,7 +139,7 @@ module UiBibz::Concerns::Models::Searchable
               end
             end
           else
-            sql_subquery << "lower(CAST(#{to_s.underscore.pluralize.split('/').last}.#{attribute} AS TEXT)) LIKE :#{attribute}_#{i}"
+            sql_subquery << "lower(CAST(#{table_name}.#{attribute} AS TEXT)) LIKE :#{attribute}_#{i}"
             sql_attributes = sql_attributes.merge({ "#{attribute}_#{i}".to_sym => "%#{pattern}%" })
           end
         end
