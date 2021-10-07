@@ -78,7 +78,7 @@ module UiBibz::Ui::Ux::Tables
     end
 
     def from_current_results
-      store.limit_value * store.current_page - store.limit_value + 1
+      (store.limit_value * store.current_page) - store.limit_value + 1
     end
 
     def to_current_results

@@ -78,7 +78,7 @@ module UiBibz::Ui::Core::Forms::Numbers
     end
 
     def not_on_hundred_percent?
-      options[:max].present? && options[:max] != 100 || options[:min].present? && options[:min] != 0
+      (options[:max].present? && options[:max] != 100) || (options[:min].present? && options[:min] != 0)
     end
 
     def absolute_total
