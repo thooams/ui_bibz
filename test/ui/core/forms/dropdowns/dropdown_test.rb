@@ -43,13 +43,4 @@ class DropdownTest < ActionView::TestCase
 
     assert_equal expected, actual.render
   end
-
-  test 'Split Dropdown' do
-    actual = UiBibz::Ui::Core::Forms::Dropdowns::Dropdown.new('Split Dropdown').tap do |d|
-      d.link 'state'
-    end
-    expected = "<div class=\"dropdown\"><button class=\"btn btn-secondary dropdown-toggle\" type=\"button\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\" id=\"#{actual.id}\">Split Dropdown</button><div class=\"dropdown-menu\" arial-labelledby=\"#{actual.id}\"><a class=\"dropdown-item\" href=\"#\">state</a></div></div>"
-
-    assert_equal expected, actual.render
-  end
 end
