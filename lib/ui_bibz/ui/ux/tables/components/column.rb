@@ -2,7 +2,9 @@
 
 module UiBibz::Ui::Ux::Tables
   class Column < UiBibz::Ui::Core::Component
-    attr_accessor :hidden, :link, :name, :input_options, :class, :as, :data_index, :date_format, :sort, :format, :count, :custom_sort, :parent, :id, :progress_options
+    attr_accessor :hidden, :link, :name, :input_options, :class, :as, :data_index,
+                  :date_format, :sort, :format, :count, :custom_sort, :parent, :id, :progress_options,
+                  :sortable
 
     def initialize(content = nil, options = nil, html_options = nil, &block)
       super
@@ -20,6 +22,7 @@ module UiBibz::Ui::Ux::Tables
       @format        = @options[:format]
       @class         = @options[:class]
       @hidden        = @options[:hidden]
+      @sortable      = @options[:sortable]
       @input_options = @options[:input_options]
       @progress_options = @options[:progress_options] || {}
     end

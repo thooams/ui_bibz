@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    ui_bibz (3.0.7)
+    ui_bibz (3.0.8)
       will-paginate-i18n
       will_paginate (~> 3.3.0)
       will_paginate-bootstrap4
@@ -127,7 +127,7 @@ GEM
     parallel (1.21.0)
     parser (3.0.2.0)
       ast (~> 2.4.1)
-    racc (1.5.2)
+    racc (1.6.0)
     rack (2.2.3)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
@@ -216,7 +216,7 @@ GEM
     will_paginate-bootstrap4 (0.2.2)
       will_paginate (~> 3.0, >= 3.0.0)
     yard (0.9.26)
-    zeitwerk (2.4.2)
+    zeitwerk (2.5.1)
 
 PLATFORMS
   ruby
