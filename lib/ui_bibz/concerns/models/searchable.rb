@@ -134,8 +134,10 @@ module UiBibz::Concerns::Models::Searchable
             else
               key_name = attribute.keys.first.to_s.pluralize
               attribute.each_value do |value|
-                sql_subquery << "lower(CAST(#{key_name}.#{value} AS TEXT)) LIKE :#{key_name}_#{value}_#{i}"
-                sql_attributes = sql_attributes.merge({ "#{key_name}_#{value}_#{i}".to_sym => "%#{pattern}%" })
+                Array(value).each do |val|
+                  sql_subquery << "lower(CAST(#{key_name}.#{val} AS TEXT)) LIKE :#{key_name}_#{val}_#{i}"
+                  sql_attributes = sql_attributes.merge({ "#{key_name}_#{val}_#{i}".to_sym => "%#{pattern}%" })
+                end
               end
             end
           else
