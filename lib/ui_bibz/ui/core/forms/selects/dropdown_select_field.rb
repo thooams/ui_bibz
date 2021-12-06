@@ -69,9 +69,9 @@ module UiBibz::Ui::Core::Forms::Selects
     def component_html_options
       super.merge({
                     multiple: options[:multiple],
-                    disabled: options[:state] == :disabled,
-                    include_blank: false,
-                    prompt: false
+                    disabled: options[:state] == :disabled
+                    # include_blank: false,
+                    # prompt: false
                   })
     end
 

@@ -48,4 +48,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'simple_form'
   s.add_development_dependency 'sqlite3'
   s.add_development_dependency 'yard'
+  s.metadata = {
+    'rubygems_mfa_required' => 'true'
+  }
 end
