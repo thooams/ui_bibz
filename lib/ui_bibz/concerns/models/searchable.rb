@@ -112,7 +112,7 @@ module UiBibz::Concerns::Models::Searchable
     end
 
     def self.default_order
-      @arguments.dig(:default, :order) || ''
+      @arguments[:order] || { created_at: :desc }
     end
 
     def self.search_by_query(sql)
