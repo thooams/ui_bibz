@@ -82,7 +82,7 @@ module UiBibz::Concerns::Models::Searchable
 
     def self.generate_default_sql(sql)
       if sorting?
-        sql.reorder('').paginate(page: @tmp_params[:page], per_page: @tmp_params[:per_page])
+        sql.reorder(default_order).paginate(page: @tmp_params[:page], per_page: @tmp_params[:per_page])
       else
         sql.reorder(order_sql).paginate(page: @tmp_params[:page], per_page: @tmp_params[:per_page])
       end
@@ -109,6 +109,10 @@ module UiBibz::Concerns::Models::Searchable
 
     def self.sorting?
       @tmp_params[:sort].nil? || @tmp_params[:direction].nil?
+    end
+
+    def self.default_order
+      @arguments.dig(:default, :order) || ''
     end
 
     def self.search_by_query(sql)
