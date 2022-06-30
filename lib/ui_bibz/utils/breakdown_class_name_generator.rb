@@ -23,7 +23,7 @@ module UiBibz::Utils
       end
       kl << write_classes(nil, @options)
 
-      kl.delete_if(&:blank?)
+      kl.compact_blank!
     end
 
     private
@@ -41,7 +41,7 @@ module UiBibz::Utils
           send(k, size, v) if POSITIONING.include?(k.to_sym)
         end.join(' ')
       else
-        send('num', size, opts)
+        send(:num, size, opts)
       end
     end
 

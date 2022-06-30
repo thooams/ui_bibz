@@ -22,12 +22,11 @@ Gem::Specification.new do |s|
   s.required_ruby_version = '>= 3.0.0'
 
   s.files         = `git ls-files`.split
-  s.test_files    = `git ls-files -- {test,spec,features}/*`.split
   s.executables   = `git ls-files -- bin/*`.split.map { |f| File.basename(f) }
   s.require_paths = %w[lib vendor]
 
   # Rails gems
-  s.add_development_dependency 'rails', '~> 6.1.3', '>= 6.1.3.2'
+  s.add_dependency 'rails', '>= 7.0.3'
 
   # Remove these dependencies after
   s.add_dependency 'will_paginate', '~> 3.3.0'

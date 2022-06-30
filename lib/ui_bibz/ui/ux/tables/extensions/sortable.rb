@@ -66,7 +66,7 @@ module UiBibz::Ui::Ux::Tables
       args = args.merge({ parent: true }) if @column.parent
       args = args.merge({ store_id: @store.id }) unless @store.id.nil?
       args = args.merge({ link_type: 'column' })
-      args = args.merge(@store.parameters.reject { |k, _v| default_parameters.include?(k.to_s) })
+      args = args.merge(@store.parameters.except(*default_parameters))
       args.with_indifferent_access
     end
 
