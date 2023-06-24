@@ -1,0 +1,44 @@
+// Fix Add datalist to range field
+.form-range
+  appearance: auto
+
+// Fix Add datalist to range field
+input[type=range]
+  & + datalist
+    width: 100%
+    display: flex
+    justify-content: space-between
+
+
+@each $color, $value in $theme-colors
+  .form-range-#{$color}
+    -webkit-appearance: none
+    appearance: none
+    &:focus
+      &::-webkit-slider-thumb
+        box-shadow: 0 0 0 1px $body-bg, 0 0 0 $input-btn-focus-width rgba($value, $input-btn-focus-color-opacity)
+    &::-webkit-slider-thumb
+      appearance: none
+      @include gradient-bg($value)
+      &:active
+        @include gradient-bg(lighten($value, 15%))
+    &::-webkit-slider-runnable-track
+      background-color: $value
+
+  .form-range-thumb-#{$color}
+    -webkit-appearance: none
+    appearance: none
+    &:focus
+      &::-webkit-slider-thumb
+        box-shadow: 0 0 0 1px $body-bg, 0 0 0 $input-btn-focus-width rgba($value, $input-btn-focus-color-opacity)
+    &::-webkit-slider-thumb
+      appearance: none
+      @include gradient-bg($value)
+      &:active
+        @include gradient-bg(lighten($value, 15%))
+
+  .form-range-track-#{$color}
+    -webkit-appearance: none
+    appearance: none
+    &::-webkit-slider-runnable-track
+      background-color: $value
