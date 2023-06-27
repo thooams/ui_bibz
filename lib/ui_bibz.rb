@@ -3,6 +3,7 @@
 require 'action_view'
 require 'will_paginate'
 require 'will-paginate-i18n'
+require 'bootstrap/engine'
 
 # require "zeitwerk"
 # loader = Zeitwerk::Loader.for_gem

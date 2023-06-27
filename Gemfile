@@ -16,5 +16,4 @@ gemspec
 # To use a debugger
 gem 'awesome_print', group: %i[test development]
 gem 'byebug',        group: %i[development test]
-# gem 'jquery-rails', '>= 3.1.0'
 # gem 'simple_form', group: %i[test development]

@@ -136,7 +136,8 @@ module UiBibz::Ui::Core::Icons
     end
 
     def match_style
-      { solid: 'fas', regular: 'far', light: 'fal', brands: 'fab' }
+      { solid: 'fa-solid', regular: 'fa-regular', light: 'fa-light',
+        brands: 'fa-brands', duotone: 'fa-duotone', thin: 'fa-thin' }
     end
 
     def label
