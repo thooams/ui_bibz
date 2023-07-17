@@ -6,15 +6,15 @@ module UiBibz
     end
   end
 
-  class StatusesError < ComponentError
-    def initialize(value:, statuses:)
+  class StatusError < ComponentError
+    def initialize(value:, status:)
       super
       @value = value
-      @statuses = statuses
+      @status = status
     end
 
     def message
-      "The status '#{@value}' is not include in #{@statuses.to_sentence(last_word_connector: ' or ', two_words_connector: ' or ')}"
+      "The status '#{@value}' is not include in #{@status.to_sentence(last_word_connector: ' or ', two_words_connector: ' or ')}"
     end
   end
 end

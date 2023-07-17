@@ -48,7 +48,7 @@ module UiBibz::Ui::Core
     include PopoverExtension
 
     # Constants
-    STATUSES = %i[primary secondary success danger warning info light dark].freeze
+    STATUS = %i[primary secondary success danger warning info light dark].freeze
     BREAKPOINTS = %i[xxl xl lg md sm xs].freeze
     SIZES = %i[lg md sm].freeze
 
@@ -179,7 +179,7 @@ module UiBibz::Ui::Core
     end
 
     def validations
-      StatusesValidator.new(STATUSES, @options[:status]).call
+      StatusValidator.new(STATUS, @options[:status]).call
     end
 
     def init_options

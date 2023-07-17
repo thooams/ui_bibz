@@ -53,7 +53,7 @@ module UiBibz::Ui::Core::Forms::Buttons
   #  end
   class Button < UiBibz::Ui::Core::Component
 
-    STATUSES = STATUSES + [:link]
+    STATUS = STATUS + [:link]
 
     # Render html tag
     def pre_render
@@ -63,7 +63,7 @@ module UiBibz::Ui::Core::Forms::Buttons
     protected
 
     def validations
-      StatusesValidator.new(STATUSES, @options[:status]).call
+      StatusValidator.new(STATUS, @options[:status]).call
     end
 
     def button_html_tag
