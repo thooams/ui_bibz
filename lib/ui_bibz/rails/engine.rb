@@ -11,6 +11,14 @@ module UiBibz
         app.config.autoload_paths += Dir["#{config.root}/lib/ui_bibz/builders/"]
       end
 
+      initializer 'ui_bibz.validators' do |app|
+        app.config.autoload_paths += Dir["#{config.root}/lib/ui_bibz/validators/"]
+      end
+
+      initializer 'ui_bibz.errors' do |app|
+        app.config.autoload_paths += Dir["#{config.root}/lib/ui_bibz/errors/"]
+      end
+
       initializer 'ui_bibz.helpers' do
         ActiveSupport.on_load(:action_view) { include UiBibz::Helpers::UtilsHelper }
       end

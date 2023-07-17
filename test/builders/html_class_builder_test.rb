@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'test_helper'
+require 'ui_bibz/builders/html_class_builder'
 
 class HtmlClassBuilderTest < ActiveSupport::TestCase
   def setup
@@ -25,5 +26,34 @@ class HtmlClassBuilderTest < ActiveSupport::TestCase
     @html_class_builder.add 'test'
 
     assert_equal 'test', @html_class_builder.to_s
+  end
+
+  test 'return an array of string' do
+    @html_class_builder.add 'test'
+    @html_class_builder.add 'test2'
+
+    assert_equal %w[test test2], @html_class_builder.to_a
+  end
+
+  test 'create status class' do
+    @html_class_builder.status 'test-%s', :success
+
+    assert_equal 'test-success', @html_class_builder.to_s
+  end
+
+  test 'remove all duplicate classes' do
+    @html_class_builder.add 'test'
+    @html_class_builder.add %w[test test2]
+    @html_class_builder.add 'test', 'test3'
+    @html_class_builder.add 'test test4'
+
+    assert_equal 'test test2 test3 test4', @html_class_builder.to_s
+  end
+
+  test 'add status class' do
+    @html_class_builder.add 'test'
+    @html_class_builder.status 'test-%s', :success
+
+    assert_equal 'test test-success', @html_class_builder.to_s
   end
 end
