@@ -58,7 +58,7 @@ module UiBibz::Ui::Ux::Tables
         search: @store.search,
         sort: sort_name,
         column_id: @column.id,
-        direction: direction,
+        direction:,
         only_path: true
       }
       args = args.merge({ id: @store.param_id }) if @store.param_id

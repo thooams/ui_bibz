@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'ui_bibz/railtie'
+
 require 'action_view'
 require 'will_paginate'
 require 'will-paginate-i18n'
@@ -44,7 +46,7 @@ module UiBibz
     attr_accessor :configuration
   end
 
-  def self.configured? #:nodoc:
+  def self.configured? # :nodoc:
     @@configured
   end
 

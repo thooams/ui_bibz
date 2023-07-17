@@ -56,7 +56,7 @@ module UiBibz::Ui::Core::Notifications
   #
   class Toast < UiBibz::Ui::Core::Component
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize(content = nil, options = nil, html_options = nil, &block)
+    def initialize(content = nil, options = nil, html_options = nil, &)
       super
       body(@content) unless @tapped
     end
@@ -70,19 +70,19 @@ module UiBibz::Ui::Core::Notifications
     end
 
     # Add Header which is a component
-    def header(content = nil, options = nil, html_options = nil, &block)
-      @header = UiBibz::Ui::Core::Notifications::Components::ToastHeader.new(content, options, html_options, &block).render
+    def header(content = nil, options = nil, html_options = nil, &)
+      @header = UiBibz::Ui::Core::Notifications::Components::ToastHeader.new(content, options, html_options, &).render
     end
 
     # Add Body which is a component
-    def body(content = nil, options = nil, html_options = nil, &block)
+    def body(content = nil, options = nil, html_options = nil, &)
       @body = if @header.nil?
                 content_tag :div, class: 'd-flex' do
-                  concat UiBibz::Ui::Core::Notifications::Components::ToastBody.new(content, options, html_options, &block).render
+                  concat UiBibz::Ui::Core::Notifications::Components::ToastBody.new(content, options, html_options, &).render
                   concat close_html if (options || {})[:closable]
                 end
               else
-                UiBibz::Ui::Core::Notifications::Components::ToastBody.new(content, options, html_options, &block).render
+                UiBibz::Ui::Core::Notifications::Components::ToastBody.new(content, options, html_options, &).render
               end
     end
 
@@ -102,7 +102,7 @@ module UiBibz::Ui::Core::Notifications
     end
 
     def component_html_options
-      { role: 'alert', "aria-live": 'assertive', "aria-atomic": true }
+      { role: 'alert', 'aria-live': 'assertive', 'aria-atomic': true }
     end
 
     def component_html_data

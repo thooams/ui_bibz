@@ -44,12 +44,12 @@ module UiBibz::Ui::Core::Navigations
     include Haml::Helpers
     include SimpleForm::ActionViewExtensions::FormHelper if defined?(SimpleForm)
     include UiBibz::Helpers::UtilsHelper
-    include ActionView::Helpers #::FormHelper
+    include ActionView::Helpers # ::FormHelper
 
     attr_accessor :html_options
 
     def initialize(model_or_url, options = {}, &block)
-      init_haml_helpers
+      # init_haml_helpers
       @content      = block
       @model_or_url = model_or_url
       @options      = options

@@ -44,7 +44,7 @@ module UiBibz::Ui::Core::Navigations
     include UiBibz::Ui::Concerns::HtmlConcern
 
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize(content = nil, options = nil, html_options = nil, &block)
+    def initialize(content = nil, options = nil, html_options = nil, &)
       super
       @old_options = options
     end

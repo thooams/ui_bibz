@@ -50,7 +50,7 @@ module UiBibz::Ui::Core::Forms::Buttons
     include UiBibz::Ui::Concerns::HtmlConcern
 
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize(content = nil, options = nil, html_options = nil, &block)
+    def initialize(content = nil, options = nil, html_options = nil, &)
       super
       @items = []
     end
@@ -80,28 +80,28 @@ module UiBibz::Ui::Core::Forms::Buttons
       @items << ButtonLink.new(content, options, html_options, &block)
     end
 
-    def dropdown(content, options = {}, html_options = nil, &block)
+    def dropdown(content, options = {}, html_options = nil, &)
       options = @options.merge(options)
-      @items << ButtonGroupDropdown.new(content, options, html_options).tap(&block)
+      @items << ButtonGroupDropdown.new(content, options, html_options).tap(&)
     end
 
-    def split_dropdown(content, options = {}, html_options = nil, &block)
+    def split_dropdown(content, options = {}, html_options = nil, &)
       options = @options.merge(options)
-      @items << ButtonGroupSplitDropdown.new(content, options, html_options).tap(&block)
+      @items << ButtonGroupSplitDropdown.new(content, options, html_options).tap(&)
     end
 
-    def input(attribute_name, options = {}, &block)
+    def input(attribute_name, options = {}, &)
       options = @options.merge(options)
 
-      @items << @options[:form].input(attribute_name, options.merge({ label: false, wrapper: false }), &block)
+      @items << @options[:form].input(attribute_name, options.merge({ label: false, wrapper: false }), &)
     end
 
-    def html(content = nil, options = nil, html_options = nil, &block)
-      @items << UiBibz::Ui::Core::Component.new(content, options, html_options, &block)
+    def html(content = nil, options = nil, html_options = nil, &)
+      @items << UiBibz::Ui::Core::Component.new(content, options, html_options, &)
     end
 
-    def choice_group(content = nil, options = nil, html_options = nil, &block)
-      @items << UiBibz::Ui::Core::Forms::Choices::ChoiceGroup.new(content, options, html_options).tap(&block)
+    def choice_group(content = nil, options = nil, html_options = nil, &)
+      @items << UiBibz::Ui::Core::Forms::Choices::ChoiceGroup.new(content, options, html_options).tap(&)
     end
 
     private

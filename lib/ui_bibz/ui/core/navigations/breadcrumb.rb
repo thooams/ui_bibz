@@ -71,7 +71,7 @@ module UiBibz::Ui::Core::Navigations
     include UiBibz::Ui::Concerns::HtmlConcern
 
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize(content = nil, options = nil, html_options = nil, &block)
+    def initialize(content = nil, options = nil, html_options = nil, &)
       super
       @links = []
       generate_links unless @content.nil?
@@ -86,14 +86,14 @@ module UiBibz::Ui::Core::Navigations
 
     # Add breadcrumb link items
     # See UiBibz::Ui::Core::BreadcrumbLink
-    def link(content = nil, options = nil, html_options = nil, &block)
-      @links << UiBibz::Ui::Core::Navigations::Components::BreadcrumbLink.new(content, options, html_options, &block).render
+    def link(content = nil, options = nil, html_options = nil, &)
+      @links << UiBibz::Ui::Core::Navigations::Components::BreadcrumbLink.new(content, options, html_options, &).render
     end
 
     private
 
     def component_html_options
-      super.merge({ "arial-label": 'breadcrumb' })
+      super.merge({ 'arial-label': 'breadcrumb' })
     end
 
     def model_name

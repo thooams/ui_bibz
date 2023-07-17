@@ -58,7 +58,7 @@ module UiBibz::Ui::Core::Navigations
     def collapse
       {
         role: 'button',
-        data: { "bs-toggle": :collapse },
+        data: { 'bs-toggle': :collapse },
         aria: {
           controls: options[:collapse],
           expanded: options[:active_collapse].nil? ? false : options[:active_collapse]

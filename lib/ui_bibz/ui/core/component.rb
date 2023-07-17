@@ -4,6 +4,7 @@ require 'haml'
 require 'ui_bibz/ui/extensions/core/component/klass_extension'
 require 'ui_bibz/ui/extensions/core/component/glyph_extension'
 require 'ui_bibz/ui/extensions/core/component/popover_extension'
+require 'ui_bibz/builders/html_class_builder'
 module UiBibz::Ui::Core
   # Creates a component of the given +name+ using options created by the set of +options+.
   #
@@ -148,7 +149,7 @@ module UiBibz::Ui::Core
     # Add html data arguments
     def add_html_data(name, value: true)
       html_options[:data] = {} if html_options[:data].nil?
-      value = value.is_a?(String) ? value.strip : value
+      value = value.strip if value.is_a?(String)
       html_options[:data].update({ name => value })
     end
 

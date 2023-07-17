@@ -22,12 +22,11 @@ Gem::Specification.new do |s|
   s.required_ruby_version = '>= 3.0.0'
 
   s.files         = `git ls-files`.split
-  s.test_files    = `git ls-files -- {test,spec,features}/*`.split
   s.executables   = `git ls-files -- bin/*`.split.map { |f| File.basename(f) }
   s.require_paths = %w[lib vendor]
 
   # Rails gems
-  s.add_development_dependency 'rails', '~> 6.0.3', '>= 6.0.3.2'
+  s.add_dependency 'rails', '>= 7.0.6'
 
   # Remove these dependencies after
   s.add_dependency 'bootstrap', '~> 5.3.0.alpha3'
@@ -49,4 +48,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'simple_form'
   s.add_development_dependency 'sqlite3'
   s.add_development_dependency 'yard'
+  s.metadata['rubygems_mfa_required'] = 'true'
 end

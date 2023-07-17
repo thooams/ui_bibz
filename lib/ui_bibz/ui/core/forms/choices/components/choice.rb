@@ -61,7 +61,7 @@ module UiBibz::Ui::Core::Forms::Choices
     end
 
     def input_options
-      @input_options ||= { type: type, autocomplete: :off, class: 'btn-check' }
+      @input_options ||= { type:, autocomplete: :off, class: 'btn-check' }
                          .merge(checked)
                          .merge(value)
                          .merge(name)

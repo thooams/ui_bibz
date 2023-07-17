@@ -50,9 +50,7 @@ module UiBibz::Ui::Core::Layouts
 
     # See UiBibz::Ui::Core::Component.initialize
     def initialize(content = nil, options = nil, html_options = nil, &block)
-      unless block.nil?
-        content = content.is_a?(Integer) ? { num: content } : content
-      end
+      content = { num: content } if !block.nil? && content.is_a?(Integer)
       super
       @items = [@content]
     end
@@ -62,8 +60,8 @@ module UiBibz::Ui::Core::Layouts
       content_tag :div, @items.join.html_safe, html_options
     end
 
-    def col(content = nil, options = nil, html_options = nil, &block)
-      @items << UiBibz::Ui::Core::Layouts::Col.new(content, options, html_options, &block).render
+    def col(content = nil, options = nil, html_options = nil, &)
+      @items << UiBibz::Ui::Core::Layouts::Col.new(content, options, html_options, &).render
     end
 
     private

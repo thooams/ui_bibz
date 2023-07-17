@@ -56,7 +56,7 @@ module UiBibz::Ui::Core::Navigations
     include UiBibz::Ui::Concerns::HtmlConcern
 
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize(content = nil, options = nil, html_options = nil, &block)
+    def initialize(content = nil, options = nil, html_options = nil, &)
       super
       @items = []
     end
@@ -70,8 +70,8 @@ module UiBibz::Ui::Core::Navigations
 
     # Add nav link items
     # See UiBibz::Ui::Core::Navigations::NavLink
-    def link(content = nil, options = {}, html_options = nil, &block)
-      @items << PaginationLink.new(content, options, html_options, &block).render
+    def link(content = nil, options = {}, html_options = nil, &)
+      @items << PaginationLink.new(content, options, html_options, &).render
     end
 
     private

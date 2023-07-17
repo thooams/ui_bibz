@@ -34,7 +34,7 @@ module UiBibz::Ui::Core::Boxes
     include UiBibz::Ui::Concerns::HtmlConcern
 
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize(content = nil, options = nil, html_options = nil, &block)
+    def initialize(content = nil, options = nil, html_options = nil, &)
       super
       @items = []
     end
@@ -44,9 +44,9 @@ module UiBibz::Ui::Core::Boxes
       content_tag :div, @items.join.html_safe, html_options
     end
 
-    def card(content = nil, options = nil, html_options = nil, &block)
+    def card(content = nil, options = nil, html_options = nil, &)
       content = (content || {}).merge({ parent_collapse: id })
-      @items << UiBibz::Ui::Core::Boxes::Card.new(content, options, html_options).tap(&block).render
+      @items << UiBibz::Ui::Core::Boxes::Card.new(content, options, html_options).tap(&).render
     end
 
     private
@@ -60,7 +60,7 @@ module UiBibz::Ui::Core::Boxes
     end
 
     def component_html_options
-      { id: id }
+      { id: }
     end
   end
 end

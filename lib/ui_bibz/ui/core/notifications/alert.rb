@@ -49,7 +49,7 @@ module UiBibz::Ui::Core::Notifications
   #
   class Alert < UiBibz::Ui::Core::Component
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize(content = nil, options = nil, html_options = nil, &block)
+    def initialize(content = nil, options = nil, html_options = nil, &)
       super
       header(@content, tap: false) unless @tapped
     end
@@ -74,8 +74,8 @@ module UiBibz::Ui::Core::Notifications
     end
 
     # Add Body which is a component
-    def body(content = nil, options = nil, html_options = nil, &block)
-      @body = UiBibz::Ui::Core::Notifications::Components::AlertBody.new(content, options, html_options, &block).render
+    def body(content = nil, options = nil, html_options = nil, &)
+      @body = UiBibz::Ui::Core::Notifications::Components::AlertBody.new(content, options, html_options, &).render
     end
 
     private

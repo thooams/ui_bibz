@@ -5,48 +5,48 @@ module UiBibz::Helpers::Ui::Core::NavigationsHelper
   #
   # +options+ (Hash)
   # +html_options+ (Hash)
-  def ui_nav(content = nil, options = nil, html_options = nil, &block)
-    UiBibz::Ui::Core::Navigations::Nav.new(content, options, html_options).tap(&block).render
+  def ui_nav(content = nil, options = nil, html_options = nil, &)
+    UiBibz::Ui::Core::Navigations::Nav.new(content, options, html_options).tap(&).render
   end
 
   # TabGroup Component
   #
   # +options+ (Hash)
   # +html_options+ (Hash)
-  def ui_tab_group(content = nil, options = nil, html_options = nil, &block)
-    UiBibz::Ui::Core::Navigations::TabGroup.new(content, options, html_options).tap(&block).render
+  def ui_tab_group(content = nil, options = nil, html_options = nil, &)
+    UiBibz::Ui::Core::Navigations::TabGroup.new(content, options, html_options).tap(&).render
   end
 
   # Navbar Component
   #
   # +options+ (Hash)
   # +html_options+ (Hash)
-  def ui_navbar(content = nil, options = nil, html_options = nil, &block)
-    UiBibz::Ui::Core::Navigations::Navbar.new(content, options, html_options).tap(&block).render
+  def ui_navbar(content = nil, options = nil, html_options = nil, &)
+    UiBibz::Ui::Core::Navigations::Navbar.new(content, options, html_options).tap(&).render
   end
 
   # Pagination Component
   #
   # +options+ (Hash)
   # +html_options+ (Hash)
-  def ui_pagination(content = nil, options = nil, html_options = nil, &block)
-    UiBibz::Ui::Core::Navigations::Pagination.new(content, options, html_options).tap(&block).render
+  def ui_pagination(content = nil, options = nil, html_options = nil, &)
+    UiBibz::Ui::Core::Navigations::Pagination.new(content, options, html_options).tap(&).render
   end
 
   # Toolbar Component
   #
   # +options+ (Hash)
   # +html_options+ (Hash)
-  def ui_toolbar(content = nil, options = nil, html_options = nil, &block)
-    UiBibz::Ui::Core::Navigations::Toolbar.new(content, options, html_options).tap(&block).render
+  def ui_toolbar(content = nil, options = nil, html_options = nil, &)
+    UiBibz::Ui::Core::Navigations::Toolbar.new(content, options, html_options).tap(&).render
   end
 
   # Link Component
   #
   # +options+ (Hash)
   # +html_options+ (Hash)
-  def ui_link(content = nil, options = nil, html_options = nil, &block)
-    UiBibz::Ui::Core::Navigations::Link.new(content, options, html_options, &block).render
+  def ui_link(content = nil, options = nil, html_options = nil, &)
+    UiBibz::Ui::Core::Navigations::Link.new(content, options, html_options, &).render
   end
 
   # Breadcrumb Component

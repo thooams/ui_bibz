@@ -73,16 +73,16 @@ module UiBibz::Ui::Core::Windows
       end
     end
 
-    def header(content = nil, options = nil, html_options = nil, &block)
-      @header = UiBibz::Ui::Core::Windows::Components::ModalHeader.new(content, options, html_options, &block)
+    def header(content = nil, options = nil, html_options = nil, &)
+      @header = UiBibz::Ui::Core::Windows::Components::ModalHeader.new(content, options, html_options, &)
     end
 
-    def footer(content = nil, options = nil, html_options = nil, &block)
-      @footer = UiBibz::Ui::Core::Windows::Components::ModalFooter.new(content, options, html_options, &block)
+    def footer(content = nil, options = nil, html_options = nil, &)
+      @footer = UiBibz::Ui::Core::Windows::Components::ModalFooter.new(content, options, html_options, &)
     end
 
-    def body(content = nil, options = nil, html_options = nil, &block)
-      @body = UiBibz::Ui::Core::Windows::Components::ModalBody.new(content, options, html_options, &block)
+    def body(content = nil, options = nil, html_options = nil, &)
+      @body = UiBibz::Ui::Core::Windows::Components::ModalBody.new(content, options, html_options, &)
     end
 
     private

@@ -70,7 +70,7 @@ module UiBibz::Ui::Core::Forms::Dropdowns
   class Dropdown < UiBibz::Ui::Core::Component
     include UiBibz::Ui::Concerns::HtmlConcern
 
-    def initialize(content, options = nil, html_options = nil, &block)
+    def initialize(content, options = nil, html_options = nil, &)
       super
       @items = []
       @status = @options.delete(:status)
@@ -86,8 +86,8 @@ module UiBibz::Ui::Core::Forms::Dropdowns
 
     # Add dropdown header
     # See UiBibz::Ui::Core::Forms::Dropdowns::Components::DropdownHeader
-    def header(content = nil, options = nil, html_options = nil, &block)
-      @items << UiBibz::Ui::Core::Forms::Dropdowns::Components::DropdownHeader.new(content, options, html_options, &block).render
+    def header(content = nil, options = nil, html_options = nil, &)
+      @items << UiBibz::Ui::Core::Forms::Dropdowns::Components::DropdownHeader.new(content, options, html_options, &).render
     end
 
     # Add dropdown Separator
@@ -98,8 +98,8 @@ module UiBibz::Ui::Core::Forms::Dropdowns
 
     # Add dropdown link in list
     # See UiBibz::Ui::Core::Forms::Dropdowns::Components::DropdownLink
-    def link(content = nil, options = nil, html_options = nil, &block)
-      @items << UiBibz::Ui::Core::Forms::Dropdowns::Components::DropdownLink.new(content, options, html_options, &block).render
+    def link(content = nil, options = nil, html_options = nil, &)
+      @items << UiBibz::Ui::Core::Forms::Dropdowns::Components::DropdownLink.new(content, options, html_options, &).render
     end
 
     def id

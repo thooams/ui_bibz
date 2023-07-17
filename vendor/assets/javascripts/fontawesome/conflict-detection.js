@@ -1026,7 +1026,7 @@
   var PREFIX_TO_STYLE = familyProxy((_familyProxy = {}, _defineProperty(_familyProxy, FAMILY_CLASSIC, {
     'fa': 'solid',
     'fas': 'solid',
-    'fa-solid': 'solid',
+    'fa-solid ': 'solid',
     'far': 'regular',
     'fa-regular': 'regular',
     'fal': 'light',
@@ -1042,7 +1042,7 @@
   }), _defineProperty(_familyProxy, FAMILY_SHARP, {
     'fa': 'solid',
     'fass': 'solid',
-    'fa-solid': 'solid',
+    'fa-solid ': 'solid',
     'fasr': 'regular',
     'fa-regular': 'regular',
     'fasl': 'light',
@@ -1067,10 +1067,10 @@
     'fak': 'fa-kit',
     'fal': 'fa-light',
     'far': 'fa-regular',
-    'fas': 'fa-solid',
+    'fas': 'fa-solid ',
     'fat': 'fa-thin'
   }), _defineProperty(_familyProxy3, FAMILY_SHARP, {
-    'fass': 'fa-solid',
+    'fass': 'fa-solid ',
     'fasr': 'fa-regular',
     'fasl': 'fa-light'
   }), _familyProxy3));
@@ -1080,10 +1080,10 @@
     'fa-kit': 'fak',
     'fa-light': 'fal',
     'fa-regular': 'far',
-    'fa-solid': 'fas',
+    'fa-solid ': 'fas',
     'fa-thin': 'fat'
   }), _defineProperty(_familyProxy4, FAMILY_SHARP, {
-    'fa-solid': 'fass',
+    'fa-solid ': 'fass',
     'fa-regular': 'fasr',
     'fa-light': 'fasl'
   }), _familyProxy4));

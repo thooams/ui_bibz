@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module UiBibz::Ui::Concerns::CardItemableConcern #:nodoc:
+module UiBibz::Ui::Concerns::CardItemableConcern # :nodoc:
   extend ActiveSupport::Concern
   include UiBibz::Ui::Concerns::HtmlConcern
 
@@ -34,15 +34,15 @@ module UiBibz::Ui::Concerns::CardItemableConcern #:nodoc:
     end
 
     # Add List group which is a component
-    def list_group(content = nil, options = nil, html_options = nil, &block)
-      @items << UiBibz::Ui::Core::Boxes::Components::CardListGroup.new(content, options, html_options).tap(&block).render
+    def list_group(content = nil, options = nil, html_options = nil, &)
+      @items << UiBibz::Ui::Core::Boxes::Components::CardListGroup.new(content, options, html_options).tap(&).render
     end
 
     # Add Image which is a component
-    def image(content = nil, options = nil, html_options = nil, &block)
+    def image(content = nil, options = nil, html_options = nil, &)
       # Add position top to the image if the image is in top of the card
       options = (options || {}).merge(position: :top) if @header.nil? && @items.empty? && options.try(:[], :position).nil?
-      @items << UiBibz::Ui::Core::Boxes::Components::CardImage.new(content, options, html_options, &block).render
+      @items << UiBibz::Ui::Core::Boxes::Components::CardImage.new(content, options, html_options, &).render
     end
 
     # Add a row whih is a component

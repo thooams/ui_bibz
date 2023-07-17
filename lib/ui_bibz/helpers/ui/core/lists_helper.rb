@@ -5,8 +5,8 @@ module UiBibz::Helpers::Ui::Core::ListsHelper
   #
   # +options+ (Hash)
   # +html_options+ (Hash)
-  def ui_list_group(content = nil, options = nil, html_options = nil, &block)
-    UiBibz::Ui::Core::Lists::ListGroup.new(content, options, html_options).tap(&block).render
+  def ui_list_group(content = nil, options = nil, html_options = nil, &)
+    UiBibz::Ui::Core::Lists::ListGroup.new(content, options, html_options).tap(&).render
   end
 
   # List Component

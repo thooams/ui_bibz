@@ -58,7 +58,7 @@ module UiBibz::Ui::Core::Notifications
     include UiBibz::Ui::Concerns::HtmlConcern
 
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize(content = nil, options = nil, html_options = nil, &block)
+    def initialize(content = nil, options = nil, html_options = nil, &)
       super
       @items = []
     end
@@ -68,8 +68,8 @@ module UiBibz::Ui::Core::Notifications
       content_tag :div, bars.join.html_safe, html_options
     end
 
-    def bar(content = nil, options = nil, html_options = nil, &block)
-      @items << UiBibz::Ui::Core::Notifications::Components::Bar.new(content, options, html_options, &block).render
+    def bar(content = nil, options = nil, html_options = nil, &)
+      @items << UiBibz::Ui::Core::Notifications::Components::Bar.new(content, options, html_options, &).render
     end
 
     private

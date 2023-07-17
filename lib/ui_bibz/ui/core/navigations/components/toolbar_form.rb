@@ -49,7 +49,7 @@ module UiBibz::Ui::Core::Navigations
     attr_accessor :html_options
 
     def initialize(model_or_url, options = {}, &block)
-      init_haml_helpers
+      # init_haml_helpers
       @content      = block
       @model_or_url = model_or_url
       @options      = options

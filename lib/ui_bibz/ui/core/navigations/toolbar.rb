@@ -55,7 +55,7 @@ module UiBibz::Ui::Core::Navigations
     include UiBibz::Ui::Concerns::HtmlConcern
 
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize(content = nil, options = nil, html_options = nil, &block)
+    def initialize(content = nil, options = nil, html_options = nil, &)
       super
       @items = []
     end
@@ -65,10 +65,10 @@ module UiBibz::Ui::Core::Navigations
       content_tag :div, @items.map(&:render).join.html_safe, html_options
     end
 
-    def button_group(cont = nil, opt = nil, hopt = nil, &block)
+    def button_group(cont = nil, opt = nil, hopt = nil, &)
       cont = @options.merge(cont || {})
       (cont || {}).delete(:class)
-      @items << UiBibz::Ui::Core::Forms::Buttons::ButtonGroup.new(cont, opt, hopt).tap(&block)
+      @items << UiBibz::Ui::Core::Forms::Buttons::ButtonGroup.new(cont, opt, hopt).tap(&)
     end
 
     def spacer(num = 'auto')
@@ -78,8 +78,8 @@ module UiBibz::Ui::Core::Navigations
 
     # Add navbar form items
     # See UiBibz::Ui::Core::ToolbarForm
-    def form(model_or_url, options = {}, &block)
-      @items << UiBibz::Ui::Core::Navigations::ToolbarForm.new(model_or_url, options, &block)
+    def form(model_or_url, options = {}, &)
+      @items << UiBibz::Ui::Core::Navigations::ToolbarForm.new(model_or_url, options, &)
     end
 
     private

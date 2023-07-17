@@ -26,7 +26,7 @@ module UiBibz::Ui::Ux::Containers::Components
     include UiBibz::Ui::Concerns::HtmlConcern
 
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize(content = nil, options = nil, html_options = nil, &block)
+    def initialize(content = nil, options = nil, html_options = nil, &)
       super
       @items = []
     end
@@ -36,8 +36,8 @@ module UiBibz::Ui::Ux::Containers::Components
       content_tag :div, @items.join.html_safe, html_options
     end
 
-    def panel(content = nil, options = nil, html_options = nil, &block)
-      @items << UiBibz::Ui::Ux::Containers::Panel.new(content, options, html_options).tap(&block).render
+    def panel(content = nil, options = nil, html_options = nil, &)
+      @items << UiBibz::Ui::Ux::Containers::Panel.new(content, options, html_options).tap(&).render
     end
 
     private

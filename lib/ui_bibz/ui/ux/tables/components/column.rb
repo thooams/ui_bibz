@@ -4,7 +4,7 @@ module UiBibz::Ui::Ux::Tables
   class Column < UiBibz::Ui::Core::Component
     attr_accessor :hidden, :link, :name, :input_options, :class, :as, :data_index, :date_format, :sort, :format, :count, :custom_sort, :parent, :id, :progress_options
 
-    def initialize(content = nil, options = nil, html_options = nil, &block)
+    def initialize(content = nil, options = nil, html_options = nil, &)
       super
       @data_index    = @content
       @id            = @options[:column_id] || @data_index

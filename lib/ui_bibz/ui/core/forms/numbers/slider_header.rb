@@ -53,14 +53,14 @@ module UiBibz::Ui::Core::Forms::Numbers
     def header_min
       content_tag :div, class: 'slider-header-min' do
         concat content_tag :label, options[:label_min] || 'Min: ', for: options[:label_for_min]
-        concat content_tag :span, options[:thumb_min], "data-unit": options[:unit] || options[:unit_min]
+        concat content_tag :span, options[:thumb_min], 'data-unit': options[:unit] || options[:unit_min]
       end
     end
 
     def header_max
       content_tag :div, class: 'slider-header-max' do
         concat content_tag :label, options[:label_max] || 'Max: ', for: options[:label_for_max]
-        concat content_tag :span, options[:thumb_max], "data-unit": options[:unit] || options[:unit_max]
+        concat content_tag :span, options[:thumb_max], 'data-unit': options[:unit] || options[:unit_max]
       end
     end
 

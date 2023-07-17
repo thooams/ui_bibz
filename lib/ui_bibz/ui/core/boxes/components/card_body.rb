@@ -38,7 +38,7 @@ module UiBibz::Ui::Core::Boxes::Components
     include UiBibz::Ui::Concerns::HtmlConcern
 
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize(content = nil, options = nil, html_options = nil, &block)
+    def initialize(content = nil, options = nil, html_options = nil, &)
       super
       @items = [@content]
     end
@@ -46,7 +46,7 @@ module UiBibz::Ui::Core::Boxes::Components
     # Render html tag
     def pre_render
       if options[:collapse]
-        content_tag :div, class: join_classes('collapse', show), id: options[:collapse], "data-bs-parent": "##{options[:parent_collapse]}" do
+        content_tag :div, class: join_classes('collapse', show), id: options[:collapse], 'data-bs-parent': "##{options[:parent_collapse]}" do
           content_tag :div, @items.join.html_safe, html_options
         end
       else
@@ -54,20 +54,20 @@ module UiBibz::Ui::Core::Boxes::Components
       end
     end
 
-    def title(content = nil, options = nil, html_options = nil, &block)
-      @items << UiBibz::Ui::Core::Boxes::Components::Body::CardBodyTitle.new(content, options, html_options, &block).render
+    def title(content = nil, options = nil, html_options = nil, &)
+      @items << UiBibz::Ui::Core::Boxes::Components::Body::CardBodyTitle.new(content, options, html_options, &).render
     end
 
-    def subtitle(content = nil, options = nil, html_options = nil, &block)
-      @items << UiBibz::Ui::Core::Boxes::Components::Body::CardBodySubtitle.new(content, options, html_options, &block).render
+    def subtitle(content = nil, options = nil, html_options = nil, &)
+      @items << UiBibz::Ui::Core::Boxes::Components::Body::CardBodySubtitle.new(content, options, html_options, &).render
     end
 
-    def link(content = nil, options = nil, html_options = nil, &block)
-      @items << UiBibz::Ui::Core::Boxes::Components::Body::CardBodyLink.new(content, options, html_options, &block).render
+    def link(content = nil, options = nil, html_options = nil, &)
+      @items << UiBibz::Ui::Core::Boxes::Components::Body::CardBodyLink.new(content, options, html_options, &).render
     end
 
-    def text(content = nil, options = nil, html_options = nil, &block)
-      @items << UiBibz::Ui::Core::Boxes::Components::Body::CardBodyText.new(content, options, html_options, &block).render
+    def text(content = nil, options = nil, html_options = nil, &)
+      @items << UiBibz::Ui::Core::Boxes::Components::Body::CardBodyText.new(content, options, html_options, &).render
     end
 
     def row(content = nil, options = nil, html_options = nil, &block)
