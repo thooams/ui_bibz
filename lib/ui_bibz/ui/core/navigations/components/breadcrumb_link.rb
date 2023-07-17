@@ -58,7 +58,7 @@ module UiBibz::Ui::Core::Navigations::Components
     end
 
     def component_options
-      super.merge(options[:current] ? { status: :disabled } : {})
+      super.merge(options[:current] ? { state: :disabled } : {})
     end
 
     def link_html

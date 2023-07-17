@@ -25,10 +25,10 @@ class TableCardTest < ActionView::TestCase
   end
 
   test 'table card visual options' do
-    table_card = UiBibz::Ui::Ux::Tables::TableCard.new(store: @users, table_options: { striped: true, status: :inverse, responsive: true, bordered: true, size: :sm, hoverable: true, breakpoint: :sm }).render
+    table_card = UiBibz::Ui::Ux::Tables::TableCard.new(store: @users, table_options: { striped: true, responsive: true, bordered: true, size: :sm, hoverable: true, breakpoint: :sm }).render
     actual_table_classes = Nokogiri::HTML(table_card).xpath('//table')[0].attributes['class'].value
     div_classes = Nokogiri::HTML(table_card).xpath('//div').css('.table-responsive-sm')[0].attributes['class'].value
-    table_classes = 'table-inverse table table-striped table-bordered table-hoverable table-sm'
+    table_classes = 'table table-striped table-bordered table-hoverable table-sm'
     actual_div_classes = 'table-responsive-sm'
 
     assert_equal table_classes, actual_table_classes

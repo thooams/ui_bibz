@@ -39,8 +39,8 @@ class RangeFieldTest < ActionView::TestCase
   end
 
   test "range status" do
-    actual = UiBibz::Ui::Core::Forms::Numbers::RangeField.new('myrange', value: 2, max: 3, status: :sucesss).render
-    expected = "<input type=\"range\" name=\"myrange\" id=\"myrange\" value=\"2\" class=\"form-range-sucesss form-range\" max=\"3\" />"
+    actual = UiBibz::Ui::Core::Forms::Numbers::RangeField.new('myrange', value: 2, max: 3, status: :success).render
+    expected = "<input type=\"range\" name=\"myrange\" id=\"myrange\" value=\"2\" class=\"form-range-success form-range\" max=\"3\" />"
 
     assert_equal expected, actual
   end

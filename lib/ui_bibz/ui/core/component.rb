@@ -52,8 +52,6 @@ module UiBibz::Ui::Core
     BREAKPOINTS = %i[xxl xl lg md sm xs].freeze
     SIZES = %i[lg md sm].freeze
 
-    validates :statuses, allow_nil: false, inclusion: { in: STATUSES }
-
     attr_accessor :content, :html_options, :options
 
     # Use link_to system in rails
@@ -180,8 +178,13 @@ module UiBibz::Ui::Core
       end
     end
 
+    def validations
+      StatusesValidator.new(STATUSES, @options[:status]).call
+    end
+
     def init_options
       @options = component_options.merge(@options).with_indifferent_access
+      validations
     end
 
     def initialize_component_html_data

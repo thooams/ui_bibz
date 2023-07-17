@@ -28,7 +28,7 @@ class BreadcrumbTest < ActionView::TestCase
   test 'breadcrumb with store' do
     users    = create_list(:user, 3)
     actual   = ui_breadcrumb(users, link_label: :name_fr, link_url: user_path(:id))
-    expected = '<nav arial-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="/users/1/">Name fr</a></li><li class="breadcrumb-item"><a href="/users/2/">Name fr</a></li><li class="breadcrumb-item" aria-current="page">Name fr</li></ol></nav>'
+    expected = "<nav arial-label=\"breadcrumb\"><ol class=\"breadcrumb\"><li class=\"breadcrumb-item\"><a href=\"/users/1/\">Name fr</a></li><li class=\"breadcrumb-item\"><a href=\"/users/2/\">Name fr</a></li><li class=\"disabled breadcrumb-item\" aria-current=\"page\">Name fr</li></ol></nav>"
 
     assert_equal expected, actual
   end
