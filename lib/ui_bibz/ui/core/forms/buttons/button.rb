@@ -53,7 +53,7 @@ module UiBibz::Ui::Core::Forms::Buttons
   #  end
   class Button < UiBibz::Ui::Core::Component
 
-    STATUS = STATUS + [:link]
+    STATUS = %i[primary secondary success danger warning info light dark link].freeze
 
     # Render html tag
     def pre_render
@@ -63,7 +63,7 @@ module UiBibz::Ui::Core::Forms::Buttons
     protected
 
     def validations
-      StatusValidator.new(STATUS, @options[:status]).call
+      IncludeArrayValidator.new(STATUS, @options[:status]).call
     end
 
     def button_html_tag

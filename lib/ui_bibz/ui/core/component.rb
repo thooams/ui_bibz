@@ -179,7 +179,8 @@ module UiBibz::Ui::Core
     end
 
     def validations
-      StatusValidator.new(STATUS, @options[:status]).call
+      IncludeArrayValidator.new(STATUS, @options[:status]).call
+      #BreakpointValidator.new(BREAKPOINTS, @options[:size]).call
     end
 
     def init_options

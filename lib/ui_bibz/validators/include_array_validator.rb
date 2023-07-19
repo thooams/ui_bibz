@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 # Class to valid status
-class StatusValidator
-  attr_reader :status, :value
+class IncludeArrayValidator
+  attr_reader :array, :value
 
-  def initialize(status, value)
-    @status = status
+  def initialize(array, value)
+    @array = array
     @value = value
   end
 
@@ -15,6 +15,6 @@ class StatusValidator
   def call
     return if value.nil?
 
-    raise UiBibz::StatusError.new(value:, status:) unless status.include?(value.to_sym)
+    raise UiBibz::IncludeArrayError.new(value:, array:) unless array.include?(value.to_sym)
   end
 end
