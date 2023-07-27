@@ -79,7 +79,7 @@ module UiBibz::Ui::Core::Forms::Buttons
       html_class_builder.add options[:state]
       html_class_builder.add status
       html_class_builder.add initial_html_classes
-      html_class_builder.add size
+      html_class_builder.add_composed 'btn-%s', options[:size]
     end
 
     def component_html_options
