@@ -52,8 +52,7 @@ module UiBibz::Ui::Core::Forms::Buttons
   #    content
   #  end
   class Button < UiBibz::Ui::Core::Component
-
-    STATUS = %i[primary secondary success danger warning info light dark link].freeze
+    STATUS = STATUS + [:link]
 
     # Render html tag
     def pre_render
@@ -63,7 +62,9 @@ module UiBibz::Ui::Core::Forms::Buttons
     protected
 
     def validations
-      IncludeArrayValidator.new(STATUS, @options[:status]).call
+      UiBibz::Validators::IncludeArrayValidator.new(STATUS, @options[:status]).validate
+      UiBibz::Validators::IncludeArrayValidator.new(SIZES, @options[:size]).validate
+      UiBibz::Validators::IncludeArrayValidator.new(STATES, @options[:active]).validate
     end
 
     def button_html_tag
@@ -75,7 +76,10 @@ module UiBibz::Ui::Core::Forms::Buttons
     end
 
     def component_html_classes
-      super << ['btn', size]
+      html_class_builder.add options[:state]
+      html_class_builder.add status
+      html_class_builder.add initial_html_classes
+      html_class_builder.add size
     end
 
     def component_html_options
@@ -95,14 +99,6 @@ module UiBibz::Ui::Core::Forms::Buttons
         'aria-controls': options[:collapse],
         'aria-expanded': options[:expand_collapse].nil? ? false : options[:expand_collapse]
       }
-    end
-
-    def status
-      ['btn', outline, options[:status] || 'secondary'].compact.join('-')
-    end
-
-    def outline
-      'outline' unless options[:outline].nil?
     end
 
     def toggle
@@ -134,9 +130,22 @@ module UiBibz::Ui::Core::Forms::Buttons
       UiBibz::Ui::Core::Notifications::Spinner.new(nil, opts).render
     end
 
+    ### HTML classes ###########################################################
+    def initial_html_classes
+      'btn'
+    end
+
     # :lg, :sm or :xs
     def size
-      "btn-#{options[:size]}" if options[:size]
+      "btn-#{options[:size]}" unless options[:size].nil?
+    end
+
+    def outline
+      'outline' unless options[:outline].nil?
+    end
+
+    def status
+      ['btn', outline, options[:status] || 'secondary'].compact.join('-')
     end
   end
 end

@@ -107,18 +107,17 @@ module UiBibz::Ui::Core::Forms::Buttons
     private
 
     def component_html_classes
-      super << [class_name, size, position]
+      super
+      html_class_builder.add position
     end
 
     def component_html_options
-      { role: type }
+      { role: options[:type] || :group }
     end
 
-    def type
-      options[:type] || :group
-    end
+    ### HTML classes ###########################################################
 
-    def class_name
+    def initial_html_classes
       'btn-group' if options[:position] != :vertical
     end
 

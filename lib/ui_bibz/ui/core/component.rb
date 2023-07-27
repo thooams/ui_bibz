@@ -49,6 +49,7 @@ module UiBibz::Ui::Core
 
     # Constants
     STATUS = %i[primary secondary success danger warning info light dark].freeze
+    STATES = %i[active disabled].freeze
     BREAKPOINTS = %i[xxl xl lg md sm xs].freeze
     SIZES = %i[lg md sm].freeze
 
@@ -101,6 +102,10 @@ module UiBibz::Ui::Core
     end
 
     protected
+
+    def html_class_builder
+      @html_class_builder ||= UiBibz::Builders::HtmlClassBuilder.new
+    end
 
     # Override this method to add html classes
     # Accept Array or String
@@ -178,10 +183,7 @@ module UiBibz::Ui::Core
       end
     end
 
-    def validations
-      IncludeArrayValidator.new(STATUS, @options[:status]).call
-      #BreakpointValidator.new(BREAKPOINTS, @options[:size]).call
-    end
+    def validations; end
 
     def init_options
       @options = component_options.merge(@options).with_indifferent_access
@@ -202,6 +204,11 @@ module UiBibz::Ui::Core
       initialize_component_html_data
       initialize_component_html_classes
       initialize_component_html_options
+    end
+
+    def initialize_component_html_classes
+      component_html_classes
+      html_options[:class] = html_class_builder.to_a
     end
   end
 end

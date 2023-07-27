@@ -36,7 +36,7 @@ class HtmlClassBuilderTest < ActiveSupport::TestCase
   end
 
   test 'create status class' do
-    @html_class_builder.status 'test-%s', :success
+    @html_class_builder.add_composed 'test-%s', :success
 
     assert_equal 'test-success', @html_class_builder.to_s
   end
@@ -50,9 +50,9 @@ class HtmlClassBuilderTest < ActiveSupport::TestCase
     assert_equal 'test test2 test3 test4', @html_class_builder.to_s
   end
 
-  test 'add status class' do
+  test 'add composed class' do
     @html_class_builder.add 'test'
-    @html_class_builder.status 'test-%s', :success
+    @html_class_builder.add_composed 'test-%s', :success
 
     assert_equal 'test test-success', @html_class_builder.to_s
   end

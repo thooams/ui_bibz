@@ -61,12 +61,15 @@ module UiBibz::Ui::Core::Notifications
       super.merge(options[:url].nil? ? {} : { href: options[:url] })
     end
 
+    ### HTML classes ###########################################################
     def component_html_classes
-      ['badge', type]
+      html_class_builder.add type
+      html_class_builder.add status
+      html_class_builder.add 'badge'
     end
 
     def status
-      "bg-#{@options[:status] || :default}"
+      "bg-#{@options[:status]}" if @options[:status]
     end
 
     def type

@@ -73,6 +73,14 @@ module UiBibz
     autoload :BreakdownClassNameGenerator, 'ui_bibz/utils/breakdown_class_name_generator'
   end
 
+  module Validators
+    autoload :IncludeArrayValidator, 'ui_bibz/validators/include_array_validator'
+  end
+
+  module Builders
+    autoload :HtmlClassBuilder, 'ui_bibz/builders/html_class_builder'
+  end
+
   module Ui
     # Base
     autoload :Base, 'ui_bibz/ui/base'

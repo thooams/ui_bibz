@@ -18,18 +18,18 @@ module KlassExtension
 
   private
 
-  def initialize_component_html_classes
-    cls = [
-      original_html_options,
-      state,
-      status,
-      effect,
-      options_classes,
-      connect,
-      component_html_classes
-    ]
-    html_options[:class] = join_classes(cls)
-  end
+  # def initialize_component_html_classes
+  #   cls = [
+  #     original_html_options,
+  #     state,
+  #     status,
+  #     effect,
+  #     options_classes,
+  #     connect,
+  #     component_html_classes
+  #   ]
+  #   html_options[:class] = join_classes(cls)
+  # end
 
   def original_html_options
     transform_classes_to_array(html_options[:class])
