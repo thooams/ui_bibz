@@ -75,13 +75,6 @@ module UiBibz::Ui::Core::Forms::Buttons
       end
     end
 
-    def component_html_classes
-      html_class_builder.add options[:state]
-      html_class_builder.add status
-      html_class_builder.add initial_html_classes
-      html_class_builder.add_composed 'btn-%s', options[:size]
-    end
-
     def component_html_options
       opts = super
       opts = opts.merge(toggle)                   unless options[:toggle].nil?
@@ -131,13 +124,11 @@ module UiBibz::Ui::Core::Forms::Buttons
     end
 
     ### HTML classes ###########################################################
-    def initial_html_classes
-      'btn'
-    end
-
-    # :lg, :sm or :xs
-    def size
-      "btn-#{options[:size]}" unless options[:size].nil?
+    def component_html_classes
+      html_classes_builder.add options[:state]
+      html_classes_builder.add status
+      html_classes_builder.add 'btn'
+      html_classes_builder.add_composed 'btn-%s', options[:size]
     end
 
     def outline

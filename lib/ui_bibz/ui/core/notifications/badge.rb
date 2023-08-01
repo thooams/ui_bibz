@@ -61,19 +61,17 @@ module UiBibz::Ui::Core::Notifications
       super.merge(options[:url].nil? ? {} : { href: options[:url] })
     end
 
+    def validations
+      UiBibz::Validators::IncludeArrayValidator.new(STATUS, @options[:status]).validate
+      UiBibz::Validators::IncludeArrayValidator.new(SIZES, @options[:size]).validate
+    end
+
+
     ### HTML classes ###########################################################
     def component_html_classes
-      html_class_builder.add type
-      html_class_builder.add status
-      html_class_builder.add 'badge'
-    end
-
-    def status
-      "bg-#{@options[:status]}" if @options[:status]
-    end
-
-    def type
-      'rounded-pill' if @options[:type] == :pill
+      html_classes_builder.add_if_equal_value 'rounded-pill', options[:type], :pill
+      html_classes_builder.add_composed 'bg-%s', options[:status]
+      html_classes_builder.add 'badge'
     end
   end
 end

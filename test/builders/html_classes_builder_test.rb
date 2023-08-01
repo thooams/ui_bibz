@@ -1,11 +1,10 @@
 # frozen_string_literal: true
 
 require 'test_helper'
-require 'ui_bibz/builders/html_class_builder'
 
-class HtmlClassBuilderTest < ActiveSupport::TestCase
+class HtmlClassesBuilderTest < ActiveSupport::TestCase
   def setup
-    @html_class_builder = HtmlClassBuilder.new
+    @html_class_builder = HtmlClassesBuilder.new
   end
 
   test 'add class' do

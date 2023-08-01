@@ -78,7 +78,7 @@ module UiBibz
   end
 
   module Builders
-    autoload :HtmlClassBuilder, 'ui_bibz/builders/html_class_builder'
+    autoload :HtmlClassesBuilder, 'ui_bibz/builders/html_classes_builder'
   end
 
   module Ui

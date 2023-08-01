@@ -4,7 +4,6 @@ require 'haml'
 require 'ui_bibz/ui/extensions/core/component/klass_extension'
 require 'ui_bibz/ui/extensions/core/component/glyph_extension'
 require 'ui_bibz/ui/extensions/core/component/popover_extension'
-require 'ui_bibz/builders/html_class_builder'
 module UiBibz::Ui::Core
   # Creates a component of the given +name+ using options created by the set of +options+.
   #
@@ -103,8 +102,8 @@ module UiBibz::Ui::Core
 
     protected
 
-    def html_class_builder
-      @html_class_builder ||= UiBibz::Builders::HtmlClassBuilder.new
+    def html_classes_builder
+      @html_classes_builder ||= UiBibz::Builders::HtmlClassesBuilder.new
     end
 
     # Override this method to add html classes
@@ -208,7 +207,7 @@ module UiBibz::Ui::Core
 
     def initialize_component_html_classes
       component_html_classes
-      html_options[:class] = html_class_builder.to_a
+      html_options[:class] = html_classes_builder.to_a
     end
   end
 end

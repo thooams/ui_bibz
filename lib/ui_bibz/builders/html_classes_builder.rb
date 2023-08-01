@@ -2,7 +2,7 @@
 
 module UiBibz::Builders
   # Class to build html classes
-  class HtmlClassBuilder
+  class HtmlClassesBuilder
     def initialize
       @html_classes = []
     end
@@ -47,6 +47,15 @@ module UiBibz::Builders
     # @return [Void]
     def add_not_nil(class_name, value)
       add class_name unless value.nil?
+    end
+
+    # Add class if value is equal to expected
+    # @param [String] class_name
+    # @param [Symbol|String] value
+    # @param [Symbol|String] expected
+    # @return [Void]
+    def add_if_equal_value(class_name, value, expected)
+      add class_name if value == expected
     end
   end
 end
