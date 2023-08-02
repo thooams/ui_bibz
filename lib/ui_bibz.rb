@@ -73,6 +73,10 @@ module UiBibz
     autoload :BreakdownClassNameGenerator, 'ui_bibz/utils/breakdown_class_name_generator'
   end
 
+  module Builders
+    autoload :HtmlClassesBuilder, 'ui_bibz/builders/html_classes_builder'
+  end
+
   module Ui
     # Base
     autoload :Base, 'ui_bibz/ui/base'

@@ -19,28 +19,21 @@ module KlassExtension
   private
 
   def initialize_component_html_classes
-    cls = [
-      original_html_options,
+    html_classes_builder = UiBibz::Builders::HtmlClassesBuilder.new
+    html_classes_builder.add [
+      html_options[:class],
+      options[:class],
       state,
       status,
       effect,
-      options_classes,
       connect,
       component_html_classes
     ]
-    html_options[:class] = join_classes(cls)
-  end
-
-  def original_html_options
-    transform_classes_to_array(html_options[:class])
+    html_options[:class] = html_classes_builder.output
   end
 
   def effect
     options[:effect]
-  end
-
-  def options_classes
-    transform_classes_to_array(options[:class])
   end
 
   def state
@@ -49,9 +42,5 @@ module KlassExtension
 
   def connect
     'ui-bibz-connect' unless options[:connect].nil?
-  end
-
-  def transform_classes_to_array(classes)
-    UiBibz::Utils::Screwdriver.uniq_word_in_string(classes.is_a?(String) ? classes : classes.join(' ')) unless classes.nil?
   end
 end

@@ -4,7 +4,6 @@ require 'haml'
 require 'ui_bibz/ui/extensions/core/component/klass_extension'
 require 'ui_bibz/ui/extensions/core/component/glyph_extension'
 require 'ui_bibz/ui/extensions/core/component/popover_extension'
-require 'ui_bibz/builders/html_class_builder'
 module UiBibz::Ui::Core
   # Creates a component of the given +name+ using options created by the set of +options+.
   #
