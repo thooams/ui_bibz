@@ -50,7 +50,7 @@ module UiBibz::Ui::Core::Notifications::Components
       if options[:image].is_a?(String)
         image_tag(options[:image], class: 'rounded me-2', alt: sanitize_text(options[:image])) unless options[:image].nil?
       else
-        options[:image][:class] = UiBibz::Utils::Screwdriver.join_classes(options[:image][:class], 'rounded me-2')
+        options[:image][:class] = UiBibz::Builders::HtmlClassesBuilder.join_classes(options[:image][:class], 'rounded me-2')
         if options[:image].delete(:pack)
           image_pack_tag(options[:image].delete(:href), **options[:image])
         else

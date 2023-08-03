@@ -131,7 +131,7 @@ module UiBibz::Ui::Core::Notifications
     end
 
     def close_button_classes
-      UiBibz::Utils::Screwdriver.join_classes('btn-close', 'me-2', 'm-auto', white_btn_color)
+      UiBibz::Builders::HtmlClassesBuilder.join_classes('btn-close', 'me-2', 'm-auto', white_btn_color)
     end
   end
 end

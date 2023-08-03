@@ -2,18 +2,19 @@
 
 module KlassExtension
   def join_classes(*classes)
-    UiBibz::Utils::Screwdriver.join_classes classes
+    UiBibz::Builders::HtmlClassesBuilder.join_classes classes
   end
 
   def exclude_classes(arr, *classes)
-    UiBibz::Utils::Screwdriver.exclude_classes arr, classes
+    UiBibz::Builders::HtmlClassesBuilder.exclude_classes arr, classes
   end
 
   # Override this method to add a status class
   def status; end
 
+  # Not very clean but it's the only way to remove classes to html_options
   def exclude_classes_in_html_options(*classes)
-    html_options[:class] = exclude_classes html_options[:class], classes
+    html_options[:class] = exclude_classes [html_options[:class], options[:classes]], classes
   end
 
   private

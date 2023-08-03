@@ -96,7 +96,7 @@ module UiBibz::Ui::Core
 
     # Know if component is tapped or not
     def tapped?(block)
-      UiBibz::Utils::Screwdriver.tapped?(block)
+      block.present? && block.parameters.present?
     end
 
     protected

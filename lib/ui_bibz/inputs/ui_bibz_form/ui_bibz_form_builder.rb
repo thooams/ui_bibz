@@ -13,13 +13,13 @@ module UiBibzForm
       content = (options || {}).merge(content || {})
       content = content.merge(template: @template, form: self)
 
-      input_classes  = UiBibz::Utils::Screwdriver.join_classes('form-group', 'surround_field', options[:input_html].try(:[], :class))
+      input_classes  = UiBibz::Builders::HtmlClassesBuilder.join_classes('form-group', 'surround_field', options[:input_html].try(:[], :class))
       wrapper_html   = (options[:input_html] || {}).merge({ class: input_classes })
       surround_field = UiBibz::Ui::Core::Forms::Surrounds::SurroundField.new(content, opts, html_options).tap(&)
       errors_text    = surround_field.errors.flatten.to_sentence
       required       = surround_field.required_fields.any?(true)
-      wrapper_classes = UiBibz::Utils::Screwdriver.join_classes(('has-error' if errors_text.present?), wrapper_html.try(:[], :class))
-      label_classes = UiBibz::Utils::Screwdriver.join_classes(('required' if required), 'control-label')
+      wrapper_classes = UiBibz::Builders::HtmlClassesBuilder.join_classes(('has-error' if errors_text.present?), wrapper_html.try(:[], :class))
+      label_classes = UiBibz::Builders::HtmlClassesBuilder.join_classes(('required' if required), 'control-label')
       abbr_html     = content_tag('abbr', I18n.t(:'simple_form.required.mark', default: '*'), title: I18n.t(:'simple_form.required.text', default: 'required')) if required
 
       wrapper_html[:class] = wrapper_classes
@@ -45,7 +45,7 @@ module UiBibzForm
       content = (options || {}).merge(content || {})
       content = content.merge(template: @template, form: self)
 
-      input_classes = UiBibz::Utils::Screwdriver.join_classes('button_group', options[:input_html].try(:[], :class))
+      input_classes = UiBibz::Builders::HtmlClassesBuilder.join_classes('button_group', options[:input_html].try(:[], :class))
       wrapper_html = (options[:input_html] || {}).merge({ class: input_classes })
 
       content_tag :div, wrapper_html do

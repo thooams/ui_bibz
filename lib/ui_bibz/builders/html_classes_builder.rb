@@ -3,6 +3,28 @@
 module UiBibz::Builders
   # Class to build html classes
   class HtmlClassesBuilder
+    class << self
+      # Add class and return output
+      # @param [Array|String] classes
+      # @return [Array|nil] classes
+      def join_classes(*classes)
+        html_classes_builder = new
+        html_classes_builder.add(*classes)
+        html_classes_builder.output
+      end
+
+      # Remove classes and return output
+      # @param [Array|String] arr
+      # @param [Array|String] classes
+      # @return [Array|nil] classes
+      def exclude_classes(arr, *classes)
+        html_classes_builder = new
+        html_classes_builder.add(arr)
+        html_classes_builder.remove(classes)
+        html_classes_builder.output
+      end
+    end
+
     def initialize
       @html_classes = []
     end
@@ -18,7 +40,7 @@ module UiBibz::Builders
     # @param [Array|String] classes
     # @return [Void]
     def remove(*classes)
-      @html_classes = @html_classes.flatten.reject { |klass_name| Array(classes).flatten.include?(klass_name.to_s) || klass_name.blank? }
+      @html_classes = to_a.reject { |klass_name| self.class.join_classes(classes).include?(klass_name.to_s) }
     end
 
     # To be sure to have uniq classes
@@ -30,7 +52,7 @@ module UiBibz::Builders
     # To be sure to have uniq classes
     # @return [Array] Array of uniq classes
     def to_a
-      @to_a ||= @html_classes.flatten.join(' ').split.uniq
+      @html_classes.flatten.join(' ').split.uniq
     end
 
     # Te be sure to have uniq classes

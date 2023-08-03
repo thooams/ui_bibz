@@ -88,7 +88,7 @@ module UiBibz::Ui::Core::Windows
     private
 
     def modal_dialog_classes
-      UiBibz::Utils::Screwdriver.join_classes('modal-dialog', fullscreen_size, size, position, scrollable)
+      UiBibz::Builders::HtmlClassesBuilder.join_classes('modal-dialog', fullscreen_size, size, position, scrollable)
     end
 
     def component_html_classes

@@ -17,7 +17,7 @@ class HtmlClassesBuilderTest < ActiveSupport::TestCase
     @html_class_builder.add 'test'
     @html_class_builder.remove 'test'
 
-    assert_equal '', @html_class_builder.to_s
+    assert_nil @html_class_builder.output
   end
 
   test 'to_s uniq' do
@@ -59,5 +59,15 @@ class HtmlClassesBuilderTest < ActiveSupport::TestCase
   test 'output' do
     @html_class_builder.add ''
     assert_nil @html_class_builder.output
+  end
+
+  test 'join_classes' do
+    actual = UiBibz::Builders::HtmlClassesBuilder.join_classes 'test', 'test2'
+    assert_equal %w(test test2), actual
+  end
+
+  test 'exclude_classes' do
+    actual = UiBibz::Builders::HtmlClassesBuilder.exclude_classes 'test test2', 'test2'
+    assert_equal ['test'], actual
   end
 end

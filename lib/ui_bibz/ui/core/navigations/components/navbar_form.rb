@@ -75,7 +75,7 @@ module UiBibz::Ui::Core::Navigations
     private
 
     def new_option
-      (@options || {}).merge({ class: UiBibz::Utils::Screwdriver.join_classes('d-flex', @options[:class]) })
+      (@options || {}).merge({ class: UiBibz::Builders::HtmlClassesBuilder.join_classes('d-flex', @options[:class]) })
     end
 
     def protect_against_forgery?
