@@ -60,16 +60,7 @@ module UiBibz::Ui::Core
     # * Html options is defined in hash html_options
     def initialize(content = nil, options = nil, html_options = nil, &block)
       if !block.nil?
-        @tapped = tapped?(block)
-        @html_options = options
-        @options = content
-        read_cache = Rails.cache.read(@options.try(:[], :cache))
-        if read_cache.nil?
-          context  = eval('self', block.binding) # rubocop:disable Style/EvalWithLocation
-          @content = context.capture(&block)
-        else
-          @content = read_cache
-        end
+        init_content_with_block(content, options, html_options, block)
       elsif content.is_a?(Hash)
         @html_options = options
         @options = content
@@ -96,10 +87,23 @@ module UiBibz::Ui::Core
 
     # Know if component is tapped or not
     def tapped?(block)
-      block.present? && block.parameters.present?
+      UiBibz::Utils::Screwdriver.tapped?(block)
     end
 
     protected
+
+    def init_content_with_block(content, options, html_options, block)
+      @tapped = UiBibz::Utils::Screwdriver.tapped?(block)
+      @html_options = options
+      @options = content
+      read_cache = Rails.cache.read(@options.try(:[], :cache))
+      if read_cache.nil?
+        context  = eval('self', block.binding) # rubocop:disable Style/EvalWithLocation
+        @content = context.capture(&block)
+      else
+        @content = read_cache
+      end
+    end
 
     # Override this method to add html classes
     # Accept Array or String

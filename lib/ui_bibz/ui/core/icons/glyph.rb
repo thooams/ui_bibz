@@ -67,7 +67,7 @@ module UiBibz::Ui::Core::Icons
     private
 
     def component_html_classes
-      join_classes(classes)
+      UiBibz::Builders::HtmlClassesBuilder.join_classes(classes)
     end
 
     def component_html_data

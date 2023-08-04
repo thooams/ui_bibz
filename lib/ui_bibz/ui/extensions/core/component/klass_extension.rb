@@ -12,6 +12,7 @@ module KlassExtension
   # Override this method to add a status class
   def status; end
 
+  # TODO: Refactor
   # Not very clean but it's the only way to remove classes to html_options
   def exclude_classes_in_html_options(*classes)
     html_options[:class] = exclude_classes [html_options[:class], options[:classes]], classes
