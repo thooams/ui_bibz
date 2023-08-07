@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 module UiBibz
   module Strategies
     # Class to initialize component
     class ComponentInitializeAbstractStrategy
-      def initialize(component, component_binding)# content = nil, options = nil, html_options = nil, &block)
+      def initialize(component, component_binding)
         @component = component
         @binding = component_binding
         @content = component_binding.local_variable_get(:content)

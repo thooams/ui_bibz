@@ -58,7 +58,7 @@ module UiBibz::Ui::Core
     #   if a block is sent, variable 'content' does not exit.
     # * Options of component is defined in hash options
     # * Html options is defined in hash html_options
-    def initialize(content = nil, options = nil, html_options = nil, &block)
+    def initialize(content = nil, options = nil, html_options = nil, &)
       component_initialize_factory_method = UiBibz::FactoryMethods::ComponentInitializeFactoryMethod.new(self, self.binding).make
       @content = component_initialize_factory_method.content
       @html_options = component_initialize_factory_method.html_options

@@ -4,7 +4,7 @@ module UiBibz
   module FactoryMethods
     # Class to initialize component
     class ComponentInitializeFactoryMethod
-      def initialize(component, component_binding)#, content = nil, options = nil, html_options = nil, &block)
+      def initialize(component, component_binding)
         @component = component
         @binding = component_binding
         @content = component_binding.local_variable_get(:content)
@@ -14,10 +14,10 @@ module UiBibz
       end
 
       def make
-        strategy.new(@component, @binding)#@content, @options, @html_options, &@block)
+        strategy.new(@component, @binding)
       end
 
-     private
+      private
 
       def strategy
         if !@block.nil?

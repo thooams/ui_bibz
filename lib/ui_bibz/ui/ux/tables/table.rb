@@ -172,11 +172,11 @@ module UiBibz::Ui::Ux::Tables
 
     # Maybe create a class for td_content
     def td_content(record, col)
-      if col.format.nil?
-        content = col.count ? record.send(col.data_index).count : record.send(col.data_index)
-      else
-        content = col.format.call(@store.records, record)
-      end
+      content = if col.format.nil?
+                  col.count ? record.send(col.data_index).count : record.send(col.data_index)
+                else
+                  col.format.call(@store.records, record)
+                end
       unless content.nil?
         content = content.strftime(col.date_format)                    unless col.date_format.nil?
         content = link_to content, action.inject_url(col.link, record) unless col.link.nil?

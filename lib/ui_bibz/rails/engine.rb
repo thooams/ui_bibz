@@ -31,7 +31,7 @@ module UiBibz
 
       initializer 'ui_bibz.importmap', before: 'importmap' do |app|
         app.config.importmap.paths << Engine.root.join('config/importmap.rb')
-        app.config.importmap.cache_sweepers << Engine.root.join("app/assets/javascripts")
+        app.config.importmap.cache_sweepers << Engine.root.join('app/assets/javascripts')
       end
 
       initializer 'ui_bibz.assets.precompile' do |app|
