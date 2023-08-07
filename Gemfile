@@ -8,11 +8,21 @@ gemspec
 
 gem 'puma'
 
-gem 'sqlite3'
-
-gem 'awesome_print', group: %i[test development]
-gem 'byebug',        group: %i[development test]
-gem 'importmap-rails', group: %i[development test]
-
-# Start debugger with binding.b [https://github.com/ruby/debug]
-# gem "debug", ">= 1.0.0"
+group :development, :test do
+  gem 'awesome_print'
+  gem 'byebug'
+  gem 'factory_bot_rails', '~> 4.0'
+  gem 'haml-rails'
+  gem 'importmap-rails'
+  gem 'minitest'
+  gem 'overcommit'
+  gem 'rubocop'
+  gem 'rubocop-ast'
+  gem 'rubocop-minitest'
+  gem 'rubocop-performance'
+  gem 'rubocop-rails'
+  gem 'simplecov'
+  gem 'simple_form'
+  gem 'sqlite3'
+  gem 'yard'
+end

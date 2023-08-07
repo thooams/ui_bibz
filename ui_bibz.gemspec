@@ -34,19 +34,5 @@ Gem::Specification.new do |s|
   s.add_dependency 'will_paginate-bootstrap4'
   s.add_dependency 'will-paginate-i18n'
 
-  # Development gems
-  s.add_development_dependency 'factory_bot_rails', '~> 4.0'
-  s.add_development_dependency 'haml-rails'
-  s.add_development_dependency 'minitest'
-  s.add_development_dependency 'overcommit'
-  s.add_development_dependency 'rubocop'
-  s.add_development_dependency 'rubocop-ast'
-  s.add_development_dependency 'rubocop-minitest'
-  s.add_development_dependency 'rubocop-performance'
-  s.add_development_dependency 'rubocop-rails'
-  s.add_development_dependency 'simplecov'
-  s.add_development_dependency 'simple_form'
-  s.add_development_dependency 'sqlite3'
-  s.add_development_dependency 'yard'
   s.metadata['rubygems_mfa_required'] = 'true'
 end
