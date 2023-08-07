@@ -73,6 +73,17 @@ module UiBibz
     autoload :BreakdownClassNameGenerator, 'ui_bibz/utils/breakdown_class_name_generator'
   end
 
+  module FactoryMethods
+    autoload :ComponentInitializeFactoryMethod, 'ui_bibz/factory_methods/component_initialize_factory_method'
+  end
+
+  module Strategies
+    autoload :ComponentInitializeAbstractStrategy, 'ui_bibz/strategies/component_initialize_abstract_strategy'
+    autoload :ComponentInitializeStandardStrategy,         'ui_bibz/strategies/component_initialize_standard_strategy'
+    autoload :ComponentInitializeBlockStrategy,            'ui_bibz/strategies/component_initialize_block_strategy'
+    autoload :ComponentInitializeHashStrategy,             'ui_bibz/strategies/component_initialize_hash_strategy'
+  end
+
   module Builders
     autoload :HtmlClassesBuilder, 'ui_bibz/builders/html_classes_builder'
   end

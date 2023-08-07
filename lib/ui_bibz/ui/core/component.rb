@@ -59,18 +59,10 @@ module UiBibz::Ui::Core
     # * Options of component is defined in hash options
     # * Html options is defined in hash html_options
     def initialize(content = nil, options = nil, html_options = nil, &block)
-      if !block.nil?
-        init_content_with_block(content, options, html_options, block)
-      elsif content.is_a?(Hash)
-        @html_options = options
-        @options = content
-      else
-        @html_options = html_options
-        @options = options
-        @content = content
-      end
-      @html_options = (@html_options || {}).with_indifferent_access
-      @options      = (@options || {}).with_indifferent_access
+      component_initialize_factory_method = UiBibz::FactoryMethods::ComponentInitializeFactoryMethod.new(self, self.binding).make
+      @content = component_initialize_factory_method.content
+      @html_options = component_initialize_factory_method.html_options
+      @options      = component_initialize_factory_method.options
       init_options
       init_component_html_options
     end
@@ -91,19 +83,6 @@ module UiBibz::Ui::Core
     end
 
     protected
-
-    def init_content_with_block(content, options, html_options, block)
-      @tapped = UiBibz::Utils::Screwdriver.tapped?(block)
-      @html_options = options
-      @options = content
-      read_cache = Rails.cache.read(@options.try(:[], :cache))
-      if read_cache.nil?
-        context  = eval('self', block.binding) # rubocop:disable Style/EvalWithLocation
-        @content = context.capture(&block)
-      else
-        @content = read_cache
-      end
-    end
 
     # Override this method to add html classes
     # Accept Array or String
