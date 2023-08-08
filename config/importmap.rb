@@ -12,3 +12,6 @@ pin 'jquery.quicksearch', to: 'jquery.quicksearch.min.js', preload: true
 pin 'forms', to: 'forms.js', preload: true
 pin 'interfaces', to: 'interfaces.js', preload: true
 pin 'tables', to: 'tables.js', preload: true
+pin 'formula', to: 'forms/formula.js', preload: true
+pin 'input-connected', to: 'forms/input-connected.js', preload: true
+pin 'jquery.multi-select-extend', to: 'forms/jquery.multi-select-extend.js', preload: true
