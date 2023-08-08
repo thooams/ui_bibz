@@ -1,5 +1,5 @@
 import "jquery"
-import UiBibzFormula from 'ormula'
+import UiBibzFormula from 'formula'
 // import 'bootstrap-switch'
 import "input-connected"
 import "jquery.multi-select"
