@@ -45,7 +45,7 @@ module UiBibz::Ui::Core::Boxes::Components
   #
   class CardRow < UiBibz::Ui::Core::Layouts::Row
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize(content = nil, options = nil, html_options = nil, &)
+    def initialize(...)
       super
       @items = [@content]
     end

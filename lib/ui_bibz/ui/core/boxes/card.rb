@@ -92,7 +92,7 @@ module UiBibz::Ui::Core::Boxes
     include UiBibz::Ui::Concerns::CardItemableConcern
 
     # (see UiBibz::Ui::Core::Component#initialize)
-    def initialize(content = nil, options = nil, html_options = nil, &)
+    def initialize(...)
       super
       @items = @content.nil? ? [] : [UiBibz::Ui::Core::Boxes::Components::CardBody.new(@content).render]
     end
