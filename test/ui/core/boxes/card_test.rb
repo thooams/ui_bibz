@@ -137,16 +137,18 @@ class CardTest < ActionView::TestCase
     assert_equal expected, actual
   end
 
-  test 'card header tab group' do
-    actual = ui_card do |c|
+  test 'card tab' do
+    actual = ui_card tabbed: true do |c|
       c.header do |h|
         h.tab_group do |cg|
           cg.tab 'link1', url: '#link1'
           cg.tab 'link2', url: '#link2'
         end
       end
+      c.body tab_pan: "link1", state: :active
+      c.body tab_pan: "link2"
     end
-    expected = "<div class=\"card\"><div class=\"card-header\"><ul class=\"nav nav-tabs card-header-tabs\" role=\"tablist\"><li class=\"nav-item\"><a href=\"#link1\" class=\"nav-link\" data-bs-toggle=\"tab\" role=\"tab\">link1</a></li><li class=\"nav-item\"><a href=\"#link2\" class=\"nav-link\" data-bs-toggle=\"tab\" role=\"tab\">link2</a></li></ul></div></div>"
+    expected = "<div class=\"card tab-content\"><div class=\"card-header\"><ul class=\"nav nav-tabs card-header-tabs\" role=\"tablist\"><li class=\"nav-item\"><a href=\"#link1\" class=\"nav-link\" data-bs-toggle=\"tab\" role=\"tab\">link1</a></li><li class=\"nav-item\"><a href=\"#link2\" class=\"nav-link\" data-bs-toggle=\"tab\" role=\"tab\">link2</a></li></ul></div><div class=\"active card-body\"></div><div class=\"card-body\"></div></div>"
 
     assert_equal expected, actual
   end

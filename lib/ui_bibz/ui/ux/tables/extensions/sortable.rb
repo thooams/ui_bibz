@@ -75,7 +75,13 @@ module UiBibz::Ui::Ux::Tables
     end
 
     def sortable?
-      @options[:sortable].nil? ? true : @options[:sortable]
+      if !@column.sortable.nil?
+        @column.sortable
+      elsif !@options[:sortable].nil?
+        @options[:sortable]
+      else
+        true
+      end
     end
 
     def title

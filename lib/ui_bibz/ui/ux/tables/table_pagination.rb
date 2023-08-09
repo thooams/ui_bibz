@@ -39,8 +39,8 @@ module UiBibz::Ui::Ux::Tables
     # Render html tag with boostrap pagination theme
     def render
       paginate_parameters = { controller: store.controller }
-      paginate_parameters = paginate_parameters.merge({ store_id: store.id }) unless store.id.nil?
       paginate_parameters = paginate_parameters.merge(store.parameters)
+      paginate_parameters = paginate_parameters.merge({ store_id: store.id }) unless store.id.nil?
       paginate_parameters = paginate_parameters.merge({ link_type: 'pagination' })
       will_paginate(store.records, params: paginate_parameters.with_indifferent_access.reject { |k, v| default_parameters?(k) || v.blank? }, renderer: WillPaginate::ActionView::BootstrapLinkRenderer)
     end

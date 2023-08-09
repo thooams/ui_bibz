@@ -173,3 +173,6 @@ Rails/OutputSafety:
 
 Rails/SkipsModelValidations:
   Enabled: false
+
+Style/OpenStructUse:
+  Enabled: false
