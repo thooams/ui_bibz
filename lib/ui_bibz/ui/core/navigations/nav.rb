@@ -99,14 +99,14 @@ module UiBibz::Ui::Core::Navigations
     end
 
     # Add nav in nav
-    def nav(content = nil, options = {}, html_options = nil, &)
-      @items << UiBibz::Ui::Core::Component.new(Nav.new(content, options).tap(&).render, {}, html_options)
+    def nav(content = nil, options = {}, html_options = nil, &block)
+      @items << UiBibz::Ui::Core::Component.new(Nav.new(content, options).tap(&block).render, {}, html_options)
     end
 
     # Add nav dropdown items
     # See UiBibz::Ui::Core::Navigations::NavDropdown
-    def dropdown(content = nil, options = {}, html_options = nil, &)
-      @items << NavDropdown.new(content, options, html_options).tap(&)
+    def dropdown(content = nil, options = {}, html_options = nil, &block)
+      @items << NavDropdown.new(content, options, html_options).tap(&block)
     end
 
     protected
