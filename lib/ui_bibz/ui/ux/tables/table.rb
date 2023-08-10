@@ -96,7 +96,7 @@ module UiBibz::Ui::Ux::Tables
   #   end
   class Table < UiBibz::Ui::Core::Component
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize(content = nil, options = nil, html_options = nil, &)
+    def initialize(...)
       super
       @columns = Columns.new
       @actions = Actions.new store

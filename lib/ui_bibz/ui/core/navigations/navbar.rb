@@ -78,7 +78,7 @@ module UiBibz::Ui::Core::Navigations
     include UiBibz::Ui::Concerns::NavigationConcern
 
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize(content = nil, options = nil, html_options = nil, &)
+    def initialize(...)
       super
       @items = []
     end

@@ -52,7 +52,7 @@ module UiBibz::Ui::Core::Forms::Surrounds
     attr_reader :errors, :required_fields
 
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize(content = nil, options = nil, html_options = nil, &)
+    def initialize(...)
       super
       @items = []
       @errors = []

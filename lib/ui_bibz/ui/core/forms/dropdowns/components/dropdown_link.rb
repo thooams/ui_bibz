@@ -42,7 +42,7 @@ module UiBibz::Ui::Core::Forms::Dropdowns::Components
   #
   class DropdownLink < UiBibz::Ui::Core::Component
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize(content = nil, options = nil, html_options = nil, &)
+    def initialize(...)
       super
       @html_options = @html_options.merge(link_html_options)
     end

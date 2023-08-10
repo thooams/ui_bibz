@@ -52,7 +52,7 @@ module UiBibz::Ui::Core::Forms::Choices
 
     # See UiBibz::Ui::Core::Forms::Choices::Button.initialize
     #
-    def initialize(content = nil, options = nil, html_options = nil, &)
+    def initialize(...)
       super
       @items = []
       @errors = []

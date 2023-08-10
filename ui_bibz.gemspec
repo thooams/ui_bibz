@@ -33,6 +33,8 @@ Gem::Specification.new do |s|
   s.add_dependency 'will_paginate', '~> 3.3.0'
   s.add_dependency 'will_paginate-bootstrap4'
   s.add_dependency 'will-paginate-i18n'
+  # Don't move factory_bot_rails to Gemfile because of bug
+  s.add_development_dependency 'factory_bot_rails', '~> 4.0'
 
   s.metadata['rubygems_mfa_required'] = 'true'
 end

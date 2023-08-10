@@ -49,7 +49,7 @@ module UiBibz::Ui::Core::Notifications
   #
   class Alert < UiBibz::Ui::Core::Component
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize(content = nil, options = nil, html_options = nil, &)
+    def initialize(...)
       super
       header(@content, tap: false) unless @tapped
     end

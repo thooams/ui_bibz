@@ -50,7 +50,7 @@ module UiBibz::Ui::Core::Forms::Buttons
     include UiBibz::Ui::Concerns::HtmlConcern
 
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize(content = nil, options = nil, html_options = nil, &)
+    def initialize(...)
       super
       @items = []
     end

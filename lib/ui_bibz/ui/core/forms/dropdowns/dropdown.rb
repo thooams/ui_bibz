@@ -70,7 +70,7 @@ module UiBibz::Ui::Core::Forms::Dropdowns
   class Dropdown < UiBibz::Ui::Core::Component
     include UiBibz::Ui::Concerns::HtmlConcern
 
-    def initialize(content, options = nil, html_options = nil, &)
+    def initialize(...)
       super
       @items = []
       @status = @options.delete(:status)

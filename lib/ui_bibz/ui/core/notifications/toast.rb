@@ -56,7 +56,7 @@ module UiBibz::Ui::Core::Notifications
   #
   class Toast < UiBibz::Ui::Core::Component
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize(content = nil, options = nil, html_options = nil, &)
+    def initialize(...)
       super
       body(@content) unless @tapped
     end

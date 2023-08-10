@@ -7,11 +7,11 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 gemspec
 
 gem 'puma'
+gem 'sqlite3'
 
 group :development, :test do
   gem 'awesome_print'
   gem 'byebug'
-  gem 'factory_bot_rails', '~> 4.0'
   gem 'haml-rails'
   gem 'importmap-rails'
   gem 'minitest'
@@ -23,6 +23,5 @@ group :development, :test do
   gem 'rubocop-rails'
   gem 'simplecov'
   gem 'simple_form'
-  gem 'sqlite3'
   gem 'yard'
 end
