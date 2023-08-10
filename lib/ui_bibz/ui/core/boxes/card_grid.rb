@@ -34,9 +34,6 @@ module UiBibz::Ui::Core::Boxes
     include UiBibz::Ui::Concerns::HtmlConcern
 
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize(...)
-      super
-    end
 
     # Render html tag
     def pre_render

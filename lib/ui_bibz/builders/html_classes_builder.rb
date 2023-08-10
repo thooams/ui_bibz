@@ -7,9 +7,9 @@ module UiBibz::Builders
       # Add class and return output
       # @param [Array|String] classes
       # @return [Array|nil] classes
-      def join_classes(*classes)
+      def join_classes(*)
         html_classes_builder = new
-        html_classes_builder.add(*classes)
+        html_classes_builder.add(*)
         html_classes_builder.output
       end
 
