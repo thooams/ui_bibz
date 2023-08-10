@@ -21,8 +21,6 @@ module WillPaginate
     end
 
     class BootstrapLinkRenderer < LinkRenderer
-      ELLIPSIS = '&hellip;'
-
       def to_html
         list_items = pagination.map do |item|
           case item
@@ -68,7 +66,7 @@ module WillPaginate
       end
 
       def gap
-        tag :li, tag(:i, ELLIPSIS, class: 'page-link'), class: 'page-item disabled'
+        tag :li, tag(:i, '&hellip;', class: 'page-link'), class: 'page-item disabled'
       end
 
       def previous_page

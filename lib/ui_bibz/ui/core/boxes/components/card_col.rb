@@ -46,7 +46,7 @@ module UiBibz::Ui::Core::Boxes::Components
     include UiBibz::Ui::Concerns::CardItemableConcern
 
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize(content = nil, options = nil, html_options = nil, &)
+    def initialize(...)
       content = { num: content } if content.is_a?(Integer)
       super
       @items = [@content]

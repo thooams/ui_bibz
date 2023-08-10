@@ -38,7 +38,7 @@ module UiBibz::Ui::Core::Boxes::Components
     include UiBibz::Ui::Concerns::HtmlConcern
 
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize(content = nil, options = nil, html_options = nil, &)
+    def initialize(...)
       super
       @items = [@content]
     end
@@ -81,7 +81,11 @@ module UiBibz::Ui::Core::Boxes::Components
     private
 
     def component_html_classes
-      ['card-body', outline]
+      ['card-body', outline, tab_pane]
+    end
+
+    def component_html_options
+      @options[:tab_pane].nil? ? {} : { id: @options[:tab_pane] }
     end
 
     def outline
@@ -90,6 +94,10 @@ module UiBibz::Ui::Core::Boxes::Components
 
     def show
       'show' if @options[:show]
+    end
+
+    def tab_pane
+      'tab-pane' if options[:tab_pane]
     end
   end
 end

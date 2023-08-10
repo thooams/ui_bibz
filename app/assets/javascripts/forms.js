@@ -1,10 +1,10 @@
 import "jquery"
-import UiBibzFormula from './forms/formula'
+import UiBibzFormula from 'formula'
 // import 'bootstrap-switch'
-import "./forms/input-connected"
+import "input-connected"
 import "jquery.multi-select"
 import "bootstrap-multiselect"
-import extendMultiselect from "./forms/jquery.multi-select-extend"
+import extendMultiselect from "jquery.multi-select-extend"
 import "bootstrap-markdown"
 // import "bootstrap-datepicker.min.js"
 

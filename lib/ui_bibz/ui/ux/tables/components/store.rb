@@ -57,7 +57,7 @@ module UiBibz::Ui::Ux::Tables
     end
 
     def columns
-      @columns ||= Columns.new(model.new.attributes.keys.map { |record| Column.new(record, { name: record.humanize }) })
+      @columns ||= Columns.new(model.attribute_names.map { |attribute_name| Column.new(attribute_name, { name: attribute_name.humanize }) })
     end
 
     attr_reader :model
@@ -68,6 +68,10 @@ module UiBibz::Ui::Ux::Tables
 
     def controller
       @store.controller
+    end
+
+    def actions_controller
+      @store.actions_controller
     end
 
     def params

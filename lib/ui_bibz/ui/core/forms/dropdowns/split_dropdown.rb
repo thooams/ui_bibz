@@ -73,7 +73,7 @@ module UiBibz::Ui::Core::Forms::Dropdowns
     end
 
     def button_html
-      content_tag :button, button_content, (options[:html_button] || {}).merge(class: join_classes('btn', button_status, size, options[:html_button].try(:[], :class)))
+      content_tag dropdown_tag, button_content, dropdown_html_options
     end
 
     def split_html
@@ -86,11 +86,27 @@ module UiBibz::Ui::Core::Forms::Dropdowns
     end
 
     def split_classes
-      join_classes('btn', button_status, size, 'dropdown-toggle', 'dropdown-toggle-split', options[:split_html].try(:[], :class))
+      join_classes('btn', button_status, size, state, 'dropdown-toggle', 'dropdown-toggle-split', options[:split_html].try(:[], :class))
     end
 
     def src_only
       content_tag :span, 'Toggle Dropdown', class: 'sr-only'
+    end
+
+    def dropdown_html_options
+      opts = (options[:html_button] || {})
+      opts = opts.merge(href: options[:url]) if options[:tag] == :a
+      opts.merge(class: join_classes('btn', button_status, state, size, options[:html_button].try(:[], :class)))
+    end
+
+    def split_dropdown_html_option
+      (options[:html_split] || {}).merge({
+                                           class: split_classes,
+                                           type: 'button',
+                                           'data-bs-toggle' => 'dropdown',
+                                           'aria-haspopup' => true,
+                                           'aria-expanded' => false
+                                         })
     end
   end
 end

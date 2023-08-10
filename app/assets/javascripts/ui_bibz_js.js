@@ -1,6 +1,6 @@
-import UiBibzInterfaces from './interfaces'
-import UiBibzForms from './forms'
-import UiBibzTables from './tables'
+import UiBibzInterfaces from 'interfaces'
+import UiBibzForms from 'forms'
+import UiBibzTables from 'tables'
 
 export default class UiBibzJs {
 
