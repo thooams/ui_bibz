@@ -88,6 +88,10 @@ module UiBibz
     autoload :HtmlClassesBuilder, 'ui_bibz/builders/html_classes_builder'
   end
 
+  module ViewObjects
+    autoload :GlyphComponentViewObject, 'ui_bibz/view_objects/glyph_component_view_object'
+  end
+
   module Ui
     # Base
     autoload :Base, 'ui_bibz/ui/base'
