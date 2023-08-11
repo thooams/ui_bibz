@@ -87,16 +87,18 @@ module UiBibz::Ui::Core::Navigations
     def pre_render
       content_tag :nav, html_options do
         UiBibz::Ui::Core::Layouts::Container.new(options[:container], options[:container_html]) do
-          if brand_position == :left
-            concat title
-            concat @navbar_toggle_html
+          capture do
+            if brand_position == :left
+              concat title
+              concat @navbar_toggle_html
+            end
+            concat navbar_toggle_button_html
+            if brand_position == :right
+              concat title
+              concat @navbar_toggle_html
+            end
+            concat body_html
           end
-          concat navbar_toggle_button_html
-          if brand_position == :right
-            concat title
-            concat @navbar_toggle_html
-          end
-          concat body_html
         end.render
       end
     end
