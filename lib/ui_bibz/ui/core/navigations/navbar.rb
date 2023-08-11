@@ -105,26 +105,26 @@ module UiBibz::Ui::Core::Navigations
 
     # Add navbar nav items
     # See UiBibz::Ui::Core::NavbarNav
-    def nav(content = nil, options = nil, html_options = nil, &block)
+    def nav(content = nil, options = nil, html_options = nil, &)
       options ||= {}
-      @items << UiBibz::Ui::Core::Navigations::NavbarNav.new(content, options, html_options).tap(&block)
+      @items << UiBibz::Ui::Core::Navigations::NavbarNav.new(content, options, html_options).tap(&)
     end
 
     # Add navbar form items
     # See UiBibz::Ui::Core::NavbarForm
-    def form(model_or_url, options = {}, &block)
-      @items << UiBibz::Ui::Core::Navigations::NavbarForm.new(model_or_url, options, &block)
+    def form(model_or_url, options = {}, &)
+      @items << UiBibz::Ui::Core::Navigations::NavbarForm.new(model_or_url, options, &)
     end
 
     # Not use !!!!!
     # Add navbar text items
     # See UiBibz::Ui::Core::NavbarText
-    def text(content = nil, options = nil, html_options = nil, &block)
-      @items << UiBibz::Ui::Core::Navigations::NavbarText.new(content, options, html_options, &block)
+    def text(content = nil, options = nil, html_options = nil, &)
+      @items << UiBibz::Ui::Core::Navigations::NavbarText.new(content, options, html_options, &)
     end
 
-    def brand(content = nil, options = nil, html_options = nil, &block)
-      @brand = UiBibz::Ui::Core::Navigations::NavbarBrand.new(content, options, html_options, &block).render
+    def brand(content = nil, options = nil, html_options = nil, &)
+      @brand = UiBibz::Ui::Core::Navigations::NavbarBrand.new(content, options, html_options, &).render
     end
 
     def id
