@@ -3,6 +3,8 @@
 // import bootstrap from "bootstrap/dist/js/bootstrap.bundle"
 import "@popperjs/core"
 import "bootstrap"
+import * as bootstrap from 'bootstrap'
+window.bootstrap = bootstrap
 
 export default class UiBibzInterface {
 
