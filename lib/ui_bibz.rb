@@ -85,7 +85,9 @@ module UiBibz
   end
 
   module Builders
+    autoload :DataHtmlOptionsBuilder, 'ui_bibz/builders/data_html_options_builder'
     autoload :HtmlClassesBuilder, 'ui_bibz/builders/html_classes_builder'
+    autoload :HtmlOptionsBuilder, 'ui_bibz/builders/html_options_builder'
   end
 
   module ViewObjects

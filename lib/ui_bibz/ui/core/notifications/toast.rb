@@ -106,8 +106,7 @@ module UiBibz::Ui::Core::Notifications
     end
 
     def component_html_data
-      super
-      add_html_data 'bs-autohide', value: options[:auto_hide] if options[:auto_hide]
+      @data_html_options_builder.add 'bs-autohide', value: options[:auto_hide]
     end
 
     def status

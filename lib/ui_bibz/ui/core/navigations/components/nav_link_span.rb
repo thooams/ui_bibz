@@ -40,8 +40,7 @@ module UiBibz::Ui::Core::Navigations
     end
 
     def component_html_data
-      super
-      add_html_data 'link', value: options[:link] if options[:link]
+      @data_html_options_builder.add 'link', value: options[:link]
     end
   end
 end

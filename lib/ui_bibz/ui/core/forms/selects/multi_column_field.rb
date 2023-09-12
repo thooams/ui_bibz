@@ -71,11 +71,11 @@ module UiBibz::Ui::Core::Forms::Selects
     end
 
     def searchable
-      add_html_data('searchable') if options[:searchable]
+      @data_html_options_builder.add('searchable', value: options[:searchable])
     end
 
     def selectable_opt_group
-      add_html_data('selectable_optgroup') if options[:selectable_opt_group]
+      @data_html_options_builder.add('selectable_optgroup', value: options[:selectable_opt_group])
     end
 
     def status

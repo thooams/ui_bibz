@@ -95,15 +95,15 @@ module UiBibz::Ui::Core::Forms::Dates
     end
 
     def date_locale
-      add_html_data 'date_locale', value: I18n.locale.to_s
+      @data_html_options_builder.add 'date_locale', value: I18n.locale.to_s
     end
 
     def provide
-      add_html_data 'provide', value: 'datepicker'
+      @data_html_options_builder.add 'provide', value: 'datepicker'
     end
 
     def format
-      add_html_data 'date_format', value: picker_pattern
+      @data_html_options_builder.add 'date_format', value: picker_pattern
     end
 
     def picker_pattern
@@ -111,51 +111,51 @@ module UiBibz::Ui::Core::Forms::Dates
     end
 
     def today_btn
-      add_html_data 'date_today_btn', value: 'linked'
+      @data_html_options_builder.add 'date_today_btn', value: 'linked'
     end
 
     def today_highlight
-      add_html_data('date_today_highlight') if options[:today_highlight]
+      @data_html_options_builder.add('date_today_highlight') if options[:today_highlight]
     end
 
     def calendar_weeks
-      add_html_data('date_calendar_weeks') if options[:calendar_weeks]
+      @data_html_options_builder.add('date_calendar_weeks') if options[:calendar_weeks]
     end
 
     def autoclose
-      add_html_data('date_autoclose') if options[:autoclose]
+      @data_html_options_builder.add('date_autoclose') if options[:autoclose]
     end
 
     def dates_disabled
-      add_html_data('dates_disabled', value: [options[:dates_disabled]].flatten) if options[:dates_disabled]
+      @data_html_options_builder.add('dates_disabled', value: [options[:dates_disabled]].flatten) if options[:dates_disabled]
     end
 
     def toggle_active
-      add_html_data('date_toggle_active')
+      @data_html_options_builder.add('date_toggle_active')
     end
 
     def display_mode
-      add_html_data('date_start_view', value: views[options[:display_mode]]) if options[:display_mode]
+      @data_html_options_builder.add('date_start_view', value: views[options[:display_mode]]) if options[:display_mode]
     end
 
     def display_mode_min
-      add_html_data('date_min_view_mode', value: views[options[:display_mode_min]]) if options[:display_mode_min]
+      @data_html_options_builder.add('date_min_view_mode', value: views[options[:display_mode_min]]) if options[:display_mode_min]
     end
 
     def display_mode_max
-      add_html_data('date_max_view_mode', value: views[options[:display_mode_max]]) if options[:display_mode_max]
+      @data_html_options_builder.add('date_max_view_mode', value: views[options[:display_mode_max]]) if options[:display_mode_max]
     end
 
     def days_of_week_disabled
-      add_html_data('date_days_of_week_disabled', value: [options[:days_of_week_disabled]].flatten) if options[:days_of_week_disabled]
+      @data_html_options_builder.add('date_days_of_week_disabled', value: [options[:days_of_week_disabled]].flatten) if options[:days_of_week_disabled]
     end
 
     def days_of_week_highlighted
-      add_html_data('date_days_of_week_highlighted', value: [options[:days_of_week_highlighted]].flatten) if options[:days_of_week_highlighted]
+      @data_html_options_builder.add('date_days_of_week_highlighted', value: [options[:days_of_week_highlighted]].flatten) if options[:days_of_week_highlighted]
     end
 
     def multiple
-      add_html_data('date_multidate', value: options[:multiple]) if options[:multiple]
+      @data_html_options_builder.add('date_multidate', value: options[:multiple])
     end
 
     # :lg, :sm or :xs

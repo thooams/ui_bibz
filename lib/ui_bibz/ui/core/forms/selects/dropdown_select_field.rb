@@ -93,42 +93,42 @@ module UiBibz::Ui::Core::Forms::Selects
     end
 
     def clickable_opt_group
-      add_html_data('enable_clickable_opt_groups') if options[:clickable_opt_group]
+      @data_html_options_builder.add('enable_clickable_opt_groups', value: options[:clickable_opt_group])
     end
 
     def collapsible_opt_group
-      add_html_data('enable_collapsible_opt_groups') if options[:collapsible_opt_group]
+      @data_html_options_builder.add('enable_collapsible_opt_groups', value: options[:collapsible_opt_group])
     end
 
     def searchable
-      add_html_data('enable_filtering') if options[:searchable]
-      add_html_data('fuzzy_search') if options[:searchable] == :fuzzy
+      @data_html_options_builder.add('enable_filtering') if options[:searchable]
+      @data_html_options_builder.add('fuzzy_search') if options[:searchable] == :fuzzy
     end
 
     def n_selected_text
-      add_html_data('n_selected_text', value: options[:n_selected_text]) if options[:n_selected_text]
+      @data_html_options_builder.add('n_selected_text', value: options[:n_selected_text])
     end
 
     def number_displayed
-      add_html_data('number_displayed') if options[:number_displayed]
+      @data_html_options_builder.add('number_displayed', value: options[:number_displayed])
     end
 
     def select_all_options
-      add_html_data('include_select_all_option') if options[:select_all_options]
+      @data_html_options_builder.add('include_select_all_option', value: options[:select_all_options])
     end
 
     def non_selected_text
-      add_html_data('non_selected_text', value: options[:non_selected_text]) if options[:non_selected_text]
+      @data_html_options_builder.add('non_selected_text', value: options[:non_selected_text])
     end
 
     def dropdown_menu_classes
       classes = join_classes(theme, alignment, open)
-      add_html_data('dropdown_menu_classes', value: classes.nil? ? nil : classes.join(' '))
+      @data_html_options_builder.add('dropdown_menu_classes', value: classes.nil? ? nil : classes.join(' '))
     end
 
     def dropdown_classes
       classes = join_classes(position, open)
-      add_html_data('dropdown_classes', value: classes.nil? ? nil : classes.join(' '))
+      @data_html_options_builder.add('dropdown_classes', value: classes.nil? ? nil : classes.join(' '))
     end
 
     def position

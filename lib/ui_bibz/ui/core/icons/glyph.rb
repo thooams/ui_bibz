@@ -124,7 +124,7 @@ module UiBibz::Ui::Core::Icons
     end
 
     def transform
-      add_html_data 'fa_transform', value: options[:transform] if options[:transform]
+      @data_html_options_builder.add 'fa_transform', value: options[:transform]
     end
 
     def content
