@@ -18,10 +18,5 @@ module UiBibz::Builders
     def initialize_component_html_classes(component_html_classes)
       html_options[:class] = component_html_classes
     end
-
-    def initialize_component_html_data
-      data_html_options_builder = UiBibz::Builders::DataHtmlOptionsBuilder.new(html_options, options)
-      data_html_options_builder.html_options
-    end
   end
 end

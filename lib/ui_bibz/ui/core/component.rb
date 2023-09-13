@@ -3,7 +3,6 @@
 require 'haml'
 require 'ui_bibz/ui/extensions/core/component/klass_extension'
 require 'ui_bibz/ui/extensions/core/component/glyph_extension'
-require 'ui_bibz/ui/extensions/core/component/popover_extension'
 module UiBibz::Ui::Core
   # Creates a component of the given +name+ using options created by the set of +options+.
   #
@@ -44,7 +43,6 @@ module UiBibz::Ui::Core
   class Component < UiBibz::Ui::Base
     include KlassExtension
     include GlyphExtension
-    # include PopoverExtension
 
     # Constants
     STATUSES = %i[primary secondary success danger warning info light dark].freeze
@@ -111,13 +109,6 @@ module UiBibz::Ui::Core
     # Override this method to add html classes to wrapper
     def component_wrapper_html_classes
       []
-    end
-
-    # Add html data arguments
-    def add_html_data(name, value: true)
-      html_options[:data] = {} if html_options[:data].nil?
-      value = value.strip if value.is_a?(String)
-      html_options[:data].update({ name => value })
     end
 
     def disabled?
