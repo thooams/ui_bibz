@@ -31,7 +31,7 @@ module KlassExtension
       connect,
       component_html_classes
     ]
-    #html_options[:class] = html_classes_builder.output
+    # html_options[:class] = html_classes_builder.output
     html_classes_builder.output
   end
 

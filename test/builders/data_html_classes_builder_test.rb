@@ -9,14 +9,14 @@ class DataHtmlOptionsBuilderTest < ActiveSupport::TestCase
 
   test 'add key' do
     @html_class_builder.add 'test'
-    expected = {:data=>{"test"=>true}}
+    expected = { data: { "test" => true } }
 
     assert_equal expected, @html_class_builder.output
   end
 
   test 'add key and value' do
     @html_class_builder.add 'test', value: 'test'
-    expected = {:data=>{"test"=>'test'}}
+    expected = { data: { "test" => 'test' } }
 
     assert_equal expected, @html_class_builder.output
   end
@@ -30,7 +30,7 @@ class DataHtmlOptionsBuilderTest < ActiveSupport::TestCase
 
   test 'add key with value at false' do
     @html_class_builder.add 'test', value: false
-    expected =  {:data=>{"test"=>false}}
+    expected = { data: { "test" => false } }
 
     assert_equal expected, @html_class_builder.output
   end

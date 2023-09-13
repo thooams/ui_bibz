@@ -123,12 +123,12 @@ module UiBibz::Ui::Core::Forms::Selects
 
     def dropdown_menu_classes
       classes = join_classes(theme, alignment, open)
-      @data_html_options_builder.add('dropdown_menu_classes', value: classes.nil? ? nil : classes.join(' '))
+      @data_html_options_builder.add('dropdown_menu_classes', value: classes&.join(' '))
     end
 
     def dropdown_classes
       classes = join_classes(position, open)
-      @data_html_options_builder.add('dropdown_classes', value: classes.nil? ? nil : classes.join(' '))
+      @data_html_options_builder.add('dropdown_classes', value: classes&.join(' '))
     end
 
     def position
