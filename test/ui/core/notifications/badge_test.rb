@@ -13,7 +13,7 @@ class BadgeTest < ActionView::TestCase
 
   test 'badge with url' do
     actual   = ui_badge 'state', url: 'http://example.com'
-    expected = '<a class="bg-default badge" href="http://example.com">state</a>'
+    expected = '<a class="bg-secondary badge" href="http://example.com">state</a>'
 
     assert_equal expected, actual
   end

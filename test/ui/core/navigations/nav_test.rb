@@ -69,4 +69,15 @@ class NavTest < ActionView::TestCase
 
     assert_equal expected, actual
   end
+
+  test 'underline' do
+    actual = ui_nav(underline: true) do |n|
+      n.link 'Home', state: :active, url: '#Home', selector: 'home'
+      n.link 'Profile', url: '#profile', selector: 'profile', label: 16
+      n.link 'Messages', url: '#messages', selector: 'messages', state: :disabled
+    end
+    expected = "<ul class=\"nav nav-underline\"><li class=\"nav-item\"><a href=\"#Home\" class=\"active nav-link\">Home</a></li><li class=\"nav-item\"><a href=\"#profile\" class=\"nav-link\">Profile</a></li><li class=\"nav-item\"><a href=\"#messages\" class=\"disabled nav-link\">Messages</a></li></ul>"
+
+    assert_equal expected, actual
+  end
 end

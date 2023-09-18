@@ -112,7 +112,7 @@ module UiBibz::Ui::Core::Navigations
     protected
 
     def component_html_classes
-      [nav_class, type, position, stacked, justify, fill]
+      [nav_class, type, position, stacked, justify, fill, underline]
     end
 
     def component_html_options
@@ -172,6 +172,10 @@ module UiBibz::Ui::Core::Navigations
 
     def nav_tags
       @options[:nav_tags]
+    end
+
+    def underline
+      'nav-underline' if @options[:underline]
     end
   end
 end
