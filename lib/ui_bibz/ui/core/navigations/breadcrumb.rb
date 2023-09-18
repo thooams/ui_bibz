@@ -93,7 +93,9 @@ module UiBibz::Ui::Core::Navigations
     private
 
     def component_html_options
-      super.merge({ 'arial-label': 'breadcrumb' })
+      html_opts = super.merge({ 'arial-label': 'breadcrumb' })
+      html_opts = html_opts.merge(style: "--bs-breadcrumb-divider: '#{@options[:divider]}';") unless @options[:divider].nil?
+      html_opts
     end
 
     def model_name

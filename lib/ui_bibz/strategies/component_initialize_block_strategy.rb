@@ -5,7 +5,8 @@ module UiBibz
     # Class to initialize component
     class ComponentInitializeBlockStrategy < UiBibz::Strategies::ComponentInitializeAbstractStrategy
       def content
-        read_cache.nil? ? @component.capture(&@block) : read_cache
+        context = eval('self', @block.binding) # rubocop:disable Style/EvalWithLocation
+        read_cache.nil? ? context.capture(&@block) : read_cache
       end
 
       def options
