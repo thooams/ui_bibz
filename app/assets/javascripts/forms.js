@@ -6,6 +6,7 @@ import "jquery.multi-select"
 import "bootstrap-multiselect"
 import extendMultiselect from "jquery.multi-select-extend"
 import "bootstrap-markdown"
+import 'fuzzysort'
 // import "bootstrap-datepicker.min.js"
 
 

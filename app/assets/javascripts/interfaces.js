@@ -46,6 +46,7 @@ export default class UiBibzInterface {
   }
 
   notify() {
+    new bootstrap.Alert('.myAlert')
     this.node.querySelectorAll('.alert[data-timeout]').forEach(function(alertElement) {
       setTimeout(function() {
         alertElement.classList.add('fade')
