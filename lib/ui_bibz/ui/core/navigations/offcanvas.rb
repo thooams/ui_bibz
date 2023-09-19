@@ -62,8 +62,26 @@ module UiBibz::Ui::Core::Navigations
 
     private
 
-     def position
-       "offcanvas-#{options[:position]}" if options[:position]
-     end
+    def position
+      "offcanvas-#{options[:position]}" if options[:position]
+    end
+
+    def component_html_data
+      super
+      backdrop
+      scroll
+    end
+
+    def backdrop
+      return unless @options[:backdrop]
+
+      @data_html_options_builder.add 'bs-backdrop', value: @options[:backdrop]
+    end
+
+    def scroll
+      return unless @options[:scroll]
+
+      @data_html_options_builder.add 'bs-scroll', value: @options[:scroll]
+    end
   end
 end
