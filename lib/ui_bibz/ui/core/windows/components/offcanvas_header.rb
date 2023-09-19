@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module UiBibz::Ui::Core::Navigations::Components
+module UiBibz::Ui::Core::Windows::Components
   # Create a offcanvas header
   #
   # ==== Attributes

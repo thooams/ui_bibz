@@ -61,12 +61,4 @@ module UiBibz::Helpers::Ui::Core::NavigationsHelper
       UiBibz::Ui::Core::Navigations::Breadcrumb.new(content, options, html_options).tap(&block).render
     end
   end
-
-  # Offcanvas Component
-  #
-  # +options+ (Hash)
-  # +html_options+ (Hash)
-  def ui_offcanvas(content = nil, options = nil, html_options = nil, &)
-    UiBibz::Ui::Core::Navigations::Offcanvas.new(content, options, html_options).tap(&).render
-  end
 end

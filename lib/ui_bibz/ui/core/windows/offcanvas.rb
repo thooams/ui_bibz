@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require 'ui_bibz/ui/core/navigations/components/offcanvas_header'
-require 'ui_bibz/ui/core/navigations/components/offcanvas_body'
-module UiBibz::Ui::Core::Navigations
+require 'ui_bibz/ui/core/windows/components/offcanvas_header'
+require 'ui_bibz/ui/core/windows/components/offcanvas_body'
+module UiBibz::Ui::Core::Windows
   # Create a offcanvas
   #
   # This element is an extend of UiBibz::Ui::Core::Component.
@@ -26,7 +26,7 @@ module UiBibz::Ui::Core::Navigations
   #
   # ==== Signatures
   #
-  #   UiBibz::Ui::Core::Navigations::Offcanvas.new(options = nil, html_options = nil) do |bt|
+  #   UiBibz::Ui::Core::Windows::Offcanvas.new(options = nil, html_options = nil) do |bt|
   #     ...
   #   end
   #
@@ -43,11 +43,11 @@ module UiBibz::Ui::Core::Navigations
     end
 
     def header(content = nil, options = nil, html_options = nil, &)
-      @header = UiBibz::Ui::Core::Navigations::Components::OffcanvasHeader.new(content, options, html_options, &)
+      @header = UiBibz::Ui::Core::Windows::Components::OffcanvasHeader.new(content, options, html_options, &)
     end
 
     def body(content = nil, options = nil, html_options = nil, &)
-      @body = UiBibz::Ui::Core::Navigations::Components::OffcanvasBody.new(content, options, html_options, &)
+      @body = UiBibz::Ui::Core::Windows::Components::OffcanvasBody.new(content, options, html_options, &)
     end
 
     private
@@ -63,13 +63,13 @@ module UiBibz::Ui::Core::Navigations
     private
 
     def position
-      "offcanvas-#{options[:position]}" if options[:position]
+      "offcanvas-#{options[:position] || 'start' }"
     end
 
     def component_html_data
       super
       backdrop
-      scroll
+      scrollable
     end
 
     def backdrop
@@ -78,10 +78,10 @@ module UiBibz::Ui::Core::Navigations
       @data_html_options_builder.add 'bs-backdrop', value: @options[:backdrop]
     end
 
-    def scroll
-      return unless @options[:scroll]
+    def scrollable
+      return unless @options[:scrollable]
 
-      @data_html_options_builder.add 'bs-scroll', value: @options[:scroll]
+      @data_html_options_builder.add 'bs-scroll', value: @options[:scrollable]
     end
   end
 end

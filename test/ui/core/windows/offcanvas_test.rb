@@ -16,11 +16,11 @@ class UiHelperTest < ActionView::TestCase
   end
 
   test 'offcanvas options' do
-    actual = ui_offcanvas scroll: true, backdrop: :static do |m|
+    actual = ui_offcanvas scrollable: true, backdrop: :static do |m|
       m.header 'My title'
       m.body 'My body'
     end
-    expected = "<div data-bs-backdrop=\"static\" data-bs-scroll=\"true\" class=\"offcanvas\" tabindex=\"-1\"><div class=\"offcanvas-header\"><h5 class=\"offcanvas-title\">My title</h5><button class=\"btn-close\" data-bs-dismiss=\"offcanvas\" aria-label=\"Close\"></button></div><div class=\"offcanvas-body\">My body</div></div>"
+    expected = "<div data-bs-backdrop=\"static\" data-bs-scroll=\"true\" class=\"offcanvas offcanvas-start\" tabindex=\"-1\"><div class=\"offcanvas-header\"><h5 class=\"offcanvas-title\">My title</h5><button class=\"btn-close\" data-bs-dismiss=\"offcanvas\" aria-label=\"Close\"></button></div><div class=\"offcanvas-body\">My body</div></div>"
 
     assert_equal expected, actual
   end
