@@ -198,6 +198,7 @@ module UiBibz
         autoload :Link,                    'ui_bibz/ui/core/navigations/link'
         autoload :Nav,                     'ui_bibz/ui/core/navigations/nav'
         autoload :Navbar,                  'ui_bibz/ui/core/navigations/navbar'
+        autoload :Offcanvas,               'ui_bibz/ui/core/navigations/offcanvas'
         autoload :Pagination,              'ui_bibz/ui/core/navigations/pagination'
         autoload :TabGroup,                'ui_bibz/ui/core/navigations/tab_group'
         autoload :Toolbar,                 'ui_bibz/ui/core/navigations/toolbar'
