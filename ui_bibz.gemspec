@@ -29,7 +29,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'rails', '>= 7.0.6'
 
   # Remove these dependencies after
-  s.add_dependency 'bootstrap', '~> 5.3.0.alpha3'
+  s.add_dependency 'bootstrap', '~> 5.3.0'
   s.add_dependency 'will_paginate', '~> 3.3.0'
   s.add_dependency 'will_paginate-bootstrap4'
   s.add_dependency 'will-paginate-i18n'
