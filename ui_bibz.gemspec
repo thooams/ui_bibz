@@ -51,4 +51,5 @@ Gem::Specification.new do |s|
   s.metadata = {
     'rubygems_mfa_required' => 'true'
   }
+  s.post_install_message = "Webpack will be depricated on Ui Bibz v.4.0.0 ! Ui Bibz will use importmap and sprocket instead.\n"
 end
