@@ -1,11 +1,562 @@
- /* THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
- * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
- * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
- * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
-!function(e,r){"function"==typeof define&&define.amd?define([],r):"object"==typeof module&&module.exports?module.exports=r():e.fuzzysort=r()}(this,function e(){var r="undefined"!=typeof require&&"undefined"==typeof window,n=new Map,o=new Map,t=[];t.total=0;var a=[],i=[];function l(){n.clear(),o.clear(),a=[],i=[]}function $(e){for(var r=-9007199254740991,n=e.length-1;n>=0;--n){var o=e[n];if(null!==o){var t=o.score;t>r&&(r=t)}}return -9007199254740991===r?null:r}function f(e,r){var n=e[r];if(void 0!==n)return n;var o=r;Array.isArray(r)||(o=r.split("."));for(var t=o.length,a=-1;e&&++a<t;)e=e[o[a]];return e}function u(e){return"object"==typeof e}var s=function(){var e=[],r=0,n={};function o(){for(var n=0,o=e[n],t=1;t<r;){var a=t+1;n=t,a<r&&e[a].score<e[t].score&&(n=a),e[n-1>>1]=e[n],t=1+(n<<1)}for(var i=n-1>>1;n>0&&o.score<e[i].score;i=(n=i)-1>>1)e[n]=e[i];e[n]=o}return n.add=function(n){var o=r;e[r++]=n;for(var t=o-1>>1;o>0&&n.score<e[t].score;t=(o=t)-1>>1)e[o]=e[t];e[o]=n},n.poll=function(){if(0!==r){var n=e[0];return e[0]=e[--r],o(),n}},n.peek=function(n){if(0!==r)return e[0]},n.replaceTop=function(r){e[0]=r,o()},n},p=s();return function e(c){var g={single:function(e,r,n){return e&&(u(e)||(e=g.getPreparedSearch(e)),r)?(u(r)||(r=g.getPrepared(r)),((n&&void 0!==n.allowTypo?n.allowTypo:!c||void 0===c.allowTypo||c.allowTypo)?g.algorithm:g.algorithmNoTypo)(e,r,e[0])):null},go:function(e,r,n){if(!e)return t;var o=(e=g.prepareSearch(e))[0],a=n&&n.threshold||c&&c.threshold||-9007199254740991,i=n&&n.limit||c&&c.limit||9007199254740991,l=(n&&void 0!==n.allowTypo?n.allowTypo:!c||void 0===c.allowTypo||c.allowTypo)?g.algorithm:g.algorithmNoTypo,s=0,d=0,v=r.length;if(n&&n.keys)for(var _=n.scoreFn||$,h=n.keys,x=h.length,w=v-1;w>=0;--w){for(var y=r[w],k=Array(x),T=x-1;T>=0;--T){var b=h[T],B=f(y,b);if(!B){k[T]=null;continue}u(B)||(B=g.getPrepared(B)),k[T]=l(e,B,o)}k.obj=y;var I=_(k);null!==I&&!(I<a)&&(k.score=I,s<i?(p.add(k),++s):(++d,I>p.peek().score&&p.replaceTop(k)))}else if(n&&n.key)for(var b=n.key,w=v-1;w>=0;--w){var y=r[w],B=f(y,b);if(B){u(B)||(B=g.getPrepared(B));var m=l(e,B,o);null!==m&&!(m.score<a)&&(m={target:m.target,_targetLowerCodes:null,_nextBeginningIndexes:null,score:m.score,indexes:m.indexes,obj:y},s<i?(p.add(m),++s):(++d,m.score>p.peek().score&&p.replaceTop(m)))}}else for(var w=v-1;w>=0;--w){var B=r[w];if(B){u(B)||(B=g.getPrepared(B));var m=l(e,B,o);null!==m&&!(m.score<a)&&(s<i?(p.add(m),++s):(++d,m.score>p.peek().score&&p.replaceTop(m)))}}if(0===s)return t;for(var C=Array(s),w=s-1;w>=0;--w)C[w]=p.poll();return C.total=s+d,C},goAsync:function(e,n,o){var a=!1,i=new Promise(function(i,l){if(!e)return i(t);var p=(e=g.prepareSearch(e))[0],d=s(),v=n.length-1,_=o&&o.threshold||c&&c.threshold||-9007199254740991,h=o&&o.limit||c&&c.limit||9007199254740991,x=(o&&void 0!==o.allowTypo?o.allowTypo:!c||void 0===c.allowTypo||c.allowTypo)?g.algorithm:g.algorithmNoTypo,w=0,y=0;function k(){if(a)return l("canceled");var s=Date.now();if(o&&o.keys)for(var c=o.scoreFn||$,T=o.keys,b=T.length;v>=0;--v){for(var B=n[v],I=Array(b),m=b-1;m>=0;--m){var C=T[m],L=f(B,C);if(!L){I[m]=null;continue}u(L)||(L=g.getPrepared(L)),I[m]=x(e,L,p)}I.obj=B;var P=c(I);if(null!==P&&!(P<_)&&(I.score=P,w<h?(d.add(I),++w):(++y,P>d.peek().score&&d.replaceTop(I)),v%1e3==0&&Date.now()-s>=10)){r?setImmediate(k):setTimeout(k);return}}else if(o&&o.key)for(var C=o.key;v>=0;--v){var B=n[v],L=f(B,C);if(L){u(L)||(L=g.getPrepared(L));var j=x(e,L,p);if(null!==j&&!(j.score<_)&&(j={target:j.target,_targetLowerCodes:null,_nextBeginningIndexes:null,score:j.score,indexes:j.indexes,obj:B},w<h?(d.add(j),++w):(++y,j.score>d.peek().score&&d.replaceTop(j)),v%1e3==0&&Date.now()-s>=10)){r?setImmediate(k):setTimeout(k);return}}}else for(;v>=0;--v){var L=n[v];if(L){u(L)||(L=g.getPrepared(L));var j=x(e,L,p);if(null!==j&&!(j.score<_)&&(w<h?(d.add(j),++w):(++y,j.score>d.peek().score&&d.replaceTop(j)),v%1e3==0&&Date.now()-s>=10)){r?setImmediate(k):setTimeout(k);return}}}if(0===w)return i(t);for(var N=Array(w),S=w-1;S>=0;--S)N[S]=d.poll();N.total=w+y,i(N)}r?setImmediate(k):k()});return i.cancel=function(){a=!0},i},highlight:function(e,r,n){if(null===e)return null;void 0===r&&(r="<b>"),void 0===n&&(n="</b>");for(var o="",t=0,a=!1,i=e.target,l=i.length,$=e.indexes,f=0;f<l;++f){var u=i[f];if($[t]===f){if(++t,a||(a=!0,o+=r),t===$.length){o+=u+n+i.substr(f+1);break}}else a&&(a=!1,o+=n);o+=u}return o},prepare:function(e){if(e)return{target:e,_targetLowerCodes:g.prepareLowerCodes(e),_nextBeginningIndexes:null,score:null,indexes:null,obj:null}},prepareSlow:function(e){if(e)return{target:e,_targetLowerCodes:g.prepareLowerCodes(e),_nextBeginningIndexes:g.prepareNextBeginningIndexes(e),score:null,indexes:null,obj:null}},prepareSearch:function(e){if(e)return g.prepareLowerCodes(e)},getPrepared:function(e){if(e.length>999)return g.prepare(e);var r=n.get(e);return void 0!==r||(r=g.prepare(e),n.set(e,r)),r},getPreparedSearch:function(e){if(e.length>999)return g.prepareSearch(e);var r=o.get(e);return void 0!==r||(r=g.prepareSearch(e),o.set(e,r)),r},algorithm:function(e,r,n){for(var o=r._targetLowerCodes,t=e.length,l=o.length,$=0,f=0,u=0,s=0;;){var p=n===o[f];if(p){if(a[s++]=f,++$===t)break;n=e[0===u?$:u===$?$+1:u===$-1?$-1:$]}if(++f>=l)for(;;){if($<=1)return null;if(0===u){var c=e[--$];if(n===c)continue;u=$}else{if(1===u)return null;n=e[($=--u)+1];var c=e[$];if(n===c)continue}f=a[(s=$)-1]+1;break}}var $=0,d=0,v=!1,_=0,h=r._nextBeginningIndexes;null===h&&(h=r._nextBeginningIndexes=g.prepareNextBeginningIndexes(r.target));var x=f=0===a[0]?0:h[a[0]-1];if(f!==l)for(;;)if(f>=l){if($<=0){if(++d>t-2)break;if(e[d]===e[d+1])continue;f=x;continue}--$,f=h[i[--_]]}else{var p=e[0===d?$:d===$?$+1:d===$-1?$-1:$]===o[f];if(p){if(i[_++]=f,++$===t){v=!0;break}++f}else f=h[f]}if(v)var w=i,y=_;else var w=a,y=s;for(var k=0,T=-1,b=0;b<t;++b){var f=w[b];T!==f-1&&(k-=f),T=f}v?0!==d&&(k+=-20):(k*=1e3,0!==u&&(k+=-20)),k-=l-t,r.score=k,r.indexes=Array(y);for(var b=y-1;b>=0;--b)r.indexes[b]=w[b];return r},algorithmNoTypo:function(e,r,n){for(var o=r._targetLowerCodes,t=e.length,l=o.length,$=0,f=0,u=0;;){var s=n===o[f];if(s){if(a[u++]=f,++$===t)break;n=e[$]}if(++f>=l)return null}var $=0,p=!1,c=0,d=r._nextBeginningIndexes;if(null===d&&(d=r._nextBeginningIndexes=g.prepareNextBeginningIndexes(r.target)),(f=0===a[0]?0:d[a[0]-1])!==l)for(;;)if(f>=l){if($<=0)break;--$,f=d[i[--c]]}else{var s=e[$]===o[f];if(s){if(i[c++]=f,++$===t){p=!0;break}++f}else f=d[f]}if(p)var v=i,_=c;else var v=a,_=u;for(var h=0,x=-1,w=0;w<t;++w){var f=v[w];x!==f-1&&(h-=f),x=f}p||(h*=1e3),h-=l-t,r.score=h,r.indexes=Array(_);for(var w=_-1;w>=0;--w)r.indexes[w]=v[w];return r},prepareLowerCodes:function(e){for(var r=e.length,n=[],o=e.toLowerCase(),t=0;t<r;++t)n[t]=o.charCodeAt(t);return n},prepareBeginningIndexes:function(e){for(var r=e.length,n=[],o=0,t=!1,a=!1,i=0;i<r;++i){var l=e.charCodeAt(i),$=l>=65&&l<=90,f=$||l>=97&&l<=122||l>=48&&l<=57,u=$&&!t||!a||!f;t=$,a=f,u&&(n[o++]=i)}return n},prepareNextBeginningIndexes:function(e){for(var r=e.length,n=g.prepareBeginningIndexes(e),o=[],t=n[0],a=0,i=0;i<r;++i)t>i?o[i]=t:(t=n[++a],o[i]=void 0===t?r:t);return o},cleanup:l,new:e};return g}()});
+// https://github.com/farzher/fuzzysort v2.0.4
+/*
+  SublimeText-like Fuzzy Search
+
+  fuzzysort.single('fs', 'Fuzzy Search') // {score: -16}
+  fuzzysort.single('test', 'test') // {score: 0}
+  fuzzysort.single('doesnt exist', 'target') // null
+
+  fuzzysort.go('mr', [{file:'Monitor.cpp'}, {file:'MeshRenderer.cpp'}], {key:'file'})
+  // [{score:-18, obj:{file:'MeshRenderer.cpp'}}, {score:-6009, obj:{file:'Monitor.cpp'}}]
+
+  fuzzysort.go('mr', ['Monitor.cpp', 'MeshRenderer.cpp'])
+  // [{score: -18, target: "MeshRenderer.cpp"}, {score: -6009, target: "Monitor.cpp"}]
+
+  fuzzysort.highlight(fuzzysort.single('fs', 'Fuzzy Search'), '<b>', '</b>')
+  // <b>F</b>uzzy <b>S</b>earch
+*/
+
+// UMD (Universal Module Definition) for fuzzysort
+;((root, UMD) => {
+  if(typeof define === 'function' && define.amd) define([], UMD)
+  else if(typeof module === 'object' && module.exports) module.exports = UMD()
+  else root['fuzzysort'] = UMD()
+})(this || (typeof window !== 'undefined' ? window : global), _ => {
+  'use strict'
+
+  var single = (search, target) => {                                                                                                                                                                                                                        if(search=='farzher')return{target:"farzher was here (^-^*)/",score:0,_indexes:[0]}
+    if(!search || !target) return NULL
+
+    var preparedSearch = getPreparedSearch(search)
+    if(!isObj(target)) target = getPrepared(target)
+
+    var searchBitflags = preparedSearch.bitflags
+    if((searchBitflags & target._bitflags) !== searchBitflags) return NULL
+
+    return algorithm(preparedSearch, target)
+  }
+
+
+  var go = (search, targets, options) => {                                                                                                                                                                                                                  if(search=='farzher')return[{target:"farzher was here (^-^*)/",score:0,_indexes:[0],obj:targets?targets[0]:NULL}]
+    if(!search) return options&&options.all ? all(search, targets, options) : noResults
+
+    var preparedSearch = getPreparedSearch(search)
+    var searchBitflags = preparedSearch.bitflags
+    var containsSpace  = preparedSearch.containsSpace
+
+    var threshold = options&&options.threshold || INT_MIN
+    var limit     = options&&options['limit']  || INT_MAX // for some reason only limit breaks when minified
+
+    var resultsLen = 0; var limitedCount = 0
+    var targetsLen = targets.length
+
+    // This code is copy/pasted 3 times for performance reasons [options.keys, options.key, no keys]
+
+    // options.key
+    if(options && options.key) {
+      var key = options.key
+      for(var i = 0; i < targetsLen; ++i) { var obj = targets[i]
+        var target = getValue(obj, key)
+        if(!target) continue
+        if(!isObj(target)) target = getPrepared(target)
+
+        if((searchBitflags & target._bitflags) !== searchBitflags) continue
+        var result = algorithm(preparedSearch, target)
+        if(result === NULL) continue
+        if(result.score < threshold) continue
+
+        // have to clone result so duplicate targets from different obj can each reference the correct obj
+        result = {target:result.target, _targetLower:'', _targetLowerCodes:NULL, _nextBeginningIndexes:NULL, _bitflags:0, score:result.score, _indexes:result._indexes, obj:obj} // hidden
+
+        if(resultsLen < limit) { q.add(result); ++resultsLen }
+        else {
+          ++limitedCount
+          if(result.score > q.peek().score) q.replaceTop(result)
+        }
+      }
+
+    // options.keys
+    } else if(options && options.keys) {
+      var scoreFn = options['scoreFn'] || defaultScoreFn
+      var keys = options.keys
+      var keysLen = keys.length
+      for(var i = 0; i < targetsLen; ++i) { var obj = targets[i]
+        var objResults = new Array(keysLen)
+        for (var keyI = 0; keyI < keysLen; ++keyI) {
+          var key = keys[keyI]
+          var target = getValue(obj, key)
+          if(!target) { objResults[keyI] = NULL; continue }
+          if(!isObj(target)) target = getPrepared(target)
+
+          if((searchBitflags & target._bitflags) !== searchBitflags) objResults[keyI] = NULL
+          else objResults[keyI] = algorithm(preparedSearch, target)
+        }
+        objResults.obj = obj // before scoreFn so scoreFn can use it
+        var score = scoreFn(objResults)
+        if(score === NULL) continue
+        if(score < threshold) continue
+        objResults.score = score
+        if(resultsLen < limit) { q.add(objResults); ++resultsLen }
+        else {
+          ++limitedCount
+          if(score > q.peek().score) q.replaceTop(objResults)
+        }
+      }
+
+    // no keys
+    } else {
+      for(var i = 0; i < targetsLen; ++i) { var target = targets[i]
+        if(!target) continue
+        if(!isObj(target)) target = getPrepared(target)
+
+        if((searchBitflags & target._bitflags) !== searchBitflags) continue
+        var result = algorithm(preparedSearch, target)
+        if(result === NULL) continue
+        if(result.score < threshold) continue
+        if(resultsLen < limit) { q.add(result); ++resultsLen }
+        else {
+          ++limitedCount
+          if(result.score > q.peek().score) q.replaceTop(result)
+        }
+      }
+    }
+
+    if(resultsLen === 0) return noResults
+    var results = new Array(resultsLen)
+    for(var i = resultsLen - 1; i >= 0; --i) results[i] = q.poll()
+    results.total = resultsLen + limitedCount
+    return results
+  }
+
+
+  var highlight = (result, hOpen, hClose) => {
+    if(typeof hOpen === 'function') return highlightCallback(result, hOpen)
+    if(result === NULL) return NULL
+    if(hOpen === undefined) hOpen = '<b>'
+    if(hClose === undefined) hClose = '</b>'
+    var highlighted = ''
+    var matchesIndex = 0
+    var opened = false
+    var target = result.target
+    var targetLen = target.length
+    var indexes = result._indexes
+    indexes = indexes.slice(0, indexes.len).sort((a,b)=>a-b)
+    for(var i = 0; i < targetLen; ++i) { var char = target[i]
+      if(indexes[matchesIndex] === i) {
+        ++matchesIndex
+        if(!opened) { opened = true
+          highlighted += hOpen
+        }
+
+        if(matchesIndex === indexes.length) {
+          highlighted += char + hClose + target.substr(i+1)
+          break
+        }
+      } else {
+        if(opened) { opened = false
+          highlighted += hClose
+        }
+      }
+      highlighted += char
+    }
+
+    return highlighted
+  }
+  var highlightCallback = (result, cb) => {
+    if(result === NULL) return NULL
+    var target = result.target
+    var targetLen = target.length
+    var indexes = result._indexes
+    indexes = indexes.slice(0, indexes.len).sort((a,b)=>a-b)
+    var highlighted = ''
+    var matchI = 0
+    var indexesI = 0
+    var opened = false
+    var result = []
+    for(var i = 0; i < targetLen; ++i) { var char = target[i]
+      if(indexes[indexesI] === i) {
+        ++indexesI
+        if(!opened) { opened = true
+          result.push(highlighted); highlighted = ''
+        }
+
+        if(indexesI === indexes.length) {
+          highlighted += char
+          result.push(cb(highlighted, matchI++)); highlighted = ''
+          result.push(target.substr(i+1))
+          break
+        }
+      } else {
+        if(opened) { opened = false
+          result.push(cb(highlighted, matchI++)); highlighted = ''
+        }
+      }
+      highlighted += char
+    }
+    return result
+  }
+
+
+  var indexes = result => result._indexes.slice(0, result._indexes.len).sort((a,b)=>a-b)
+
+
+  var prepare = (target) => {
+    if(typeof target !== 'string') target = ''
+    var info = prepareLowerInfo(target)
+    return {'target':target, _targetLower:info._lower, _targetLowerCodes:info.lowerCodes, _nextBeginningIndexes:NULL, _bitflags:info.bitflags, 'score':NULL, _indexes:[0], 'obj':NULL} // hidden
+  }
+
+
+  // Below this point is only internal code
+  // Below this point is only internal code
+  // Below this point is only internal code
+  // Below this point is only internal code
+
+
+  var prepareSearch = (search) => {
+    if(typeof search !== 'string') search = ''
+    search = search.trim()
+    var info = prepareLowerInfo(search)
+
+    var spaceSearches = []
+    if(info.containsSpace) {
+      var searches = search.split(/\s+/)
+      searches = [...new Set(searches)] // distinct
+      for(var i=0; i<searches.length; i++) {
+        if(searches[i] === '') continue
+        var _info = prepareLowerInfo(searches[i])
+        spaceSearches.push({lowerCodes:_info.lowerCodes, _lower:searches[i].toLowerCase(), containsSpace:false})
+      }
+    }
+
+    return {lowerCodes: info.lowerCodes, bitflags: info.bitflags, containsSpace: info.containsSpace, _lower: info._lower, spaceSearches: spaceSearches}
+  }
+
+
+
+  var getPrepared = (target) => {
+    if(target.length > 999) return prepare(target) // don't cache huge targets
+    var targetPrepared = preparedCache.get(target)
+    if(targetPrepared !== undefined) return targetPrepared
+    targetPrepared = prepare(target)
+    preparedCache.set(target, targetPrepared)
+    return targetPrepared
+  }
+  var getPreparedSearch = (search) => {
+    if(search.length > 999) return prepareSearch(search) // don't cache huge searches
+    var searchPrepared = preparedSearchCache.get(search)
+    if(searchPrepared !== undefined) return searchPrepared
+    searchPrepared = prepareSearch(search)
+    preparedSearchCache.set(search, searchPrepared)
+    return searchPrepared
+  }
+
+
+  var all = (search, targets, options) => {
+    var results = []; results.total = targets.length
+
+    var limit = options && options.limit || INT_MAX
+
+    if(options && options.key) {
+      for(var i=0;i<targets.length;i++) { var obj = targets[i]
+        var target = getValue(obj, options.key)
+        if(!target) continue
+        if(!isObj(target)) target = getPrepared(target)
+        target.score = INT_MIN
+        target._indexes.len = 0
+        var result = target
+        result = {target:result.target, _targetLower:'', _targetLowerCodes:NULL, _nextBeginningIndexes:NULL, _bitflags:0, score:target.score, _indexes:NULL, obj:obj} // hidden
+        results.push(result); if(results.length >= limit) return results
+      }
+    } else if(options && options.keys) {
+      for(var i=0;i<targets.length;i++) { var obj = targets[i]
+        var objResults = new Array(options.keys.length)
+        for (var keyI = options.keys.length - 1; keyI >= 0; --keyI) {
+          var target = getValue(obj, options.keys[keyI])
+          if(!target) { objResults[keyI] = NULL; continue }
+          if(!isObj(target)) target = getPrepared(target)
+          target.score = INT_MIN
+          target._indexes.len = 0
+          objResults[keyI] = target
+        }
+        objResults.obj = obj
+        objResults.score = INT_MIN
+        results.push(objResults); if(results.length >= limit) return results
+      }
+    } else {
+      for(var i=0;i<targets.length;i++) { var target = targets[i]
+        if(!target) continue
+        if(!isObj(target)) target = getPrepared(target)
+        target.score = INT_MIN
+        target._indexes.len = 0
+        results.push(target); if(results.length >= limit) return results
+      }
+    }
+
+    return results
+  }
+
+
+  var algorithm = (preparedSearch, prepared, allowSpaces=false) => {
+    if(allowSpaces===false && preparedSearch.containsSpace) return algorithmSpaces(preparedSearch, prepared)
+
+    var searchLower = preparedSearch._lower
+    var searchLowerCodes = preparedSearch.lowerCodes
+    var searchLowerCode = searchLowerCodes[0]
+    var targetLowerCodes = prepared._targetLowerCodes
+    var searchLen = searchLowerCodes.length
+    var targetLen = targetLowerCodes.length
+    var searchI = 0 // where we at
+    var targetI = 0 // where you at
+    var matchesSimpleLen = 0
+
+    // very basic fuzzy match; to remove non-matching targets ASAP!
+    // walk through target. find sequential matches.
+    // if all chars aren't found then exit
+    for(;;) {
+      var isMatch = searchLowerCode === targetLowerCodes[targetI]
+      if(isMatch) {
+        matchesSimple[matchesSimpleLen++] = targetI
+        ++searchI; if(searchI === searchLen) break
+        searchLowerCode = searchLowerCodes[searchI]
+      }
+      ++targetI; if(targetI >= targetLen) return NULL // Failed to find searchI
+    }
+
+    var searchI = 0
+    var successStrict = false
+    var matchesStrictLen = 0
+
+    var nextBeginningIndexes = prepared._nextBeginningIndexes
+    if(nextBeginningIndexes === NULL) nextBeginningIndexes = prepared._nextBeginningIndexes = prepareNextBeginningIndexes(prepared.target)
+    var firstPossibleI = targetI = matchesSimple[0]===0 ? 0 : nextBeginningIndexes[matchesSimple[0]-1]
+
+    // Our target string successfully matched all characters in sequence!
+    // Let's try a more advanced and strict test to improve the score
+    // only count it as a match if it's consecutive or a beginning character!
+    var backtrackCount = 0
+    if(targetI !== targetLen) for(;;) {
+      if(targetI >= targetLen) {
+        // We failed to find a good spot for this search char, go back to the previous search char and force it forward
+        if(searchI <= 0) break // We failed to push chars forward for a better match
+
+        ++backtrackCount; if(backtrackCount > 200) break // exponential backtracking is taking too long, just give up and return a bad match
+
+        --searchI
+        var lastMatch = matchesStrict[--matchesStrictLen]
+        targetI = nextBeginningIndexes[lastMatch]
+
+      } else {
+        var isMatch = searchLowerCodes[searchI] === targetLowerCodes[targetI]
+        if(isMatch) {
+          matchesStrict[matchesStrictLen++] = targetI
+          ++searchI; if(searchI === searchLen) { successStrict = true; break }
+          ++targetI
+        } else {
+          targetI = nextBeginningIndexes[targetI]
+        }
+      }
+    }
+
+    // check if it's a substring match
+    var substringIndex = prepared._targetLower.indexOf(searchLower, matchesSimple[0]) // perf: this is slow
+    var isSubstring = ~substringIndex
+    if(isSubstring && !successStrict) { // rewrite the indexes from basic to the substring
+      for(var i=0; i<matchesSimpleLen; ++i) matchesSimple[i] = substringIndex+i
+    }
+    var isSubstringBeginning = false
+    if(isSubstring) {
+      isSubstringBeginning = prepared._nextBeginningIndexes[substringIndex-1] === substringIndex
+    }
+
+    { // tally up the score & keep track of matches for highlighting later
+      if(successStrict) { var matchesBest = matchesStrict; var matchesBestLen = matchesStrictLen }
+      else { var matchesBest = matchesSimple; var matchesBestLen = matchesSimpleLen }
+
+      var score = 0
+
+      var extraMatchGroupCount = 0
+      for(var i = 1; i < searchLen; ++i) {
+        if(matchesBest[i] - matchesBest[i-1] !== 1) {score -= matchesBest[i]; ++extraMatchGroupCount}
+      }
+      var unmatchedDistance = matchesBest[searchLen-1] - matchesBest[0] - (searchLen-1)
+
+      score -= (12+unmatchedDistance) * extraMatchGroupCount // penality for more groups
+
+      if(matchesBest[0] !== 0) score -= matchesBest[0]*matchesBest[0]*.2 // penality for not starting near the beginning
+
+      if(!successStrict) {
+        score *= 1000
+      } else {
+        // successStrict on a target with too many beginning indexes loses points for being a bad target
+        var uniqueBeginningIndexes = 1
+        for(var i = nextBeginningIndexes[0]; i < targetLen; i=nextBeginningIndexes[i]) ++uniqueBeginningIndexes
+
+        if(uniqueBeginningIndexes > 24) score *= (uniqueBeginningIndexes-24)*10 // quite arbitrary numbers here ...
+      }
+
+      if(isSubstring)          score /= 1+searchLen*searchLen*1 // bonus for being a full substring
+      if(isSubstringBeginning) score /= 1+searchLen*searchLen*1 // bonus for substring starting on a beginningIndex
+
+      score -= targetLen - searchLen // penality for longer targets
+      prepared.score = score
+
+      for(var i = 0; i < matchesBestLen; ++i) prepared._indexes[i] = matchesBest[i]
+      prepared._indexes.len = matchesBestLen
+
+      return prepared
+    }
+  }
+  var algorithmSpaces = (preparedSearch, target) => {
+    var seen_indexes = new Set()
+    var score = 0
+    var result = NULL
+
+    var first_seen_index_last_search = 0
+    var searches = preparedSearch.spaceSearches
+    for(var i=0; i<searches.length; ++i) {
+      var search = searches[i]
+
+      result = algorithm(search, target)
+      if(result === NULL) return NULL
+
+      score += result.score
+
+      // dock points based on order otherwise "c man" returns Manifest.cpp instead of CheatManager.h
+      if(result._indexes[0] < first_seen_index_last_search) {
+        score -= first_seen_index_last_search - result._indexes[0]
+      }
+      first_seen_index_last_search = result._indexes[0]
+
+      for(var j=0; j<result._indexes.len; ++j) seen_indexes.add(result._indexes[j])
+    }
+
+    // allows a search with spaces that's an exact substring to score well
+    var allowSpacesResult = algorithm(preparedSearch, target, /*allowSpaces=*/true)
+    if(allowSpacesResult !== NULL && allowSpacesResult.score > score) {
+      return allowSpacesResult
+    }
+
+    result.score = score
+
+    var i = 0
+    for (let index of seen_indexes) result._indexes[i++] = index
+    result._indexes.len = i
+
+    return result
+  }
+
+
+  var prepareLowerInfo = (str) => {
+    var strLen = str.length
+    var lower = str.toLowerCase()
+    var lowerCodes = [] // new Array(strLen)    sparse array is too slow
+    var bitflags = 0
+    var containsSpace = false // space isn't stored in bitflags because of how searching with a space works
+
+    for(var i = 0; i < strLen; ++i) {
+      var lowerCode = lowerCodes[i] = lower.charCodeAt(i)
+
+      if(lowerCode === 32) {
+        containsSpace = true
+        continue // it's important that we don't set any bitflags for space
+      }
+
+      var bit = lowerCode>=97&&lowerCode<=122 ? lowerCode-97 // alphabet
+              : lowerCode>=48&&lowerCode<=57  ? 26           // numbers
+                                                             // 3 bits available
+              : lowerCode<=127                ? 30           // other ascii
+              :                                 31           // other utf8
+      bitflags |= 1<<bit
+    }
+
+    return {lowerCodes:lowerCodes, bitflags:bitflags, containsSpace:containsSpace, _lower:lower}
+  }
+  var prepareBeginningIndexes = (target) => {
+    var targetLen = target.length
+    var beginningIndexes = []; var beginningIndexesLen = 0
+    var wasUpper = false
+    var wasAlphanum = false
+    for(var i = 0; i < targetLen; ++i) {
+      var targetCode = target.charCodeAt(i)
+      var isUpper = targetCode>=65&&targetCode<=90
+      var isAlphanum = isUpper || targetCode>=97&&targetCode<=122 || targetCode>=48&&targetCode<=57
+      var isBeginning = isUpper && !wasUpper || !wasAlphanum || !isAlphanum
+      wasUpper = isUpper
+      wasAlphanum = isAlphanum
+      if(isBeginning) beginningIndexes[beginningIndexesLen++] = i
+    }
+    return beginningIndexes
+  }
+  var prepareNextBeginningIndexes = (target) => {
+    var targetLen = target.length
+    var beginningIndexes = prepareBeginningIndexes(target)
+    var nextBeginningIndexes = [] // new Array(targetLen)     sparse array is too slow
+    var lastIsBeginning = beginningIndexes[0]
+    var lastIsBeginningI = 0
+    for(var i = 0; i < targetLen; ++i) {
+      if(lastIsBeginning > i) {
+        nextBeginningIndexes[i] = lastIsBeginning
+      } else {
+        lastIsBeginning = beginningIndexes[++lastIsBeginningI]
+        nextBeginningIndexes[i] = lastIsBeginning===undefined ? targetLen : lastIsBeginning
+      }
+    }
+    return nextBeginningIndexes
+  }
+
+
+  var cleanup = () => { preparedCache.clear(); preparedSearchCache.clear(); matchesSimple = []; matchesStrict = [] }
+
+  var preparedCache       = new Map()
+  var preparedSearchCache = new Map()
+  var matchesSimple = []; var matchesStrict = []
+
+
+  // for use with keys. just returns the maximum score
+  var defaultScoreFn = (a) => {
+    var max = INT_MIN
+    var len = a.length
+    for (var i = 0; i < len; ++i) {
+      var result = a[i]; if(result === NULL) continue
+      var score = result.score
+      if(score > max) max = score
+    }
+    if(max === INT_MIN) return NULL
+    return max
+  }
+
+  // prop = 'key'              2.5ms optimized for this case, seems to be about as fast as direct obj[prop]
+  // prop = 'key1.key2'        10ms
+  // prop = ['key1', 'key2']   27ms
+  var getValue = (obj, prop) => {
+    var tmp = obj[prop]; if(tmp !== undefined) return tmp
+    var segs = prop
+    if(!Array.isArray(prop)) segs = prop.split('.')
+    var len = segs.length
+    var i = -1
+    while (obj && (++i < len)) obj = obj[segs[i]]
+    return obj
+  }
+
+  var isObj = (x) => { return typeof x === 'object' } // faster as a function
+  // var INT_MAX = 9007199254740991; var INT_MIN = -INT_MAX
+  var INT_MAX = Infinity; var INT_MIN = -INT_MAX
+  var noResults = []; noResults.total = 0
+  var NULL = null
+
+
+  // Hacked version of https://github.com/lemire/FastPriorityQueue.js
+  var fastpriorityqueue=r=>{var e=[],o=0,a={},v=r=>{for(var a=0,v=e[a],c=1;c<o;){var s=c+1;a=c,s<o&&e[s].score<e[c].score&&(a=s),e[a-1>>1]=e[a],c=1+(a<<1)}for(var f=a-1>>1;a>0&&v.score<e[f].score;f=(a=f)-1>>1)e[a]=e[f];e[a]=v};return a.add=(r=>{var a=o;e[o++]=r;for(var v=a-1>>1;a>0&&r.score<e[v].score;v=(a=v)-1>>1)e[a]=e[v];e[a]=r}),a.poll=(r=>{if(0!==o){var a=e[0];return e[0]=e[--o],v(),a}}),a.peek=(r=>{if(0!==o)return e[0]}),a.replaceTop=(r=>{e[0]=r,v()}),a}
+  var q = fastpriorityqueue() // reuse this
+
+
+  // fuzzysort is written this way for minification. all names are mangeled unless quoted
+  return {'single':single, 'go':go, 'highlight':highlight, 'prepare':prepare, 'indexes':indexes, 'cleanup':cleanup}
+}) // UMD
+
+// TODO: (feature) frecency
+// TODO: (perf) use different sorting algo depending on the # of results?
+// TODO: (perf) preparedCache is a memory leak
+// TODO: (like sublime) backslash === forwardslash
+// TODO: (perf) prepareSearch seems slow
