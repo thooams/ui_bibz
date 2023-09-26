@@ -11,8 +11,8 @@ module UiBibz::Helpers::Ui::Core::IconsHelper
   # => glyph 'calendar', size: :xs
   # or
   # => glyph { name: 'calendar', size: :xs }
-  def ui_glyph(content, options = nil, html_options = nil, &block)
-    UiBibz::Ui::Core::Icons::Glyph.new(content, options, html_options, &block).render
+  def ui_glyph(content, options = nil, html_options = nil, &)
+    UiBibz::Ui::Core::Icons::Glyph.new(content, options, html_options, &).render
   end
 
   # Glyph Group Component
@@ -21,8 +21,8 @@ module UiBibz::Helpers::Ui::Core::IconsHelper
   # +options+ (Hash)
   # +html_options+ (Hash)
   #
-  def ui_glyph_group(content = nil, options = nil, html_options = nil, &block)
-    UiBibz::Ui::Core::Icons::GlyphGroup.new(content, options, html_options).tap(&block).render
+  def ui_glyph_group(content = nil, options = nil, html_options = nil, &)
+    UiBibz::Ui::Core::Icons::GlyphGroup.new(content, options, html_options).tap(&).render
   end
 
   # Glyph Changer
@@ -37,7 +37,7 @@ module UiBibz::Helpers::Ui::Core::IconsHelper
   #
   # +options+ (Hash)
   # +html_options+ (Hash)
-  def ui_star(content = nil, options = nil, html_options = nil, &block)
-    UiBibz::Ui::Core::Icons::Star.new(content, options, html_options, &block).render
+  def ui_star(content = nil, options = nil, html_options = nil, &)
+    UiBibz::Ui::Core::Icons::Star.new(content, options, html_options, &).render
   end
 end

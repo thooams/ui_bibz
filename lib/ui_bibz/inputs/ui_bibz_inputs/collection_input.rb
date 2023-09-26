@@ -7,7 +7,7 @@ module UiBibzInputs
 
     def input_html_options
       opts = super
-      input_classes = UiBibz::Utils::Screwdriver.join_classes(@builder.options[:input_html].try(:[], :class), options[:input_html].try(:[], :class), options[:class])
+      input_classes = UiBibz::Builders::HtmlClassesBuilder.join_classes(@builder.options[:input_html].try(:[], :class), options[:input_html].try(:[], :class), options[:class])
       opts = opts.merge({ prompt: options[:prompt] })               if options[:prompt].present?
       opts = opts.merge({ disabled: options[:disabled] })           if options[:disabled].present?
       opts = opts.merge({ include_blank: options[:include_blank] }) if options[:include_blank].present?

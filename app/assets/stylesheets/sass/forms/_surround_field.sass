@@ -1,0 +1,25 @@
+.ui_surround_field
+  .custom-control
+    .custom-control-label
+      margin-left: 0px !important
+      padding-right: 10px
+      margin-right: 0
+    .custom-control-label:after, .custom-control-label:before
+      right: 0
+      left: 0
+
+  flex-wrap: nowrap
+  .mr-sm-2
+    margin-right: 0px !important
+  input:not(:first-child):not(:last-child)
+    border-radius: 0px
+    input
+      margin-left: 0.5rem
+  select:not(:first-child):not(:last-child)
+    border-radius: 0px
+
+.form-group-invalid
+  & input
+    border-color: $danger
+  & .invalid-feedback
+    display: block

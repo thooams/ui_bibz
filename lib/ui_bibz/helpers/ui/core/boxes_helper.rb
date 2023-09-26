@@ -21,47 +21,47 @@ module UiBibz::Helpers::Ui::Core::BoxesHelper
   # +options+ (Hash)
   # +html_options+ (Hash)
   #
-  def ui_card_accordion(content = nil, options = nil, html_options = nil, &block)
-    UiBibz::Ui::Core::Boxes::CardAccordion.new(content, options, html_options).tap(&block).render
+  def ui_card_accordion(content = nil, options = nil, html_options = nil, &)
+    UiBibz::Ui::Core::Boxes::CardAccordion.new(content, options, html_options).tap(&).render
   end
 
   # Card Group Component
   #
   # +options+ (Hash)
   # +html_options+ (Hash)
-  def ui_card_group(content = nil, options = nil, html_options = nil, &block)
-    UiBibz::Ui::Core::Boxes::CardGroup.new(content, options, html_options).tap(&block).render
+  def ui_card_group(content = nil, options = nil, html_options = nil, &)
+    UiBibz::Ui::Core::Boxes::CardGroup.new(content, options, html_options).tap(&).render
   end
 
   # Card Deck Component
   #
   # +options+ (Hash)
   # +html_options+ (Hash)
-  def ui_card_deck(content = nil, options = nil, html_options = nil, &block)
-    UiBibz::Ui::Core::Boxes::CardDeck.new(content, options, html_options).tap(&block).render
+  def ui_card_deck(content = nil, options = nil, html_options = nil, &)
+    UiBibz::Ui::Core::Boxes::CardDeck.new(content, options, html_options).tap(&).render
   end
 
   # Card Grid Component
   #
   # +options+ (Hash)
   # +html_options+ (Hash)
-  def ui_card_grid(content = nil, options = nil, html_options = nil, &block)
-    UiBibz::Ui::Core::Boxes::CardGrid.new(content, options, html_options).tap(&block).render
+  def ui_card_grid(content = nil, options = nil, html_options = nil, &)
+    UiBibz::Ui::Core::Boxes::CardGrid.new(content, options, html_options).tap(&).render
   end
 
   # Card Column Component
   #
   # +options+ (Hash)
   # +html_options+ (Hash)
-  def ui_card_column(content = nil, options = nil, html_options = nil, &block)
-    UiBibz::Ui::Core::Boxes::CardColumn.new(content, options, html_options).tap(&block).render
+  def ui_card_column(content = nil, options = nil, html_options = nil, &)
+    UiBibz::Ui::Core::Boxes::CardColumn.new(content, options, html_options).tap(&).render
   end
 
   # Jumbotron Component
   #
   # +options+ (Hash)
   # +html_options+ (Hash)
-  def ui_jumbotron(content = nil, options = nil, html_options = nil, &block)
-    UiBibz::Ui::Core::Boxes::Jumbotron.new(content, options, html_options, &block).render
+  def ui_jumbotron(content = nil, options = nil, html_options = nil, &)
+    UiBibz::Ui::Core::Boxes::Jumbotron.new(content, options, html_options, &).render
   end
 end

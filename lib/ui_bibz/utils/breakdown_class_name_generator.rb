@@ -23,13 +23,13 @@ module UiBibz::Utils
       end
       kl << write_classes(nil, @options)
 
-      kl.delete_if(&:blank?)
+      kl.compact_blank!
     end
 
     private
 
     def col_options?
-      (@options.keys.map(&:to_sym) & PARAMETERS).present?
+      @options.keys.map(&:to_sym).intersect?(PARAMETERS)
     end
 
     # md: 8 or md: { num: 3}, xs: { num: 4 }
@@ -41,7 +41,7 @@ module UiBibz::Utils
           send(k, size, v) if POSITIONING.include?(k.to_sym)
         end.join(' ')
       else
-        send('num', size, opts)
+        send(:num, size, opts)
       end
     end
 

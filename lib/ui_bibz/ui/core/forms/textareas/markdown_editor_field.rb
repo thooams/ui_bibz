@@ -56,7 +56,6 @@ module UiBibz::Ui::Core::Forms::Textareas
     private
 
     def component_html_data
-      super
       provide
       autofocus
       savable
@@ -67,31 +66,31 @@ module UiBibz::Ui::Core::Forms::Textareas
     end
 
     def provide
-      add_html_data('provide', value: 'markdown')
+      @data_html_options_builder.add('provide', value: 'markdown')
     end
 
     def autofocus
-      add_html_data('autofocus') if options[:autofocus]
+      @data_html_options_builder.add('autofocus', value: options[:autofocus])
     end
 
     def savable
-      add_html_data('savable') if options[:savable]
+      @data_html_options_builder.add('savable', value: options[:savable])
     end
 
     def hideable
-      add_html_data('hideable') if options[:hideable]
+      @data_html_options_builder.add('hideable', value: options[:hideable])
     end
 
     def icon_library
-      add_html_data('iconlibrary', value: 'fa')
+      @data_html_options_builder.add('iconlibrary', value: 'fa')
     end
 
     def hidden_buttons
-      add_html_data('hiddenButtons', value: options[:hidden_buttons]) if options[:hidden_buttons]
+      @data_html_options_builder.add('hiddenButtons', value: options[:hidden_buttons])
     end
 
     def disabled_buttons
-      add_html_data('disabledButtons', value: options[:disabled_buttons]) if options[:disabled_buttons]
+      @data_html_options_builder.add('disabledButtons', value: options[:disabled_buttons])
     end
 
     def status

@@ -6,7 +6,7 @@ module UiBibz::Ui::Ux::Tables
                   :date_format, :sort, :format, :count, :custom_sort, :parent, :id, :progress_options,
                   :sortable
 
-    def initialize(content = nil, options = nil, html_options = nil, &block)
+    def initialize(content = nil, options = nil, html_options = nil, &)
       super
       @data_index    = @content
       @id            = @options[:column_id] || @data_index

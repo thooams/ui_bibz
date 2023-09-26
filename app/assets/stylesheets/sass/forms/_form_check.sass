@@ -1,0 +1,10 @@
+@each $color, $value in $theme-colors
+  .form-check-input-#{$color}
+    &:checked
+      background-color: $value
+      border-color: $value
+
+    &:focus
+      border-color: $value
+      outline: 0
+      box-shadow: 0 0 0 $input-btn-focus-width rgba($value, $input-btn-focus-color-opacity)

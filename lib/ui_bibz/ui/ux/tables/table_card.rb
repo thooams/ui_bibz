@@ -108,9 +108,9 @@ module UiBibz::Ui::Ux::Tables
     include UiBibz::Ui::Concerns::HtmlConcern
 
     # See UiBibz::Ui::Core::Boxes::Card.initialize
-    def initialize(content = nil, options = nil, html_options = nil, &block)
+    def initialize(...)
       super
-      table_options = (@options[:table_options] || {}).merge({ store: store })
+      table_options = (@options[:table_options] || {}).merge({ store: })
       @table        = UiBibz::Ui::Ux::Tables::Table.new(table_options, @options[:table_html_options])
     end
 
@@ -130,13 +130,13 @@ module UiBibz::Ui::Ux::Tables
     end
 
     # Add table columns item
-    def columns(&block)
-      @table.columns(&block)
+    def columns(&)
+      @table.columns(&)
     end
 
     # Add table actions item
-    def actions(&block)
-      @table.actions(&block)
+    def actions(&)
+      @table.actions(&)
     end
 
     # for test

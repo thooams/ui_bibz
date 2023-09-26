@@ -96,20 +96,20 @@ module UiBibz::Ui::Ux::Tables
   #   end
   class Table < UiBibz::Ui::Core::Component
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize(content = nil, options = nil, html_options = nil, &block)
+    def initialize(...)
       super
       @columns = Columns.new
       @actions = Actions.new store
     end
 
     # Add table columns items
-    def columns(&block)
-      @columns.tap(&block)
+    def columns(&)
+      @columns.tap(&)
     end
 
     # Add table actions items
-    def actions(&block)
-      @actions.tap(&block)
+    def actions(&)
+      @actions.tap(&)
     end
 
     # for test

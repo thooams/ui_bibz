@@ -49,7 +49,7 @@ module UiBibz::Ui::Core::Navigations
     attr_accessor :html_options
 
     def initialize(model_or_url, options = {}, &block)
-      init_haml_helpers
+      # init_haml_helpers
       @content      = block
       @model_or_url = model_or_url
       @options      = options
@@ -75,7 +75,7 @@ module UiBibz::Ui::Core::Navigations
     private
 
     def new_option
-      (@options || {}).merge({ class: UiBibz::Utils::Screwdriver.join_classes('btn-group', @options[:class]) })
+      (@options || {}).merge({ class: UiBibz::Builders::HtmlClassesBuilder.join_classes('btn-group', @options[:class]) })
     end
 
     def protect_against_forgery?

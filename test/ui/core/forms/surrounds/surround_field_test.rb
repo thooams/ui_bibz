@@ -7,7 +7,7 @@ class SurroundFieldTest < ActionView::TestCase
     actual = UiBibz::Ui::Core::Forms::Surrounds::SurroundField.new.tap do |sf|
       sf.glyph 'pencil'
     end.render
-    expected = '<div class="input-group ui_surround_field"><span class="input-group-text"><i class="glyph fas fa-pencil"></i></span></div>'
+    expected = '<div class="input-group ui_surround_field"><span class="input-group-text"><i class="glyph fa-solid fa-pencil"></i></span></div>'
 
     assert_equal expected, actual
   end
@@ -31,7 +31,7 @@ class SurroundFieldTest < ActionView::TestCase
         d.link 'Link3', url: '#link3'
       end
     end.render
-    expected = "<div class=\"input-group ui_surround_field\"><button class=\"btn btn-secondary dropdown-toggle\" type=\"button\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\" id=\"dropdown-test\">Dropdown</button><div class=\"dropdown-menu\" arial-labelledby=\"dropdown-test\"><a class=\"dropdown-item\" href=\"#link1\"><i class=\"glyph fas fa-eye\"></i> Link 1</a><h6 class=\"dropdown-header\" role=\"presentation\">header</h6><a class=\"dropdown-item\" href=\"#link2\">Link 2</a><div class=\"dropdown-divider\"></div><a class=\"dropdown-item\" href=\"#link3\">Link3</a></div></div>"
+    expected = "<div class=\"input-group ui_surround_field\"><button class=\"btn btn-secondary dropdown-toggle\" type=\"button\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\" id=\"dropdown-test\">Dropdown</button><div class=\"dropdown-menu\" arial-labelledby=\"dropdown-test\"><a class=\"dropdown-item\" href=\"#link1\"><i class=\"glyph fa-solid fa-eye\"></i> Link 1</a><h6 class=\"dropdown-header\" role=\"presentation\">header</h6><a class=\"dropdown-item\" href=\"#link2\">Link 2</a><div class=\"dropdown-divider\"></div><a class=\"dropdown-item\" href=\"#link3\">Link3</a></div></div>"
 
     assert_equal expected, actual
   end
@@ -51,7 +51,7 @@ class SurroundFieldTest < ActionView::TestCase
       sf.addon '€'
       sf.glyph 'pencil'
     end.render
-    expected = "<div class=\"input-group ui_surround_field\"><button class=\"btn-secondary btn\">Submit</button><span class=\"input-group-text\">€</span><span class=\"input-group-text\"><i class=\"glyph fas fa-pencil\"></i></span></div>"
+    expected = "<div class=\"input-group ui_surround_field\"><button class=\"btn-secondary btn\">Submit</button><span class=\"input-group-text\">€</span><span class=\"input-group-text\"><i class=\"glyph fa-solid fa-pencil\"></i></span></div>"
 
     assert_equal expected, actual
   end
@@ -87,7 +87,7 @@ class SurroundFieldTest < ActionView::TestCase
       sf.button_refresh
     end.render
 
-    expected = "<div class=\"input-group ui_surround_field\"><span class=\"input-group-text\"><i class=\"glyph fas fa-gem\"></i></span><span class=\"input-group-text\">test</span><button class=\"btn-secondary btn\">button</button><div class=\"input-group-btn\" role=\"group\"><button class=\"btn-secondary btn\">test</button></div><a class=\"btn-secondary btn\" role=\"button\" href=\"#\">link</a><div class=\"form-check\"><input type=\"checkbox\" name=\"check\" id=\"check\" value=\"1\" class=\"form-check-input input-group-text\" label=\"false\" /><label class=\"form-check-label\" for=\"check\">check</label></div><div class=\"form-check\"><input type=\"radio\" name=\"radio\" id=\"radio_\" class=\"form-check-input input-group-text\" label=\"false\" /><label class=\"form-check-label\" for=\"radio_\">radio</label></div><input type=\"text\" name=\"text\" id=\"text\" class=\"form-control\" /><input type=\"text\" name=\"date\" id=\"date\" data-date-locale=\"en\" data-provide=\"datepicker\" data-date-format=\"yyyy-mm-dd\" data-date-today-btn=\"linked\" data-date-toggle-active=\"true\" class=\"date_picker form-control\" /><select name=\"dropdown_select\" id=\"dropdown_select\" data-wrapper-classes=\"input-group-btn\" data-dropdown-classes=\"dropdown\" class=\"btn-secondary multi-select-field\"></select><select name=\"select\" id=\"select\" class=\"select-field form-control form-select\"></select><input type=\"text\" name=\"auto\" id=\"auto\" class=\"form-control auto-complete-field\" autocomplete=\"true\" list=\"auto-datalist\" /><datalist id=\"auto-datalist\"></datalist><span data-connect=\"{&quot;events&quot;:&quot;click&quot;,&quot;mode&quot;:&quot;remote&quot;,&quot;target&quot;:{&quot;selector&quot;:&quot;&quot;,&quot;url&quot;:&quot;&quot;,&quot;data&quot;:[]}}\" class=\"btn-secondary ui-bibz-connect btn input-refresh-button\"><i class=\"glyph fas fa-sync-alt\"></i></span></div>"
+    expected = "<div class=\"input-group ui_surround_field\"><span class=\"input-group-text\"><i class=\"glyph fa-solid fa-gem\"></i></span><span class=\"input-group-text\">test</span><button class=\"btn-secondary btn\">button</button><div class=\"input-group-btn\" role=\"group\"><button class=\"btn-secondary btn\">test</button></div><a class=\"btn-secondary btn\" role=\"button\" href=\"#\">link</a><div class=\"form-check\"><input type=\"checkbox\" name=\"check\" id=\"check\" value=\"1\" class=\"form-check-input input-group-text\" label=\"false\" /><label class=\"form-check-label\" for=\"check\">check</label></div><div class=\"form-check\"><input type=\"radio\" name=\"radio\" id=\"radio_\" class=\"form-check-input input-group-text\" label=\"false\" /><label class=\"form-check-label\" for=\"radio_\">radio</label></div><input type=\"text\" name=\"text\" id=\"text\" class=\"form-control\" /><input type=\"text\" name=\"date\" id=\"date\" data-date-locale=\"en\" data-provide=\"datepicker\" data-date-format=\"yyyy-mm-dd\" data-date-today-btn=\"linked\" data-date-toggle-active=\"true\" class=\"date_picker form-control\" /><select name=\"dropdown_select\" id=\"dropdown_select\" data-wrapper-classes=\"input-group-btn\" data-dropdown-classes=\"dropdown\" class=\"btn-secondary multi-select-field\"></select><select name=\"select\" id=\"select\" class=\"select-field form-control form-select\"></select><input type=\"text\" name=\"auto\" id=\"auto\" class=\"form-control auto-complete-field\" autocomplete=\"true\" list=\"auto-datalist\" /><datalist id=\"auto-datalist\"></datalist><span data-connect=\"{&quot;events&quot;:&quot;click&quot;,&quot;mode&quot;:&quot;remote&quot;,&quot;target&quot;:{&quot;selector&quot;:&quot;&quot;,&quot;url&quot;:&quot;&quot;,&quot;data&quot;:[]}}\" class=\"btn-secondary ui-bibz-connect btn input-refresh-button\"><i class=\"glyph fa-solid fa-sync-alt\"></i></span></div>"
 
     assert_equal expected, actual
   end

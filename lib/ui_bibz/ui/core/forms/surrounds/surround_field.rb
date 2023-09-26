@@ -52,7 +52,7 @@ module UiBibz::Ui::Core::Forms::Surrounds
     attr_reader :errors, :required_fields
 
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize(content = nil, options = nil, html_options = nil, &block)
+    def initialize(...)
       super
       @items = []
       @errors = []
@@ -64,68 +64,68 @@ module UiBibz::Ui::Core::Forms::Surrounds
       content_tag :div, @items.join.html_safe, html_options
     end
 
-    def dropdown(content, options = nil, html_options = nil, &block)
-      @items << SurroundDropdown.new(content, options, html_options).tap(&block).render
+    def dropdown(content, options = nil, html_options = nil, &)
+      @items << SurroundDropdown.new(content, options, html_options).tap(&).render
     end
 
-    def input(attribute_name, options = {}, &block)
-      @items << @options[:form].input(attribute_name, options.merge({ label: false, wrapper: false, error: false }), &block)
+    def input(attribute_name, options = {}, &)
+      @items << @options[:form].input(attribute_name, options.merge({ label: false, wrapper: false, error: false }), &)
       obj = @options[:form].object
       @errors << obj.errors[attribute_name] unless obj.errors[attribute_name].empty?
-      @required_fields << (obj._validators[attribute_name].try(:first).class.to_s == 'ActiveRecord::Validations::PresenceValidator')
+      @required_fields << (obj._validators[attribute_name].try(:first).instance_of?(::ActiveRecord::Validations::PresenceValidator))
     end
 
-    def glyph(content = nil, options = {}, html_options = nil, &block)
-      @items << SurroundAddon.new(UiBibz::Ui::Core::Icons::Glyph.new(content, options, html_options, &block).render).render
+    def glyph(content = nil, options = {}, html_options = nil, &)
+      @items << SurroundAddon.new(UiBibz::Ui::Core::Icons::Glyph.new(content, options, html_options, &).render).render
     end
 
-    def addon(content = nil, options = {}, html_options = nil, &block)
-      @items << SurroundAddon.new(content, options, html_options, &block).render
+    def addon(content = nil, options = {}, html_options = nil, &)
+      @items << SurroundAddon.new(content, options, html_options, &).render
     end
 
-    def button(content = nil, options = nil, html_options = nil, &block)
-      @items << SurroundButton.new(content, options, html_options, &block).render
+    def button(content = nil, options = nil, html_options = nil, &)
+      @items << SurroundButton.new(content, options, html_options, &).render
     end
 
-    def button_group(content = nil, options = nil, html_options = nil, &block)
-      @items << SurroundButtonGroup.new(content, options, html_options).tap(&block).render
+    def button_group(content = nil, options = nil, html_options = nil, &)
+      @items << SurroundButtonGroup.new(content, options, html_options).tap(&).render
     end
 
-    def button_link(content = nil, options = nil, html_options = nil, &block)
-      @items << SurroundButtonLink.new(content, options, html_options, &block).render
+    def button_link(content = nil, options = nil, html_options = nil, &)
+      @items << SurroundButtonLink.new(content, options, html_options, &).render
     end
 
-    def button_refresh(content = nil, options = nil, html_options = nil, &block)
-      @items << SurroundButtonRefresh.new(content, options, html_options, &block).render
+    def button_refresh(content = nil, options = nil, html_options = nil, &)
+      @items << SurroundButtonRefresh.new(content, options, html_options, &).render
     end
 
-    def checkbox_field(content = nil, options = nil, html_options = nil, &block)
-      @items << SurroundCheckboxField.new(content, options, html_options, &block).render
+    def checkbox_field(content = nil, options = nil, html_options = nil, &)
+      @items << SurroundCheckboxField.new(content, options, html_options, &).render
     end
 
-    def radio_field(content = nil, options = nil, html_options = nil, &block)
-      @items << SurroundRadioField.new(content, options, html_options, &block).render
+    def radio_field(content = nil, options = nil, html_options = nil, &)
+      @items << SurroundRadioField.new(content, options, html_options, &).render
     end
 
-    def text_field(content = nil, options = nil, html_options = nil, &block)
-      @items << UiBibz::Ui::Core::Forms::Texts::TextField.new(content, options, html_options, &block).render
+    def text_field(content = nil, options = nil, html_options = nil, &)
+      @items << UiBibz::Ui::Core::Forms::Texts::TextField.new(content, options, html_options, &).render
     end
 
-    def date_picker_field(content = nil, options = nil, html_options = nil, &block)
-      @items << UiBibz::Ui::Core::Forms::Dates::DatePickerField.new(content, options, html_options, &block).render
+    def date_picker_field(content = nil, options = nil, html_options = nil, &)
+      @items << UiBibz::Ui::Core::Forms::Dates::DatePickerField.new(content, options, html_options, &).render
     end
 
-    def dropdown_select_field(content = nil, options = nil, html_options = nil, &block)
+    def dropdown_select_field(content = nil, options = nil, html_options = nil, &)
       html_options = (html_options || {}).merge('data-wrapper-classes': 'input-group-btn')
-      @items << UiBibz::Ui::Core::Forms::Selects::DropdownSelectField.new(content, options, html_options, &block).render
+      @items << UiBibz::Ui::Core::Forms::Selects::DropdownSelectField.new(content, options, html_options, &).render
     end
 
-    def select_field(content = nil, options = nil, html_options = nil, &block)
-      @items << UiBibz::Ui::Core::Forms::Selects::SelectField.new(content, options, html_options, &block).render
+    def select_field(content = nil, options = nil, html_options = nil, &)
+      @items << UiBibz::Ui::Core::Forms::Selects::SelectField.new(content, options, html_options, &).render
     end
 
-    def auto_complete_field(content = nil, options = nil, html_options = nil, &block)
-      @items << UiBibz::Ui::Core::Forms::Texts::AutoCompleteField.new(content, options, html_options, &block).render
+    def auto_complete_field(content = nil, options = nil, html_options = nil, &)
+      @items << UiBibz::Ui::Core::Forms::Texts::AutoCompleteField.new(content, options, html_options, &).render
     end
 
     # Not correctly implemented

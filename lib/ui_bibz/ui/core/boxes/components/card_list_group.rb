@@ -32,7 +32,7 @@ module UiBibz::Ui::Core::Boxes::Components
   #
   class CardListGroup < UiBibz::Ui::Core::Lists::ListGroup
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize(content = nil, options = nil, html_options = nil, &block)
+    def initialize(...)
       super
       @lists = []
     end

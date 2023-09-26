@@ -58,7 +58,7 @@ module UiBibz::Helpers::Ui::UxHelper
     end
   end
 
-  def ui_panel(content = nil, options = nil, html_options = nil, &block)
-    UiBibz::Ui::Ux::Containers::Panel.new(content, options, html_options).tap(&block).render
+  def ui_panel(content = nil, options = nil, html_options = nil, &)
+    UiBibz::Ui::Ux::Containers::Panel.new(content, options, html_options).tap(&).render
   end
 end

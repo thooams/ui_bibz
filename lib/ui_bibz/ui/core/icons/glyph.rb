@@ -67,7 +67,7 @@ module UiBibz::Ui::Core::Icons
     private
 
     def component_html_classes
-      join_classes(classes)
+      UiBibz::Builders::HtmlClassesBuilder.join_classes(classes)
     end
 
     def component_html_data
@@ -124,7 +124,7 @@ module UiBibz::Ui::Core::Icons
     end
 
     def transform
-      add_html_data 'fa_transform', value: options[:transform] if options[:transform]
+      @data_html_options_builder.add 'fa_transform', value: options[:transform]
     end
 
     def content
@@ -136,7 +136,8 @@ module UiBibz::Ui::Core::Icons
     end
 
     def match_style
-      { solid: 'fas', regular: 'far', light: 'fal', brands: 'fab' }
+      { solid: 'fa-solid', regular: 'fa-regular', light: 'fa-light',
+        brands: 'fa-brands', duotone: 'fa-duotone', thin: 'fa-thin' }
     end
 
     def label

@@ -37,22 +37,22 @@ class PopoverTest < ActionView::TestCase
 
   test 'glyph with popover object' do
     popover = UiBibz::Ui::Core::Notifications::Popover.new(@parameters.merge(content: "My Content"))
-    actual = UiBibz::Ui::Core::Icons::Glyph.new("diamond", popover: popover).render
-    expected = "<i data-bs-toggle=\"popover\" data-bs-content=\"My Content\" data-bs-placement=\"left\" data-bs-animation=\"true\" data-bs-container=\"body\" data-bs-delay=\"10\" data-bs-html=\"true\" data-bs-selector=\"false\" data-bs-template=\"<b>\" data-bs-title=\"My title\" data-bs-trigger=\"hover focus\" data-bs-offset=\"2\" data-bs-fallbackPlacement=\"top right\" data-bs-boundary=\"clippingParents\" data-bs-customClass=\"test\" data-bs-popperConfig=\"Mystring\" class=\"glyph fas fa-diamond\"></i>"
+    actual = UiBibz::Ui::Core::Icons::Glyph.new("diamond", popover:).render
+    expected = "<i data-bs-toggle=\"popover\" data-bs-content=\"My Content\" data-bs-placement=\"left\" data-bs-animation=\"true\" data-bs-container=\"body\" data-bs-delay=\"10\" data-bs-html=\"true\" data-bs-selector=\"false\" data-bs-template=\"<b>\" data-bs-title=\"My title\" data-bs-trigger=\"hover focus\" data-bs-offset=\"2\" data-bs-fallbackPlacement=\"top right\" data-bs-boundary=\"clippingParents\" data-bs-customClass=\"test\" data-bs-popperConfig=\"Mystring\" class=\"glyph fa-solid fa-diamond\"></i>"
 
     assert_equal expected, actual
   end
 
   test 'glyph with popover hash' do
     actual = UiBibz::Ui::Core::Icons::Glyph.new("diamond", popover: @parameters.merge(content: "My Content")).render
-    expected = "<i data-bs-toggle=\"popover\" data-bs-content=\"My Content\" data-bs-placement=\"left\" data-bs-animation=\"true\" data-bs-container=\"body\" data-bs-delay=\"10\" data-bs-html=\"true\" data-bs-selector=\"false\" data-bs-template=\"<b>\" data-bs-title=\"My title\" data-bs-trigger=\"hover focus\" data-bs-offset=\"2\" data-bs-fallbackPlacement=\"top right\" data-bs-boundary=\"clippingParents\" data-bs-customClass=\"test\" data-bs-popperConfig=\"Mystring\" class=\"glyph fas fa-diamond\"></i>"
+    expected = "<i data-bs-toggle=\"popover\" data-bs-content=\"My Content\" data-bs-placement=\"left\" data-bs-animation=\"true\" data-bs-container=\"body\" data-bs-delay=\"10\" data-bs-html=\"true\" data-bs-selector=\"false\" data-bs-template=\"<b>\" data-bs-title=\"My title\" data-bs-trigger=\"hover focus\" data-bs-offset=\"2\" data-bs-fallbackPlacement=\"top right\" data-bs-boundary=\"clippingParents\" data-bs-customClass=\"test\" data-bs-popperConfig=\"Mystring\" class=\"glyph fa-solid fa-diamond\"></i>"
 
     assert_equal expected, actual
   end
 
   test 'glyph with popover String' do
     actual = UiBibz::Ui::Core::Icons::Glyph.new("diamond", popover: "My Content").render
-    expected = "<i data-bs-toggle=\"popover\" data-bs-content=\"My Content\" class=\"glyph fas fa-diamond\"></i>"
+    expected = "<i data-bs-toggle=\"popover\" data-bs-content=\"My Content\" class=\"glyph fa-solid fa-diamond\"></i>"
 
     assert_equal expected, actual
   end

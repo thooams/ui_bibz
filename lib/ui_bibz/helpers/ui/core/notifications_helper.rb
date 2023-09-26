@@ -19,8 +19,8 @@ module UiBibz::Helpers::Ui::Core::NotificationsHelper
   # +options+ (Hash)
   # +html_options+ (Hash)
   #
-  def ui_badge(content = nil, options = nil, html_options = nil, &block)
-    UiBibz::Ui::Core::Notifications::Badge.new(content, options, html_options, &block).render
+  def ui_badge(content = nil, options = nil, html_options = nil, &)
+    UiBibz::Ui::Core::Notifications::Badge.new(content, options, html_options, &).render
   end
 
   # ProgressBar Component
@@ -52,8 +52,8 @@ module UiBibz::Helpers::Ui::Core::NotificationsHelper
   # +options+ (Hash)
   # +html_options+ (Hash)
   #
-  def ui_spinner(content = nil, options = nil, html_options = nil, &block)
-    UiBibz::Ui::Core::Notifications::Spinner.new(content, options, html_options, &block).render
+  def ui_spinner(content = nil, options = nil, html_options = nil, &)
+    UiBibz::Ui::Core::Notifications::Spinner.new(content, options, html_options, &).render
   end
 
   private

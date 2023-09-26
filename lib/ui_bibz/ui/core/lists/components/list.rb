@@ -71,13 +71,13 @@ module UiBibz::Ui::Core::Lists::Components
     end
 
     # Add header which is a component
-    def header(content = nil, options = nil, html_options = nil, &block)
-      @header = UiBibz::Ui::Core::Lists::Components::ListHeader.new content, options, html_options, &block
+    def header(content = nil, options = nil, html_options = nil, &)
+      @header = UiBibz::Ui::Core::Lists::Components::ListHeader.new(content, options, html_options, &)
     end
 
     # Add body which is a component
-    def body(content = nil, options = nil, html_options = nil, &block)
-      @body = UiBibz::Ui::Core::Lists::Components::ListBody.new content, options, html_options, &block
+    def body(content = nil, options = nil, html_options = nil, &)
+      @body = UiBibz::Ui::Core::Lists::Components::ListBody.new(content, options, html_options, &)
     end
 
     private

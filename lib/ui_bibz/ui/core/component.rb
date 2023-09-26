@@ -3,7 +3,6 @@
 require 'haml'
 require 'ui_bibz/ui/extensions/core/component/klass_extension'
 require 'ui_bibz/ui/extensions/core/component/glyph_extension'
-require 'ui_bibz/ui/extensions/core/component/popover_extension'
 module UiBibz::Ui::Core
   # Creates a component of the given +name+ using options created by the set of +options+.
   #
@@ -44,7 +43,6 @@ module UiBibz::Ui::Core
   class Component < UiBibz::Ui::Base
     include KlassExtension
     include GlyphExtension
-    include PopoverExtension
 
     # Constants
     STATUSES = %i[primary secondary success danger warning info light dark].freeze
@@ -59,27 +57,13 @@ module UiBibz::Ui::Core
     # * Options of component is defined in hash options
     # * Html options is defined in hash html_options
     def initialize(content = nil, options = nil, html_options = nil, &block)
-      if !block.nil?
-        @tapped = tapped?(block)
-        @html_options = options
-        @options = content
-        read_cache = Rails.cache.read(@options.try(:[], :cache))
-        if read_cache.nil?
-          context  = eval('self', block.binding) # rubocop:disable Style/EvalWithLocation
-          @content = context.capture(&block)
-        else
-          @content = read_cache
-        end
-      elsif content.is_a?(Hash)
-        @html_options = options
-        @options = content
-      else
-        @html_options = html_options
-        @options = options
-        @content = content
-      end
-      @html_options = (@html_options || {}).with_indifferent_access
-      @options      = (@options || {}).with_indifferent_access
+      component_initialize_factory_method = UiBibz::FactoryMethods::ComponentInitializeFactoryMethod.new(self, self.binding).make
+      @content = component_initialize_factory_method.content
+      @html_options = component_initialize_factory_method.html_options
+      @options      = component_initialize_factory_method.options
+
+      @data_html_options_builder = UiBibz::Builders::DataHtmlOptionsBuilder.new(@html_options, @options)
+
       init_options
       init_component_html_options
     end
@@ -108,25 +92,7 @@ module UiBibz::Ui::Core
     end
 
     # Override this method to add html data
-    def component_html_data
-      # To stimulusjs
-      data_target = html_options.try(:[], :data).try(:[], :target) || options.try(:delete, :target)
-      add_html_data(:target, value: data_target) unless data_target.nil?
-
-      data_controller = html_options.try(:[], :data).try(:[], :controller) || options.try(:delete, :controller)
-      add_html_data(:controller, value: data_controller) unless data_controller.nil?
-
-      data_action = html_options.try(:[], :data).try(:[], :action) || options.try(:delete, :action)
-      add_html_data(:action, value: data_action) unless data_action.nil?
-
-      # To turbolinks
-      data_turbolinks = html_options.try(:[], :data).try(:[], :turbolinks) || options.try(:delete, :turbolinks)
-      add_html_data(:turbolinks, value: data_turbolinks) unless data_turbolinks.nil?
-
-      # To Turbo
-      data_turbo = html_options.try(:[], :data).try(:[], :turbo) || options.try(:delete, :turbo)
-      add_html_data(:turbo, value: data_turbo) unless data_turbo.nil?
-    end
+    def component_html_data; end
 
     # Override this method to add html Options
     # Accept Hash
@@ -143,13 +109,6 @@ module UiBibz::Ui::Core
     # Override this method to add html classes to wrapper
     def component_wrapper_html_classes
       []
-    end
-
-    # Add html data arguments
-    def add_html_data(name, value: true)
-      html_options[:data] = {} if html_options[:data].nil?
-      value = value.strip if value.is_a?(String)
-      html_options[:data].update({ name => value })
     end
 
     def disabled?
@@ -181,20 +140,12 @@ module UiBibz::Ui::Core
       @options = component_options.merge(@options).with_indifferent_access
     end
 
-    def initialize_component_html_data
-      component_html_data
-      popover_data_html
-      tooltip_data_html
-    end
-
-    def initialize_component_html_options
-      html_options.merge!(component_html_options)
-    end
-
     def init_component_html_options
-      initialize_component_html_data
-      initialize_component_html_classes
-      initialize_component_html_options
+      component_html_data
+      html_options_builder = UiBibz::Builders::HtmlOptionsBuilder.new(@data_html_options_builder.output, options)
+      html_options_builder.initialize_component_html_classes initialize_component_html_classes
+      html_options_builder.initialize_component_html_options component_html_options
+      @html_options = html_options_builder.html_options
     end
   end
 end

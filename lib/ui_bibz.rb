@@ -1,8 +1,11 @@
 # frozen_string_literal: true
 
+require 'ui_bibz/railtie'
+
 require 'action_view'
 require 'will_paginate'
 require 'will-paginate-i18n'
+require 'bootstrap/engine'
 
 # require "zeitwerk"
 # loader = Zeitwerk::Loader.for_gem
@@ -68,6 +71,27 @@ module UiBibz
     autoload :Screwdriver,             'ui_bibz/utils/screwdriver'
     autoload :GlyphChanger,            'ui_bibz/utils/glyph_changer'
     autoload :BreakdownClassNameGenerator, 'ui_bibz/utils/breakdown_class_name_generator'
+  end
+
+  module FactoryMethods
+    autoload :ComponentInitializeFactoryMethod, 'ui_bibz/factory_methods/component_initialize_factory_method'
+  end
+
+  module Strategies
+    autoload :ComponentInitializeAbstractStrategy, 'ui_bibz/strategies/component_initialize_abstract_strategy'
+    autoload :ComponentInitializeStandardStrategy,         'ui_bibz/strategies/component_initialize_standard_strategy'
+    autoload :ComponentInitializeBlockStrategy,            'ui_bibz/strategies/component_initialize_block_strategy'
+    autoload :ComponentInitializeHashStrategy,             'ui_bibz/strategies/component_initialize_hash_strategy'
+  end
+
+  module Builders
+    autoload :DataHtmlOptionsBuilder, 'ui_bibz/builders/data_html_options_builder'
+    autoload :HtmlClassesBuilder, 'ui_bibz/builders/html_classes_builder'
+    autoload :HtmlOptionsBuilder, 'ui_bibz/builders/html_options_builder'
+  end
+
+  module ViewObjects
+    autoload :GlyphComponentViewObject, 'ui_bibz/view_objects/glyph_component_view_object'
   end
 
   module Ui
@@ -191,6 +215,7 @@ module UiBibz
 
       module Windows
         autoload :Modal, 'ui_bibz/ui/core/windows/modal'
+        autoload :Offcanvas, 'ui_bibz/ui/core/windows/offcanvas'
       end
 
       # Other section

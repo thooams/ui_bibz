@@ -29,7 +29,7 @@ module UiBibz::Helpers::Ui::Core::LayoutsHelper
   #
   # +options+ (Hash)
   # +html_options+ (Hash)
-  def ui_container(content = nil, options = nil, html_options = nil, &block)
-    UiBibz::Ui::Core::Layouts::Container.new(content, options, html_options, &block).render
+  def ui_container(content = nil, options = nil, html_options = nil, &)
+    UiBibz::Ui::Core::Layouts::Container.new(content, options, html_options, &).render
   end
 end

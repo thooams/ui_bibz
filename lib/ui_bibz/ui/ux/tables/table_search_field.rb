@@ -40,7 +40,7 @@ module UiBibz::Ui::Ux::Tables
     def search_field_html
       # add surround_field maybe ?
       content_tag :div, html_options do
-        concat content_tag(:span, UiBibz::Ui::Core::Icons::Glyph.new('search').render, class: 'input-group-text')
+        concat content_tag(:span, UiBibz::Ui::Core::Icons::Glyph.new('magnifying-glass').render, class: 'input-group-text')
         concat tag(:input, type: 'search', value: search_content, name: 'search', class: 'form-control', placeholder: search_placeholder_field)
         concat tag(:input, type: 'hidden', name: 'store_id', value: store.id) unless store.id.nil? # if there is more one table in html page
         concat tag(:input, type: 'hidden', name: 'link_type', value: 'search')

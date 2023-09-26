@@ -56,7 +56,7 @@ module UiBibz::Ui::Core::Notifications
   #
   class Toast < UiBibz::Ui::Core::Component
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize(content = nil, options = nil, html_options = nil, &block)
+    def initialize(...)
       super
       body(@content) unless @tapped
     end
@@ -70,19 +70,19 @@ module UiBibz::Ui::Core::Notifications
     end
 
     # Add Header which is a component
-    def header(content = nil, options = nil, html_options = nil, &block)
-      @header = UiBibz::Ui::Core::Notifications::Components::ToastHeader.new(content, options, html_options, &block).render
+    def header(content = nil, options = nil, html_options = nil, &)
+      @header = UiBibz::Ui::Core::Notifications::Components::ToastHeader.new(content, options, html_options, &).render
     end
 
     # Add Body which is a component
-    def body(content = nil, options = nil, html_options = nil, &block)
+    def body(content = nil, options = nil, html_options = nil, &)
       @body = if @header.nil?
                 content_tag :div, class: 'd-flex' do
-                  concat UiBibz::Ui::Core::Notifications::Components::ToastBody.new(content, options, html_options, &block).render
+                  concat UiBibz::Ui::Core::Notifications::Components::ToastBody.new(content, options, html_options, &).render
                   concat close_html if (options || {})[:closable]
                 end
               else
-                UiBibz::Ui::Core::Notifications::Components::ToastBody.new(content, options, html_options, &block).render
+                UiBibz::Ui::Core::Notifications::Components::ToastBody.new(content, options, html_options, &).render
               end
     end
 
@@ -106,8 +106,7 @@ module UiBibz::Ui::Core::Notifications
     end
 
     def component_html_data
-      super
-      add_html_data 'bs-autohide', value: options[:auto_hide] if options[:auto_hide]
+      @data_html_options_builder.add 'bs-autohide', value: options[:auto_hide]
     end
 
     def status
@@ -131,7 +130,7 @@ module UiBibz::Ui::Core::Notifications
     end
 
     def close_button_classes
-      UiBibz::Utils::Screwdriver.join_classes('btn-close', 'me-2', 'm-auto', white_btn_color)
+      UiBibz::Builders::HtmlClassesBuilder.join_classes('btn-close', 'me-2', 'm-auto', white_btn_color)
     end
   end
 end

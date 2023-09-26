@@ -52,6 +52,8 @@ module UiBibz::Ui::Core::Forms::Buttons
   #    content
   #  end
   class Button < UiBibz::Ui::Core::Component
+    include GlyphExtension
+
     # Render html tag
     def pre_render
       button_html_tag
@@ -107,7 +109,7 @@ module UiBibz::Ui::Core::Forms::Buttons
     end
 
     def action
-      add_html_data('action', value: options[:action]) unless options[:action].nil?
+      @data_html_options_builder.add('action', value: options[:action])
     end
 
     def badge_html

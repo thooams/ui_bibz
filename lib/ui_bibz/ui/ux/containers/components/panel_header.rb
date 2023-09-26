@@ -43,12 +43,12 @@ module UiBibz::Ui::Ux::Containers::Components
       end
     end
 
-    def title(content = nil, options = nil, html_options = nil, &block)
-      @content = PanelHeaderTitle.new(content, options, html_options, &block).render
+    def title(content = nil, options = nil, html_options = nil, &)
+      @content = PanelHeaderTitle.new(content, options, html_options, &).render
     end
 
-    def actions(content = nil, options = nil, html_options = nil, &block)
-      @actions = UiBibz::Ui::Core::Forms::Buttons::ButtonGroup.new(content, options, html_options).tap(&block).render
+    def actions(content = nil, options = nil, html_options = nil, &)
+      @actions = UiBibz::Ui::Core::Forms::Buttons::ButtonGroup.new(content, options, html_options).tap(&).render
     end
 
     def tab_group(content = nil, options = nil, html_options = nil, &block)

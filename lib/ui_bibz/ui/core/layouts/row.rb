@@ -60,8 +60,8 @@ module UiBibz::Ui::Core::Layouts
       content_tag :div, @items.join.html_safe, html_options
     end
 
-    def col(content = nil, options = nil, html_options = nil, &block)
-      @items << UiBibz::Ui::Core::Layouts::Col.new(content, options, html_options, &block).render
+    def col(content = nil, options = nil, html_options = nil, &)
+      @items << UiBibz::Ui::Core::Layouts::Col.new(content, options, html_options, &).render
     end
 
     private

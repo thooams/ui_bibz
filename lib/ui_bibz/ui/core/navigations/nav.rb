@@ -70,7 +70,7 @@ module UiBibz::Ui::Core::Navigations
     include UiBibz::Ui::Concerns::NavigationConcern
 
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize(content = nil, options = nil, html_options = nil, &block)
+    def initialize(...)
       super
       @items = []
     end
@@ -99,20 +99,20 @@ module UiBibz::Ui::Core::Navigations
     end
 
     # Add nav in nav
-    def nav(content = nil, options = {}, html_options = nil, &block)
-      @items << UiBibz::Ui::Core::Component.new(Nav.new(content, options).tap(&block).render, {}, html_options)
+    def nav(content = nil, options = {}, html_options = nil, &)
+      @items << UiBibz::Ui::Core::Component.new(Nav.new(content, options).tap(&).render, {}, html_options)
     end
 
     # Add nav dropdown items
     # See UiBibz::Ui::Core::Navigations::NavDropdown
-    def dropdown(content = nil, options = {}, html_options = nil, &block)
-      @items << NavDropdown.new(content, options, html_options).tap(&block)
+    def dropdown(content = nil, options = {}, html_options = nil, &)
+      @items << NavDropdown.new(content, options, html_options).tap(&)
     end
 
     protected
 
     def component_html_classes
-      [nav_class, type, position, stacked, justify, fill]
+      [nav_class, type, position, stacked, justify, fill, underline]
     end
 
     def component_html_options
@@ -172,6 +172,10 @@ module UiBibz::Ui::Core::Navigations
 
     def nav_tags
       @options[:nav_tags]
+    end
+
+    def underline
+      'nav-underline' if @options[:underline]
     end
   end
 end

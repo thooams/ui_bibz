@@ -88,7 +88,7 @@ module UiBibz::Ui::Core::Forms::Choices
 
     # '', 'mini', 'small', 'normal', 'large'
     def size
-      add_html_data('size', value: matching_size[options[:size]]) unless options[:size].nil?
+      @data_html_options_builder.add('size', value: matching_size[options[:size]])
     end
 
     def matching_size
@@ -97,7 +97,7 @@ module UiBibz::Ui::Core::Forms::Choices
 
     # true, false => default : true
     def animate
-      add_html_data('animate', value: options.delete(:animate)) unless options[:animate].nil?
+      @data_html_options_builder.add('animate', value: options.delete(:animate)) unless options[:animate].nil?
     end
 
     # active, disabled => default : active
@@ -107,27 +107,27 @@ module UiBibz::Ui::Core::Forms::Choices
 
     # 'primary', 'info', 'success', 'warning', 'danger', 'default' => default : default
     def left_color
-      add_html_data('on_color', value: options[:left_color]) unless options[:left_color].nil?
+      @data_html_options_builder.add('on_color', value: options[:left_color])
     end
 
     # 'primary', 'info', 'success', 'warning', 'danger', 'default' => default : default
     def right_color
-      add_html_data('off_color', value: options[:right_color]) unless options[:right_color].nil?
+      @data_html_options_builder.add('off_color', value: options[:right_color])
     end
 
     # String => default : "ON"
     def left_text
-      add_html_data('on_text', value: options[:left_text]) unless options[:left_text].nil?
+      @data_html_options_builder.add('on_text', value: options[:left_text])
     end
 
     # String => default : "OFF"
     def right_text
-      add_html_data('off_text', value: options[:right_text]) unless options[:right_text].nil?
+      @data_html_options_builder.add('off_text', value: options[:right_text])
     end
 
     # String => default : '&nbsp;'
     def middle_text
-      add_html_data('label_text', value: options[:middle_text]) unless options[:middle_text].nil?
+      @data_html_options_builder.add('label_text', value: options[:middle_text])
     end
 
     def inline

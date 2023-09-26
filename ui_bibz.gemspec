@@ -19,37 +19,22 @@ Gem::Specification.new do |s|
   s.description = UiBibz::DESCRIPTION
   s.license     = UiBibz::LICENSE
 
-  s.required_ruby_version = '>= 3.0.0'
+  s.required_ruby_version = '>= 3.2.0'
 
   s.files         = `git ls-files`.split
-  s.test_files    = `git ls-files -- {test,spec,features}/*`.split
   s.executables   = `git ls-files -- bin/*`.split.map { |f| File.basename(f) }
   s.require_paths = %w[lib vendor]
 
   # Rails gems
-  s.add_development_dependency 'rails', '~> 6.1.3', '>= 6.1.3.2'
+  s.add_dependency 'rails', '>= 7.0.6'
 
   # Remove these dependencies after
+  s.add_dependency 'bootstrap', '~> 5.3.0'
   s.add_dependency 'will_paginate', '~> 3.3.0'
   s.add_dependency 'will_paginate-bootstrap4'
   s.add_dependency 'will-paginate-i18n'
+  # Don't move factory_bot_rails to Gemfile because of bug
+  s.add_development_dependency 'factory_bot_rails', '~> 4.0' # rubocop:disable Gemspec/DevelopmentDependencies
 
-  # Development gems
-  s.add_development_dependency 'factory_bot_rails', '~> 4.0'
-  s.add_development_dependency 'haml-rails'
-  s.add_development_dependency 'minitest'
-  s.add_development_dependency 'overcommit'
-  s.add_development_dependency 'rubocop'
-  s.add_development_dependency 'rubocop-ast'
-  s.add_development_dependency 'rubocop-minitest'
-  s.add_development_dependency 'rubocop-performance'
-  s.add_development_dependency 'rubocop-rails'
-  s.add_development_dependency 'simplecov'
-  s.add_development_dependency 'simple_form'
-  s.add_development_dependency 'sqlite3'
-  s.add_development_dependency 'yard'
-  s.metadata = {
-    'rubygems_mfa_required' => 'true'
-  }
-  s.post_install_message = "Webpack will be depricated on Ui Bibz v.4.0.0 ! Ui Bibz will use importmap and sprocket instead.\n"
+  s.metadata['rubygems_mfa_required'] = 'true'
 end

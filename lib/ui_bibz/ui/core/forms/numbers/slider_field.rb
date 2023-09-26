@@ -74,7 +74,7 @@ module UiBibz::Ui::Core::Forms::Numbers
     end
 
     def range_html_options
-      { max: options[:max] || 100, min: options[:min] || 0, step: options[:step] || 1, disabled: disabled }
+      { max: options[:max] || 100, min: options[:min] || 0, step: options[:step] || 1, disabled: }
     end
 
     def not_on_hundred_percent?

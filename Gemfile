@@ -3,18 +3,25 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-# Declare your gem's dependencies in ui_bibz.gemspec.
-# Bundler will treat runtime dependencies like base dependencies, and
-# development dependencies will be added by default to the :development group.
+# Specify your gem's dependencies in plugin_test.gemspec.
 gemspec
 
-# Declare any dependencies that are still in development here instead of in
-# your gemspec. These might include edge Rails or gems from your path or
-# Git. Remember to move these dependencies to your gemspec before releasing
-# your gem to rubygems.org.
+gem 'puma'
+gem 'sqlite3'
 
-# To use a debugger
-gem 'awesome_print', group: %i[test development]
-gem 'byebug',        group: %i[development test]
-gem 'jquery-rails', '>= 3.1.0'
-# gem 'simple_form', group: %i[test development]
+group :development, :test do
+  gem 'awesome_print'
+  gem 'byebug'
+  gem 'haml-rails'
+  gem 'importmap-rails'
+  gem 'minitest'
+  gem 'overcommit'
+  gem 'rubocop'
+  gem 'rubocop-ast'
+  gem 'rubocop-minitest'
+  gem 'rubocop-performance'
+  gem 'rubocop-rails'
+  gem 'simplecov'
+  gem 'simple_form'
+  gem 'yard'
+end

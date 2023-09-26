@@ -7,8 +7,8 @@ module UiBibz::Ui::Ux::Tables
     end
 
     # Add column in table
-    def column(data_index = nil, options = nil, html_options = nil, &block)
-      @columns << Column.new(data_index, options, html_options, &block)
+    def column(data_index = nil, options = nil, html_options = nil, &)
+      @columns << Column.new(data_index, options, html_options, &)
     end
 
     # Get all columns

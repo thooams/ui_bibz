@@ -59,7 +59,7 @@ class CardTest < ActionView::TestCase
       p.body 'state'
       p.footer 'state'
     end
-    expected = "<div class=\"state card\"><div class=\"card-header\"><i class=\"glyph fas fa-eye\"></i> state</div><div class=\"card-body\">state</div><div class=\"card-footer\">state</div></div>"
+    expected = "<div class=\"state card\"><div class=\"card-header\"><i class=\"glyph fa-solid fa-eye\"></i> state</div><div class=\"card-body\">state</div><div class=\"card-footer\">state</div></div>"
 
     assert_equal expected, actual
   end
@@ -96,6 +96,7 @@ class CardTest < ActionView::TestCase
       cg.card 'test 3', body: true
     end
     expected = '<div class="card-deck-wrapper"><div class="card-deck"><div class="card"><div class="card-body">test 1</div></div><div class="card"><div class="card-body">test 2</div></div><div class="card"><div class="card-body">test 3</div></div></div></div>'
+
     assert_equal expected, actual
   end
 

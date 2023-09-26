@@ -9,17 +9,17 @@ module UiBibzForm
 
     attr_accessor :output_buffer
 
-    def ui_surround_field(content = nil, opts = nil, html_options = nil, &block)
+    def ui_surround_field(content = nil, opts = nil, html_options = nil, &)
       content = (options || {}).merge(content || {})
       content = content.merge(template: @template, form: self)
 
-      input_classes  = UiBibz::Utils::Screwdriver.join_classes('form-group', 'surround_field', options[:input_html].try(:[], :class))
+      input_classes  = UiBibz::Builders::HtmlClassesBuilder.join_classes('form-group', 'surround_field', options[:input_html].try(:[], :class))
       wrapper_html   = (options[:input_html] || {}).merge({ class: input_classes })
-      surround_field = UiBibz::Ui::Core::Forms::Surrounds::SurroundField.new(content, opts, html_options).tap(&block)
+      surround_field = UiBibz::Ui::Core::Forms::Surrounds::SurroundField.new(content, opts, html_options).tap(&)
       errors_text    = surround_field.errors.flatten.to_sentence
       required       = surround_field.required_fields.any?(true)
-      wrapper_classes = UiBibz::Utils::Screwdriver.join_classes(('has-error' if errors_text.present?), wrapper_html.try(:[], :class))
-      label_classes = UiBibz::Utils::Screwdriver.join_classes(('required' if required), 'control-label')
+      wrapper_classes = UiBibz::Builders::HtmlClassesBuilder.join_classes(('has-error' if errors_text.present?), wrapper_html.try(:[], :class))
+      label_classes = UiBibz::Builders::HtmlClassesBuilder.join_classes(('required' if required), 'control-label')
       abbr_html     = content_tag('abbr', I18n.t(:'simple_form.required.mark', default: '*'), title: I18n.t(:'simple_form.required.text', default: 'required')) if required
 
       wrapper_html[:class] = wrapper_classes
@@ -31,26 +31,26 @@ module UiBibzForm
       end
     end
 
-    def ui_button_group(content = nil, opts = nil, html_options = nil, &block)
-      ui_component_group_by(UiBibz::Ui::Core::Forms::Buttons::ButtonGroup, content, opts, html_options, &block)
+    def ui_button_group(content = nil, opts = nil, html_options = nil, &)
+      ui_component_group_by(UiBibz::Ui::Core::Forms::Buttons::ButtonGroup, content, opts, html_options, &)
     end
 
-    def ui_choice_group(content = nil, opts = nil, html_options = nil, &block)
-      ui_component_group_by(UiBibz::Ui::Core::Forms::Choices::ChoiceGroup, content, opts, html_options, &block)
+    def ui_choice_group(content = nil, opts = nil, html_options = nil, &)
+      ui_component_group_by(UiBibz::Ui::Core::Forms::Choices::ChoiceGroup, content, opts, html_options, &)
     end
 
     private
 
-    def ui_component_group_by(component_class, content = nil, opts = nil, html_options = nil, &block)
+    def ui_component_group_by(component_class, content = nil, opts = nil, html_options = nil, &)
       content = (options || {}).merge(content || {})
       content = content.merge(template: @template, form: self)
 
-      input_classes = UiBibz::Utils::Screwdriver.join_classes('button_group', options[:input_html].try(:[], :class))
+      input_classes = UiBibz::Builders::HtmlClassesBuilder.join_classes('button_group', options[:input_html].try(:[], :class))
       wrapper_html = (options[:input_html] || {}).merge({ class: input_classes })
 
       content_tag :div, wrapper_html do
         concat content_tag(:label, content[:label]) unless content[:label].nil?
-        concat component_class.new(content, opts, html_options).tap(&block).render
+        concat component_class.new(content, opts, html_options).tap(&).render
       end
     end
   end

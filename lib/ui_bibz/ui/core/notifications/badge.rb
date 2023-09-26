@@ -62,15 +62,19 @@ module UiBibz::Ui::Core::Notifications
     end
 
     def component_html_classes
-      ['badge', type]
+      ['badge', type, corner]
     end
 
     def status
-      "bg-#{@options[:status] || :default}"
+      "bg-#{@options[:status] || :secondary}"
     end
 
     def type
       'rounded-pill' if @options[:type] == :pill
+    end
+
+    def corner
+      'position-absolute top-0 start-100 translate-middle' if @options[:corner]
     end
   end
 end

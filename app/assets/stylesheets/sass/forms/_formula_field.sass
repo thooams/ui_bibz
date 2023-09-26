@@ -1,0 +1,17 @@
+.formula_field
+  input
+    border-bottom-right-radius: 0.25rem !important
+    border-top-right-radius: 0.25rem !important
+  .fix-border-right
+    border-bottom-right-radius: 0 !important
+    border-top-right-radius: 0 !important
+  width: 100%
+  .form-control[readonly]
+    background-color: darken($body-bg, 2%)
+  .formula-field_alert, .formula-field-result, .formula-field-sign
+    display: none
+  .formula-field:first-child
+    flex-grow: 3
+
+.formula-field-alert
+  padding-top: 10px

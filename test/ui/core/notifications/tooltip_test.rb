@@ -36,22 +36,22 @@ class TooltipTest < ActionView::TestCase
 
   test 'glyph with tooltip object' do
     tooltip = UiBibz::Ui::Core::Notifications::Tooltip.new(@parameters.merge(title: "My Title"))
-    actual = UiBibz::Ui::Core::Icons::Glyph.new("diamond", tooltip: tooltip).render
-    expected = "<i data-bs-toggle=\"tooltip\" data-bs-title=\"My Title\" data-bs-placement=\"left\" data-bs-animation=\"true\" data-bs-container=\"body\" data-bs-delay=\"10\" data-bs-html=\"true\" data-bs-selector=\"false\" data-bs-template=\"<b>\" data-bs-trigger=\"hover focus\" data-bs-fallbackPlacement=\"top right\" data-bs-boundary=\"clippingParents\" class=\"glyph fas fa-diamond\"></i>"
+    actual = UiBibz::Ui::Core::Icons::Glyph.new("diamond", tooltip:).render
+    expected = "<i data-bs-toggle=\"tooltip\" data-bs-title=\"My Title\" data-bs-placement=\"left\" data-bs-animation=\"true\" data-bs-container=\"body\" data-bs-delay=\"10\" data-bs-html=\"true\" data-bs-selector=\"false\" data-bs-template=\"<b>\" data-bs-trigger=\"hover focus\" data-bs-fallbackPlacement=\"top right\" data-bs-boundary=\"clippingParents\" class=\"glyph fa-solid fa-diamond\"></i>"
 
     assert_equal expected, actual
   end
 
   test 'glyph with tooltip hash' do
     actual = UiBibz::Ui::Core::Icons::Glyph.new("diamond", tooltip: @parameters.merge(title: "My Title")).render
-    expected = "<i data-bs-toggle=\"tooltip\" data-bs-title=\"My Title\" data-bs-placement=\"left\" data-bs-animation=\"true\" data-bs-container=\"body\" data-bs-delay=\"10\" data-bs-html=\"true\" data-bs-selector=\"false\" data-bs-template=\"<b>\" data-bs-trigger=\"hover focus\" data-bs-fallbackPlacement=\"top right\" data-bs-boundary=\"clippingParents\" class=\"glyph fas fa-diamond\"></i>"
+    expected = "<i data-bs-toggle=\"tooltip\" data-bs-title=\"My Title\" data-bs-placement=\"left\" data-bs-animation=\"true\" data-bs-container=\"body\" data-bs-delay=\"10\" data-bs-html=\"true\" data-bs-selector=\"false\" data-bs-template=\"<b>\" data-bs-trigger=\"hover focus\" data-bs-fallbackPlacement=\"top right\" data-bs-boundary=\"clippingParents\" class=\"glyph fa-solid fa-diamond\"></i>"
 
     assert_equal expected, actual
   end
 
   test 'glyph with tooltip boolean' do
     actual = UiBibz::Ui::Core::Icons::Glyph.new("diamond", { tooltip: true }, { title: "My Title" }).render
-    expected = "<i data-bs-toggle=\"tooltip\" data-bs-title=\"My Title\" class=\"glyph fas fa-diamond\"></i>"
+    expected = "<i data-bs-toggle=\"tooltip\" data-bs-title=\"My Title\" class=\"glyph fa-solid fa-diamond\"></i>"
 
     assert_equal expected, actual
   end

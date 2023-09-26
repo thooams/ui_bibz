@@ -1,0 +1,136 @@
+$slider-bg-color: #DEE2E6
+$slider-height: 8px
+$slider-color: $primary
+$thumb-size: 16px
+$thumb-color: $primary
+$thumb-radius: 50%
+
+.slider
+  position: relative
+  height: $slider-height
+  border-radius: 10px
+  text-align: left
+  margin: .5rem 0
+  background-color: $slider-bg-color
+  & > div
+    position: absolute
+    left: 7px
+    right: 7px
+    height: $slider-height
+    & > .slider-inverse-left
+      position: absolute
+      left: 0
+      height: $slider-height
+      border-radius: 10px
+      background-color: $slider-bg-color
+      margin: 0 7px
+    & > .slider-inverse-right
+      position: absolute
+      right: 0
+      height: $slider-height
+      border-radius: 10px
+      background-color: $slider-bg-color
+      margin: 0 7px
+    & > .slider-range
+      position: absolute
+      left: 0
+      height: $slider-height
+      background-color: $slider-color
+      border-radius: 14px
+    & > .slider-thumb
+      position: absolute
+      top: -4px
+      z-index: 2
+      height: $thumb-size
+      width: $thumb-size
+      text-align: left
+      margin-left: -11px
+      cursor: pointer
+      //box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4)
+      background-color: $thumb-color
+      border-radius: $thumb-radius
+      outline: none
+      &:active
+        box-shadow: 0 0 0 1px $body-bg, 0 0 0 $input-btn-focus-width rgba($slider-color , $input-btn-focus-color-opacity)
+  & > input[type=range]
+    position: absolute
+    pointer-events: none
+    -webkit-appearance: none
+    cursor: pointer
+    z-index: 3
+    height: $slider-height
+    width: 100%
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)"
+    filter: alpha(opacity=0)
+    -moz-opacity: 0
+    -khtml-opacity: 0
+    opacity: 0
+div.slider
+  & > input[type=range]::-ms-track
+    -webkit-appearance: none
+    background: transparent
+    color: transparent
+  & > input[type=range]::-moz-range-track
+    -moz-appearance: none
+    background: transparent
+    color: transparent
+  & > input[type=range]:focus
+    outline: none
+    &::-webkit-slider-runnable-track
+      background: transparent
+      border: transparent
+  & > input[type=range]::-ms-thumb
+    pointer-events: all
+    width: $thumb-size
+    height: $thumb-size
+    border-radius: $thumb-radius
+    border: 0 none
+  & > input[type=range]::-moz-range-thumb
+    pointer-events: all
+    width: $thumb-size
+    height: $thumb-size
+    border-radius: $thumb-radius
+    border: 0 none
+  & > input[type=range]::-webkit-slider-thumb
+    pointer-events: all
+    width: $thumb-size
+    height: $thumb-size
+    border-radius: $thumb-radius
+    border: 0 none
+    -webkit-appearance: none
+  & > input[type=range]::-ms-fill-lower
+    background: transparent
+    border: 0 none
+  & > input[type=range]::-ms-fill-upper
+    background: transparent
+    border: 0 none
+  & > input[type=range]::-ms-tooltip
+    display: none
+
+.slider.disabled > div > .slider-thumb, .slider.disabled > div > .slider-range
+  background-color: $gray-500
+
+@each $color, $value in $theme-colors
+  .slider-#{$color}
+    input[type=range]
+      -webkit-appearance: none
+      appearance: none
+      &:focus, &:active, &:hover
+        &::-webkit-slider-thumb
+          box-shadow: 0 0 0 1px $body-bg, 0 0 0 $input-btn-focus-width rgba($value, $input-btn-focus-color-opacity) !important
+    & > div
+      & > .slider-range
+        background-color: $value
+      & > .slider-thumb
+        background-color: $value
+
+  .slider-track-#{$color}
+    background-color: $value
+    input[type=range]::-webkit-slider-runnable-track
+      background-color: $value
+      appearance: none
+    & > div
+      & > .slider-inverse-right
+        background-color: $value
+      & > .slider-inverse-left
+        background-color: $value
