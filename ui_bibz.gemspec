@@ -19,7 +19,7 @@ Gem::Specification.new do |s|
   s.description = UiBibz::DESCRIPTION
   s.license     = UiBibz::LICENSE
 
-  s.required_ruby_version = '>= 3.0.0'
+  s.required_ruby_version = '>= 3.2.0'
 
   s.files         = `git ls-files`.split
   s.executables   = `git ls-files -- bin/*`.split.map { |f| File.basename(f) }
@@ -34,7 +34,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'will_paginate-bootstrap4'
   s.add_dependency 'will-paginate-i18n'
   # Don't move factory_bot_rails to Gemfile because of bug
-  s.add_development_dependency 'factory_bot_rails', '~> 4.0'
+  s.add_development_dependency 'factory_bot_rails', '~> 4.0' # rubocop:disable Gemspec/DevelopmentDependencies
 
   s.metadata['rubygems_mfa_required'] = 'true'
 end

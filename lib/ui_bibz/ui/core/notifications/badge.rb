@@ -74,7 +74,7 @@ module UiBibz::Ui::Core::Notifications
     end
 
     def corner
-      "position-absolute top-0 start-100 translate-middle" if @options[:corner]
+      'position-absolute top-0 start-100 translate-middle' if @options[:corner]
     end
   end
 end

@@ -7,8 +7,11 @@ export default class UiBibzJs {
   constructor(){}
 
   start(){
-    document.addEventListener("turbolinks:load", (e) => this.init())
-    document.addEventListener("turbo:load", (e) => this.init())
+    if (typeof Turbo == 'undefined') {
+      this.init()
+    } else {
+      document.addEventListener("turbo:load", (e) => this.init())
+    }
   }
 
   init(node){

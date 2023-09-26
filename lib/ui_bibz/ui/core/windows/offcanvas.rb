@@ -33,7 +33,6 @@ module UiBibz::Ui::Core::Windows
   # ==== Examples
   #
   class Offcanvas < UiBibz::Ui::Core::Component
-
     # Render html tag
     def pre_render
       content_tag :div, html_options do
@@ -57,13 +56,11 @@ module UiBibz::Ui::Core::Windows
     end
 
     def component_html_options
-      { tabindex: "-1" }
+      { tabindex: '-1' }
     end
 
-    private
-
     def position
-      "offcanvas-#{options[:position] || 'start' }"
+      "offcanvas-#{options[:position] || 'start'}"
     end
 
     def component_html_data
