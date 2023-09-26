@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
 
     - name: Set up Ruby with .ruby-version file
       uses: ruby/setup-ruby@v1
@@ -17,11 +17,12 @@ jobs:
 
     - name: Install gems
       run: |
-        gem install bundler
+        bundle config path vendor/bundle
+        bundle config set without 'development'
         bundle install --jobs 4 --retry 3
 
     - name: Test with Rake
-      uses: paambaati/codeclimate-action@v2.7.5
+      uses: paambaati/codeclimate-action@v4.0.0
       env:
         CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
       with:
