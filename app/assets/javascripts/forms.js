@@ -6,8 +6,7 @@ import "bootstrap-multiselect"
 import extendMultiselect from "jquery.multi-select-extend"
 import "bootstrap-markdown"
 import 'fuzzysort'
-// import "bootstrap-datepicker.min.js"
-
+import "bootstrap-datepicker.min.js"
 
 export default class UiBibzForm {
 
@@ -21,15 +20,16 @@ export default class UiBibzForm {
     if(node.querySelector('.formula-field')){ this.formula() }
     if(node.querySelector('.auto-complete-field')){ this.autoCompleteFix() }
     if(node.querySelector('.slider')){ this.doubleSlider() }
+    if(node.querySelector('.dropdown-select-field')){ this.selectpicker() }
   }
 
   inputConnected() {
     $('.ui-bibz-connect', this.node).inputConnected()
   }
 
-  // setSelectPicker() {
-  //   $('select.dropdown-select-field', this.node).selectpicker()
-  // }
+  setSelectPicker() {
+    $('select.dropdown-select-field', this.node).selectpicker()
+  }
 
   setBootstrapSwitch() {
     $('input.switch-field', this.node).bootstrapSwitch({
