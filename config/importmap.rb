@@ -4,6 +4,7 @@ pin '@popperjs/core', to: 'https://unpkg.com/@popperjs/core@2.11.2/dist/esm/inde
 pin 'bootstrap', to: 'https://ga.jspm.io/npm:bootstrap@5.3.2/dist/js/bootstrap.esm.js', preload: true
 pin 'jquery', to: 'jquery-3.7.0.min.js', preload: true
 pin 'bootstrap-multiselect', to: 'bootstrap-multiselect.min.js', preload: true
+pin 'bootstrap-switch', to: 'bootstrap-switch.min.js', preload: true
 pin 'fuzzysort', to: 'fuzzysort.js', preload: true
 pin 'jquery.multi-select', to: 'jquery.multi-select.min.js', preload: true
 pin 'bootstrap-markdown', to: 'bootstrap-markdown.js', preload: true

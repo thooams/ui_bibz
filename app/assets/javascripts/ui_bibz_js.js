@@ -1,3 +1,4 @@
+import * as jquery from "jquery"
 import UiBibzInterfaces from 'interfaces'
 import UiBibzForms from 'forms'
 import UiBibzTables from 'tables'
