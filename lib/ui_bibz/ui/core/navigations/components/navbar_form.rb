@@ -60,15 +60,16 @@ module UiBibz::Ui::Core::Navigations
     def render
       case type
       when :form_for
-        @form = form_for(@model_or_url, html_options, &@content)
+        form_for(@model_or_url, html_options, &@content)
       when :ui_form_for
         begin
-          @form = ui_form_for(@model_or_url, html_options, &@content)
+          ui_form_for(@model_or_url, html_options, &@content)
         rescue e
           raise 'You must install simple form to use ui_form_for.'
         end
       else
-        @form = form_tag_with_body(html_options, capture(&@content))
+        context = eval('self', @content.binding, __FILE__, __LINE__)
+        form_tag_with_body(html_options, context.capture(&@content))
       end
     end
 
