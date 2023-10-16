@@ -169,6 +169,7 @@ module UiBibz
 
         module Texts
           autoload :AutoCompleteField,       'ui_bibz/ui/core/forms/texts/auto_complete_field'
+          autoload :ComboboxField, 'ui_bibz/ui/core/forms/texts/combobox_field'
           autoload :TextField,               'ui_bibz/ui/core/forms/texts/text_field'
         end
 

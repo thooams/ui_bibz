@@ -10,3 +10,5 @@
 //= link forms/jquery.multi-select-extend.js
 //= link forms/input-connected.js
 //= link forms/formula.js
+//= link debounce.js
+//= link controllers/combobox_controller.js

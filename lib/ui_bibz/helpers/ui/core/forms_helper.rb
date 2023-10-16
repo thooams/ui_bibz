@@ -208,4 +208,12 @@ module UiBibz::Helpers::Ui::Core::FormsHelper
   def ui_file_field(name, options = nil, html_options = nil, &)
     UiBibz::Ui::Core::Forms::Files::FileField.new(name, options, html_options, &).render
   end
+
+  # Combobox Field Component
+  #
+  # +options+ (Hash)
+  # +html_options+ (Hash)
+  def ui_combobox_field(content = nil, options = nil, html_options = nil, &)
+    UiBibz::Ui::Core::Forms::Texts::ComboboxField.new(content, options, html_options, &).render
+  end
 end
