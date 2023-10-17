@@ -1,11 +1,32 @@
 .combobox
   width: 100%
+  position: relative
 
 .combobox-list
   position: absolute
-  border-bottom: none
-  border-top: none
   z-index: 99
   top: 100%
   left: 0
   right: 0
+
+.combobox .turbo-frame-error
+  position: absolute
+  z-index: 99
+  top: 100%
+  left: 0
+  right: 0
+  padding: 10px
+  cursor: pointer
+  background-color: #fff
+  border-bottom: 1px solid #d4d4d4
+  border-left: 1px solid #d4d4d4
+  border-right: 1px solid #d4d4d4
+
+.input-group > .combobox:not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback)
+  input
+    border-top-left-radius: 0
+    border-bottom-left-radius: 0
+
+.input-group:not(.has-validation) > .combobox:not(:last-child):not(.dropdown-toggle):not(.dropdown-menu):not(.form-floating)
+  input
+    border-radius: 0px

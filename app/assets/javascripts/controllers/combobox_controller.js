@@ -4,13 +4,16 @@ import debounce from "debounce"
 export default class ComboboxController extends Controller {
   static values = { url: String, debounce: Number };
 
-  search(e) {
-    let debounceValue = this.element.getAttribute("data-combobox-debounce-value")
+  connect(){
+    this.searchValue = this.searchValue.bind(this);
+    this.debounceValue = this.element.getAttribute("data-combobox-debounce-value")
+    this.debouncedSearchValue = debounce(this.searchValue, this.debounceValue)
+  }
 
-    if (debounceValue > 0){
-      debounce(this.searchValue(e), debounceValue);
-    }
-    else {
+  search(e) {
+    if (this.debounceValue && Number(this.debounceValue) > 0){
+      this.debouncedSearchValue(e);
+    }else {
       this.searchValue(e);
     }
   }
@@ -20,7 +23,7 @@ export default class ComboboxController extends Controller {
     this.element.querySelector("turbo-frame").innerHTML = ''
   }
 
-  searchValue(e){
+  searchValue(){
     let input = this.element.querySelector('input')
     let query = input.value
     if (query.length < 2) {
