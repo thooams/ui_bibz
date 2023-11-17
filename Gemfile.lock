@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    ui_bibz (4.0.0.beta6)
+    ui_bibz (4.0.0.beta7)
       bootstrap (~> 5.3.0)
       dartsass-sprockets (~> 3.0.0)
       rails (>= 7.1.0)

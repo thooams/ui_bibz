@@ -151,15 +151,15 @@ $panel-columns-margin:               $panel-spacer-y !default;
 //
 
 .panel-header-tabs {
-  margin-right: -($panel-spacer-x / 2);
+  margin-right: -calc($panel-spacer-x / 2);
   margin-bottom: -$panel-spacer-y;
   margin-left: 0;
   border-bottom: 0;
 }
 
 .panel-header-pills {
-  margin-right: -($panel-spacer-x / 2);
-  margin-left: -($panel-spacer-x / 2);
+  margin-right: -calc($panel-spacer-x / 2);
+  margin-left: -calc($panel-spacer-x / 2);
 }
 
 // panel image
