@@ -24,6 +24,8 @@ module UiBibz
       private
 
       def read_cache
+        return if @options.try(:[], :cache).blank?
+
         ::Rails.cache.read(@options.try(:[], :cache))
       end
     end

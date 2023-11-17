@@ -26,10 +26,11 @@ Gem::Specification.new do |s|
   s.require_paths = %w[lib vendor]
 
   # Rails gems
-  s.add_dependency 'rails', '>= 7.0.6'
+  s.add_dependency 'rails', '>= 7.1.0'
 
   # Remove these dependencies after
   s.add_dependency 'bootstrap', '~> 5.3.0'
+  s.add_dependency 'dartsass-sprockets', '~> 3.0.0'
   s.add_dependency 'will_paginate', '~> 3.3.0'
   s.add_dependency 'will_paginate-bootstrap4'
   s.add_dependency 'will-paginate-i18n'
