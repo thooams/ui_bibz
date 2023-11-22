@@ -12,3 +12,4 @@
 //= link forms/formula.js
 //= link debounce.js
 //= link controllers/combobox_controller.js
+//= link bootstrap-switch.min.js
