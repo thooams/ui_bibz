@@ -88,7 +88,7 @@ module UiBibz::Ui::Core::Navigations
     end
 
     def type
-      'nav-tabs'
+      @options[:nav_type] || 'nav-tabs'
     end
   end
 end
