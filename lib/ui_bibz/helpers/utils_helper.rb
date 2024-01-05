@@ -7,9 +7,9 @@ module UiBibz::Helpers::UtilsHelper
     UiBibz::Utils::Internationalization.new(translation, options).translate
   end
 
-  def ui_form_for(object, *args, &)
+  def ui_form_for(object, *args, &block)
     options = args.extract_options!
-    simple_form_for(object, *(args << new_options(options)), &)
+    simple_form_for(object, *(args << new_options(options)), &block)
   end
 
   private

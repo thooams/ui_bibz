@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-# require 'will_paginate'
-require 'will_paginate-bootstrap4'
 require 'ui_bibz/ui/ux/tables/components/store'
 module UiBibz::Ui::Ux::Tables
   # Create a pagination for table

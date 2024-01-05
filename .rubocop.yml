@@ -178,7 +178,4 @@ Style/OpenStructUse:
   Enabled: false
 
 Naming/BlockForwarding:
-  Enabled: true
-  Exclude:
-    - lib/ui_bibz/ui/core/component.rb
-    - lib/ui_bibz/ui/core/navigations/components/nav_link.rb
+  Enabled: false

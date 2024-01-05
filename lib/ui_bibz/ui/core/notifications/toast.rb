@@ -75,14 +75,14 @@ module UiBibz::Ui::Core::Notifications
     end
 
     # Add Body which is a component
-    def body(content = nil, options = nil, html_options = nil, &)
+    def body(content = nil, options = nil, html_options = nil, &block)
       @body = if @header.nil?
                 content_tag :div, class: 'd-flex' do
-                  concat UiBibz::Ui::Core::Notifications::Components::ToastBody.new(content, options, html_options, &).render
+                  concat UiBibz::Ui::Core::Notifications::Components::ToastBody.new(content, options, html_options, &block).render
                   concat close_html if (options || {})[:closable]
                 end
               else
-                UiBibz::Ui::Core::Notifications::Components::ToastBody.new(content, options, html_options, &).render
+                UiBibz::Ui::Core::Notifications::Components::ToastBody.new(content, options, html_options, &block).render
               end
     end
 

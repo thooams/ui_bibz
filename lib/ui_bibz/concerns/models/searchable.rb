@@ -133,20 +133,20 @@ module UiBibz::Concerns::Models::Searchable
             if attribute == :as
               attribute.each_value do |value|
                 sql_subquery << "lower(CAST(#{value} AS TEXT)) LIKE :#{value}_#{i}"
-                sql_attributes = sql_attributes.merge({ "#{value}_#{i}".to_sym => "%#{pattern}%" })
+                sql_attributes = sql_attributes.merge({ "#{value}_#{i}": "%#{pattern}%" })
               end
             else
               key_name = attribute.keys.first.to_s.pluralize
               attribute.each_value do |value|
                 Array(value).each do |val|
                   sql_subquery << "lower(CAST(#{key_name}.#{val} AS TEXT)) LIKE :#{key_name}_#{val}_#{i}"
-                  sql_attributes = sql_attributes.merge({ "#{key_name}_#{val}_#{i}".to_sym => "%#{pattern}%" })
+                  sql_attributes = sql_attributes.merge({ "#{key_name}_#{val}_#{i}": "%#{pattern}%" })
                 end
               end
             end
           else
             sql_subquery << "lower(CAST(#{table_name}.#{attribute} AS TEXT)) LIKE :#{attribute}_#{i}"
-            sql_attributes = sql_attributes.merge({ "#{attribute}_#{i}".to_sym => "%#{pattern}%" })
+            sql_attributes = sql_attributes.merge({ "#{attribute}_#{i}": "%#{pattern}%" })
           end
         end
         sql_query << "(#{sql_subquery.join(' OR ')})"

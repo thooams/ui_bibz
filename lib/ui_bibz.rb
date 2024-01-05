@@ -4,7 +4,6 @@ require 'ui_bibz/railtie'
 
 require 'action_view'
 require 'will_paginate'
-require 'will-paginate-i18n'
 require 'bootstrap/engine'
 
 # require "zeitwerk"

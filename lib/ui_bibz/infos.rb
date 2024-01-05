@@ -7,7 +7,7 @@ module UiBibz
   DESCRIPTION         = "A Rails Interface Framework using Bootstrap #{BOOTSTRAP_VERSION}.".freeze
   SUMMARY             = "Ui Bibz is an Ui Framework that allows you to build an interface very quickly and simply using Bootstrap #{BOOTSTRAP_VERSION}.".freeze
   LICENSE             = 'MIT'
-  FONTAWESOME_VERSION = '6.4.0'
+  FONTAWESOME_VERSION = '6.5.1'
   HOMEPAGE            = 'https://hummel.link/ui-bibz/'
   REPO                = 'git+https://github.com/thooams/ui_bibz.git'
   EMAIL               = 'thomas@hummel.link'

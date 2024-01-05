@@ -93,7 +93,7 @@ module UiBibz::Ui::Ux::Tables
     end
 
     def underscorize_hash(attr)
-      attr.is_a?(Hash) ? "#{attr.keys.first}_#{attr.values.first}".to_sym : attr
+      attr.is_a?(Hash) ? :"#{attr.keys.first}_#{attr.values.first}" : attr
     end
 
     def default_parameters?(key)

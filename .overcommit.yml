@@ -6,6 +6,3 @@ PreCommit:
 
   TrailingWhitespace:
     enabled: true
-
-  Fasterer:
-    enabled: true

@@ -94,7 +94,7 @@ module UiBibz::Ui::Core::Forms::Dropdowns
     end
 
     def dropdown_html_options
-      opts = (options[:html_button] || {})
+      opts = options[:html_button] || {}
       opts = opts.merge(href: options[:url]) if options[:tag] == :a
       opts.merge(class: join_classes('btn', button_status, state, size, options[:html_button].try(:[], :class)))
     end

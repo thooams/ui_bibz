@@ -135,7 +135,7 @@ module UiBibz::Ui::Core::Lists::Components
         UiBibz::Ui::Core::Notifications::Badge.new(options[:badge].delete(:content), options[:badge]).render
 
       else
-        UiBibz::Ui::Core::Notifications::Badge.new(options[:badge], type: :pill, status: (options[:status] || :secondary)).render
+        UiBibz::Ui::Core::Notifications::Badge.new(options[:badge], type: :pill, status: options[:status] || :secondary).render
       end
     end
   end
