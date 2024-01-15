@@ -10,7 +10,7 @@ $panel-bg:                           $card-bg;
 
 $panel-img-overlay-padding:          1.25rem !default;
 
-$panel-group-margin:                 $panel-spacer/2 !default;
+$panel-group-margin:                 calc($panel-spacer/2) !default;
 $panel-deck-margin:                  $panel-group-margin !default;
 
 $panel-columns-count:                3 !default;
@@ -80,7 +80,7 @@ $panel-columns-margin:               $panel-spacer-y !default;
 }
 
 .panel-subtitle {
-  margin-top: -($panel-spacer-y / 2);
+  margin-top: -(calc($panel-spacer-y / 2));
   margin-bottom: 0;
 }
 
@@ -151,15 +151,15 @@ $panel-columns-margin:               $panel-spacer-y !default;
 //
 
 .panel-header-tabs {
-  margin-right: -calc($panel-spacer-x / 2);
+  margin-right: -(calc($panel-spacer-x / 2));
   margin-bottom: -$panel-spacer-y;
   margin-left: 0;
   border-bottom: 0;
 }
 
 .panel-header-pills {
-  margin-right: -calc($panel-spacer-x / 2);
-  margin-left: -calc($panel-spacer-x / 2);
+  margin-right: -(calc($panel-spacer-x / 2));
+  margin-left: -(calc($panel-spacer-x / 2));
 }
 
 // panel image
