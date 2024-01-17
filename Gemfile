@@ -16,6 +16,7 @@ group :development, :test do
   gem 'importmap-rails'
   gem 'minitest'
   gem 'overcommit'
+  gem 'propshaft'
   gem 'rubocop'
   gem 'rubocop-ast'
   gem 'rubocop-minitest'

@@ -27,13 +27,11 @@ Gem::Specification.new do |s|
 
   # Rails gems
   s.add_dependency 'rails', '>= 7.1.0'
-
   # Switch to bootstrap 5.3.3 as soon as possible
   s.add_dependency 'bootstrap-propshaft', '~> 5.3.2.2'
-
   s.add_dependency 'dartsass-rails'
   s.add_dependency 'will_paginate'
-  # Don't move factory_bot_rails to Gemfile because of bug
+  # Don't move factory_bot_rails to Gemfile else it will be loaded in test/dummy
   s.add_development_dependency 'factory_bot_rails', '~> 4.0' # rubocop:disable Gemspec/DevelopmentDependencies
 
   s.metadata['rubygems_mfa_required'] = 'true'

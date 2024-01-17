@@ -9,15 +9,19 @@ module UiBibz::Ui::Ux::Tables
 
     # header use i18n
     def header(column, name = nil)
-      @column  = column
-      defaults = [
-        header_name(name),
-        translate_headers_by_defaults,
-        translate_headers_by_defaults_active_record,
-        translate_headers_by_active_record,
-        default_header_name(name)
-      ].compact
-      @name = UiBibz::Utils::Internationalization.new(translate_headers_by_model, default: defaults).translate
+      @column = column
+      @name = name
+      if @name.nil?
+        defaults = [
+          header_name(name),
+          translate_headers_by_defaults,
+          translate_headers_by_defaults_active_record,
+          translate_headers_by_active_record,
+          default_header_name(name)
+        ].compact
+
+        @name = UiBibz::Utils::Internationalization.new(translate_headers_by_model, default: defaults).translate
+      end
       sortable? ? sortable_link : title
     end
 

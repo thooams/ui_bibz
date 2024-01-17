@@ -45,3 +45,5 @@ coverage
 
 .DS_Store
 node_modules/
+test/dummy/db/*.sqlite3-shm
+test/dummy/db/*.sqlite3-wal
