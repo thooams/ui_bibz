@@ -62,7 +62,7 @@ module UiBibz::Ui::Core
       @html_options = component_initialize_factory_method.html_options
       @options      = component_initialize_factory_method.options
 
-      @data_html_options_builder = UiBibz::Builders::DataHtmlOptionsBuilder.new(@html_options, @options)
+      @data_html_options_builder = UiBibz::Builders::DataHtmlOptionsBuilder.new(@content, @options, @html_options)
 
       init_options
       init_component_html_options

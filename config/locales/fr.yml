@@ -15,3 +15,7 @@ fr:
           show:   'Voir'
           delete: 'Supprimer'
           edit:   'Editer'
+  will_paginate:
+    page_entries_info:
+      multi_page: "Affichage %{from} - %{to} sur %{count}"
+      multi_page_html: "Affichage <b>%{from}&nbsp;-&nbsp;%{to}</b> sur <b>%{count}</b>"

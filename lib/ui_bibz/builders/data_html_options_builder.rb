@@ -3,12 +3,14 @@
 module UiBibz::Builders
   # Class to build html classes
   class DataHtmlOptionsBuilder
+    include ActionView::Helpers::SanitizeHelper
     attr_accessor :html_options
-    attr_reader :options
+    attr_reader :options, :content
 
-    def initialize(html_options, options)
-      @html_options = html_options
+    def initialize(content, options, html_options)
+      @content = content
       @options = options
+      @html_options = html_options
 
       stimulus_data_html
       hotwire_data_html
@@ -99,7 +101,7 @@ module UiBibz::Builders
       when 'UiBibz::Ui::Core::Notifications::Tooltip'
         options[:tooltip]
       when 'TrueClass'
-        tooltip_content = html_options.delete(:title) || (sanitize_text(content) if options[:text] == false)
+        tooltip_content = html_options.delete(:title) || (sanitize(content) if options[:text] == false)
         UiBibz::Ui::Core::Notifications::Tooltip.new(tooltip_content)
       else
         UiBibz::Ui::Core::Notifications::Tooltip.new(options[:tooltip])
