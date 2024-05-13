@@ -4,7 +4,7 @@ require 'test_helper'
 
 class DataHtmlOptionsBuilderTest < ActiveSupport::TestCase
   def setup
-    @html_class_builder = UiBibz::Builders::DataHtmlOptionsBuilder.new({}, {})
+    @html_class_builder = UiBibz::Builders::DataHtmlOptionsBuilder.new({}, {}, {})
   end
 
   test 'add key' do
