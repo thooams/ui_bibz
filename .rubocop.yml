@@ -179,3 +179,5 @@ Style/OpenStructUse:
 
 Naming/BlockForwarding:
   Enabled: false
+Style/ArgumentsForwarding:
+  Enabled: false
