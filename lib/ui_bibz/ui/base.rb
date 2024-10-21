@@ -17,11 +17,15 @@ module UiBibz::Ui
 
     # Add "id" in url to match with current record
     def inject_url(url, record)
-      url.gsub(%r{(/id/?)}, "/#{record.id}/").gsub(%r{(/uuid/?)}, "/#{record.uuid}/")
+      if defined?(record.uuid)
+        url.gsub(%r{(/uuid/?)}, "/#{record.uuid}/")
+      else
+        url.gsub(%r{(/id/?)}, "/#{record.id}/")
+      end
     end
 
-    def generate_id(name = nil)
-      "#{name || 'id'}-#{Random.rand(99_999)}"
+    def generate_id(name = 'id')
+      "#{name}-#{Random.rand(99_999)}"
     end
   end
 end

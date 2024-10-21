@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'ostruct'
+
 module UiBibz::Concerns::Models::Searchable
   extend ActiveSupport::Concern
 
