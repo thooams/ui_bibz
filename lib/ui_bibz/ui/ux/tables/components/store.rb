@@ -89,5 +89,9 @@ module UiBibz::Ui::Ux::Tables
     def param_id
       @store.param_id
     end
+
+    def id_key
+      @store.id_key
+    end
   end
 end

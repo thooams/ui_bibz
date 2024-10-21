@@ -17,7 +17,7 @@ module UiBibz::Ui
 
     # Add "id" in url to match with current record
     def inject_url(url, record)
-      url.gsub(%r{(/id/?)}, "/#{record.id}/")
+      url.gsub(%r{(/id/?)}, "/#{record.id}/").gsub(%r{(/uuid/?)}, "/#{record.uuid}/")
     end
 
     def generate_id(name = nil)

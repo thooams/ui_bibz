@@ -18,7 +18,7 @@ module UiBibz::Concerns::Models::Searchable
       {
         controller: @params[:controller],
         actions_controller: @arguments[:actions_controller] || @params[:controller],
-        param_id: @params[:id],
+        param_id: @params[@arguments[:id_key] || :id],
         params: @params,
         direction: @tmp_params[:direction],
         search: @tmp_params[:search],
@@ -28,7 +28,8 @@ module UiBibz::Concerns::Models::Searchable
         id: store_id,
         records: search_sort_paginate,
         searchable_attributes: @searchable_attributes,
-        model: create_model
+        model: create_model,
+        id_key: @arguments[:id_key] || :id
       }
     end
 

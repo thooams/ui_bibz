@@ -50,7 +50,7 @@ module UiBibz::Ui::Ux::Tables
     end
 
     def url_parameters
-      { controller: store.controller, action: store.action, id: store.param_id }
+      { controller: store.controller, action: store.action }.merge({ store.id_key => store.param_id })
     end
 
     def per_page_html

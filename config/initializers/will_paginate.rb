@@ -17,7 +17,7 @@ module WillPaginate
       options[:next_label] = '&raquo;'
       options[:inner_window] = 2
 
-      super(collection, options)
+      super
     end
 
     class BootstrapLinkRenderer < LinkRenderer
