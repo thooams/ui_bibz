@@ -18,7 +18,7 @@ module UiBibz::Ui::Ux::Tables
     end
 
     def searchable?
-      @options[:searchable].nil? ? true : @options[:searchable]
+      @options[:searchable].nil? || @options[:searchable]
     end
 
     private

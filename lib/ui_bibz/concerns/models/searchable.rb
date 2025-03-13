@@ -172,7 +172,7 @@ module UiBibz::Concerns::Models::Searchable
 
     # If there's several table in the same page
     def self.good_store_id?
-      @params[:store_id].nil? ? true : store_id == @params[:store_id]
+      @params[:store_id].nil? || store_id == @params[:store_id]
     end
 
     def self.new_search?

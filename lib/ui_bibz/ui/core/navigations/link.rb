@@ -67,7 +67,7 @@ module UiBibz::Ui::Core::Navigations
     end
 
     def text
-      @options[:text].nil? ? true : @options[:text]
+      @options[:text].nil? || @options[:text]
     end
   end
 end

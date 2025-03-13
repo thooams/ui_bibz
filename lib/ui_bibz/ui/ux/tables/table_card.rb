@@ -140,9 +140,7 @@ module UiBibz::Ui::Ux::Tables
     end
 
     # for test
-    def actions_list
-      @table.actions_list
-    end
+    delegate :actions_list, to: :@table
 
     private
 

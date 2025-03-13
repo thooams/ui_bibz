@@ -22,7 +22,7 @@ module UiBibzInputs
     private
 
     def string?
-      input_type == :string || input_type == :citext
+      %i[string citext].include?(input_type)
     end
   end
 end

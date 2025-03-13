@@ -19,7 +19,7 @@ module UiBibz::Ui::Ux::Tables
     end
 
     def paginable?
-      @options[:paginable].nil? ? true : @options[:paginable]
+      @options[:paginable].nil? || @options[:paginable]
     end
 
     private

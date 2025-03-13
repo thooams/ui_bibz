@@ -9,7 +9,7 @@ module UiBibz::Ui::Ux::Tables
     end
 
     def actionable?
-      @options[:actionable].nil? ? true : @options[:actionable]
+      @options[:actionable].nil? || @options[:actionable]
     end
 
     def header(ths)
@@ -25,7 +25,7 @@ module UiBibz::Ui::Ux::Tables
     private
 
     def default_actions?
-      @options[:default_actions].nil? ? true : @options[:default_actions]
+      @options[:default_actions].nil? || @options[:default_actions]
     end
 
     def dropdown_action(record)

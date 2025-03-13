@@ -79,9 +79,7 @@ module UiBibz::Ui::Core
     end
 
     # Know if component is tapped or not
-    def tapped?(block)
-      UiBibz::Utils::Screwdriver.tapped?(block)
-    end
+    delegate :tapped?, to: :'UiBibz::Utils::Screwdriver'
 
     protected
 

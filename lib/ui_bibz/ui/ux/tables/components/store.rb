@@ -16,45 +16,25 @@ module UiBibz::Ui::Ux::Tables
       @model   = store.model
     end
 
-    def total_pages
-      @records.total_pages
-    end
+    delegate :total_pages, to: :@records
 
-    def per_page
-      @records.per_page
-    end
+    delegate :per_page, to: :@records
 
-    def total_entries
-      @records.total_entries
-    end
+    delegate :total_entries, to: :@records
 
-    def id
-      @store.id
-    end
+    delegate :id, to: :@store
 
-    def sort
-      @store.sort
-    end
+    delegate :sort, to: :@store
 
-    def column_id
-      @store.column_id
-    end
+    delegate :column_id, to: :@store
 
-    def direction
-      @store.direction
-    end
+    delegate :direction, to: :@store
 
-    def searchable_attributes
-      @store.searchable_attributes
-    end
+    delegate :searchable_attributes, to: :@store
 
-    def current_page
-      @records.current_page
-    end
+    delegate :current_page, to: :@records
 
-    def limit_value
-      @records.limit_value
-    end
+    delegate :limit_value, to: :@records
 
     def columns
       @columns ||= Columns.new(model.attribute_names.map { |attribute_name| Column.new(attribute_name, { name: attribute_name.humanize }) })
@@ -62,17 +42,11 @@ module UiBibz::Ui::Ux::Tables
 
     attr_reader :model
 
-    def search
-      @store.search
-    end
+    delegate :search, to: :@store
 
-    def controller
-      @store.controller
-    end
+    delegate :controller, to: :@store
 
-    def actions_controller
-      @store.actions_controller
-    end
+    delegate :actions_controller, to: :@store
 
     def params
       @store.params || {}
@@ -82,16 +56,10 @@ module UiBibz::Ui::Ux::Tables
       @store.params.to_h
     end
 
-    def action
-      @store.action
-    end
+    delegate :action, to: :@store
 
-    def param_id
-      @store.param_id
-    end
+    delegate :param_id, to: :@store
 
-    def id_key
-      @store.id_key
-    end
+    delegate :id_key, to: :@store
   end
 end

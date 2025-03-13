@@ -1,13 +1,9 @@
 # frozen_string_literal: true
 
-require 'ui_bibz/ui/core/forms/dropdowns/components/dropdown_header'
-require 'ui_bibz/ui/core/forms/dropdowns/components/dropdown_divider'
-require 'ui_bibz/ui/core/forms/dropdowns/components/dropdown_link'
-require 'ui_bibz/ui/core/forms/dropdowns/components/dropdown_dropdown'
-module UiBibz::Ui::Core::Forms::Dropdowns
-  # Create a dropdown
+module UiBibz::Ui::Core::Forms::Dropdowns::Components
+  # Create DropdownDropdown
   #
-  # This element is an extend of UiBibz::Ui::Core::Component.
+  # This element is an extend of UiBibz::Ui::Core::Forms::Dropdowns::Dropdown.
   #
   # ==== Attributes
   #
@@ -19,56 +15,32 @@ module UiBibz::Ui::Core::Forms::Dropdowns
   #
   # You can add HTML attributes using the +html_options+.
   # You can pass arguments in options attribute:
-  # * +status+ - status of element with symbol value:
-  #   (+:primary+, +:secondary+, +:info+, +:warning+, +:danger+)
-  # * +size+
-  # * +open+ - Boolean
-  #   (+:xs+, +:sm+, +:lg+)
+  # * +state+ - status of element with symbol value:
+  #   (+:active+)
+  # * +url+ - String
   # * +glyph+ - Add glyph with name or hash options
   #   * +name+ - String
   #   * +size+ - Integer
   #   * +type+ - Symbol
-  # * +html_button+ - Hash
-  # * +theme+ - Symbol, defaut: +:dark+
-  # * +position+ - Symbol
-  #   (+:up+, +:right+, +:down+, +:left+)
-  # * +alignment+ - Symbol/Hash - eq. { direction: :start, size: :lg }
-  #   (+:left+, +:right+, +:start+, +:end+)
+  # * +link_html_options+ - Hash
   #
   # ==== Signatures
   #
-  #   UiBibz::Ui::Core::Forms::Dropdowns::Dropdown.new(options = nil, html_options = nil).tap do |d|
-  #     ...
-  #     d.header content = nil, options = nil, html_options = nil, &block
-  #     d.divider
-  #     d.link content = nil, options = nil, html_options = nil, &block
-  #     ...
+  #   UiBibz::Ui::Core::Forms::DropdownDropdown.new(content, options = nil, html_options = nil)
+  #
+  #   UiBibz::Ui::Core::Forms::DropdownDropdown.new(options = nil, html_options = nil) do
+  #     content
   #   end
   #
   # ==== Examples
   #
-  #   UiBibz::Ui::Core::Forms::Dropdowns::Dropdown.new(name, status: :success).tap do |d|
-  #     d.link 'test', { url: '#' }
-  #     d.divider
-  #     d.header 'Header 1'
-  #     d.link 'test2', { url: '#' }
+  #   UiBibz::Ui::Core::Forms::DropdownDropdown.new('Home', { glyph: 'home', state: :active, url: '#home', link_html_options: { class: 'link1' }},{ class: 'test' }).render
+  #
+  #   UiBibz::Ui::Core::Forms::DropdownDropdown.new({ glyph: { name: 'eye', size: 3 }, url: '#home' }, { class: 'test' }) do
+  #     'Home'
   #   end.render
   #
-  # ==== Helper
-  #
-  #   dropdown(name, options = {}, html_options = {}) do |d|
-  #     d.link(content, options = {}, html_options = {})
-  #     d.link(options = {}, html_options = {}) do
-  #       content
-  #     end
-  #     d.divider
-  #     d.header(content, options = {}, html_options = {})
-  #     d.header(options = {}, html_options = {}) do
-  #       content
-  #     end
-  #   end
-  #
-  class Dropdown < UiBibz::Ui::Core::Component
+  class DropdownDropdown < UiBibz::Ui::Core::Component
     include UiBibz::Ui::Concerns::HtmlConcern
 
     def initialize(...)
@@ -103,8 +75,8 @@ module UiBibz::Ui::Core::Forms::Dropdowns
       @items << UiBibz::Ui::Core::Forms::Dropdowns::Components::DropdownLink.new(content, options, html_options, &).render
     end
 
-    def dropdown(name = nil, options = nil, html_options = nil, &)
-      @items << UiBibz::Ui::Core::Forms::Dropdowns::Components::DropdownDropdown.new(name, options, html_options).tap(&).render
+    def dropdown(content = nil, options = nil, html_options = nil, &)
+      @items << new(content, options, html_options, &).render
     end
 
     def id
@@ -114,7 +86,7 @@ module UiBibz::Ui::Core::Forms::Dropdowns
     protected
 
     def component_html_classes
-      [position, open, inline, without_caret, keep_open]
+      ['dropdown-item', hover, position, open, inline, without_caret, keep_open]
     end
 
     def button_content
@@ -122,20 +94,11 @@ module UiBibz::Ui::Core::Forms::Dropdowns
     end
 
     def button_html
-      html_button = options[:html_button] || {}
-      if options[:tag] == :a
-        content_tag dropdown_tag, button_content, { class: join_classes('btn', button_status, state, size, 'dropdown-toggle'), role: 'button', 'data-bs-toggle' => 'dropdown', 'aria-expanded' => false, 'id' => id }.merge(html_button)
-      else
-        content_tag dropdown_tag, button_content, { class: join_classes('btn', button_status, state, size, 'dropdown-toggle'), type: 'button', 'data-bs-toggle' => 'dropdown', 'aria-expanded' => false, 'id' => id }.merge(html_button)
-      end
+      content_tag :a, button_content, { class: join_classes(state, 'dropdown-toggle'), role: 'button', 'data-bs-toggle' => 'dropdown', 'aria-expanded' => false, 'id' => id }
     end
 
     def ul_html
       content_tag :div, @items.join.html_safe, class: join_classes('dropdown-menu', theme, alignment, open), 'arial-labelledby' => id
-    end
-
-    def dropdown_tag
-      options[:tag] || :button
     end
 
     def alignment
@@ -149,7 +112,7 @@ module UiBibz::Ui::Core::Forms::Dropdowns
     end
 
     def position
-      "drop#{match_direction[@options[:position] || :down]}"
+      "drop#{match_direction[@options[:position] || :right]}"
     end
 
     def open
@@ -172,13 +135,8 @@ module UiBibz::Ui::Core::Forms::Dropdowns
       'outline' if @options[:outline]
     end
 
-    def button_status
-      ['btn', outline, @status || :secondary].compact.join('-')
-    end
-
-    # :lg, :sm or :xs
-    def size
-      "btn-#{@options[:size]}" if @options[:size]
+    def hover
+      'dropdown-hover' if @options[:hover]
     end
 
     def theme
