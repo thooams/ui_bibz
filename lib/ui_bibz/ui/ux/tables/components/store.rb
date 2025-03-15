@@ -5,6 +5,7 @@ require 'ui_bibz/ui/ux/tables/components/column'
 module UiBibz::Ui::Ux::Tables
   class Store
     attr_accessor :records
+    attr_reader :model
 
     # Store Use WillPaginate store methods
     def initialize(store)
@@ -16,37 +17,15 @@ module UiBibz::Ui::Ux::Tables
       @model   = store.model
     end
 
-    delegate :total_pages, to: :@records
-
-    delegate :per_page, to: :@records
-
-    delegate :total_entries, to: :@records
-
-    delegate :id, to: :@store
-
-    delegate :sort, to: :@store
-
-    delegate :column_id, to: :@store
-
-    delegate :direction, to: :@store
-
-    delegate :searchable_attributes, to: :@store
-
-    delegate :current_page, to: :@records
-
-    delegate :limit_value, to: :@records
+    delegate :total_pages, :per_page, :total_entries, :current_page, :limit_value, to: :@records
+    delegate :id, :sort, :column_id, :direction, :searchable_attributes,
+             :search, :controller, :actions_controller, :action, :param_id, :id_key, to: :@store
 
     def columns
-      @columns ||= Columns.new(model.attribute_names.map { |attribute_name| Column.new(attribute_name, { name: attribute_name.humanize }) })
+      @columns ||= Columns.new(model.attribute_names.map do |attribute_name|
+        Column.new(attribute_name, { name: attribute_name.humanize })
+      end)
     end
-
-    attr_reader :model
-
-    delegate :search, to: :@store
-
-    delegate :controller, to: :@store
-
-    delegate :actions_controller, to: :@store
 
     def params
       @store.params || {}
@@ -55,11 +34,5 @@ module UiBibz::Ui::Ux::Tables
     def parameters
       @store.params.to_h
     end
-
-    delegate :action, to: :@store
-
-    delegate :param_id, to: :@store
-
-    delegate :id_key, to: :@store
   end
 end

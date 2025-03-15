@@ -82,7 +82,7 @@ module UiBibz::Ui::Ux::Tables
     end
 
     def results_count_html
-      "#{page_entries_info store.records} | ".html_safe
+      "#{page_entries_info store.records, model: store.model} | ".html_safe
     end
 
     def from_current_results
