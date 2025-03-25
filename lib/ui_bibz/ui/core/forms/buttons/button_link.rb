@@ -71,6 +71,10 @@ module UiBibz::Ui::Core::Forms::Buttons
       options[:url] || "##{options[:collapse]}"
     end
 
+    def component_html_data
+      @data_html_options_builder.add 'confirm', value: options[:confirm]
+    end
+
     def component_html_options
       super.merge({ role: :button })
     end

@@ -231,6 +231,8 @@ module UiBibz
         autoload :TableSearchField,        'ui_bibz/ui/ux/tables/table_search_field'
         autoload :TablePagination,         'ui_bibz/ui/ux/tables/table_pagination'
         autoload :TablePaginationPerPage,  'ui_bibz/ui/ux/tables/table_pagination_per_page'
+        autoload :Sortable,                'ui_bibz/ui/ux/tables/extensions/sortable'
+        autoload :Column,                  'ui_bibz/ui/ux/tables/components/column'
       end
 
       module Containers

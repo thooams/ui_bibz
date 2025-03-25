@@ -24,4 +24,11 @@ class LinkTest < ActionView::TestCase
 
     assert_equal expected, actual
   end
+
+  test 'confirm option' do
+    actual = ui_link 'My link', url: '#link', confirm: "Are you sure?"
+    expected = "<a data-confirm=\"Are you sure?\" href=\"#link\">My link</a>"
+
+    assert_equal expected, actual
+  end
 end

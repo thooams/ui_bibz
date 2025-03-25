@@ -55,6 +55,10 @@ module UiBibz::Ui::Core::Navigations
       opts
     end
 
+    def component_html_data
+      @data_html_options_builder.add 'confirm', value: options[:confirm]
+    end
+
     def collapse
       {
         role: 'button',

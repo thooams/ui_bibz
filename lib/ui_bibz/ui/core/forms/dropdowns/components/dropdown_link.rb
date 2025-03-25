@@ -40,30 +40,13 @@ module UiBibz::Ui::Core::Forms::Dropdowns::Components
   #     'Home'
   #   end.render
   #
-  class DropdownLink < UiBibz::Ui::Core::Component
+  class DropdownLink < UiBibz::Ui::Core::Navigations::Link
     # See UiBibz::Ui::Core::Component.initialize
-    def initialize(...)
-      super
-      @html_options = @html_options.merge(link_html_options)
-    end
-
-    # Render html tag
-    def pre_render
-      link_to glyph_and_content_html, link_url, html_options
-    end
 
     private
 
     def component_html_classes
       'dropdown-item'
-    end
-
-    def link_url
-      options[:url] || '#'
-    end
-
-    def link_html_options
-      @options[:link_html_options].nil? ? {} : @options[:link_html_options]
     end
   end
 end

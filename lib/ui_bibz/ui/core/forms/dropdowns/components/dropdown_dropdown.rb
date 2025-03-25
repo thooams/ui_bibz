@@ -94,7 +94,7 @@ module UiBibz::Ui::Core::Forms::Dropdowns::Components
     end
 
     def button_html
-      content_tag :a, button_content, { class: join_classes(state, 'dropdown-toggle'), role: 'button', 'data-bs-toggle' => 'dropdown', 'aria-expanded' => false, 'id' => id }
+      content_tag :a, button_content, { class: join_classes(state, 'dropdown-toggle', options.dig(:html_button, :class)), role: 'button', 'data-bs-toggle' => 'dropdown', 'aria-expanded' => false, 'id' => id }
     end
 
     def ul_html
