@@ -53,7 +53,7 @@ module UiBibz::Ui::Ux::Tables
       [
         UiBibz::Ui::Core::Forms::Dropdowns::Components::DropdownLink.new(show_name, url: { controller: @store.actions_controller, action: 'show' }.merge({ @store.id_key => @store.id_key }), glyph: 'eye').render,
         UiBibz::Ui::Core::Forms::Dropdowns::Components::DropdownLink.new(edit_name, url: { controller: @store.actions_controller, action: 'edit' }.merge({ @store.id_key => @store.id_key }), glyph: 'edit').render,
-        UiBibz::Ui::Core::Forms::Dropdowns::Components::DropdownLink.new(delete_name, { glyph: 'trash', url: { controller: @store.actions_controller, action: 'destroy' }.merge({ @store.id_key => @store.id_key }), link_html_options: { data: { confirm: 'Are you sure?', method: :delete } } }).render
+        UiBibz::Ui::Core::Forms::Dropdowns::Components::DropdownLink.new(delete_name, { glyph: 'trash', url: { controller: @store.actions_controller, action: 'destroy' }.merge({ @store.id_key => @store.id_key }), link_html_options: { data: { turbo_confirm: 'Are you sure?', turbo_method: :delete } } }).render
       ]
     end
 

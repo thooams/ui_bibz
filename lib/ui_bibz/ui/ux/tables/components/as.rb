@@ -20,6 +20,8 @@ module UiBibz::Ui::Ux::Tables
       when :input
         inp_options = (@col.input_options || {}).merge({ label: false })
         @form.input @col.data_index, inp_options
+      when :association
+        @record.send(@col.data_index).send(@col.association_attribute)
       end
     end
 
