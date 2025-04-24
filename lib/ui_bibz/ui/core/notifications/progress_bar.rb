@@ -97,7 +97,7 @@ module UiBibz::Ui::Core::Notifications
       stacked_colors.map.with_index do |color, i|
         if percentages[0, i].sum <= content.to_f
           if content.to_f.between?(percentages[0, i].sum, percentages[0, i + 1].sum)
-            UiBibz::Ui::Core::Notifications::Components::Bar.new((content.to_f * percentages[i] / 100), min: 0, striped: options[:striped], animated: options[:animated], max: 100, status: color).render
+            UiBibz::Ui::Core::Notifications::Components::Bar.new(content.to_f * percentages[i] / 100, min: 0, striped: options[:striped], animated: options[:animated], max: 100, status: color).render
           else
             UiBibz::Ui::Core::Notifications::Components::Bar.new(percentages[i], min: 0, striped: options[:striped], animated: options[:animated], max: 100, status: color).render
           end

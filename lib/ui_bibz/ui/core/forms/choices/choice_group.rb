@@ -79,7 +79,7 @@ module UiBibz::Ui::Core::Forms::Choices
       @items << @options[:form].input(attribute_name, new_options, &)
       obj = @options[:form].object
       @errors << obj.errors[attribute_name] unless obj.errors[attribute_name].empty?
-      @required_fields << (obj._validators[attribute_name].try(:first).instance_of?(::ActiveRecord::Validations::PresenceValidator))
+      @required_fields << obj._validators[attribute_name].try(:first).instance_of?(::ActiveRecord::Validations::PresenceValidator)
     end
 
     private

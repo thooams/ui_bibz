@@ -72,7 +72,7 @@ module UiBibz::Ui::Core::Forms::Surrounds
       @items << @options[:form].input(attribute_name, options.merge({ label: false, wrapper: false, error: false }), &)
       obj = @options[:form].object
       @errors << obj.errors[attribute_name] unless obj.errors[attribute_name].empty?
-      @required_fields << (obj._validators[attribute_name].try(:first).instance_of?(::ActiveRecord::Validations::PresenceValidator))
+      @required_fields << obj._validators[attribute_name].try(:first).instance_of?(::ActiveRecord::Validations::PresenceValidator)
     end
 
     def glyph(content = nil, options = {}, html_options = nil, &)

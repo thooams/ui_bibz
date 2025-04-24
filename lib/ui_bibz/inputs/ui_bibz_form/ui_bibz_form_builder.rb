@@ -18,8 +18,8 @@ module UiBibzForm
       surround_field = UiBibz::Ui::Core::Forms::Surrounds::SurroundField.new(content, opts, html_options).tap(&block)
       errors_text    = surround_field.errors.flatten.to_sentence
       required       = surround_field.required_fields.any?(true)
-      wrapper_classes = UiBibz::Builders::HtmlClassesBuilder.join_classes(('has-error' if errors_text.present?), wrapper_html.try(:[], :class))
-      label_classes = UiBibz::Builders::HtmlClassesBuilder.join_classes(('required' if required), 'control-label')
+      wrapper_classes = UiBibz::Builders::HtmlClassesBuilder.join_classes(errors_text.present? ? 'has-error' : nil, wrapper_html.try(:[], :class))
+      label_classes = UiBibz::Builders::HtmlClassesBuilder.join_classes(required ? 'required' : nil, 'control-label')
       abbr_html     = content_tag('abbr', I18n.t(:'simple_form.required.mark', default: '*'), title: I18n.t(:'simple_form.required.text', default: 'required')) if required
 
       wrapper_html[:class] = wrapper_classes

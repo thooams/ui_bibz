@@ -1,8 +1,10 @@
 require:
   - rubocop-ast
+
+plugins:
   - rubocop-performance
-  - rubocop-rails
   - rubocop-minitest
+  - rubocop-rails
 
 Layout/LineLength:
   Enabled: false
@@ -13,24 +15,24 @@ AllCops:
 Lint/UselessAssignment:
   Enabled: true
   Exclude:
-    - 'test/ui/ux/tables/table_test.rb'
+    - "test/ui/ux/tables/table_test.rb"
 
 Style/AsciiComments:
   Enabled: true
   Exclude:
-    - 'test/**/**/**/**/*'
+    - "test/**/**/**/**/*"
 
 Metrics/ClassLength:
   Enabled: false
 
 Style/FormatString:
   Exclude:
-    - 'config/initializers/will_paginate.rb'
+    - "config/initializers/will_paginate.rb"
 
 Style/StringLiterals:
   Enabled: true
   Exclude:
-    - 'test/**/**/**/**/*'
+    - "test/**/**/**/**/*"
 
 Style/ClassAndModuleChildren:
   Enabled: false
